@@ -6,11 +6,17 @@ const path = require('path'); // Import path module
 const { Redis } = require('@upstash/redis');
 const Stripe = require('stripe');
 const crypto = require('crypto');
+const { buildAiConfig, callAiChat } = require('./aiClient');
+const { getHeroLocalizationList } = require('./heroAliases');
+const { getActiveDataProvider } = require('./dataProviders');
+const { buildChineseCoachMessages } = require('./dotaDataContext');
 
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
 const APP_URL = process.env.APP_URL || 'https://www.dota2helper.com';
 const FREE_TIER_LIMIT = 3;
+const aiConfig = buildAiConfig();
+const dataProvider = getActiveDataProvider();
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null;
 const redis = (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN)
@@ -49,38 +55,7 @@ app.use(express.json()); // Parse JSON request bodies
 const staticFilesPath = __dirname; 
 app.use(express.static(staticFilesPath)); 
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-
-// --- Hardcoded Hero Data ---
-const DOTA_HERO_NAMES = [
-  "Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Arc Warden", 
-  "Axe", "Bane", "Batrider", "Beastmaster", "Bloodseeker", "Bounty Hunter", 
-  "Brewmaster", "Bristleback", "Broodmother", "Centaur Warrunner", 
-  "Chaos Knight", "Chen", "Clinkz", "Clockwerk", "Crystal Maiden", 
-  "Dark Seer", "Dark Willow", "Dawnbreaker", "Dazzle", "Death Prophet", 
-  "Disruptor", "Doom", "Dragon Knight", "Drow Ranger", "Earth Spirit", 
-  "Earthshaker", "Elder Titan", "Ember Spirit", "Enchantress", "Enigma", 
-  "Faceless Void", "Grimstroke", "Gyrocopter", "Hoodwink", "Huskar", 
-  "Invoker", "Io", "Jakiro", "Juggernaut", "Keeper of the Light", 
-  "Kunkka", "Legion Commander", "Leshrac", "Lich", "Lifestealer", "Lina", 
-  "Lion", "Lone Druid", "Luna", "Lycan", "Magnus", "Marci", "Mars", 
-  "Medusa", "Meepo", "Mirana", "Monkey King", "Morphling", "Muerta", 
-  "Naga Siren", "Nature's Prophet", "Necrophos", "Night Stalker", "Nyx Assassin", 
-  "Ogre Magi", "Omniknight", "Oracle", "Outworld Destroyer", "Pangolier", 
-  "Phantom Assassin", "Phantom Lancer", "Phoenix", "Primal Beast", "Puck", 
-  "Pudge", "Pugna", "Queen of Pain", "Razor", "Riki", "Rubick", 
-  "Sand King", "Shadow Demon", "Shadow Fiend", "Shadow Shaman", "Silencer", 
-  "Skywrath Mage", "Slardar", "Slark", "Snapfire", "Sniper", "Spectre", 
-  "Spirit Breaker", "Storm Spirit", "Sven", "Techies", "Templar Assassin", 
-  "Terrorblade", "Tidehunter", "Timbersaw", "Tinker", "Tiny", "Treant Protector", 
-  "Troll Warlord", "Tusk", "Underlord", "Undying", "Ursa", "Vengeful Spirit", 
-  "Venomancer", "Viper", "Visage", "Void Spirit", "Warlock", "Weaver", 
-  "Windranger", "Winter Wyvern", "Witch Doctor", "Wraith King", "Zeus", "Ringmaster",
-  "Kez"
-].sort(); // Keep sorted for consistency
-
-const VALID_HERO_NAMES_SET = new Set(DOTA_HERO_NAMES);
+const DOTA_HERO_NAMES = getHeroLocalizationList().map((hero) => hero.localized_name);
 
 // Get current patch version
 async function getCurrentPatch() {
@@ -179,22 +154,20 @@ app.get('/api/debug', async (req, res) => {
         results.step2_dotaconstants = dc.patch ? 'OK' : 'FAILED';
         results.patch = dc.patch[dc.patch.length - 1]?.name;
 
-        // Test 3: Simple Groq API call
-        const groqStart = Date.now();
-        const groqResponse = await axios.post(GROQ_API_URL, {
-            model: 'openai/gpt-oss-120b',
-            messages: [{ role: 'user', content: 'Say "OK" and nothing else.' }],
-            max_completion_tokens: 10,
-            reasoning_effort: 'low'
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${GROQ_API_KEY}`
-            }
-        });
-        results.timestamps.groq = Date.now() - groqStart;
-        results.step3_groq = groqResponse.data.choices ? 'OK' : 'FAILED';
-        results.groq_response = groqResponse.data.choices[0]?.message?.content;
+        // Test 3: Simple AI provider call
+        const aiStart = Date.now();
+        const aiResponse = await callAiChat(
+            axios,
+            aiConfig,
+            [{ role: 'user', content: 'Say "OK" and nothing else.' }],
+            { maxCompletionTokens: 10, reasoningEffort: 'low' }
+        );
+        results.timestamps.ai = Date.now() - aiStart;
+        results.ai_provider = aiConfig.provider;
+        results.ai_model = aiConfig.model;
+        results.ai_base_url = aiConfig.baseUrl;
+        results.step3_ai = aiResponse.data.choices ? 'OK' : 'FAILED';
+        results.ai_response = aiResponse.data.choices[0]?.message?.content;
 
         results.timestamps.total = Date.now() - results.timestamps.start;
         res.json(results);
@@ -488,12 +461,7 @@ app.post('/api/recover-token', async (req, res) => {
 // API route to get hero list (now uses hardcoded list)
 app.get('/api/heroes', async (req, res) => {
     try {
-        // Return list suitable for datalist (just names)
-        const frontendHeroList = DOTA_HERO_NAMES.map(name => ({
-             localized_name: name
-             // No icon data available anymore
-        }));
-        res.json(frontendHeroList);
+        res.json(getHeroLocalizationList());
     } catch (error) {
          // Should ideally not happen with hardcoded list, but keep for safety
         console.error("Error sending hero list:", error);
@@ -505,181 +473,34 @@ app.get('/api/heroes', async (req, res) => {
 app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
     const { myTeam, opponentTeam } = req.body; 
 
-    // --- Backend Validation ---
-    let allSelectedHeroes = [];
-    let validationError = null;
+    let prompt;
     try {
         if (!myTeam || !opponentTeam || myTeam.length !== 5 || opponentTeam.length !== 5) {
              return res.status(400).json({ error: 'Invalid input structure. Requires myTeam and opponentTeam arrays of size 5.' });
         }
-        
-        const allHeroesWithRoles = [...myTeam, ...opponentTeam];
-        allSelectedHeroes = allHeroesWithRoles.map(h => h.hero);
-        const uniqueHeroes = new Set();
-        const requiredRoles = new Set(['Safe Lane', 'Midlane', 'Offlane', 'Support', 'Hard Support']);
-        const teamRoles = new Set();
-
-        for (const team of [myTeam, opponentTeam]) {
-            teamRoles.clear(); // Reset for each team
-            for (const { hero, role } of team) {
-                const trimmedHero = hero?.trim();
-                const trimmedRole = role?.trim();
-
-                if (!trimmedHero || !trimmedRole) {
-                    validationError = 'All hero and role selections must be non-empty.';
-                    break;
-                }
-                if (!VALID_HERO_NAMES_SET.has(trimmedHero)) {
-                    validationError = `Invalid hero name received: "${trimmedHero}".`;
-                    break;
-                }
-                 if (!requiredRoles.has(trimmedRole)) {
-                    validationError = `Invalid role received: "${trimmedRole}".`;
-                    break;
-                }
-                if (uniqueHeroes.has(trimmedHero)) {
-                    validationError = `Duplicate hero detected: "${trimmedHero}".`;
-                    break;
-                }
-                 if (teamRoles.has(trimmedRole)) {
-                    validationError = `Duplicate role detected on a team: "${trimmedRole}".`;
-                    break;
-                }
-                uniqueHeroes.add(trimmedHero);
-                teamRoles.add(trimmedRole);
-            }
-            if (validationError) break;
-             if (teamRoles.size !== 5) { // Check if all 5 unique roles are present per team
-                validationError = `Each team must have one of each role. Missing or duplicate roles found.`;
-                break;
-            }
-        }
-
-        if (validationError) {
-            console.warn('Backend validation failed:', validationError);
-            return res.status(400).json({ error: validationError });
-        }
-        console.log('Backend validation passed for heroes:', allSelectedHeroes.join(', '));
-
-    } catch (err) { // Catch any unexpected errors during validation itself
-         console.error("Unexpected error during hero validation:", err);
-         return res.status(500).json({ error: 'Server error during hero validation.' });
+        const matchContext = await dataProvider.buildMatchContext(myTeam, opponentTeam);
+        prompt = dataProvider.buildGroundedChinesePrompt(matchContext);
+        console.log('Backend match context built for heroes:', [
+          ...matchContext.teams.myTeam,
+          ...matchContext.teams.opponentTeam
+        ].map((entry) => entry.hero).join(', '));
+    } catch (err) {
+         console.warn("Failed to build match context:", err.message);
+         return res.status(400).json({ error: err.message || 'Failed to build match context.' });
     }
-    // --- End Backend Validation ---
-
-    // Find the user's hero and role from the validated myTeam array
-    const yourHeroData = myTeam[0]; // By convention from the front-end
-    const yourHeroName = yourHeroData.hero;
-    const yourHeroRole = yourHeroData.role;
-
-    // --- Determine Lane Matchups ---
-    let laneMatchupInfo = '';
-    const opponentSafelane = opponentTeam.find(p => p.role === 'Safe Lane')?.hero;
-    const opponentMidlane = opponentTeam.find(p => p.role === 'Midlane')?.hero;
-    const opponentOfflane = opponentTeam.find(p => p.role === 'Offlane')?.hero;
-    const opponentSupport = opponentTeam.find(p => p.role === 'Support')?.hero;
-    const opponentHardSupport = opponentTeam.find(p => p.role === 'Hard Support')?.hero;
-
-    if (yourHeroRole === 'Safe Lane' || yourHeroRole === 'Hard Support') {
-        laneMatchupInfo = `You will be laning against ${opponentOfflane} and ${opponentSupport}.`;
-    } else if (yourHeroRole === 'Midlane') {
-        laneMatchupInfo = `You will be laning against ${opponentMidlane}.`;
-    } else if (yourHeroRole === 'Offlane' || yourHeroRole === 'Support') {
-        laneMatchupInfo = `You will be laning against ${opponentSafelane} and ${opponentHardSupport}.`;
-    }
-
-    // Get current patch and game data from dotaconstants
-    const currentPatch = await getCurrentPatch();
-    const yourHeroAbilities = await getHeroAbilitiesContext(yourHeroName);
-    const roleItems = ROLE_ITEMS[yourHeroRole] || ROLE_ITEMS['Support'];
-    const itemContext = await getItemContext(roleItems);
-
-    // Get lane opponents for enemy abilities context
-    let laneOpponents = [];
-    if (yourHeroRole === 'Safe Lane' || yourHeroRole === 'Hard Support') {
-        laneOpponents = [opponentOfflane, opponentSupport].filter(Boolean);
-    } else if (yourHeroRole === 'Midlane') {
-        laneOpponents = [opponentMidlane].filter(Boolean);
-    } else if (yourHeroRole === 'Offlane' || yourHeroRole === 'Support') {
-        laneOpponents = [opponentSafelane, opponentHardSupport].filter(Boolean);
-    }
-    const enemyAbilitiesContext = await getEnemyAbilitiesBrief(laneOpponents);
-
-    // Get teammates for synergy context
-    const teammates = myTeam.filter(p => p.hero !== yourHeroName).map(p => `${p.hero} (${p.role})`);
-
-    // Format teams for the prompt
-    const formatTeam = (team) => team.map(p => `${p.hero} (${p.role})`).join(', ');
-    const myTeamFormatted = formatTeam(myTeam);
-    const opponentTeamFormatted = formatTeam(opponentTeam);
-
-    // Construct the *structured* prompt for the LLM
-    const prompt = `You are a Dota 2 coach. Advise on playing **${yourHeroName}** as **${yourHeroRole}** (Patch ${currentPatch}).
-
-**Teams:**
-- Allies: ${myTeamFormatted}
-- Enemies: ${opponentTeamFormatted}
-
-**Your Abilities:**
-${yourHeroAbilities}
-
-**Lane Opponents' Key Abilities:**
-${enemyAbilitiesContext || 'N/A'}
-
-**Items Reference (${yourHeroRole}):**
-${itemContext}
-
-${laneMatchupInfo}
-
-**Respond with these sections:**
-
-### Overview
-2-3 sentences on your win condition and role in this matchup.
-
-### Laning Phase (0-10 min)
-Starting items, how to trade with lane opponents, kill potential, and threats to avoid.
-
-### Mid Game (10-25 min)
-Core items timing, when to fight vs farm, positioning in teamfights.
-
-### Late Game (25+ min)
-Final items, teamfight role, key objectives (Roshan, high ground).
-
-### Item Build
-List starting → early → core → situational items. Explain key choices for this matchup.
-
-### Teammate Synergies
-How to combo with: ${teammates.join(', ')}. Mention 1-2 specific ability interactions.
-
-### Enemy Threats
-Key abilities to avoid and how to counter them.
-
-Be specific to this matchup. No generic advice.`;
 
     try {
-        console.log('Sending structured prompt to Groq (GPT-OSS 120B)...');
-        const groqResponse = await axios.post(GROQ_API_URL, {
-            model: 'openai/gpt-oss-120b',
-            messages: [
-                {
-                    role: 'user',
-                    content: prompt
-                }
-            ],
-            temperature: 1,
-            max_completion_tokens: 8192,
-            top_p: 1,
-            reasoning_effort: 'low'
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${GROQ_API_KEY}`
-            }
-        });
+        console.log(`Sending structured prompt to AI provider (${aiConfig.provider}, ${aiConfig.model})...`);
+        const aiResponse = await callAiChat(
+            axios,
+            aiConfig,
+            buildChineseCoachMessages(prompt),
+            { temperature: 1, maxCompletionTokens: 8192, topP: 1, reasoningEffort: 'low' }
+        );
 
-        console.log('Received response from Groq. Choices exist:', !!groqResponse.data.choices);
+        console.log('Received response from AI provider. Choices exist:', !!aiResponse.data.choices);
 
-        const choices = groqResponse.data.choices;
+        const choices = aiResponse.data.choices;
         if (choices && choices.length > 0 && choices[0].message && choices[0].message.content) {
             const tips = choices[0].message.content;
 
@@ -692,12 +513,12 @@ Be specific to this matchup. No generic advice.`;
 
             res.json({ tips, remaining: req.queriesRemaining, isPro: req.isPro });
         } else {
-            console.error('Unexpected response structure from Groq:', JSON.stringify(groqResponse.data, null, 2));
+            console.error('Unexpected response structure from AI provider:', JSON.stringify(aiResponse.data, null, 2));
             res.status(500).json({ error: 'Failed to parse response from AI model.' });
         }
 
     } catch (error) {
-        console.error('Error calling Groq API: Status', error.response?.status);
+        console.error('Error calling AI provider: Status', error.response?.status);
         console.error(error.response?.data ? JSON.stringify(error.response.data) : error.message);
 
         let errorMessage = 'Failed to get tips from AI model.';

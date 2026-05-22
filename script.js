@@ -45,8 +45,16 @@ const heroInputs = [
     document.getElementById('opponent5')
 ];
 
-let validHeroNames = new Set(); // To store valid hero names for validation
+let validHeroNames = new Set(); // To store valid canonical hero names for validation
+let heroAliasMap = new Map(); // Maps display names and aliases to canonical hero names
 const ROLES = ['Safe Lane', 'Midlane', 'Offlane', 'Support', 'Hard Support'];
+const ROLE_LABELS = {
+    'Safe Lane': '优势路',
+    'Midlane': '中路',
+    'Offlane': '劣势路',
+    'Support': '四号位',
+    'Hard Support': '五号位'
+};
 
 // let heroIconMap = {}; // Removed: No longer fetching icons
 
@@ -96,7 +104,7 @@ function populateRoleDropdown() {
     ROLES.forEach(role => {
         const option = document.createElement('option');
         option.value = role;
-        option.textContent = role;
+        option.textContent = ROLE_LABELS[role] || role;
         yourHeroRoleSelect.appendChild(option);
     });
 }
@@ -108,7 +116,7 @@ function updateAllyRoles() {
     allyLabels.forEach((label, index) => {
         if (label) {
             // e.g., "Offlane"
-            label.textContent = remainingRoles[index];
+            label.textContent = ROLE_LABELS[remainingRoles[index]] || remainingRoles[index];
         }
     });
 }
@@ -120,22 +128,32 @@ async function populateHeroData() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const heroesData = await response.json(); // Expecting { localized_name, icon }
+        const heroesData = await response.json(); // Expecting { localized_name, zh_name, display_name, aliases }
 
         // Clear existing datalist options
         heroDatalist.innerHTML = ''; 
         validHeroNames.clear();
+        heroAliasMap.clear();
         // heroIconMap = {}; // Removed
 
         // Populate datalist and the Set of valid names
         heroesData.forEach(hero => {
             const option = document.createElement('option');
-            option.value = hero.localized_name;
-            // Add hero icon URL as a data attribute for potential future use
-            // option.dataset.icon = hero.icon; // Removed: No icon data
+            option.value = hero.display_name || hero.localized_name;
             heroDatalist.appendChild(option);
             validHeroNames.add(hero.localized_name); // Add to Set for validation
-            // heroIconMap[hero.localized_name] = hero.icon; // Removed
+
+            const canonical = hero.localized_name;
+            const keys = [
+                canonical,
+                hero.display_name,
+                hero.zh_name,
+                ...(hero.aliases || [])
+            ];
+
+            keys.filter(Boolean).forEach(alias => {
+                heroAliasMap.set(alias.trim().toLowerCase(), canonical);
+            });
         });
 
         console.log('Hero datalist populated.');
@@ -143,12 +161,18 @@ async function populateHeroData() {
 
     } catch (error) {
         console.error('Error fetching or populating heroes:', error);
-        errorMessageP.textContent = 'Failed to load hero list. Please refresh. Submit disabled.';
+        errorMessageP.textContent = '英雄列表加载失败，请刷新页面。';
         submitButton.disabled = true; // Keep submit disabled if load fails
     }
 }
 
 function autoCorrectInputs(input) {
+    const aliasMatch = heroAliasMap.get(input.value.trim().toLowerCase());
+    if (aliasMatch) {
+        input.value = aliasMatch;
+        return;
+    }
+
     for (const [heroName, abbrSet] of Object.entries(HERO_ABBREVIATIONS)) {
         if (abbrSet.includes(input.value.trim())) {
             input.value = heroName;
@@ -194,15 +218,15 @@ function validateHeroInputs(isFinalCheck = false) {
         let fieldError = null;
 
         if (heroName === '') {
-            if (isFinalCheck) fieldError = 'All hero fields must be filled.'; // Only show required error on final submit
+            if (isFinalCheck) fieldError = '请填写全部英雄。'; // Only show required error on final submit
             input.classList.add('invalid');
             isValid = false;
         } else if (!validHeroNames.has(heroName)) {
-            fieldError = `"${heroName}" is not a valid hero.`;
+            fieldError = `"${heroName}" 不是有效英雄。`;
             input.classList.add('invalid');
             isValid = false;
         } else if (currentSelections[heroName]) {
-            fieldError = `"${heroName}" selected multiple times.`;
+            fieldError = `"${heroName}" 被重复选择。`;
             input.classList.add('invalid');
             // Also mark the previously selected input as invalid
             currentSelections[heroName].inputElement.classList.add('invalid');
@@ -284,6 +308,7 @@ function updateProUI(isPro) {
   const badge = document.getElementById('proBadge');
   const subscriptionBar = document.getElementById('subscriptionBar');
   const manageLink = document.getElementById('manageSubLink');
+  if (!badge || !subscriptionBar || !manageLink) return;
 
   if (isPro) {
     badge.style.display = 'inline-block';
@@ -300,6 +325,7 @@ function updateProUI(isPro) {
 
 function updateQueryCounter(remaining) {
   const counter = document.getElementById('queryCounter');
+  if (!counter) return;
   counter.textContent = `${remaining} free ${remaining === 1 ? 'query' : 'queries'} remaining today`;
 }
 
@@ -513,6 +539,8 @@ function formatStructuredOutput(text) {
 heroForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    heroInputs.forEach(input => autoCorrectInputs(input));
+
     if (!validateHeroInputs(true)) { // Perform final validation check
         outputDiv.innerHTML = ''; // Clear any previous results or errors
         loadingSpinner.style.display = 'none';
@@ -577,11 +605,8 @@ heroForm.addEventListener('submit', async (event) => {
 
         if (response.status === 429) {
             outputDiv.innerHTML = `
-                <div class="upgrade-prompt">
-                    <h3>Daily Limit Reached</h3>
-                    <p>You've used all 3 free queries for today.</p>
-                    <p>Get <strong>unlimited queries</strong> for just $3/month.</p>
-                    <button onclick="startCheckout()" class="checkout-btn">Upgrade to Pro — $3/mo</button>
+                <div class="error-box">
+                    <strong>请求次数已达上限：</strong>请稍后再试。
                 </div>
             `;
             loadingSpinner.style.display = 'none';
@@ -606,7 +631,7 @@ heroForm.addEventListener('submit', async (event) => {
     } catch (error) {
         console.error('Error fetching tips:', error);
         // Display error in a more prominent way (e.g., within the output div for now)
-        outputDiv.innerHTML = `<div class="error-box"><strong>Request Failed:</strong> ${error.message}</div>`;
+        outputDiv.innerHTML = `<div class="error-box"><strong>请求失败：</strong> ${error.message}</div>`;
     } finally {
         // Hide spinner, show output, re-enable buttons
         loadingSpinner.style.display = 'none';

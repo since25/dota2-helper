@@ -22,7 +22,7 @@ An AI-powered web application that provides gameplay tips, skill builds, and ite
 2. Data is sent to a Node.js backend API running as a serverless function on Vercel.
 3. The backend validates heroes and determines lane matchups based on roles.
 4. Current hero abilities and item data are loaded from `dotaconstants` (Dota 2 game data package).
-5. A structured prompt with ability stats, item references, and matchup context is sent to **Groq API** (GPT-OSS 120B).
+5. A structured prompt with ability stats, item references, and matchup context is sent to an OpenAI-compatible AI endpoint. Groq is the default provider.
 6. The AI response is rendered as formatted HTML with tables, lists, and styled sections.
 
 ## Running Locally
@@ -42,10 +42,26 @@ An AI-powered web application that provides gameplay tips, skill builds, and ite
 
 3. **Create Environment File:**
 Create a file named `.env` in the project root.
-Add your Groq API Key (obtainable from [Groq Console](https://console.groq.com/keys)) to this file:
 
-&#x20;   ```
-    GROQ\_API\_KEY=YOUR\_API\_KEY\_HERE
+For a self-hosted OpenAI-compatible endpoint:
+
+   ```
+    AI_API_BASE_URL=http://localhost:8000/v1
+    AI_API_KEY=YOUR_API_KEY_OR_LEAVE_EMPTY
+    AI_MODEL=YOUR_MODEL_NAME
+    ```
+
+For the default Groq setup, you can still use:
+
+   ```
+    GROQ_API_KEY=YOUR_GROQ_API_KEY_HERE
+    ```
+
+Optional AI settings:
+
+   ```
+    AI_PROVIDER=openai-compatible
+    AI_INCLUDE_REASONING_EFFORT=false
     ```
 
 4. **Run the development server:**
@@ -60,7 +76,7 @@ Add your Groq API Key (obtainable from [Groq Console](https://console.groq.com/k
 
 * **Frontend:** Vanilla JavaScript, HTML, CSS
 * **Backend:** Node.js + Express (serverless on Vercel)
-* **AI:** Groq API (GPT-OSS 120B)
+* **AI:** OpenAI-compatible chat completions endpoint (Groq by default, self-hosted supported)
 * **Game Data:** [dotaconstants](https://github.com/odota/dotaconstants) - parsed Dota 2 game files
 * **Payments:** Stripe (subscriptions + webhooks)
 * **Rate Limiting:** Upstash Redis
@@ -70,4 +86,3 @@ Add your Groq API Key (obtainable from [Groq Console](https://console.groq.com/k
   ## Contributing
 
   Suggestions and feedback are welcome! open an issue/pull request on GitHub.
-

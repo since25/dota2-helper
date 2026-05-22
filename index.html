@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dota 2 Helper</title>
+    <title>Dota 2 对局助手</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/dota2_favicon.png">
 </head>
@@ -11,16 +11,8 @@
     <div class="container">
         <header class="app-header">
             <img src="images/dota2_logo.png" alt="Dota 2 Logo" class="header-logo">
-            <h1>helper</h1>
-            <span id="proBadge" class="pro-badge" style="display: none;">PRO</span>
-            <a id="manageSubLink" href="#" class="manage-sub-link" onclick="openBillingPortal(); return false;" style="display: none;">Manage</a>
+            <h1>对局助手</h1>
         </header>
-
-        <div id="subscriptionBar" class="subscription-bar">
-            <span id="queryCounter" class="query-counter">3 free queries remaining today</span>
-            <button id="upgradeBtn" class="upgrade-btn" onclick="startCheckout()">Unlimited queries — $3/mo</button>
-            <a id="recoverLink" href="#" class="recover-link" onclick="recoverToken(); return false;">Already subscribed?</a>
-        </div>
 
         <form id="heroForm">
             <!-- Shared Datalist for Hero Suggestions -->
@@ -30,10 +22,10 @@
 
             <div class="teams">
                 <div class="team my-team">
-                    <h2>My Team</h2>
+                    <h2>我方阵容</h2>
                     <div class="hero-inputs">
                         <div class="form-group main-hero-role">
-                            <label for="yourHeroRole">My Role & Hero</label>
+                            <label for="yourHeroRole">我的位置与英雄</label>
                             <div class="hero-and-role">
                                 <select id="yourHeroRole" name="yourHeroRole" class="role-selector"></select>
                                 <input type="text" id="yourHero" name="yourHero" list="heroList" required autocomplete="off">
@@ -41,19 +33,19 @@
                         </div>
                         <div class="hero-grid">
                             <div class="form-group ally-hero">
-                                <label for="ally1" id="ally1-label">Ally 1:</label>
+                                <label for="ally1" id="ally1-label">队友 1</label>
                                 <input type="text" id="ally1" name="ally1" list="heroList" required autocomplete="off">
                             </div>
                             <div class="form-group ally-hero">
-                                <label for="ally2" id="ally2-label">Ally 2:</label>
+                                <label for="ally2" id="ally2-label">队友 2</label>
                                 <input type="text" id="ally2" name="ally2" list="heroList" required autocomplete="off">
                             </div>
                             <div class="form-group ally-hero">
-                                <label for="ally3" id="ally3-label">Ally 3:</label>
+                                <label for="ally3" id="ally3-label">队友 3</label>
                                 <input type="text" id="ally3" name="ally3" list="heroList" required autocomplete="off">
                             </div>
                              <div class="form-group ally-hero">
-                                <label for="ally4" id="ally4-label">Ally 4:</label>
+                                <label for="ally4" id="ally4-label">队友 4</label>
                                 <input type="text" id="ally4" name="ally4" list="heroList" required autocomplete="off">
                             </div>
                         </div>
@@ -61,27 +53,27 @@
                 </div>
 
                 <div class="team opponent-team">
-                    <h2>Opponent Team</h2>
+                    <h2>敌方阵容</h2>
                      <div class="hero-inputs">
                         <div class="hero-grid">
                              <div class="form-group opponent-hero">
-                                <label for="opponent1">Safe Lane</label>
+                                <label for="opponent1">优势路</label>
                                 <input type="text" id="opponent1" name="opponent1" list="heroList" required autocomplete="off">
                             </div>
                             <div class="form-group opponent-hero">
-                                <label for="opponent2">Midlane</label>
+                                <label for="opponent2">中路</label>
                                 <input type="text" id="opponent2" name="opponent2" list="heroList" required autocomplete="off">
                             </div>
                              <div class="form-group opponent-hero">
-                                <label for="opponent3">Offlane</label>
+                                <label for="opponent3">劣势路</label>
                                 <input type="text" id="opponent3" name="opponent3" list="heroList" required autocomplete="off">
                             </div>
                             <div class="form-group opponent-hero">
-                                <label for="opponent4">Support</label>
+                                <label for="opponent4">四号位</label>
                                 <input type="text" id="opponent4" name="opponent4" list="heroList" required autocomplete="off">
                             </div>
                             <div class="form-group opponent-hero">
-                                <label for="opponent5">Hard Support</label>
+                                <label for="opponent5">五号位</label>
                                 <input type="text" id="opponent5" name="opponent5" list="heroList" required autocomplete="off">
                             </div>
                         </div>
@@ -92,17 +84,17 @@
             <p id="error-message" class="error"></p> <!-- Area for validation messages -->
 
             <div class="form-actions">
-                 <button type="submit">HELP ME</button>
-                 <button type="button" id="clearFormBtn" class="secondary-button">Clear Selections</button>
+                 <button type="submit">生成建议</button>
+                 <button type="button" id="clearFormBtn" class="secondary-button">清空选择</button>
             </div>
         </form>
 
         <div id="results">
-            <h2>Tips & Build</h2>
+            <h2>对局建议与出装</h2>
             <!-- Loading Spinner -->
             <div id="loadingSpinner" class="spinner-container" style="display: none;">
                 <div class="spinner"></div>
-                <p>Generating advice...</p>
+                <p>正在生成建议...</p>
             </div>
             <!-- Output Area -->
             <div id="output" class="output-content">
@@ -112,9 +104,9 @@
 
         <footer>
             <p>
-                Suggestions or feedback? Reach out on <a href="https://x.com/ibnAmjid" target="_blank" rel="noopener noreferrer">X (formerly Twitter)</a>.
+                建议或反馈：<a href="https://x.com/ibnAmjid" target="_blank" rel="noopener noreferrer">X</a>
                 <span class="footer-separator">|</span>
-                View the source code on <a href="https://github.com/samikhanjid/dota2-helper" target="_blank" rel="noopener noreferrer">GitHub</a>.
+                源码：<a href="https://github.com/samikhanjid/dota2-helper" target="_blank" rel="noopener noreferrer">GitHub</a>
             </p>
         </footer>
 
