@@ -1,0 +1,327 @@
+{
+  "hero": "Elder Titan",
+  "displayName": "上古巨神（Elder Titan）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 305,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.75,
+    "baseMana": 75,
+    "baseManaRegen": 0.25,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 23,
+    "baseAttackMax": 33,
+    "baseStrength": 26,
+    "baseAgility": 16,
+    "baseIntelligence": 23,
+    "strengthGain": 3,
+    "agilityGain": 1.8,
+    "intelligenceGain": 1.6,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 26,
+        "agility": 16,
+        "intelligence": 23,
+        "maxHealth": 692,
+        "maxMana": 351,
+        "armor": 2.67,
+        "attackMin": 49,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 32,
+          "agility": 19.6,
+          "intelligence": 26.2,
+          "maxHealth": 824,
+          "maxMana": 389,
+          "armor": 3.27,
+          "attackMin": 55,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38,
+          "agility": 23.2,
+          "intelligence": 29.4,
+          "maxHealth": 956,
+          "maxMana": 428,
+          "armor": 3.87,
+          "attackMin": 61,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 41,
+          "agility": 25,
+          "intelligence": 31,
+          "maxHealth": 1022,
+          "maxMana": 447,
+          "armor": 4.17,
+          "attackMin": 64,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 44,
+          "agility": 26.8,
+          "intelligence": 32.6,
+          "maxHealth": 1088,
+          "maxMana": 466,
+          "armor": 4.47,
+          "attackMin": 67,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 59,
+          "agility": 35.8,
+          "intelligence": 40.6,
+          "maxHealth": 1418,
+          "maxMana": 562,
+          "armor": 5.97,
+          "attackMin": 82,
+          "attackMax": 92
+        },
+        "level18": {
+          "level": 18,
+          "strength": 77,
+          "agility": 46.6,
+          "intelligence": 50.2,
+          "maxHealth": 1814,
+          "maxMana": 677,
+          "armor": 7.77,
+          "attackMin": 100,
+          "attackMax": 110
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Echo Stomp",
+      "displayName": "回音重踏（Echo Stomp）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        13,
+        12,
+        11
+      ],
+      "components": [
+        {
+          "id": "Echo Stomp:instant_fixed:stomp_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "stomp_damage",
+          "valuesByAbilityLevel": [
+            60,
+            100,
+            140,
+            180
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              2.8,
+              3.6,
+              4.4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Astral Spirit",
+      "displayName": "灵体游魂（Astral Spirit）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        23,
+        21,
+        19,
+        17
+      ],
+      "components": [
+        {
+          "id": "Astral Spirit:instant_fixed:pass_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "pass_damage",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Natural Order",
+      "displayName": "自然秩序（Natural Order）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Natural Order:debuff_reference:armor_reduction_pct",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "armor_reduction_pct",
+          "valuesByAbilityLevel": [
+            40,
+            60,
+            80,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "armor_reduction",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Earth Splitter",
+      "displayName": "裂地沟壑（Earth Splitter）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        125,
+        175,
+        225
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        95,
+        90
+      ],
+      "components": [
+        {
+          "id": "Earth Splitter:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            2400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

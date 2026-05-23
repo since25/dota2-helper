@@ -1,0 +1,403 @@
+{
+  "hero": "Ancient Apparition",
+  "displayName": "远古冰魄（Ancient Apparition）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 675,
+    "attackRate": 1.7,
+    "attackPoint": 0.45,
+    "projectileSpeed": 1250,
+    "moveSpeed": 285,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 21,
+    "baseAttackMax": 31,
+    "baseStrength": 20,
+    "baseAgility": 20,
+    "baseIntelligence": 23,
+    "strengthGain": 1.9,
+    "agilityGain": 2,
+    "intelligenceGain": 3.1,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 20,
+        "intelligence": 23,
+        "maxHealth": 560,
+        "maxMana": 351,
+        "armor": 2.33,
+        "attackMin": 44,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23.8,
+          "agility": 24,
+          "intelligence": 29.2,
+          "maxHealth": 644,
+          "maxMana": 425,
+          "armor": 3,
+          "attackMin": 50,
+          "attackMax": 60
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27.6,
+          "agility": 28,
+          "intelligence": 35.4,
+          "maxHealth": 727,
+          "maxMana": 500,
+          "armor": 3.67,
+          "attackMin": 56,
+          "attackMax": 66
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29.5,
+          "agility": 30,
+          "intelligence": 38.5,
+          "maxHealth": 769,
+          "maxMana": 537,
+          "armor": 4,
+          "attackMin": 60,
+          "attackMax": 70
+        },
+        "level7": {
+          "level": 7,
+          "strength": 31.4,
+          "agility": 32,
+          "intelligence": 41.6,
+          "maxHealth": 811,
+          "maxMana": 574,
+          "armor": 4.33,
+          "attackMin": 63,
+          "attackMax": 73
+        },
+        "level12": {
+          "level": 12,
+          "strength": 40.9,
+          "agility": 42,
+          "intelligence": 57.1,
+          "maxHealth": 1020,
+          "maxMana": 760,
+          "armor": 6,
+          "attackMin": 78,
+          "attackMax": 88
+        },
+        "level18": {
+          "level": 18,
+          "strength": 52.3,
+          "agility": 54,
+          "intelligence": 75.7,
+          "maxHealth": 1271,
+          "maxMana": 983,
+          "armor": 8,
+          "attackMin": 97,
+          "attackMax": 107
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Cold Feet",
+      "displayName": "寒霜之足（Cold Feet）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        115,
+        120,
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        13,
+        11,
+        9
+      ],
+      "components": [
+        {
+          "id": "Cold Feet:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            36,
+            88,
+            156,
+            240
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.8,
+              2.2,
+              2.6,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Vortex",
+      "displayName": "冰霜漩涡（Ice Vortex）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        40,
+        55,
+        70,
+        85
+      ],
+      "cooldownByAbilityLevel": [
+        10,
+        8,
+        6,
+        4
+      ],
+      "components": [
+        {
+          "id": "Ice Vortex:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            60,
+            160,
+            300,
+            480
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              8,
+              10,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chilling Touch",
+      "displayName": "极寒之触（Chilling Touch）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        35,
+        35,
+        35,
+        35
+      ],
+      "cooldownByAbilityLevel": [
+        12,
+        9,
+        6,
+        3
+      ],
+      "components": [
+        {
+          "id": "Chilling Touch:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            30,
+            60,
+            90,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Bone Chill",
+      "displayName": "刺骨严寒（Bone Chill）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Bone Chill:debuff_reference:movement_slow_pct",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "movement_slow_pct",
+          "valuesByAbilityLevel": [
+            2
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Blast",
+      "displayName": "冰晶爆轰（Ice Blast）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        175,
+        175,
+        175
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        50,
+        40
+      ],
+      "components": [
+        {
+          "id": "Ice Blast:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            12,
+            24,
+            36
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            120,
+            264,
+            432
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10,
+              11,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

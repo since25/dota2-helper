@@ -1,0 +1,470 @@
+{
+  "hero": "Shadow Fiend",
+  "displayName": "影魔（Shadow Fiend）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 525,
+    "attackRate": 1.6,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1200,
+    "moveSpeed": 305,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.3,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 16,
+    "baseAttackMax": 22,
+    "baseStrength": 19,
+    "baseAgility": 25,
+    "baseIntelligence": 18,
+    "strengthGain": 2.7,
+    "agilityGain": 3.6,
+    "intelligenceGain": 2.2,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 25,
+        "intelligence": 18,
+        "maxHealth": 538,
+        "maxMana": 291,
+        "armor": 4.17,
+        "attackMin": 41,
+        "attackMax": 47
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.4,
+          "agility": 32.2,
+          "intelligence": 22.4,
+          "maxHealth": 657,
+          "maxMana": 344,
+          "armor": 5.37,
+          "attackMin": 48,
+          "attackMax": 54
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.8,
+          "agility": 39.4,
+          "intelligence": 26.8,
+          "maxHealth": 776,
+          "maxMana": 397,
+          "armor": 6.57,
+          "attackMin": 55,
+          "attackMax": 61
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32.5,
+          "agility": 43,
+          "intelligence": 29,
+          "maxHealth": 835,
+          "maxMana": 423,
+          "armor": 7.17,
+          "attackMin": 59,
+          "attackMax": 65
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.2,
+          "agility": 46.6,
+          "intelligence": 31.2,
+          "maxHealth": 894,
+          "maxMana": 449,
+          "armor": 7.77,
+          "attackMin": 63,
+          "attackMax": 69
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.7,
+          "agility": 64.6,
+          "intelligence": 42.2,
+          "maxHealth": 1191,
+          "maxMana": 581,
+          "armor": 10.77,
+          "attackMin": 81,
+          "attackMax": 87
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.9,
+          "agility": 86.2,
+          "intelligence": 55.4,
+          "maxHealth": 1548,
+          "maxMana": 740,
+          "armor": 14.37,
+          "attackMin": 102,
+          "attackMax": 108
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Shadowraze",
+      "displayName": "毁灭阴影（Shadowraze）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Shadowraze:instant_fixed:shadowraze_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shadowraze_damage",
+          "valuesByAbilityLevel": [
+            85,
+            150,
+            215,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+          "caveats": [
+            "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadowraze",
+      "displayName": "毁灭阴影（Shadowraze）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Shadowraze:instant_fixed:shadowraze_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shadowraze_damage",
+          "valuesByAbilityLevel": [
+            85,
+            150,
+            215,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+          "caveats": [
+            "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadowraze",
+      "displayName": "毁灭阴影（Shadowraze）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Shadowraze:instant_fixed:shadowraze_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shadowraze_damage",
+          "valuesByAbilityLevel": [
+            85,
+            150,
+            215,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。",
+          "caveats": [
+            "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Feast of Souls",
+      "displayName": "灵魂盛宴（Feast of Souls）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "攻速和移速加成影响持续输出，不直接造成技能伤害。",
+      "manaCostByAbilityLevel": [
+        60,
+        65,
+        70,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        21,
+        21,
+        21
+      ],
+      "components": [
+        {
+          "id": "Feast of Souls:debuff_reference:bonus_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_attack_speed",
+          "valuesByAbilityLevel": [
+            35,
+            50,
+            65,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "攻速和移速加成影响持续输出，不直接造成技能伤害。",
+          "caveats": [
+            "攻速和移速加成影响持续输出，不直接造成技能伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Presence of the Dark Lord",
+      "displayName": "魔王降临（Presence of the Dark Lord）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "减甲会放大后续物理伤害，当前总量不自动串联减甲。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Presence of the Dark Lord:debuff_reference:presence_armor_reduction",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "presence_armor_reduction",
+          "valuesByAbilityLevel": [
+            -3,
+            -4,
+            -5,
+            -6
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "armor_reduction",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "减甲会放大后续物理伤害，当前总量不自动串联减甲。",
+          "caveats": [
+            "减甲会放大后续物理伤害，当前总量不自动串联减甲。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Requiem of Souls",
+      "displayName": "魂之挽歌（Requiem of Souls）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "按单条魂线命中计算，多条命中需要后续按命中线数扩展。",
+      "manaCostByAbilityLevel": [
+        150,
+        175,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        120,
+        110,
+        100
+      ],
+      "components": [
+        {
+          "id": "Requiem of Souls:instant_fixed:dmg",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            80,
+            120,
+            160
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "按单条魂线命中计算，多条命中需要后续按命中线数扩展。",
+          "caveats": [
+            "按单条魂线命中计算，多条命中需要后续按命中线数扩展。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Necromastery",
+      "displayName": "支配死灵（Necromastery）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "魂数提供攻击力成长，需要当前魂数作为输入。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Necromastery:debuff_reference:necromastery_damage_per_soul",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "necromastery_damage_per_soul",
+          "valuesByAbilityLevel": [
+            1.35
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "魂数提供攻击力成长，需要当前魂数作为输入。",
+          "caveats": [
+            "魂数提供攻击力成长，需要当前魂数作为输入。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

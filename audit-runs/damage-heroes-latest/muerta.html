@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>琼英碧灵（Muerta） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>琼英碧灵（Muerta）</h1>
+        <div class="muted">Muerta · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 0</span>
+          <span>组件 0</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./muerta.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>int</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>21</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>2.7</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>23</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>3.6</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>24 - 32</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>0</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>575</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>295</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Muerta&quot;,
+  &quot;displayName&quot;: &quot;琼英碧灵（Muerta）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 575,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.35,
+    &quot;projectileSpeed&quot;: 3000,
+    &quot;moveSpeed&quot;: 295,
+    &quot;turnRate&quot;: 0.7,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: 0,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 24,
+    &quot;baseAttackMax&quot;: 32,
+    &quot;baseStrength&quot;: 19,
+    &quot;baseAgility&quot;: 21,
+    &quot;baseIntelligence&quot;: 23,
+    &quot;strengthGain&quot;: 2,
+    &quot;agilityGain&quot;: 2.7,
+    &quot;intelligenceGain&quot;: 3.6,
+    &quot;primaryAttribute&quot;: &quot;int&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 19,
+        &quot;agility&quot;: 21,
+        &quot;intelligence&quot;: 23,
+        &quot;maxHealth&quot;: 538,
+        &quot;maxMana&quot;: 351,
+        &quot;armor&quot;: 3.5,
+        &quot;attackMin&quot;: 47,
+        &quot;attackMax&quot;: 55
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 23,
+          &quot;agility&quot;: 26.4,
+          &quot;intelligence&quot;: 30.2,
+          &quot;maxHealth&quot;: 626,
+          &quot;maxMana&quot;: 437,
+          &quot;armor&quot;: 4.4,
+          &quot;attackMin&quot;: 54,
+          &quot;attackMax&quot;: 62
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 27,
+          &quot;agility&quot;: 31.8,
+          &quot;intelligence&quot;: 37.4,
+          &quot;maxHealth&quot;: 714,
+          &quot;maxMana&quot;: 524,
+          &quot;armor&quot;: 5.3,
+          &quot;attackMin&quot;: 61,
+          &quot;attackMax&quot;: 69
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 29,
+          &quot;agility&quot;: 34.5,
+          &quot;intelligence&quot;: 41,
+          &quot;maxHealth&quot;: 758,
+          &quot;maxMana&quot;: 567,
+          &quot;armor&quot;: 5.75,
+          &quot;attackMin&quot;: 65,
+          &quot;attackMax&quot;: 73
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 31,
+          &quot;agility&quot;: 37.2,
+          &quot;intelligence&quot;: 44.6,
+          &quot;maxHealth&quot;: 802,
+          &quot;maxMana&quot;: 610,
+          &quot;armor&quot;: 6.2,
+          &quot;attackMin&quot;: 69,
+          &quot;attackMax&quot;: 77
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 41,
+          &quot;agility&quot;: 50.7,
+          &quot;intelligence&quot;: 62.6,
+          &quot;maxHealth&quot;: 1022,
+          &quot;maxMana&quot;: 826,
+          &quot;armor&quot;: 8.45,
+          &quot;attackMin&quot;: 87,
+          &quot;attackMax&quot;: 95
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 53,
+          &quot;agility&quot;: 66.9,
+          &quot;intelligence&quot;: 84.2,
+          &quot;maxHealth&quot;: 1286,
+          &quot;maxMana&quot;: 1085,
+          &quot;armor&quot;: 11.15,
+          &quot;attackMin&quot;: 108,
+          &quot;attackMax&quot;: 116
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

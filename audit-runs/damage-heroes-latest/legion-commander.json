@@ -1,0 +1,323 @@
+{
+  "hero": "Legion Commander",
+  "displayName": "军团指挥官（Legion Commander）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.46,
+    "projectileSpeed": 900,
+    "moveSpeed": 325,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 33,
+    "baseAttackMax": 37,
+    "baseStrength": 24,
+    "baseAgility": 18,
+    "baseIntelligence": 20,
+    "strengthGain": 3.1,
+    "agilityGain": 1.7,
+    "intelligenceGain": 2.2,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 24,
+        "agility": 18,
+        "intelligence": 20,
+        "maxHealth": 648,
+        "maxMana": 315,
+        "armor": 2,
+        "attackMin": 57,
+        "attackMax": 61
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30.2,
+          "agility": 21.4,
+          "intelligence": 24.4,
+          "maxHealth": 784,
+          "maxMana": 368,
+          "armor": 2.57,
+          "attackMin": 63,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 36.4,
+          "agility": 24.8,
+          "intelligence": 28.8,
+          "maxHealth": 921,
+          "maxMana": 421,
+          "armor": 3.13,
+          "attackMin": 69,
+          "attackMax": 73
+        },
+        "level6": {
+          "level": 6,
+          "strength": 39.5,
+          "agility": 26.5,
+          "intelligence": 31,
+          "maxHealth": 989,
+          "maxMana": 447,
+          "armor": 3.42,
+          "attackMin": 73,
+          "attackMax": 77
+        },
+        "level7": {
+          "level": 7,
+          "strength": 42.6,
+          "agility": 28.2,
+          "intelligence": 33.2,
+          "maxHealth": 1057,
+          "maxMana": 473,
+          "armor": 3.7,
+          "attackMin": 76,
+          "attackMax": 80
+        },
+        "level12": {
+          "level": 12,
+          "strength": 58.1,
+          "agility": 36.7,
+          "intelligence": 44.2,
+          "maxHealth": 1398,
+          "maxMana": 605,
+          "armor": 5.12,
+          "attackMin": 91,
+          "attackMax": 95
+        },
+        "level18": {
+          "level": 18,
+          "strength": 76.7,
+          "agility": 46.9,
+          "intelligence": 57.4,
+          "maxHealth": 1807,
+          "maxMana": 764,
+          "armor": 6.82,
+          "attackMin": 110,
+          "attackMax": 114
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Overwhelming Odds",
+      "displayName": "压倒性优势（Overwhelming Odds）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        105,
+        120,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "components": [
+        {
+          "id": "Overwhelming Odds:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            40,
+            70,
+            100,
+            130
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Press The Attack",
+      "displayName": "强攻（Press The Attack）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        15,
+        14,
+        13
+      ],
+      "components": [
+        {
+          "id": "Press The Attack:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moment of Courage",
+      "displayName": "勇气之霎（Moment of Courage）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0.3
+      ],
+      "components": [
+        {
+          "id": "Moment of Courage:attack_modifier:secondary_attack_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "secondary_attack_damage",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Duel",
+      "displayName": "决斗（Duel）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        55,
+        50
+      ],
+      "components": [
+        {
+          "id": "Duel:instant_fixed:reward_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "reward_damage",
+          "valuesByAbilityLevel": [
+            10,
+            20,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4.5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

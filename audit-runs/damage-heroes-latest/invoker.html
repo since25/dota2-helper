@@ -1,0 +1,1646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>祈求者（Invoker） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>祈求者（Invoker）</h1>
+        <div class="muted">Invoker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 11</span>
+          <span>组件 11</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./invoker.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>int</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.5</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>14</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>20</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>4</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>19 - 25</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>-1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>600</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>285</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>雷（Wex）</h2>
+          <div class="muted">Wex · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0</span>
+        <span>冷却：0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Wex:debuff_reference:attack_speed_per_instance</code>
+          <div class="muted">attack_speed_per_instance</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>火（Exort）</h2>
+          <div class="muted">Exort · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0</span>
+        <span>冷却：0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0 / 0</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Exort:debuff_reference:bonus_damage_per_instance</code>
+          <div class="muted">bonus_damage_per_instance</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>急速冷却（Cold Snap）</h2>
+          <div class="muted">Cold Snap · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 100 / 100 / 100 / 100 / 100 / 100 / 100 / 100 / 100 / 100</span>
+        <span>冷却：18 / 18 / 18 / 18 / 18 / 18 / 18 / 18 / 18 / 18 / 18</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Cold Snap:instant_fixed:freeze_damage</code>
+          <div class="muted">freeze_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>28</td><td>36</td><td>44</td><td>52</td><td>60</td><td>68</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 3 / 3.4 / 3.8 / 4.2 / 4.6 / 5 / 5.4 / 5.8 / 6.2 / 6.6 / 7</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>强袭飓风（Tornado）</h2>
+          <div class="muted">Tornado · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：140</span>
+        <span>冷却：27</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Tornado:instant_fixed:base_damage</code>
+          <div class="muted">base_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>50</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 1.75</div><div><code>tickIntervalByAbilityLevel</code>: 0.25</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>电磁脉冲（E.M.P.）</h2>
+          <div class="muted">E.M.P. · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：125</span>
+        <span>冷却：27</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>E.M.P.:state_scaling:damage_per_mana_pct</code>
+          <div class="muted">damage_per_mana_pct</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>60</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: target_missing_mana</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>灵动迅捷（Alacrity）</h2>
+          <div class="muted">Alacrity · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：75</span>
+        <span>冷却：15</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Alacrity:debuff_reference:abilitycastrange</code>
+          <div class="muted">abilitycastrange</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>700</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>混沌陨石（Chaos Meteor）</h2>
+          <div class="muted">Chaos Meteor · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：200 / 200 / 200 / 200 / 200 / 200 / 200 / 200 / 200 / 200 / 200</span>
+        <span>冷却：50 / 50 / 50 / 50 / 50 / 50 / 50 / 50 / 50 / 50 / 50</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Chaos Meteor:instant_fixed:main_damage</code>
+          <div class="muted">main_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>55</td><td>80</td><td>105</td><td>130</td><td>155</td><td>180</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3 / 3</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>阳炎冲击（Sun Strike）</h2>
+          <div class="muted">Sun Strike · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：175 / 175 / 175 / 175 / 175 / 175 / 175 / 175 / 175 / 175 / 175</span>
+        <span>冷却：23 / 23 / 23 / 23 / 23 / 23 / 23 / 23 / 23 / 23 / 23</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Sun Strike:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Pure</td>
+        <td>175</td><td>225</td><td>275</td><td>325</td><td>375</td><td>425</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4 / 4 / 4 / 4 / 4 / 4 / 4 / 4</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>熔炉精灵（Forge Spirit）</h2>
+          <div class="muted">Forge Spirit · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：75 / 75 / 75 / 75 / 75 / 75 / 75 / 75 / 75 / 75 / 75</span>
+        <span>冷却：27 / 27 / 27 / 27 / 27 / 27 / 27 / 27 / 27 / 27 / 27</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Forge Spirit:state_scaling:spirit_damage</code>
+          <div class="muted">spirit_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>20</td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: hero_attribute</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>寒冰之墙（Ice Wall）</h2>
+          <div class="muted">Ice Wall · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：125 / 125 / 125 / 125 / 125 / 125 / 125 / 125 / 125 / 125</span>
+        <span>冷却：23 / 23 / 23 / 23 / 23 / 23 / 23 / 23 / 23 / 23</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Ice Wall:sustained:damage_per_second</code>
+          <div class="muted">damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>30</td><td>36</td><td>42</td><td>48</td><td>54</td><td>60</td>
+        <td>90 / 144 / 210 / 288 / 378 / 480 / 594 / 720 / 858 / 1008</td>
+        <td><div><code>durationByAbilityLevel</code>: 3 / 4 / 5 / 6 / 7 / 8 / 9 / 10 / 11 / 12 / 13</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5 / 0.5 / 0.5 / 0.5 / 0.5 / 0.5 / 0.5 / 0.5</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>超震声波（OMG）（Deafening Blast）</h2>
+          <div class="muted">Deafening Blast · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：250 / 250 / 250 / 250 / 250 / 250 / 250 / 250 / 250 / 250 / 250</span>
+        <span>冷却：36 / 36 / 36 / 36 / 36 / 36 / 36 / 36 / 36 / 36 / 36</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th><th>等级 5</th><th>等级 6</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Deafening Blast:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>70</td><td>110</td><td>150</td><td>190</td><td>230</td><td>270</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75 / 1.75</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Invoker&quot;,
+  &quot;displayName&quot;: &quot;祈求者（Invoker）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 600,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.4,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 285,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: -1,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 19,
+    &quot;baseAttackMax&quot;: 25,
+    &quot;baseStrength&quot;: 19,
+    &quot;baseAgility&quot;: 14,
+    &quot;baseIntelligence&quot;: 20,
+    &quot;strengthGain&quot;: 2.5,
+    &quot;agilityGain&quot;: 2,
+    &quot;intelligenceGain&quot;: 4,
+    &quot;primaryAttribute&quot;: &quot;int&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 19,
+        &quot;agility&quot;: 14,
+        &quot;intelligence&quot;: 20,
+        &quot;maxHealth&quot;: 538,
+        &quot;maxMana&quot;: 315,
+        &quot;armor&quot;: 1.33,
+        &quot;attackMin&quot;: 39,
+        &quot;attackMax&quot;: 45
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 24,
+          &quot;agility&quot;: 18,
+          &quot;intelligence&quot;: 28,
+          &quot;maxHealth&quot;: 648,
+          &quot;maxMana&quot;: 411,
+          &quot;armor&quot;: 2,
+          &quot;attackMin&quot;: 47,
+          &quot;attackMax&quot;: 53
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 29,
+          &quot;agility&quot;: 22,
+          &quot;intelligence&quot;: 36,
+          &quot;maxHealth&quot;: 758,
+          &quot;maxMana&quot;: 507,
+          &quot;armor&quot;: 2.67,
+          &quot;attackMin&quot;: 55,
+          &quot;attackMax&quot;: 61
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 31.5,
+          &quot;agility&quot;: 24,
+          &quot;intelligence&quot;: 40,
+          &quot;maxHealth&quot;: 813,
+          &quot;maxMana&quot;: 555,
+          &quot;armor&quot;: 3,
+          &quot;attackMin&quot;: 59,
+          &quot;attackMax&quot;: 65
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 34,
+          &quot;agility&quot;: 26,
+          &quot;intelligence&quot;: 44,
+          &quot;maxHealth&quot;: 868,
+          &quot;maxMana&quot;: 603,
+          &quot;armor&quot;: 3.33,
+          &quot;attackMin&quot;: 63,
+          &quot;attackMax&quot;: 69
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 46.5,
+          &quot;agility&quot;: 36,
+          &quot;intelligence&quot;: 64,
+          &quot;maxHealth&quot;: 1143,
+          &quot;maxMana&quot;: 843,
+          &quot;armor&quot;: 5,
+          &quot;attackMin&quot;: 83,
+          &quot;attackMax&quot;: 89
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 61.5,
+          &quot;agility&quot;: 48,
+          &quot;intelligence&quot;: 88,
+          &quot;maxHealth&quot;: 1473,
+          &quot;maxMana&quot;: 1131,
+          &quot;armor&quot;: 7,
+          &quot;attackMin&quot;: 107,
+          &quot;attackMax&quot;: 113
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Wex&quot;,
+      &quot;displayName&quot;: &quot;雷（Wex）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Wex:debuff_reference:attack_speed_per_instance&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;attack_speed_per_instance&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_speed&quot;,
+            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Exort&quot;,
+      &quot;displayName&quot;: &quot;火（Exort）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Exort:debuff_reference:bonus_damage_per_instance&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;bonus_damage_per_instance&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_damage&quot;,
+            &quot;affects&quot;: &quot;attack_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Cold Snap&quot;,
+      &quot;displayName&quot;: &quot;急速冷却（Cold Snap）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Cold Snap:instant_fixed:freeze_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;freeze_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            28,
+            36,
+            44,
+            52,
+            60,
+            68,
+            76,
+            84,
+            92,
+            100,
+            108
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              3,
+              3.4,
+              3.8,
+              4.2,
+              4.6,
+              5,
+              5.4,
+              5.8,
+              6.2,
+              6.6,
+              7
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Tornado&quot;,
+      &quot;displayName&quot;: &quot;强袭飓风（Tornado）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        140
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        27
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Tornado:instant_fixed:base_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            50
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              1.75
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.25
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;E.M.P.&quot;,
+      &quot;displayName&quot;: &quot;电磁脉冲（E.M.P.）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        125
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        27
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;E.M.P.:state_scaling:damage_per_mana_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_mana_pct&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            60
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;target_missing_mana&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Alacrity&quot;,
+      &quot;displayName&quot;: &quot;灵动迅捷（Alacrity）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        75
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        15
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Alacrity:debuff_reference:abilitycastrange&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            700
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;positioning_range&quot;,
+            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Chaos Meteor&quot;,
+      &quot;displayName&quot;: &quot;混沌陨石（Chaos Meteor）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50,
+        50
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Chaos Meteor:instant_fixed:main_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;main_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            55,
+            80,
+            105,
+            130,
+            155,
+            180,
+            205,
+            220,
+            235,
+            250,
+            265
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Sun Strike&quot;,
+      &quot;displayName&quot;: &quot;阳炎冲击（Sun Strike）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175,
+        175
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Sun Strike:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Pure&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            175,
+            225,
+            275,
+            325,
+            375,
+            425,
+            475,
+            525,
+            575,
+            625,
+            675
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Forge Spirit&quot;,
+      &quot;displayName&quot;: &quot;熔炉精灵（Forge Spirit）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Forge Spirit:state_scaling:spirit_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;spirit_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            20,
+            30,
+            40,
+            50,
+            60,
+            70,
+            80,
+            90,
+            100,
+            110,
+            120
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;hero_attribute&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Ice Wall&quot;,
+      &quot;displayName&quot;: &quot;寒冰之墙（Ice Wall）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125,
+        125
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23,
+        23
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Ice Wall:sustained:damage_per_second&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            30,
+            36,
+            42,
+            48,
+            54,
+            60,
+            66,
+            72,
+            78,
+            84
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            90,
+            144,
+            210,
+            288,
+            378,
+            480,
+            594,
+            720,
+            858,
+            1008
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Deafening Blast&quot;,
+      &quot;displayName&quot;: &quot;超震声波（OMG）（Deafening Blast）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250,
+        250
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36,
+        36
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Deafening Blast:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            70,
+            110,
+            150,
+            190,
+            230,
+            270,
+            310,
+            350,
+            390,
+            430,
+            470
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75,
+              1.75
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

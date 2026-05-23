@@ -1,0 +1,440 @@
+{
+  "hero": "Phantom Assassin",
+  "displayName": "幻影刺客（Phantom Assassin）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 35,
+    "baseAttackMax": 37,
+    "baseStrength": 19,
+    "baseAgility": 21,
+    "baseIntelligence": 15,
+    "strengthGain": 2,
+    "agilityGain": 3.4,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 21,
+        "intelligence": 15,
+        "maxHealth": 538,
+        "maxMana": 255,
+        "armor": 4.5,
+        "attackMin": 56,
+        "attackMax": 58
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23,
+          "agility": 27.8,
+          "intelligence": 18.4,
+          "maxHealth": 626,
+          "maxMana": 296,
+          "armor": 5.63,
+          "attackMin": 63,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27,
+          "agility": 34.6,
+          "intelligence": 21.8,
+          "maxHealth": 714,
+          "maxMana": 337,
+          "armor": 6.77,
+          "attackMin": 70,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29,
+          "agility": 38,
+          "intelligence": 23.5,
+          "maxHealth": 758,
+          "maxMana": 357,
+          "armor": 7.33,
+          "attackMin": 73,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 31,
+          "agility": 41.4,
+          "intelligence": 25.2,
+          "maxHealth": 802,
+          "maxMana": 377,
+          "armor": 7.9,
+          "attackMin": 76,
+          "attackMax": 78
+        },
+        "level12": {
+          "level": 12,
+          "strength": 41,
+          "agility": 58.4,
+          "intelligence": 33.7,
+          "maxHealth": 1022,
+          "maxMana": 479,
+          "armor": 10.73,
+          "attackMin": 93,
+          "attackMax": 95
+        },
+        "level18": {
+          "level": 18,
+          "strength": 53,
+          "agility": 78.8,
+          "intelligence": 43.9,
+          "maxHealth": 1286,
+          "maxMana": 602,
+          "armor": 14.13,
+          "attackMin": 114,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Stifling Dagger",
+      "displayName": "窒碍短匕（Stifling Dagger）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "cooldownByAbilityLevel": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "components": [
+        {
+          "id": "Stifling Dagger:attack_modifier:base_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            65,
+            70,
+            75,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "baseDamage + attackDamage * attackFactorPct",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_factor_plus_bonus"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [
+              30,
+              45,
+              60,
+              75
+            ],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phantom Strike",
+      "displayName": "幻影突袭（Phantom Strike）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "攻速窗口影响普攻次数，不直接造成技能伤害。",
+      "manaCostByAbilityLevel": [
+        35,
+        40,
+        45,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ],
+      "components": [
+        {
+          "id": "Phantom Strike:debuff_reference:bonus_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_attack_speed",
+          "valuesByAbilityLevel": [
+            100,
+            130,
+            160,
+            190
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "攻速窗口影响普攻次数，不直接造成技能伤害。",
+          "caveats": [
+            "攻速窗口影响普攻次数，不直接造成技能伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blur",
+      "displayName": "魅影无形（Blur）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "隐身和移速影响进出场，不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        45
+      ],
+      "components": [
+        {
+          "id": "Blur:debuff_reference:active_movespeed_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "active_movespeed_bonus",
+          "valuesByAbilityLevel": [
+            9.5
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "move_speed_pct",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "隐身和移速影响进出场，不直接造成伤害。",
+          "caveats": [
+            "隐身和移速影响进出场，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fan of Knives",
+      "displayName": "刀阵旋风（Fan of Knives）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "unsupported",
+      "model": "state_scaling",
+      "reason": "该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。",
+      "manaCostByAbilityLevel": [
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        14
+      ],
+      "components": [
+        {
+          "id": "Fan of Knives:state_scaling:pct_health_damage_initial",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "pct_health_damage_initial",
+          "valuesByAbilityLevel": [
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "unsupported",
+          "model": "state_scaling",
+          "reason": "该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。",
+          "caveats": [
+            "该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Immaterial",
+      "displayName": "飘忽不定（Immaterial）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "闪避影响承伤，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Immaterial:debuff_reference:evasion",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "evasion",
+          "valuesByAbilityLevel": [
+            25,
+            35,
+            45,
+            55
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "闪避影响承伤，不直接造成伤害。",
+          "caveats": [
+            "闪避影响承伤，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coup de Grace",
+      "displayName": "恩赐解脱（Coup de Grace）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "chance_based",
+      "reason": "暴击需要普攻次数和是否触发，当前作为概率伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Coup de Grace:chance_based:crit_bonus",
+          "kind": "chance_based",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "crit_bonus",
+          "valuesByAbilityLevel": [
+            200,
+            300,
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "chance_based"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [
+              17,
+              17,
+              17
+            ],
+            "multiplierByAbilityLevel": [
+              200,
+              300,
+              400
+            ]
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "chance_based",
+          "reason": "暴击需要普攻次数和是否触发，当前作为概率伤害参考。",
+          "caveats": [
+            "暴击需要普攻次数和是否触发，当前作为概率伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

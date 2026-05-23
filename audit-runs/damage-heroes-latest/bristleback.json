@@ -1,0 +1,372 @@
+{
+  "hero": "Bristleback",
+  "displayName": "钢背兽（Bristleback）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.8,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 295,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0.4,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 37,
+    "baseStrength": 22,
+    "baseAgility": 17,
+    "baseIntelligence": 14,
+    "strengthGain": 2.8,
+    "agilityGain": 1.8,
+    "intelligenceGain": 2.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 17,
+        "intelligence": 14,
+        "maxHealth": 604,
+        "maxMana": 243,
+        "armor": 3.83,
+        "attackMin": 53,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27.6,
+          "agility": 20.6,
+          "intelligence": 19.6,
+          "maxHealth": 727,
+          "maxMana": 310,
+          "armor": 4.43,
+          "attackMin": 59,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 33.2,
+          "agility": 24.2,
+          "intelligence": 25.2,
+          "maxHealth": 850,
+          "maxMana": 377,
+          "armor": 5.03,
+          "attackMin": 64,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 36,
+          "agility": 26,
+          "intelligence": 28,
+          "maxHealth": 912,
+          "maxMana": 411,
+          "armor": 5.33,
+          "attackMin": 67,
+          "attackMax": 73
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38.8,
+          "agility": 27.8,
+          "intelligence": 30.8,
+          "maxHealth": 974,
+          "maxMana": 445,
+          "armor": 5.63,
+          "attackMin": 70,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 52.8,
+          "agility": 36.8,
+          "intelligence": 44.8,
+          "maxHealth": 1282,
+          "maxMana": 613,
+          "armor": 7.13,
+          "attackMin": 84,
+          "attackMax": 90
+        },
+        "level18": {
+          "level": 18,
+          "strength": 69.6,
+          "agility": 47.6,
+          "intelligence": 61.6,
+          "maxHealth": 1651,
+          "maxMana": 814,
+          "armor": 8.93,
+          "attackMin": 101,
+          "attackMax": 107
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Viscous Nasal Goo",
+      "displayName": "粘稠鼻液（Viscous Nasal Goo）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        12,
+        16,
+        20,
+        24
+      ],
+      "cooldownByAbilityLevel": [
+        1.75
+      ],
+      "components": [
+        {
+          "id": "Viscous Nasal Goo:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            650
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Quill Spray",
+      "displayName": "刺针扫射（Quill Spray）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        35,
+        35,
+        35,
+        35
+      ],
+      "cooldownByAbilityLevel": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "components": [
+        {
+          "id": "Quill Spray:instant_fixed:quill_base_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "quill_base_damage",
+          "valuesByAbilityLevel": [
+            25,
+            45,
+            65,
+            85
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              14,
+              14,
+              14,
+              14
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Bristleback",
+      "displayName": "钢毛后背（Bristleback）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Bristleback:debuff_reference:cast_range_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range_bonus",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hairball",
+      "displayName": "毛团（Hairball）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60
+      ],
+      "cooldownByAbilityLevel": [
+        13
+      ],
+      "components": [
+        {
+          "id": "Hairball:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            750
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Warpath",
+      "displayName": "战意（Warpath）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Warpath:state_scaling:damage_per_stack",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_per_stack",
+          "valuesByAbilityLevel": [
+            15,
+            20,
+            25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

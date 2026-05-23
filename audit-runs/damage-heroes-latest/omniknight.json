@@ -1,0 +1,338 @@
+{
+  "hero": "Omniknight",
+  "displayName": "全能骑士（Omniknight）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.433,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 41,
+    "baseStrength": 22,
+    "baseAgility": 15,
+    "baseIntelligence": 16,
+    "strengthGain": 3.1,
+    "agilityGain": 1.7,
+    "intelligenceGain": 2.1,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 15,
+        "intelligence": 16,
+        "maxHealth": 604,
+        "maxMana": 267,
+        "armor": 4.5,
+        "attackMin": 53,
+        "attackMax": 63
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 28.2,
+          "agility": 18.4,
+          "intelligence": 20.2,
+          "maxHealth": 740,
+          "maxMana": 317,
+          "armor": 5.07,
+          "attackMin": 59,
+          "attackMax": 69
+        },
+        "level5": {
+          "level": 5,
+          "strength": 34.4,
+          "agility": 21.8,
+          "intelligence": 24.4,
+          "maxHealth": 877,
+          "maxMana": 368,
+          "armor": 5.63,
+          "attackMin": 65,
+          "attackMax": 75
+        },
+        "level6": {
+          "level": 6,
+          "strength": 37.5,
+          "agility": 23.5,
+          "intelligence": 26.5,
+          "maxHealth": 945,
+          "maxMana": 393,
+          "armor": 5.92,
+          "attackMin": 69,
+          "attackMax": 79
+        },
+        "level7": {
+          "level": 7,
+          "strength": 40.6,
+          "agility": 25.2,
+          "intelligence": 28.6,
+          "maxHealth": 1013,
+          "maxMana": 418,
+          "armor": 6.2,
+          "attackMin": 72,
+          "attackMax": 82
+        },
+        "level12": {
+          "level": 12,
+          "strength": 56.1,
+          "agility": 33.7,
+          "intelligence": 39.1,
+          "maxHealth": 1354,
+          "maxMana": 544,
+          "armor": 7.62,
+          "attackMin": 87,
+          "attackMax": 97
+        },
+        "level18": {
+          "level": 18,
+          "strength": 74.7,
+          "agility": 43.9,
+          "intelligence": 51.7,
+          "maxHealth": 1763,
+          "maxMana": 695,
+          "armor": 9.32,
+          "attackMin": 106,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Purification",
+      "displayName": "洗礼（Purification）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90,
+        105,
+        120,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        14,
+        13,
+        12
+      ],
+      "components": [
+        {
+          "id": "Purification:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Repel",
+      "displayName": "驱逐（Repel）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90,
+        105,
+        120,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        36,
+        32,
+        28
+      ],
+      "components": [
+        {
+          "id": "Repel:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hammer of Purity",
+      "displayName": "纯洁之锤（Hammer of Purity）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Hammer of Purity:state_scaling:base_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            30,
+            50,
+            70,
+            90
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "source_damage",
+              "hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Degen Aura",
+      "displayName": "退化光环（Degen Aura）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Degen Aura:debuff_reference:speed_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "speed_bonus",
+          "valuesByAbilityLevel": [
+            11
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

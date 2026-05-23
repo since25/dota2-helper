@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>影魔（Shadow Fiend） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>影魔（Shadow Fiend）</h1>
+        <div class="muted">Shadow Fiend · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 7</span>
+          <span>组件 7</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./shadow-fiend.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>agi</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.7</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>25</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>3.6</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>18</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>2.2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>16 - 22</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>0</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>525</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>305</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>毁灭阴影（Shadowraze）</h2>
+          <div class="muted">Shadowraze · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：80 / 80 / 80 / 80</span>
+        <span>冷却：9 / 9 / 9 / 9</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Shadowraze:instant_fixed:shadowraze_damage</code>
+          <div class="muted">shadowraze_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>85</td><td>150</td><td>215</td><td>280</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>毁灭阴影（Shadowraze）</h2>
+          <div class="muted">Shadowraze · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：80 / 80 / 80 / 80</span>
+        <span>冷却：9 / 9 / 9 / 9</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Shadowraze:instant_fixed:shadowraze_damage</code>
+          <div class="muted">shadowraze_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>85</td><td>150</td><td>215</td><td>280</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>毁灭阴影（Shadowraze）</h2>
+          <div class="muted">Shadowraze · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：80 / 80 / 80 / 80</span>
+        <span>冷却：9 / 9 / 9 / 9</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Shadowraze:instant_fixed:shadowraze_damage</code>
+          <div class="muted">shadowraze_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>85</td><td>150</td><td>215</td><td>280</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>灵魂盛宴（Feast of Souls）</h2>
+          <div class="muted">Feast of Souls · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：60 / 65 / 70 / 75</span>
+        <span>冷却：21 / 21 / 21 / 21</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Feast of Souls:debuff_reference:bonus_attack_speed</code>
+          <div class="muted">bonus_attack_speed</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>35</td><td>50</td><td>65</td><td>80</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>攻速和移速加成影响持续输出，不直接造成技能伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>魔王降临（Presence of the Dark Lord）</h2>
+          <div class="muted">Presence of the Dark Lord · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Presence of the Dark Lord:debuff_reference:presence_armor_reduction</code>
+          <div class="muted">presence_armor_reduction</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>-3</td><td>-4</td><td>-5</td><td>-6</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: armor_reduction</div><div><code>affects</code>: physical_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>减甲会放大后续物理伤害，当前总量不自动串联减甲。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>魂之挽歌（Requiem of Souls）</h2>
+          <div class="muted">Requiem of Souls · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：150 / 175 / 200</span>
+        <span>冷却：120 / 110 / 100</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Requiem of Souls:instant_fixed:dmg</code>
+          <div class="muted">dmg</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>80</td><td>120</td><td>160</td><td>-</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>按单条魂线命中计算，多条命中需要后续按命中线数扩展。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>支配死灵（Necromastery）</h2>
+          <div class="muted">Necromastery · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Necromastery:debuff_reference:necromastery_damage_per_soul</code>
+          <div class="muted">necromastery_damage_per_soul</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>1.35</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>魂数提供攻击力成长，需要当前魂数作为输入。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+  &quot;displayName&quot;: &quot;影魔（Shadow Fiend）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 525,
+    &quot;attackRate&quot;: 1.6,
+    &quot;attackPoint&quot;: 0.5,
+    &quot;projectileSpeed&quot;: 1200,
+    &quot;moveSpeed&quot;: 305,
+    &quot;turnRate&quot;: 0.9,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0.3,
+    &quot;baseArmor&quot;: 0,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 16,
+    &quot;baseAttackMax&quot;: 22,
+    &quot;baseStrength&quot;: 19,
+    &quot;baseAgility&quot;: 25,
+    &quot;baseIntelligence&quot;: 18,
+    &quot;strengthGain&quot;: 2.7,
+    &quot;agilityGain&quot;: 3.6,
+    &quot;intelligenceGain&quot;: 2.2,
+    &quot;primaryAttribute&quot;: &quot;agi&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 19,
+        &quot;agility&quot;: 25,
+        &quot;intelligence&quot;: 18,
+        &quot;maxHealth&quot;: 538,
+        &quot;maxMana&quot;: 291,
+        &quot;armor&quot;: 4.17,
+        &quot;attackMin&quot;: 41,
+        &quot;attackMax&quot;: 47
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 24.4,
+          &quot;agility&quot;: 32.2,
+          &quot;intelligence&quot;: 22.4,
+          &quot;maxHealth&quot;: 657,
+          &quot;maxMana&quot;: 344,
+          &quot;armor&quot;: 5.37,
+          &quot;attackMin&quot;: 48,
+          &quot;attackMax&quot;: 54
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 29.8,
+          &quot;agility&quot;: 39.4,
+          &quot;intelligence&quot;: 26.8,
+          &quot;maxHealth&quot;: 776,
+          &quot;maxMana&quot;: 397,
+          &quot;armor&quot;: 6.57,
+          &quot;attackMin&quot;: 55,
+          &quot;attackMax&quot;: 61
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 32.5,
+          &quot;agility&quot;: 43,
+          &quot;intelligence&quot;: 29,
+          &quot;maxHealth&quot;: 835,
+          &quot;maxMana&quot;: 423,
+          &quot;armor&quot;: 7.17,
+          &quot;attackMin&quot;: 59,
+          &quot;attackMax&quot;: 65
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 35.2,
+          &quot;agility&quot;: 46.6,
+          &quot;intelligence&quot;: 31.2,
+          &quot;maxHealth&quot;: 894,
+          &quot;maxMana&quot;: 449,
+          &quot;armor&quot;: 7.77,
+          &quot;attackMin&quot;: 63,
+          &quot;attackMax&quot;: 69
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 48.7,
+          &quot;agility&quot;: 64.6,
+          &quot;intelligence&quot;: 42.2,
+          &quot;maxHealth&quot;: 1191,
+          &quot;maxMana&quot;: 581,
+          &quot;armor&quot;: 10.77,
+          &quot;attackMin&quot;: 81,
+          &quot;attackMax&quot;: 87
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 64.9,
+          &quot;agility&quot;: 86.2,
+          &quot;intelligence&quot;: 55.4,
+          &quot;maxHealth&quot;: 1548,
+          &quot;maxMana&quot;: 740,
+          &quot;armor&quot;: 14.37,
+          &quot;attackMin&quot;: 102,
+          &quot;attackMax&quot;: 108
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Shadowraze&quot;,
+      &quot;displayName&quot;: &quot;毁灭阴影（Shadowraze）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        80,
+        80,
+        80,
+        80
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        9,
+        9,
+        9,
+        9
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Shadowraze:instant_fixed:shadowraze_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;shadowraze_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            85,
+            150,
+            215,
+            280
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Shadowraze&quot;,
+      &quot;displayName&quot;: &quot;毁灭阴影（Shadowraze）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        80,
+        80,
+        80,
+        80
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        9,
+        9,
+        9,
+        9
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Shadowraze:instant_fixed:shadowraze_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;shadowraze_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            85,
+            150,
+            215,
+            280
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Shadowraze&quot;,
+      &quot;displayName&quot;: &quot;毁灭阴影（Shadowraze）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        80,
+        80,
+        80,
+        80
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        9,
+        9,
+        9,
+        9
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Shadowraze:instant_fixed:shadowraze_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;shadowraze_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            85,
+            150,
+            215,
+            280
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Feast of Souls&quot;,
+      &quot;displayName&quot;: &quot;灵魂盛宴（Feast of Souls）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;攻速和移速加成影响持续输出，不直接造成技能伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        60,
+        65,
+        70,
+        75
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        21,
+        21,
+        21,
+        21
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Feast of Souls:debuff_reference:bonus_attack_speed&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            35,
+            50,
+            65,
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_speed&quot;,
+            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;攻速和移速加成影响持续输出，不直接造成技能伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;攻速和移速加成影响持续输出，不直接造成技能伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Presence of the Dark Lord&quot;,
+      &quot;displayName&quot;: &quot;魔王降临（Presence of the Dark Lord）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;减甲会放大后续物理伤害，当前总量不自动串联减甲。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Presence of the Dark Lord:debuff_reference:presence_armor_reduction&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;presence_armor_reduction&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            -3,
+            -4,
+            -5,
+            -6
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;armor_reduction&quot;,
+            &quot;affects&quot;: &quot;physical_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;减甲会放大后续物理伤害，当前总量不自动串联减甲。&quot;,
+          &quot;caveats&quot;: [
+            &quot;减甲会放大后续物理伤害，当前总量不自动串联减甲。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Requiem of Souls&quot;,
+      &quot;displayName&quot;: &quot;魂之挽歌（Requiem of Souls）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;按单条魂线命中计算，多条命中需要后续按命中线数扩展。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        150,
+        175,
+        200
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        120,
+        110,
+        100
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Requiem of Souls:instant_fixed:dmg&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;dmg&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            80,
+            120,
+            160
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;按单条魂线命中计算，多条命中需要后续按命中线数扩展。&quot;,
+          &quot;caveats&quot;: [
+            &quot;按单条魂线命中计算，多条命中需要后续按命中线数扩展。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Necromastery&quot;,
+      &quot;displayName&quot;: &quot;支配死灵（Necromastery）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;魂数提供攻击力成长，需要当前魂数作为输入。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Necromastery:debuff_reference:necromastery_damage_per_soul&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;necromastery_damage_per_soul&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            1.35
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_damage&quot;,
+            &quot;affects&quot;: &quot;attack_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;魂数提供攻击力成长，需要当前魂数作为输入。&quot;,
+          &quot;caveats&quot;: [
+            &quot;魂数提供攻击力成长，需要当前魂数作为输入。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

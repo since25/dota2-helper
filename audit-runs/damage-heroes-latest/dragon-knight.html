@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>龙骑士（Dragon Knight） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>龙骑士（Dragon Knight）</h1>
+        <div class="muted">Dragon Knight · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./dragon-knight.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>str</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>21</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>3.2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>14</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>18</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>1.7</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>34 - 40</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>0</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>150</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>310</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>火焰气息（Breathe Fire）</h2>
+          <div class="muted">Breathe Fire · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">attack_modifier</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：90 / 95 / 100 / 105</span>
+        <span>冷却：14 / 13 / 12 / 11</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Breathe Fire:attack_modifier:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">attack_modifier</span>
+          <span class="pill secondary">attack_modifier</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>80</td><td>160</td><td>240</td><td>320</td>
+        <td></td>
+        <td><div><code>defaultAttackCount</code>: 1</div><div><code>attackFactorPctByAbilityLevel</code>: </div><div><code>procChancePctByAbilityLevel</code>: </div></td>
+        <td>attack_modifier</td>
+        <td><ul><li>包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>神龙摆尾（Dragon Tail）</h2>
+          <div class="muted">Dragon Tail · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：70 / 80 / 90 / 100</span>
+        <span>冷却：16 / 14 / 12 / 10</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Dragon Tail:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>60</td><td>90</td><td>120</td><td>150</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 1.8 / 2 / 2.2 / 2.4</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>飞龙之怒（Wyrm&#39;s Wrath）</h2>
+          <div class="muted">Wyrm&#39;s Wrath · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Wyrm&#39;s Wrath:instant_fixed:magic_damage</code>
+          <div class="muted">magic_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>10</td><td>20</td><td>30</td><td>40</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>龙炎火球（Fireball）</h2>
+          <div class="muted">Fireball · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：80</span>
+        <span>冷却：20</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Fireball:sustained:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>85</td><td>-</td><td>-</td><td>-</td>
+        <td>510</td>
+        <td><div><code>durationByAbilityLevel</code>: 6</div><div><code>tickIntervalByAbilityLevel</code>: 0.5</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>古龙形态（Elder Dragon Form）</h2>
+          <div class="muted">Elder Dragon Form · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：50 / 50 / 50 / 50</span>
+        <span>冷却：100 / 100 / 100 / 100</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Elder Dragon Form:sustained:corrosive_damage_per_second</code>
+          <div class="muted">corrosive_damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>25</td><td>25</td><td>25</td><td>35</td>
+        <td>1500 / 1500 / 1500 / 2100</td>
+        <td><div><code>durationByAbilityLevel</code>: 60 / 60 / 60 / 60</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Dragon Knight&quot;,
+  &quot;displayName&quot;: &quot;龙骑士（Dragon Knight）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 150,
+    &quot;attackRate&quot;: 1.6,
+    &quot;attackPoint&quot;: 0.5,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 310,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: 0,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 34,
+    &quot;baseAttackMax&quot;: 40,
+    &quot;baseStrength&quot;: 21,
+    &quot;baseAgility&quot;: 14,
+    &quot;baseIntelligence&quot;: 18,
+    &quot;strengthGain&quot;: 3.2,
+    &quot;agilityGain&quot;: 2,
+    &quot;intelligenceGain&quot;: 1.7,
+    &quot;primaryAttribute&quot;: &quot;str&quot;,
+    &quot;attackType&quot;: &quot;Melee&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 21,
+        &quot;agility&quot;: 14,
+        &quot;intelligence&quot;: 18,
+        &quot;maxHealth&quot;: 582,
+        &quot;maxMana&quot;: 291,
+        &quot;armor&quot;: 2.33,
+        &quot;attackMin&quot;: 55,
+        &quot;attackMax&quot;: 61
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 27.4,
+          &quot;agility&quot;: 18,
+          &quot;intelligence&quot;: 21.4,
+          &quot;maxHealth&quot;: 723,
+          &quot;maxMana&quot;: 332,
+          &quot;armor&quot;: 3,
+          &quot;attackMin&quot;: 61,
+          &quot;attackMax&quot;: 67
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 33.8,
+          &quot;agility&quot;: 22,
+          &quot;intelligence&quot;: 24.8,
+          &quot;maxHealth&quot;: 864,
+          &quot;maxMana&quot;: 373,
+          &quot;armor&quot;: 3.67,
+          &quot;attackMin&quot;: 68,
+          &quot;attackMax&quot;: 74
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 37,
+          &quot;agility&quot;: 24,
+          &quot;intelligence&quot;: 26.5,
+          &quot;maxHealth&quot;: 934,
+          &quot;maxMana&quot;: 393,
+          &quot;armor&quot;: 4,
+          &quot;attackMin&quot;: 71,
+          &quot;attackMax&quot;: 77
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 40.2,
+          &quot;agility&quot;: 26,
+          &quot;intelligence&quot;: 28.2,
+          &quot;maxHealth&quot;: 1004,
+          &quot;maxMana&quot;: 413,
+          &quot;armor&quot;: 4.33,
+          &quot;attackMin&quot;: 74,
+          &quot;attackMax&quot;: 80
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 56.2,
+          &quot;agility&quot;: 36,
+          &quot;intelligence&quot;: 36.7,
+          &quot;maxHealth&quot;: 1356,
+          &quot;maxMana&quot;: 515,
+          &quot;armor&quot;: 6,
+          &quot;attackMin&quot;: 90,
+          &quot;attackMax&quot;: 96
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 75.4,
+          &quot;agility&quot;: 48,
+          &quot;intelligence&quot;: 46.9,
+          &quot;maxHealth&quot;: 1779,
+          &quot;maxMana&quot;: 638,
+          &quot;armor&quot;: 8,
+          &quot;attackMin&quot;: 109,
+          &quot;attackMax&quot;: 115
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Breathe Fire&quot;,
+      &quot;displayName&quot;: &quot;火焰气息（Breathe Fire）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        90,
+        95,
+        100,
+        105
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        14,
+        13,
+        12,
+        11
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Breathe Fire:attack_modifier:damage&quot;,
+          &quot;kind&quot;: &quot;attack_modifier&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            80,
+            160,
+            240,
+            320
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;attack_modifier&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;defaultAttackCount&quot;: 1,
+            &quot;attackFactorPctByAbilityLevel&quot;: [],
+            &quot;procChancePctByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Dragon Tail&quot;,
+      &quot;displayName&quot;: &quot;神龙摆尾（Dragon Tail）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        70,
+        80,
+        90,
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        16,
+        14,
+        12,
+        10
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Dragon Tail:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            60,
+            90,
+            120,
+            150
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              1.8,
+              2,
+              2.2,
+              2.4
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Wyrm&#39;s Wrath&quot;,
+      &quot;displayName&quot;: &quot;飞龙之怒（Wyrm&#39;s Wrath）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Wyrm&#39;s Wrath:instant_fixed:magic_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;magic_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            10,
+            20,
+            30,
+            40
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Fireball&quot;,
+      &quot;displayName&quot;: &quot;龙炎火球（Fireball）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        80
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        20
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Fireball:sustained:damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            85
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            510
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              6
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.5
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Elder Dragon Form&quot;,
+      &quot;displayName&quot;: &quot;古龙形态（Elder Dragon Form）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        50,
+        50,
+        50,
+        50
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        100,
+        100,
+        100,
+        100
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Elder Dragon Form:sustained:corrosive_damage_per_second&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;corrosive_damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            25,
+            25,
+            25,
+            35
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            1500,
+            1500,
+            1500,
+            2100
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              60,
+              60,
+              60,
+              60
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

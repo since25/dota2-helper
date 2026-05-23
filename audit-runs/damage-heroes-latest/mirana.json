@@ -1,0 +1,391 @@
+{
+  "hero": "Mirana",
+  "displayName": "米拉娜（Mirana）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 630,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 285,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.4,
+    "baseArmor": -2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 28,
+    "baseStrength": 20,
+    "baseAgility": 26,
+    "baseIntelligence": 22,
+    "strengthGain": 2.2,
+    "agilityGain": 3.1,
+    "intelligenceGain": 1.9,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 26,
+        "intelligence": 22,
+        "maxHealth": 560,
+        "maxMana": 339,
+        "armor": 2.33,
+        "attackMin": 48,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.4,
+          "agility": 32.2,
+          "intelligence": 25.8,
+          "maxHealth": 657,
+          "maxMana": 385,
+          "armor": 3.37,
+          "attackMin": 54,
+          "attackMax": 60
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28.8,
+          "agility": 38.4,
+          "intelligence": 29.6,
+          "maxHealth": 754,
+          "maxMana": 430,
+          "armor": 4.4,
+          "attackMin": 60,
+          "attackMax": 66
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 41.5,
+          "intelligence": 31.5,
+          "maxHealth": 802,
+          "maxMana": 453,
+          "armor": 4.92,
+          "attackMin": 64,
+          "attackMax": 70
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.2,
+          "agility": 44.6,
+          "intelligence": 33.4,
+          "maxHealth": 850,
+          "maxMana": 476,
+          "armor": 5.43,
+          "attackMin": 67,
+          "attackMax": 73
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.2,
+          "agility": 60.1,
+          "intelligence": 42.9,
+          "maxHealth": 1092,
+          "maxMana": 590,
+          "armor": 8.02,
+          "attackMin": 82,
+          "attackMax": 88
+        },
+        "level18": {
+          "level": 18,
+          "strength": 57.4,
+          "agility": 78.7,
+          "intelligence": 54.3,
+          "maxHealth": 1383,
+          "maxMana": 727,
+          "armor": 11.12,
+          "attackMin": 101,
+          "attackMax": 107
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Starstorm",
+      "displayName": "群星风暴（Starstorm）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "components": [
+        {
+          "id": "Starstorm:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Sacred Arrow",
+      "displayName": "月神之箭（Sacred Arrow）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        19,
+        18,
+        17,
+        16
+      ],
+      "components": [
+        {
+          "id": "Sacred Arrow:state_scaling:dmg",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            60,
+            150,
+            240,
+            330
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leap",
+      "displayName": "跳跃（Leap）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Leap:debuff_reference:leap_speedbonus_as",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "leap_speedbonus_as",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Celestial Quiver",
+      "displayName": "天界箭袋（Celestial Quiver）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Celestial Quiver:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            630
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moonlight Shadow",
+      "displayName": "月之暗面（Moonlight Shadow）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        120,
+        110,
+        100
+      ],
+      "components": [
+        {
+          "id": "Moonlight Shadow:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

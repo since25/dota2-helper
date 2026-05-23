@@ -98,6 +98,96 @@ test('buildChineseCoachMessages adds a strong Chinese system instruction', async
   assert.equal(messages[1].role, 'user');
 });
 
+test('buildGroundedChinesePrompt distinguishes fixed instant and theoretical damage', async () => {
+  const context = await buildMatchContext([
+    { hero: 'Sand King', role: 'Offlane' },
+    { hero: 'Crystal Maiden', role: 'Support' },
+    { hero: 'Drow Ranger', role: 'Safe Lane' },
+    { hero: 'Puck', role: 'Midlane' },
+    { hero: 'Lion', role: 'Hard Support' }
+  ], [
+    { hero: 'Axe', role: 'Offlane' },
+    { hero: 'Queen of Pain', role: 'Midlane' },
+    { hero: 'Juggernaut', role: 'Safe Lane' },
+    { hero: 'Disruptor', role: 'Support' },
+    { hero: 'Jakiro', role: 'Hard Support' }
+  ]);
+  const prompt = buildGroundedChinesePrompt(context);
+
+  assert.match(prompt, /固定瞬时伤害/);
+  assert.match(prompt, /理论持续\/多波总伤害/);
+  assert.match(prompt, /不能把它们说成完整斩杀线/);
+  assert.match(prompt, /沙尘暴（Sand Storm）/);
+  assert.match(prompt, /地震（Epicenter）/);
+});
+
+test('buildGroundedChinesePrompt describes curated attack-sequence models in Chinese', async () => {
+  const context = await buildMatchContext([
+    { hero: 'Slardar', role: 'Offlane' },
+    { hero: 'Crystal Maiden', role: 'Support' },
+    { hero: 'Drow Ranger', role: 'Safe Lane' },
+    { hero: 'Puck', role: 'Midlane' },
+    { hero: 'Lion', role: 'Hard Support' }
+  ], [
+    { hero: 'Axe', role: 'Offlane' },
+    { hero: 'Queen of Pain', role: 'Midlane' },
+    { hero: 'Juggernaut', role: 'Safe Lane' },
+    { hero: 'Disruptor', role: 'Support' },
+    { hero: 'Jakiro', role: 'Hard Support' }
+  ]);
+  const prompt = buildGroundedChinesePrompt(context);
+
+  assert.match(prompt, /深海重击（Bash of the Deep）/);
+  assert.match(prompt, /人工模型/);
+  assert.match(prompt, /按攻击次数触发/);
+  const dataCoverage = prompt.match(/数据覆盖:[\s\S]*请按以下 Markdown 结构输出:/)?.[0] || '';
+  assert.doesNotMatch(dataCoverage, /深海重击（Bash of the Deep）/);
+});
+
+test('buildGroundedChinesePrompt does not format Slardar modifiers as Unknown damage', async () => {
+  const context = await buildMatchContext([
+    { hero: 'Slardar', role: 'Offlane' },
+    { hero: 'Crystal Maiden', role: 'Support' },
+    { hero: 'Drow Ranger', role: 'Safe Lane' },
+    { hero: 'Puck', role: 'Midlane' },
+    { hero: 'Lion', role: 'Hard Support' }
+  ], [
+    { hero: 'Axe', role: 'Offlane' },
+    { hero: 'Queen of Pain', role: 'Midlane' },
+    { hero: 'Juggernaut', role: 'Safe Lane' },
+    { hero: 'Disruptor', role: 'Support' },
+    { hero: 'Jakiro', role: 'Hard Support' }
+  ]);
+  const prompt = buildGroundedChinesePrompt(context);
+
+  assert.doesNotMatch(prompt, /守卫冲刺（Guardian Sprint）[^。]*Unknown/);
+  assert.doesNotMatch(prompt, /汪洋前哨（Seaborn Sentinel）[^。]*Unknown/);
+  assert.doesNotMatch(prompt, /侵蚀雾霭（Corrosive Haze）[^。]*Unknown/);
+  assert.match(prompt, /数值修正参考/);
+  assert.match(prompt, /侵蚀雾霭（Corrosive Haze） 1级：护甲变化 -10/);
+});
+
+test('buildGroundedChinesePrompt uses semantic labels for non-damage references', async () => {
+  const context = await buildMatchContext([
+    { hero: 'Queen of Pain', role: 'Midlane' },
+    { hero: 'Crystal Maiden', role: 'Support' },
+    { hero: 'Drow Ranger', role: 'Safe Lane' },
+    { hero: 'Axe', role: 'Offlane' },
+    { hero: 'Lion', role: 'Hard Support' }
+  ], [
+    { hero: 'Slardar', role: 'Offlane' },
+    { hero: 'Puck', role: 'Midlane' },
+    { hero: 'Juggernaut', role: 'Safe Lane' },
+    { hero: 'Disruptor', role: 'Support' },
+    { hero: 'Jakiro', role: 'Hard Support' }
+  ]);
+  const prompt = buildGroundedChinesePrompt(context);
+
+  assert.match(prompt, /闪烁（Blink） 2级：施法距离 1150/);
+  assert.doesNotMatch(prompt, /闪烁（Blink）[^。]*移动速度加成/);
+});
+
+
 test('buildMatchContext derives Rubick effective health from strength instead of raw base health', async () => {
   const context = await buildMatchContext([
     { role: 'Safe Lane', hero: 'Rubick' },

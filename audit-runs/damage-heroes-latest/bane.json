@@ -1,0 +1,351 @@
+{
+  "hero": "Bane",
+  "displayName": "祸乱之源（Bane）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 425,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 305,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 30,
+    "baseStrength": 23,
+    "baseAgility": 23,
+    "baseIntelligence": 23,
+    "strengthGain": 2.5,
+    "agilityGain": 2.5,
+    "intelligenceGain": 2.5,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 23,
+        "intelligence": 23,
+        "maxHealth": 626,
+        "maxMana": 351,
+        "armor": 4.83,
+        "attackMin": 72,
+        "attackMax": 78
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 28,
+          "agility": 28,
+          "intelligence": 28,
+          "maxHealth": 736,
+          "maxMana": 411,
+          "armor": 5.67,
+          "attackMin": 83,
+          "attackMax": 89
+        },
+        "level5": {
+          "level": 5,
+          "strength": 33,
+          "agility": 33,
+          "intelligence": 33,
+          "maxHealth": 846,
+          "maxMana": 471,
+          "armor": 6.5,
+          "attackMin": 93,
+          "attackMax": 99
+        },
+        "level6": {
+          "level": 6,
+          "strength": 35.5,
+          "agility": 35.5,
+          "intelligence": 35.5,
+          "maxHealth": 901,
+          "maxMana": 501,
+          "armor": 6.92,
+          "attackMin": 99,
+          "attackMax": 105
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38,
+          "agility": 38,
+          "intelligence": 38,
+          "maxHealth": 956,
+          "maxMana": 531,
+          "armor": 7.33,
+          "attackMin": 104,
+          "attackMax": 110
+        },
+        "level12": {
+          "level": 12,
+          "strength": 50.5,
+          "agility": 50.5,
+          "intelligence": 50.5,
+          "maxHealth": 1231,
+          "maxMana": 681,
+          "armor": 9.42,
+          "attackMin": 130,
+          "attackMax": 136
+        },
+        "level18": {
+          "level": 18,
+          "strength": 65.5,
+          "agility": 65.5,
+          "intelligence": 65.5,
+          "maxHealth": 1561,
+          "maxMana": 861,
+          "armor": 11.92,
+          "attackMin": 162,
+          "attackMax": 168
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Enfeeble",
+      "displayName": "虚弱（Enfeeble）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        17,
+        12,
+        7
+      ],
+      "components": [
+        {
+          "id": "Enfeeble:instant_fixed:enfeeble_tick_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "enfeeble_tick_damage",
+          "valuesByAbilityLevel": [
+            12,
+            18,
+            24,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              9,
+              9,
+              9,
+              9
+            ],
+            "tickIntervalByAbilityLevel": [
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Brain Sap",
+      "displayName": "蚀脑（Brain Sap）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Brain Sap:instant_fixed:brain_sap_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "brain_sap_damage",
+          "valuesByAbilityLevel": [
+            90,
+            160,
+            230,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Nightmare",
+      "displayName": "噩梦（Nightmare）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        25,
+        22,
+        19,
+        16
+      ],
+      "components": [
+        {
+          "id": "Nightmare:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            550,
+            600,
+            650,
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fiend's Grip",
+      "displayName": "魔爪（Fiend's Grip）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        200,
+        300,
+        400
+      ],
+      "cooldownByAbilityLevel": [
+        120,
+        110,
+        100
+      ],
+      "components": [
+        {
+          "id": "Fiend's Grip:sustained:fiend_grip_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "fiend_grip_damage",
+          "valuesByAbilityLevel": [
+            70,
+            110,
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            332.5,
+            577.5,
+            862.5
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4.75,
+              5.25,
+              5.75
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

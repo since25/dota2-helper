@@ -1,0 +1,386 @@
+{
+  "hero": "Pangolier",
+  "displayName": "石鳞剑士（Pangolier）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.33,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 1.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 32,
+    "baseStrength": 20,
+    "baseAgility": 18,
+    "baseIntelligence": 16,
+    "strengthGain": 2.7,
+    "agilityGain": 3.2,
+    "intelligenceGain": 2.5,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 18,
+        "intelligence": 16,
+        "maxHealth": 560,
+        "maxMana": 267,
+        "armor": 5,
+        "attackMin": 64,
+        "attackMax": 70
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.4,
+          "agility": 24.4,
+          "intelligence": 21,
+          "maxHealth": 679,
+          "maxMana": 327,
+          "armor": 6.07,
+          "attackMin": 76,
+          "attackMax": 82
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.8,
+          "agility": 30.8,
+          "intelligence": 26,
+          "maxHealth": 798,
+          "maxMana": 387,
+          "armor": 7.13,
+          "attackMin": 87,
+          "attackMax": 93
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33.5,
+          "agility": 34,
+          "intelligence": 28.5,
+          "maxHealth": 857,
+          "maxMana": 417,
+          "armor": 7.67,
+          "attackMin": 93,
+          "attackMax": 99
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36.2,
+          "agility": 37.2,
+          "intelligence": 31,
+          "maxHealth": 916,
+          "maxMana": 447,
+          "armor": 8.2,
+          "attackMin": 99,
+          "attackMax": 105
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.7,
+          "agility": 53.2,
+          "intelligence": 43.5,
+          "maxHealth": 1213,
+          "maxMana": 597,
+          "armor": 10.87,
+          "attackMin": 128,
+          "attackMax": 134
+        },
+        "level18": {
+          "level": 18,
+          "strength": 65.9,
+          "agility": 72.4,
+          "intelligence": 58.5,
+          "maxHealth": 1570,
+          "maxMana": 777,
+          "armor": 14.07,
+          "attackMin": 164,
+          "attackMax": 170
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Swashbuckle",
+      "displayName": "虚张声势（Swashbuckle）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        80,
+        85,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        19,
+        16,
+        13,
+        10
+      ],
+      "components": [
+        {
+          "id": "Swashbuckle:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            35,
+            65,
+            95,
+            125
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.6,
+              0.6,
+              0.6,
+              0.6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Shield Crash",
+      "displayName": "甲盾冲击（Shield Crash）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Shield Crash:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            60,
+            120,
+            180,
+            240
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Lucky Shot",
+      "displayName": "幸运一击（Lucky Shot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Lucky Shot:debuff_reference:armor",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "armor",
+          "valuesByAbilityLevel": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Roll Up",
+      "displayName": "卷土重来（Roll Up）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        40
+      ],
+      "components": [
+        {
+          "id": "Roll Up:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rolling Thunder",
+      "displayName": "地雷滚滚（Rolling Thunder）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        85,
+        80
+      ],
+      "components": [
+        {
+          "id": "Rolling Thunder:state_scaling:dmg",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            100,
+            200,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

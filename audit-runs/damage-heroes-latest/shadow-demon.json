@@ -1,0 +1,389 @@
+{
+  "hero": "Shadow Demon",
+  "displayName": "暗影恶魔（Shadow Demon）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 500,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 33,
+    "baseStrength": 23,
+    "baseAgility": 18,
+    "baseIntelligence": 22,
+    "strengthGain": 2.6,
+    "agilityGain": 2.2,
+    "intelligenceGain": 3.6,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 18,
+        "intelligence": 22,
+        "maxHealth": 626,
+        "maxMana": 339,
+        "armor": 3,
+        "attackMin": 51,
+        "attackMax": 55
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 28.2,
+          "agility": 22.4,
+          "intelligence": 29.2,
+          "maxHealth": 740,
+          "maxMana": 425,
+          "armor": 3.73,
+          "attackMin": 58,
+          "attackMax": 62
+        },
+        "level5": {
+          "level": 5,
+          "strength": 33.4,
+          "agility": 26.8,
+          "intelligence": 36.4,
+          "maxHealth": 855,
+          "maxMana": 512,
+          "armor": 4.47,
+          "attackMin": 65,
+          "attackMax": 69
+        },
+        "level6": {
+          "level": 6,
+          "strength": 36,
+          "agility": 29,
+          "intelligence": 40,
+          "maxHealth": 912,
+          "maxMana": 555,
+          "armor": 4.83,
+          "attackMin": 69,
+          "attackMax": 73
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38.6,
+          "agility": 31.2,
+          "intelligence": 43.6,
+          "maxHealth": 969,
+          "maxMana": 598,
+          "armor": 5.2,
+          "attackMin": 73,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 51.6,
+          "agility": 42.2,
+          "intelligence": 61.6,
+          "maxHealth": 1255,
+          "maxMana": 814,
+          "armor": 7.03,
+          "attackMin": 91,
+          "attackMax": 95
+        },
+        "level18": {
+          "level": 18,
+          "strength": 67.2,
+          "agility": 55.4,
+          "intelligence": 83.2,
+          "maxHealth": 1598,
+          "maxMana": 1073,
+          "armor": 9.23,
+          "attackMin": 112,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Disruption",
+      "displayName": "崩裂禁锢（Disruption）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        120,
+        120,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        26,
+        24,
+        22,
+        20
+      ],
+      "components": [
+        {
+          "id": "Disruption:instant_fixed:illusion_flat_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "illusion_flat_damage",
+          "valuesByAbilityLevel": [
+            20,
+            35,
+            50,
+            65
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.75,
+              2.75,
+              2.75,
+              2.75
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Disseminate",
+      "displayName": "散播（Disseminate）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        26,
+        22,
+        18,
+        14
+      ],
+      "components": [
+        {
+          "id": "Disseminate:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700,
+            775,
+            850,
+            925
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadow Poison",
+      "displayName": "暗影剧毒（Shadow Poison）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        45,
+        45,
+        45,
+        45
+      ],
+      "cooldownByAbilityLevel": [
+        2.5,
+        2.5,
+        2.5,
+        2.5
+      ],
+      "components": [
+        {
+          "id": "Shadow Poison:state_scaling:stack_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "stack_damage",
+          "valuesByAbilityLevel": [
+            24,
+            36,
+            48,
+            60
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Demonic Cleanse",
+      "displayName": "邪恶净愈（Demonic Cleanse）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        60
+      ],
+      "components": [
+        {
+          "id": "Demonic Cleanse:instant_fixed:purge_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "purge_damage",
+          "valuesByAbilityLevel": [
+            450
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Demonic Purge",
+      "displayName": "邪恶净化（Demonic Purge）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        175,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        65,
+        60
+      ],
+      "components": [
+        {
+          "id": "Demonic Purge:instant_fixed:purge_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "purge_damage",
+          "valuesByAbilityLevel": [
+            300,
+            450,
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

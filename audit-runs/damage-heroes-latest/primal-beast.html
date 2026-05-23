@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>獸（Primal Beast） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>獸（Primal Beast）</h1>
+        <div class="muted">Primal Beast · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./primal-beast.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>str</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>26</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>4.3</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>15</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>16</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>1.7</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>36 - 38</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>150</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>305</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>突（Onslaught）</h2>
+          <div class="muted">Onslaught · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：120 / 120 / 120 / 120</span>
+        <span>冷却：25 / 22 / 19 / 16</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Onslaught:state_scaling:knockback_damage</code>
+          <div class="muted">knockback_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Physical</td>
+        <td>75</td><td>170</td><td>265</td><td>360</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>踏（Trample）</h2>
+          <div class="muted">Trample · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100</span>
+        <span>冷却：30 / 27 / 24 / 21</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Trample:state_scaling:attack_damage</code>
+          <div class="muted">attack_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>35</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: source_damage / hit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>咤（Uproar）</h2>
+          <div class="muted">Uproar · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：0</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Uproar:state_scaling:damage_limit</code>
+          <div class="muted">damage_limit</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>50</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>砸（Rock Throw）</h2>
+          <div class="muted">Rock Throw · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：85</span>
+        <span>冷却：20</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Rock Throw:state_scaling:base_damage</code>
+          <div class="muted">base_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Physical</td>
+        <td>325</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>捶（Pulverize）</h2>
+          <div class="muted">Pulverize · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 100 / 100</span>
+        <span>冷却：40 / 35 / 30</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Pulverize:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>100</td><td>175</td><td>250</td><td>-</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Primal Beast&quot;,
+  &quot;displayName&quot;: &quot;獸（Primal Beast）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 150,
+    &quot;attackRate&quot;: 1.8,
+    &quot;attackPoint&quot;: 0.6,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 305,
+    &quot;turnRate&quot;: 0.6,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: 2,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 36,
+    &quot;baseAttackMax&quot;: 38,
+    &quot;baseStrength&quot;: 26,
+    &quot;baseAgility&quot;: 15,
+    &quot;baseIntelligence&quot;: 16,
+    &quot;strengthGain&quot;: 4.3,
+    &quot;agilityGain&quot;: 1,
+    &quot;intelligenceGain&quot;: 1.7,
+    &quot;primaryAttribute&quot;: &quot;str&quot;,
+    &quot;attackType&quot;: &quot;Melee&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 26,
+        &quot;agility&quot;: 15,
+        &quot;intelligence&quot;: 16,
+        &quot;maxHealth&quot;: 692,
+        &quot;maxMana&quot;: 267,
+        &quot;armor&quot;: 4.5,
+        &quot;attackMin&quot;: 62,
+        &quot;attackMax&quot;: 64
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 34.6,
+          &quot;agility&quot;: 17,
+          &quot;intelligence&quot;: 19.4,
+          &quot;maxHealth&quot;: 881,
+          &quot;maxMana&quot;: 308,
+          &quot;armor&quot;: 4.83,
+          &quot;attackMin&quot;: 71,
+          &quot;attackMax&quot;: 73
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 43.2,
+          &quot;agility&quot;: 19,
+          &quot;intelligence&quot;: 22.8,
+          &quot;maxHealth&quot;: 1070,
+          &quot;maxMana&quot;: 349,
+          &quot;armor&quot;: 5.17,
+          &quot;attackMin&quot;: 79,
+          &quot;attackMax&quot;: 81
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 47.5,
+          &quot;agility&quot;: 20,
+          &quot;intelligence&quot;: 24.5,
+          &quot;maxHealth&quot;: 1165,
+          &quot;maxMana&quot;: 369,
+          &quot;armor&quot;: 5.33,
+          &quot;attackMin&quot;: 84,
+          &quot;attackMax&quot;: 86
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 51.8,
+          &quot;agility&quot;: 21,
+          &quot;intelligence&quot;: 26.2,
+          &quot;maxHealth&quot;: 1260,
+          &quot;maxMana&quot;: 389,
+          &quot;armor&quot;: 5.5,
+          &quot;attackMin&quot;: 88,
+          &quot;attackMax&quot;: 90
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 73.3,
+          &quot;agility&quot;: 26,
+          &quot;intelligence&quot;: 34.7,
+          &quot;maxHealth&quot;: 1733,
+          &quot;maxMana&quot;: 491,
+          &quot;armor&quot;: 6.33,
+          &quot;attackMin&quot;: 109,
+          &quot;attackMax&quot;: 111
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 99.1,
+          &quot;agility&quot;: 32,
+          &quot;intelligence&quot;: 44.9,
+          &quot;maxHealth&quot;: 2300,
+          &quot;maxMana&quot;: 614,
+          &quot;armor&quot;: 7.33,
+          &quot;attackMin&quot;: 135,
+          &quot;attackMax&quot;: 137
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Onslaught&quot;,
+      &quot;displayName&quot;: &quot;突（Onslaught）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        120,
+        120,
+        120,
+        120
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        25,
+        22,
+        19,
+        16
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Onslaught:state_scaling:knockback_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;knockback_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            75,
+            170,
+            265,
+            360
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;stack_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Trample&quot;,
+      &quot;displayName&quot;: &quot;踏（Trample）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        30,
+        27,
+        24,
+        21
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Trample:state_scaling:attack_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;attack_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            35
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;source_damage&quot;,
+              &quot;hit_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Uproar&quot;,
+      &quot;displayName&quot;: &quot;咤（Uproar）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Uproar:state_scaling:damage_limit&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;damage_limit&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            50
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;stack_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Rock Throw&quot;,
+      &quot;displayName&quot;: &quot;砸（Rock Throw）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        85
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        20
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Rock Throw:state_scaling:base_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            325
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;stack_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Pulverize&quot;,
+      &quot;displayName&quot;: &quot;捶（Pulverize）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        100,
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        40,
+        35,
+        30
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Pulverize:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            100,
+            175,
+            250
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

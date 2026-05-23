@@ -1,0 +1,381 @@
+{
+  "hero": "Rubick",
+  "displayName": "拉比克（Rubick）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 550,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1125,
+    "moveSpeed": 290,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 25,
+    "baseAttackMax": 31,
+    "baseStrength": 21,
+    "baseAgility": 23,
+    "baseIntelligence": 24,
+    "strengthGain": 2,
+    "agilityGain": 2.5,
+    "intelligenceGain": 3.7,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 23,
+        "intelligence": 24,
+        "maxHealth": 582,
+        "maxMana": 363,
+        "armor": 4.83,
+        "attackMin": 49,
+        "attackMax": 55
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25,
+          "agility": 28,
+          "intelligence": 31.4,
+          "maxHealth": 670,
+          "maxMana": 452,
+          "armor": 5.67,
+          "attackMin": 56,
+          "attackMax": 62
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29,
+          "agility": 33,
+          "intelligence": 38.8,
+          "maxHealth": 758,
+          "maxMana": 541,
+          "armor": 6.5,
+          "attackMin": 64,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 35.5,
+          "intelligence": 42.5,
+          "maxHealth": 802,
+          "maxMana": 585,
+          "armor": 6.92,
+          "attackMin": 68,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33,
+          "agility": 38,
+          "intelligence": 46.2,
+          "maxHealth": 846,
+          "maxMana": 629,
+          "armor": 7.33,
+          "attackMin": 71,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 43,
+          "agility": 50.5,
+          "intelligence": 64.7,
+          "maxHealth": 1066,
+          "maxMana": 851,
+          "armor": 9.42,
+          "attackMin": 90,
+          "attackMax": 96
+        },
+        "level18": {
+          "level": 18,
+          "strength": 55,
+          "agility": 65.5,
+          "intelligence": 86.9,
+          "maxHealth": 1330,
+          "maxMana": 1118,
+          "armor": 11.92,
+          "attackMin": 112,
+          "attackMax": 118
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Telekinesis",
+      "displayName": "隔空取物（Telekinesis）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        110,
+        110,
+        110,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        19,
+        16,
+        13
+      ],
+      "components": [
+        {
+          "id": "Telekinesis:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            550,
+            575,
+            600,
+            625
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fade Bolt",
+      "displayName": "弱化能流（Fade Bolt）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        125,
+        140,
+        155
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Fade Bolt:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            175,
+            250,
+            325
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10,
+              10,
+              10,
+              10
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Arcane Supremacy",
+      "displayName": "奥术至尊（Arcane Supremacy）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Arcane Supremacy:debuff_reference:cast_range",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range",
+          "valuesByAbilityLevel": [
+            60,
+            120,
+            180,
+            240
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spell Steal",
+      "displayName": "技能窃取（Spell Steal）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        25
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        10,
+        4
+      ],
+      "components": [
+        {
+          "id": "Spell Steal:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Curiosity",
+      "displayName": "奇心（Curiosity）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Curiosity:state_scaling:curiosity_attack_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "curiosity_attack_damage",
+          "valuesByAbilityLevel": [
+            1
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

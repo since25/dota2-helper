@@ -1,0 +1,278 @@
+{
+  "hero": "Lone Druid",
+  "displayName": "德鲁伊（Lone Druid）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 550,
+    "attackRate": 1.6,
+    "attackPoint": 0.33,
+    "projectileSpeed": 1125,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 26,
+    "baseStrength": 20,
+    "baseAgility": 22,
+    "baseIntelligence": 13,
+    "strengthGain": 2.5,
+    "agilityGain": 2.8,
+    "intelligenceGain": 1.4,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 22,
+        "intelligence": 13,
+        "maxHealth": 560,
+        "maxMana": 231,
+        "armor": 3.67,
+        "attackMin": 44,
+        "attackMax": 48
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25,
+          "agility": 27.6,
+          "intelligence": 15.8,
+          "maxHealth": 670,
+          "maxMana": 265,
+          "armor": 4.6,
+          "attackMin": 50,
+          "attackMax": 54
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30,
+          "agility": 33.2,
+          "intelligence": 18.6,
+          "maxHealth": 780,
+          "maxMana": 298,
+          "armor": 5.53,
+          "attackMin": 55,
+          "attackMax": 59
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32.5,
+          "agility": 36,
+          "intelligence": 20,
+          "maxHealth": 835,
+          "maxMana": 315,
+          "armor": 6,
+          "attackMin": 58,
+          "attackMax": 62
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35,
+          "agility": 38.8,
+          "intelligence": 21.4,
+          "maxHealth": 890,
+          "maxMana": 332,
+          "armor": 6.47,
+          "attackMin": 61,
+          "attackMax": 65
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.5,
+          "agility": 52.8,
+          "intelligence": 28.4,
+          "maxHealth": 1165,
+          "maxMana": 416,
+          "armor": 8.8,
+          "attackMin": 75,
+          "attackMax": 79
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.5,
+          "agility": 69.6,
+          "intelligence": 36.8,
+          "maxHealth": 1495,
+          "maxMana": 517,
+          "armor": 11.6,
+          "attackMin": 92,
+          "attackMax": 96
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Entangle",
+      "displayName": "缠绕之根（Entangle）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        60
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        19,
+        18,
+        17
+      ],
+      "components": [
+        {
+          "id": "Entangle:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            90
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            900
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Summon Spirit Bear",
+      "displayName": "熊灵伙伴（Summon Spirit Bear）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        120
+      ],
+      "components": [
+        {
+          "id": "Summon Spirit Bear:state_scaling:backlash_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "backlash_damage",
+          "valuesByAbilityLevel": [
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "True Form",
+      "displayName": "真熊形态（True Form）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        55,
+        50
+      ],
+      "components": [
+        {
+          "id": "True Form:debuff_reference:bonus_attack_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_attack_damage",
+          "valuesByAbilityLevel": [
+            50,
+            90,
+            130
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

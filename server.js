@@ -10,6 +10,7 @@ const { buildAiConfig, callAiChat } = require('./aiClient');
 const { getHeroLocalizationList } = require('./heroAliases');
 const { getActiveDataProvider } = require('./dataProviders');
 const { buildChineseCoachMessages } = require('./dotaDataContext');
+const { calculateDamageCombo, getHeroDamageProfile } = require('./damageCalculator');
 
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
@@ -466,6 +467,26 @@ app.get('/api/heroes', async (req, res) => {
          // Should ideally not happen with hardcoded list, but keep for safety
         console.error("Error sending hero list:", error);
         res.status(500).json({ error: 'Failed to provide hero list.' });
+    }
+});
+
+app.get('/api/damage/heroes/:hero', async (req, res) => {
+    try {
+        const profile = await getHeroDamageProfile(req.params.hero);
+        res.json(profile);
+    } catch (error) {
+        console.error('Error building damage profile:', error);
+        res.status(404).json({ error: error.message || 'Failed to build damage profile.' });
+    }
+});
+
+app.post('/api/damage/calculate', async (req, res) => {
+    try {
+        const result = await calculateDamageCombo(req.body || {});
+        res.json(result);
+    } catch (error) {
+        console.error('Error calculating damage combo:', error);
+        res.status(400).json({ error: error.message || 'Failed to calculate damage combo.' });
     }
 });
 

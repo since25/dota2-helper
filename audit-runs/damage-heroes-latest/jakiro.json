@@ -1,0 +1,462 @@
+{
+  "hero": "Jakiro",
+  "displayName": "杰奇洛（Jakiro）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 400,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1100,
+    "moveSpeed": 290,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 35,
+    "baseStrength": 25,
+    "baseAgility": 15,
+    "baseIntelligence": 25,
+    "strengthGain": 2.5,
+    "agilityGain": 1.2,
+    "intelligenceGain": 3,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 15,
+        "intelligence": 25,
+        "maxHealth": 670,
+        "maxMana": 375,
+        "armor": 3.5,
+        "attackMin": 52,
+        "attackMax": 60
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30,
+          "agility": 17.4,
+          "intelligence": 31,
+          "maxHealth": 780,
+          "maxMana": 447,
+          "armor": 3.9,
+          "attackMin": 58,
+          "attackMax": 66
+        },
+        "level5": {
+          "level": 5,
+          "strength": 35,
+          "agility": 19.8,
+          "intelligence": 37,
+          "maxHealth": 890,
+          "maxMana": 519,
+          "armor": 4.3,
+          "attackMin": 64,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 37.5,
+          "agility": 21,
+          "intelligence": 40,
+          "maxHealth": 945,
+          "maxMana": 555,
+          "armor": 4.5,
+          "attackMin": 67,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 40,
+          "agility": 22.2,
+          "intelligence": 43,
+          "maxHealth": 1000,
+          "maxMana": 591,
+          "armor": 4.7,
+          "attackMin": 70,
+          "attackMax": 78
+        },
+        "level12": {
+          "level": 12,
+          "strength": 52.5,
+          "agility": 28.2,
+          "intelligence": 58,
+          "maxHealth": 1275,
+          "maxMana": 771,
+          "armor": 5.7,
+          "attackMin": 85,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 67.5,
+          "agility": 35.4,
+          "intelligence": 76,
+          "maxHealth": 1605,
+          "maxMana": 987,
+          "armor": 6.9,
+          "attackMin": 103,
+          "attackMax": 111
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Dual Breath",
+      "displayName": "冰火交加（Dual Breath）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        135,
+        150,
+        165,
+        180
+      ],
+      "cooldownByAbilityLevel": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "components": [
+        {
+          "id": "Dual Breath:instant_fixed:burn_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "burn_damage",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Ice Path",
+      "displayName": "冰封路径（Ice Path）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        17,
+        14,
+        11
+      ],
+      "components": [
+        {
+          "id": "Ice Path:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.25,
+              1.5,
+              1.75,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Liquid Fire",
+      "displayName": "液态火（Liquid Fire）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Liquid Fire:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            15,
+            25,
+            35,
+            45
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            75,
+            125,
+            175,
+            225
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liquid Frost",
+      "displayName": "液态冰（Liquid Frost）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Liquid Frost:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            8,
+            16,
+            24,
+            32
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Double Trouble",
+      "displayName": "天生一对（Double Trouble）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Double Trouble:debuff_reference:attack_damage_reduction",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_damage_reduction",
+          "valuesByAbilityLevel": [
+            51
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Macropyre",
+      "displayName": "烈焰焚身（Macropyre）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        300,
+        400,
+        500
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        80,
+        70
+      ],
+      "components": [
+        {
+          "id": "Macropyre:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            150,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            1000,
+            1500,
+            2000
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10,
+              10,
+              10
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

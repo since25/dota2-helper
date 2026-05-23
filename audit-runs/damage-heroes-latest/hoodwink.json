@@ -1,0 +1,430 @@
+{
+  "hero": "Hoodwink",
+  "displayName": "森海飞霞（Hoodwink）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 575,
+    "attackRate": 2,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1800,
+    "moveSpeed": 315,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 29,
+    "baseStrength": 17,
+    "baseAgility": 25,
+    "baseIntelligence": 21,
+    "strengthGain": 2,
+    "agilityGain": 3.6,
+    "intelligenceGain": 2.9,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 17,
+        "agility": 25,
+        "intelligence": 21,
+        "maxHealth": 494,
+        "maxMana": 327,
+        "armor": 4.17,
+        "attackMin": 47,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 21,
+          "agility": 32.2,
+          "intelligence": 26.8,
+          "maxHealth": 582,
+          "maxMana": 397,
+          "armor": 5.37,
+          "attackMin": 54,
+          "attackMax": 61
+        },
+        "level5": {
+          "level": 5,
+          "strength": 25,
+          "agility": 39.4,
+          "intelligence": 32.6,
+          "maxHealth": 670,
+          "maxMana": 466,
+          "armor": 6.57,
+          "attackMin": 61,
+          "attackMax": 68
+        },
+        "level6": {
+          "level": 6,
+          "strength": 27,
+          "agility": 43,
+          "intelligence": 35.5,
+          "maxHealth": 714,
+          "maxMana": 501,
+          "armor": 7.17,
+          "attackMin": 65,
+          "attackMax": 72
+        },
+        "level7": {
+          "level": 7,
+          "strength": 29,
+          "agility": 46.6,
+          "intelligence": 38.4,
+          "maxHealth": 758,
+          "maxMana": 536,
+          "armor": 7.77,
+          "attackMin": 69,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 39,
+          "agility": 64.6,
+          "intelligence": 52.9,
+          "maxHealth": 978,
+          "maxMana": 710,
+          "armor": 10.77,
+          "attackMin": 87,
+          "attackMax": 94
+        },
+        "level18": {
+          "level": 18,
+          "strength": 51,
+          "agility": 86.2,
+          "intelligence": 70.3,
+          "maxHealth": 1242,
+          "maxMana": 919,
+          "armor": 14.37,
+          "attackMin": 108,
+          "attackMax": 115
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Acorn Shot",
+      "displayName": "爆栗出击（Acorn Shot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Acorn Shot:instant_fixed:acorn_shot_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "acorn_shot_damage",
+          "valuesByAbilityLevel": [
+            45,
+            90,
+            135,
+            180
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.3,
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Bushwhack",
+      "displayName": "野地奇袭（Bushwhack）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        100,
+        110,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        14,
+        13,
+        12
+      ],
+      "components": [
+        {
+          "id": "Bushwhack:instant_fixed:total_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "total_damage",
+          "valuesByAbilityLevel": [
+            90,
+            180,
+            270,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.5,
+              1.7,
+              1.9,
+              2.1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Scurry",
+      "displayName": "密林奔走（Scurry）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        35
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Scurry:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            275
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decoy",
+      "displayName": "诱敌奇术（Decoy）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60
+      ],
+      "cooldownByAbilityLevel": [
+        30
+      ],
+      "components": [
+        {
+          "id": "Decoy:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hunter's Boomerang",
+      "displayName": "猎手旋镖（Hunter's Boomerang）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        18
+      ],
+      "components": [
+        {
+          "id": "Hunter's Boomerang:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              7
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Sharpshooter",
+      "displayName": "一箭穿心（Sharpshooter）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        45,
+        45,
+        45
+      ],
+      "components": [
+        {
+          "id": "Sharpshooter:state_scaling:max_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "max_damage",
+          "valuesByAbilityLevel": [
+            600,
+            975,
+            1350
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,397 @@
+{
+  "hero": "Dark Seer",
+  "displayName": "黑暗贤者（Dark Seer）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.59,
+    "projectileSpeed": 900,
+    "moveSpeed": 295,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 37,
+    "baseStrength": 20,
+    "baseAgility": 19,
+    "baseIntelligence": 22,
+    "strengthGain": 2.6,
+    "agilityGain": 1.5,
+    "intelligenceGain": 2.7,
+    "primaryAttribute": "int",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 19,
+        "intelligence": 22,
+        "maxHealth": 560,
+        "maxMana": 339,
+        "armor": 5.17,
+        "attackMin": 53,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.2,
+          "agility": 22,
+          "intelligence": 27.4,
+          "maxHealth": 674,
+          "maxMana": 404,
+          "armor": 5.67,
+          "attackMin": 58,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.4,
+          "agility": 25,
+          "intelligence": 32.8,
+          "maxHealth": 789,
+          "maxMana": 469,
+          "armor": 6.17,
+          "attackMin": 64,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 26.5,
+          "intelligence": 35.5,
+          "maxHealth": 846,
+          "maxMana": 501,
+          "armor": 6.42,
+          "attackMin": 67,
+          "attackMax": 73
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.6,
+          "agility": 28,
+          "intelligence": 38.2,
+          "maxHealth": 903,
+          "maxMana": 533,
+          "armor": 6.67,
+          "attackMin": 69,
+          "attackMax": 75
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.6,
+          "agility": 35.5,
+          "intelligence": 51.7,
+          "maxHealth": 1189,
+          "maxMana": 695,
+          "armor": 7.92,
+          "attackMin": 83,
+          "attackMax": 89
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.2,
+          "agility": 44.5,
+          "intelligence": 67.9,
+          "maxHealth": 1532,
+          "maxMana": 890,
+          "armor": 9.42,
+          "attackMin": 99,
+          "attackMax": 105
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Vacuum",
+      "displayName": "真空（Vacuum）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        60,
+        90,
+        120,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        50,
+        40,
+        30
+      ],
+      "components": [
+        {
+          "id": "Vacuum:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            70,
+            130,
+            190,
+            250
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.3,
+              0.4,
+              0.5,
+              0.6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Ion Shell",
+      "displayName": "离子外壳（Ion Shell）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Ion Shell:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            30,
+            50,
+            70,
+            90
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            600,
+            1100,
+            1680,
+            2340
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              20,
+              22,
+              24,
+              26
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Surge",
+      "displayName": "奔腾（Surge）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        19,
+        14,
+        9
+      ],
+      "components": [
+        {
+          "id": "Surge:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Normal Punch",
+      "displayName": "普通一拳（Normal Punch）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        10
+      ],
+      "components": [
+        {
+          "id": "Normal Punch:state_scaling:max_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "max_damage",
+          "valuesByAbilityLevel": [
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wall of Replica",
+      "displayName": "复制之墙（Wall of Replica）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        250,
+        375
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        100,
+        100
+      ],
+      "components": [
+        {
+          "id": "Wall of Replica:instant_fixed:wall_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "wall_damage",
+          "valuesByAbilityLevel": [
+            25,
+            40,
+            55
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              30,
+              30,
+              30
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,391 @@
+{
+  "hero": "Windranger",
+  "displayName": "风行者（Windranger）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.5,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1250,
+    "moveSpeed": 285,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.25,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 36,
+    "baseStrength": 18,
+    "baseAgility": 17,
+    "baseIntelligence": 18,
+    "strengthGain": 2.6,
+    "agilityGain": 2.1,
+    "intelligenceGain": 3.2,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 17,
+        "intelligence": 18,
+        "maxHealth": 516,
+        "maxMana": 291,
+        "armor": 2.83,
+        "attackMin": 61,
+        "attackMax": 73
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23.2,
+          "agility": 21.2,
+          "intelligence": 24.4,
+          "maxHealth": 630,
+          "maxMana": 368,
+          "armor": 3.53,
+          "attackMin": 72,
+          "attackMax": 84
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28.4,
+          "agility": 25.4,
+          "intelligence": 30.8,
+          "maxHealth": 745,
+          "maxMana": 445,
+          "armor": 4.23,
+          "attackMin": 83,
+          "attackMax": 95
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 27.5,
+          "intelligence": 34,
+          "maxHealth": 802,
+          "maxMana": 483,
+          "armor": 4.58,
+          "attackMin": 89,
+          "attackMax": 101
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.6,
+          "agility": 29.6,
+          "intelligence": 37.2,
+          "maxHealth": 859,
+          "maxMana": 521,
+          "armor": 4.93,
+          "attackMin": 94,
+          "attackMax": 106
+        },
+        "level12": {
+          "level": 12,
+          "strength": 46.6,
+          "agility": 40.1,
+          "intelligence": 53.2,
+          "maxHealth": 1145,
+          "maxMana": 713,
+          "armor": 6.68,
+          "attackMin": 122,
+          "attackMax": 134
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.2,
+          "agility": 52.7,
+          "intelligence": 72.4,
+          "maxHealth": 1488,
+          "maxMana": 944,
+          "armor": 8.78,
+          "attackMin": 155,
+          "attackMax": 167
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Shackleshot",
+      "displayName": "束缚击（Shackleshot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Shackleshot:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            800
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Powershot",
+      "displayName": "强力击（Powershot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        90,
+        100,
+        110,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        12,
+        11,
+        10,
+        9
+      ],
+      "components": [
+        {
+          "id": "Powershot:state_scaling:powershot_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "powershot_damage",
+          "valuesByAbilityLevel": [
+            170,
+            270,
+            370,
+            470
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Windrun",
+      "displayName": "风行（Windrun）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        13,
+        12,
+        11
+      ],
+      "components": [
+        {
+          "id": "Windrun:debuff_reference:evasion_pct_tooltip",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "evasion_pct_tooltip",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gale Force",
+      "displayName": "狂风之力（Gale Force）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        30
+      ],
+      "components": [
+        {
+          "id": "Gale Force:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Focus Fire",
+      "displayName": "集中火力（Focus Fire）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75,
+        100,
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        50,
+        30
+      ],
+      "components": [
+        {
+          "id": "Focus Fire:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

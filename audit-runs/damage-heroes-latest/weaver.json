@@ -1,0 +1,383 @@
+{
+  "hero": "Weaver",
+  "displayName": "编织者（Weaver）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 425,
+    "attackRate": 1.8,
+    "attackPoint": 0.55,
+    "projectileSpeed": 900,
+    "moveSpeed": 275,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 37,
+    "baseAttackMax": 43,
+    "baseStrength": 16,
+    "baseAgility": 17,
+    "baseIntelligence": 20,
+    "strengthGain": 2,
+    "agilityGain": 3.3,
+    "intelligenceGain": 2,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 16,
+        "agility": 17,
+        "intelligence": 20,
+        "maxHealth": 472,
+        "maxMana": 315,
+        "armor": 3.83,
+        "attackMin": 54,
+        "attackMax": 60
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 20,
+          "agility": 23.6,
+          "intelligence": 24,
+          "maxHealth": 560,
+          "maxMana": 363,
+          "armor": 4.93,
+          "attackMin": 61,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 24,
+          "agility": 30.2,
+          "intelligence": 28,
+          "maxHealth": 648,
+          "maxMana": 411,
+          "armor": 6.03,
+          "attackMin": 67,
+          "attackMax": 73
+        },
+        "level6": {
+          "level": 6,
+          "strength": 26,
+          "agility": 33.5,
+          "intelligence": 30,
+          "maxHealth": 692,
+          "maxMana": 435,
+          "armor": 6.58,
+          "attackMin": 71,
+          "attackMax": 77
+        },
+        "level7": {
+          "level": 7,
+          "strength": 28,
+          "agility": 36.8,
+          "intelligence": 32,
+          "maxHealth": 736,
+          "maxMana": 459,
+          "armor": 7.13,
+          "attackMin": 74,
+          "attackMax": 80
+        },
+        "level12": {
+          "level": 12,
+          "strength": 38,
+          "agility": 53.3,
+          "intelligence": 42,
+          "maxHealth": 956,
+          "maxMana": 579,
+          "armor": 9.88,
+          "attackMin": 90,
+          "attackMax": 96
+        },
+        "level18": {
+          "level": 18,
+          "strength": 50,
+          "agility": 73.1,
+          "intelligence": 54,
+          "maxHealth": 1220,
+          "maxMana": 723,
+          "armor": 13.18,
+          "attackMin": 110,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "The Swarm",
+      "displayName": "虫群（The Swarm）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        110,
+        110,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        44,
+        36,
+        28,
+        20
+      ],
+      "components": [
+        {
+          "id": "The Swarm:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            18,
+            23,
+            28,
+            33
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              16,
+              16,
+              16,
+              16
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Shukuchi",
+      "displayName": "缩地（Shukuchi）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        65,
+        65,
+        65
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Shukuchi:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            130,
+            160,
+            190
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Geminate Attack",
+      "displayName": "连击（Geminate Attack）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        9,
+        7,
+        5,
+        3
+      ],
+      "components": [
+        {
+          "id": "Geminate Attack:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            425
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Lapse",
+      "displayName": "时光倒流（Time Lapse）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150,
+        75,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        55,
+        40
+      ],
+      "components": [
+        {
+          "id": "Time Lapse:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Threads of Fate",
+      "displayName": "命运之线（Threads of Fate）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Threads of Fate:state_scaling:damage_per_thread_hero",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_per_thread_hero",
+          "valuesByAbilityLevel": [
+            10
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "source_damage",
+              "hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,411 @@
+{
+  "hero": "Troll Warlord",
+  "displayName": "巨魔战将（Troll Warlord）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 500,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1200,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 35,
+    "baseStrength": 21,
+    "baseAgility": 23,
+    "baseIntelligence": 13,
+    "strengthGain": 2.5,
+    "agilityGain": 3.3,
+    "intelligenceGain": 1,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 23,
+        "intelligence": 13,
+        "maxHealth": 582,
+        "maxMana": 231,
+        "armor": 2.83,
+        "attackMin": 50,
+        "attackMax": 58
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 26,
+          "agility": 29.6,
+          "intelligence": 15,
+          "maxHealth": 692,
+          "maxMana": 255,
+          "armor": 3.93,
+          "attackMin": 57,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 31,
+          "agility": 36.2,
+          "intelligence": 17,
+          "maxHealth": 802,
+          "maxMana": 279,
+          "armor": 5.03,
+          "attackMin": 63,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33.5,
+          "agility": 39.5,
+          "intelligence": 18,
+          "maxHealth": 857,
+          "maxMana": 291,
+          "armor": 5.58,
+          "attackMin": 67,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36,
+          "agility": 42.8,
+          "intelligence": 19,
+          "maxHealth": 912,
+          "maxMana": 303,
+          "armor": 6.13,
+          "attackMin": 70,
+          "attackMax": 78
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.5,
+          "agility": 59.3,
+          "intelligence": 24,
+          "maxHealth": 1187,
+          "maxMana": 363,
+          "armor": 8.88,
+          "attackMin": 86,
+          "attackMax": 94
+        },
+        "level18": {
+          "level": 18,
+          "strength": 63.5,
+          "agility": 79.1,
+          "intelligence": 30,
+          "maxHealth": 1517,
+          "maxMana": 435,
+          "armor": 12.18,
+          "attackMin": 106,
+          "attackMax": 114
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Battle Stance",
+      "displayName": "战斗姿态（Battle Stance）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Battle Stance:debuff_reference:attack_speed_interval",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_speed_interval",
+          "valuesByAbilityLevel": [
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whirling Axes (Ranged)",
+      "displayName": "旋风飞斧（远程）（Whirling Axes (Ranged)）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Whirling Axes (Ranged):instant_fixed:axe_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "axe_damage",
+          "valuesByAbilityLevel": [
+            60,
+            80,
+            100,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.5,
+              3,
+              3.5,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Whirling Axes (Melee)",
+      "displayName": "旋风飞斧（近战）（Whirling Axes (Melee)）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "components": [
+        {
+          "id": "Whirling Axes (Melee):instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            50,
+            100,
+            150,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Fervor",
+      "displayName": "热血战魂（Fervor）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Fervor:debuff_reference:attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_speed",
+          "valuesByAbilityLevel": [
+            15,
+            20,
+            25,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Berserker's Rage",
+      "displayName": "狂战士之怒（Berserker's Rage）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Berserker's Rage:instant_fixed:maim_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "maim_damage",
+          "valuesByAbilityLevel": [
+            10,
+            15,
+            20,
+            25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.8,
+              1.2,
+              1.6,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Battle Trance",
+      "displayName": "战斗专注（Battle Trance）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        80,
+        70
+      ],
+      "components": [
+        {
+          "id": "Battle Trance:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            525
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

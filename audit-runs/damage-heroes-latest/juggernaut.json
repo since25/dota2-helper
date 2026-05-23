@@ -1,0 +1,384 @@
+{
+  "hero": "Juggernaut",
+  "displayName": "主宰（Juggernaut）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.4,
+    "attackPoint": 0.33,
+    "projectileSpeed": 0,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 24,
+    "baseStrength": 20,
+    "baseAgility": 32,
+    "baseIntelligence": 14,
+    "strengthGain": 2,
+    "agilityGain": 2.8,
+    "intelligenceGain": 1.4,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 32,
+        "intelligence": 14,
+        "maxHealth": 560,
+        "maxMana": 243,
+        "armor": 5.33,
+        "attackMin": 54,
+        "attackMax": 56
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24,
+          "agility": 37.6,
+          "intelligence": 16.8,
+          "maxHealth": 648,
+          "maxMana": 277,
+          "armor": 6.27,
+          "attackMin": 60,
+          "attackMax": 62
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28,
+          "agility": 43.2,
+          "intelligence": 19.6,
+          "maxHealth": 736,
+          "maxMana": 310,
+          "armor": 7.2,
+          "attackMin": 65,
+          "attackMax": 67
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30,
+          "agility": 46,
+          "intelligence": 21,
+          "maxHealth": 780,
+          "maxMana": 327,
+          "armor": 7.67,
+          "attackMin": 68,
+          "attackMax": 70
+        },
+        "level7": {
+          "level": 7,
+          "strength": 32,
+          "agility": 48.8,
+          "intelligence": 22.4,
+          "maxHealth": 824,
+          "maxMana": 344,
+          "armor": 8.13,
+          "attackMin": 71,
+          "attackMax": 73
+        },
+        "level12": {
+          "level": 12,
+          "strength": 42,
+          "agility": 62.8,
+          "intelligence": 29.4,
+          "maxHealth": 1044,
+          "maxMana": 428,
+          "armor": 10.47,
+          "attackMin": 85,
+          "attackMax": 87
+        },
+        "level18": {
+          "level": 18,
+          "strength": 54,
+          "agility": 79.6,
+          "intelligence": 37.8,
+          "maxHealth": 1308,
+          "maxMana": 529,
+          "armor": 13.27,
+          "attackMin": 102,
+          "attackMax": 104
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Blade Fury",
+      "displayName": "剑刃风暴（Blade Fury）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        120,
+        120,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        36,
+        30,
+        24,
+        18
+      ],
+      "components": [
+        {
+          "id": "Blade Fury:sustained:blade_fury_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "blade_fury_damage",
+          "valuesByAbilityLevel": [
+            80,
+            110,
+            140,
+            170
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            400,
+            550,
+            700,
+            850
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Healing Ward",
+      "displayName": "治疗守卫（Healing Ward）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        60
+      ],
+      "components": [
+        {
+          "id": "Healing Ward:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            350
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blade Dance",
+      "displayName": "剑舞（Blade Dance）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Blade Dance:debuff_reference:blade_dance_crit_chance",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "blade_dance_crit_chance",
+          "valuesByAbilityLevel": [
+            35
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Swiftslash",
+      "displayName": "迅风斩（Swiftslash）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        25
+      ],
+      "components": [
+        {
+          "id": "Swiftslash:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            450
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Omnislash",
+      "displayName": "无敌斩（Omnislash）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        200,
+        275,
+        350
+      ],
+      "cooldownByAbilityLevel": [
+        120
+      ],
+      "components": [
+        {
+          "id": "Omnislash:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            450
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

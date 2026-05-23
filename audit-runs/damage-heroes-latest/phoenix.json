@@ -1,0 +1,456 @@
+{
+  "hero": "Phoenix",
+  "displayName": "凤凰（Phoenix）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 525,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 1100,
+    "moveSpeed": 280,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 2,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 21,
+    "baseAttackMax": 31,
+    "baseStrength": 23,
+    "baseAgility": 12,
+    "baseIntelligence": 16,
+    "strengthGain": 3.3,
+    "agilityGain": 1.5,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "str",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 12,
+        "intelligence": 16,
+        "maxHealth": 626,
+        "maxMana": 267,
+        "armor": 1,
+        "attackMin": 44,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.6,
+          "agility": 15,
+          "intelligence": 19.6,
+          "maxHealth": 771,
+          "maxMana": 310,
+          "armor": 1.5,
+          "attackMin": 51,
+          "attackMax": 61
+        },
+        "level5": {
+          "level": 5,
+          "strength": 36.2,
+          "agility": 18,
+          "intelligence": 23.2,
+          "maxHealth": 916,
+          "maxMana": 353,
+          "armor": 2,
+          "attackMin": 57,
+          "attackMax": 67
+        },
+        "level6": {
+          "level": 6,
+          "strength": 39.5,
+          "agility": 19.5,
+          "intelligence": 25,
+          "maxHealth": 989,
+          "maxMana": 375,
+          "armor": 2.25,
+          "attackMin": 61,
+          "attackMax": 71
+        },
+        "level7": {
+          "level": 7,
+          "strength": 42.8,
+          "agility": 21,
+          "intelligence": 26.8,
+          "maxHealth": 1062,
+          "maxMana": 397,
+          "armor": 2.5,
+          "attackMin": 64,
+          "attackMax": 74
+        },
+        "level12": {
+          "level": 12,
+          "strength": 59.3,
+          "agility": 28.5,
+          "intelligence": 35.8,
+          "maxHealth": 1425,
+          "maxMana": 505,
+          "armor": 3.75,
+          "attackMin": 80,
+          "attackMax": 90
+        },
+        "level18": {
+          "level": 18,
+          "strength": 79.1,
+          "agility": 37.5,
+          "intelligence": 46.6,
+          "maxHealth": 1860,
+          "maxMana": 634,
+          "armor": 5.25,
+          "attackMin": 100,
+          "attackMax": 110
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Icarus Dive",
+      "displayName": "凤凰冲击（Icarus Dive）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        35,
+        30,
+        25
+      ],
+      "components": [
+        {
+          "id": "Icarus Dive:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fire Spirits",
+      "displayName": "烈火精灵（Fire Spirits）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        50,
+        40,
+        30,
+        20
+      ],
+      "components": [
+        {
+          "id": "Fire Spirits:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            400,
+            800,
+            1200,
+            1600
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sun Ray",
+      "displayName": "烈日炙烤（Sun Ray）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "components": [
+        {
+          "id": "Sun Ray:sustained:base_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            15,
+            20,
+            25,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            90,
+            120,
+            150,
+            180
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Supernova",
+      "displayName": "超新星（Supernova）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        120,
+        120,
+        120
+      ],
+      "components": [
+        {
+          "id": "Supernova:sustained:damage_per_sec",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_sec",
+          "valuesByAbilityLevel": [
+            60,
+            90,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            96,
+            180,
+            288
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.6,
+              2,
+              2.4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Launch Fire Spirit",
+      "displayName": "发动烈火精灵（Launch Fire Spirit）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Launch Fire Spirit:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            400,
+            800,
+            1200,
+            1600
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              20,
+              20,
+              20,
+              20
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>兽王（Beastmaster） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>兽王（Beastmaster）</h1>
+        <div class="muted">Beastmaster · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 6</span>
+          <span>组件 6</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./beastmaster.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>all</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>25</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.9</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>16</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>1.9</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>23 - 27</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>-1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>150</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>305</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>野性之斧（Wild Axes）</h2>
+          <div class="muted">Wild Axes · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：50 / 55 / 60 / 65</span>
+        <span>冷却：8 / 8 / 8 / 8</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Wild Axes:instant_fixed:axe_damage</code>
+          <div class="muted">axe_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>40</td><td>80</td><td>120</td><td>160</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 12 / 12 / 12 / 12</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>召唤刀背兽（Summon Razorback）</h2>
+          <div class="muted">Summon Razorback · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：60 / 60 / 60 / 60</span>
+        <span>冷却：30 / 30 / 30 / 30</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Summon Razorback:instant_fixed:boar_base_damage</code>
+          <div class="muted">boar_base_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Physical</td>
+        <td>30</td><td>45</td><td>60</td><td>75</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 60 / 60 / 60 / 60</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>召唤猛禽（Summon Raptors）</h2>
+          <div class="muted">Summon Raptors · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：50 / 50 / 50 / 50</span>
+        <span>冷却：30 / 30 / 30 / 30</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Summon Raptors:instant_fixed:dive_damage</code>
+          <div class="muted">dive_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>60</td><td>95</td><td>130</td><td>165</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 25 / 25 / 25 / 25</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>野性之心（Inner Beast）</h2>
+          <div class="muted">Inner Beast · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Inner Beast:debuff_reference:bonus_attack_speed</code>
+          <div class="muted">bonus_attack_speed</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>7</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>斯洛姆战鼓（Drums of Slom）</h2>
+          <div class="muted">Drums of Slom · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Drums of Slom:instant_fixed:base_damage</code>
+          <div class="muted">base_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>80</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>原始咆哮（Primal Roar）</h2>
+          <div class="muted">Primal Roar · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 125 / 150</span>
+        <span>冷却：90 / 75 / 60</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Primal Roar:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>150</td><td>225</td><td>300</td><td>-</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 3 / 3.5 / 4</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Beastmaster&quot;,
+  &quot;displayName&quot;: &quot;兽王（Beastmaster）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 150,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.3,
+    &quot;projectileSpeed&quot;: 0,
+    &quot;moveSpeed&quot;: 305,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: -1,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 23,
+    &quot;baseAttackMax&quot;: 27,
+    &quot;baseStrength&quot;: 25,
+    &quot;baseAgility&quot;: 19,
+    &quot;baseIntelligence&quot;: 16,
+    &quot;strengthGain&quot;: 2.9,
+    &quot;agilityGain&quot;: 2,
+    &quot;intelligenceGain&quot;: 1.9,
+    &quot;primaryAttribute&quot;: &quot;all&quot;,
+    &quot;attackType&quot;: &quot;Melee&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 25,
+        &quot;agility&quot;: 19,
+        &quot;intelligence&quot;: 16,
+        &quot;maxHealth&quot;: 670,
+        &quot;maxMana&quot;: 267,
+        &quot;armor&quot;: 2.17,
+        &quot;attackMin&quot;: 65,
+        &quot;attackMax&quot;: 69
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 30.8,
+          &quot;agility&quot;: 23,
+          &quot;intelligence&quot;: 19.8,
+          &quot;maxHealth&quot;: 798,
+          &quot;maxMana&quot;: 313,
+          &quot;armor&quot;: 2.83,
+          &quot;attackMin&quot;: 75,
+          &quot;attackMax&quot;: 79
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 36.6,
+          &quot;agility&quot;: 27,
+          &quot;intelligence&quot;: 23.6,
+          &quot;maxHealth&quot;: 925,
+          &quot;maxMana&quot;: 358,
+          &quot;armor&quot;: 3.5,
+          &quot;attackMin&quot;: 84,
+          &quot;attackMax&quot;: 88
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 39.5,
+          &quot;agility&quot;: 29,
+          &quot;intelligence&quot;: 25.5,
+          &quot;maxHealth&quot;: 989,
+          &quot;maxMana&quot;: 381,
+          &quot;armor&quot;: 3.83,
+          &quot;attackMin&quot;: 89,
+          &quot;attackMax&quot;: 93
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 42.4,
+          &quot;agility&quot;: 31,
+          &quot;intelligence&quot;: 27.4,
+          &quot;maxHealth&quot;: 1053,
+          &quot;maxMana&quot;: 404,
+          &quot;armor&quot;: 4.17,
+          &quot;attackMin&quot;: 94,
+          &quot;attackMax&quot;: 98
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 56.9,
+          &quot;agility&quot;: 41,
+          &quot;intelligence&quot;: 36.9,
+          &quot;maxHealth&quot;: 1372,
+          &quot;maxMana&quot;: 518,
+          &quot;armor&quot;: 5.83,
+          &quot;attackMin&quot;: 117,
+          &quot;attackMax&quot;: 121
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 74.3,
+          &quot;agility&quot;: 53,
+          &quot;intelligence&quot;: 48.3,
+          &quot;maxHealth&quot;: 1755,
+          &quot;maxMana&quot;: 655,
+          &quot;armor&quot;: 7.83,
+          &quot;attackMin&quot;: 146,
+          &quot;attackMax&quot;: 150
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Wild Axes&quot;,
+      &quot;displayName&quot;: &quot;野性之斧（Wild Axes）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        50,
+        55,
+        60,
+        65
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        8,
+        8,
+        8,
+        8
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Wild Axes:instant_fixed:axe_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;axe_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            40,
+            80,
+            120,
+            160
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Summon Razorback&quot;,
+      &quot;displayName&quot;: &quot;召唤刀背兽（Summon Razorback）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        60,
+        60,
+        60,
+        60
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        30,
+        30,
+        30,
+        30
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Summon Razorback:instant_fixed:boar_base_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;boar_base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            30,
+            45,
+            60,
+            75
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              60,
+              60,
+              60,
+              60
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Summon Raptors&quot;,
+      &quot;displayName&quot;: &quot;召唤猛禽（Summon Raptors）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        50,
+        50,
+        50,
+        50
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        30,
+        30,
+        30,
+        30
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Summon Raptors:instant_fixed:dive_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;dive_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            60,
+            95,
+            130,
+            165
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              25,
+              25,
+              25,
+              25
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Inner Beast&quot;,
+      &quot;displayName&quot;: &quot;野性之心（Inner Beast）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Inner Beast:debuff_reference:bonus_attack_speed&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            7
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_speed&quot;,
+            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Drums of Slom&quot;,
+      &quot;displayName&quot;: &quot;斯洛姆战鼓（Drums of Slom）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Drums of Slom:instant_fixed:base_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Primal Roar&quot;,
+      &quot;displayName&quot;: &quot;原始咆哮（Primal Roar）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        125,
+        150
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        90,
+        75,
+        60
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Primal Roar:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            150,
+            225,
+            300
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              3,
+              3.5,
+              4
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

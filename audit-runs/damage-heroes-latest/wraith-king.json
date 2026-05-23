@@ -1,0 +1,395 @@
+{
+  "hero": "Wraith King",
+  "displayName": "冥魂大帝（Wraith King）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.56,
+    "projectileSpeed": 0,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 38,
+    "baseAttackMax": 40,
+    "baseStrength": 22,
+    "baseAgility": 16,
+    "baseIntelligence": 16,
+    "strengthGain": 2.8,
+    "agilityGain": 1.7,
+    "intelligenceGain": 1.6,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 16,
+        "intelligence": 16,
+        "maxHealth": 604,
+        "maxMana": 267,
+        "armor": 2.67,
+        "attackMin": 60,
+        "attackMax": 62
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27.6,
+          "agility": 19.4,
+          "intelligence": 19.2,
+          "maxHealth": 727,
+          "maxMana": 305,
+          "armor": 3.23,
+          "attackMin": 66,
+          "attackMax": 68
+        },
+        "level5": {
+          "level": 5,
+          "strength": 33.2,
+          "agility": 22.8,
+          "intelligence": 22.4,
+          "maxHealth": 850,
+          "maxMana": 344,
+          "armor": 3.8,
+          "attackMin": 71,
+          "attackMax": 73
+        },
+        "level6": {
+          "level": 6,
+          "strength": 36,
+          "agility": 24.5,
+          "intelligence": 24,
+          "maxHealth": 912,
+          "maxMana": 363,
+          "armor": 4.08,
+          "attackMin": 74,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38.8,
+          "agility": 26.2,
+          "intelligence": 25.6,
+          "maxHealth": 974,
+          "maxMana": 382,
+          "armor": 4.37,
+          "attackMin": 77,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 52.8,
+          "agility": 34.7,
+          "intelligence": 33.6,
+          "maxHealth": 1282,
+          "maxMana": 478,
+          "armor": 5.78,
+          "attackMin": 91,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 69.6,
+          "agility": 44.9,
+          "intelligence": 43.2,
+          "maxHealth": 1651,
+          "maxMana": 593,
+          "armor": 7.48,
+          "attackMin": 108,
+          "attackMax": 110
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Wraithfire Blast",
+      "displayName": "冥火爆击（Wraithfire Blast）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        95,
+        110,
+        125,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        12,
+        10,
+        8
+      ],
+      "components": [
+        {
+          "id": "Wraithfire Blast:sustained:blast_dot_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "blast_dot_damage",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            20,
+            48,
+            84,
+            128
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1,
+              1.2,
+              1.4,
+              1.6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bone Guard",
+      "displayName": "白骨护卫（Bone Guard）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        42,
+        42,
+        42,
+        42
+      ],
+      "components": [
+        {
+          "id": "Bone Guard:state_scaling:skeleton_damage_tooltip",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "skeleton_damage_tooltip",
+          "valuesByAbilityLevel": [
+            34,
+            39,
+            43,
+            49
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mortal Strike",
+      "displayName": "本命一击（Mortal Strike）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        6,
+        5.5,
+        5,
+        4.5
+      ],
+      "components": [
+        {
+          "id": "Mortal Strike:debuff_reference:crit_mult",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "crit_mult",
+          "valuesByAbilityLevel": [
+            160,
+            200,
+            240,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vampiric Spirit",
+      "displayName": "吸血灵魂（Vampiric Spirit）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Vampiric Spirit:debuff_reference:scepter_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "scepter_attack_speed",
+          "valuesByAbilityLevel": [
+            55
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reincarnation",
+      "displayName": "绝冥再生（Reincarnation）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        220,
+        110,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        180,
+        150,
+        120
+      ],
+      "components": [
+        {
+          "id": "Reincarnation:debuff_reference:movespeed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "movespeed",
+          "valuesByAbilityLevel": [
+            -75
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "move_speed_pct",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

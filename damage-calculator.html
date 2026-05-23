@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dota 2 伤害组合计算器</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="damage-calculator.css">
+  <link rel="icon" type="image/png" href="images/dota2_favicon.png">
+</head>
+<body>
+  <main class="damage-shell">
+    <header class="damage-header">
+      <div>
+        <h1>伤害组合计算器</h1>
+        <p>本地数据计算，不调用 AI。</p>
+      </div>
+      <a href="/" class="damage-link">返回对局助手</a>
+    </header>
+
+    <section class="damage-layout">
+      <aside class="damage-controls">
+        <label>
+          英雄
+          <select id="heroSelect"></select>
+        </label>
+        <label>
+          英雄等级
+          <input id="heroLevelInput" type="number" min="1" max="30" value="5">
+        </label>
+        <label>
+          敌方护甲
+          <input id="enemyArmorInput" type="number" step="0.1" value="0">
+        </label>
+        <label>
+          敌方魔抗 %
+          <input id="enemyMagicResistanceInput" type="number" step="0.1" min="-100" max="100" value="25">
+        </label>
+        <button id="calculateButton" type="button">重新计算</button>
+        <p id="statusText" class="damage-status"></p>
+      </aside>
+
+      <section class="damage-main">
+        <div class="damage-section">
+          <h2>技能组件</h2>
+          <div class="damage-table-wrap">
+            <table class="damage-table">
+              <thead>
+                <tr>
+                  <th>计入</th>
+                  <th>技能</th>
+                  <th>等级</th>
+                  <th>分类</th>
+                  <th>类型</th>
+                  <th>基础值</th>
+                  <th>理论总量</th>
+                  <th>作用时间</th>
+                  <th>普攻伤害</th>
+                  <th>模式</th>
+                </tr>
+              </thead>
+              <tbody id="abilityRows"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="damage-section">
+          <h2>物品组件</h2>
+          <div id="itemRows" class="empty-items">本地数据暂未识别可计算伤害物品。</div>
+        </div>
+      </section>
+
+      <aside class="damage-summary">
+        <h2>计算结果</h2>
+        <div class="summary-number">
+          <span>原始总伤害</span>
+          <strong id="rawTotal">0</strong>
+        </div>
+        <div class="summary-number">
+          <span>抗性后总伤害</span>
+          <strong id="adjustedTotal">0</strong>
+        </div>
+        <h3>按类型</h3>
+        <div id="typeBreakdown" class="type-breakdown"></div>
+        <h3>明细</h3>
+        <div id="componentBreakdown" class="component-breakdown"></div>
+        <h3>提示</h3>
+        <div id="warningList" class="warning-list"></div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="damage-calculator.js"></script>
+</body>
+</html>

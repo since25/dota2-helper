@@ -1,0 +1,374 @@
+{
+  "hero": "Naga Siren",
+  "displayName": "娜迦海妖（Naga Siren）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 330,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 23,
+    "baseAttackMax": 25,
+    "baseStrength": 21,
+    "baseAgility": 22,
+    "baseIntelligence": 19,
+    "strengthGain": 2.4,
+    "agilityGain": 3.4,
+    "intelligenceGain": 2,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 22,
+        "intelligence": 19,
+        "maxHealth": 582,
+        "maxMana": 303,
+        "armor": 4.67,
+        "attackMin": 45,
+        "attackMax": 47
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.8,
+          "agility": 28.8,
+          "intelligence": 23,
+          "maxHealth": 688,
+          "maxMana": 351,
+          "armor": 5.8,
+          "attackMin": 52,
+          "attackMax": 54
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.6,
+          "agility": 35.6,
+          "intelligence": 27,
+          "maxHealth": 793,
+          "maxMana": 399,
+          "armor": 6.93,
+          "attackMin": 59,
+          "attackMax": 61
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 39,
+          "intelligence": 29,
+          "maxHealth": 846,
+          "maxMana": 423,
+          "armor": 7.5,
+          "attackMin": 62,
+          "attackMax": 64
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 42.4,
+          "intelligence": 31,
+          "maxHealth": 899,
+          "maxMana": 447,
+          "armor": 8.07,
+          "attackMin": 65,
+          "attackMax": 67
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.4,
+          "agility": 59.4,
+          "intelligence": 41,
+          "maxHealth": 1163,
+          "maxMana": 567,
+          "armor": 10.9,
+          "attackMin": 82,
+          "attackMax": 84
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.8,
+          "agility": 79.8,
+          "intelligence": 53,
+          "maxHealth": 1480,
+          "maxMana": 711,
+          "armor": 14.3,
+          "attackMin": 103,
+          "attackMax": 105
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Ensnare",
+      "displayName": "诱捕（Ensnare）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        18,
+        15,
+        12
+      ],
+      "components": [
+        {
+          "id": "Ensnare:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            500,
+            525,
+            550,
+            575
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rip Tide",
+      "displayName": "激流（Rip Tide）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Rip Tide:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            30,
+            40,
+            50,
+            60
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Reel In",
+      "displayName": "捕捞（Reel In）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        8
+      ],
+      "components": [
+        {
+          "id": "Reel In:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eelskin",
+      "displayName": "鳗鱼皮（Eelskin）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Eelskin:debuff_reference:evasion_per_naga",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "evasion_per_naga",
+          "valuesByAbilityLevel": [
+            4.9
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Song of the Siren",
+      "displayName": "海妖之歌（Song of the Siren）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150,
+        250,
+        350
+      ],
+      "cooldownByAbilityLevel": [
+        160,
+        130,
+        100
+      ],
+      "components": [
+        {
+          "id": "Song of the Siren:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            900,
+            1150,
+            1400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

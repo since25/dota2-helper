@@ -1,0 +1,382 @@
+{
+  "hero": "Primal Beast",
+  "displayName": "獸（Primal Beast）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.8,
+    "attackPoint": 0.6,
+    "projectileSpeed": 900,
+    "moveSpeed": 305,
+    "turnRate": 0.6,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 36,
+    "baseAttackMax": 38,
+    "baseStrength": 26,
+    "baseAgility": 15,
+    "baseIntelligence": 16,
+    "strengthGain": 4.3,
+    "agilityGain": 1,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 26,
+        "agility": 15,
+        "intelligence": 16,
+        "maxHealth": 692,
+        "maxMana": 267,
+        "armor": 4.5,
+        "attackMin": 62,
+        "attackMax": 64
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 34.6,
+          "agility": 17,
+          "intelligence": 19.4,
+          "maxHealth": 881,
+          "maxMana": 308,
+          "armor": 4.83,
+          "attackMin": 71,
+          "attackMax": 73
+        },
+        "level5": {
+          "level": 5,
+          "strength": 43.2,
+          "agility": 19,
+          "intelligence": 22.8,
+          "maxHealth": 1070,
+          "maxMana": 349,
+          "armor": 5.17,
+          "attackMin": 79,
+          "attackMax": 81
+        },
+        "level6": {
+          "level": 6,
+          "strength": 47.5,
+          "agility": 20,
+          "intelligence": 24.5,
+          "maxHealth": 1165,
+          "maxMana": 369,
+          "armor": 5.33,
+          "attackMin": 84,
+          "attackMax": 86
+        },
+        "level7": {
+          "level": 7,
+          "strength": 51.8,
+          "agility": 21,
+          "intelligence": 26.2,
+          "maxHealth": 1260,
+          "maxMana": 389,
+          "armor": 5.5,
+          "attackMin": 88,
+          "attackMax": 90
+        },
+        "level12": {
+          "level": 12,
+          "strength": 73.3,
+          "agility": 26,
+          "intelligence": 34.7,
+          "maxHealth": 1733,
+          "maxMana": 491,
+          "armor": 6.33,
+          "attackMin": 109,
+          "attackMax": 111
+        },
+        "level18": {
+          "level": 18,
+          "strength": 99.1,
+          "agility": 32,
+          "intelligence": 44.9,
+          "maxHealth": 2300,
+          "maxMana": 614,
+          "armor": 7.33,
+          "attackMin": 135,
+          "attackMax": 137
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Onslaught",
+      "displayName": "突（Onslaught）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        120,
+        120,
+        120,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        25,
+        22,
+        19,
+        16
+      ],
+      "components": [
+        {
+          "id": "Onslaught:state_scaling:knockback_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "knockback_damage",
+          "valuesByAbilityLevel": [
+            75,
+            170,
+            265,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trample",
+      "displayName": "踏（Trample）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        27,
+        24,
+        21
+      ],
+      "components": [
+        {
+          "id": "Trample:state_scaling:attack_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            35
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "source_damage",
+              "hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uproar",
+      "displayName": "咤（Uproar）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Uproar:state_scaling:damage_limit",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_limit",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rock Throw",
+      "displayName": "砸（Rock Throw）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        85
+      ],
+      "cooldownByAbilityLevel": [
+        20
+      ],
+      "components": [
+        {
+          "id": "Rock Throw:state_scaling:base_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            325
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pulverize",
+      "displayName": "捶（Pulverize）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        35,
+        30
+      ],
+      "components": [
+        {
+          "id": "Pulverize:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            175,
+            250
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

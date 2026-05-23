@@ -1,0 +1,439 @@
+{
+  "hero": "Faceless Void",
+  "displayName": "虚空假面（Faceless Void）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 34,
+    "baseAttackMax": 40,
+    "baseStrength": 20,
+    "baseAgility": 24,
+    "baseIntelligence": 15,
+    "strengthGain": 2.6,
+    "agilityGain": 3.3,
+    "intelligenceGain": 1.5,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 24,
+        "intelligence": 15,
+        "maxHealth": 560,
+        "maxMana": 255,
+        "armor": 4,
+        "attackMin": 58,
+        "attackMax": 64
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.2,
+          "agility": 30.6,
+          "intelligence": 18,
+          "maxHealth": 674,
+          "maxMana": 291,
+          "armor": 5.1,
+          "attackMin": 65,
+          "attackMax": 71
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.4,
+          "agility": 37.2,
+          "intelligence": 21,
+          "maxHealth": 789,
+          "maxMana": 327,
+          "armor": 6.2,
+          "attackMin": 71,
+          "attackMax": 77
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 40.5,
+          "intelligence": 22.5,
+          "maxHealth": 846,
+          "maxMana": 345,
+          "armor": 6.75,
+          "attackMin": 75,
+          "attackMax": 81
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.6,
+          "agility": 43.8,
+          "intelligence": 24,
+          "maxHealth": 903,
+          "maxMana": 363,
+          "armor": 7.3,
+          "attackMin": 78,
+          "attackMax": 84
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.6,
+          "agility": 60.3,
+          "intelligence": 31.5,
+          "maxHealth": 1189,
+          "maxMana": 453,
+          "armor": 10.05,
+          "attackMin": 94,
+          "attackMax": 100
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.2,
+          "agility": 80.1,
+          "intelligence": 40.5,
+          "maxHealth": 1532,
+          "maxMana": 561,
+          "armor": 13.35,
+          "attackMin": 114,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Time Walk",
+      "displayName": "时间漫游（Time Walk）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "位移和回溯影响进出场，不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        16,
+        11,
+        6
+      ],
+      "components": [
+        {
+          "id": "Time Walk:debuff_reference:range",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "range",
+          "valuesByAbilityLevel": [
+            650,
+            700,
+            750,
+            800
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "位移和回溯影响进出场，不直接造成伤害。",
+          "caveats": [
+            "位移和回溯影响进出场，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Dilation",
+      "displayName": "时间膨胀（Time Dilation）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "每层每秒伤害依赖敌方当前技能冷却数量。",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        28,
+        24,
+        20,
+        16
+      ],
+      "components": [
+        {
+          "id": "Time Dilation:state_scaling:damage_per_stack",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_stack",
+          "valuesByAbilityLevel": [
+            4,
+            6,
+            8,
+            10
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "目标冷却中的技能数量",
+              "实际作用时间"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "每层每秒伤害依赖敌方当前技能冷却数量。",
+          "caveats": [
+            "每层每秒伤害依赖敌方当前技能冷却数量。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Time Lock",
+      "displayName": "时间锁定（Time Lock）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "按一次时间锁定触发的额外伤害计算，触发概率作为参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Time Lock:attack_modifier:bonus_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "bonus_damage",
+          "valuesByAbilityLevel": [
+            18,
+            22,
+            26,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": [
+              12,
+              16,
+              20,
+              24
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "按一次时间锁定触发的额外伤害计算，触发概率作为参考。",
+          "caveats": [
+            "按一次时间锁定触发的额外伤害计算，触发概率作为参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reverse Time Walk",
+      "displayName": "反时间漫游（Reverse Time Walk）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "反向位移不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0.5
+      ],
+      "components": [
+        {
+          "id": "Reverse Time Walk:debuff_reference:buff_duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "buff_duration",
+          "valuesByAbilityLevel": [
+            3000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "反向位移不直接造成伤害。",
+          "caveats": [
+            "反向位移不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Distortion Field",
+      "displayName": "扭曲力场（Distortion Field）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "弹道减速影响承伤，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Distortion Field:debuff_reference:attack_projectile_slow",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_projectile_slow",
+          "valuesByAbilityLevel": [
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "弹道减速影响承伤，不直接造成伤害。",
+          "caveats": [
+            "弹道减速影响承伤，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chronosphere",
+      "displayName": "时间结界（Chronosphere）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "控制窗口决定普攻和队友输出时间，本身不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        125,
+        200,
+        275
+      ],
+      "cooldownByAbilityLevel": [
+        155,
+        145,
+        135
+      ],
+      "components": [
+        {
+          "id": "Chronosphere:debuff_reference:duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "duration",
+          "valuesByAbilityLevel": [
+            3.75,
+            4.25,
+            4.75
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "disable_window",
+            "affects": "disable_window",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "控制窗口决定普攻和队友输出时间，本身不直接造成伤害。",
+          "caveats": [
+            "控制窗口决定普攻和队友输出时间，本身不直接造成伤害。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

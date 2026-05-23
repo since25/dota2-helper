@@ -1,0 +1,343 @@
+{
+  "hero": "Arc Warden",
+  "displayName": "天穹守望者（Arc Warden）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 625,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 23,
+    "baseAttackMax": 29,
+    "baseStrength": 20,
+    "baseAgility": 20,
+    "baseIntelligence": 24,
+    "strengthGain": 2.2,
+    "agilityGain": 2.7,
+    "intelligenceGain": 2.6,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 20,
+        "intelligence": 24,
+        "maxHealth": 560,
+        "maxMana": 363,
+        "armor": 3.33,
+        "attackMin": 68,
+        "attackMax": 74
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.4,
+          "agility": 25.4,
+          "intelligence": 29.2,
+          "maxHealth": 657,
+          "maxMana": 425,
+          "armor": 4.23,
+          "attackMin": 78,
+          "attackMax": 84
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28.8,
+          "agility": 30.8,
+          "intelligence": 34.4,
+          "maxHealth": 754,
+          "maxMana": 488,
+          "armor": 5.13,
+          "attackMin": 89,
+          "attackMax": 95
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 33.5,
+          "intelligence": 37,
+          "maxHealth": 802,
+          "maxMana": 519,
+          "armor": 5.58,
+          "attackMin": 94,
+          "attackMax": 100
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.2,
+          "agility": 36.2,
+          "intelligence": 39.6,
+          "maxHealth": 850,
+          "maxMana": 550,
+          "armor": 6.03,
+          "attackMin": 99,
+          "attackMax": 105
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.2,
+          "agility": 49.7,
+          "intelligence": 52.6,
+          "maxHealth": 1092,
+          "maxMana": 706,
+          "armor": 8.28,
+          "attackMin": 126,
+          "attackMax": 132
+        },
+        "level18": {
+          "level": 18,
+          "strength": 57.4,
+          "agility": 65.9,
+          "intelligence": 68.2,
+          "maxHealth": 1383,
+          "maxMana": 893,
+          "armor": 10.98,
+          "attackMin": 157,
+          "attackMax": 163
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Flux",
+      "displayName": "乱流（Flux）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "components": [
+        {
+          "id": "Flux:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            15,
+            30,
+            45,
+            60
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            90,
+            180,
+            270,
+            360
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Magnetic Field",
+      "displayName": "磁场（Magnetic Field）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        70,
+        80,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        19,
+        18,
+        17
+      ],
+      "components": [
+        {
+          "id": "Magnetic Field:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spark Wraith",
+      "displayName": "闪光幽魂（Spark Wraith）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "components": [
+        {
+          "id": "Spark Wraith:instant_fixed:spark_damage_base",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "spark_damage_base",
+          "valuesByAbilityLevel": [
+            100,
+            170,
+            240,
+            310
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              16,
+              16,
+              16,
+              16
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Tempest Double",
+      "displayName": "风暴双雄（Tempest Double）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        60,
+        55,
+        50
+      ],
+      "components": [
+        {
+          "id": "Tempest Double:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

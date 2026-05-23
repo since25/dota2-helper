@@ -1,0 +1,375 @@
+{
+  "hero": "Medusa",
+  "displayName": "美杜莎（Medusa）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1200,
+    "moveSpeed": 275,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 32,
+    "baseStrength": 0,
+    "baseAgility": 22,
+    "baseIntelligence": 25,
+    "strengthGain": 0,
+    "agilityGain": 3.6,
+    "intelligenceGain": 3.6,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 0,
+        "agility": 22,
+        "intelligence": 25,
+        "maxHealth": 120,
+        "maxMana": 375,
+        "armor": 2.67,
+        "attackMin": 48,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 0,
+          "agility": 29.2,
+          "intelligence": 32.2,
+          "maxHealth": 120,
+          "maxMana": 461,
+          "armor": 3.87,
+          "attackMin": 55,
+          "attackMax": 61
+        },
+        "level5": {
+          "level": 5,
+          "strength": 0,
+          "agility": 36.4,
+          "intelligence": 39.4,
+          "maxHealth": 120,
+          "maxMana": 548,
+          "armor": 5.07,
+          "attackMin": 62,
+          "attackMax": 68
+        },
+        "level6": {
+          "level": 6,
+          "strength": 0,
+          "agility": 40,
+          "intelligence": 43,
+          "maxHealth": 120,
+          "maxMana": 591,
+          "armor": 5.67,
+          "attackMin": 66,
+          "attackMax": 72
+        },
+        "level7": {
+          "level": 7,
+          "strength": 0,
+          "agility": 43.6,
+          "intelligence": 46.6,
+          "maxHealth": 120,
+          "maxMana": 634,
+          "armor": 6.27,
+          "attackMin": 70,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 0,
+          "agility": 61.6,
+          "intelligence": 64.6,
+          "maxHealth": 120,
+          "maxMana": 850,
+          "armor": 9.27,
+          "attackMin": 88,
+          "attackMax": 94
+        },
+        "level18": {
+          "level": 18,
+          "strength": 0,
+          "agility": 83.2,
+          "intelligence": 86.2,
+          "maxHealth": 120,
+          "maxMana": 1109,
+          "armor": 12.87,
+          "attackMin": 109,
+          "attackMax": 115
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Split Shot",
+      "displayName": "分裂箭（Split Shot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Split Shot:instant_fixed:damage_modifier",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_modifier",
+          "valuesByAbilityLevel": [
+            -50,
+            -40,
+            -30,
+            -20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Mystic Snake",
+      "displayName": "秘术异蛇（Mystic Snake）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        80,
+        100,
+        120,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        14,
+        13,
+        12
+      ],
+      "components": [
+        {
+          "id": "Mystic Snake:state_scaling:snake_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "snake_damage",
+          "valuesByAbilityLevel": [
+            90,
+            140,
+            190,
+            240
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_missing_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gorgon's Grasp",
+      "displayName": "罗网箭阵（Gorgon's Grasp）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        85,
+        105,
+        125
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        26,
+        22,
+        18
+      ],
+      "components": [
+        {
+          "id": "Gorgon's Grasp:sustained:damage_pers",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage_pers",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            80,
+            120,
+            160,
+            200
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.8,
+              1.2,
+              1.6,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mana Shield",
+      "displayName": "魔法盾（Mana Shield）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Mana Shield:state_scaling:damage_per_mana",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_per_mana",
+          "valuesByAbilityLevel": [
+            2
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_missing_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stone Gaze",
+      "displayName": "石化凝视（Stone Gaze）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        90
+      ],
+      "components": [
+        {
+          "id": "Stone Gaze:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

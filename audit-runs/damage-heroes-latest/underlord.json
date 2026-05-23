@@ -1,0 +1,290 @@
+{
+  "hero": "Underlord",
+  "displayName": "孽主（Underlord）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 200,
+    "attackRate": 1.7,
+    "attackPoint": 0.45,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 3,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 37,
+    "baseAttackMax": 43,
+    "baseStrength": 25,
+    "baseAgility": 12,
+    "baseIntelligence": 18,
+    "strengthGain": 3.2,
+    "agilityGain": 1.6,
+    "intelligenceGain": 2.3,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 12,
+        "intelligence": 18,
+        "maxHealth": 670,
+        "maxMana": 291,
+        "armor": 5,
+        "attackMin": 62,
+        "attackMax": 68
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 31.4,
+          "agility": 15.2,
+          "intelligence": 22.6,
+          "maxHealth": 811,
+          "maxMana": 346,
+          "armor": 5.53,
+          "attackMin": 68,
+          "attackMax": 74
+        },
+        "level5": {
+          "level": 5,
+          "strength": 37.8,
+          "agility": 18.4,
+          "intelligence": 27.2,
+          "maxHealth": 952,
+          "maxMana": 401,
+          "armor": 6.07,
+          "attackMin": 75,
+          "attackMax": 81
+        },
+        "level6": {
+          "level": 6,
+          "strength": 41,
+          "agility": 20,
+          "intelligence": 29.5,
+          "maxHealth": 1022,
+          "maxMana": 429,
+          "armor": 6.33,
+          "attackMin": 78,
+          "attackMax": 84
+        },
+        "level7": {
+          "level": 7,
+          "strength": 44.2,
+          "agility": 21.6,
+          "intelligence": 31.8,
+          "maxHealth": 1092,
+          "maxMana": 457,
+          "armor": 6.6,
+          "attackMin": 81,
+          "attackMax": 87
+        },
+        "level12": {
+          "level": 12,
+          "strength": 60.2,
+          "agility": 29.6,
+          "intelligence": 43.3,
+          "maxHealth": 1444,
+          "maxMana": 595,
+          "armor": 7.93,
+          "attackMin": 97,
+          "attackMax": 103
+        },
+        "level18": {
+          "level": 18,
+          "strength": 79.4,
+          "agility": 39.2,
+          "intelligence": 57.1,
+          "maxHealth": 1867,
+          "maxMana": 760,
+          "armor": 9.53,
+          "attackMin": 116,
+          "attackMax": 122
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Firestorm",
+      "displayName": "火焰风暴（Firestorm）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "multi_wave",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        125,
+        140,
+        155
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        15,
+        14,
+        13
+      ],
+      "components": [
+        {
+          "id": "Firestorm:multi_wave:wave_damage",
+          "kind": "multi_wave",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "wave_damage",
+          "valuesByAbilityLevel": [
+            30,
+            55,
+            80,
+            105
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            180,
+            330,
+            480,
+            630
+          ],
+          "totalFormula": "waveCount * damagePerWave",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "wave_count_times_damage_per_wave"
+          },
+          "metadata": {
+            "waveCountByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "multi_wave",
+          "reason": "",
+          "caveats": [
+            "包含多波伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pit of Malice",
+      "displayName": "怨念深渊（Pit of Malice）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        120,
+        130,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        25,
+        20,
+        15
+      ],
+      "components": [
+        {
+          "id": "Pit of Malice:instant_fixed:pit_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "pit_damage",
+          "valuesByAbilityLevel": [
+            20,
+            30,
+            40,
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Fiend's Gate",
+      "displayName": "恶魔之扉（Fiend's Gate）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        175
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        105,
+        100
+      ],
+      "components": [
+        {
+          "id": "Fiend's Gate:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

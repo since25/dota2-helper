@@ -1,0 +1,332 @@
+{
+  "hero": "Magnus",
+  "displayName": "马格纳斯（Magnus）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 200,
+    "attackRate": 1.8,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 305,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 39,
+    "baseStrength": 23,
+    "baseAgility": 14,
+    "baseIntelligence": 20,
+    "strengthGain": 3.1,
+    "agilityGain": 2,
+    "intelligenceGain": 2.1,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 14,
+        "intelligence": 20,
+        "maxHealth": 626,
+        "maxMana": 315,
+        "armor": 3.33,
+        "attackMin": 71,
+        "attackMax": 79
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.2,
+          "agility": 18,
+          "intelligence": 24.2,
+          "maxHealth": 762,
+          "maxMana": 365,
+          "armor": 4,
+          "attackMin": 81,
+          "attackMax": 89
+        },
+        "level5": {
+          "level": 5,
+          "strength": 35.4,
+          "agility": 22,
+          "intelligence": 28.4,
+          "maxHealth": 899,
+          "maxMana": 416,
+          "armor": 4.67,
+          "attackMin": 91,
+          "attackMax": 99
+        },
+        "level6": {
+          "level": 6,
+          "strength": 38.5,
+          "agility": 24,
+          "intelligence": 30.5,
+          "maxHealth": 967,
+          "maxMana": 441,
+          "armor": 5,
+          "attackMin": 96,
+          "attackMax": 104
+        },
+        "level7": {
+          "level": 7,
+          "strength": 41.6,
+          "agility": 26,
+          "intelligence": 32.6,
+          "maxHealth": 1035,
+          "maxMana": 466,
+          "armor": 5.33,
+          "attackMin": 101,
+          "attackMax": 109
+        },
+        "level12": {
+          "level": 12,
+          "strength": 57.1,
+          "agility": 36,
+          "intelligence": 43.1,
+          "maxHealth": 1376,
+          "maxMana": 592,
+          "armor": 7,
+          "attackMin": 126,
+          "attackMax": 134
+        },
+        "level18": {
+          "level": 18,
+          "strength": 75.7,
+          "agility": 48,
+          "intelligence": 55.7,
+          "maxHealth": 1785,
+          "maxMana": 743,
+          "armor": 9,
+          "attackMin": 157,
+          "attackMax": 165
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Shockwave",
+      "displayName": "震荡波（Shockwave）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        85,
+        90,
+        95,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        12,
+        11,
+        10
+      ],
+      "components": [
+        {
+          "id": "Shockwave:instant_fixed:shock_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shock_damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Empower",
+      "displayName": "授予力量（Empower）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        45,
+        55,
+        65,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        8
+      ],
+      "components": [
+        {
+          "id": "Empower:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            800
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Skewer",
+      "displayName": "巨角冲撞（Skewer）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        20,
+        18,
+        16
+      ],
+      "components": [
+        {
+          "id": "Skewer:state_scaling:skewer_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "skewer_damage",
+          "valuesByAbilityLevel": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Horn Toss",
+      "displayName": "长角抛物（Horn Toss）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        30
+      ],
+      "components": [
+        {
+          "id": "Horn Toss:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

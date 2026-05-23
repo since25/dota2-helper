@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>谜团（Enigma） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>谜团（Enigma）</h1>
+        <div class="muted">Enigma · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./enigma.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>all</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>21</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.5</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>14</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>3.6</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>19 - 25</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>500</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>280</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>憎恶（Malefice）</h2>
+          <div class="muted">Malefice · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 110 / 120 / 130</span>
+        <span>冷却：20 / 18 / 16 / 14</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Malefice:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>55</td><td>70</td><td>85</td><td>100</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 0.3 / 0.5 / 0.7 / 0.9</div><div><code>tickIntervalByAbilityLevel</code>: 2 / 2 / 2 / 2</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>恶魔召唤（Demonic Summoning）</h2>
+          <div class="muted">Demonic Summoning · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：70 / 80 / 90 / 100</span>
+        <span>冷却：40 / 38 / 36 / 34</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Demonic Summoning:instant_fixed:eidelon_base_damage</code>
+          <div class="muted">eidelon_base_damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Physical</td>
+        <td>16</td><td>27</td><td>38</td><td>49</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 40 / 40 / 40 / 40</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>午夜凋零（Midnight Pulse）</h2>
+          <div class="muted">Midnight Pulse · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：65 / 90 / 115 / 140</span>
+        <span>冷却：40 / 35 / 30 / 25</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Midnight Pulse:state_scaling:base_damage</code>
+          <div class="muted">base_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>5</td><td>10</td><td>15</td><td>20</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>事件视界（Event Horizon）</h2>
+          <div class="muted">Event Horizon · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Event Horizon:debuff_reference:speed_bonus</code>
+          <div class="muted">speed_bonus</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>4</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>黑洞（Black Hole）</h2>
+          <div class="muted">Black Hole · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：300 / 400 / 500</span>
+        <span>冷却：180 / 170 / 160</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Black Hole:sustained:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Pure</td>
+        <td>100</td><td>150</td><td>200</td><td>-</td>
+        <td>400 / 600 / 800</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4</div><div><code>tickIntervalByAbilityLevel</code>: 0.1 / 0.1 / 0.1</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Enigma&quot;,
+  &quot;displayName&quot;: &quot;谜团（Enigma）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 500,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.4,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 280,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0.5,
+    &quot;baseArmor&quot;: 1,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 19,
+    &quot;baseAttackMax&quot;: 25,
+    &quot;baseStrength&quot;: 21,
+    &quot;baseAgility&quot;: 14,
+    &quot;baseIntelligence&quot;: 19,
+    &quot;strengthGain&quot;: 2.5,
+    &quot;agilityGain&quot;: 1,
+    &quot;intelligenceGain&quot;: 3.6,
+    &quot;primaryAttribute&quot;: &quot;all&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 21,
+        &quot;agility&quot;: 14,
+        &quot;intelligence&quot;: 19,
+        &quot;maxHealth&quot;: 582,
+        &quot;maxMana&quot;: 303,
+        &quot;armor&quot;: 3.33,
+        &quot;attackMin&quot;: 57,
+        &quot;attackMax&quot;: 63
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 26,
+          &quot;agility&quot;: 16,
+          &quot;intelligence&quot;: 26.2,
+          &quot;maxHealth&quot;: 692,
+          &quot;maxMana&quot;: 389,
+          &quot;armor&quot;: 3.67,
+          &quot;attackMin&quot;: 67,
+          &quot;attackMax&quot;: 73
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 31,
+          &quot;agility&quot;: 18,
+          &quot;intelligence&quot;: 33.4,
+          &quot;maxHealth&quot;: 802,
+          &quot;maxMana&quot;: 476,
+          &quot;armor&quot;: 4,
+          &quot;attackMin&quot;: 77,
+          &quot;attackMax&quot;: 83
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 33.5,
+          &quot;agility&quot;: 19,
+          &quot;intelligence&quot;: 37,
+          &quot;maxHealth&quot;: 857,
+          &quot;maxMana&quot;: 519,
+          &quot;armor&quot;: 4.17,
+          &quot;attackMin&quot;: 82,
+          &quot;attackMax&quot;: 88
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 36,
+          &quot;agility&quot;: 20,
+          &quot;intelligence&quot;: 40.6,
+          &quot;maxHealth&quot;: 912,
+          &quot;maxMana&quot;: 562,
+          &quot;armor&quot;: 4.33,
+          &quot;attackMin&quot;: 87,
+          &quot;attackMax&quot;: 93
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 48.5,
+          &quot;agility&quot;: 25,
+          &quot;intelligence&quot;: 58.6,
+          &quot;maxHealth&quot;: 1187,
+          &quot;maxMana&quot;: 778,
+          &quot;armor&quot;: 5.17,
+          &quot;attackMin&quot;: 111,
+          &quot;attackMax&quot;: 117
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 63.5,
+          &quot;agility&quot;: 31,
+          &quot;intelligence&quot;: 80.2,
+          &quot;maxHealth&quot;: 1517,
+          &quot;maxMana&quot;: 1037,
+          &quot;armor&quot;: 6.17,
+          &quot;attackMin&quot;: 141,
+          &quot;attackMax&quot;: 147
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Malefice&quot;,
+      &quot;displayName&quot;: &quot;憎恶（Malefice）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        110,
+        120,
+        130
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        20,
+        18,
+        16,
+        14
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Malefice:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            55,
+            70,
+            85,
+            100
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              0.3,
+              0.5,
+              0.7,
+              0.9
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Demonic Summoning&quot;,
+      &quot;displayName&quot;: &quot;恶魔召唤（Demonic Summoning）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        70,
+        80,
+        90,
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        40,
+        38,
+        36,
+        34
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Demonic Summoning:instant_fixed:eidelon_base_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;eidelon_base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            16,
+            27,
+            38,
+            49
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              40,
+              40,
+              40,
+              40
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Midnight Pulse&quot;,
+      &quot;displayName&quot;: &quot;午夜凋零（Midnight Pulse）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        65,
+        90,
+        115,
+        140
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        40,
+        35,
+        30,
+        25
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Midnight Pulse:state_scaling:base_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            5,
+            10,
+            15,
+            20
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;stack_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Event Horizon&quot;,
+      &quot;displayName&quot;: &quot;事件视界（Event Horizon）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Event Horizon:debuff_reference:speed_bonus&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;speed_bonus&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            4
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;positioning&quot;,
+            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Black Hole&quot;,
+      &quot;displayName&quot;: &quot;黑洞（Black Hole）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        300,
+        400,
+        500
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        180,
+        170,
+        160
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Black Hole:sustained:damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Pure&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            100,
+            150,
+            200
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            400,
+            600,
+            800
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              4,
+              4,
+              4
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

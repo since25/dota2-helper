@@ -1,0 +1,329 @@
+{
+  "hero": "Templar Assassin",
+  "displayName": "圣堂刺客（Templar Assassin）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 250,
+    "attackRate": 1.6,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1000,
+    "moveSpeed": 310,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 28,
+    "baseAttackMax": 33,
+    "baseStrength": 21,
+    "baseAgility": 23,
+    "baseIntelligence": 20,
+    "strengthGain": 2.4,
+    "agilityGain": 3.4,
+    "intelligenceGain": 2,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 23,
+        "intelligence": 20,
+        "maxHealth": 582,
+        "maxMana": 315,
+        "armor": 3.83,
+        "attackMin": 51,
+        "attackMax": 56
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.8,
+          "agility": 29.8,
+          "intelligence": 24,
+          "maxHealth": 688,
+          "maxMana": 363,
+          "armor": 4.97,
+          "attackMin": 58,
+          "attackMax": 63
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.6,
+          "agility": 36.6,
+          "intelligence": 28,
+          "maxHealth": 793,
+          "maxMana": 411,
+          "armor": 6.1,
+          "attackMin": 65,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 40,
+          "intelligence": 30,
+          "maxHealth": 846,
+          "maxMana": 435,
+          "armor": 6.67,
+          "attackMin": 68,
+          "attackMax": 73
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 43.4,
+          "intelligence": 32,
+          "maxHealth": 899,
+          "maxMana": 459,
+          "armor": 7.23,
+          "attackMin": 71,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.4,
+          "agility": 60.4,
+          "intelligence": 42,
+          "maxHealth": 1163,
+          "maxMana": 579,
+          "armor": 10.07,
+          "attackMin": 88,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.8,
+          "agility": 80.8,
+          "intelligence": 54,
+          "maxHealth": 1480,
+          "maxMana": 723,
+          "armor": 13.47,
+          "attackMin": 109,
+          "attackMax": 114
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Refraction",
+      "displayName": "折光（Refraction）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        95
+      ],
+      "cooldownByAbilityLevel": [
+        14
+      ],
+      "components": [
+        {
+          "id": "Refraction:debuff_reference:shield_per_instance",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "shield_per_instance",
+          "valuesByAbilityLevel": [
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meld",
+      "displayName": "隐匿（Meld）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        35,
+        40,
+        45,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        11,
+        9,
+        7,
+        5
+      ],
+      "components": [
+        {
+          "id": "Meld:debuff_reference:bonus_armor",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_armor",
+          "valuesByAbilityLevel": [
+            -2,
+            -4,
+            -6,
+            -8
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Psionic Projection",
+      "displayName": "灵能投射（Psionic Projection）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        10
+      ],
+      "components": [
+        {
+          "id": "Psionic Projection:debuff_reference:extra_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "extra_damage",
+          "valuesByAbilityLevel": [
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Psionic Trap",
+      "displayName": "灵能陷阱（Psionic Trap）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        15
+      ],
+      "cooldownByAbilityLevel": [
+        11,
+        8,
+        5
+      ],
+      "components": [
+        {
+          "id": "Psionic Trap:debuff_reference:extra_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "extra_damage",
+          "valuesByAbilityLevel": [
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

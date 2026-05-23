@@ -1,0 +1,336 @@
+{
+  "hero": "Chen",
+  "displayName": "陈（Chen）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 650,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1100,
+    "moveSpeed": 305,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 39,
+    "baseStrength": 23,
+    "baseAgility": 15,
+    "baseIntelligence": 19,
+    "strengthGain": 2,
+    "agilityGain": 2.1,
+    "intelligenceGain": 3.2,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 15,
+        "intelligence": 19,
+        "maxHealth": 626,
+        "maxMana": 303,
+        "armor": 1.5,
+        "attackMin": 48,
+        "attackMax": 58
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27,
+          "agility": 19.2,
+          "intelligence": 25.4,
+          "maxHealth": 714,
+          "maxMana": 380,
+          "armor": 2.2,
+          "attackMin": 54,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 31,
+          "agility": 23.4,
+          "intelligence": 31.8,
+          "maxHealth": 802,
+          "maxMana": 457,
+          "armor": 2.9,
+          "attackMin": 61,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 25.5,
+          "intelligence": 35,
+          "maxHealth": 846,
+          "maxMana": 495,
+          "armor": 3.25,
+          "attackMin": 64,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35,
+          "agility": 27.6,
+          "intelligence": 38.2,
+          "maxHealth": 890,
+          "maxMana": 533,
+          "armor": 3.6,
+          "attackMin": 67,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 45,
+          "agility": 38.1,
+          "intelligence": 54.2,
+          "maxHealth": 1110,
+          "maxMana": 725,
+          "armor": 5.35,
+          "attackMin": 83,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 57,
+          "agility": 50.7,
+          "intelligence": 73.4,
+          "maxHealth": 1374,
+          "maxMana": 956,
+          "armor": 7.45,
+          "attackMin": 102,
+          "attackMax": 112
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Penitence",
+      "displayName": "赎罪（Penitence）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        17,
+        14,
+        11
+      ],
+      "components": [
+        {
+          "id": "Penitence:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            50,
+            75,
+            100,
+            125
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Holy Persuasion",
+      "displayName": "神圣劝化（Holy Persuasion）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        110,
+        130,
+        150,
+        170
+      ],
+      "cooldownByAbilityLevel": [
+        15
+      ],
+      "components": [
+        {
+          "id": "Holy Persuasion:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Divine Favor",
+      "displayName": "神力恩泽（Divine Favor）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Divine Favor:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hand of God",
+      "displayName": "上帝之手（Hand of God）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        200,
+        300,
+        400
+      ],
+      "cooldownByAbilityLevel": [
+        150,
+        130,
+        110
+      ],
+      "components": [
+        {
+          "id": "Hand of God:debuff_reference:heal_amount",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "heal_amount",
+          "valuesByAbilityLevel": [
+            200,
+            300,
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "sustain",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

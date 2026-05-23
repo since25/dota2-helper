@@ -1,0 +1,405 @@
+{
+  "hero": "Lina",
+  "displayName": "莉娜（Lina）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 670,
+    "attackRate": 1.6,
+    "attackPoint": 0.65,
+    "projectileSpeed": 1000,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 21,
+    "baseAttackMax": 29,
+    "baseStrength": 20,
+    "baseAgility": 23,
+    "baseIntelligence": 30,
+    "strengthGain": 2.4,
+    "agilityGain": 2.4,
+    "intelligenceGain": 4,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 23,
+        "intelligence": 30,
+        "maxHealth": 560,
+        "maxMana": 435,
+        "armor": 3.83,
+        "attackMin": 51,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.8,
+          "agility": 27.8,
+          "intelligence": 38,
+          "maxHealth": 666,
+          "maxMana": 531,
+          "armor": 4.63,
+          "attackMin": 59,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.6,
+          "agility": 32.6,
+          "intelligence": 46,
+          "maxHealth": 771,
+          "maxMana": 627,
+          "armor": 5.43,
+          "attackMin": 67,
+          "attackMax": 75
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32,
+          "agility": 35,
+          "intelligence": 50,
+          "maxHealth": 824,
+          "maxMana": 675,
+          "armor": 5.83,
+          "attackMin": 71,
+          "attackMax": 79
+        },
+        "level7": {
+          "level": 7,
+          "strength": 34.4,
+          "agility": 37.4,
+          "intelligence": 54,
+          "maxHealth": 877,
+          "maxMana": 723,
+          "armor": 6.23,
+          "attackMin": 75,
+          "attackMax": 83
+        },
+        "level12": {
+          "level": 12,
+          "strength": 46.4,
+          "agility": 49.4,
+          "intelligence": 74,
+          "maxHealth": 1141,
+          "maxMana": 963,
+          "armor": 8.23,
+          "attackMin": 95,
+          "attackMax": 103
+        },
+        "level18": {
+          "level": 18,
+          "strength": 60.8,
+          "agility": 63.8,
+          "intelligence": 98,
+          "maxHealth": 1458,
+          "maxMana": 1251,
+          "armor": 10.63,
+          "attackMin": 119,
+          "attackMax": 127
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Dragon Slave",
+      "displayName": "龙破斩（Dragon Slave）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        11,
+        10,
+        9,
+        8
+      ],
+      "components": [
+        {
+          "id": "Dragon Slave:instant_fixed:dragon_slave_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dragon_slave_damage",
+          "valuesByAbilityLevel": [
+            65,
+            125,
+            185,
+            245
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Light Strike Array",
+      "displayName": "光击阵（Light Strike Array）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        11,
+        9,
+        7
+      ],
+      "components": [
+        {
+          "id": "Light Strike Array:instant_fixed:light_strike_array_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "light_strike_array_damage",
+          "valuesByAbilityLevel": [
+            80,
+            120,
+            160,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Fiery Soul",
+      "displayName": "炽魂（Fiery Soul）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "攻速叠层影响后续普攻，不直接作为技能爆发伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Fiery Soul:debuff_reference:fiery_soul_attack_speed_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "fiery_soul_attack_speed_bonus",
+          "valuesByAbilityLevel": [
+            8,
+            16,
+            24,
+            32
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "攻速叠层影响后续普攻，不直接作为技能爆发伤害。",
+          "caveats": [
+            "攻速叠层影响后续普攻，不直接作为技能爆发伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flame Cloak",
+      "displayName": "腾焰斗篷（Flame Cloak）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "法术增强会放大后续技能，当前总量不自动串联增伤。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        25
+      ],
+      "components": [
+        {
+          "id": "Flame Cloak:debuff_reference:spell_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "spell_amp",
+          "valuesByAbilityLevel": [
+            35
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "spell_amplification_pct",
+            "affects": "spell_amplification",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "法术增强会放大后续技能，当前总量不自动串联增伤。",
+          "caveats": [
+            "法术增强会放大后续技能，当前总量不自动串联增伤。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Slow Burn",
+      "displayName": "慢热（Slow Burn）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "unsupported",
+      "model": "state_scaling",
+      "reason": "该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Slow Burn:state_scaling:burn_damage_pct",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "burn_damage_pct",
+          "valuesByAbilityLevel": [
+            64
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "unsupported",
+          "model": "state_scaling",
+          "reason": "该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。",
+          "caveats": [
+            "该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laguna Blade",
+      "displayName": "神灭斩（Laguna Blade）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        300,
+        450
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        60,
+        50
+      ],
+      "components": [
+        {
+          "id": "Laguna Blade:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            380,
+            565,
+            750
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

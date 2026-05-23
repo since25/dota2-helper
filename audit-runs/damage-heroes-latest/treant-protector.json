@@ -1,0 +1,438 @@
+{
+  "hero": "Treant Protector",
+  "displayName": "树精卫士（Treant Protector）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.9,
+    "attackPoint": 0.6,
+    "projectileSpeed": 900,
+    "moveSpeed": 280,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.25,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 60,
+    "baseAttackMax": 68,
+    "baseStrength": 25,
+    "baseAgility": 15,
+    "baseIntelligence": 20,
+    "strengthGain": 3.4,
+    "agilityGain": 1.8,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 15,
+        "intelligence": 20,
+        "maxHealth": 670,
+        "maxMana": 315,
+        "armor": 3.5,
+        "attackMin": 85,
+        "attackMax": 93
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 31.8,
+          "agility": 18.6,
+          "intelligence": 23.6,
+          "maxHealth": 820,
+          "maxMana": 358,
+          "armor": 4.1,
+          "attackMin": 92,
+          "attackMax": 100
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38.6,
+          "agility": 22.2,
+          "intelligence": 27.2,
+          "maxHealth": 969,
+          "maxMana": 401,
+          "armor": 4.7,
+          "attackMin": 99,
+          "attackMax": 107
+        },
+        "level6": {
+          "level": 6,
+          "strength": 42,
+          "agility": 24,
+          "intelligence": 29,
+          "maxHealth": 1044,
+          "maxMana": 423,
+          "armor": 5,
+          "attackMin": 102,
+          "attackMax": 110
+        },
+        "level7": {
+          "level": 7,
+          "strength": 45.4,
+          "agility": 25.8,
+          "intelligence": 30.8,
+          "maxHealth": 1119,
+          "maxMana": 445,
+          "armor": 5.3,
+          "attackMin": 105,
+          "attackMax": 113
+        },
+        "level12": {
+          "level": 12,
+          "strength": 62.4,
+          "agility": 34.8,
+          "intelligence": 39.8,
+          "maxHealth": 1493,
+          "maxMana": 553,
+          "armor": 6.8,
+          "attackMin": 122,
+          "attackMax": 130
+        },
+        "level18": {
+          "level": 18,
+          "strength": 82.8,
+          "agility": 45.6,
+          "intelligence": 50.6,
+          "maxHealth": 1942,
+          "maxMana": 682,
+          "armor": 8.6,
+          "attackMin": 143,
+          "attackMax": 151
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Nature's Grasp",
+      "displayName": "自然卷握（Nature's Grasp）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        19,
+        18,
+        17
+      ],
+      "components": [
+        {
+          "id": "Nature's Grasp:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            35,
+            50,
+            65,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            315,
+            500,
+            715,
+            960
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Leech Seed",
+      "displayName": "寄生种子（Leech Seed）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Leech Seed:instant_fixed:leech_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "leech_damage",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.9,
+              1.1,
+              1.3,
+              1.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Living Armor",
+      "displayName": "活体护甲（Living Armor）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        70,
+        75,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        21,
+        18,
+        15
+      ],
+      "components": [
+        {
+          "id": "Living Armor:instant_fixed:damage_block_base",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_block_base",
+          "valuesByAbilityLevel": [
+            60,
+            80,
+            100,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Eyes In The Forest",
+      "displayName": "丛林之眼（Eyes In The Forest）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        30
+      ],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Eyes In The Forest:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            350
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nature's Guise",
+      "displayName": "自然蔽护（Nature's Guise）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        36
+      ],
+      "components": [
+        {
+          "id": "Nature's Guise:debuff_reference:attack_damage_pct",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_damage_pct",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Overgrowth",
+      "displayName": "疯狂生长（Overgrowth）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        200,
+        250,
+        300
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        100,
+        90
+      ],
+      "components": [
+        {
+          "id": "Overgrowth:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            95
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            285,
+            380,
+            475
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              4,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

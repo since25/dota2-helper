@@ -1,0 +1,388 @@
+{
+  "hero": "Lycan",
+  "displayName": "狼人（Lycan）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.55,
+    "projectileSpeed": 900,
+    "moveSpeed": 305,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 29,
+    "baseStrength": 28,
+    "baseAgility": 18,
+    "baseIntelligence": 23,
+    "strengthGain": 3.4,
+    "agilityGain": 1.7,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 28,
+        "agility": 18,
+        "intelligence": 23,
+        "maxHealth": 736,
+        "maxMana": 351,
+        "armor": 3,
+        "attackMin": 52,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 34.8,
+          "agility": 21.4,
+          "intelligence": 26.4,
+          "maxHealth": 886,
+          "maxMana": 392,
+          "armor": 3.57,
+          "attackMin": 59,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 41.6,
+          "agility": 24.8,
+          "intelligence": 29.8,
+          "maxHealth": 1035,
+          "maxMana": 433,
+          "armor": 4.13,
+          "attackMin": 66,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 45,
+          "agility": 26.5,
+          "intelligence": 31.5,
+          "maxHealth": 1110,
+          "maxMana": 453,
+          "armor": 4.42,
+          "attackMin": 69,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 48.4,
+          "agility": 28.2,
+          "intelligence": 33.2,
+          "maxHealth": 1185,
+          "maxMana": 473,
+          "armor": 4.7,
+          "attackMin": 72,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 65.4,
+          "agility": 36.7,
+          "intelligence": 41.7,
+          "maxHealth": 1559,
+          "maxMana": 575,
+          "armor": 6.12,
+          "attackMin": 89,
+          "attackMax": 94
+        },
+        "level18": {
+          "level": 18,
+          "strength": 85.8,
+          "agility": 46.9,
+          "intelligence": 51.9,
+          "maxHealth": 2008,
+          "maxMana": 698,
+          "armor": 7.82,
+          "attackMin": 110,
+          "attackMax": 115
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Summon Wolves",
+      "displayName": "召狼（Summon Wolves）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        115,
+        120,
+        125,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ],
+      "components": [
+        {
+          "id": "Summon Wolves:instant_fixed:wolf_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "wolf_damage",
+          "valuesByAbilityLevel": [
+            22,
+            28,
+            34,
+            40,
+            46,
+            52
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              50,
+              50,
+              50,
+              50,
+              50,
+              50
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Howl",
+      "displayName": "嗥叫（Howl）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        20,
+        18,
+        16
+      ],
+      "components": [
+        {
+          "id": "Howl:debuff_reference:armor",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "armor",
+          "valuesByAbilityLevel": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wolf Bite",
+      "displayName": "饿狼撕咬（Wolf Bite）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        100,
+        90
+      ],
+      "components": [
+        {
+          "id": "Wolf Bite:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Apex Predator",
+      "displayName": "顶级掠食者（Apex Predator）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Apex Predator:debuff_reference:damage_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_amp",
+          "valuesByAbilityLevel": [
+            18
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shapeshift",
+      "displayName": "变身（Shapeshift）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        100,
+        90
+      ],
+      "components": [
+        {
+          "id": "Shapeshift:debuff_reference:crit_chance",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "crit_chance",
+          "valuesByAbilityLevel": [
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

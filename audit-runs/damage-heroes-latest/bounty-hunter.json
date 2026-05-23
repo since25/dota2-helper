@@ -1,0 +1,392 @@
+{
+  "hero": "Bounty Hunter",
+  "displayName": "赏金猎人（Bounty Hunter）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.5,
+    "attackPoint": 0.59,
+    "projectileSpeed": 900,
+    "moveSpeed": 325,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.75,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 5,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 33,
+    "baseAttackMax": 41,
+    "baseStrength": 19,
+    "baseAgility": 21,
+    "baseIntelligence": 20,
+    "strengthGain": 2.5,
+    "agilityGain": 2.6,
+    "intelligenceGain": 1.9,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 21,
+        "intelligence": 20,
+        "maxHealth": 538,
+        "maxMana": 315,
+        "armor": 8.5,
+        "attackMin": 54,
+        "attackMax": 62
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24,
+          "agility": 26.2,
+          "intelligence": 23.8,
+          "maxHealth": 648,
+          "maxMana": 361,
+          "armor": 9.37,
+          "attackMin": 59,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29,
+          "agility": 31.4,
+          "intelligence": 27.6,
+          "maxHealth": 758,
+          "maxMana": 406,
+          "armor": 10.23,
+          "attackMin": 64,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31.5,
+          "agility": 34,
+          "intelligence": 29.5,
+          "maxHealth": 813,
+          "maxMana": 429,
+          "armor": 10.67,
+          "attackMin": 67,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 34,
+          "agility": 36.6,
+          "intelligence": 31.4,
+          "maxHealth": 868,
+          "maxMana": 452,
+          "armor": 11.1,
+          "attackMin": 70,
+          "attackMax": 78
+        },
+        "level12": {
+          "level": 12,
+          "strength": 46.5,
+          "agility": 49.6,
+          "intelligence": 40.9,
+          "maxHealth": 1143,
+          "maxMana": 566,
+          "armor": 13.27,
+          "attackMin": 83,
+          "attackMax": 91
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.5,
+          "agility": 65.2,
+          "intelligence": 52.3,
+          "maxHealth": 1473,
+          "maxMana": 703,
+          "armor": 15.87,
+          "attackMin": 98,
+          "attackMax": 106
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Shuriken Toss",
+      "displayName": "投掷飞镖（Shuriken Toss）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75,
+        80,
+        85,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "components": [
+        {
+          "id": "Shuriken Toss:debuff_reference:cast_range",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range",
+          "valuesByAbilityLevel": [
+            375,
+            425,
+            475,
+            525
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jinada",
+      "displayName": "忍术（Jinada）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        9,
+        7,
+        5,
+        3
+      ],
+      "components": [
+        {
+          "id": "Jinada:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadow Walk",
+      "displayName": "暗影步（Shadow Walk）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        17,
+        16,
+        15
+      ],
+      "components": [
+        {
+          "id": "Shadow Walk:debuff_reference:stun_duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "stun_duration",
+          "valuesByAbilityLevel": [
+            1,
+            1.2,
+            1.4,
+            1.6
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "disable_window",
+            "affects": "disable_window",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Friendly Shadow",
+      "displayName": "暗影情谊（Friendly Shadow）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        15
+      ],
+      "components": [
+        {
+          "id": "Friendly Shadow:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            650
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Track",
+      "displayName": "追踪术（Track）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        60,
+        60
+      ],
+      "cooldownByAbilityLevel": [
+        6,
+        5,
+        4
+      ],
+      "components": [
+        {
+          "id": "Track:debuff_reference:target_damage_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "target_damage_amp",
+          "valuesByAbilityLevel": [
+            8,
+            12,
+            16
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

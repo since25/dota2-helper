@@ -1,0 +1,380 @@
+{
+  "hero": "Anti-Mage",
+  "displayName": "敌法师（Anti-Mage）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.4,
+    "attackPoint": 0.3,
+    "projectileSpeed": 0,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 33,
+    "baseStrength": 21,
+    "baseAgility": 24,
+    "baseIntelligence": 12,
+    "strengthGain": 1.6,
+    "agilityGain": 2.8,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 24,
+        "intelligence": 12,
+        "maxHealth": 582,
+        "maxMana": 219,
+        "armor": 6,
+        "attackMin": 53,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.2,
+          "agility": 29.6,
+          "intelligence": 15.6,
+          "maxHealth": 652,
+          "maxMana": 262,
+          "armor": 6.93,
+          "attackMin": 59,
+          "attackMax": 63
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27.4,
+          "agility": 35.2,
+          "intelligence": 19.2,
+          "maxHealth": 723,
+          "maxMana": 305,
+          "armor": 7.87,
+          "attackMin": 64,
+          "attackMax": 68
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29,
+          "agility": 38,
+          "intelligence": 21,
+          "maxHealth": 758,
+          "maxMana": 327,
+          "armor": 8.33,
+          "attackMin": 67,
+          "attackMax": 71
+        },
+        "level7": {
+          "level": 7,
+          "strength": 30.6,
+          "agility": 40.8,
+          "intelligence": 22.8,
+          "maxHealth": 793,
+          "maxMana": 349,
+          "armor": 8.8,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level12": {
+          "level": 12,
+          "strength": 38.6,
+          "agility": 54.8,
+          "intelligence": 31.8,
+          "maxHealth": 969,
+          "maxMana": 457,
+          "armor": 11.13,
+          "attackMin": 84,
+          "attackMax": 88
+        },
+        "level18": {
+          "level": 18,
+          "strength": 48.2,
+          "agility": 71.6,
+          "intelligence": 42.6,
+          "maxHealth": 1180,
+          "maxMana": 586,
+          "armor": 13.93,
+          "attackMin": 101,
+          "attackMax": 105
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Mana Break",
+      "displayName": "法力损毁（Mana Break）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Mana Break:state_scaling:percent_damage_per_burn",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "percent_damage_per_burn",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_current_mana",
+              "attack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "caveats": [
+            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blink",
+      "displayName": "闪烁（Blink）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        65,
+        60,
+        55,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        10.5,
+        9,
+        7.5,
+        6
+      ],
+      "components": [
+        {
+          "id": "Blink:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            875,
+            950,
+            1025,
+            1100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Counterspell",
+      "displayName": "法术反制（Counterspell）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        11,
+        7,
+        3
+      ],
+      "components": [
+        {
+          "id": "Counterspell:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Persecutor",
+      "displayName": "绝人之路（Persecutor）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Persecutor:debuff_reference:move_slow_min",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "move_slow_min",
+          "valuesByAbilityLevel": [
+            12
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mana Void",
+      "displayName": "法力虚空（Mana Void）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        85,
+        70
+      ],
+      "components": [
+        {
+          "id": "Mana Void:state_scaling:mana_void_damage_per_mana",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "mana_void_damage_per_mana",
+          "valuesByAbilityLevel": [
+            1
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_missing_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

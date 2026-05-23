@@ -7,6 +7,7 @@ const {
   localizeTerm
 } = require('./dotaLocalization');
 const { buildHeroPowerSpikes } = require('./powerSpikeContext');
+const { localizeAbilityName } = require('./abilityLocalization');
 const fs = require('fs');
 const path = require('path');
 
@@ -106,7 +107,7 @@ function findHeroRecord(heroes, heroName) {
   return Object.values(heroes).find((hero) => hero.localized_name === heroName);
 }
 
-function buildAbilitySummary(ability, slotIndex = 0) {
+async function buildAbilitySummary(ability, slotIndex = 0) {
   const attributes = (ability.attrib || [])
     .filter((attr) => attr.header || attr.key)
     .map((attr) => ({
@@ -115,11 +116,16 @@ function buildAbilitySummary(ability, slotIndex = 0) {
       value: formatValue(attr.value)
     }));
 
+  const name = ability.dname || ability.name;
+
   return {
-    name: ability.dname || ability.name,
+    name,
+    internalName: ability.name,
+    displayName: await localizeAbilityName(name, true),
     description: ability.desc || '',
     behavior: ability.behavior || '',
     damageType: ability.dmg_type || '',
+    damage: ability.dmg,
     isUltimate: Boolean(ability.ultimate) || slotIndex >= 5,
     attributes,
     rawAttributes: ability.attrib || [],
@@ -224,7 +230,7 @@ async function getHeroDetails(heroName) {
     name: hero.localized_name,
     internalName: hero.name,
     stats: buildHeroStats(hero),
-    abilities: abilitySummaries,
+    abilities: await Promise.all(abilitySummaries),
     facets
   };
 }
@@ -427,7 +433,7 @@ function formatAbilityForPrompt(ability) {
     ability.behavior ? `施法方式: ${localizeBehavior(ability.behavior)}` : ''
   ].filter(Boolean).join(', ');
 
-  return `- ${localizeTerm(ability.name, true)}${tags ? ` (${tags})` : ''}: ${resourceData} ${ability.description}${attrs}`;
+  return `- ${ability.displayName || localizeTerm(ability.name, true)}${tags ? ` (${tags})` : ''}: ${resourceData} ${ability.description}${attrs}`;
 }
 
 function formatItemForPrompt(item) {
@@ -478,16 +484,99 @@ function formatHeroStatsForPrompt(stats) {
   ].filter((part) => !/undefined|null/.test(part)).join('\n');
 }
 
+function formatDamageModelStatus(skill) {
+  const sourceLabels = {
+    curated: '人工模型',
+    inferred: '自动推断'
+  };
+  const statusLabels = {
+    implemented: '可计算',
+    reference_only: '仅参考',
+    unsupported: '暂不支持',
+    inferred: '自动推断'
+  };
+  const source = sourceLabels[skill.modelSource] || skill.modelSource || '来源未知';
+  const status = statusLabels[skill.status] || skill.status || '状态未知';
+  const model = skill.model || skill.kind || skill.damageKind || '模型未知';
+
+  return `模型: ${source}/${status}/${model}`;
+}
+
+function formatModifierTypeLabel(modifierType) {
+  const labels = {
+    armor_reduction: '护甲变化',
+    attack_damage_pct: '攻击力加成',
+    attack_damage: '攻击力变化',
+    attack_speed: '攻击速度变化',
+    disable_window: '控制窗口',
+    move_speed_pct: '移动速度加成',
+    positioning: '走位修正',
+    positioning_range: '位移/施法距离',
+    spell_amplification_pct: '法术增强',
+    survivability: '生存修正'
+  };
+  return labels[modifierType] || modifierType || '数值修正';
+}
+
+function formatModifierAffects(affects) {
+  const labels = {
+    attack_damage: '攻击力',
+    attack_speed: '攻击速度',
+    disable_window: '控制窗口',
+    mana_pressure: '魔法压力',
+    physical_damage: '物理伤害',
+    positioning: '走位/进场',
+    spell_amplification: '法术增强',
+    summon_attack_damage: '召唤物攻击',
+    survivability: '生存能力',
+    sustain: '续航'
+  };
+  return labels[affects] || affects || '未标注';
+}
+
+function formatModifierValue(modifier) {
+  const unit = modifier.semantic?.unit || '';
+  const suffix = unit === 'percent' || String(modifier.modifierType || '').endsWith('_pct') ? '%' : '';
+  return `${modifier.value}${suffix}`;
+}
+
+function formatModifierRefForPrompt(modifier) {
+  const semanticLabel = modifier.semantic?.label || formatModifierTypeLabel(modifier.modifierType);
+  return `${modifier.displayName || localizeTerm(modifier.name, true)} ${modifier.abilityLevel}级：${semanticLabel} ${formatModifierValue(modifier)}（${formatDamageModelStatus(modifier)}；影响: ${formatModifierAffects(modifier.affects)}；${(modifier.caveats || []).join(' ')}）`;
+}
+
 function formatSpikeForPrompt(spike) {
-  const types = Object.entries(spike.damageByType)
+  const fixed = spike.fixedInstantDamage || {
+    raw: spike.rawDamage,
+    byType: spike.damageByType,
+    afterDefaultResistance: spike.estimatedAfterDefaultResistance,
+    skills: spike.skills || []
+  };
+  const refs = spike.situationalDamageRefs || spike.situationalSkills || [];
+  const modifierRefs = spike.modifierRefs || [];
+  const types = Object.entries(fixed.byType || {})
     .map(([type, value]) => `${localizeDamageType(type)}: ${value}`)
     .join(', ') || '无固定伤害';
-  const skills = spike.skills
-    .map((skill) => `${localizeTerm(skill.name, true)} ${skill.abilityLevel}级 ${skill.damage}${skill.damageType ? ` ${localizeDamageType(skill.damageType)}` : ''}`)
+  const skills = fixed.skills
+    .map((skill) => `${skill.displayName || localizeTerm(skill.name, true)} ${skill.abilityLevel}级 ${skill.damage}${skill.damageType ? ` ${localizeDamageType(skill.damageType)}` : ''}（${formatDamageModelStatus(skill)}）`)
+    .join('; ');
+  const theoreticalRefs = refs
+    .filter((skill) => skill.theoreticalTotal && ['sustained', 'multi_wave'].includes(skill.kind || skill.damageKind))
+    .map((skill) => `${skill.displayName || localizeTerm(skill.name, true)} ${skill.abilityLevel}级：理论总伤害 ${skill.theoreticalTotal}（${skill.totalFormula}，基础值 ${skill.damage}${skill.damageType ? ` ${localizeDamageType(skill.damageType)}` : ''}，${formatDamageModelStatus(skill)}）`)
+    .join('; ');
+  const otherRefs = refs
+    .filter((skill) => !skill.theoreticalTotal || !['sustained', 'multi_wave'].includes(skill.kind || skill.damageKind))
+    .map((skill) => `${skill.displayName || localizeTerm(skill.name, true)} ${skill.abilityLevel}级 ${skill.damage}${skill.damageType ? ` ${localizeDamageType(skill.damageType)}` : ''}（${formatDamageModelStatus(skill)}；${(skill.caveats || []).join(' ')}）`)
+    .join('; ');
+  const modifierText = modifierRefs
+    .map(formatModifierRefForPrompt)
     .join('; ');
   const caveats = spike.caveats.length ? ` Caveat: ${spike.caveats.join(' ')}` : '';
+  const theoreticalLine = theoreticalRefs ? ` 理论持续/多波总伤害，不计入固定瞬时伤害: ${theoreticalRefs}。` : '';
+  const situationalLine = otherRefs ? ` 条件/普攻/成长伤害参考，不计入固定瞬时爆发: ${otherRefs}。` : '';
+  const modifierLine = modifierText ? ` 数值修正参考: ${modifierText}。` : '';
 
-  return `- ${spike.level}级: 原始固定伤害 ${spike.rawDamage}（${types}），默认25%魔抗估算 ${spike.estimatedAfterDefaultResistance}，总蓝耗 ${spike.manaCost}，冷却门槛 ${spike.cooldownGate}s。技能: ${skills || '无可计算固定伤害'}。${caveats}`;
+  return `- ${spike.level}级: 固定瞬时伤害 ${fixed.raw}（${types}），默认25%魔抗估算 ${fixed.afterDefaultResistance}，总蓝耗 ${spike.manaCost}，冷却门槛 ${spike.cooldownGate}s。计入技能: ${skills || '无可计算固定瞬时伤害'}。${theoreticalLine}${situationalLine}${modifierLine}${caveats}`;
 }
 
 function formatPowerSpikeEntryForPrompt(entry) {
@@ -563,7 +652,7 @@ ${roleItems}
 ${upgradeItems}
 
 关键等级爆发窗口:
-说明：以下为后端按本地技能属性字段中的固定伤害数值计算的技能爆发，并按英雄等级可合法投入的技能点预算选择当前等级可点出的最高固定伤害组合。默认25%魔抗估算只折减 Magical 伤害；Pure 不折减；Physical 暂不按护甲折减。带属性系数、持续伤害、叠层成长的技能会在 Caveat 中标记，不能当作完整斩杀线。
+说明：以下“固定瞬时伤害”只计入能直接命中的固定伤害技能。持续伤害、每秒/每跳/每波伤害、按目标状态变化的伤害、普攻触发伤害、死亡/叠层等条件触发伤害会列入“条件/持续伤害参考”，但不计入固定瞬时伤害和默认魔抗估算。默认25%魔抗估算只折减 Magical 伤害；Pure 不折减；Physical 暂不按护甲折减。
 
 玩家英雄:
 ${playerPowerSpikes}
@@ -587,7 +676,7 @@ ${enemyPowerSpikes}
 结合对线敌人技能和关键等级爆发窗口，说明出门装、换血方式、击杀窗口和要躲的关键技能。
 
 ### 关键等级爆发与斩杀线
-必须引用上方后端计算的爆发窗口，重点说明 3/5/6/7/12/18 级谁的强势期更危险。写清楚原始固定伤害、默认25%魔抗估算、关键技能、蓝耗压力和冷却门槛。遇到持续伤害、属性系数、叠层成长时，必须说明这些不是完整斩杀线。
+必须引用上方后端计算的爆发窗口，重点说明 3/5/6/7/12/18 级谁的强势期更危险。写清楚固定瞬时伤害、默认25%魔抗估算、计入技能、蓝耗压力和冷却门槛。遇到条件/持续伤害参考时，必须明确它们没有计入固定瞬时伤害，不能把它们说成完整斩杀线。
 
 ### 中期 10-25 分钟
 说明核心装备时机、刷钱/参战选择、团战站位和第一波关键节奏。

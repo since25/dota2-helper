@@ -1,0 +1,413 @@
+{
+  "hero": "Batrider",
+  "displayName": "蝙蝠骑士（Batrider）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 400,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 320,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 1.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 12,
+    "baseAttackMax": 16,
+    "baseStrength": 23,
+    "baseAgility": 13,
+    "baseIntelligence": 22,
+    "strengthGain": 2.9,
+    "agilityGain": 2,
+    "intelligenceGain": 2.9,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 13,
+        "intelligence": 22,
+        "maxHealth": 626,
+        "maxMana": 339,
+        "armor": 4.17,
+        "attackMin": 53,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 28.8,
+          "agility": 17,
+          "intelligence": 27.8,
+          "maxHealth": 754,
+          "maxMana": 409,
+          "armor": 4.83,
+          "attackMin": 64,
+          "attackMax": 68
+        },
+        "level5": {
+          "level": 5,
+          "strength": 34.6,
+          "agility": 21,
+          "intelligence": 33.6,
+          "maxHealth": 881,
+          "maxMana": 478,
+          "armor": 5.5,
+          "attackMin": 74,
+          "attackMax": 78
+        },
+        "level6": {
+          "level": 6,
+          "strength": 37.5,
+          "agility": 23,
+          "intelligence": 36.5,
+          "maxHealth": 945,
+          "maxMana": 513,
+          "armor": 5.83,
+          "attackMin": 80,
+          "attackMax": 84
+        },
+        "level7": {
+          "level": 7,
+          "strength": 40.4,
+          "agility": 25,
+          "intelligence": 39.4,
+          "maxHealth": 1009,
+          "maxMana": 548,
+          "armor": 6.17,
+          "attackMin": 85,
+          "attackMax": 89
+        },
+        "level12": {
+          "level": 12,
+          "strength": 54.9,
+          "agility": 35,
+          "intelligence": 53.9,
+          "maxHealth": 1328,
+          "maxMana": 722,
+          "armor": 7.83,
+          "attackMin": 113,
+          "attackMax": 117
+        },
+        "level18": {
+          "level": 18,
+          "strength": 72.3,
+          "agility": 47,
+          "intelligence": 71.3,
+          "maxHealth": 1711,
+          "maxMana": 931,
+          "armor": 9.83,
+          "attackMin": 145,
+          "attackMax": 149
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Sticky Napalm",
+      "displayName": "粘性燃油（Sticky Napalm）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        22,
+        22,
+        22,
+        22
+      ],
+      "cooldownByAbilityLevel": [
+        3,
+        3,
+        3,
+        3
+      ],
+      "components": [
+        {
+          "id": "Sticky Napalm:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            2.5,
+            5,
+            7.5,
+            10
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flamebreak",
+      "displayName": "烈焰破击（Flamebreak）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        110,
+        110,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        19,
+        16,
+        13
+      ],
+      "components": [
+        {
+          "id": "Flamebreak:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            25,
+            30,
+            35,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            50,
+            90,
+            140,
+            200
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Firefly",
+      "displayName": "火焰飞行（Firefly）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        45,
+        40,
+        35,
+        30
+      ],
+      "components": [
+        {
+          "id": "Firefly:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            375,
+            750,
+            1125,
+            1500
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              15,
+              15,
+              15,
+              15
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Smoldering Resin",
+      "displayName": "闷烧树脂（Smoldering Resin）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Smoldering Resin:debuff_reference:tick_attack_damage_pct",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "tick_attack_damage_pct",
+          "valuesByAbilityLevel": [
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flaming Lasso",
+      "displayName": "燃烧枷锁（Flaming Lasso）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        150,
+        175
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        75,
+        60
+      ],
+      "components": [
+        {
+          "id": "Flaming Lasso:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200,
+            350,
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.25,
+              2.75,
+              3.25
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

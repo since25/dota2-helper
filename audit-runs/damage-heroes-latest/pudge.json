@@ -1,0 +1,327 @@
+{
+  "hero": "Pudge",
+  "displayName": "帕吉（Pudge）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 175,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 0,
+    "moveSpeed": 280,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 2.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 45,
+    "baseAttackMax": 51,
+    "baseStrength": 25,
+    "baseAgility": 11,
+    "baseIntelligence": 16,
+    "strengthGain": 3,
+    "agilityGain": 1.4,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 11,
+        "intelligence": 16,
+        "maxHealth": 670,
+        "maxMana": 267,
+        "armor": 1.83,
+        "attackMin": 70,
+        "attackMax": 76
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 31,
+          "agility": 13.8,
+          "intelligence": 19.6,
+          "maxHealth": 802,
+          "maxMana": 310,
+          "armor": 2.3,
+          "attackMin": 76,
+          "attackMax": 82
+        },
+        "level5": {
+          "level": 5,
+          "strength": 37,
+          "agility": 16.6,
+          "intelligence": 23.2,
+          "maxHealth": 934,
+          "maxMana": 353,
+          "armor": 2.77,
+          "attackMin": 82,
+          "attackMax": 88
+        },
+        "level6": {
+          "level": 6,
+          "strength": 40,
+          "agility": 18,
+          "intelligence": 25,
+          "maxHealth": 1000,
+          "maxMana": 375,
+          "armor": 3,
+          "attackMin": 85,
+          "attackMax": 91
+        },
+        "level7": {
+          "level": 7,
+          "strength": 43,
+          "agility": 19.4,
+          "intelligence": 26.8,
+          "maxHealth": 1066,
+          "maxMana": 397,
+          "armor": 3.23,
+          "attackMin": 88,
+          "attackMax": 94
+        },
+        "level12": {
+          "level": 12,
+          "strength": 58,
+          "agility": 26.4,
+          "intelligence": 35.8,
+          "maxHealth": 1396,
+          "maxMana": 505,
+          "armor": 4.4,
+          "attackMin": 103,
+          "attackMax": 109
+        },
+        "level18": {
+          "level": 18,
+          "strength": 76,
+          "agility": 34.8,
+          "intelligence": 46.6,
+          "maxHealth": 1792,
+          "maxMana": 634,
+          "armor": 5.8,
+          "attackMin": 121,
+          "attackMax": 127
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Meat Hook",
+      "displayName": "肉钩（Meat Hook）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        120,
+        120,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Meat Hook:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            150,
+            220,
+            290,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Rot",
+      "displayName": "腐烂（Rot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Rot:instant_fixed:rot_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "rot_damage",
+          "valuesByAbilityLevel": [
+            30,
+            60,
+            90,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Meat Shield",
+      "displayName": "肉盾（Meat Shield）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        70,
+        75,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        19,
+        18,
+        17
+      ],
+      "components": [
+        {
+          "id": "Meat Shield:instant_fixed:damage_block",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_block",
+          "valuesByAbilityLevel": [
+            8,
+            14,
+            20,
+            26
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Dismember",
+      "displayName": "肢解（Dismember）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        130,
+        170
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        25,
+        20
+      ],
+      "components": [
+        {
+          "id": "Dismember:sustained:dismember_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dismember_damage",
+          "valuesByAbilityLevel": [
+            80,
+            100,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            220,
+            275,
+            330
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.75,
+              2.75,
+              2.75
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

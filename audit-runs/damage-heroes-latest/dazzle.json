@@ -1,0 +1,340 @@
+{
+  "hero": "Dazzle",
+  "displayName": "戴泽（Dazzle）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 575,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1200,
+    "moveSpeed": 305,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.3,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 19,
+    "baseAttackMax": 25,
+    "baseStrength": 19,
+    "baseAgility": 20,
+    "baseIntelligence": 25,
+    "strengthGain": 2.3,
+    "agilityGain": 1.7,
+    "intelligenceGain": 3.5,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 20,
+        "intelligence": 25,
+        "maxHealth": 538,
+        "maxMana": 375,
+        "armor": 3.33,
+        "attackMin": 64,
+        "attackMax": 70
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23.6,
+          "agility": 23.4,
+          "intelligence": 32,
+          "maxHealth": 639,
+          "maxMana": 459,
+          "armor": 3.9,
+          "attackMin": 74,
+          "attackMax": 80
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28.2,
+          "agility": 26.8,
+          "intelligence": 39,
+          "maxHealth": 740,
+          "maxMana": 543,
+          "armor": 4.47,
+          "attackMin": 85,
+          "attackMax": 91
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30.5,
+          "agility": 28.5,
+          "intelligence": 42.5,
+          "maxHealth": 791,
+          "maxMana": 585,
+          "armor": 4.75,
+          "attackMin": 90,
+          "attackMax": 96
+        },
+        "level7": {
+          "level": 7,
+          "strength": 32.8,
+          "agility": 30.2,
+          "intelligence": 46,
+          "maxHealth": 842,
+          "maxMana": 627,
+          "armor": 5.03,
+          "attackMin": 95,
+          "attackMax": 101
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.3,
+          "agility": 38.7,
+          "intelligence": 63.5,
+          "maxHealth": 1095,
+          "maxMana": 837,
+          "armor": 6.45,
+          "attackMin": 122,
+          "attackMax": 128
+        },
+        "level18": {
+          "level": 18,
+          "strength": 58.1,
+          "agility": 48.9,
+          "intelligence": 84.5,
+          "maxHealth": 1398,
+          "maxMana": 1089,
+          "armor": 8.15,
+          "attackMin": 153,
+          "attackMax": 159
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Poison Touch",
+      "displayName": "剧毒之触（Poison Touch）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        130,
+        135,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        21,
+        18,
+        15
+      ],
+      "components": [
+        {
+          "id": "Poison Touch:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            16,
+            28,
+            40,
+            52
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            56,
+            140,
+            260,
+            416
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3.5,
+              5,
+              6.5,
+              8
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shallow Grave",
+      "displayName": "薄葬（Shallow Grave）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90,
+        100,
+        110,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        26,
+        22,
+        18
+      ],
+      "components": [
+        {
+          "id": "Shallow Grave:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadow Wave",
+      "displayName": "暗影波（Shadow Wave）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        10,
+        9,
+        8,
+        7
+      ],
+      "components": [
+        {
+          "id": "Shadow Wave:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            85,
+            105,
+            125,
+            145
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Nothl Projection",
+      "displayName": "虚无投影（Nothl Projection）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        60,
+        50
+      ],
+      "components": [
+        {
+          "id": "Nothl Projection:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            450
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

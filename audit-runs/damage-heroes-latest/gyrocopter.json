@@ -1,0 +1,289 @@
+{
+  "hero": "Gyrocopter",
+  "displayName": "矮人直升机（Gyrocopter）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 365,
+    "attackRate": 1.7,
+    "attackPoint": 0.2,
+    "projectileSpeed": 3000,
+    "moveSpeed": 315,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 18,
+    "baseAttackMax": 24,
+    "baseStrength": 22,
+    "baseAgility": 25,
+    "baseIntelligence": 21,
+    "strengthGain": 2.5,
+    "agilityGain": 3.4,
+    "intelligenceGain": 2.4,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 25,
+        "intelligence": 21,
+        "maxHealth": 604,
+        "maxMana": 327,
+        "armor": 5.17,
+        "attackMin": 43,
+        "attackMax": 49
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27,
+          "agility": 31.8,
+          "intelligence": 25.8,
+          "maxHealth": 714,
+          "maxMana": 385,
+          "armor": 6.3,
+          "attackMin": 50,
+          "attackMax": 56
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32,
+          "agility": 38.6,
+          "intelligence": 30.6,
+          "maxHealth": 824,
+          "maxMana": 442,
+          "armor": 7.43,
+          "attackMin": 57,
+          "attackMax": 63
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34.5,
+          "agility": 42,
+          "intelligence": 33,
+          "maxHealth": 879,
+          "maxMana": 471,
+          "armor": 8,
+          "attackMin": 60,
+          "attackMax": 66
+        },
+        "level7": {
+          "level": 7,
+          "strength": 37,
+          "agility": 45.4,
+          "intelligence": 35.4,
+          "maxHealth": 934,
+          "maxMana": 500,
+          "armor": 8.57,
+          "attackMin": 63,
+          "attackMax": 69
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.5,
+          "agility": 62.4,
+          "intelligence": 47.4,
+          "maxHealth": 1209,
+          "maxMana": 644,
+          "armor": 11.4,
+          "attackMin": 80,
+          "attackMax": 86
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.5,
+          "agility": 82.8,
+          "intelligence": 61.8,
+          "maxHealth": 1539,
+          "maxMana": 817,
+          "armor": 14.8,
+          "attackMin": 101,
+          "attackMax": 107
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Rocket Barrage",
+      "displayName": "火箭弹幕（Rocket Barrage）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        85,
+        85,
+        85,
+        85
+      ],
+      "cooldownByAbilityLevel": [
+        7,
+        6.5,
+        6,
+        5.5
+      ],
+      "components": [
+        {
+          "id": "Rocket Barrage:instant_fixed:rocket_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "rocket_damage",
+          "valuesByAbilityLevel": [
+            8,
+            14,
+            20,
+            26
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Homing Missile",
+      "displayName": "追踪导弹（Homing Missile）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        24,
+        18,
+        12
+      ],
+      "components": [
+        {
+          "id": "Homing Missile:instant_fixed:hit_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "hit_damage",
+          "valuesByAbilityLevel": [
+            90,
+            180,
+            270,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.3,
+              1.7,
+              2.1,
+              2.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Call Down",
+      "displayName": "召唤飞弹（Call Down）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        75,
+        60
+      ],
+      "components": [
+        {
+          "id": "Call Down:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200,
+            350,
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,397 @@
+{
+  "hero": "Dark Willow",
+  "displayName": "邪影芳灵（Dark Willow）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 475,
+    "attackRate": 1.5,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1200,
+    "moveSpeed": 290,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.75,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 35,
+    "baseStrength": 20,
+    "baseAgility": 18,
+    "baseIntelligence": 21,
+    "strengthGain": 2,
+    "agilityGain": 1.6,
+    "intelligenceGain": 3.5,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 18,
+        "intelligence": 21,
+        "maxHealth": 560,
+        "maxMana": 327,
+        "armor": 3,
+        "attackMin": 48,
+        "attackMax": 56
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24,
+          "agility": 21.2,
+          "intelligence": 28,
+          "maxHealth": 648,
+          "maxMana": 411,
+          "armor": 3.53,
+          "attackMin": 55,
+          "attackMax": 63
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28,
+          "agility": 24.4,
+          "intelligence": 35,
+          "maxHealth": 736,
+          "maxMana": 495,
+          "armor": 4.07,
+          "attackMin": 62,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30,
+          "agility": 26,
+          "intelligence": 38.5,
+          "maxHealth": 780,
+          "maxMana": 537,
+          "armor": 4.33,
+          "attackMin": 66,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 32,
+          "agility": 27.6,
+          "intelligence": 42,
+          "maxHealth": 824,
+          "maxMana": 579,
+          "armor": 4.6,
+          "attackMin": 69,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 42,
+          "agility": 35.6,
+          "intelligence": 59.5,
+          "maxHealth": 1044,
+          "maxMana": 789,
+          "armor": 5.93,
+          "attackMin": 87,
+          "attackMax": 95
+        },
+        "level18": {
+          "level": 18,
+          "strength": 54,
+          "agility": 45.2,
+          "intelligence": 80.5,
+          "maxHealth": 1308,
+          "maxMana": 1041,
+          "armor": 7.53,
+          "attackMin": 108,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Bramble Maze",
+      "displayName": "荆棘迷宫（Bramble Maze）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        120,
+        140,
+        160
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        22,
+        22,
+        22
+      ],
+      "components": [
+        {
+          "id": "Bramble Maze:sustained:damage_per_tick",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_tick",
+          "valuesByAbilityLevel": [
+            50,
+            55,
+            60,
+            65
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            600,
+            660,
+            720,
+            780
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadow Realm",
+      "displayName": "暗影之境（Shadow Realm）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        19,
+        17,
+        15
+      ],
+      "components": [
+        {
+          "id": "Shadow Realm:sustained:max_damage_duration",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "max_damage_duration",
+          "valuesByAbilityLevel": [
+            3
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            15
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cursed Crown",
+      "displayName": "诅咒王冠（Cursed Crown）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Cursed Crown:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600,
+            625,
+            650,
+            675
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bedlam",
+      "displayName": "作祟（Bedlam）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        30,
+        30
+      ],
+      "components": [
+        {
+          "id": "Bedlam:attack_modifier:attack_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            70,
+            120,
+            170
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Terrorize",
+      "displayName": "恐吓（Terrorize）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        90,
+        80
+      ],
+      "components": [
+        {
+          "id": "Terrorize:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

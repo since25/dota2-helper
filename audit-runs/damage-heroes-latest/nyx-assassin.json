@@ -1,0 +1,333 @@
+{
+  "hero": "Nyx Assassin",
+  "displayName": "司夜刺客（Nyx Assassin）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.46,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 2,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 30,
+    "baseStrength": 17,
+    "baseAgility": 18,
+    "baseIntelligence": 21,
+    "strengthGain": 2.7,
+    "agilityGain": 2.9,
+    "intelligenceGain": 2.6,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 17,
+        "agility": 18,
+        "intelligence": 21,
+        "maxHealth": 494,
+        "maxMana": 327,
+        "armor": 4,
+        "attackMin": 65,
+        "attackMax": 69
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 22.4,
+          "agility": 23.8,
+          "intelligence": 26.2,
+          "maxHealth": 613,
+          "maxMana": 389,
+          "armor": 4.97,
+          "attackMin": 77,
+          "attackMax": 81
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27.8,
+          "agility": 29.6,
+          "intelligence": 31.4,
+          "maxHealth": 732,
+          "maxMana": 452,
+          "armor": 5.93,
+          "attackMin": 88,
+          "attackMax": 92
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30.5,
+          "agility": 32.5,
+          "intelligence": 34,
+          "maxHealth": 791,
+          "maxMana": 483,
+          "armor": 6.42,
+          "attackMin": 94,
+          "attackMax": 98
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.2,
+          "agility": 35.4,
+          "intelligence": 36.6,
+          "maxHealth": 850,
+          "maxMana": 514,
+          "armor": 6.9,
+          "attackMin": 100,
+          "attackMax": 104
+        },
+        "level12": {
+          "level": 12,
+          "strength": 46.7,
+          "agility": 49.9,
+          "intelligence": 49.6,
+          "maxHealth": 1147,
+          "maxMana": 670,
+          "armor": 9.32,
+          "attackMin": 128,
+          "attackMax": 132
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.9,
+          "agility": 67.3,
+          "intelligence": 65.2,
+          "maxHealth": 1504,
+          "maxMana": 857,
+          "armor": 12.22,
+          "attackMin": 163,
+          "attackMax": 167
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Impale",
+      "displayName": "穿刺（Impale）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        100,
+        110,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Impale:instant_fixed:impale_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "impale_damage",
+          "valuesByAbilityLevel": [
+            100,
+            160,
+            220,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.1,
+              1.4,
+              1.7,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Mind Flare",
+      "displayName": "神智爆裂（Mind Flare）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        105,
+        110,
+        115
+      ],
+      "cooldownByAbilityLevel": [
+        11,
+        9.5,
+        8,
+        6.5
+      ],
+      "components": [
+        {
+          "id": "Mind Flare:sustained:damage_echo_duration",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_echo_duration",
+          "valuesByAbilityLevel": [
+            15
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            225
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              15
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spiked Carapace",
+      "displayName": "尖刺外壳（Spiked Carapace）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        16,
+        12,
+        8
+      ],
+      "components": [
+        {
+          "id": "Spiked Carapace:debuff_reference:stun_duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "stun_duration",
+          "valuesByAbilityLevel": [
+            0.7,
+            1,
+            1.3,
+            1.6
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "disable_window",
+            "affects": "disable_window",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burrow",
+      "displayName": "钻地（Burrow）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Burrow:debuff_reference:cast_range",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range",
+          "valuesByAbilityLevel": [
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

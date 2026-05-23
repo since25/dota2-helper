@@ -1,0 +1,370 @@
+{
+  "hero": "Sniper",
+  "displayName": "狙击手（Sniper）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 550,
+    "attackRate": 1.7,
+    "attackPoint": 0.17,
+    "projectileSpeed": 3000,
+    "moveSpeed": 285,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 13,
+    "baseAttackMax": 19,
+    "baseStrength": 19,
+    "baseAgility": 27,
+    "baseIntelligence": 15,
+    "strengthGain": 2,
+    "agilityGain": 3.2,
+    "intelligenceGain": 2.6,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 27,
+        "intelligence": 15,
+        "maxHealth": 538,
+        "maxMana": 255,
+        "armor": 4.5,
+        "attackMin": 40,
+        "attackMax": 46
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23,
+          "agility": 33.4,
+          "intelligence": 20.2,
+          "maxHealth": 626,
+          "maxMana": 317,
+          "armor": 5.57,
+          "attackMin": 46,
+          "attackMax": 52
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27,
+          "agility": 39.8,
+          "intelligence": 25.4,
+          "maxHealth": 714,
+          "maxMana": 380,
+          "armor": 6.63,
+          "attackMin": 53,
+          "attackMax": 59
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29,
+          "agility": 43,
+          "intelligence": 28,
+          "maxHealth": 758,
+          "maxMana": 411,
+          "armor": 7.17,
+          "attackMin": 56,
+          "attackMax": 62
+        },
+        "level7": {
+          "level": 7,
+          "strength": 31,
+          "agility": 46.2,
+          "intelligence": 30.6,
+          "maxHealth": 802,
+          "maxMana": 442,
+          "armor": 7.7,
+          "attackMin": 59,
+          "attackMax": 65
+        },
+        "level12": {
+          "level": 12,
+          "strength": 41,
+          "agility": 62.2,
+          "intelligence": 43.6,
+          "maxHealth": 1022,
+          "maxMana": 598,
+          "armor": 10.37,
+          "attackMin": 75,
+          "attackMax": 81
+        },
+        "level18": {
+          "level": 18,
+          "strength": 53,
+          "agility": 81.4,
+          "intelligence": 59.2,
+          "maxHealth": 1286,
+          "maxMana": 785,
+          "armor": 13.57,
+          "attackMin": 94,
+          "attackMax": 100
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Shrapnel",
+      "displayName": "榴霰弹（Shrapnel）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Shrapnel:state_scaling:shrapnel_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shrapnel_damage",
+          "valuesByAbilityLevel": [
+            30,
+            45,
+            60,
+            75
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Headshot",
+      "displayName": "爆头（Headshot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Headshot:debuff_reference:damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            20,
+            50,
+            80,
+            110
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Take Aim",
+      "displayName": "瞄准（Take Aim）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Take Aim:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Concussive Grenade",
+      "displayName": "震荡手雷（Concussive Grenade）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        10
+      ],
+      "components": [
+        {
+          "id": "Concussive Grenade:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Assassinate",
+      "displayName": "暗杀（Assassinate）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        175,
+        175,
+        175
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        15,
+        10
+      ],
+      "components": [
+        {
+          "id": "Assassinate:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            300,
+            400,
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

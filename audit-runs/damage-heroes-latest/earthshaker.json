@@ -1,0 +1,364 @@
+{
+  "hero": "Earthshaker",
+  "displayName": "撼地者（Earthshaker）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.467,
+    "projectileSpeed": 0,
+    "moveSpeed": 315,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 37,
+    "baseStrength": 22,
+    "baseAgility": 12,
+    "baseIntelligence": 18,
+    "strengthGain": 3.7,
+    "agilityGain": 1.4,
+    "intelligenceGain": 2.1,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 12,
+        "intelligence": 18,
+        "maxHealth": 604,
+        "maxMana": 291,
+        "armor": 4,
+        "attackMin": 49,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.4,
+          "agility": 14.8,
+          "intelligence": 22.2,
+          "maxHealth": 767,
+          "maxMana": 341,
+          "armor": 4.47,
+          "attackMin": 56,
+          "attackMax": 66
+        },
+        "level5": {
+          "level": 5,
+          "strength": 36.8,
+          "agility": 17.6,
+          "intelligence": 26.4,
+          "maxHealth": 930,
+          "maxMana": 392,
+          "armor": 4.93,
+          "attackMin": 64,
+          "attackMax": 74
+        },
+        "level6": {
+          "level": 6,
+          "strength": 40.5,
+          "agility": 19,
+          "intelligence": 28.5,
+          "maxHealth": 1011,
+          "maxMana": 417,
+          "armor": 5.17,
+          "attackMin": 68,
+          "attackMax": 78
+        },
+        "level7": {
+          "level": 7,
+          "strength": 44.2,
+          "agility": 20.4,
+          "intelligence": 30.6,
+          "maxHealth": 1092,
+          "maxMana": 442,
+          "armor": 5.4,
+          "attackMin": 71,
+          "attackMax": 81
+        },
+        "level12": {
+          "level": 12,
+          "strength": 62.7,
+          "agility": 27.4,
+          "intelligence": 41.1,
+          "maxHealth": 1499,
+          "maxMana": 568,
+          "armor": 6.57,
+          "attackMin": 90,
+          "attackMax": 100
+        },
+        "level18": {
+          "level": 18,
+          "strength": 84.9,
+          "agility": 35.8,
+          "intelligence": 53.7,
+          "maxHealth": 1988,
+          "maxMana": 719,
+          "armor": 7.97,
+          "attackMin": 112,
+          "attackMax": 122
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Fissure",
+      "displayName": "沟壑（Fissure）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        115,
+        120,
+        125,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        17,
+        16,
+        15
+      ],
+      "components": [
+        {
+          "id": "Fissure:instant_fixed:fissure_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "fissure_damage",
+          "valuesByAbilityLevel": [
+            100,
+            160,
+            220,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6.5,
+              7,
+              7.5,
+              8
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Enchant Totem",
+      "displayName": "强化图腾（Enchant Totem）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        45,
+        55,
+        65,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        5
+      ],
+      "components": [
+        {
+          "id": "Enchant Totem:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Aftershock",
+      "displayName": "余震（Aftershock）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Aftershock:instant_fixed:aftershock_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "aftershock_damage",
+          "valuesByAbilityLevel": [
+            65,
+            90,
+            115,
+            140
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1,
+              1.1,
+              1.2,
+              1.3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Echo Slam",
+      "displayName": "回音击（Echo Slam）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        130,
+        120,
+        110
+      ],
+      "components": [
+        {
+          "id": "Echo Slam:instant_fixed:echo_slam_damage_range",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "echo_slam_damage_range",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Slugger",
+      "displayName": "强击图腾（Slugger）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Slugger:state_scaling:projectile_body_damage_creep",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "projectile_body_damage_creep",
+          "valuesByAbilityLevel": [
+            27
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

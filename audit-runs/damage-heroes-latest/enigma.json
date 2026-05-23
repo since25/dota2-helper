@@ -1,0 +1,405 @@
+{
+  "hero": "Enigma",
+  "displayName": "谜团（Enigma）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 500,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 280,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 19,
+    "baseAttackMax": 25,
+    "baseStrength": 21,
+    "baseAgility": 14,
+    "baseIntelligence": 19,
+    "strengthGain": 2.5,
+    "agilityGain": 1,
+    "intelligenceGain": 3.6,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 14,
+        "intelligence": 19,
+        "maxHealth": 582,
+        "maxMana": 303,
+        "armor": 3.33,
+        "attackMin": 57,
+        "attackMax": 63
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 26,
+          "agility": 16,
+          "intelligence": 26.2,
+          "maxHealth": 692,
+          "maxMana": 389,
+          "armor": 3.67,
+          "attackMin": 67,
+          "attackMax": 73
+        },
+        "level5": {
+          "level": 5,
+          "strength": 31,
+          "agility": 18,
+          "intelligence": 33.4,
+          "maxHealth": 802,
+          "maxMana": 476,
+          "armor": 4,
+          "attackMin": 77,
+          "attackMax": 83
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33.5,
+          "agility": 19,
+          "intelligence": 37,
+          "maxHealth": 857,
+          "maxMana": 519,
+          "armor": 4.17,
+          "attackMin": 82,
+          "attackMax": 88
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36,
+          "agility": 20,
+          "intelligence": 40.6,
+          "maxHealth": 912,
+          "maxMana": 562,
+          "armor": 4.33,
+          "attackMin": 87,
+          "attackMax": 93
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.5,
+          "agility": 25,
+          "intelligence": 58.6,
+          "maxHealth": 1187,
+          "maxMana": 778,
+          "armor": 5.17,
+          "attackMin": 111,
+          "attackMax": 117
+        },
+        "level18": {
+          "level": 18,
+          "strength": 63.5,
+          "agility": 31,
+          "intelligence": 80.2,
+          "maxHealth": 1517,
+          "maxMana": 1037,
+          "armor": 6.17,
+          "attackMin": 141,
+          "attackMax": 147
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Malefice",
+      "displayName": "憎恶（Malefice）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Malefice:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            55,
+            70,
+            85,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.3,
+              0.5,
+              0.7,
+              0.9
+            ],
+            "tickIntervalByAbilityLevel": [
+              2,
+              2,
+              2,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Demonic Summoning",
+      "displayName": "恶魔召唤（Demonic Summoning）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        38,
+        36,
+        34
+      ],
+      "components": [
+        {
+          "id": "Demonic Summoning:instant_fixed:eidelon_base_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "eidelon_base_damage",
+          "valuesByAbilityLevel": [
+            16,
+            27,
+            38,
+            49
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              40,
+              40,
+              40,
+              40
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Midnight Pulse",
+      "displayName": "午夜凋零（Midnight Pulse）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        65,
+        90,
+        115,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        35,
+        30,
+        25
+      ],
+      "components": [
+        {
+          "id": "Midnight Pulse:state_scaling:base_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            5,
+            10,
+            15,
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Event Horizon",
+      "displayName": "事件视界（Event Horizon）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Event Horizon:debuff_reference:speed_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "speed_bonus",
+          "valuesByAbilityLevel": [
+            4
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Black Hole",
+      "displayName": "黑洞（Black Hole）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        300,
+        400,
+        500
+      ],
+      "cooldownByAbilityLevel": [
+        180,
+        170,
+        160
+      ],
+      "components": [
+        {
+          "id": "Black Hole:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            150,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            400,
+            600,
+            800
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.1,
+              0.1,
+              0.1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

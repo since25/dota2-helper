@@ -1,0 +1,451 @@
+{
+  "hero": "Clockwerk",
+  "displayName": "发条技师（Clockwerk）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.33,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 26,
+    "baseStrength": 26,
+    "baseAgility": 13,
+    "baseIntelligence": 18,
+    "strengthGain": 3.2,
+    "agilityGain": 2.3,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 26,
+        "agility": 13,
+        "intelligence": 18,
+        "maxHealth": 692,
+        "maxMana": 291,
+        "armor": 3.17,
+        "attackMin": 50,
+        "attackMax": 52
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 32.4,
+          "agility": 17.6,
+          "intelligence": 21.4,
+          "maxHealth": 833,
+          "maxMana": 332,
+          "armor": 3.93,
+          "attackMin": 56,
+          "attackMax": 58
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38.8,
+          "agility": 22.2,
+          "intelligence": 24.8,
+          "maxHealth": 974,
+          "maxMana": 373,
+          "armor": 4.7,
+          "attackMin": 63,
+          "attackMax": 65
+        },
+        "level6": {
+          "level": 6,
+          "strength": 42,
+          "agility": 24.5,
+          "intelligence": 26.5,
+          "maxHealth": 1044,
+          "maxMana": 393,
+          "armor": 5.08,
+          "attackMin": 66,
+          "attackMax": 68
+        },
+        "level7": {
+          "level": 7,
+          "strength": 45.2,
+          "agility": 26.8,
+          "intelligence": 28.2,
+          "maxHealth": 1114,
+          "maxMana": 413,
+          "armor": 5.47,
+          "attackMin": 69,
+          "attackMax": 71
+        },
+        "level12": {
+          "level": 12,
+          "strength": 61.2,
+          "agility": 38.3,
+          "intelligence": 36.7,
+          "maxHealth": 1466,
+          "maxMana": 515,
+          "armor": 7.38,
+          "attackMin": 85,
+          "attackMax": 87
+        },
+        "level18": {
+          "level": 18,
+          "strength": 80.4,
+          "agility": 52.1,
+          "intelligence": 46.9,
+          "maxHealth": 1889,
+          "maxMana": 638,
+          "armor": 9.68,
+          "attackMin": 104,
+          "attackMax": 106
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Battery Assault",
+      "displayName": "弹幕冲击（Battery Assault）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        75,
+        80,
+        85,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        22,
+        20,
+        18
+      ],
+      "components": [
+        {
+          "id": "Battery Assault:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            20,
+            45,
+            70,
+            95
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Power Cogs",
+      "displayName": "能量齿轮（Power Cogs）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        60,
+        65,
+        70,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        19,
+        17,
+        15
+      ],
+      "components": [
+        {
+          "id": "Power Cogs:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            50,
+            125,
+            200,
+            275
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_current_mana",
+              "attack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rocket Flare",
+      "displayName": "照明火箭（Rocket Flare）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        35,
+        40,
+        45,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Rocket Flare:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            80,
+            120,
+            160,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.15,
+              0.15,
+              0.15,
+              0.15
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Overclocking",
+      "displayName": "超速运转（Overclocking）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        50
+      ],
+      "components": [
+        {
+          "id": "Overclocking:debuff_reference:bonus_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_attack_speed",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hookshot",
+      "displayName": "发射钩爪（Hookshot）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        45,
+        30
+      ],
+      "components": [
+        {
+          "id": "Hookshot:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            75,
+            175,
+            275
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0,
+              0,
+              0
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Armor Power",
+      "displayName": "装甲力量（Armor Power）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Armor Power:state_scaling:damage_per_armor",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_per_armor",
+          "valuesByAbilityLevel": [
+            0.25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

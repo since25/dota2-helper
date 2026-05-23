@@ -1,0 +1,380 @@
+{
+  "hero": "Tidehunter",
+  "displayName": "潮汐猎人（Tidehunter）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.6,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 25,
+    "baseAttackMax": 31,
+    "baseStrength": 26,
+    "baseAgility": 15,
+    "baseIntelligence": 20,
+    "strengthGain": 3.7,
+    "agilityGain": 1.5,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 26,
+        "agility": 15,
+        "intelligence": 20,
+        "maxHealth": 692,
+        "maxMana": 315,
+        "armor": 2.5,
+        "attackMin": 51,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 33.4,
+          "agility": 18,
+          "intelligence": 23.4,
+          "maxHealth": 855,
+          "maxMana": 356,
+          "armor": 3,
+          "attackMin": 58,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 40.8,
+          "agility": 21,
+          "intelligence": 26.8,
+          "maxHealth": 1018,
+          "maxMana": 397,
+          "armor": 3.5,
+          "attackMin": 66,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 44.5,
+          "agility": 22.5,
+          "intelligence": 28.5,
+          "maxHealth": 1099,
+          "maxMana": 417,
+          "armor": 3.75,
+          "attackMin": 70,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 48.2,
+          "agility": 24,
+          "intelligence": 30.2,
+          "maxHealth": 1180,
+          "maxMana": 437,
+          "armor": 4,
+          "attackMin": 73,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 66.7,
+          "agility": 31.5,
+          "intelligence": 38.7,
+          "maxHealth": 1587,
+          "maxMana": 539,
+          "armor": 5.25,
+          "attackMin": 92,
+          "attackMax": 98
+        },
+        "level18": {
+          "level": 18,
+          "strength": 88.9,
+          "agility": 40.5,
+          "intelligence": 48.9,
+          "maxHealth": 2076,
+          "maxMana": 662,
+          "armor": 6.75,
+          "attackMin": 114,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Gush",
+      "displayName": "巨浪（Gush）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "components": [
+        {
+          "id": "Gush:instant_fixed:gush_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "gush_damage",
+          "valuesByAbilityLevel": [
+            100,
+            160,
+            220,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4.5,
+              4.5,
+              4.5,
+              4.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Kraken Shell",
+      "displayName": "海妖外壳（Kraken Shell）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        45
+      ],
+      "cooldownByAbilityLevel": [
+        30
+      ],
+      "components": [
+        {
+          "id": "Kraken Shell:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Anchor Smash",
+      "displayName": "锚击（Anchor Smash）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        40,
+        45,
+        50,
+        55
+      ],
+      "cooldownByAbilityLevel": [
+        7,
+        6,
+        5,
+        4
+      ],
+      "components": [
+        {
+          "id": "Anchor Smash:attack_modifier:attack_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            50,
+            100,
+            150,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dead in the Water",
+      "displayName": "重如铁锚（Dead in the Water）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        35
+      ],
+      "components": [
+        {
+          "id": "Dead in the Water:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            350
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ravage",
+      "displayName": "毁灭（Ravage）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        225,
+        325
+      ],
+      "cooldownByAbilityLevel": [
+        150,
+        145,
+        140
+      ],
+      "components": [
+        {
+          "id": "Ravage:instant_fixed:dmg",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            275,
+            375,
+            475
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              2.2,
+              2.4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

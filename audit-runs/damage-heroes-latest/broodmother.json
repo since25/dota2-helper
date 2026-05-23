@@ -1,0 +1,373 @@
+{
+  "hero": "Broodmother",
+  "displayName": "育母蜘蛛（Broodmother）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 175,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 285,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 33,
+    "baseStrength": 18,
+    "baseAgility": 18,
+    "baseIntelligence": 18,
+    "strengthGain": 2.9,
+    "agilityGain": 3.4,
+    "intelligenceGain": 2,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 18,
+        "intelligence": 18,
+        "maxHealth": 516,
+        "maxMana": 291,
+        "armor": 2,
+        "attackMin": 45,
+        "attackMax": 51
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23.8,
+          "agility": 24.8,
+          "intelligence": 22,
+          "maxHealth": 644,
+          "maxMana": 339,
+          "armor": 3.13,
+          "attackMin": 52,
+          "attackMax": 58
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.6,
+          "agility": 31.6,
+          "intelligence": 26,
+          "maxHealth": 771,
+          "maxMana": 387,
+          "armor": 4.27,
+          "attackMin": 59,
+          "attackMax": 65
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32.5,
+          "agility": 35,
+          "intelligence": 28,
+          "maxHealth": 835,
+          "maxMana": 411,
+          "armor": 4.83,
+          "attackMin": 62,
+          "attackMax": 68
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 38.4,
+          "intelligence": 30,
+          "maxHealth": 899,
+          "maxMana": 435,
+          "armor": 5.4,
+          "attackMin": 65,
+          "attackMax": 71
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.9,
+          "agility": 55.4,
+          "intelligence": 40,
+          "maxHealth": 1218,
+          "maxMana": 555,
+          "armor": 8.23,
+          "attackMin": 82,
+          "attackMax": 88
+        },
+        "level18": {
+          "level": 18,
+          "strength": 67.3,
+          "agility": 75.8,
+          "intelligence": 52,
+          "maxHealth": 1601,
+          "maxMana": 699,
+          "armor": 11.63,
+          "attackMin": 103,
+          "attackMax": 109
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Insatiable Hunger",
+      "displayName": "极度饥渴（Insatiable Hunger）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        45,
+        40,
+        35,
+        30
+      ],
+      "components": [
+        {
+          "id": "Insatiable Hunger:debuff_reference:bonus_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_damage",
+          "valuesByAbilityLevel": [
+            40,
+            50,
+            60,
+            70
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spin Web",
+      "displayName": "织网（Spin Web）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        40
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Spin Web:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Incapacitating Bite",
+      "displayName": "麻痹之咬（Incapacitating Bite）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Incapacitating Bite:debuff_reference:attack_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            3,
+            6,
+            9,
+            12
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spider's Milk",
+      "displayName": "蜘蛛奶（Spider's Milk）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Spider's Milk:debuff_reference:kill_heal_heroes",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "kill_heal_heroes",
+          "valuesByAbilityLevel": [
+            1.9
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "sustain",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spawn Spiderlings",
+      "displayName": "孵化蜘蛛（Spawn Spiderlings）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        9,
+        8,
+        7
+      ],
+      "components": [
+        {
+          "id": "Spawn Spiderlings:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            220,
+            320,
+            420
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              20,
+              20,
+              20
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

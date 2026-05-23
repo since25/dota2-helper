@@ -1,0 +1,330 @@
+{
+  "hero": "Morphling",
+  "displayName": "变体精灵（Morphling）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 350,
+    "attackRate": 1.5,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1300,
+    "moveSpeed": 285,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 12,
+    "baseAttackMax": 21,
+    "baseStrength": 23,
+    "baseAgility": 24,
+    "baseIntelligence": 19,
+    "strengthGain": 2.6,
+    "agilityGain": 3.9,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 24,
+        "intelligence": 19,
+        "maxHealth": 626,
+        "maxMana": 303,
+        "armor": 3,
+        "attackMin": 36,
+        "attackMax": 45
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 28.2,
+          "agility": 31.8,
+          "intelligence": 22.6,
+          "maxHealth": 740,
+          "maxMana": 346,
+          "armor": 4.3,
+          "attackMin": 44,
+          "attackMax": 53
+        },
+        "level5": {
+          "level": 5,
+          "strength": 33.4,
+          "agility": 39.6,
+          "intelligence": 26.2,
+          "maxHealth": 855,
+          "maxMana": 389,
+          "armor": 5.6,
+          "attackMin": 52,
+          "attackMax": 61
+        },
+        "level6": {
+          "level": 6,
+          "strength": 36,
+          "agility": 43.5,
+          "intelligence": 28,
+          "maxHealth": 912,
+          "maxMana": 411,
+          "armor": 6.25,
+          "attackMin": 56,
+          "attackMax": 65
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38.6,
+          "agility": 47.4,
+          "intelligence": 29.8,
+          "maxHealth": 969,
+          "maxMana": 433,
+          "armor": 6.9,
+          "attackMin": 59,
+          "attackMax": 68
+        },
+        "level12": {
+          "level": 12,
+          "strength": 51.6,
+          "agility": 66.9,
+          "intelligence": 38.8,
+          "maxHealth": 1255,
+          "maxMana": 541,
+          "armor": 10.15,
+          "attackMin": 79,
+          "attackMax": 88
+        },
+        "level18": {
+          "level": 18,
+          "strength": 67.2,
+          "agility": 90.3,
+          "intelligence": 49.6,
+          "maxHealth": 1598,
+          "maxMana": 670,
+          "armor": 14.05,
+          "attackMin": 102,
+          "attackMax": 111
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Waveform",
+      "displayName": "波浪形态（Waveform）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        115,
+        115,
+        115,
+        115
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        18,
+        15,
+        12
+      ],
+      "components": [
+        {
+          "id": "Waveform:instant_fixed:dmg",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Adaptive Strike",
+      "displayName": "变体打击（Adaptive Strike）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        40,
+        50,
+        60,
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        14,
+        11,
+        8
+      ],
+      "components": [
+        {
+          "id": "Adaptive Strike:state_scaling:damage_base",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_base",
+          "valuesByAbilityLevel": [
+            50,
+            70,
+            90,
+            110
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "hero_attribute"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ebb and Flow",
+      "displayName": "潮涨潮落（Ebb and Flow）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Ebb and Flow:debuff_reference:cast_range_per_str",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range_per_str",
+          "valuesByAbilityLevel": [
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Morph",
+      "displayName": "变形（Morph）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        140,
+        100,
+        60
+      ],
+      "components": [
+        {
+          "id": "Morph:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700,
+            850,
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

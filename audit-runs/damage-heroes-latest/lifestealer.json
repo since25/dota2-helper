@@ -1,0 +1,337 @@
+{
+  "hero": "Lifestealer",
+  "displayName": "噬魂鬼（Lifestealer）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.39,
+    "projectileSpeed": 900,
+    "moveSpeed": 320,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 32,
+    "baseStrength": 23,
+    "baseAgility": 15,
+    "baseIntelligence": 15,
+    "strengthGain": 2.4,
+    "agilityGain": 1.9,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 15,
+        "intelligence": 15,
+        "maxHealth": 626,
+        "maxMana": 255,
+        "armor": 3.5,
+        "attackMin": 49,
+        "attackMax": 55
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27.8,
+          "agility": 18.8,
+          "intelligence": 18.6,
+          "maxHealth": 732,
+          "maxMana": 298,
+          "armor": 4.13,
+          "attackMin": 54,
+          "attackMax": 60
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32.6,
+          "agility": 22.6,
+          "intelligence": 22.2,
+          "maxHealth": 837,
+          "maxMana": 341,
+          "armor": 4.77,
+          "attackMin": 59,
+          "attackMax": 65
+        },
+        "level6": {
+          "level": 6,
+          "strength": 35,
+          "agility": 24.5,
+          "intelligence": 24,
+          "maxHealth": 890,
+          "maxMana": 363,
+          "armor": 5.08,
+          "attackMin": 61,
+          "attackMax": 67
+        },
+        "level7": {
+          "level": 7,
+          "strength": 37.4,
+          "agility": 26.4,
+          "intelligence": 25.8,
+          "maxHealth": 943,
+          "maxMana": 385,
+          "armor": 5.4,
+          "attackMin": 63,
+          "attackMax": 69
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.4,
+          "agility": 35.9,
+          "intelligence": 34.8,
+          "maxHealth": 1207,
+          "maxMana": 493,
+          "armor": 6.98,
+          "attackMin": 75,
+          "attackMax": 81
+        },
+        "level18": {
+          "level": 18,
+          "strength": 63.8,
+          "agility": 47.3,
+          "intelligence": 45.6,
+          "maxHealth": 1524,
+          "maxMana": 622,
+          "armor": 8.88,
+          "attackMin": 90,
+          "attackMax": 96
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Rage",
+      "displayName": "狂暴（Rage）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        100,
+        120,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        19,
+        18,
+        17
+      ],
+      "components": [
+        {
+          "id": "Rage:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Open Wounds",
+      "displayName": "撕裂伤口（Open Wounds）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        25,
+        20,
+        15
+      ],
+      "components": [
+        {
+          "id": "Open Wounds:state_scaling:max_health_as_damage_pct",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "max_health_as_damage_pct",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "caveats": [
+            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Feast",
+      "displayName": "盛宴（Feast）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Feast:state_scaling:hp_damage_percent",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "hp_damage_percent",
+          "valuesByAbilityLevel": [
+            1.45,
+            2.05,
+            2.65,
+            3.25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "caveats": [
+            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Infest",
+      "displayName": "感染（Infest）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        80,
+        65,
+        50
+      ],
+      "components": [
+        {
+          "id": "Infest:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            150,
+            275,
+            400
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0,
+              0,
+              0
+            ],
+            "tickIntervalByAbilityLevel": [
+              0,
+              0,
+              0
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

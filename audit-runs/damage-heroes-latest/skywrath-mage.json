@@ -1,0 +1,393 @@
+{
+  "hero": "Skywrath Mage",
+  "displayName": "天怒法师（Skywrath Mage）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 625,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1000,
+    "moveSpeed": 325,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.25,
+    "baseArmor": -2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 16,
+    "baseAttackMax": 26,
+    "baseStrength": 21,
+    "baseAgility": 13,
+    "baseIntelligence": 25,
+    "strengthGain": 2,
+    "agilityGain": 0.8,
+    "intelligenceGain": 4.1,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 13,
+        "intelligence": 25,
+        "maxHealth": 582,
+        "maxMana": 375,
+        "armor": 0.17,
+        "attackMin": 41,
+        "attackMax": 51
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25,
+          "agility": 14.6,
+          "intelligence": 33.2,
+          "maxHealth": 670,
+          "maxMana": 473,
+          "armor": 0.43,
+          "attackMin": 49,
+          "attackMax": 59
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29,
+          "agility": 16.2,
+          "intelligence": 41.4,
+          "maxHealth": 758,
+          "maxMana": 572,
+          "armor": 0.7,
+          "attackMin": 57,
+          "attackMax": 67
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 17,
+          "intelligence": 45.5,
+          "maxHealth": 802,
+          "maxMana": 621,
+          "armor": 0.83,
+          "attackMin": 62,
+          "attackMax": 72
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33,
+          "agility": 17.8,
+          "intelligence": 49.6,
+          "maxHealth": 846,
+          "maxMana": 670,
+          "armor": 0.97,
+          "attackMin": 66,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 43,
+          "agility": 21.8,
+          "intelligence": 70.1,
+          "maxHealth": 1066,
+          "maxMana": 916,
+          "armor": 1.63,
+          "attackMin": 86,
+          "attackMax": 96
+        },
+        "level18": {
+          "level": 18,
+          "strength": 55,
+          "agility": 26.6,
+          "intelligence": 94.7,
+          "maxHealth": 1330,
+          "maxMana": 1211,
+          "armor": 2.43,
+          "attackMin": 111,
+          "attackMax": 121
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Arcane Bolt",
+      "displayName": "奥法鹰隼（Arcane Bolt）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        70,
+        70,
+        70,
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        5,
+        4,
+        3,
+        2
+      ],
+      "components": [
+        {
+          "id": "Arcane Bolt:state_scaling:bolt_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "bolt_damage",
+          "valuesByAbilityLevel": [
+            60,
+            90,
+            120,
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "hero_attribute"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Concussive Shot",
+      "displayName": "震荡光弹（Concussive Shot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        85,
+        90,
+        95
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        14,
+        13,
+        12
+      ],
+      "components": [
+        {
+          "id": "Concussive Shot:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            120,
+            180,
+            240,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Ancient Seal",
+      "displayName": "上古封印（Ancient Seal）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "components": [
+        {
+          "id": "Ancient Seal:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700,
+            750,
+            800,
+            850
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shield of the Scion",
+      "displayName": "天裔之盾（Shield of the Scion）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Shield of the Scion:state_scaling:damage_barrier",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_barrier",
+          "valuesByAbilityLevel": [
+            13.5
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mystic Flare",
+      "displayName": "神秘之耀（Mystic Flare）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        300,
+        550,
+        800
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        40,
+        20
+      ],
+      "components": [
+        {
+          "id": "Mystic Flare:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            800,
+            1200,
+            1600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              2,
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

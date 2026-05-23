@@ -1,0 +1,330 @@
+{
+  "hero": "Phantom Lancer",
+  "displayName": "幻影长矛手（Phantom Lancer）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 225,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 285,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 2,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 36,
+    "baseStrength": 21,
+    "baseAgility": 26,
+    "baseIntelligence": 21,
+    "strengthGain": 2.2,
+    "agilityGain": 3.4,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 26,
+        "intelligence": 21,
+        "maxHealth": 582,
+        "maxMana": 327,
+        "armor": 4.33,
+        "attackMin": 52,
+        "attackMax": 62
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.4,
+          "agility": 32.8,
+          "intelligence": 24.6,
+          "maxHealth": 679,
+          "maxMana": 370,
+          "armor": 5.47,
+          "attackMin": 59,
+          "attackMax": 69
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.8,
+          "agility": 39.6,
+          "intelligence": 28.2,
+          "maxHealth": 776,
+          "maxMana": 413,
+          "armor": 6.6,
+          "attackMin": 66,
+          "attackMax": 76
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32,
+          "agility": 43,
+          "intelligence": 30,
+          "maxHealth": 824,
+          "maxMana": 435,
+          "armor": 7.17,
+          "attackMin": 69,
+          "attackMax": 79
+        },
+        "level7": {
+          "level": 7,
+          "strength": 34.2,
+          "agility": 46.4,
+          "intelligence": 31.8,
+          "maxHealth": 872,
+          "maxMana": 457,
+          "armor": 7.73,
+          "attackMin": 72,
+          "attackMax": 82
+        },
+        "level12": {
+          "level": 12,
+          "strength": 45.2,
+          "agility": 63.4,
+          "intelligence": 40.8,
+          "maxHealth": 1114,
+          "maxMana": 565,
+          "armor": 10.57,
+          "attackMin": 89,
+          "attackMax": 99
+        },
+        "level18": {
+          "level": 18,
+          "strength": 58.4,
+          "agility": 83.8,
+          "intelligence": 51.6,
+          "maxHealth": 1405,
+          "maxMana": 694,
+          "armor": 13.97,
+          "attackMin": 110,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Spirit Lance",
+      "displayName": "灵魂之矛（Spirit Lance）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        120,
+        120,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        10,
+        9,
+        8,
+        7
+      ],
+      "components": [
+        {
+          "id": "Spirit Lance:instant_fixed:lance_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "lance_damage",
+          "valuesByAbilityLevel": [
+            100,
+            160,
+            220,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3.75,
+              3.75,
+              3.75,
+              3.75
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Doppelganger",
+      "displayName": "神行百变（Doppelganger）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        18,
+        14,
+        10
+      ],
+      "components": [
+        {
+          "id": "Doppelganger:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            575
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Phantom Rush",
+      "displayName": "幻影冲锋（Phantom Rush）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        15,
+        11,
+        7,
+        3
+      ],
+      "components": [
+        {
+          "id": "Phantom Rush:debuff_reference:evasion",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "evasion",
+          "valuesByAbilityLevel": [
+            20,
+            30,
+            40,
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Juxtapose",
+      "displayName": "并列（Juxtapose）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Juxtapose:state_scaling:tooltip_illusion_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "tooltip_illusion_damage",
+          "valuesByAbilityLevel": [
+            15
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "source_damage",
+              "hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

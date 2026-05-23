@@ -1,0 +1,333 @@
+{
+  "hero": "Pugna",
+  "displayName": "帕格纳（Pugna）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 630,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 325,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 21,
+    "baseAttackMax": 28,
+    "baseStrength": 19,
+    "baseAgility": 21,
+    "baseIntelligence": 26,
+    "strengthGain": 2,
+    "agilityGain": 1.3,
+    "intelligenceGain": 5.2,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 21,
+        "intelligence": 26,
+        "maxHealth": 538,
+        "maxMana": 387,
+        "armor": 3.5,
+        "attackMin": 47,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 23,
+          "agility": 23.6,
+          "intelligence": 36.4,
+          "maxHealth": 626,
+          "maxMana": 512,
+          "armor": 3.93,
+          "attackMin": 57,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27,
+          "agility": 26.2,
+          "intelligence": 46.8,
+          "maxHealth": 714,
+          "maxMana": 637,
+          "armor": 4.37,
+          "attackMin": 68,
+          "attackMax": 75
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29,
+          "agility": 27.5,
+          "intelligence": 52,
+          "maxHealth": 758,
+          "maxMana": 699,
+          "armor": 4.58,
+          "attackMin": 73,
+          "attackMax": 80
+        },
+        "level7": {
+          "level": 7,
+          "strength": 31,
+          "agility": 28.8,
+          "intelligence": 57.2,
+          "maxHealth": 802,
+          "maxMana": 761,
+          "armor": 4.8,
+          "attackMin": 78,
+          "attackMax": 85
+        },
+        "level12": {
+          "level": 12,
+          "strength": 41,
+          "agility": 35.3,
+          "intelligence": 83.2,
+          "maxHealth": 1022,
+          "maxMana": 1073,
+          "armor": 5.88,
+          "attackMin": 104,
+          "attackMax": 111
+        },
+        "level18": {
+          "level": 18,
+          "strength": 53,
+          "agility": 43.1,
+          "intelligence": 114.4,
+          "maxHealth": 1286,
+          "maxMana": 1448,
+          "armor": 7.18,
+          "attackMin": 135,
+          "attackMax": 142
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Nether Blast",
+      "displayName": "幽冥爆轰（Nether Blast）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        115,
+        130,
+        145
+      ],
+      "cooldownByAbilityLevel": [
+        5
+      ],
+      "components": [
+        {
+          "id": "Nether Blast:instant_fixed:structure_damage_mod",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "structure_damage_mod",
+          "valuesByAbilityLevel": [
+            65
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Decrepify",
+      "displayName": "衰老（Decrepify）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        13,
+        10,
+        7
+      ],
+      "components": [
+        {
+          "id": "Decrepify:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            550,
+            600,
+            650,
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nether Ward",
+      "displayName": "幽冥守卫（Nether Ward）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "components": [
+        {
+          "id": "Nether Ward:state_scaling:base_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            50,
+            70,
+            90,
+            110
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Life Drain",
+      "displayName": "生命汲取（Life Drain）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        115,
+        160,
+        205
+      ],
+      "cooldownByAbilityLevel": [
+        7
+      ],
+      "components": [
+        {
+          "id": "Life Drain:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

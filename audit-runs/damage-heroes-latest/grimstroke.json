@@ -1,0 +1,368 @@
+{
+  "hero": "Grimstroke",
+  "displayName": "天涯墨客（Grimstroke）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 26,
+    "baseStrength": 21,
+    "baseAgility": 18,
+    "baseIntelligence": 25,
+    "strengthGain": 2.4,
+    "agilityGain": 1.9,
+    "intelligenceGain": 3.8,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 18,
+        "intelligence": 25,
+        "maxHealth": 582,
+        "maxMana": 375,
+        "armor": 3,
+        "attackMin": 47,
+        "attackMax": 51
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.8,
+          "agility": 21.8,
+          "intelligence": 32.6,
+          "maxHealth": 688,
+          "maxMana": 466,
+          "armor": 3.63,
+          "attackMin": 55,
+          "attackMax": 59
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.6,
+          "agility": 25.6,
+          "intelligence": 40.2,
+          "maxHealth": 793,
+          "maxMana": 557,
+          "armor": 4.27,
+          "attackMin": 62,
+          "attackMax": 66
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 27.5,
+          "intelligence": 44,
+          "maxHealth": 846,
+          "maxMana": 603,
+          "armor": 4.58,
+          "attackMin": 66,
+          "attackMax": 70
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 29.4,
+          "intelligence": 47.8,
+          "maxHealth": 899,
+          "maxMana": 649,
+          "armor": 4.9,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.4,
+          "agility": 38.9,
+          "intelligence": 66.8,
+          "maxHealth": 1163,
+          "maxMana": 877,
+          "armor": 6.48,
+          "attackMin": 89,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.8,
+          "agility": 50.3,
+          "intelligence": 89.6,
+          "maxHealth": 1480,
+          "maxMana": 1150,
+          "armor": 8.38,
+          "attackMin": 112,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Stroke of Fate",
+      "displayName": "绝笔（Stroke of Fate）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        11,
+        9,
+        7,
+        5
+      ],
+      "components": [
+        {
+          "id": "Stroke of Fate:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            160,
+            220,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.75,
+              1.75,
+              1.75,
+              1.75
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Phantom's Embrace",
+      "displayName": "戾影（Phantom's Embrace）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        100,
+        120,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        26,
+        22,
+        18
+      ],
+      "components": [
+        {
+          "id": "Phantom's Embrace:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            50,
+            100,
+            150,
+            200
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ink Swell",
+      "displayName": "墨涌（Ink Swell）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        27,
+        24,
+        21,
+        18
+      ],
+      "components": [
+        {
+          "id": "Ink Swell:sustained:damage_per_tick",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_tick",
+          "valuesByAbilityLevel": [
+            6,
+            9,
+            12,
+            15
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            18,
+            27,
+            36,
+            45
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soulbind",
+      "displayName": "缚魂（Soulbind）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        70,
+        65,
+        60
+      ],
+      "components": [
+        {
+          "id": "Soulbind:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700,
+            800,
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

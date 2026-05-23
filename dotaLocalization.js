@@ -61,6 +61,11 @@ const TERM_LOCALIZATION = {
   'Fowl Play': '禽戏',
   Urnaconda: '蛇罐',
   'Mass Serpent Ward': '群蛇守卫',
+  Burrowstrike: '掘地穿刺',
+  'Sand Storm': '沙尘暴',
+  Stinger: '毒刺',
+  'Caustic Finale': '腐尸毒',
+  Epicenter: '地震',
   'Mana Break': '法力损毁',
   Blink: '闪烁',
   Counterspell: '法术反制',
@@ -80,7 +85,12 @@ const TERM_LOCALIZATION = {
   'Healing Ward': '治疗守卫',
   'Blade Dance': '剑舞',
   Omnislash: '无敌斩',
-  'Chain Frost': '连环霜冻'
+  'Chain Frost': '连环霜冻',
+  'Guardian Sprint': '守卫冲刺',
+  'Slithereen Crush': '鱼人碎击',
+  'Bash of the Deep': '深海重击',
+  'Seaborn Sentinel': '汪洋前哨',
+  'Corrosive Haze': '侵蚀雾霭'
 };
 
 function localizeHeroName(heroName, includeEnglish = false) {

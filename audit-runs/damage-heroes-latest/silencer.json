@@ -1,0 +1,287 @@
+{
+  "hero": "Silencer",
+  "displayName": "沉默术士（Silencer）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.6,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 18,
+    "baseAttackMax": 32,
+    "baseStrength": 18,
+    "baseAgility": 22,
+    "baseIntelligence": 25,
+    "strengthGain": 2.2,
+    "agilityGain": 2.2,
+    "intelligenceGain": 2.9,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 22,
+        "intelligence": 25,
+        "maxHealth": 516,
+        "maxMana": 375,
+        "armor": 3.67,
+        "attackMin": 43,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 22.4,
+          "agility": 26.4,
+          "intelligence": 30.8,
+          "maxHealth": 613,
+          "maxMana": 445,
+          "armor": 4.4,
+          "attackMin": 49,
+          "attackMax": 63
+        },
+        "level5": {
+          "level": 5,
+          "strength": 26.8,
+          "agility": 30.8,
+          "intelligence": 36.6,
+          "maxHealth": 710,
+          "maxMana": 514,
+          "armor": 5.13,
+          "attackMin": 55,
+          "attackMax": 69
+        },
+        "level6": {
+          "level": 6,
+          "strength": 29,
+          "agility": 33,
+          "intelligence": 39.5,
+          "maxHealth": 758,
+          "maxMana": 549,
+          "armor": 5.5,
+          "attackMin": 58,
+          "attackMax": 72
+        },
+        "level7": {
+          "level": 7,
+          "strength": 31.2,
+          "agility": 35.2,
+          "intelligence": 42.4,
+          "maxHealth": 806,
+          "maxMana": 584,
+          "armor": 5.87,
+          "attackMin": 60,
+          "attackMax": 74
+        },
+        "level12": {
+          "level": 12,
+          "strength": 42.2,
+          "agility": 46.2,
+          "intelligence": 56.9,
+          "maxHealth": 1048,
+          "maxMana": 758,
+          "armor": 7.7,
+          "attackMin": 75,
+          "attackMax": 89
+        },
+        "level18": {
+          "level": 18,
+          "strength": 55.4,
+          "agility": 59.4,
+          "intelligence": 74.3,
+          "maxHealth": 1339,
+          "maxMana": 967,
+          "armor": 9.9,
+          "attackMin": 92,
+          "attackMax": 106
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Arcane Curse",
+      "displayName": "奥术诅咒（Arcane Curse）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        20,
+        18,
+        16
+      ],
+      "components": [
+        {
+          "id": "Arcane Curse:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            16,
+            24,
+            32,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Glaives of Wisdom",
+      "displayName": "智慧之刃（Glaives of Wisdom）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        12,
+        14,
+        16,
+        18
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Glaives of Wisdom:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Last Word",
+      "displayName": "遗言（Last Word）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100,
+        105,
+        110,
+        115
+      ],
+      "cooldownByAbilityLevel": [
+        22,
+        18,
+        14,
+        10
+      ],
+      "components": [
+        {
+          "id": "Last Word:debuff_reference:damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            120,
+            160,
+            200,
+            240
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

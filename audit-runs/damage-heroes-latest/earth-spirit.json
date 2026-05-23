@@ -1,0 +1,438 @@
+{
+  "hero": "Earth Spirit",
+  "displayName": "大地之灵（Earth Spirit）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 25,
+    "baseAttackMax": 29,
+    "baseStrength": 22,
+    "baseAgility": 17,
+    "baseIntelligence": 18,
+    "strengthGain": 3.8,
+    "agilityGain": 2.4,
+    "intelligenceGain": 2.1,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 17,
+        "intelligence": 18,
+        "maxHealth": 604,
+        "maxMana": 291,
+        "armor": 2.83,
+        "attackMin": 47,
+        "attackMax": 51
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.6,
+          "agility": 21.8,
+          "intelligence": 22.2,
+          "maxHealth": 771,
+          "maxMana": 341,
+          "armor": 3.63,
+          "attackMin": 55,
+          "attackMax": 59
+        },
+        "level5": {
+          "level": 5,
+          "strength": 37.2,
+          "agility": 26.6,
+          "intelligence": 26.4,
+          "maxHealth": 938,
+          "maxMana": 392,
+          "armor": 4.43,
+          "attackMin": 62,
+          "attackMax": 66
+        },
+        "level6": {
+          "level": 6,
+          "strength": 41,
+          "agility": 29,
+          "intelligence": 28.5,
+          "maxHealth": 1022,
+          "maxMana": 417,
+          "armor": 4.83,
+          "attackMin": 66,
+          "attackMax": 70
+        },
+        "level7": {
+          "level": 7,
+          "strength": 44.8,
+          "agility": 31.4,
+          "intelligence": 30.6,
+          "maxHealth": 1106,
+          "maxMana": 442,
+          "armor": 5.23,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level12": {
+          "level": 12,
+          "strength": 63.8,
+          "agility": 43.4,
+          "intelligence": 41.1,
+          "maxHealth": 1524,
+          "maxMana": 568,
+          "armor": 7.23,
+          "attackMin": 89,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 86.6,
+          "agility": 57.8,
+          "intelligence": 53.7,
+          "maxHealth": 2025,
+          "maxMana": 719,
+          "armor": 9.63,
+          "attackMin": 112,
+          "attackMax": 116
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Boulder Smash",
+      "displayName": "巨石冲击（Boulder Smash）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        17,
+        14,
+        11
+      ],
+      "components": [
+        {
+          "id": "Boulder Smash:instant_fixed:rock_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "rock_damage",
+          "valuesByAbilityLevel": [
+            110,
+            180,
+            250,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.75,
+              2.5,
+              3.25,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Rolling Boulder",
+      "displayName": "巨石翻滚（Rolling Boulder）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        12,
+        8,
+        4
+      ],
+      "components": [
+        {
+          "id": "Rolling Boulder:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            60,
+            70,
+            80,
+            90
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.3,
+              0.5,
+              0.7,
+              0.9
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Geomagnetic Grip",
+      "displayName": "地磁之握（Geomagnetic Grip）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        13,
+        13,
+        13
+      ],
+      "components": [
+        {
+          "id": "Geomagnetic Grip:instant_fixed:rock_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "rock_damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.3,
+              2.7,
+              3.1,
+              3.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Stone Remnant",
+      "displayName": "残岩（Stone Remnant）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Stone Remnant:state_scaling:attack_damage_per_stone",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_damage_per_stone",
+          "valuesByAbilityLevel": [
+            2.5
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enchant Remnant",
+      "displayName": "残岩魔咒（Enchant Remnant）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        45
+      ],
+      "components": [
+        {
+          "id": "Enchant Remnant:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            450
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Magnetize",
+      "displayName": "磁化（Magnetize）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        90,
+        80
+      ],
+      "components": [
+        {
+          "id": "Magnetize:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            45,
+            90,
+            135
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            270,
+            540,
+            810
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

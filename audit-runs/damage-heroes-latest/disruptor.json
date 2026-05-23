@@ -1,0 +1,392 @@
+{
+  "hero": "Disruptor",
+  "displayName": "干扰者（Disruptor）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 625,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 1200,
+    "moveSpeed": 295,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 31,
+    "baseStrength": 21,
+    "baseAgility": 15,
+    "baseIntelligence": 20,
+    "strengthGain": 2.4,
+    "agilityGain": 1.4,
+    "intelligenceGain": 2.9,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 15,
+        "intelligence": 20,
+        "maxHealth": 582,
+        "maxMana": 315,
+        "armor": 2.5,
+        "attackMin": 47,
+        "attackMax": 51
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.8,
+          "agility": 17.8,
+          "intelligence": 25.8,
+          "maxHealth": 688,
+          "maxMana": 385,
+          "armor": 2.97,
+          "attackMin": 53,
+          "attackMax": 57
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.6,
+          "agility": 20.6,
+          "intelligence": 31.6,
+          "maxHealth": 793,
+          "maxMana": 454,
+          "armor": 3.43,
+          "attackMin": 59,
+          "attackMax": 63
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 22,
+          "intelligence": 34.5,
+          "maxHealth": 846,
+          "maxMana": 489,
+          "armor": 3.67,
+          "attackMin": 62,
+          "attackMax": 66
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 23.4,
+          "intelligence": 37.4,
+          "maxHealth": 899,
+          "maxMana": 524,
+          "armor": 3.9,
+          "attackMin": 64,
+          "attackMax": 68
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.4,
+          "agility": 30.4,
+          "intelligence": 51.9,
+          "maxHealth": 1163,
+          "maxMana": 698,
+          "armor": 5.07,
+          "attackMin": 79,
+          "attackMax": 83
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.8,
+          "agility": 38.8,
+          "intelligence": 69.3,
+          "maxHealth": 1480,
+          "maxMana": 907,
+          "armor": 6.47,
+          "attackMin": 96,
+          "attackMax": 100
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Thunder Strike",
+      "displayName": "风雷之击（Thunder Strike）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        130,
+        135,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        15,
+        12,
+        9
+      ],
+      "components": [
+        {
+          "id": "Thunder Strike:instant_fixed:strike_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "strike_damage",
+          "valuesByAbilityLevel": [
+            30,
+            60,
+            90,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.3,
+              0.3,
+              0.3,
+              0.3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Glimpse",
+      "displayName": "恶念瞥视（Glimpse）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        70,
+        85,
+        100,
+        115
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        22,
+        20,
+        18
+      ],
+      "components": [
+        {
+          "id": "Glimpse:state_scaling:min_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "min_damage",
+          "valuesByAbilityLevel": [
+            25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kinetic Field",
+      "displayName": "动能力场（Kinetic Field）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Kinetic Field:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kinetic Fence",
+      "displayName": "动能栅栏（Kinetic Fence）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Kinetic Fence:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Static Storm",
+      "displayName": "静态风暴（Static Storm）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        175,
+        225
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        85,
+        70
+      ],
+      "components": [
+        {
+          "id": "Static Storm:sustained:damage_max",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_max",
+          "valuesByAbilityLevel": [
+            200,
+            275,
+            350
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            1200,
+            1650,
+            2100
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

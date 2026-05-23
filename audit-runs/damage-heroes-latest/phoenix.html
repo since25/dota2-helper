@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>凤凰（Phoenix） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>凤凰（Phoenix）</h1>
+        <div class="muted">Phoenix · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./phoenix.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>str</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>23</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>3.3</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>12</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>1.5</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>16</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>1.8</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>21 - 31</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>-1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>525</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>280</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>凤凰冲击（Icarus Dive）</h2>
+          <div class="muted">Icarus Dive · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0 / 0</span>
+        <span>冷却：40 / 35 / 30 / 25</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Icarus Dive:sustained:damage_per_second</code>
+          <div class="muted">damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>20</td><td>40</td><td>60</td><td>80</td>
+        <td>80 / 160 / 240 / 320</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>烈火精灵（Fire Spirits）</h2>
+          <div class="muted">Fire Spirits · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 100 / 100 / 100</span>
+        <span>冷却：50 / 40 / 30 / 20</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Fire Spirits:sustained:damage_per_second</code>
+          <div class="muted">damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>20</td><td>40</td><td>60</td><td>80</td>
+        <td>400 / 800 / 1200 / 1600</td>
+        <td><div><code>durationByAbilityLevel</code>: 20 / 20 / 20 / 20</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>烈日炙烤（Sun Ray）</h2>
+          <div class="muted">Sun Ray · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 110 / 120 / 130</span>
+        <span>冷却：30 / 30 / 30 / 30</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Sun Ray:sustained:base_damage</code>
+          <div class="muted">base_damage</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>15</td><td>20</td><td>25</td><td>30</td>
+        <td>90 / 120 / 150 / 180</td>
+        <td><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>超新星（Supernova）</h2>
+          <div class="muted">Supernova · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：150 / 200 / 250</span>
+        <span>冷却：120 / 120 / 120</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Supernova:sustained:damage_per_sec</code>
+          <div class="muted">damage_per_sec</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>60</td><td>90</td><td>120</td><td>-</td>
+        <td>96 / 180 / 288</td>
+        <td><div><code>durationByAbilityLevel</code>: 1.6 / 2 / 2.4</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>发动烈火精灵（Launch Fire Spirit）</h2>
+          <div class="muted">Launch Fire Spirit · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">auto</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0 / 0</span>
+        <span>冷却：0 / 0 / 0 / 0</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Launch Fire Spirit:sustained:damage_per_second</code>
+          <div class="muted">damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>20</td><td>40</td><td>60</td><td>80</td>
+        <td>400 / 800 / 1200 / 1600</td>
+        <td><div><code>durationByAbilityLevel</code>: 20 / 20 / 20 / 20</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Phoenix&quot;,
+  &quot;displayName&quot;: &quot;凤凰（Phoenix）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 525,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.35,
+    &quot;projectileSpeed&quot;: 1100,
+    &quot;moveSpeed&quot;: 280,
+    &quot;turnRate&quot;: 0.9,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 2,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: -1,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 21,
+    &quot;baseAttackMax&quot;: 31,
+    &quot;baseStrength&quot;: 23,
+    &quot;baseAgility&quot;: 12,
+    &quot;baseIntelligence&quot;: 16,
+    &quot;strengthGain&quot;: 3.3,
+    &quot;agilityGain&quot;: 1.5,
+    &quot;intelligenceGain&quot;: 1.8,
+    &quot;primaryAttribute&quot;: &quot;str&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 23,
+        &quot;agility&quot;: 12,
+        &quot;intelligence&quot;: 16,
+        &quot;maxHealth&quot;: 626,
+        &quot;maxMana&quot;: 267,
+        &quot;armor&quot;: 1,
+        &quot;attackMin&quot;: 44,
+        &quot;attackMax&quot;: 54
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 29.6,
+          &quot;agility&quot;: 15,
+          &quot;intelligence&quot;: 19.6,
+          &quot;maxHealth&quot;: 771,
+          &quot;maxMana&quot;: 310,
+          &quot;armor&quot;: 1.5,
+          &quot;attackMin&quot;: 51,
+          &quot;attackMax&quot;: 61
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 36.2,
+          &quot;agility&quot;: 18,
+          &quot;intelligence&quot;: 23.2,
+          &quot;maxHealth&quot;: 916,
+          &quot;maxMana&quot;: 353,
+          &quot;armor&quot;: 2,
+          &quot;attackMin&quot;: 57,
+          &quot;attackMax&quot;: 67
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 39.5,
+          &quot;agility&quot;: 19.5,
+          &quot;intelligence&quot;: 25,
+          &quot;maxHealth&quot;: 989,
+          &quot;maxMana&quot;: 375,
+          &quot;armor&quot;: 2.25,
+          &quot;attackMin&quot;: 61,
+          &quot;attackMax&quot;: 71
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 42.8,
+          &quot;agility&quot;: 21,
+          &quot;intelligence&quot;: 26.8,
+          &quot;maxHealth&quot;: 1062,
+          &quot;maxMana&quot;: 397,
+          &quot;armor&quot;: 2.5,
+          &quot;attackMin&quot;: 64,
+          &quot;attackMax&quot;: 74
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 59.3,
+          &quot;agility&quot;: 28.5,
+          &quot;intelligence&quot;: 35.8,
+          &quot;maxHealth&quot;: 1425,
+          &quot;maxMana&quot;: 505,
+          &quot;armor&quot;: 3.75,
+          &quot;attackMin&quot;: 80,
+          &quot;attackMax&quot;: 90
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 79.1,
+          &quot;agility&quot;: 37.5,
+          &quot;intelligence&quot;: 46.6,
+          &quot;maxHealth&quot;: 1860,
+          &quot;maxMana&quot;: 634,
+          &quot;armor&quot;: 5.25,
+          &quot;attackMin&quot;: 100,
+          &quot;attackMax&quot;: 110
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Icarus Dive&quot;,
+      &quot;displayName&quot;: &quot;凤凰冲击（Icarus Dive）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        40,
+        35,
+        30,
+        25
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Icarus Dive:sustained:damage_per_second&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            20,
+            40,
+            60,
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            80,
+            160,
+            240,
+            320
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              4,
+              4,
+              4,
+              4
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Fire Spirits&quot;,
+      &quot;displayName&quot;: &quot;烈火精灵（Fire Spirits）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        100,
+        100,
+        100
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        50,
+        40,
+        30,
+        20
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Fire Spirits:sustained:damage_per_second&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            20,
+            40,
+            60,
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            400,
+            800,
+            1200,
+            1600
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              20,
+              20,
+              20,
+              20
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Sun Ray&quot;,
+      &quot;displayName&quot;: &quot;烈日炙烤（Sun Ray）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        110,
+        120,
+        130
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        30,
+        30,
+        30,
+        30
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Sun Ray:sustained:base_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            15,
+            20,
+            25,
+            30
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            90,
+            120,
+            150,
+            180
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              6,
+              6,
+              6,
+              6
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Supernova&quot;,
+      &quot;displayName&quot;: &quot;超新星（Supernova）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        150,
+        200,
+        250
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        120,
+        120,
+        120
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Supernova:sustained:damage_per_sec&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_sec&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            60,
+            90,
+            120
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            96,
+            180,
+            288
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              1.6,
+              2,
+              2.4
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Launch Fire Spirit&quot;,
+      &quot;displayName&quot;: &quot;发动烈火精灵（Launch Fire Spirit）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Launch Fire Spirit:sustained:damage_per_second&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            20,
+            40,
+            60,
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            400,
+            800,
+            1200,
+            1600
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              20,
+              20,
+              20,
+              20
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

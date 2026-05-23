@@ -1,0 +1,347 @@
+{
+  "hero": "Winter Wyvern",
+  "displayName": "寒冬飞龙（Winter Wyvern）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 450,
+    "attackRate": 1.7,
+    "attackPoint": 0.25,
+    "projectileSpeed": 700,
+    "moveSpeed": 285,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 16,
+    "baseAttackMax": 23,
+    "baseStrength": 22,
+    "baseAgility": 16,
+    "baseIntelligence": 26,
+    "strengthGain": 2.5,
+    "agilityGain": 1.7,
+    "intelligenceGain": 3.6,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 16,
+        "intelligence": 26,
+        "maxHealth": 604,
+        "maxMana": 387,
+        "armor": 3.67,
+        "attackMin": 42,
+        "attackMax": 49
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27,
+          "agility": 19.4,
+          "intelligence": 33.2,
+          "maxHealth": 714,
+          "maxMana": 473,
+          "armor": 4.23,
+          "attackMin": 49,
+          "attackMax": 56
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32,
+          "agility": 22.8,
+          "intelligence": 40.4,
+          "maxHealth": 824,
+          "maxMana": 560,
+          "armor": 4.8,
+          "attackMin": 56,
+          "attackMax": 63
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34.5,
+          "agility": 24.5,
+          "intelligence": 44,
+          "maxHealth": 879,
+          "maxMana": 603,
+          "armor": 5.08,
+          "attackMin": 60,
+          "attackMax": 67
+        },
+        "level7": {
+          "level": 7,
+          "strength": 37,
+          "agility": 26.2,
+          "intelligence": 47.6,
+          "maxHealth": 934,
+          "maxMana": 646,
+          "armor": 5.37,
+          "attackMin": 64,
+          "attackMax": 71
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.5,
+          "agility": 34.7,
+          "intelligence": 65.6,
+          "maxHealth": 1209,
+          "maxMana": 862,
+          "armor": 6.78,
+          "attackMin": 82,
+          "attackMax": 89
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.5,
+          "agility": 44.9,
+          "intelligence": 87.2,
+          "maxHealth": 1539,
+          "maxMana": 1121,
+          "armor": 8.48,
+          "attackMin": 103,
+          "attackMax": 110
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Arctic Burn",
+      "displayName": "严寒烧灼（Arctic Burn）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        26,
+        24,
+        22,
+        20
+      ],
+      "components": [
+        {
+          "id": "Arctic Burn:sustained:damage_duration",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_duration",
+          "valuesByAbilityLevel": [
+            3
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            21,
+            24,
+            27,
+            30
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Splinter Blast",
+      "displayName": "碎裂冲击（Splinter Blast）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        105,
+        115,
+        125,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "components": [
+        {
+          "id": "Splinter Blast:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Cold Embrace",
+      "displayName": "极寒之拥（Cold Embrace）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        60,
+        70,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        21,
+        18,
+        15
+      ],
+      "components": [
+        {
+          "id": "Cold Embrace:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            850,
+            900,
+            950,
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Winter's Curse",
+      "displayName": "寒冬诅咒（Winter's Curse）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        90,
+        80
+      ],
+      "components": [
+        {
+          "id": "Winter's Curse:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            800
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,286 @@
+{
+  "hero": "Riki",
+  "displayName": "力丸（Riki）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 315,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 2.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 22,
+    "baseAttackMax": 26,
+    "baseStrength": 18,
+    "baseAgility": 30,
+    "baseIntelligence": 14,
+    "strengthGain": 2,
+    "agilityGain": 2.4,
+    "intelligenceGain": 1.3,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 30,
+        "intelligence": 14,
+        "maxHealth": 516,
+        "maxMana": 243,
+        "armor": 5,
+        "attackMin": 52,
+        "attackMax": 56
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 22,
+          "agility": 34.8,
+          "intelligence": 16.6,
+          "maxHealth": 604,
+          "maxMana": 274,
+          "armor": 5.8,
+          "attackMin": 57,
+          "attackMax": 61
+        },
+        "level5": {
+          "level": 5,
+          "strength": 26,
+          "agility": 39.6,
+          "intelligence": 19.2,
+          "maxHealth": 692,
+          "maxMana": 305,
+          "armor": 6.6,
+          "attackMin": 62,
+          "attackMax": 66
+        },
+        "level6": {
+          "level": 6,
+          "strength": 28,
+          "agility": 42,
+          "intelligence": 20.5,
+          "maxHealth": 736,
+          "maxMana": 321,
+          "armor": 7,
+          "attackMin": 64,
+          "attackMax": 68
+        },
+        "level7": {
+          "level": 7,
+          "strength": 30,
+          "agility": 44.4,
+          "intelligence": 21.8,
+          "maxHealth": 780,
+          "maxMana": 337,
+          "armor": 7.4,
+          "attackMin": 66,
+          "attackMax": 70
+        },
+        "level12": {
+          "level": 12,
+          "strength": 40,
+          "agility": 56.4,
+          "intelligence": 28.3,
+          "maxHealth": 1000,
+          "maxMana": 415,
+          "armor": 9.4,
+          "attackMin": 78,
+          "attackMax": 82
+        },
+        "level18": {
+          "level": 18,
+          "strength": 52,
+          "agility": 70.8,
+          "intelligence": 36.1,
+          "maxHealth": 1264,
+          "maxMana": 508,
+          "armor": 11.8,
+          "attackMin": 93,
+          "attackMax": 97
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Smoke Screen",
+      "displayName": "烟幕（Smoke Screen）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Smoke Screen:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            550
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blink Strike",
+      "displayName": "闪烁突袭（Blink Strike）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        55,
+        60,
+        65
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Blink Strike:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600,
+            700,
+            800,
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tricks of the Trade",
+      "displayName": "绝杀秘技（Tricks of the Trade）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        65,
+        65,
+        65
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        18,
+        15,
+        12
+      ],
+      "components": [
+        {
+          "id": "Tricks of the Trade:attack_modifier:attack_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

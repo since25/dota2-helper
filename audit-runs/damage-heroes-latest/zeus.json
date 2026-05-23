@@ -1,0 +1,429 @@
+{
+  "hero": "Zeus",
+  "displayName": "宙斯（Zeus）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 380,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 1100,
+    "moveSpeed": 305,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 30,
+    "baseAttackMax": 40,
+    "baseStrength": 21,
+    "baseAgility": 11,
+    "baseIntelligence": 23,
+    "strengthGain": 2.1,
+    "agilityGain": 1.2,
+    "intelligenceGain": 3.3,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 11,
+        "intelligence": 23,
+        "maxHealth": 582,
+        "maxMana": 351,
+        "armor": 2.83,
+        "attackMin": 53,
+        "attackMax": 63
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.2,
+          "agility": 13.4,
+          "intelligence": 29.6,
+          "maxHealth": 674,
+          "maxMana": 430,
+          "armor": 3.23,
+          "attackMin": 60,
+          "attackMax": 70
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.4,
+          "agility": 15.8,
+          "intelligence": 36.2,
+          "maxHealth": 767,
+          "maxMana": 509,
+          "armor": 3.63,
+          "attackMin": 66,
+          "attackMax": 76
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31.5,
+          "agility": 17,
+          "intelligence": 39.5,
+          "maxHealth": 813,
+          "maxMana": 549,
+          "armor": 3.83,
+          "attackMin": 70,
+          "attackMax": 80
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.6,
+          "agility": 18.2,
+          "intelligence": 42.8,
+          "maxHealth": 859,
+          "maxMana": 589,
+          "armor": 4.03,
+          "attackMin": 73,
+          "attackMax": 83
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.1,
+          "agility": 24.2,
+          "intelligence": 59.3,
+          "maxHealth": 1090,
+          "maxMana": 787,
+          "armor": 5.03,
+          "attackMin": 89,
+          "attackMax": 99
+        },
+        "level18": {
+          "level": 18,
+          "strength": 56.7,
+          "agility": 31.4,
+          "intelligence": 79.1,
+          "maxHealth": 1367,
+          "maxMana": 1024,
+          "armor": 6.23,
+          "attackMin": 109,
+          "attackMax": 119
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Arc Lightning",
+      "displayName": "弧形闪电（Arc Lightning）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        85,
+        90,
+        95,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        1.6,
+        1.6,
+        1.6,
+        1.6
+      ],
+      "components": [
+        {
+          "id": "Arc Lightning:instant_fixed:arc_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "arc_damage",
+          "valuesByAbilityLevel": [
+            105,
+            130,
+            155,
+            180
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Lightning Bolt",
+      "displayName": "雷击（Lightning Bolt）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        120,
+        125,
+        130,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "components": [
+        {
+          "id": "Lightning Bolt:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            140,
+            220,
+            300,
+            380
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Heavenly Jump",
+      "displayName": "神圣一跳（Heavenly Jump）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50,
+        60,
+        70,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        26,
+        22,
+        18,
+        14
+      ],
+      "components": [
+        {
+          "id": "Heavenly Jump:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Nimbus",
+      "displayName": "雷云（Nimbus）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        275
+      ],
+      "cooldownByAbilityLevel": [
+        45
+      ],
+      "components": [
+        {
+          "id": "Nimbus:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lightning Hands",
+      "displayName": "霹雳之手（Lightning Hands）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Lightning Hands:debuff_reference:attack_speed_bonus",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_speed_bonus",
+          "valuesByAbilityLevel": [
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Thundergod's Wrath",
+      "displayName": "雷神之怒（Thundergod's Wrath）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        250,
+        375,
+        500
+      ],
+      "cooldownByAbilityLevel": [
+        130,
+        130,
+        130
+      ],
+      "components": [
+        {
+          "id": "Thundergod's Wrath:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            300,
+            475,
+            650
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              3,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

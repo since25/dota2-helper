@@ -1,0 +1,388 @@
+{
+  "hero": "Kunkka",
+  "displayName": "昆卡（Kunkka）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 315,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.75,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 30,
+    "baseAttackMax": 36,
+    "baseStrength": 24,
+    "baseAgility": 14,
+    "baseIntelligence": 18,
+    "strengthGain": 3.6,
+    "agilityGain": 1.6,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 24,
+        "agility": 14,
+        "intelligence": 18,
+        "maxHealth": 648,
+        "maxMana": 291,
+        "armor": 4.33,
+        "attackMin": 54,
+        "attackMax": 60
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 31.2,
+          "agility": 17.2,
+          "intelligence": 21.6,
+          "maxHealth": 806,
+          "maxMana": 334,
+          "armor": 4.87,
+          "attackMin": 61,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38.4,
+          "agility": 20.4,
+          "intelligence": 25.2,
+          "maxHealth": 965,
+          "maxMana": 377,
+          "armor": 5.4,
+          "attackMin": 68,
+          "attackMax": 74
+        },
+        "level6": {
+          "level": 6,
+          "strength": 42,
+          "agility": 22,
+          "intelligence": 27,
+          "maxHealth": 1044,
+          "maxMana": 399,
+          "armor": 5.67,
+          "attackMin": 72,
+          "attackMax": 78
+        },
+        "level7": {
+          "level": 7,
+          "strength": 45.6,
+          "agility": 23.6,
+          "intelligence": 28.8,
+          "maxHealth": 1123,
+          "maxMana": 421,
+          "armor": 5.93,
+          "attackMin": 76,
+          "attackMax": 82
+        },
+        "level12": {
+          "level": 12,
+          "strength": 63.6,
+          "agility": 31.6,
+          "intelligence": 37.8,
+          "maxHealth": 1519,
+          "maxMana": 529,
+          "armor": 7.27,
+          "attackMin": 94,
+          "attackMax": 100
+        },
+        "level18": {
+          "level": 18,
+          "strength": 85.2,
+          "agility": 41.2,
+          "intelligence": 48.6,
+          "maxHealth": 1994,
+          "maxMana": 658,
+          "armor": 8.87,
+          "attackMin": 115,
+          "attackMax": 121
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Torrent",
+      "displayName": "洪流（Torrent）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Torrent:instant_fixed:torrent_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "torrent_damage",
+          "valuesByAbilityLevel": [
+            110,
+            180,
+            250,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1,
+              2,
+              3,
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Tidebringer",
+      "displayName": "潮汐使者（Tidebringer）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Tidebringer:state_scaling:cleave_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "cleave_damage",
+          "valuesByAbilityLevel": [
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "source_damage",
+              "hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "X Marks the Spot",
+      "displayName": "X标记（X Marks the Spot）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        20,
+        16,
+        12
+      ],
+      "components": [
+        {
+          "id": "X Marks the Spot:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            550,
+            700,
+            850,
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tidal Wave",
+      "displayName": "潮汐波（Tidal Wave）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        12
+      ],
+      "components": [
+        {
+          "id": "Tidal Wave:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            180
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Ghostship",
+      "displayName": "幽灵船（Ghostship）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        125,
+        175,
+        225
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        80,
+        70
+      ],
+      "components": [
+        {
+          "id": "Ghostship:instant_fixed:dmg",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            350,
+            475,
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.2,
+              1.2,
+              1.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

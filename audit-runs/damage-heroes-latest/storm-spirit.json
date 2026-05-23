@@ -1,0 +1,334 @@
+{
+  "hero": "Storm Spirit",
+  "displayName": "风暴之灵（Storm Spirit）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 480,
+    "attackRate": 1.6,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1100,
+    "moveSpeed": 285,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 34,
+    "baseStrength": 21,
+    "baseAgility": 22,
+    "baseIntelligence": 23,
+    "strengthGain": 2,
+    "agilityGain": 2.6,
+    "intelligenceGain": 3.7,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 22,
+        "intelligence": 23,
+        "maxHealth": 582,
+        "maxMana": 351,
+        "armor": 4.67,
+        "attackMin": 47,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25,
+          "agility": 27.2,
+          "intelligence": 30.4,
+          "maxHealth": 670,
+          "maxMana": 440,
+          "armor": 5.53,
+          "attackMin": 54,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29,
+          "agility": 32.4,
+          "intelligence": 37.8,
+          "maxHealth": 758,
+          "maxMana": 529,
+          "armor": 6.4,
+          "attackMin": 62,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31,
+          "agility": 35,
+          "intelligence": 41.5,
+          "maxHealth": 802,
+          "maxMana": 573,
+          "armor": 6.83,
+          "attackMin": 66,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33,
+          "agility": 37.6,
+          "intelligence": 45.2,
+          "maxHealth": 846,
+          "maxMana": 617,
+          "armor": 7.27,
+          "attackMin": 69,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 43,
+          "agility": 50.6,
+          "intelligence": 63.7,
+          "maxHealth": 1066,
+          "maxMana": 839,
+          "armor": 9.43,
+          "attackMin": 88,
+          "attackMax": 98
+        },
+        "level18": {
+          "level": 18,
+          "strength": 55,
+          "agility": 66.2,
+          "intelligence": 85.9,
+          "maxHealth": 1330,
+          "maxMana": 1106,
+          "armor": 12.03,
+          "attackMin": 110,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Static Remnant",
+      "displayName": "残影（Static Remnant）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        3.5
+      ],
+      "components": [
+        {
+          "id": "Static Remnant:state_scaling:static_remnant_damage_radius",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "static_remnant_damage_radius",
+          "valuesByAbilityLevel": [
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Electric Vortex",
+      "displayName": "电子涡流（Electric Vortex）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        70,
+        80,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        18,
+        16,
+        14
+      ],
+      "components": [
+        {
+          "id": "Electric Vortex:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Overload",
+      "displayName": "超负荷（Overload）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Overload:state_scaling:overload_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "overload_damage",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ball Lightning",
+      "displayName": "球状闪电（Ball Lightning）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        30,
+        30,
+        30
+      ],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Ball Lightning:state_scaling:dmg",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            6,
+            10,
+            14
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_missing_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

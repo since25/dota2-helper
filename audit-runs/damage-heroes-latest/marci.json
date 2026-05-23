@@ -1,0 +1,346 @@
+{
+  "hero": "Marci",
+  "displayName": "玛西（Marci）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 0,
+    "moveSpeed": 315,
+    "turnRate": 0.9,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 33,
+    "baseStrength": 23,
+    "baseAgility": 20,
+    "baseIntelligence": 19,
+    "strengthGain": 3.2,
+    "agilityGain": 2.2,
+    "intelligenceGain": 1.9,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 20,
+        "intelligence": 19,
+        "maxHealth": 626,
+        "maxMana": 303,
+        "armor": 3.33,
+        "attackMin": 72,
+        "attackMax": 76
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.4,
+          "agility": 24.4,
+          "intelligence": 22.8,
+          "maxHealth": 767,
+          "maxMana": 349,
+          "armor": 4.07,
+          "attackMin": 83,
+          "attackMax": 87
+        },
+        "level5": {
+          "level": 5,
+          "strength": 35.8,
+          "agility": 28.8,
+          "intelligence": 26.6,
+          "maxHealth": 908,
+          "maxMana": 394,
+          "armor": 4.8,
+          "attackMin": 93,
+          "attackMax": 97
+        },
+        "level6": {
+          "level": 6,
+          "strength": 39,
+          "agility": 31,
+          "intelligence": 28.5,
+          "maxHealth": 978,
+          "maxMana": 417,
+          "armor": 5.17,
+          "attackMin": 98,
+          "attackMax": 102
+        },
+        "level7": {
+          "level": 7,
+          "strength": 42.2,
+          "agility": 33.2,
+          "intelligence": 30.4,
+          "maxHealth": 1048,
+          "maxMana": 440,
+          "armor": 5.53,
+          "attackMin": 103,
+          "attackMax": 107
+        },
+        "level12": {
+          "level": 12,
+          "strength": 58.2,
+          "agility": 44.2,
+          "intelligence": 39.9,
+          "maxHealth": 1400,
+          "maxMana": 554,
+          "armor": 7.37,
+          "attackMin": 129,
+          "attackMax": 133
+        },
+        "level18": {
+          "level": 18,
+          "strength": 77.4,
+          "agility": 57.4,
+          "intelligence": 51.3,
+          "maxHealth": 1823,
+          "maxMana": 691,
+          "armor": 9.57,
+          "attackMin": 159,
+          "attackMax": 163
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Dispose",
+      "displayName": "过肩摔（Dispose）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        80,
+        80,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Dispose:instant_fixed:impact_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "impact_damage",
+          "valuesByAbilityLevel": [
+            60,
+            150,
+            240,
+            330
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Rebound",
+      "displayName": "回身踢（Rebound）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        70,
+        80,
+        90,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        20,
+        16,
+        12
+      ],
+      "components": [
+        {
+          "id": "Rebound:state_scaling:impact_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "impact_damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bodyguard",
+      "displayName": "护卫术（Bodyguard）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        65,
+        70,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        20
+      ],
+      "components": [
+        {
+          "id": "Bodyguard:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Unleash",
+      "displayName": "怒拳破（Unleash）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        80,
+        70,
+        60
+      ],
+      "components": [
+        {
+          "id": "Unleash:sustained:pulse_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "pulse_damage",
+          "valuesByAbilityLevel": [
+            50,
+            100,
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            800,
+            1600,
+            2400
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              16,
+              16,
+              16
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

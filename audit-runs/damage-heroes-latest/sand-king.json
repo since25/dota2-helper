@@ -1,0 +1,388 @@
+{
+  "hero": "Sand King",
+  "displayName": "沙王（Sand King）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.53,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 19,
+    "baseAttackMax": 29,
+    "baseStrength": 23,
+    "baseAgility": 19,
+    "baseIntelligence": 17,
+    "strengthGain": 2.3,
+    "agilityGain": 2,
+    "intelligenceGain": 2,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 19,
+        "intelligence": 17,
+        "maxHealth": 626,
+        "maxMana": 279,
+        "armor": 4.17,
+        "attackMin": 60,
+        "attackMax": 70
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27.6,
+          "agility": 23,
+          "intelligence": 21,
+          "maxHealth": 727,
+          "maxMana": 327,
+          "armor": 4.83,
+          "attackMin": 69,
+          "attackMax": 79
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32.2,
+          "agility": 27,
+          "intelligence": 25,
+          "maxHealth": 828,
+          "maxMana": 375,
+          "armor": 5.5,
+          "attackMin": 78,
+          "attackMax": 88
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34.5,
+          "agility": 29,
+          "intelligence": 27,
+          "maxHealth": 879,
+          "maxMana": 399,
+          "armor": 5.83,
+          "attackMin": 82,
+          "attackMax": 92
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36.8,
+          "agility": 31,
+          "intelligence": 29,
+          "maxHealth": 930,
+          "maxMana": 423,
+          "armor": 6.17,
+          "attackMin": 87,
+          "attackMax": 97
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.3,
+          "agility": 41,
+          "intelligence": 39,
+          "maxHealth": 1183,
+          "maxMana": 543,
+          "armor": 7.83,
+          "attackMin": 109,
+          "attackMax": 119
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.1,
+          "agility": 53,
+          "intelligence": 51,
+          "maxHealth": 1486,
+          "maxMana": 687,
+          "armor": 9.83,
+          "attackMin": 135,
+          "attackMax": 145
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Burrowstrike",
+      "displayName": "掘地穿刺（Burrowstrike）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        13,
+        12,
+        11
+      ],
+      "components": [
+        {
+          "id": "Burrowstrike:instant_fixed:dmg",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dmg",
+          "valuesByAbilityLevel": [
+            80,
+            150,
+            220,
+            290
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Sand Storm",
+      "displayName": "沙尘暴（Sand Storm）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        85,
+        85,
+        85,
+        85
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        34,
+        28,
+        22
+      ],
+      "components": [
+        {
+          "id": "Sand Storm:sustained:sand_storm_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "sand_storm_damage",
+          "valuesByAbilityLevel": [
+            30,
+            50,
+            70,
+            90
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            480,
+            1000,
+            1680,
+            2520
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              16,
+              20,
+              24,
+              28
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stinger",
+      "displayName": "尾刺（Stinger）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        35,
+        40,
+        45,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Stinger:attack_modifier:attack_damage",
+          "kind": "attack_modifier",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "attack_damage",
+          "valuesByAbilityLevel": [
+            50,
+            75,
+            100,
+            125
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_modifier"
+          },
+          "metadata": {
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "",
+          "caveats": [
+            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Caustic Finale",
+      "displayName": "腐尸毒（Caustic Finale）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "conditional",
+      "reason": "死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Caustic Finale:conditional:caustic_finale_damage_flat",
+          "kind": "conditional",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "caustic_finale_damage_flat",
+          "valuesByAbilityLevel": [
+            17
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "conditional"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "目标在腐尸毒持续时间内死亡才会爆炸。",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "conditional",
+          "reason": "死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。",
+          "caveats": [
+            "死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Epicenter",
+      "displayName": "地震（Epicenter）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "multi_wave",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        225,
+        300
+      ],
+      "cooldownByAbilityLevel": [
+        120,
+        110,
+        100
+      ],
+      "components": [
+        {
+          "id": "Epicenter:multi_wave:epicenter_damage",
+          "kind": "multi_wave",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "epicenter_damage",
+          "valuesByAbilityLevel": [
+            60,
+            70,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            720,
+            1120,
+            1600
+          ],
+          "totalFormula": "waveCount * damagePerWave",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "wave_count_times_damage_per_wave"
+          },
+          "metadata": {
+            "waveCountByAbilityLevel": [
+              12,
+              16,
+              20
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "multi_wave",
+          "reason": "",
+          "caveats": [
+            "包含多波伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

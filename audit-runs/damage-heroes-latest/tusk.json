@@ -1,0 +1,472 @@
+{
+  "hero": "Tusk",
+  "displayName": "巨牙海民（Tusk）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.36,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 31,
+    "baseStrength": 23,
+    "baseAgility": 23,
+    "baseIntelligence": 18,
+    "strengthGain": 3.9,
+    "agilityGain": 1.9,
+    "intelligenceGain": 1.7,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 23,
+        "intelligence": 18,
+        "maxHealth": 626,
+        "maxMana": 291,
+        "armor": 4.83,
+        "attackMin": 50,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30.8,
+          "agility": 26.8,
+          "intelligence": 21.4,
+          "maxHealth": 798,
+          "maxMana": 332,
+          "armor": 5.47,
+          "attackMin": 58,
+          "attackMax": 62
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38.6,
+          "agility": 30.6,
+          "intelligence": 24.8,
+          "maxHealth": 969,
+          "maxMana": 373,
+          "armor": 6.1,
+          "attackMin": 66,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 42.5,
+          "agility": 32.5,
+          "intelligence": 26.5,
+          "maxHealth": 1055,
+          "maxMana": 393,
+          "armor": 6.42,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 46.4,
+          "agility": 34.4,
+          "intelligence": 28.2,
+          "maxHealth": 1141,
+          "maxMana": 413,
+          "armor": 6.73,
+          "attackMin": 73,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 65.9,
+          "agility": 43.9,
+          "intelligence": 36.7,
+          "maxHealth": 1570,
+          "maxMana": 515,
+          "armor": 8.32,
+          "attackMin": 93,
+          "attackMax": 97
+        },
+        "level18": {
+          "level": 18,
+          "strength": 89.3,
+          "agility": 55.3,
+          "intelligence": 46.9,
+          "maxHealth": 2085,
+          "maxMana": 638,
+          "armor": 10.22,
+          "attackMin": 116,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Ice Shards",
+      "displayName": "寒冰碎片（Ice Shards）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        23,
+        20,
+        17,
+        14
+      ],
+      "components": [
+        {
+          "id": "Ice Shards:instant_fixed:shard_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "shard_damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Snowball",
+      "displayName": "雪球（Snowball）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75,
+        75,
+        75,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        21,
+        19,
+        17,
+        15
+      ],
+      "components": [
+        {
+          "id": "Snowball:instant_fixed:snowball_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "snowball_damage",
+          "valuesByAbilityLevel": [
+            80,
+            140,
+            200,
+            260
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.6,
+              0.8,
+              1,
+              1.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Tag Team",
+      "displayName": "摔角行家（Tag Team）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        21,
+        18,
+        15
+      ],
+      "components": [
+        {
+          "id": "Tag Team:debuff_reference:movement_slow",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "movement_slow",
+          "valuesByAbilityLevel": [
+            75
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinking Buddies",
+      "displayName": "酒友（Drinking Buddies）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        14
+      ],
+      "components": [
+        {
+          "id": "Drinking Buddies:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Walrus Kick",
+      "displayName": "海象飞踢（Walrus Kick）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        12
+      ],
+      "components": [
+        {
+          "id": "Walrus Kick:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            550
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Walrus PUNCH!",
+      "displayName": "海象神拳！（Walrus PUNCH!）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        13,
+        10
+      ],
+      "components": [
+        {
+          "id": "Walrus PUNCH!:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bitter Chill",
+      "displayName": "严寒（Bitter Chill）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Bitter Chill:debuff_reference:attack_speed_slow",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_speed_slow",
+          "valuesByAbilityLevel": [
+            17
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

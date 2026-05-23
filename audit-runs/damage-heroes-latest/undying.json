@@ -1,0 +1,344 @@
+{
+  "hero": "Undying",
+  "displayName": "不朽尸王（Undying）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": -0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.25,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 33,
+    "baseAttackMax": 41,
+    "baseStrength": 22,
+    "baseAgility": 13,
+    "baseIntelligence": 27,
+    "strengthGain": 2.4,
+    "agilityGain": 1.2,
+    "intelligenceGain": 2.8,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 13,
+        "intelligence": 27,
+        "maxHealth": 604,
+        "maxMana": 399,
+        "armor": 2.17,
+        "attackMin": 55,
+        "attackMax": 63
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 26.8,
+          "agility": 15.4,
+          "intelligence": 32.6,
+          "maxHealth": 710,
+          "maxMana": 466,
+          "armor": 2.57,
+          "attackMin": 60,
+          "attackMax": 68
+        },
+        "level5": {
+          "level": 5,
+          "strength": 31.6,
+          "agility": 17.8,
+          "intelligence": 38.2,
+          "maxHealth": 815,
+          "maxMana": 533,
+          "armor": 2.97,
+          "attackMin": 65,
+          "attackMax": 73
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34,
+          "agility": 19,
+          "intelligence": 41,
+          "maxHealth": 868,
+          "maxMana": 567,
+          "armor": 3.17,
+          "attackMin": 67,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36.4,
+          "agility": 20.2,
+          "intelligence": 43.8,
+          "maxHealth": 921,
+          "maxMana": 601,
+          "armor": 3.37,
+          "attackMin": 69,
+          "attackMax": 77
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.4,
+          "agility": 26.2,
+          "intelligence": 57.8,
+          "maxHealth": 1185,
+          "maxMana": 769,
+          "armor": 4.37,
+          "attackMin": 81,
+          "attackMax": 89
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.8,
+          "agility": 33.4,
+          "intelligence": 74.6,
+          "maxHealth": 1502,
+          "maxMana": 970,
+          "armor": 5.57,
+          "attackMin": 96,
+          "attackMax": 104
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Decay",
+      "displayName": "腐朽（Decay）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        10,
+        7,
+        4
+      ],
+      "components": [
+        {
+          "id": "Decay:state_scaling:decay_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "decay_damage",
+          "valuesByAbilityLevel": [
+            20,
+            60,
+            100,
+            140
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "hero_attribute"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soul Rip",
+      "displayName": "噬魂（Soul Rip）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Soul Rip:instant_fixed:damage_per_unit",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_unit",
+          "valuesByAbilityLevel": [
+            14,
+            26,
+            38,
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Tombstone",
+      "displayName": "墓碑（Tombstone）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "conditional",
+      "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        125,
+        150,
+        175,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        80
+      ],
+      "components": [
+        {
+          "id": "Tombstone:conditional:zombie_damage_tooltip",
+          "kind": "conditional",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "zombie_damage_tooltip",
+          "valuesByAbilityLevel": [
+            34
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "conditional"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "需要触发条件成立才造成伤害。",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "conditional",
+          "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
+          "caveats": [
+            "条件伤害首轮模型只作为参考，不默认计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flesh Golem",
+      "displayName": "血肉傀儡（Flesh Golem）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        140,
+        140,
+        140
+      ],
+      "components": [
+        {
+          "id": "Flesh Golem:debuff_reference:damage_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_amp",
+          "valuesByAbilityLevel": [
+            25,
+            30,
+            35
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

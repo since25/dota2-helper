@@ -1,0 +1,377 @@
+{
+  "hero": "Axe",
+  "displayName": "斧王（Axe）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 315,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 2.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 35,
+    "baseStrength": 25,
+    "baseAgility": 20,
+    "baseIntelligence": 18,
+    "strengthGain": 2.7,
+    "agilityGain": 1.7,
+    "intelligenceGain": 1.6,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 20,
+        "intelligence": 18,
+        "maxHealth": 670,
+        "maxMana": 291,
+        "armor": 3.33,
+        "attackMin": 56,
+        "attackMax": 60
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30.4,
+          "agility": 23.4,
+          "intelligence": 21.2,
+          "maxHealth": 789,
+          "maxMana": 329,
+          "armor": 3.9,
+          "attackMin": 61,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 35.8,
+          "agility": 26.8,
+          "intelligence": 24.4,
+          "maxHealth": 908,
+          "maxMana": 368,
+          "armor": 4.47,
+          "attackMin": 67,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 38.5,
+          "agility": 28.5,
+          "intelligence": 26,
+          "maxHealth": 967,
+          "maxMana": 387,
+          "armor": 4.75,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level7": {
+          "level": 7,
+          "strength": 41.2,
+          "agility": 30.2,
+          "intelligence": 27.6,
+          "maxHealth": 1026,
+          "maxMana": 406,
+          "armor": 5.03,
+          "attackMin": 72,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 54.7,
+          "agility": 38.7,
+          "intelligence": 35.6,
+          "maxHealth": 1323,
+          "maxMana": 502,
+          "armor": 6.45,
+          "attackMin": 86,
+          "attackMax": 90
+        },
+        "level18": {
+          "level": 18,
+          "strength": 70.9,
+          "agility": 48.9,
+          "intelligence": 45.2,
+          "maxHealth": 1680,
+          "maxMana": 617,
+          "armor": 8.15,
+          "attackMin": 102,
+          "attackMax": 106
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Berserker's Call",
+      "displayName": "狂战士之吼（Berserker's Call）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "嘲讽和护甲影响换血窗口，不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        90,
+        100,
+        110,
+        120
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Berserker's Call:debuff_reference:duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "duration",
+          "valuesByAbilityLevel": [
+            2.1,
+            2.4,
+            2.7,
+            3
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "disable_window",
+            "affects": "disable_window",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "嘲讽和护甲影响换血窗口，不直接造成伤害。",
+          "caveats": [
+            "嘲讽和护甲影响换血窗口，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Battle Hunger",
+      "displayName": "战斗饥渴（Battle Hunger）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50,
+        60,
+        70,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        20,
+        15,
+        10,
+        5
+      ],
+      "components": [
+        {
+          "id": "Battle Hunger:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            12,
+            18,
+            24,
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            144,
+            216,
+            288,
+            360
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              12,
+              12,
+              12,
+              12
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Counter Helix",
+      "displayName": "反击螺旋（Counter Helix）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "按一次反击螺旋触发计算，触发次数需要由使用者选择。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "components": [
+        {
+          "id": "Counter Helix:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            120,
+            140,
+            160
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "按一次反击螺旋触发计算，触发次数需要由使用者选择。",
+          "caveats": [
+            "按一次反击螺旋触发计算，触发次数需要由使用者选择。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Culling Blade",
+      "displayName": "淘汰之刃（Culling Blade）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        80,
+        75,
+        70
+      ],
+      "components": [
+        {
+          "id": "Culling Blade:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            275,
+            375,
+            475
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "One Man Army",
+      "displayName": "一人之军（One Man Army）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "固定机制影响身板和输出环境，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "One Man Army:debuff_reference:armor_pct_as_strength",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "armor_pct_as_strength",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "固定机制影响身板和输出环境，不直接造成伤害。",
+          "caveats": [
+            "固定机制影响身板和输出环境，不直接造成伤害。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

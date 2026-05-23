@@ -1,0 +1,286 @@
+{
+  "hero": "Mars",
+  "displayName": "玛尔斯（Mars）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 250,
+    "attackRate": 1.8,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0.5,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 34,
+    "baseStrength": 23,
+    "baseAgility": 18,
+    "baseIntelligence": 21,
+    "strengthGain": 3.7,
+    "agilityGain": 1.7,
+    "intelligenceGain": 2.2,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 18,
+        "intelligence": 21,
+        "maxHealth": 626,
+        "maxMana": 327,
+        "armor": 2,
+        "attackMin": 49,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30.4,
+          "agility": 21.4,
+          "intelligence": 25.4,
+          "maxHealth": 789,
+          "maxMana": 380,
+          "armor": 2.57,
+          "attackMin": 56,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 37.8,
+          "agility": 24.8,
+          "intelligence": 29.8,
+          "maxHealth": 952,
+          "maxMana": 433,
+          "armor": 3.13,
+          "attackMin": 64,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 41.5,
+          "agility": 26.5,
+          "intelligence": 32,
+          "maxHealth": 1033,
+          "maxMana": 459,
+          "armor": 3.42,
+          "attackMin": 68,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 45.2,
+          "agility": 28.2,
+          "intelligence": 34.2,
+          "maxHealth": 1114,
+          "maxMana": 485,
+          "armor": 3.7,
+          "attackMin": 71,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 63.7,
+          "agility": 36.7,
+          "intelligence": 45.2,
+          "maxHealth": 1521,
+          "maxMana": 617,
+          "armor": 5.12,
+          "attackMin": 90,
+          "attackMax": 98
+        },
+        "level18": {
+          "level": 18,
+          "strength": 85.9,
+          "agility": 46.9,
+          "intelligence": 58.4,
+          "maxHealth": 2010,
+          "maxMana": 776,
+          "armor": 6.82,
+          "attackMin": 112,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Spear of Mars",
+      "displayName": "战神迅矛（Spear of Mars）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        13,
+        12,
+        11
+      ],
+      "components": [
+        {
+          "id": "Spear of Mars:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            175,
+            250,
+            325
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.7,
+              1.7,
+              1.7,
+              1.7
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "God's Rebuke",
+      "displayName": "神之谴戒（God's Rebuke）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "God's Rebuke:debuff_reference:crit_mult",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "crit_mult",
+          "valuesByAbilityLevel": [
+            150,
+            200,
+            250,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arena Of Blood",
+      "displayName": "热血竞技场（Arena Of Blood）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        95,
+        90
+      ],
+      "components": [
+        {
+          "id": "Arena Of Blood:instant_fixed:spear_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "spear_damage",
+          "valuesByAbilityLevel": [
+            80,
+            160,
+            240
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5.5,
+              5.5,
+              5.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

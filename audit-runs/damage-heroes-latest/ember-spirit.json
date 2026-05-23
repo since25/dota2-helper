@@ -1,0 +1,450 @@
+{
+  "hero": "Ember Spirit",
+  "displayName": "灰烬之灵（Ember Spirit）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.4,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 33,
+    "baseAttackMax": 37,
+    "baseStrength": 22,
+    "baseAgility": 22,
+    "baseIntelligence": 20,
+    "strengthGain": 2.5,
+    "agilityGain": 3.2,
+    "intelligenceGain": 2.2,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 22,
+        "intelligence": 20,
+        "maxHealth": 604,
+        "maxMana": 315,
+        "armor": 3.67,
+        "attackMin": 55,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27,
+          "agility": 28.4,
+          "intelligence": 24.4,
+          "maxHealth": 714,
+          "maxMana": 368,
+          "armor": 4.73,
+          "attackMin": 61,
+          "attackMax": 65
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32,
+          "agility": 34.8,
+          "intelligence": 28.8,
+          "maxHealth": 824,
+          "maxMana": 421,
+          "armor": 5.8,
+          "attackMin": 68,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34.5,
+          "agility": 38,
+          "intelligence": 31,
+          "maxHealth": 879,
+          "maxMana": 447,
+          "armor": 6.33,
+          "attackMin": 71,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 37,
+          "agility": 41.2,
+          "intelligence": 33.2,
+          "maxHealth": 934,
+          "maxMana": 473,
+          "armor": 6.87,
+          "attackMin": 74,
+          "attackMax": 78
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.5,
+          "agility": 57.2,
+          "intelligence": 44.2,
+          "maxHealth": 1209,
+          "maxMana": 605,
+          "armor": 9.53,
+          "attackMin": 90,
+          "attackMax": 94
+        },
+        "level18": {
+          "level": 18,
+          "strength": 64.5,
+          "agility": 76.4,
+          "intelligence": 57.4,
+          "maxHealth": 1539,
+          "maxMana": 764,
+          "armor": 12.73,
+          "attackMin": 109,
+          "attackMax": 113
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Searing Chains",
+      "displayName": "炎阳索（Searing Chains）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        80,
+        90,
+        100,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        12,
+        11,
+        10
+      ],
+      "components": [
+        {
+          "id": "Searing Chains:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            125,
+            175,
+            225,
+            275
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.25,
+              1.75,
+              2.25,
+              2.75
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sleight of Fist",
+      "displayName": "无影拳（Sleight of Fist）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        65,
+        70,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        13,
+        11,
+        9,
+        7
+      ],
+      "components": [
+        {
+          "id": "Sleight of Fist:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            650
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flame Guard",
+      "displayName": "烈火罩（Flame Guard）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        65,
+        80,
+        95,
+        110
+      ],
+      "cooldownByAbilityLevel": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "components": [
+        {
+          "id": "Flame Guard:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            30,
+            40,
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            240,
+            420,
+            640,
+            900
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              12,
+              14,
+              16,
+              18
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Activate Fire Remnant",
+      "displayName": "激活残焰（Activate Fire Remnant）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Activate Fire Remnant:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            200,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Immolation",
+      "displayName": "献祭心（Immolation）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "持续伤害缺少可确认的持续时间字段，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Immolation:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            10
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "active_duration"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "持续伤害缺少可确认的持续时间字段，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "持续伤害缺少可确认的持续时间字段，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fire Remnant",
+      "displayName": "残焰（Fire Remnant）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "components": [
+        {
+          "id": "Fire Remnant:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            100,
+            200,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              45,
+              45,
+              45
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

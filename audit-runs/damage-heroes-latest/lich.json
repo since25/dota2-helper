@@ -1,0 +1,431 @@
+{
+  "hero": "Lich",
+  "displayName": "巫妖（Lich）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 550,
+    "attackRate": 1.7,
+    "attackPoint": 0.46,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": 0.7,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": -1,
+    "baseArmor": -1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 24,
+    "baseAttackMax": 33,
+    "baseStrength": 20,
+    "baseAgility": 17,
+    "baseIntelligence": 28,
+    "strengthGain": 2.1,
+    "agilityGain": 1.7,
+    "intelligenceGain": 3.4,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 20,
+        "agility": 17,
+        "intelligence": 28,
+        "maxHealth": 560,
+        "maxMana": 411,
+        "armor": 1.83,
+        "attackMin": 52,
+        "attackMax": 61
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.2,
+          "agility": 20.4,
+          "intelligence": 34.8,
+          "maxHealth": 652,
+          "maxMana": 493,
+          "armor": 2.4,
+          "attackMin": 59,
+          "attackMax": 68
+        },
+        "level5": {
+          "level": 5,
+          "strength": 28.4,
+          "agility": 23.8,
+          "intelligence": 41.6,
+          "maxHealth": 745,
+          "maxMana": 574,
+          "armor": 2.97,
+          "attackMin": 66,
+          "attackMax": 75
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30.5,
+          "agility": 25.5,
+          "intelligence": 45,
+          "maxHealth": 791,
+          "maxMana": 615,
+          "armor": 3.25,
+          "attackMin": 69,
+          "attackMax": 78
+        },
+        "level7": {
+          "level": 7,
+          "strength": 32.6,
+          "agility": 27.2,
+          "intelligence": 48.4,
+          "maxHealth": 837,
+          "maxMana": 656,
+          "armor": 3.53,
+          "attackMin": 72,
+          "attackMax": 81
+        },
+        "level12": {
+          "level": 12,
+          "strength": 43.1,
+          "agility": 35.7,
+          "intelligence": 65.4,
+          "maxHealth": 1068,
+          "maxMana": 860,
+          "armor": 4.95,
+          "attackMin": 89,
+          "attackMax": 98
+        },
+        "level18": {
+          "level": 18,
+          "strength": 55.7,
+          "agility": 45.9,
+          "intelligence": 85.8,
+          "maxHealth": 1345,
+          "maxMana": 1105,
+          "armor": 6.65,
+          "attackMin": 110,
+          "attackMax": 119
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Frost Blast",
+      "displayName": "寒霜爆发（Frost Blast）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        120,
+        130,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "components": [
+        {
+          "id": "Frost Blast:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            40,
+            80,
+            120,
+            160
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Frost Shield",
+      "displayName": "冰霜魔盾（Frost Shield）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        25,
+        20,
+        15
+      ],
+      "components": [
+        {
+          "id": "Frost Shield:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            18,
+            32,
+            46,
+            60
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Sinister Gaze",
+      "displayName": "阴邪凝视（Sinister Gaze）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        25
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        22,
+        20,
+        18
+      ],
+      "components": [
+        {
+          "id": "Sinister Gaze:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Spire",
+      "displayName": "寒冰尖柱（Ice Spire）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        25
+      ],
+      "components": [
+        {
+          "id": "Ice Spire:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            750
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sacrifice",
+      "displayName": "献身（Sacrifice）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Sacrifice:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chain Frost",
+      "displayName": "连环霜冻（Chain Frost）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        180,
+        300,
+        420
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        80,
+        60
+      ],
+      "components": [
+        {
+          "id": "Chain Frost:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            250,
+            400,
+            550
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.5,
+              2.5,
+              2.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

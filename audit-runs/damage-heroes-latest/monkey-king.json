@@ -1,0 +1,338 @@
+{
+  "hero": "Monkey King",
+  "displayName": "齐天大圣（Monkey King）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 300,
+    "attackRate": 1.6,
+    "attackPoint": 0.45,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 33,
+    "baseStrength": 19,
+    "baseAgility": 24,
+    "baseIntelligence": 20,
+    "strengthGain": 2.8,
+    "agilityGain": 3.7,
+    "intelligenceGain": 1.8,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 24,
+        "intelligence": 20,
+        "maxHealth": 538,
+        "maxMana": 315,
+        "armor": 5,
+        "attackMin": 53,
+        "attackMax": 57
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.6,
+          "agility": 31.4,
+          "intelligence": 23.6,
+          "maxHealth": 661,
+          "maxMana": 358,
+          "armor": 6.23,
+          "attackMin": 60,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.2,
+          "agility": 38.8,
+          "intelligence": 27.2,
+          "maxHealth": 784,
+          "maxMana": 401,
+          "armor": 7.47,
+          "attackMin": 68,
+          "attackMax": 72
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 42.5,
+          "intelligence": 29,
+          "maxHealth": 846,
+          "maxMana": 423,
+          "armor": 8.08,
+          "attackMin": 72,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.8,
+          "agility": 46.2,
+          "intelligence": 30.8,
+          "maxHealth": 908,
+          "maxMana": 445,
+          "armor": 8.7,
+          "attackMin": 75,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 49.8,
+          "agility": 64.7,
+          "intelligence": 39.8,
+          "maxHealth": 1216,
+          "maxMana": 553,
+          "armor": 11.78,
+          "attackMin": 94,
+          "attackMax": 98
+        },
+        "level18": {
+          "level": 18,
+          "strength": 66.6,
+          "agility": 86.9,
+          "intelligence": 50.6,
+          "maxHealth": 1585,
+          "maxMana": 682,
+          "armor": 15.48,
+          "attackMin": 116,
+          "attackMax": 120
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Boundless Strike",
+      "displayName": "棒击大地（Boundless Strike）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        85,
+        90,
+        95,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        21,
+        18,
+        15
+      ],
+      "components": [
+        {
+          "id": "Boundless Strike:instant_fixed:strike_flat_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "strike_flat_damage",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            80
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.7,
+              0.9,
+              1.1,
+              1.3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Tree Dance",
+      "displayName": "丛林之舞（Tree Dance）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0.9,
+        0.6,
+        0.3,
+        0
+      ],
+      "components": [
+        {
+          "id": "Tree Dance:instant_fixed:impact_damage_tooltip",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "impact_damage_tooltip",
+          "valuesByAbilityLevel": [
+            140,
+            210,
+            280,
+            350
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Primal Spring",
+      "displayName": "乾坤之跃（Primal Spring）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Primal Spring:instant_fixed:impact_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "impact_damage",
+          "valuesByAbilityLevel": [
+            110,
+            200,
+            290,
+            380
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Wukong's Command",
+      "displayName": "猴子猴孙（Wukong's Command）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        90,
+        80
+      ],
+      "components": [
+        {
+          "id": "Wukong's Command:debuff_reference:cast_range",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "cast_range",
+          "valuesByAbilityLevel": [
+            625
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

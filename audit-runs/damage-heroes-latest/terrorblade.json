@@ -1,0 +1,322 @@
+{
+  "hero": "Terrorblade",
+  "displayName": "恐怖利刃（Terrorblade）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.5,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 315,
+    "turnRate": 0.8,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 6,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 32,
+    "baseStrength": 18,
+    "baseAgility": 23,
+    "baseIntelligence": 19,
+    "strengthGain": 2,
+    "agilityGain": 4,
+    "intelligenceGain": 1.6,
+    "primaryAttribute": "agi",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 23,
+        "intelligence": 19,
+        "maxHealth": 516,
+        "maxMana": 303,
+        "armor": 9.83,
+        "attackMin": 49,
+        "attackMax": 55
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 22,
+          "agility": 31,
+          "intelligence": 22.2,
+          "maxHealth": 604,
+          "maxMana": 341,
+          "armor": 11.17,
+          "attackMin": 57,
+          "attackMax": 63
+        },
+        "level5": {
+          "level": 5,
+          "strength": 26,
+          "agility": 39,
+          "intelligence": 25.4,
+          "maxHealth": 692,
+          "maxMana": 380,
+          "armor": 12.5,
+          "attackMin": 65,
+          "attackMax": 71
+        },
+        "level6": {
+          "level": 6,
+          "strength": 28,
+          "agility": 43,
+          "intelligence": 27,
+          "maxHealth": 736,
+          "maxMana": 399,
+          "armor": 13.17,
+          "attackMin": 69,
+          "attackMax": 75
+        },
+        "level7": {
+          "level": 7,
+          "strength": 30,
+          "agility": 47,
+          "intelligence": 28.6,
+          "maxHealth": 780,
+          "maxMana": 418,
+          "armor": 13.83,
+          "attackMin": 73,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 40,
+          "agility": 67,
+          "intelligence": 36.6,
+          "maxHealth": 1000,
+          "maxMana": 514,
+          "armor": 17.17,
+          "attackMin": 93,
+          "attackMax": 99
+        },
+        "level18": {
+          "level": 18,
+          "strength": 52,
+          "agility": 91,
+          "intelligence": 46.2,
+          "maxHealth": 1264,
+          "maxMana": 629,
+          "armor": 21.17,
+          "attackMin": 117,
+          "attackMax": 123
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Reflection",
+      "displayName": "倒影（Reflection）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        60,
+        65,
+        70,
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        23,
+        20,
+        17,
+        14
+      ],
+      "components": [
+        {
+          "id": "Reflection:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Demon Zeal",
+      "displayName": "狂魔（Demon Zeal）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        45
+      ],
+      "components": [
+        {
+          "id": "Demon Zeal:debuff_reference:berserk_bonus_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "berserk_bonus_attack_speed",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Terror Wave",
+      "displayName": "怵潮（Terror Wave）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        90
+      ],
+      "components": [
+        {
+          "id": "Terror Wave:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Sunder",
+      "displayName": "魂断（Sunder）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        100,
+        75,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        75,
+        40
+      ],
+      "components": [
+        {
+          "id": "Sunder:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            475
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

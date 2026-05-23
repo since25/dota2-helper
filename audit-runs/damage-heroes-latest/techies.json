@@ -1,0 +1,492 @@
+{
+  "hero": "Techies",
+  "displayName": "工程师（Techies）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 1,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 20,
+    "baseAttackMax": 22,
+    "baseStrength": 19,
+    "baseAgility": 16,
+    "baseIntelligence": 25,
+    "strengthGain": 2.6,
+    "agilityGain": 1.8,
+    "intelligenceGain": 3,
+    "primaryAttribute": "all",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 19,
+        "agility": 16,
+        "intelligence": 25,
+        "maxHealth": 538,
+        "maxMana": 375,
+        "armor": 4.67,
+        "attackMin": 62,
+        "attackMax": 64
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 24.2,
+          "agility": 19.6,
+          "intelligence": 31,
+          "maxHealth": 652,
+          "maxMana": 447,
+          "armor": 5.27,
+          "attackMin": 72,
+          "attackMax": 74
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.4,
+          "agility": 23.2,
+          "intelligence": 37,
+          "maxHealth": 767,
+          "maxMana": 519,
+          "armor": 5.87,
+          "attackMin": 83,
+          "attackMax": 85
+        },
+        "level6": {
+          "level": 6,
+          "strength": 32,
+          "agility": 25,
+          "intelligence": 40,
+          "maxHealth": 824,
+          "maxMana": 555,
+          "armor": 6.17,
+          "attackMin": 88,
+          "attackMax": 90
+        },
+        "level7": {
+          "level": 7,
+          "strength": 34.6,
+          "agility": 26.8,
+          "intelligence": 43,
+          "maxHealth": 881,
+          "maxMana": 591,
+          "armor": 6.47,
+          "attackMin": 93,
+          "attackMax": 95
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.6,
+          "agility": 35.8,
+          "intelligence": 58,
+          "maxHealth": 1167,
+          "maxMana": 771,
+          "armor": 7.97,
+          "attackMin": 119,
+          "attackMax": 121
+        },
+        "level18": {
+          "level": 18,
+          "strength": 63.2,
+          "agility": 46.6,
+          "intelligence": 76,
+          "maxHealth": 1510,
+          "maxMana": 987,
+          "armor": 9.77,
+          "attackMin": 150,
+          "attackMax": 152
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Sticky Bomb",
+      "displayName": "粘性炸弹（Sticky Bomb）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        115,
+        130,
+        145
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        13,
+        10,
+        7
+      ],
+      "components": [
+        {
+          "id": "Sticky Bomb:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            95,
+            170,
+            245,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reactive Tazer",
+      "displayName": "活性电击（Reactive Tazer）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        60,
+        60,
+        60,
+        60
+      ],
+      "cooldownByAbilityLevel": [
+        26,
+        22,
+        18,
+        14
+      ],
+      "components": [
+        {
+          "id": "Reactive Tazer:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            60,
+            110,
+            160,
+            210
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "move_speed"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blast Off!",
+      "displayName": "爆破起飞！（Blast Off!）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        100,
+        125,
+        150,
+        175
+      ],
+      "cooldownByAbilityLevel": [
+        40,
+        35,
+        30,
+        25
+      ],
+      "components": [
+        {
+          "id": "Blast Off!:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            200,
+            300,
+            400,
+            500
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "M.A.D.",
+      "displayName": "同归于尽（M.A.D.）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "M.A.D.:state_scaling:base_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "target_missing_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Minefield Sign",
+      "displayName": "雷区标识（Minefield Sign）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        60
+      ],
+      "components": [
+        {
+          "id": "Minefield Sign:instant_fixed:scepter_move_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": [],
+          "label": "scepter_move_damage",
+          "valuesByAbilityLevel": [
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Proximity Mines",
+      "displayName": "感应地雷（Proximity Mines）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        140,
+        170
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Proximity Mines:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            400,
+            575,
+            750
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Detonate M.A.D.",
+      "displayName": "引爆同归于尽（Detonate M.A.D.）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        1
+      ],
+      "components": [
+        {
+          "id": "Detonate M.A.D.:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

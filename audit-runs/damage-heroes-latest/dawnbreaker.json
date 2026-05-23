@@ -1,0 +1,302 @@
+{
+  "hero": "Dawnbreaker",
+  "displayName": "破晓辰星（Dawnbreaker）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.46,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": 0.6,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 31,
+    "baseAttackMax": 35,
+    "baseStrength": 25,
+    "baseAgility": 14,
+    "baseIntelligence": 20,
+    "strengthGain": 3.4,
+    "agilityGain": 1.7,
+    "intelligenceGain": 2,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 25,
+        "agility": 14,
+        "intelligence": 20,
+        "maxHealth": 670,
+        "maxMana": 315,
+        "armor": 4.33,
+        "attackMin": 56,
+        "attackMax": 60
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 31.8,
+          "agility": 17.4,
+          "intelligence": 24,
+          "maxHealth": 820,
+          "maxMana": 363,
+          "armor": 4.9,
+          "attackMin": 63,
+          "attackMax": 67
+        },
+        "level5": {
+          "level": 5,
+          "strength": 38.6,
+          "agility": 20.8,
+          "intelligence": 28,
+          "maxHealth": 969,
+          "maxMana": 411,
+          "armor": 5.47,
+          "attackMin": 70,
+          "attackMax": 74
+        },
+        "level6": {
+          "level": 6,
+          "strength": 42,
+          "agility": 22.5,
+          "intelligence": 30,
+          "maxHealth": 1044,
+          "maxMana": 435,
+          "armor": 5.75,
+          "attackMin": 73,
+          "attackMax": 77
+        },
+        "level7": {
+          "level": 7,
+          "strength": 45.4,
+          "agility": 24.2,
+          "intelligence": 32,
+          "maxHealth": 1119,
+          "maxMana": 459,
+          "armor": 6.03,
+          "attackMin": 76,
+          "attackMax": 80
+        },
+        "level12": {
+          "level": 12,
+          "strength": 62.4,
+          "agility": 32.7,
+          "intelligence": 42,
+          "maxHealth": 1493,
+          "maxMana": 579,
+          "armor": 7.45,
+          "attackMin": 93,
+          "attackMax": 97
+        },
+        "level18": {
+          "level": 18,
+          "strength": 82.8,
+          "agility": 42.9,
+          "intelligence": 54,
+          "maxHealth": 1942,
+          "maxMana": 723,
+          "armor": 9.15,
+          "attackMin": 114,
+          "attackMax": 118
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Starbreaker",
+      "displayName": "星破天惊（Starbreaker）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Starbreaker:instant_fixed:swipe_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "swipe_damage",
+          "valuesByAbilityLevel": [
+            25,
+            40,
+            55,
+            70
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.1,
+              1.1,
+              1.1,
+              1.1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Celestial Hammer",
+      "displayName": "上界重锤（Celestial Hammer）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Celestial Hammer:sustained:burn_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "burn_damage",
+          "valuesByAbilityLevel": [
+            20,
+            30,
+            40,
+            50
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            50,
+            90,
+            140,
+            200
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2.5,
+              3,
+              3.5,
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Solar Guardian",
+      "displayName": "天光现世（Solar Guardian）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        100,
+        90
+      ],
+      "components": [
+        {
+          "id": "Solar Guardian:sustained:base_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "base_damage",
+          "valuesByAbilityLevel": [
+            30,
+            50,
+            70
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            42,
+            80,
+            126
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.4,
+              1.6,
+              1.8
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

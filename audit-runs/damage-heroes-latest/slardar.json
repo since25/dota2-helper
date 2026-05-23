@@ -1,0 +1,375 @@
+{
+  "hero": "Slardar",
+  "displayName": "斯拉达（Slardar）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.36,
+    "projectileSpeed": 0,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 30,
+    "baseAttackMax": 38,
+    "baseStrength": 21,
+    "baseAgility": 17,
+    "baseIntelligence": 15,
+    "strengthGain": 3.4,
+    "agilityGain": 2.1,
+    "intelligenceGain": 1.5,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 17,
+        "intelligence": 15,
+        "maxHealth": 582,
+        "maxMana": 255,
+        "armor": 4.83,
+        "attackMin": 51,
+        "attackMax": 59
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 27.8,
+          "agility": 21.2,
+          "intelligence": 18,
+          "maxHealth": 732,
+          "maxMana": 291,
+          "armor": 5.53,
+          "attackMin": 58,
+          "attackMax": 66
+        },
+        "level5": {
+          "level": 5,
+          "strength": 34.6,
+          "agility": 25.4,
+          "intelligence": 21,
+          "maxHealth": 881,
+          "maxMana": 327,
+          "armor": 6.23,
+          "attackMin": 65,
+          "attackMax": 73
+        },
+        "level6": {
+          "level": 6,
+          "strength": 38,
+          "agility": 27.5,
+          "intelligence": 22.5,
+          "maxHealth": 956,
+          "maxMana": 345,
+          "armor": 6.58,
+          "attackMin": 68,
+          "attackMax": 76
+        },
+        "level7": {
+          "level": 7,
+          "strength": 41.4,
+          "agility": 29.6,
+          "intelligence": 24,
+          "maxHealth": 1031,
+          "maxMana": 363,
+          "armor": 6.93,
+          "attackMin": 71,
+          "attackMax": 79
+        },
+        "level12": {
+          "level": 12,
+          "strength": 58.4,
+          "agility": 40.1,
+          "intelligence": 31.5,
+          "maxHealth": 1405,
+          "maxMana": 453,
+          "armor": 8.68,
+          "attackMin": 88,
+          "attackMax": 96
+        },
+        "level18": {
+          "level": 18,
+          "strength": 78.8,
+          "agility": 52.7,
+          "intelligence": 40.5,
+          "maxHealth": 1854,
+          "maxMana": 561,
+          "armor": 10.78,
+          "attackMin": 109,
+          "attackMax": 117
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Guardian Sprint",
+      "displayName": "守卫冲刺（Guardian Sprint）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "移动速度影响追击和出手窗口，但不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        25,
+        25,
+        25,
+        25
+      ],
+      "cooldownByAbilityLevel": [
+        29,
+        25,
+        21,
+        17
+      ],
+      "components": [
+        {
+          "id": "Guardian Sprint:debuff_reference:bonus_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_speed",
+          "valuesByAbilityLevel": [
+            10,
+            18,
+            26,
+            34
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "move_speed_pct",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "移动速度影响追击和出手窗口，但不直接造成伤害。",
+          "caveats": [
+            "移动速度影响追击和出手窗口，但不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Slithereen Crush",
+      "displayName": "鱼人碎击（Slithereen Crush）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "components": [
+        {
+          "id": "Slithereen Crush:instant_fixed:crush_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "crush_damage",
+          "valuesByAbilityLevel": [
+            75,
+            150,
+            225,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Bash of the Deep",
+      "displayName": "深海重击（Bash of the Deep）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attack_sequence",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Bash of the Deep:attack_sequence:bonus_damage",
+          "kind": "attack_sequence",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "bonus_damage",
+          "valuesByAbilityLevel": [
+            35,
+            90,
+            145,
+            200
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "attackCount * attackDamage + procDamage",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "attack_count_sequence"
+          },
+          "metadata": {
+            "attackCountByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attack_sequence",
+          "reason": "",
+          "caveats": [
+            "包含按攻击次数触发的被动伤害，需要结合普攻次数与英雄攻击力计算。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seaborn Sentinel",
+      "displayName": "汪洋前哨（Seaborn Sentinel）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "需要水洼、轨迹或河道状态；当前作为攻击力修正参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Seaborn Sentinel:debuff_reference:river_damage_pct",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "river_damage_pct",
+          "valuesByAbilityLevel": [
+            11.4
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage_pct",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "需要水洼、轨迹或河道状态；当前作为攻击力修正参考。",
+          "caveats": [
+            "需要水洼、轨迹或河道状态；当前作为攻击力修正参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Corrosive Haze",
+      "displayName": "侵蚀雾霭（Corrosive Haze）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "减甲会放大后续物理伤害；当前不自动串联进总伤害。",
+      "manaCostByAbilityLevel": [
+        25,
+        25,
+        25
+      ],
+      "cooldownByAbilityLevel": [
+        5,
+        5,
+        5
+      ],
+      "components": [
+        {
+          "id": "Corrosive Haze:debuff_reference:armor_reduction",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "armor_reduction",
+          "valuesByAbilityLevel": [
+            -10,
+            -15,
+            -20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "armor_reduction",
+            "affects": "physical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "减甲会放大后续物理伤害；当前不自动串联进总伤害。",
+          "caveats": [
+            "减甲会放大后续物理伤害；当前不自动串联进总伤害。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

@@ -1,0 +1,393 @@
+{
+  "hero": "Brewmaster",
+  "displayName": "酒仙（Brewmaster）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.35,
+    "projectileSpeed": 900,
+    "moveSpeed": 310,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 26,
+    "baseAttackMax": 33,
+    "baseStrength": 24,
+    "baseAgility": 19,
+    "baseIntelligence": 17,
+    "strengthGain": 3.2,
+    "agilityGain": 2,
+    "intelligenceGain": 1.9,
+    "primaryAttribute": "all",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 24,
+        "agility": 19,
+        "intelligence": 17,
+        "maxHealth": 648,
+        "maxMana": 279,
+        "armor": 4.17,
+        "attackMin": 68,
+        "attackMax": 75
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 30.4,
+          "agility": 23,
+          "intelligence": 20.8,
+          "maxHealth": 789,
+          "maxMana": 325,
+          "armor": 4.83,
+          "attackMin": 78,
+          "attackMax": 85
+        },
+        "level5": {
+          "level": 5,
+          "strength": 36.8,
+          "agility": 27,
+          "intelligence": 24.6,
+          "maxHealth": 930,
+          "maxMana": 370,
+          "armor": 5.5,
+          "attackMin": 88,
+          "attackMax": 95
+        },
+        "level6": {
+          "level": 6,
+          "strength": 40,
+          "agility": 29,
+          "intelligence": 26.5,
+          "maxHealth": 1000,
+          "maxMana": 393,
+          "armor": 5.83,
+          "attackMin": 93,
+          "attackMax": 100
+        },
+        "level7": {
+          "level": 7,
+          "strength": 43.2,
+          "agility": 31,
+          "intelligence": 28.4,
+          "maxHealth": 1070,
+          "maxMana": 416,
+          "armor": 6.17,
+          "attackMin": 98,
+          "attackMax": 105
+        },
+        "level12": {
+          "level": 12,
+          "strength": 59.2,
+          "agility": 41,
+          "intelligence": 37.9,
+          "maxHealth": 1422,
+          "maxMana": 530,
+          "armor": 7.83,
+          "attackMin": 123,
+          "attackMax": 130
+        },
+        "level18": {
+          "level": 18,
+          "strength": 78.4,
+          "agility": 53,
+          "intelligence": 49.3,
+          "maxHealth": 1845,
+          "maxMana": 667,
+          "armor": 9.83,
+          "attackMin": 152,
+          "attackMax": 159
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Thunder Clap",
+      "displayName": "雷霆一击（Thunder Clap）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Thunder Clap:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Cinder Brew",
+      "displayName": "余烬佳酿（Cinder Brew）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50,
+        60,
+        70,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        19,
+        17,
+        15,
+        13
+      ],
+      "components": [
+        {
+          "id": "Cinder Brew:instant_fixed:total_ignite_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "total_ignite_damage",
+          "valuesByAbilityLevel": [
+            80,
+            160,
+            240,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              5,
+              5,
+              5,
+              5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Drunken Brawler",
+      "displayName": "醉拳（Drunken Brawler）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Drunken Brawler:debuff_reference:attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "attack_speed",
+          "valuesByAbilityLevel": [
+            10,
+            20,
+            30,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liquid Courage",
+      "displayName": "壮胆酒（Liquid Courage）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0
+      ],
+      "components": [
+        {
+          "id": "Liquid Courage:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Primal Split",
+      "displayName": "元素分离（Primal Split）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        140,
+        130,
+        120
+      ],
+      "components": [
+        {
+          "id": "Primal Split:instant_fixed:tooltip_earth_brewling_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "tooltip_earth_brewling_damage",
+          "valuesByAbilityLevel": [
+            35,
+            70,
+            105,
+            140
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              16,
+              20,
+              24,
+              24
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}

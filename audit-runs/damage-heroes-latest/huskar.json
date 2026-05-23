@@ -1,0 +1,342 @@
+{
+  "hero": "Huskar",
+  "displayName": "哈斯卡（Huskar）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 400,
+    "attackRate": 1.6,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1400,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 0,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 21,
+    "baseAttackMax": 26,
+    "baseStrength": 23,
+    "baseAgility": 10,
+    "baseIntelligence": 18,
+    "strengthGain": 3.3,
+    "agilityGain": 1.5,
+    "intelligenceGain": 0,
+    "primaryAttribute": "str",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 23,
+        "agility": 10,
+        "intelligence": 18,
+        "maxHealth": 626,
+        "maxMana": 216,
+        "armor": 2.67,
+        "attackMin": 44,
+        "attackMax": 49
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 29.6,
+          "agility": 13,
+          "intelligence": 18,
+          "maxHealth": 771,
+          "maxMana": 216,
+          "armor": 3.17,
+          "attackMin": 51,
+          "attackMax": 56
+        },
+        "level5": {
+          "level": 5,
+          "strength": 36.2,
+          "agility": 16,
+          "intelligence": 18,
+          "maxHealth": 916,
+          "maxMana": 216,
+          "armor": 3.67,
+          "attackMin": 57,
+          "attackMax": 62
+        },
+        "level6": {
+          "level": 6,
+          "strength": 39.5,
+          "agility": 17.5,
+          "intelligence": 18,
+          "maxHealth": 989,
+          "maxMana": 216,
+          "armor": 3.92,
+          "attackMin": 61,
+          "attackMax": 66
+        },
+        "level7": {
+          "level": 7,
+          "strength": 42.8,
+          "agility": 19,
+          "intelligence": 18,
+          "maxHealth": 1062,
+          "maxMana": 216,
+          "armor": 4.17,
+          "attackMin": 64,
+          "attackMax": 69
+        },
+        "level12": {
+          "level": 12,
+          "strength": 59.3,
+          "agility": 26.5,
+          "intelligence": 18,
+          "maxHealth": 1425,
+          "maxMana": 216,
+          "armor": 5.42,
+          "attackMin": 80,
+          "attackMax": 85
+        },
+        "level18": {
+          "level": 18,
+          "strength": 79.1,
+          "agility": 35.5,
+          "intelligence": 18,
+          "maxHealth": 1860,
+          "maxMana": 216,
+          "armor": 6.92,
+          "attackMin": 100,
+          "attackMax": 105
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Inner Fire",
+      "displayName": "心炎（Inner Fire）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        17,
+        15,
+        13,
+        11
+      ],
+      "components": [
+        {
+          "id": "Inner Fire:state_scaling:damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            110,
+            180,
+            250,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "distance"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burning Spear",
+      "displayName": "沸血之矛（Burning Spear）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Burning Spear:state_scaling:burn_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "burn_damage",
+          "valuesByAbilityLevel": [
+            5,
+            10,
+            15,
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "stack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Berserker's Blood",
+      "displayName": "狂战士之血（Berserker's Blood）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Berserker's Blood:debuff_reference:maximum_attack_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "maximum_attack_speed",
+          "valuesByAbilityLevel": [
+            170,
+            220,
+            270,
+            320
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_speed",
+            "affects": "attack_speed",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Life Break",
+      "displayName": "牺牲（Life Break）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Life Break:state_scaling:health_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "health_damage",
+          "valuesByAbilityLevel": [
+            0.32,
+            0.38,
+            0.44
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

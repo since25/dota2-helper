@@ -1,0 +1,387 @@
+{
+  "hero": "Centaur Warrunner",
+  "displayName": "半人马战行者（Centaur Warrunner）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 150,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 900,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 3,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 36,
+    "baseAttackMax": 38,
+    "baseStrength": 27,
+    "baseAgility": 15,
+    "baseIntelligence": 15,
+    "strengthGain": 4.2,
+    "agilityGain": 1,
+    "intelligenceGain": 1.6,
+    "primaryAttribute": "str",
+    "attackType": "Melee",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 27,
+        "agility": 15,
+        "intelligence": 15,
+        "maxHealth": 714,
+        "maxMana": 255,
+        "armor": 0.5,
+        "attackMin": 63,
+        "attackMax": 65
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 35.4,
+          "agility": 17,
+          "intelligence": 18.2,
+          "maxHealth": 899,
+          "maxMana": 293,
+          "armor": 0.83,
+          "attackMin": 71,
+          "attackMax": 73
+        },
+        "level5": {
+          "level": 5,
+          "strength": 43.8,
+          "agility": 19,
+          "intelligence": 21.4,
+          "maxHealth": 1084,
+          "maxMana": 332,
+          "armor": 1.17,
+          "attackMin": 80,
+          "attackMax": 82
+        },
+        "level6": {
+          "level": 6,
+          "strength": 48,
+          "agility": 20,
+          "intelligence": 23,
+          "maxHealth": 1176,
+          "maxMana": 351,
+          "armor": 1.33,
+          "attackMin": 84,
+          "attackMax": 86
+        },
+        "level7": {
+          "level": 7,
+          "strength": 52.2,
+          "agility": 21,
+          "intelligence": 24.6,
+          "maxHealth": 1268,
+          "maxMana": 370,
+          "armor": 1.5,
+          "attackMin": 88,
+          "attackMax": 90
+        },
+        "level12": {
+          "level": 12,
+          "strength": 73.2,
+          "agility": 26,
+          "intelligence": 32.6,
+          "maxHealth": 1730,
+          "maxMana": 466,
+          "armor": 2.33,
+          "attackMin": 109,
+          "attackMax": 111
+        },
+        "level18": {
+          "level": 18,
+          "strength": 98.4,
+          "agility": 32,
+          "intelligence": 42.2,
+          "maxHealth": 2285,
+          "maxMana": 581,
+          "armor": 3.33,
+          "attackMin": 134,
+          "attackMax": 136
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Hoof Stomp",
+      "displayName": "马蹄践踏（Hoof Stomp）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        110,
+        120,
+        130
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Hoof Stomp:instant_fixed:stomp_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "stomp_damage",
+          "valuesByAbilityLevel": [
+            70,
+            140,
+            210,
+            280
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.6,
+              1.8,
+              2,
+              2.2
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Double Edge",
+      "displayName": "双刃剑（Double Edge）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        3.5,
+        3.5,
+        3.5,
+        3.5
+      ],
+      "components": [
+        {
+          "id": "Double Edge:debuff_reference:edge_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "edge_damage",
+          "valuesByAbilityLevel": [
+            120,
+            180,
+            240,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "all_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Retaliate",
+      "displayName": "反伤（Retaliate）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Retaliate:state_scaling:return_damage",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Physical",
+          "label": "return_damage",
+          "valuesByAbilityLevel": [
+            15,
+            25,
+            35,
+            45
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "hero_attribute"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+          "caveats": [
+            "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hitch A Ride",
+      "displayName": "便车（Hitch A Ride）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        30
+      ],
+      "components": [
+        {
+          "id": "Hitch A Ride:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            250
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stampede",
+      "displayName": "奔袭冲撞（Stampede）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        150,
+        200,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        100,
+        95,
+        90
+      ],
+      "components": [
+        {
+          "id": "Stampede:debuff_reference:slow_movement_speed",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "slow_movement_speed",
+          "valuesByAbilityLevel": [
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "move_speed_pct",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

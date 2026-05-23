@@ -1,0 +1,342 @@
+{
+  "hero": "Warlock",
+  "displayName": "术士（Warlock）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.7,
+    "attackPoint": 0.3,
+    "projectileSpeed": 1200,
+    "moveSpeed": 300,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 37,
+    "baseStrength": 22,
+    "baseAgility": 10,
+    "baseIntelligence": 25,
+    "strengthGain": 2.4,
+    "agilityGain": 1,
+    "intelligenceGain": 3.1,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 22,
+        "agility": 10,
+        "intelligence": 25,
+        "maxHealth": 604,
+        "maxMana": 375,
+        "armor": 2.67,
+        "attackMin": 52,
+        "attackMax": 62
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 26.8,
+          "agility": 12,
+          "intelligence": 31.2,
+          "maxHealth": 710,
+          "maxMana": 449,
+          "armor": 3,
+          "attackMin": 58,
+          "attackMax": 68
+        },
+        "level5": {
+          "level": 5,
+          "strength": 31.6,
+          "agility": 14,
+          "intelligence": 37.4,
+          "maxHealth": 815,
+          "maxMana": 524,
+          "armor": 3.33,
+          "attackMin": 64,
+          "attackMax": 74
+        },
+        "level6": {
+          "level": 6,
+          "strength": 34,
+          "agility": 15,
+          "intelligence": 40.5,
+          "maxHealth": 868,
+          "maxMana": 561,
+          "armor": 3.5,
+          "attackMin": 68,
+          "attackMax": 78
+        },
+        "level7": {
+          "level": 7,
+          "strength": 36.4,
+          "agility": 16,
+          "intelligence": 43.6,
+          "maxHealth": 921,
+          "maxMana": 598,
+          "armor": 3.67,
+          "attackMin": 71,
+          "attackMax": 81
+        },
+        "level12": {
+          "level": 12,
+          "strength": 48.4,
+          "agility": 21,
+          "intelligence": 59.1,
+          "maxHealth": 1185,
+          "maxMana": 784,
+          "armor": 4.5,
+          "attackMin": 86,
+          "attackMax": 96
+        },
+        "level18": {
+          "level": 18,
+          "strength": 62.8,
+          "agility": 27,
+          "intelligence": 77.7,
+          "maxHealth": 1502,
+          "maxMana": 1007,
+          "armor": 5.5,
+          "attackMin": 105,
+          "attackMax": 115
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Fatal Bonds",
+      "displayName": "致命连接（Fatal Bonds）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        120,
+        130,
+        140,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        42,
+        34,
+        26,
+        18
+      ],
+      "components": [
+        {
+          "id": "Fatal Bonds:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            1000
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shadow Word",
+      "displayName": "暗言术（Shadow Word）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        110,
+        120,
+        130,
+        140
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        14,
+        13,
+        12
+      ],
+      "components": [
+        {
+          "id": "Shadow Word:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            15,
+            25,
+            35,
+            45
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              10,
+              10,
+              10,
+              10
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Upheaval",
+      "displayName": "剧变（Upheaval）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100
+      ],
+      "cooldownByAbilityLevel": [
+        60,
+        50,
+        40,
+        30
+      ],
+      "components": [
+        {
+          "id": "Upheaval:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            10
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            10
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1
+            ],
+            "tickIntervalByAbilityLevel": [
+              1
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chaotic Offering",
+      "displayName": "混乱之祭（Chaotic Offering）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        200,
+        400,
+        600
+      ],
+      "cooldownByAbilityLevel": [
+        165
+      ],
+      "components": [
+        {
+          "id": "Chaotic Offering:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            900
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

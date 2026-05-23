@@ -1,0 +1,397 @@
+{
+  "hero": "Viper",
+  "displayName": "冥界亚龙（Viper）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 575,
+    "attackRate": 1.7,
+    "attackPoint": 0.33,
+    "projectileSpeed": 1200,
+    "moveSpeed": 275,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": -2,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 27,
+    "baseAttackMax": 29,
+    "baseStrength": 21,
+    "baseAgility": 21,
+    "baseIntelligence": 17,
+    "strengthGain": 2.4,
+    "agilityGain": 2.9,
+    "intelligenceGain": 2,
+    "primaryAttribute": "agi",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 21,
+        "intelligence": 17,
+        "maxHealth": 582,
+        "maxMana": 279,
+        "armor": 1.5,
+        "attackMin": 48,
+        "attackMax": 50
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.8,
+          "agility": 26.8,
+          "intelligence": 21,
+          "maxHealth": 688,
+          "maxMana": 327,
+          "armor": 2.47,
+          "attackMin": 54,
+          "attackMax": 56
+        },
+        "level5": {
+          "level": 5,
+          "strength": 30.6,
+          "agility": 32.6,
+          "intelligence": 25,
+          "maxHealth": 793,
+          "maxMana": 375,
+          "armor": 3.43,
+          "attackMin": 60,
+          "attackMax": 62
+        },
+        "level6": {
+          "level": 6,
+          "strength": 33,
+          "agility": 35.5,
+          "intelligence": 27,
+          "maxHealth": 846,
+          "maxMana": 399,
+          "armor": 3.92,
+          "attackMin": 63,
+          "attackMax": 65
+        },
+        "level7": {
+          "level": 7,
+          "strength": 35.4,
+          "agility": 38.4,
+          "intelligence": 29,
+          "maxHealth": 899,
+          "maxMana": 423,
+          "armor": 4.4,
+          "attackMin": 65,
+          "attackMax": 67
+        },
+        "level12": {
+          "level": 12,
+          "strength": 47.4,
+          "agility": 52.9,
+          "intelligence": 39,
+          "maxHealth": 1163,
+          "maxMana": 543,
+          "armor": 6.82,
+          "attackMin": 80,
+          "attackMax": 82
+        },
+        "level18": {
+          "level": 18,
+          "strength": 61.8,
+          "agility": 70.3,
+          "intelligence": 51,
+          "maxHealth": 1480,
+          "maxMana": 687,
+          "armor": 9.72,
+          "attackMin": 97,
+          "attackMax": 99
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Poison Attack",
+      "displayName": "毒性攻击（Poison Attack）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Poison Attack:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            4,
+            8,
+            12,
+            16
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            16,
+            32,
+            48,
+            64
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nethertoxin",
+      "displayName": "幽冥剧毒（Nethertoxin）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        70,
+        70,
+        70,
+        70
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        14,
+        14,
+        14
+      ],
+      "components": [
+        {
+          "id": "Nethertoxin:instant_fixed:min_damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "min_damage",
+          "valuesByAbilityLevel": [
+            15,
+            25,
+            35,
+            45
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Corrosive Skin",
+      "displayName": "腐蚀皮肤（Corrosive Skin）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Corrosive Skin:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            10,
+            15,
+            20,
+            25
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            40,
+            60,
+            80,
+            100
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nosedive",
+      "displayName": "极恶俯冲（Nosedive）",
+      "isUltimate": false,
+      "modelSource": "auto",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        20
+      ],
+      "components": [
+        {
+          "id": "Nosedive:debuff_reference:abilitycastrange",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitycastrange",
+          "valuesByAbilityLevel": [
+            700
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "positioning_range",
+            "affects": "positioning",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "caveats": [
+            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Viper Strike",
+      "displayName": "蝮蛇突袭（Viper Strike）",
+      "isUltimate": true,
+      "modelSource": "auto",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        50,
+        40,
+        30
+      ],
+      "components": [
+        {
+          "id": "Viper Strike:sustained:damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            70,
+            110,
+            150
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            420,
+            660,
+            900
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": []
+}

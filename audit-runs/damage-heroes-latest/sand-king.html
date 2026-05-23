@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>沙王（Sand King） 伤害模型审核</title>
+  <style>
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>沙王（Sand King）</h1>
+        <div class="muted">Sand King · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./sand-king.json">查看原始 JSON</a>
+    </div>
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>all</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>23</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.3</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>19</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>17</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>19 - 29</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>1</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>150</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>290</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>掘地穿刺（Burrowstrike）</h2>
+          <div class="muted">Burrowstrike · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 110 / 120 / 130</span>
+        <span>冷却：14 / 13 / 12 / 11</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Burrowstrike:instant_fixed:dmg</code>
+          <div class="muted">dmg</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>80</td><td>150</td><td>220</td><td>290</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>沙尘暴（Sand Storm）</h2>
+          <div class="muted">Sand Storm · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：85 / 85 / 85 / 85</span>
+        <span>冷却：40 / 34 / 28 / 22</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Sand Storm:sustained:sand_storm_damage</code>
+          <div class="muted">sand_storm_damage</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>30</td><td>50</td><td>70</td><td>90</td>
+        <td>480 / 1000 / 1680 / 2520</td>
+        <td><div><code>durationByAbilityLevel</code>: 16 / 20 / 24 / 28</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>尾刺（Stinger）</h2>
+          <div class="muted">Stinger · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">attack_modifier</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：35 / 40 / 45 / 50</span>
+        <span>冷却：15 / 12 / 9 / 6</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Stinger:attack_modifier:attack_damage</code>
+          <div class="muted">attack_damage</div>
+        </td>
+        <td>
+          <span class="pill">attack_modifier</span>
+          <span class="pill secondary">attack_modifier</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Physical</td>
+        <td>50</td><td>75</td><td>100</td><td>125</td>
+        <td></td>
+        <td><div><code>defaultAttackCount</code>: 1</div><div><code>attackFactorPctByAbilityLevel</code>: </div><div><code>procChancePctByAbilityLevel</code>: </div></td>
+        <td>attack_modifier</td>
+        <td><ul><li>包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>腐尸毒（Caustic Finale）</h2>
+          <div class="muted">Caustic Finale · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">conditional</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Caustic Finale:conditional:caustic_finale_damage_flat</code>
+          <div class="muted">caustic_finale_damage_flat</div>
+        </td>
+        <td>
+          <span class="pill">conditional</span>
+          <span class="pill secondary">conditional</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>17</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: 目标在腐尸毒持续时间内死亡才会爆炸。</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>conditional</td>
+        <td><ul><li>死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>地震（Epicenter）</h2>
+          <div class="muted">Epicenter · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">multi_wave</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：150 / 225 / 300</span>
+        <span>冷却：120 / 110 / 100</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Epicenter:multi_wave:epicenter_damage</code>
+          <div class="muted">epicenter_damage</div>
+        </td>
+        <td>
+          <span class="pill">multi_wave</span>
+          <span class="pill secondary">multi_wave</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>60</td><td>70</td><td>80</td><td>-</td>
+        <td>720 / 1120 / 1600</td>
+        <td><div><code>waveCountByAbilityLevel</code>: 12 / 16 / 20</div></td>
+        <td>waveCount * damagePerWave</td>
+        <td><ul><li>包含多波伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
+      <pre>{
+  &quot;hero&quot;: &quot;Sand King&quot;,
+  &quot;displayName&quot;: &quot;沙王（Sand King）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 150,
+    &quot;attackRate&quot;: 1.7,
+    &quot;attackPoint&quot;: 0.53,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 290,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 0.25,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: 1,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 19,
+    &quot;baseAttackMax&quot;: 29,
+    &quot;baseStrength&quot;: 23,
+    &quot;baseAgility&quot;: 19,
+    &quot;baseIntelligence&quot;: 17,
+    &quot;strengthGain&quot;: 2.3,
+    &quot;agilityGain&quot;: 2,
+    &quot;intelligenceGain&quot;: 2,
+    &quot;primaryAttribute&quot;: &quot;all&quot;,
+    &quot;attackType&quot;: &quot;Melee&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 23,
+        &quot;agility&quot;: 19,
+        &quot;intelligence&quot;: 17,
+        &quot;maxHealth&quot;: 626,
+        &quot;maxMana&quot;: 279,
+        &quot;armor&quot;: 4.17,
+        &quot;attackMin&quot;: 60,
+        &quot;attackMax&quot;: 70
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 27.6,
+          &quot;agility&quot;: 23,
+          &quot;intelligence&quot;: 21,
+          &quot;maxHealth&quot;: 727,
+          &quot;maxMana&quot;: 327,
+          &quot;armor&quot;: 4.83,
+          &quot;attackMin&quot;: 69,
+          &quot;attackMax&quot;: 79
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 32.2,
+          &quot;agility&quot;: 27,
+          &quot;intelligence&quot;: 25,
+          &quot;maxHealth&quot;: 828,
+          &quot;maxMana&quot;: 375,
+          &quot;armor&quot;: 5.5,
+          &quot;attackMin&quot;: 78,
+          &quot;attackMax&quot;: 88
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 34.5,
+          &quot;agility&quot;: 29,
+          &quot;intelligence&quot;: 27,
+          &quot;maxHealth&quot;: 879,
+          &quot;maxMana&quot;: 399,
+          &quot;armor&quot;: 5.83,
+          &quot;attackMin&quot;: 82,
+          &quot;attackMax&quot;: 92
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 36.8,
+          &quot;agility&quot;: 31,
+          &quot;intelligence&quot;: 29,
+          &quot;maxHealth&quot;: 930,
+          &quot;maxMana&quot;: 423,
+          &quot;armor&quot;: 6.17,
+          &quot;attackMin&quot;: 87,
+          &quot;attackMax&quot;: 97
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 48.3,
+          &quot;agility&quot;: 41,
+          &quot;intelligence&quot;: 39,
+          &quot;maxHealth&quot;: 1183,
+          &quot;maxMana&quot;: 543,
+          &quot;armor&quot;: 7.83,
+          &quot;attackMin&quot;: 109,
+          &quot;attackMax&quot;: 119
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 62.1,
+          &quot;agility&quot;: 53,
+          &quot;intelligence&quot;: 51,
+          &quot;maxHealth&quot;: 1486,
+          &quot;maxMana&quot;: 687,
+          &quot;armor&quot;: 9.83,
+          &quot;attackMin&quot;: 135,
+          &quot;attackMax&quot;: 145
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Burrowstrike&quot;,
+      &quot;displayName&quot;: &quot;掘地穿刺（Burrowstrike）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        110,
+        120,
+        130
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        14,
+        13,
+        12,
+        11
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Burrowstrike:instant_fixed:dmg&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;dmg&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            80,
+            150,
+            220,
+            290
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Sand Storm&quot;,
+      &quot;displayName&quot;: &quot;沙尘暴（Sand Storm）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        85,
+        85,
+        85,
+        85
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        40,
+        34,
+        28,
+        22
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Sand Storm:sustained:sand_storm_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;sand_storm_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            30,
+            50,
+            70,
+            90
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            480,
+            1000,
+            1680,
+            2520
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              16,
+              20,
+              24,
+              28
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Stinger&quot;,
+      &quot;displayName&quot;: &quot;尾刺（Stinger）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        35,
+        40,
+        45,
+        50
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        15,
+        12,
+        9,
+        6
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Stinger:attack_modifier:attack_damage&quot;,
+          &quot;kind&quot;: &quot;attack_modifier&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;attack_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            50,
+            75,
+            100,
+            125
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;attack_modifier&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;defaultAttackCount&quot;: 1,
+            &quot;attackFactorPctByAbilityLevel&quot;: [],
+            &quot;procChancePctByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Caustic Finale&quot;,
+      &quot;displayName&quot;: &quot;腐尸毒（Caustic Finale）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;reason&quot;: &quot;死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Caustic Finale:conditional:caustic_finale_damage_flat&quot;,
+          &quot;kind&quot;: &quot;conditional&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;caustic_finale_damage_flat&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            17
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;conditional&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;目标在腐尸毒持续时间内死亡才会爆炸。&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;reason&quot;: &quot;死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Epicenter&quot;,
+      &quot;displayName&quot;: &quot;地震（Epicenter）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;multi_wave&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        150,
+        225,
+        300
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        120,
+        110,
+        100
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Epicenter:multi_wave:epicenter_damage&quot;,
+          &quot;kind&quot;: &quot;multi_wave&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;epicenter_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            60,
+            70,
+            80
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            720,
+            1120,
+            1600
+          ],
+          &quot;totalFormula&quot;: &quot;waveCount * damagePerWave&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;wave_count_times_damage_per_wave&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;waveCountByAbilityLevel&quot;: [
+              12,
+              16,
+              20
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;multi_wave&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含多波伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: []
+}</pre>
+    </details>
+  </main>
+</body>
+</html>

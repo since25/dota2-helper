@@ -1,0 +1,376 @@
+{
+  "hero": "Lion",
+  "displayName": "莱恩（Lion）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 600,
+    "attackRate": 1.7,
+    "attackPoint": 0.43,
+    "projectileSpeed": 900,
+    "moveSpeed": 290,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.5,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 29,
+    "baseAttackMax": 35,
+    "baseStrength": 18,
+    "baseAgility": 15,
+    "baseIntelligence": 19,
+    "strengthGain": 2.4,
+    "agilityGain": 1.7,
+    "intelligenceGain": 3.5,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 18,
+        "agility": 15,
+        "intelligence": 19,
+        "maxHealth": 516,
+        "maxMana": 303,
+        "armor": 2.5,
+        "attackMin": 48,
+        "attackMax": 54
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 22.8,
+          "agility": 18.4,
+          "intelligence": 26,
+          "maxHealth": 622,
+          "maxMana": 387,
+          "armor": 3.07,
+          "attackMin": 55,
+          "attackMax": 61
+        },
+        "level5": {
+          "level": 5,
+          "strength": 27.6,
+          "agility": 21.8,
+          "intelligence": 33,
+          "maxHealth": 727,
+          "maxMana": 471,
+          "armor": 3.63,
+          "attackMin": 62,
+          "attackMax": 68
+        },
+        "level6": {
+          "level": 6,
+          "strength": 30,
+          "agility": 23.5,
+          "intelligence": 36.5,
+          "maxHealth": 780,
+          "maxMana": 513,
+          "armor": 3.92,
+          "attackMin": 66,
+          "attackMax": 72
+        },
+        "level7": {
+          "level": 7,
+          "strength": 32.4,
+          "agility": 25.2,
+          "intelligence": 40,
+          "maxHealth": 833,
+          "maxMana": 555,
+          "armor": 4.2,
+          "attackMin": 69,
+          "attackMax": 75
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.4,
+          "agility": 33.7,
+          "intelligence": 57.5,
+          "maxHealth": 1097,
+          "maxMana": 765,
+          "armor": 5.62,
+          "attackMin": 87,
+          "attackMax": 93
+        },
+        "level18": {
+          "level": 18,
+          "strength": 58.8,
+          "agility": 43.9,
+          "intelligence": 78.5,
+          "maxHealth": 1414,
+          "maxMana": 1017,
+          "armor": 7.32,
+          "attackMin": 108,
+          "attackMax": 114
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Earth Spike",
+      "displayName": "裂地尖刺（Earth Spike）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        110,
+        130,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        14,
+        13,
+        12,
+        11
+      ],
+      "components": [
+        {
+          "id": "Earth Spike:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            105,
+            170,
+            235,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Hex",
+      "displayName": "妖术（Hex）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "控制时间影响接技能窗口，但不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        110,
+        140,
+        170,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        24,
+        20,
+        16,
+        12
+      ],
+      "components": [
+        {
+          "id": "Hex:debuff_reference:duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "duration",
+          "valuesByAbilityLevel": [
+            2,
+            2.4,
+            2.8,
+            3.2
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "disable_window",
+            "affects": "disable_window",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "控制时间影响接技能窗口，但不直接造成伤害。",
+          "caveats": [
+            "控制时间影响接技能窗口，但不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mana Drain",
+      "displayName": "法力吸取（Mana Drain）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "当前只记录抽蓝/减速，不计为生命伤害。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        15,
+        12,
+        9,
+        6
+      ],
+      "components": [
+        {
+          "id": "Mana Drain:debuff_reference:mana_per_second",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "mana_per_second",
+          "valuesByAbilityLevel": [
+            20,
+            40,
+            60,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "mana_pressure",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "当前只记录抽蓝/减速，不计为生命伤害。",
+          "caveats": [
+            "当前只记录抽蓝/减速，不计为生命伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "To Hell and Back",
+      "displayName": "下地狱再上来（To Hell and Back）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "固定机制会影响法术强度，但当前伤害总量不自动串联增伤。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "To Hell and Back:debuff_reference:spell_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "spell_amp",
+          "valuesByAbilityLevel": [
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "spell_amplification_pct",
+            "affects": "spell_amplification",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "固定机制会影响法术强度，但当前伤害总量不自动串联增伤。",
+          "caveats": [
+            "固定机制会影响法术强度，但当前伤害总量不自动串联增伤。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finger of Death",
+      "displayName": "死亡之指（Finger of Death）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        200,
+        400,
+        600
+      ],
+      "cooldownByAbilityLevel": [
+        110,
+        70,
+        30
+      ],
+      "components": [
+        {
+          "id": "Finger of Death:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            600,
+            725,
+            850
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    }
+  ],
+  "items": []
+}
