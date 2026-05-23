@@ -83,9 +83,9 @@ test('hero audit workflow document covers checklist and batch groups', () => {
   const workflowPath = path.join(process.cwd(), 'docs/dota2-hero-model-audit-workflow.md');
   const content = fs.readFileSync(workflowPath, 'utf8');
 
-  assert.ok(content.includes('## Per-Hero Review Checklist'));
-  assert.ok(content.includes('Confirm visible abilities from provider data'));
+  assert.ok(content.includes('## 单英雄复核清单'));
+  assert.ok(content.includes('确认 provider 中的可见技能列表'));
   assert.ok(content.includes('Batch A'));
   assert.ok(content.includes('Batch H'));
-  assert.ok(content.includes('Run semantic audit'));
+  assert.ok(content.includes('semantic audit'));
 });

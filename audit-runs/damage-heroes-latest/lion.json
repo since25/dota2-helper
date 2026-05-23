@@ -372,5 +372,371 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lion",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Earth Spike": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Hex": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "control.hex.seconds",
+          "affects": "disable_window",
+          "reason": "控制时间影响接技能窗口，但不直接造成伤害。"
+        },
+        "Mana Drain": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "mana_per_second",
+          "semanticType": "resource.mana_drain_per_second",
+          "affects": "mana_pressure",
+          "reason": "当前只记录抽蓝/减速，不计为生命伤害。"
+        },
+        "To Hell and Back": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "spell_amp",
+          "semanticType": "modifier.spell_amplification.percent",
+          "affects": "spell_amplification",
+          "stackGroup": "spell_amplification",
+          "reason": "固定机制会影响法术强度，但当前伤害总量不自动串联增伤。"
+        },
+        "Finger of Death": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "width",
+        "label": "WIDTH:",
+        "value": "140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "duration",
+        "label": "STUN DURATION:",
+        "value": "1.3/1.6/1.9/2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "length_buffer",
+        "label": "LENGTH BUFFER:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "2800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "pierces_immunity",
+        "label": "PIERCES IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "cone_shaped",
+        "label": "CONE SHAPED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Earth Spike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Hex",
+        "key": "movespeed",
+        "label": "MOVESPEED:",
+        "value": "120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Hex",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Hex",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "575/600/625/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Hex",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "duration",
+        "label": "CHANNEL TIME:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "movespeed",
+        "label": "MOVEMENT SLOW/BONUS:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "movespeed_bonus_when_empty_pct",
+        "label": "MOVESPEED BONUS WHEN EMPTY PCT:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "damage_pct",
+        "label": "DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "ally_pct",
+        "label": "ALLY PCT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "5.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Mana Drain",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "To Hell and Back",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "To Hell and Back",
+        "key": "damage_window",
+        "label": "DAMAGE WINDOW:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "To Hell and Back",
+        "key": "debuff_amp",
+        "label": "DEBUFF AMP:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "damage_per_kill",
+        "label": "DAMAGE PER KILL:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "grace_period",
+        "label": "GRACE PERIOD:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "damage_delay",
+        "label": "DAMAGE DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "punch_duration",
+        "label": "MELEE DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "punch_bonus_movespeed",
+        "label": "MELEE BONUS MOVE SPEED:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "punch_attack_range",
+        "label": "PUNCH ATTACK RANGE:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "punch_bonus_damage_base",
+        "label": "MELEE BONUS DAMAGE:",
+        "value": "20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "cleave_damage",
+        "label": "CLEAVE DAMAGE:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "cleave_starting_width",
+        "label": "CLEAVE STARTING WIDTH:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "cleave_ending_width",
+        "label": "CLEAVE ENDING WIDTH:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "cleave_distance",
+        "label": "CLEAVE DISTANCE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lion",
+        "ability": "Finger of Death",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

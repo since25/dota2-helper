@@ -121,10 +121,10 @@
       "name": "Rage",
       "displayName": "狂暴（Rage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         80,
         100,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,10 +176,10 @@
       "name": "Open Wounds",
       "displayName": "撕裂伤口（Open Wounds）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
       "manaCostByAbilityLevel": [
         90
       ],
@@ -219,9 +219,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
           "caveats": [
-            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+            "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
           ]
         }
       ]
@@ -230,10 +230,10 @@
       "name": "Feast",
       "displayName": "盛宴（Feast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -269,9 +269,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
           "caveats": [
-            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+            "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
           ]
         }
       ]
@@ -280,7 +280,7 @@
       "name": "Infest",
       "displayName": "感染（Infest）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -333,5 +333,352 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lifestealer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Rage": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Open Wounds": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "max_health_as_damage_pct",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+        },
+        "Feast": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "hp_damage_percent",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+        },
+        "Ghoul Frenzy": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Infest": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "dot_duration",
+          "tickIntervalKey": "dot_tick_interval"
+        },
+        "Consume": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "magic_resist",
+        "label": "MAGIC RESISTANCE:",
+        "value": "80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "status_resist",
+        "label": "STATUS RESIST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "debuff_immunity",
+        "label": "DEBUFF IMMUNITY:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "movespeed_bonus",
+        "label": "MOVESPEED BONUS:",
+        "value": "9%/12%/15%/18%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Rage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "slow_steps",
+        "label": "SLOW STEPS:",
+        "value": "-50/-50/-40/-30/-20/-10/-10/-10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "heal_percent",
+        "label": "DAMAGE TO HEALING:",
+        "value": "20%/30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "spread_radius",
+        "label": "SPREAD RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "slow_step_pct_of_max",
+        "label": "SLOW STEP PCT OF MAX:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "slow_tooltip",
+        "label": "MAX SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "reset_cooldown_on_kill",
+        "label": "RESET COOLDOWN ON KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "attack_speed_on_target",
+        "label": "ATTACK SPEED ON TARGET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "300/400/500/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Open Wounds",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Feast",
+        "key": "hp_leech_percent",
+        "label": "HEAL FROM TARGET'S MAX HEALTH:",
+        "value": "1.45%/2.05%/2.65%/3.25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Feast",
+        "key": "creep_deny_percent",
+        "label": "CREEP DENY PERCENT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Feast",
+        "key": "bonus_hp_per_hero",
+        "label": "MAX HP PER HERO KILL:",
+        "value": "10/15/20/25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Feast",
+        "key": "bonus_hp_per_creep",
+        "label": "MAX HP PER CREEP KILL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Ghoul Frenzy",
+        "key": "movement_speed_bonus",
+        "label": "MOVEMENT SPEED BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "radius",
+        "label": "DAMAGE RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "bonus_movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "bonus_health",
+        "label": "HEALTH BONUS:",
+        "value": "400/800/1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "self_regen",
+        "label": "SELF MAX HP REGEN:",
+        "value": "3%/4%/5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "infest_duration_enemy",
+        "label": "ENEMY DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "attack_rate_enemy",
+        "label": "ATTACK RATE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "open_wounds_duration_pct",
+        "label": "OPEN WOUNDS DURATION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "creep_max_hp_drain_pct_per_second",
+        "label": "CREEP MAX HP LOSS / SEC:",
+        "value": "1.5%/0.75%/0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "can_target_ancients",
+        "label": "CAN TARGET ANCIENTS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "dot_damage_as_pct_of_damage_dealt",
+        "label": "REMAINING HEALTH AS TOTAL DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lifestealer",
+        "ability": "Infest",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

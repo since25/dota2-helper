@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>炼金术士（Alchemist）</h1>
-        <div class="muted">Alchemist · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Alchemist · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,488 @@
       </div>
       <a href="./alchemist.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Acid Spray</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>350/400/450/500</td>
+    </tr>
+  
+    <tr>
+      <td>Acid Spray</td>
+      <td><code>armor_reduction</code></td>
+      <td>ARMOR REDUCTION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Acid Spray</td>
+      <td><code>armor_allies</code></td>
+      <td>ARMOR ALLIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Acid Spray</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Acid Spray</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>brew_time</code></td>
+      <td>BREW TIME:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>brew_explosion</code></td>
+      <td>BREW EXPLOSION:</td>
+      <td>5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>min_stun</code></td>
+      <td>MIN STUN:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>max_stun</code></td>
+      <td>MAX STUN:</td>
+      <td>1.7/2.2/2.7/3.2</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>min_damage</code></td>
+      <td>MIN DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>radius</code></td>
+      <td>EXPLOSION RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>move_speed</code></td>
+      <td>MOVE SPEED BONUS:</td>
+      <td>4/8/12/16</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>chemical_rage_cooldown_reduction_pct</code></td>
+      <td>CHEMICAL RAGE COOLDOWN REDUCTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>775</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Weaponry</td>
+      <td><code>max_stacks</code></td>
+      <td>MAX STACKS:</td>
+      <td>7/10/13/16</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Weaponry</td>
+      <td><code>debuff_duration</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Weaponry</td>
+      <td><code>attack_dmg_per_stack</code></td>
+      <td>BASE ATTACK DAMAGE REDUCTION PER STACK:</td>
+      <td>2.5/3/3.5/4</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Weaponry</td>
+      <td><code>stacks_per_attack</code></td>
+      <td>STACKS PER ATTACK:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Weaponry</td>
+      <td><code>one_tooltip</code></td>
+      <td>ONE TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>hp_regen</code></td>
+      <td>HP REGEN:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>move_speed</code></td>
+      <td>MOVE SPEED:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>chemical_rage_cooldown_reduction_pct</code></td>
+      <td>CHEMICAL RAGE COOLDOWN REDUCTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Berserk Potion</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>duration</code></td>
+      <td>RECENT KILL WINDOW:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_gold</code></td>
+      <td>BONUS GOLD:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_gold_tooltip</code></td>
+      <td>BASE BONUS GOLD:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_bonus_gold</code></td>
+      <td>EXTRA BONUS GOLD:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_gold_per_scepter</code></td>
+      <td>BONUS GOLD PER SCEPTER:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bounty_multiplier</code></td>
+      <td>BOUNTY RUNE MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_gold_cap</code></td>
+      <td>BONUS GOLD CAP:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>bonus_gold_cap_tooltip</code></td>
+      <td>MAX BONUS GOLD PER KILL:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>scepter_bonus_damage</code></td>
+      <td>SCEPTER BONUS DAMAGE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Greevil&#39;s Greed</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>transformation_time</code></td>
+      <td>TRANSFORMATION TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>base_attack_time</code></td>
+      <td>BASE ATTACK TIME:</td>
+      <td>1.2/1.1/1</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>bonus_health</code></td>
+      <td>BONUS HEALTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>bonus_health_regen</code></td>
+      <td>BONUS HEALTH REGEN:</td>
+      <td>60/90/120</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>bonus_mana_regen</code></td>
+      <td>BONUS MANA REGEN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>bonus_movespeed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Chemical Rage</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>brew_time</code></td>
+      <td>BREW TIME:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>min_stun</code></td>
+      <td>MIN STUN:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>max_stun</code></td>
+      <td>MAX STUN:</td>
+      <td>1.75/2.25/2.75/3.25</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>min_damage</code></td>
+      <td>MIN DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>midair_explosion_radius</code></td>
+      <td>MIDAIR EXPLOSION RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>brew_explosion</code></td>
+      <td>BREW EXPLOSION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>775</td>
+    </tr>
+  
+    <tr>
+      <td>Unstable Concoction Throw</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Alchemist&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Acid Spray&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Unstable Concoction&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;max_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;trigger_condition&quot;
+      ],
+      &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+      &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+    },
+    &quot;Corrosive Weaponry&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;slow_per_stack&quot;,
+      &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Berserk Potion&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Greevil&#39;s Greed&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Chemical Rage&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Unstable Concoction Throw&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;max_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +610,7 @@
           <div class="muted">Acid Spray · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +663,7 @@
           <div class="muted">Unstable Concoction · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">conditional</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +716,7 @@
           <div class="muted">Corrosive Weaponry · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +755,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +769,7 @@
           <div class="muted">Berserk Potion · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +808,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +822,7 @@
           <div class="muted">Greevil&#39;s Greed · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +861,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +875,7 @@
           <div class="muted">Unstable Concoction Throw · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,7 +1046,7 @@
       &quot;name&quot;: &quot;Acid Spray&quot;,
       &quot;displayName&quot;: &quot;酸性喷雾（Acid Spray）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -628,7 +1114,7 @@
       &quot;name&quot;: &quot;Unstable Concoction&quot;,
       &quot;displayName&quot;: &quot;不稳定化合物（Unstable Concoction）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;conditional&quot;,
       &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
@@ -686,10 +1172,10 @@
       &quot;name&quot;: &quot;Corrosive Weaponry&quot;,
       &quot;displayName&quot;: &quot;腐蚀兵械（Corrosive Weaponry）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -723,9 +1209,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -734,10 +1220,10 @@
       &quot;name&quot;: &quot;Berserk Potion&quot;,
       &quot;displayName&quot;: &quot;狂暴药剂（Berserk Potion）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100
       ],
@@ -772,9 +1258,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -783,10 +1269,10 @@
       &quot;name&quot;: &quot;Greevil&#39;s Greed&quot;,
       &quot;displayName&quot;: &quot;贪魔的贪婪（Greevil&#39;s Greed）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -817,9 +1303,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -828,7 +1314,7 @@
       &quot;name&quot;: &quot;Unstable Concoction Throw&quot;,
       &quot;displayName&quot;: &quot;投掷不稳定化合物（Unstable Concoction Throw）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -863,7 +1349,518 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Alchemist&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Acid Spray&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Unstable Concoction&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;max_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;trigger_condition&quot;
+          ],
+          &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+          &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+        },
+        &quot;Corrosive Weaponry&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;slow_per_stack&quot;,
+          &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Berserk Potion&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Greevil&#39;s Greed&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Chemical Rage&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Unstable Concoction Throw&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;max_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Acid Spray&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350/400/450/500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Acid Spray&quot;,
+        &quot;key&quot;: &quot;armor_reduction&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Acid Spray&quot;,
+        &quot;key&quot;: &quot;armor_allies&quot;,
+        &quot;label&quot;: &quot;ARMOR ALLIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Acid Spray&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Acid Spray&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;brew_time&quot;,
+        &quot;label&quot;: &quot;BREW TIME:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;brew_explosion&quot;,
+        &quot;label&quot;: &quot;BREW EXPLOSION:&quot;,
+        &quot;value&quot;: &quot;5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;min_stun&quot;,
+        &quot;label&quot;: &quot;MIN STUN:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;max_stun&quot;,
+        &quot;label&quot;: &quot;MAX STUN:&quot;,
+        &quot;value&quot;: &quot;1.7/2.2/2.7/3.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;min_damage&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;move_speed&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;4/8/12/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;chemical_rage_cooldown_reduction_pct&quot;,
+        &quot;label&quot;: &quot;CHEMICAL RAGE COOLDOWN REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;775&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Corrosive Weaponry&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;7/10/13/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Corrosive Weaponry&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Corrosive Weaponry&quot;,
+        &quot;key&quot;: &quot;attack_dmg_per_stack&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK DAMAGE REDUCTION PER STACK:&quot;,
+        &quot;value&quot;: &quot;2.5/3/3.5/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Corrosive Weaponry&quot;,
+        &quot;key&quot;: &quot;stacks_per_attack&quot;,
+        &quot;label&quot;: &quot;STACKS PER ATTACK:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Corrosive Weaponry&quot;,
+        &quot;key&quot;: &quot;one_tooltip&quot;,
+        &quot;label&quot;: &quot;ONE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;hp_regen&quot;,
+        &quot;label&quot;: &quot;HP REGEN:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;move_speed&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;chemical_rage_cooldown_reduction_pct&quot;,
+        &quot;label&quot;: &quot;CHEMICAL RAGE COOLDOWN REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Berserk Potion&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;RECENT KILL WINDOW:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_gold&quot;,
+        &quot;label&quot;: &quot;BONUS GOLD:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_gold_tooltip&quot;,
+        &quot;label&quot;: &quot;BASE BONUS GOLD:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_bonus_gold&quot;,
+        &quot;label&quot;: &quot;EXTRA BONUS GOLD:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_gold_per_scepter&quot;,
+        &quot;label&quot;: &quot;BONUS GOLD PER SCEPTER:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bounty_multiplier&quot;,
+        &quot;label&quot;: &quot;BOUNTY RUNE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_gold_cap&quot;,
+        &quot;label&quot;: &quot;BONUS GOLD CAP:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;bonus_gold_cap_tooltip&quot;,
+        &quot;label&quot;: &quot;MAX BONUS GOLD PER KILL:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_damage&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Greevil&#39;s Greed&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;transformation_time&quot;,
+        &quot;label&quot;: &quot;TRANSFORMATION TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;base_attack_time&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.2/1.1/1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;bonus_health&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;bonus_health_regen&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH REGEN:&quot;,
+        &quot;value&quot;: &quot;60/90/120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;bonus_mana_regen&quot;,
+        &quot;label&quot;: &quot;BONUS MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;bonus_movespeed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Chemical Rage&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;brew_time&quot;,
+        &quot;label&quot;: &quot;BREW TIME:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;min_stun&quot;,
+        &quot;label&quot;: &quot;MIN STUN:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;max_stun&quot;,
+        &quot;label&quot;: &quot;MAX STUN:&quot;,
+        &quot;value&quot;: &quot;1.75/2.25/2.75/3.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;min_damage&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;midair_explosion_radius&quot;,
+        &quot;label&quot;: &quot;MIDAIR EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;brew_explosion&quot;,
+        &quot;label&quot;: &quot;BREW EXPLOSION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;775&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Alchemist&quot;,
+        &quot;ability&quot;: &quot;Unstable Concoction Throw&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

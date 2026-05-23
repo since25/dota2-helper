@@ -121,10 +121,10 @@
       "name": "Telekinesis",
       "displayName": "隔空取物（Telekinesis）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         110,
         110,
@@ -168,9 +168,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -179,7 +179,7 @@
       "name": "Fade Bolt",
       "displayName": "弱化能流（Fade Bolt）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -234,10 +234,10 @@
       "name": "Arcane Supremacy",
       "displayName": "奥术至尊（Arcane Supremacy）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -271,9 +271,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -282,10 +282,10 @@
       "name": "Spell Steal",
       "displayName": "技能窃取（Spell Steal）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         25
       ],
@@ -322,9 +322,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -333,7 +333,7 @@
       "name": "Curiosity",
       "displayName": "奇心（Curiosity）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -377,5 +377,338 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Rubick",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Telekinesis": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Fade Bolt": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Arcane Supremacy": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "cast_range",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Stolen Spell": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Spell Steal": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Telekinesis Land": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Curiosity": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "curiosity_attack_damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "lift_duration",
+        "label": "LIFT DURATION:",
+        "value": "0.95/1.2/1.45/1.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.9/1.1/1.3/1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "radius",
+        "label": "IMPACT RADIUS:",
+        "value": "300/325/350/375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "max_land_distance",
+        "label": "MAX THROW DISTANCE:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "fall_duration",
+        "label": "FALL DURATION:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "jump_damage_reduction_pct",
+        "label": "JUMP REDUCTION:",
+        "value": "6%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "6%/12%/18%/24%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "440",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "jump_delay",
+        "label": "JUMP DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "steals_damage",
+        "label": "STEALS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Fade Bolt",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Arcane Supremacy",
+        "key": "spell_amp",
+        "label": "SPELL AMP:",
+        "value": "11%/16%/21%/26%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "stolen_debuff_amp",
+        "label": "STOLEN DEBUFF AMP:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "stolen_mana_reduction",
+        "label": "STOLEN MANA COST REDUCTION:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "stolen_spell_cooldown_percent",
+        "label": "STOLEN SPELL COOLDOWN REDUCTION:",
+        "value": "10%/20%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "180/240/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "curiosity_steal_factor",
+        "label": "CURIOSITY STEAL FACTOR:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Spell Steal",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis Land",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "300/325/350/375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_per_spell_cast",
+        "label": "CURIOSITY PER SPELL CAST:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_duration",
+        "label": "CURIOSITY DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_per_level",
+        "label": "CURIOSITY PER LEVEL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_modifier_amp",
+        "label": "CURIOSITY MODIFIER AMP:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_aoe_bonus",
+        "label": "CURIOSITY AOE BONUS:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_per_kill",
+        "label": "CURIOSITY PER KILL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "grace_period",
+        "label": "GRACE PERIOD:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "curiosity_factor",
+        "label": "CURIOSITY FACTOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Curiosity",
+        "key": "charge_radius",
+        "label": "CHARGE RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Rubick",
+        "ability": "Telekinesis Land",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "300/325/350/375",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

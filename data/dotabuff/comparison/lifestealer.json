@@ -1,0 +1,170 @@
+{
+  "hero": "Lifestealer",
+  "source": "dotabuff",
+  "modelSource": "auto",
+  "review": null,
+  "abilityCount": 5,
+  "missingModelCount": 0,
+  "abilities": [
+    {
+      "dotabuffName": "尸鬼狂怒",
+      "hotkey": "",
+      "isInnate": true,
+      "modelName": "Ghoul Frenzy",
+      "modelStatus": "ignored",
+      "modelType": "",
+      "modelKeys": [],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "狂暴",
+      "hotkey": "Q",
+      "isInnate": false,
+      "modelName": "Rage",
+      "modelStatus": "reference_only",
+      "modelType": "debuff_reference",
+      "modelKeys": [
+        "valueKey:abilitycastrange"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [
+        {
+          "label": "驱散类型",
+          "value": "弱驱散"
+        },
+        {
+          "label": "持续时间",
+          "value": "3 / 4 / 5 / 6"
+        },
+        {
+          "label": "魔法抗性",
+          "value": "80%"
+        },
+        {
+          "label": "移动速度加成",
+          "value": "6% / 9% / 12% / 15%"
+        }
+      ],
+      "resourceLines": [
+        "20 / 19 / 18 / 17",
+        "80 / 100 / 120 / 140"
+      ]
+    },
+    {
+      "dotabuffName": "撕裂伤口",
+      "hotkey": "W",
+      "isInnate": false,
+      "modelName": "Open Wounds",
+      "modelStatus": "reference_only",
+      "modelType": "state_scaling",
+      "modelKeys": [
+        "valueKey:max_health_as_damage_pct"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [
+        {
+          "label": "撕裂伤口的减速有8个独立的阶段",
+          "value": "50%/50%/40%/30%/20%/10%/10%/10%，每过一秒就会进入下个阶段，减速效果不断降低。"
+        },
+        {
+          "label": "持续时间",
+          "value": "7"
+        },
+        {
+          "label": "伤害转为治疗",
+          "value": "20% / 30% / 40% / 50%"
+        },
+        {
+          "label": "最大减速",
+          "value": "50%"
+        }
+      ],
+      "resourceLines": [
+        "30 / 25 / 20 / 15",
+        "90",
+        "300 / 400 / 500 / 600"
+      ]
+    },
+    {
+      "dotabuffName": "盛宴",
+      "hotkey": "E",
+      "isInnate": false,
+      "modelName": "Feast",
+      "modelStatus": "reference_only",
+      "modelType": "state_scaling",
+      "modelKeys": [
+        "valueKey:hp_damage_percent"
+      ],
+      "dotabuffDamageType": "物理",
+      "dotabuffFields": [
+        {
+          "label": "来自目标最大生命值的治疗",
+          "value": "1.45% / 2.05% / 2.65% / 3.25%"
+        },
+        {
+          "label": "最大生命值伤害",
+          "value": "1.45% / 2.05% / 2.65% / 3.25%"
+        },
+        {
+          "label": "击杀英雄获得生命上限",
+          "value": "10"
+        },
+        {
+          "label": "击杀非英雄获得生命上限",
+          "value": "1"
+        }
+      ],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "感染",
+      "hotkey": "R",
+      "isInnate": false,
+      "modelName": "Infest",
+      "modelStatus": "implemented",
+      "modelType": "instant_fixed",
+      "modelKeys": [
+        "damageKey:damage",
+        "durationKey:dot_duration",
+        "tickIntervalKey:dot_tick_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "驱散类型",
+          "value": "弱驱散"
+        },
+        {
+          "label": "伤害范围",
+          "value": "700"
+        },
+        {
+          "label": "伤害",
+          "value": "150 / 275 / 400"
+        },
+        {
+          "label": "移动速度",
+          "value": "15% / 20% / 25%"
+        },
+        {
+          "label": "额外生命值",
+          "value": "400 / 800 / 1200"
+        },
+        {
+          "label": "自身最大生命值每秒恢复",
+          "value": "3% / 4% / 5%"
+        },
+        {
+          "label": "生物每秒最大生命值流失",
+          "value": "1.5% / 0.75% / 0%"
+        }
+      ],
+      "resourceLines": [
+        "80 / 65 / 50",
+        "100 / 125 / 150"
+      ]
+    }
+  ]
+}

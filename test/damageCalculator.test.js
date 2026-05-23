@@ -119,6 +119,16 @@ test('getHeroDamageProfile exposes Chinese ability names from data feed localiza
   assert.equal(bash.displayName, '深海重击（Bash of the Deep）');
 });
 
+test('getHeroDamageProfile resolves Outworld Destroyer and Ringmaster from hero list names', async () => {
+  const outworld = await getHeroDamageProfile('Outworld Destroyer');
+  const ringmaster = await getHeroDamageProfile('Ringmaster');
+
+  assert.equal(outworld.hero, 'Outworld Destroyer');
+  assert.ok(outworld.abilities.length > 0);
+  assert.equal(ringmaster.hero, 'Ringmaster');
+  assert.ok(ringmaster.abilities.length > 0);
+});
+
 test('calculateDamageCombo totals Slardar attack-count passive sequence', async () => {
   const result = await calculateDamageCombo({
     hero: 'Slardar',
@@ -171,4 +181,191 @@ test('calculateDamageCombo totals Phantom Assassin dagger with attack scaling', 
   assert.equal(dagger.attackDamage, 71);
   assert.equal(dagger.attackFactorPct, 60);
   assert.equal(dagger.formula, 'baseDamage + attackDamage * attackFactorPct');
+});
+
+test('calculateDamageCombo supports basic attacks and runtime-dependent damage primitives', async () => {
+  const basic = await calculateDamageCombo({
+    hero: 'Queen of Pain',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'basic_attack',
+        attackCount: 3,
+        valueMode: 'theoretical'
+      }
+    ]
+  });
+  assert.equal(basic.components[0].kind, 'basic_attack');
+  assert.equal(basic.components[0].attackCount, 3);
+  assert.equal(basic.totals.raw > 0, true);
+
+  const snapfire = await getHeroDamageProfile('Snapfire');
+  const kisses = snapfire.abilities.find((ability) => ability.name === 'Mortimer Kisses');
+  const impact = kisses.components.find((component) => component.kind === 'repeated_trigger');
+  const repeated = await calculateDamageCombo({
+    hero: 'Snapfire',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'ability',
+        abilityName: 'Mortimer Kisses',
+        componentId: impact.id,
+        abilityLevel: 1,
+        valueMode: 'theoretical',
+        triggerCount: 2
+      }
+    ]
+  });
+  assert.equal(repeated.components[0].raw, 360);
+
+  const venomancer = await getHeroDamageProfile('Venomancer');
+  const plague = venomancer.abilities.find((ability) => ability.name === 'Noxious Plague');
+  const percentDot = plague.components.find((component) => component.kind === 'percent_health_dot');
+  const percent = await calculateDamageCombo({
+    hero: 'Venomancer',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'ability',
+        abilityName: 'Noxious Plague',
+        componentId: percentDot.id,
+        abilityLevel: 1,
+        valueMode: 'theoretical',
+        targetMaxHealth: 1000
+      }
+    ]
+  });
+  assert.equal(percent.components[0].raw, 80);
+
+  const skywrath = await getHeroDamageProfile('Skywrath Mage');
+  const bolt = skywrath.abilities.find((ability) => ability.name === 'Arcane Bolt').components[0];
+  const attribute = await calculateDamageCombo({
+    hero: 'Skywrath Mage',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'ability',
+        abilityName: 'Arcane Bolt',
+        componentId: bolt.id,
+        abilityLevel: 3,
+        valueMode: 'theoretical',
+        casterIntelligence: 50
+      }
+    ]
+  });
+  assert.equal(attribute.components[0].raw, 195);
+});
+
+test('calculateDamageCombo treats illusion summon attack values as attack-damage percent', async () => {
+  const profile = await getHeroDamageProfile('Terrorblade');
+  const image = profile.abilities.find((ability) => ability.name === 'Conjure Image');
+  const component = image.components.find((entry) => entry.kind === 'summon_attack');
+  const result = await calculateDamageCombo({
+    hero: 'Terrorblade',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'ability',
+        abilityName: 'Conjure Image',
+        componentId: component.id,
+        abilityLevel: 1,
+        valueMode: 'theoretical',
+        attackCount: 3,
+        attackDamage: 72
+      }
+    ]
+  });
+
+  assert.equal(result.components[0].raw, 54);
+});
+
+test('calculateDamageCombo totals Lich Frost Blast base and area damage on primary target', async () => {
+  const profile = await getHeroDamageProfile('Lich');
+  const frostBlast = profile.abilities.find((ability) => ability.name === 'Frost Blast');
+  const selectedComponents = frostBlast.components.map((component) => ({
+    sourceType: 'ability',
+    abilityName: 'Frost Blast',
+    componentId: component.id,
+    abilityLevel: 2,
+    valueMode: 'base'
+  }));
+
+  const result = await calculateDamageCombo({
+    hero: 'Lich',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents
+  });
+
+  assert.equal(result.totals.raw, 200);
+  assert.equal(result.totals.adjusted, 150);
+  assert.deepEqual(result.components.map((entry) => entry.raw), [80, 120]);
+});
+
+test('getHeroDamageProfile exposes item damage and upgrade components', async () => {
+  const profile = await getHeroDamageProfile('Lich');
+  const dagon = profile.items.find((item) => item.key === 'dagon');
+  const shard = profile.items.find((item) => item.key === 'aghanims_shard');
+
+  assert.ok(dagon.components.some((component) => component.semanticType === 'damage.instant'));
+  assert.ok(shard.components.some((component) => component.semanticType === 'upgrade.aghanims_shard'));
+});
+
+test('calculateDamageCombo supports item damage and armor modifiers', async () => {
+  const result = await calculateDamageCombo({
+    hero: 'Lich',
+    heroLevel: 6,
+    enemyArmor: 10,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'item',
+        itemKey: 'desolator',
+        componentId: 'desolator:modifier.armor.flat:corruption_armor'
+      },
+      {
+        sourceType: 'item',
+        itemKey: 'dagon',
+        componentId: 'dagon:damage.instant:damage',
+        value: 400
+      }
+    ]
+  });
+
+  assert.equal(result.itemModifiers.enemyArmorDelta, -6);
+  assert.equal(result.effectiveEnemyArmor, 4);
+  assert.equal(result.components.find((entry) => entry.name === 'dagon').raw, 400);
+  assert.equal(result.totals.adjusted, 300);
+});
+
+test('calculateDamageCombo supports sustained item damage with duration', async () => {
+  const result = await calculateDamageCombo({
+    hero: 'Lich',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'item',
+        itemKey: 'radiance',
+        componentId: 'radiance:damage.sustained_dps:aura_damage',
+        value: 60,
+        activeDurationSeconds: 2
+      }
+    ]
+  });
+
+  assert.equal(result.components[0].raw, 120);
+  assert.equal(result.components[0].adjusted, 90);
 });

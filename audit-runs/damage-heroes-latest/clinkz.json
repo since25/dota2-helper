@@ -121,10 +121,10 @@
       "name": "Strafe",
       "displayName": "扫射（Strafe）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         70,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,10 +176,10 @@
       "name": "Searing Arrows",
       "displayName": "灼热之箭（Searing Arrows）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         10
       ],
@@ -214,9 +214,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -225,10 +225,10 @@
       "name": "Death Pact",
       "displayName": "死亡契约（Death Pact）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60
       ],
@@ -263,9 +263,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -274,10 +274,10 @@
       "name": "Burning Army",
       "displayName": "烈焰之军（Burning Army）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -312,13 +312,457 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Clinkz",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Strafe": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Searing Arrows": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Death Pact": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Burning Barrage": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Burning Army": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Skeleton Walk": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Infernal Shred": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "attack_speed_bonus",
+        "label": "ATTACK SPEED BONUS:",
+        "value": "120/160/200/240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "strafe_skeleton_radius",
+        "label": "STRAFE SKELETON RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "archer_attack_speed_pct",
+        "label": "ARCHER ATTACK SPEED PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "debuff_duration",
+        "label": "DEBUFF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "blind_pct",
+        "label": "BLIND PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Strafe",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Searing Arrows",
+        "key": "damage_bonus",
+        "label": "BONUS DAMAGE:",
+        "value": "20/35/50/65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Searing Arrows",
+        "key": "skeleton_damage_pct",
+        "label": "SKELETON DAMAGE PCT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Searing Arrows",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "1/1/2/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "health_gain",
+        "label": "BONUS HEALTH:",
+        "value": "175/250/325/400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "skeletons_spawned",
+        "label": "SKELETONS SPAWNED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "spawn_skeleton_on_origin",
+        "label": "SPAWN SKELETON ON ORIGIN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "creep_level",
+        "label": "CREEP MAX LEVEL:",
+        "value": "4/5/6/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Death Pact",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "wave_count",
+        "label": "ARROWS FIRED:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "damage_pct",
+        "label": "DAMAGE PER ARROW:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "projectile_width",
+        "label": "PROJECTILE WIDTH:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "archers_use_barrage",
+        "label": "ARCHERS USE BARRAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Barrage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Army",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Army",
+        "key": "count",
+        "label": "COUNT:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Army",
+        "key": "spawn_interval",
+        "label": "SPAWN INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Burning Army",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "35/40/45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "fade_time",
+        "label": "FADE TIME:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "move_speed_bonus_pct",
+        "label": "BONUS MOVEMENT SPEED:",
+        "value": "25%/35%/45%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_count",
+        "label": "SKELETON ARCHER COUNT:",
+        "value": "2/3/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_offset",
+        "label": "SKELETON OFFSET:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_offset_min",
+        "label": "SKELETON OFFSET MIN:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_duration",
+        "label": "SKELETON ARCHER DURATION:",
+        "value": "20/25/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_health",
+        "label": "SKELETON HEALTH:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_health_tooltip",
+        "label": "SKELETON ARCHER HITS TO KILL:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "skeleton_building_damage_reduction",
+        "label": "SKELETON BUILDING DAMAGE REDUCTION:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "attack_rate",
+        "label": "SKELETON ARCHER ATTACK RATE:",
+        "value": "1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "damage_percent",
+        "label": "SKELETON ARCHER DAMAGE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Skeleton Walk",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Infernal Shred",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Infernal Shred",
+        "key": "hero_stacks",
+        "label": "HERO STACKS:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Infernal Shred",
+        "key": "skeleton_stacks",
+        "label": "SKELETON STACKS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clinkz",
+        "ability": "Infernal Shred",
+        "key": "max_armor_piercing_pct",
+        "label": "MAX ARMOR PIERCING PCT:",
+        "value": "20",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

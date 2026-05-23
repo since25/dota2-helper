@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>杰奇洛（Jakiro）</h1>
-        <div class="muted">Jakiro · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Jakiro · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,422 @@
       </div>
       <a href="./jakiro.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1050</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>fire_delay</code></td>
+      <td>FIRE DELAY:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>slow_movement_speed_pct</code></td>
+      <td>MOVE SLOW:</td>
+      <td>-25%/-30%/-35%/-40%</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>slow_attack_speed_pct</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-25/-30/-35/-40</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>speed_fire</code></td>
+      <td>SPEED FIRE:</td>
+      <td>1050</td>
+    </tr>
+  
+    <tr>
+      <td>Dual Breath</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>path_delay</code></td>
+      <td>FORMATION DELAY:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>stun_duration</code></td>
+      <td>MAX STUN DURATION:</td>
+      <td>1.25/1.50/1.75/2</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>path_duration</code></td>
+      <td>PATH DURATION:</td>
+      <td>3/3.5/4/4.5</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>path_radius</code></td>
+      <td>RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>detonate_damage</code></td>
+      <td>SECONDARY DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>detonate_stun_duration</code></td>
+      <td>SECONDARY STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>detonate_projectile_speed</code></td>
+      <td>DETONATE PROJECTILE SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Path</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.65</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>slow_attack_speed_pct</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-30/-40/-50/-60</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>pct_health_damage</code></td>
+      <td>PCT HEALTH DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>building_dmg_pct</code></td>
+      <td>BUILDING DAMAGE:</td>
+      <td>75%</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>shares_cooldown</code></td>
+      <td>SHARES COOLDOWN:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Fire</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>bonus_instance_damage_from_other_abilities</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>8/16/24/32</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>pct_health_damage</code></td>
+      <td>PCT HEALTH DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>shares_cooldown</code></td>
+      <td>SHARES COOLDOWN:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Frost</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Double Trouble</td>
+      <td><code>second_attack_delay</code></td>
+      <td>SECOND ATTACK DELAY:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>path_width</code></td>
+      <td>FLAME WIDTH:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>linger_duration</code></td>
+      <td>LINGER DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>pure_damage_type</code></td>
+      <td>PURE DAMAGE TYPE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>pierces_magic_immunity</code></td>
+      <td>PIERCES MAGIC IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>ice_edge_path_radius</code></td>
+      <td>ICE EDGE PATH RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>ice_edge_path_offset</code></td>
+      <td>ICE EDGE PATH OFFSET:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>ice_edge_linger_duration</code></td>
+      <td>ICE EDGE LINGER DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>ice_edge_movement_slow</code></td>
+      <td>ICE EDGE MOVEMENT SLOW:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Macropyre</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Jakiro&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed sustained/tick fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Dual Breath&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;火焰部分为持续伤害；冰减速字段仅作为控制效果。&quot;
+    },
+    &quot;Ice Path&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Liquid Fire&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Liquid Frost&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。&quot;
+    },
+    &quot;Double Trouble&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_damage_reduction&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;固定命石影响普攻输出，不直接作为技能爆发伤害。&quot;
+    },
+    &quot;Macropyre&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +544,8 @@
           <div class="muted">Dual Breath · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +570,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Dual Breath:instant_fixed:burn_damage</code>
+          <code>Dual Breath:sustained:burn_damage</code>
           <div class="muted">burn_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>20</td><td>40</td><td>60</td><td>80</td>
-        <td></td>
+        <td>100 / 200 / 300 / 400</td>
         <td><div><code>durationByAbilityLevel</code>: 5 / 5 / 5 / 5</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +597,7 @@
           <div class="muted">Ice Path · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -214,7 +634,7 @@
         <td>Magical</td>
         <td>50</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 1.25 / 1.5 / 1.75 / 2</div></td>
+        <td><span class="muted">-</span></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
@@ -230,7 +650,7 @@
           <div class="muted">Liquid Fire · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +703,7 @@
           <div class="muted">Liquid Frost · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -322,7 +742,7 @@
         <td></td>
         <td><div><code>durationByAbilityLevel</code>: 5 / 5 / 5 / 5</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5 / 0.5</div></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +756,7 @@
           <div class="muted">Double Trouble · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +795,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>固定命石影响普攻输出，不直接作为技能爆发伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +809,7 @@
           <div class="muted">Macropyre · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,10 +980,10 @@
       &quot;name&quot;: &quot;Dual Breath&quot;,
       &quot;displayName&quot;: &quot;冰火交加（Dual Breath）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;火焰部分为持续伤害；冰减速字段仅作为控制效果。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         135,
         150,
@@ -578,8 +998,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Dual Breath:instant_fixed:burn_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Dual Breath:sustained:burn_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;burn_damage&quot;,
@@ -589,11 +1009,16 @@
             60,
             80
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            100,
+            200,
+            300,
+            400
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
@@ -605,9 +1030,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;火焰部分为持续伤害；冰减速字段仅作为控制效果。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -615,7 +1042,7 @@
       &quot;name&quot;: &quot;Ice Path&quot;,
       &quot;displayName&quot;: &quot;冰封路径（Ice Path）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -644,14 +1071,7 @@
           &quot;formula&quot;: {
             &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              1.25,
-              1.5,
-              1.75,
-              2
-            ]
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
@@ -664,7 +1084,7 @@
       &quot;name&quot;: &quot;Liquid Fire&quot;,
       &quot;displayName&quot;: &quot;液态火（Liquid Fire）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -732,10 +1152,10 @@
       &quot;name&quot;: &quot;Liquid Frost&quot;,
       &quot;displayName&quot;: &quot;液态冰（Liquid Frost）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         20,
         20,
@@ -784,8 +1204,10 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。&quot;,
+          &quot;caveats&quot;: [
+            &quot;当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。&quot;
+          ]
         }
       ]
     },
@@ -793,10 +1215,10 @@
       &quot;name&quot;: &quot;Double Trouble&quot;,
       &quot;displayName&quot;: &quot;天生一对（Double Trouble）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;固定命石影响普攻输出，不直接作为技能爆发伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -827,9 +1249,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;固定命石影响普攻输出，不直接作为技能爆发伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;固定命石影响普攻输出，不直接作为技能爆发伤害。&quot;
           ]
         }
       ]
@@ -838,7 +1260,7 @@
       &quot;name&quot;: &quot;Macropyre&quot;,
       &quot;displayName&quot;: &quot;烈焰焚身（Macropyre）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -897,7 +1319,443 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Jakiro&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed sustained/tick fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Dual Breath&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;火焰部分为持续伤害；冰减速字段仅作为控制效果。&quot;
+        },
+        &quot;Ice Path&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Liquid Fire&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Liquid Frost&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。&quot;
+        },
+        &quot;Double Trouble&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_damage_reduction&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;固定命石影响普攻输出，不直接作为技能爆发伤害。&quot;
+        },
+        &quot;Macropyre&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1050&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;fire_delay&quot;,
+        &quot;label&quot;: &quot;FIRE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-25%/-30%/-35%/-40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;slow_attack_speed_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-25/-30/-35/-40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;speed_fire&quot;,
+        &quot;label&quot;: &quot;SPEED FIRE:&quot;,
+        &quot;value&quot;: &quot;1050&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Dual Breath&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;path_delay&quot;,
+        &quot;label&quot;: &quot;FORMATION DELAY:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;MAX STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.25/1.50/1.75/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;path_duration&quot;,
+        &quot;label&quot;: &quot;PATH DURATION:&quot;,
+        &quot;value&quot;: &quot;3/3.5/4/4.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;path_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;detonate_damage&quot;,
+        &quot;label&quot;: &quot;SECONDARY DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;detonate_stun_duration&quot;,
+        &quot;label&quot;: &quot;SECONDARY STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;detonate_projectile_speed&quot;,
+        &quot;label&quot;: &quot;DETONATE PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Ice Path&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;slow_attack_speed_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-30/-40/-50/-60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;pct_health_damage&quot;,
+        &quot;label&quot;: &quot;PCT HEALTH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;building_dmg_pct&quot;,
+        &quot;label&quot;: &quot;BUILDING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;75%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;shares_cooldown&quot;,
+        &quot;label&quot;: &quot;SHARES COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Fire&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;bonus_instance_damage_from_other_abilities&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;8/16/24/32&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;pct_health_damage&quot;,
+        &quot;label&quot;: &quot;PCT HEALTH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;shares_cooldown&quot;,
+        &quot;label&quot;: &quot;SHARES COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Liquid Frost&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Double Trouble&quot;,
+        &quot;key&quot;: &quot;second_attack_delay&quot;,
+        &quot;label&quot;: &quot;SECOND ATTACK DELAY:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;path_width&quot;,
+        &quot;label&quot;: &quot;FLAME WIDTH:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;linger_duration&quot;,
+        &quot;label&quot;: &quot;LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;pure_damage_type&quot;,
+        &quot;label&quot;: &quot;PURE DAMAGE TYPE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;pierces_magic_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCES MAGIC IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;ice_edge_path_radius&quot;,
+        &quot;label&quot;: &quot;ICE EDGE PATH RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;ice_edge_path_offset&quot;,
+        &quot;label&quot;: &quot;ICE EDGE PATH OFFSET:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;ice_edge_linger_duration&quot;,
+        &quot;label&quot;: &quot;ICE EDGE LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;ice_edge_movement_slow&quot;,
+        &quot;label&quot;: &quot;ICE EDGE MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Jakiro&quot;,
+        &quot;ability&quot;: &quot;Macropyre&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

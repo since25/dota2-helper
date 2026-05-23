@@ -58,7 +58,12 @@ async function buildDamageModelCoverage() {
     referenceOnlyAbilities: 0,
     ignoredAbilities: 0,
     unsupportedAbilities: 0,
-    inferredAbilities: 0
+    inferredAbilities: 0,
+    manualReviewedHeroes: 0,
+    manualCandidateHeroes: 0,
+    autoOnlyHeroes: 0,
+    reviewedAbilities: 0,
+    candidateAbilities: 0
   };
 
   for (const heroName of CANONICAL_HERO_NAMES) {
@@ -67,6 +72,8 @@ async function buildDamageModelCoverage() {
     const model = getHeroDamageModel(heroName);
     const counts = {
       hero: heroName,
+      modelSource: model?.source || 'missing',
+      reviewStatus: model?.review?.status || (model?.source === 'auto' ? 'candidate' : 'candidate'),
       totalAbilities: abilityNames.length,
       implementedAbilities: 0,
       referenceOnlyAbilities: 0,
@@ -75,6 +82,8 @@ async function buildDamageModelCoverage() {
       inferredAbilities: 0,
       curatedAbilities: 0,
       semanticCompleteAbilities: 0,
+      reviewedAbilities: 0,
+      candidateAbilities: 0,
       missingAbilityEntries: []
     };
 
@@ -91,6 +100,18 @@ async function buildDamageModelCoverage() {
       continue;
     }
 
+    const modelSource = model.source || 'manual';
+    const reviewStatus = model.review?.status || 'candidate';
+    counts.modelSource = modelSource;
+    counts.reviewStatus = modelSource === 'auto' ? 'candidate' : reviewStatus;
+    if (modelSource === 'auto') {
+      totals.autoOnlyHeroes += 1;
+    } else if (reviewStatus === 'reviewed') {
+      totals.manualReviewedHeroes += 1;
+    } else {
+      totals.manualCandidateHeroes += 1;
+    }
+
     for (const abilityName of abilityNames) {
       const entry = model.abilities[abilityName];
       if (!entry) {
@@ -104,6 +125,13 @@ async function buildDamageModelCoverage() {
       }
       counts.curatedAbilities += 1;
       totals.curatedAbilities += 1;
+      if (modelSource !== 'auto' && reviewStatus === 'reviewed') {
+        counts.reviewedAbilities += 1;
+        totals.reviewedAbilities += 1;
+      } else {
+        counts.candidateAbilities += 1;
+        totals.candidateAbilities += 1;
+      }
       countModeledStatus(counts, entry.status);
       countModeledStatus(totals, entry.status);
 

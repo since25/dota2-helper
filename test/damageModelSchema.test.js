@@ -28,6 +28,37 @@ test('validateHeroDamageModel accepts Slardar attack sequence model', () => {
   assert.deepEqual(validateHeroDamageModel(model), model);
 });
 
+test('validateHeroDamageModel accepts planned semantic damage model primitives', () => {
+  const expectedModels = [
+    ['initial_plus_dot', ['initialDamageKey', 'damagePerSecondKey', 'durationKey']],
+    ['initial_plus_ticks', ['initialDamageKey', 'tickDamageKey', 'tickIntervalKey', 'durationKey']],
+    ['repeated_trigger', ['damageKey', 'triggerCountInput']],
+    ['summon_attack', ['attackDamageKey', 'attackCountInput']],
+    ['percent_health_dot', ['percentDamageKey', 'durationKey', 'healthInput']],
+    ['attribute_scaling', ['baseDamageKey', 'attributeMultiplierKey', 'attributeInput']],
+    ['conditional_instant', ['damageKey', 'conditionInputs']]
+  ];
+
+  for (const [modelType, requiredKeys] of expectedModels) {
+    const entry = {
+      status: 'implemented',
+      model: modelType,
+      semanticType: modelType === 'summon_attack' ? 'summon.attack_damage' : 'damage.instant'
+    };
+    for (const key of requiredKeys) entry[key] = `${key}_fixture`;
+
+    const model = {
+      hero: 'Primitive Fixture',
+      abilities: {
+        [`${modelType} fixture`]: entry
+      }
+    };
+
+    assert.equal(MODEL_TYPES.includes(modelType), true);
+    assert.deepEqual(validateHeroDamageModel(model), model);
+  }
+});
+
 test('validateHeroDamageModel rejects implemented attack sequence without procDamageKey', () => {
   assert.throws(
     () => validateHeroDamageModel({

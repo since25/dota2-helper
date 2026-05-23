@@ -121,7 +121,7 @@
       "name": "Shockwave",
       "displayName": "震荡波（Shockwave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Empower",
       "displayName": "授予力量（Empower）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         45,
         55,
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,7 +228,7 @@
       "name": "Skewer",
       "displayName": "巨角冲撞（Skewer）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
@@ -288,7 +288,7 @@
       "name": "Horn Toss",
       "displayName": "长角抛物（Horn Toss）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -328,5 +328,454 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Magnus",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Shockwave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "shock_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "slow_duration"
+        },
+        "Empower": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Skewer": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "skewer_damage",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "move_speed"
+          ],
+          "conditionInputs": [
+            "move_speed"
+          ],
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+        },
+        "Horn Toss": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "air_duration"
+        },
+        "Solid Core": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "shock_speed",
+        "label": "SHOCK SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "shock_width",
+        "label": "SHOCK WIDTH:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "pull_duration",
+        "label": "PULL DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "pull_distance",
+        "label": "PULL DISTANCE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "basic_slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.4/0.6/0.8/1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "return_damage_pct",
+        "label": "RETURN DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "return_shockwave_bonus_distance",
+        "label": "RETURN SHOCKWAVE BONUS DISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "0.6875",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Shockwave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "should_self_cast",
+        "label": "SHOULD SELF CAST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "empower_duration",
+        "label": "DURATION:",
+        "value": "30/33/36/39",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "bonus_damage_pct",
+        "label": "BONUS DAMAGE:",
+        "value": "16%/24%/32%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "cleave_damage_pct",
+        "label": "CLEAVE DAMAGE:",
+        "value": "16%/24%/32%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "cleave_starting_width",
+        "label": "CLEAVE STARTING WIDTH:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "cleave_ending_width",
+        "label": "CLEAVE ENDING WIDTH:",
+        "value": "360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "cleave_distance",
+        "label": "CLEAVE DISTANCE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "secondary_cleave_distance",
+        "label": "SECONDARY CLEAVE DISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "self_multiplier",
+        "label": "SELF MULTIPLIER:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "always_on",
+        "label": "ALWAYS ON:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "self_multiplier_bonus_stack_duration",
+        "label": "SELF MULTIPLIER BONUS STACK DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "self_multiplier_bonus_max_stacks",
+        "label": "SELF MULTIPLIER BONUS MAX STACKS:",
+        "value": "25/30/35/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "self_multiplier_bonus_per_stack",
+        "label": "SELF MULTIPLIER BONUS PER STACK:",
+        "value": "5/6/7/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Empower",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "skewer_speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "range",
+        "label": "DISTANCE:",
+        "value": "800/900/1000/1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "slow_pct",
+        "label": "SLOW:",
+        "value": "20%/30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "skewer_radius",
+        "label": "SKEWER RADIUS:",
+        "value": "145",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "damage_distance_pct",
+        "label": "DISTANCE AS DAMAGE:",
+        "value": "6%/9%/12%/15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "tree_radius",
+        "label": "TREE RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "tree_hit_damage",
+        "label": "TREE HIT DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "cliff_hit_damage",
+        "label": "CLIFF HIT DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "terrain_hit_cooldown",
+        "label": "TERRAIN HIT COOLDOWN:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Skewer",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "air_height",
+        "label": "AIR HEIGHT:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "pull_offset",
+        "label": "PULL OFFSET:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "destination_offset",
+        "label": "DESTINATION OFFSET:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "pull_angle",
+        "label": "PULL ANGLE:",
+        "value": "230",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "horn_toss_slow_pct",
+        "label": "HORN TOSS SLOW PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Horn Toss",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Solid Core",
+        "key": "knockback_reduction",
+        "label": "KNOCKBACK RESISTANCE:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Magnus",
+        "ability": "Solid Core",
+        "key": "slow_resistance",
+        "label": "SLOW RESISTANCE:",
+        "value": "24%",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

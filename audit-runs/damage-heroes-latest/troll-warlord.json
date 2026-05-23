@@ -121,10 +121,10 @@
       "name": "Battle Stance",
       "displayName": "战斗姿态（Battle Stance）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -155,9 +155,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -166,7 +166,7 @@
       "name": "Whirling Axes (Ranged)",
       "displayName": "旋风飞斧（远程）（Whirling Axes (Ranged)）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -216,7 +216,7 @@
       "name": "Whirling Axes (Melee)",
       "displayName": "旋风飞斧（近战）（Whirling Axes (Melee)）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -266,10 +266,10 @@
       "name": "Fervor",
       "displayName": "热血战魂（Fervor）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -303,9 +303,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -314,16 +314,16 @@
       "name": "Berserker's Rage",
       "displayName": "狂战士之怒（Berserker's Rage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "conditional_instant",
+      "reason": "残废伤害是攻击概率触发，需输入攻击次数和触发模式。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Berserker's Rage:instant_fixed:maim_damage",
-          "kind": "instant_fixed",
+          "id": "Berserker's Rage:conditional_instant:maim_damage",
+          "kind": "conditional_instant",
           "growthKind": "non_growth",
           "damageType": "Physical",
           "label": "maim_damage",
@@ -335,23 +335,23 @@
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "single_value_with_condition"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              0.8,
-              1.2,
-              1.6,
-              2
+            "conditionInputs": [
+              "attack_count",
+              "proc_mode"
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "conditional_instant",
+          "reason": "残废伤害是攻击概率触发，需输入攻击次数和触发模式。",
+          "caveats": [
+            "条件伤害默认不进入固定瞬时总量，需满足条件后再计算。"
+          ]
         }
       ]
     },
@@ -359,10 +359,10 @@
       "name": "Battle Trance",
       "displayName": "战斗专注（Battle Trance）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -399,13 +399,411 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Troll Warlord",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Battle Stance": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "attack_speed_interval",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Whirling Axes (Ranged)": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "axe_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "axe_slow_duration"
+        },
+        "Whirling Axes (Melee)": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "blind_duration"
+        },
+        "Fervor": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Berserker's Rage": {
+          "status": "implemented",
+          "model": "conditional_instant",
+          "damageKey": "maim_damage",
+          "semanticType": "damage.instant",
+          "conditionInputs": [
+            "attack_count",
+            "proc_mode"
+          ],
+          "defaultIncluded": false,
+          "reason": "残废伤害是攻击概率触发，需输入攻击次数和触发模式。"
+        },
+        "Battle Trance": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Stance",
+        "key": "bonus_range",
+        "label": "BONUS RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Stance",
+        "key": "base_attack_time",
+        "label": "BASE ATTACK TIME:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Stance",
+        "key": "armor_per_interval",
+        "label": "ARMOR PER INTERVAL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Stance",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "axe_width",
+        "label": "AXE WIDTH:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "axe_speed",
+        "label": "AXE SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "axe_range",
+        "label": "AXE RANGE:",
+        "value": "950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "axe_spread",
+        "label": "AXE SPREAD:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "axe_count",
+        "label": "AXE COUNT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Ranged)",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "hit_radius",
+        "label": "HIT RADIUS:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "max_range",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "axe_movement_speed",
+        "label": "AXE MOVEMENT SPEED:",
+        "value": "1250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "blind_pct",
+        "label": "MISS CHANCE:",
+        "value": "60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "whirl_duration",
+        "label": "WHIRL DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "pierces_magic_immunity",
+        "label": "PIERCES MAGIC IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Whirling Axes (Melee)",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Fervor",
+        "key": "max_stacks",
+        "label": "MAX STACKS:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Fervor",
+        "key": "stack_limit_during_battle_trance",
+        "label": "STACK LIMIT DURING BATTLE TRANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "bonus_move_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "15/25/35/45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "bonus_range",
+        "label": "BONUS RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "base_attack_time",
+        "label": "BASE ATTACK TIME:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "ensnare_chance",
+        "label": "ENSNARE CHANCE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "ensnare_duration",
+        "label": "ENSNARE DURATION:",
+        "value": "0.8/1.2/1.6/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "maim_chance",
+        "label": "MAIM CHANCE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "maim_duration",
+        "label": "MAIM DURATION:",
+        "value": "0.8/1.2/1.6/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "maim_slow",
+        "label": "MAIM MOVE SLOW:",
+        "value": "8%/16%/24%/32%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Berserker's Rage",
+        "key": "maim_attack_slow",
+        "label": "MAIM ATTACK SLOW:",
+        "value": "8/16/24/32",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "trance_duration",
+        "label": "TRANCE DURATION:",
+        "value": "6.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "lifesteal",
+        "label": "LIFESTEAL:",
+        "value": "40%/60%/80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "140/170/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "attack_speed_share_percent",
+        "label": "ATTACK SPEED SHARE PERCENT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "25%/30%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "stack_limit_tooltip",
+        "label": "BATTLE TRANCE MAX FERVOR STACKS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "ignore_attack_speed_limit",
+        "label": "IGNORE ATTACK SPEED LIMIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Troll Warlord",
+        "ability": "Battle Trance",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

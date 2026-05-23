@@ -121,7 +121,7 @@
       "name": "Acid Spray",
       "displayName": "酸性喷雾（Acid Spray）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -189,7 +189,7 @@
       "name": "Unstable Concoction",
       "displayName": "不稳定化合物（Unstable Concoction）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "conditional",
       "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
@@ -247,10 +247,10 @@
       "name": "Corrosive Weaponry",
       "displayName": "腐蚀兵械（Corrosive Weaponry）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -284,9 +284,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -295,10 +295,10 @@
       "name": "Berserk Potion",
       "displayName": "狂暴药剂（Berserk Potion）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100
       ],
@@ -333,9 +333,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -344,10 +344,10 @@
       "name": "Greevil's Greed",
       "displayName": "贪魔的贪婪（Greevil's Greed）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -378,9 +378,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -389,7 +389,7 @@
       "name": "Unstable Concoction Throw",
       "displayName": "投掷不稳定化合物（Unstable Concoction Throw）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -424,5 +424,516 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Alchemist",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Acid Spray": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_rate",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Unstable Concoction": {
+          "status": "reference_only",
+          "model": "conditional",
+          "valueKey": "max_damage",
+          "semanticType": "damage.death_trigger",
+          "conditionInputs": [
+            "trigger_condition"
+          ],
+          "condition": "需要触发条件成立才造成伤害。",
+          "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。"
+        },
+        "Corrosive Weaponry": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "slow_per_stack",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Berserk Potion": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Greevil's Greed": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Chemical Rage": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Unstable Concoction Throw": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "max_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Alchemist",
+        "ability": "Acid Spray",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "350/400/450/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Acid Spray",
+        "key": "armor_reduction",
+        "label": "ARMOR REDUCTION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Acid Spray",
+        "key": "armor_allies",
+        "label": "ARMOR ALLIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Acid Spray",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Acid Spray",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "brew_time",
+        "label": "BREW TIME:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "brew_explosion",
+        "label": "BREW EXPLOSION:",
+        "value": "5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "min_stun",
+        "label": "MIN STUN:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "max_stun",
+        "label": "MAX STUN:",
+        "value": "1.7/2.2/2.7/3.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "min_damage",
+        "label": "MIN DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "radius",
+        "label": "EXPLOSION RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "move_speed",
+        "label": "MOVE SPEED BONUS:",
+        "value": "4/8/12/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "chemical_rage_cooldown_reduction_pct",
+        "label": "CHEMICAL RAGE COOLDOWN REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "775",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Corrosive Weaponry",
+        "key": "max_stacks",
+        "label": "MAX STACKS:",
+        "value": "7/10/13/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Corrosive Weaponry",
+        "key": "debuff_duration",
+        "label": "DEBUFF DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Corrosive Weaponry",
+        "key": "attack_dmg_per_stack",
+        "label": "BASE ATTACK DAMAGE REDUCTION PER STACK:",
+        "value": "2.5/3/3.5/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Corrosive Weaponry",
+        "key": "stacks_per_attack",
+        "label": "STACKS PER ATTACK:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Corrosive Weaponry",
+        "key": "one_tooltip",
+        "label": "ONE TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "hp_regen",
+        "label": "HP REGEN:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "move_speed",
+        "label": "MOVE SPEED:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "chemical_rage_cooldown_reduction_pct",
+        "label": "CHEMICAL RAGE COOLDOWN REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Berserk Potion",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "duration",
+        "label": "RECENT KILL WINDOW:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_gold",
+        "label": "BONUS GOLD:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_gold_tooltip",
+        "label": "BASE BONUS GOLD:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_bonus_gold",
+        "label": "EXTRA BONUS GOLD:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_gold_per_scepter",
+        "label": "BONUS GOLD PER SCEPTER:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bounty_multiplier",
+        "label": "BOUNTY RUNE MULTIPLIER:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_gold_cap",
+        "label": "BONUS GOLD CAP:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "bonus_gold_cap_tooltip",
+        "label": "MAX BONUS GOLD PER KILL:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "scepter_bonus_damage",
+        "label": "SCEPTER BONUS DAMAGE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Greevil's Greed",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "transformation_time",
+        "label": "TRANSFORMATION TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "base_attack_time",
+        "label": "BASE ATTACK TIME:",
+        "value": "1.2/1.1/1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "bonus_health",
+        "label": "BONUS HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "bonus_health_regen",
+        "label": "BONUS HEALTH REGEN:",
+        "value": "60/90/120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "bonus_mana_regen",
+        "label": "BONUS MANA REGEN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "bonus_movespeed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Chemical Rage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "brew_time",
+        "label": "BREW TIME:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "min_stun",
+        "label": "MIN STUN:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "max_stun",
+        "label": "MAX STUN:",
+        "value": "1.75/2.25/2.75/3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "min_damage",
+        "label": "MIN DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "midair_explosion_radius",
+        "label": "MIDAIR EXPLOSION RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "brew_explosion",
+        "label": "BREW EXPLOSION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "775",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Alchemist",
+        "ability": "Unstable Concoction Throw",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

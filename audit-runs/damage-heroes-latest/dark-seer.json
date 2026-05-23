@@ -121,7 +121,7 @@
       "name": "Vacuum",
       "displayName": "真空（Vacuum）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Ion Shell",
       "displayName": "离子外壳（Ion Shell）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -244,10 +244,10 @@
       "name": "Surge",
       "displayName": "奔腾（Surge）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -285,9 +285,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -296,7 +296,7 @@
       "name": "Normal Punch",
       "displayName": "普通一拳（Normal Punch）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -345,7 +345,7 @@
       "name": "Wall of Replica",
       "displayName": "复制之墙（Wall of Replica）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -393,5 +393,327 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Dark Seer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Vacuum": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Ion Shell": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Surge": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Normal Punch": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "max_damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        },
+        "Quick Wit": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Wall of Replica": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "wall_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Dark Seer",
+        "ability": "Vacuum",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "325/400/475/550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Vacuum",
+        "key": "radius_tree",
+        "label": "RADIUS TREE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Vacuum",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450/500/550/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Vacuum",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Ion Shell",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Ion Shell",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Ion Shell",
+        "key": "bonus_health",
+        "label": "BONUS HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Ion Shell",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Ion Shell",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Surge",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Surge",
+        "key": "speed_boost",
+        "label": "SPEED BOOST:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Surge",
+        "key": "trail_radius",
+        "label": "TRAIL RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Surge",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "max_stun",
+        "label": "MAX STUN DURATION:",
+        "value": "1.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "recent_duration",
+        "label": "RECENT DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "knockback_distance",
+        "label": "MAX KNOCKBACK DISTANCE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "illusion_duration",
+        "label": "ILLUSION DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Normal Punch",
+        "key": "normal_punch_illusion_delay",
+        "label": "NORMAL PUNCH ILLUSION DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Quick Wit",
+        "key": "int_to_atkspd",
+        "label": "INT TO ATKSPD:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Quick Wit",
+        "key": "heal_pct",
+        "label": "MAX HP/MANA RESTORE:",
+        "value": "8.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "replica_damage_outgoing",
+        "label": "REPLICA DAMAGE OUTGOING:",
+        "value": "-30/-20/-10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "tooltip_outgoing",
+        "label": "REPLICA DAMAGE:",
+        "value": "70%/80%/90%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "replica_damage_incoming",
+        "label": "REPLICA DAMAGE INCOMING:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "tooltip_replica_total_damage_incoming",
+        "label": "REPLICA DAMAGE TAKEN:",
+        "value": "200%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "width",
+        "label": "WIDTH:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "replica_scale",
+        "label": "REPLICA SCALE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Seer",
+        "ability": "Wall of Replica",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

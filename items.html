@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dota 2 物品语义模型</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="data-viewer.css">
+  <link rel="icon" type="image/png" href="images/dota2_favicon.png">
+</head>
+<body>
+  <main class="data-shell">
+    <header class="data-header">
+      <div>
+        <h1>物品语义模型</h1>
+        <p>把 <code>/api/items/models</code> 转换为可读页面，便于审核商店物品、神杖、魔晶和伤害修正。</p>
+      </div>
+      <nav class="data-actions" aria-label="页面导航">
+        <a href="/" class="data-link">返回对局助手</a>
+        <a href="/damage-calculator.html" class="data-link">伤害计算器</a>
+        <a href="/api/items/models" class="data-link" target="_blank" rel="noopener noreferrer">查看原始 JSON</a>
+      </nav>
+    </header>
+
+    <section class="data-panel data-toolbar">
+      <label>
+        搜索物品
+        <input id="itemSearchInput" type="search" placeholder="输入物品名、key 或语义类型">
+      </label>
+      <div class="data-count" id="itemCount">加载中...</div>
+    </section>
+
+    <section class="profile-grid">
+      <article class="data-panel">
+        <h2>物品列表</h2>
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>物品</th>
+                <th>价格</th>
+                <th>分类</th>
+                <th>语义</th>
+              </tr>
+            </thead>
+            <tbody id="itemRows"></tbody>
+          </table>
+        </div>
+        <p id="itemStatus" class="data-status"></p>
+      </article>
+
+      <article class="data-panel">
+        <h2 id="detailTitle">物品详情</h2>
+        <div id="itemDetail" class="ability-card-list"></div>
+      </article>
+    </section>
+
+    <section class="data-panel">
+      <details>
+        <summary>当前物品原始 JSON</summary>
+        <pre id="rawJsonBlock" class="json-block"></pre>
+      </details>
+    </section>
+  </main>
+
+  <script src="items.js"></script>
+</body>
+</html>

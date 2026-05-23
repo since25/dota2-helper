@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>谜团（Enigma）</h1>
-        <div class="muted">Enigma · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Enigma · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,417 @@
       </div>
       <a href="./enigma.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Malefice</td>
+      <td><code>shard_bonus_stun_duration_tooltip</code></td>
+      <td>SHARD BONUS STUN DURATION TOOLTIP:</td>
+      <td>0.30</td>
+    </tr>
+  
+    <tr>
+      <td>Malefice</td>
+      <td><code>stun_instances</code></td>
+      <td>INSTANCES:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Malefice</td>
+      <td><code>eidolon_spawns_per_tick</code></td>
+      <td>EIDOLON SPAWNS PER TICK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Malefice</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>450/500/550/600</td>
+    </tr>
+  
+    <tr>
+      <td>Malefice</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>spawn_count</code></td>
+      <td>SPAWN COUNT:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>split_attack_count</code></td>
+      <td>ATTACKS TO MULTIPLY:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidelon_max_health</code></td>
+      <td>EIDOLON HP:</td>
+      <td>180/200/220/240</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>life_extension</code></td>
+      <td>LIFE EXTENSION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_damage_spread</code></td>
+      <td>EIDOLON DAMAGE SPREAD:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_bonus_damage</code></td>
+      <td>EIDOLON BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_bonus_attack_speed</code></td>
+      <td>EIDOLON BONUS ATTACK SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidelon_base_movespeed</code></td>
+      <td>EIDELON BASE MOVESPEED:</td>
+      <td>280/310/340/370</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>creep_max_level</code></td>
+      <td>CREEP MAX LEVEL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_magic_resist</code></td>
+      <td>EIDOLON MAGIC RESISTANCE:</td>
+      <td>30%/40%/50%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_attack_range</code></td>
+      <td>EIDOLON ATTACK RANGE:</td>
+      <td>425/450/475/500</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>allied_damage_pct</code></td>
+      <td>ALLIED DAMAGE PCT:</td>
+      <td>45</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>self_modelscale</code></td>
+      <td>SELF MODELSCALE:</td>
+      <td>-40</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>spawn_offset</code></td>
+      <td>SPAWN OFFSET:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>current_health_pct</code></td>
+      <td>CURRENT HEALTH PCT:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_xp_bounty</code></td>
+      <td>EIDOLON XP BOUNTY:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_gold_bounty_min</code></td>
+      <td>EIDOLON GOLD BOUNTY MIN:</td>
+      <td>17</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_gold_bounty_max</code></td>
+      <td>EIDOLON GOLD BOUNTY MAX:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>non_splitting_bounty_reduction</code></td>
+      <td>NON SPLITTING BOUNTY REDUCTION:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>damage_threshold</code></td>
+      <td>DAMAGE THRESHOLD:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>damage_reset_interval</code></td>
+      <td>DAMAGE RESET INTERVAL:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>eidolon_spawns</code></td>
+      <td>EIDOLON SPAWNS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Demonic Summoning</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>damage_percent</code></td>
+      <td>CURRENT HEALTH AS DAMAGE:</td>
+      <td>4%/6%/8%/10%</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>9/10/11/12</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Midnight Pulse</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Event Horizon</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Event Horizon</td>
+      <td><code>vision_cone</code></td>
+      <td>VISION CONE:</td>
+      <td>0.08715</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>420</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>pull_speed</code></td>
+      <td>PULL SPEED:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>pull_rotate_speed</code></td>
+      <td>PULL ROTATE SPEED:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Black Hole</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Enigma&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Malefice&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;
+    },
+    &quot;Demonic Summoning&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;eidelon_base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;
+    },
+    &quot;Midnight Pulse&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Event Horizon&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;speed_bonus&quot;,
+      &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Black Hole&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +539,7 @@
           <div class="muted">Malefice · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +592,7 @@
           <div class="muted">Demonic Summoning · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +645,7 @@
           <div class="muted">Midnight Pulse · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +698,7 @@
           <div class="muted">Event Horizon · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +737,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +751,7 @@
           <div class="muted">Black Hole · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +922,7 @@
       &quot;name&quot;: &quot;Malefice&quot;,
       &quot;displayName&quot;: &quot;憎恶（Malefice）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -568,7 +983,7 @@
       &quot;name&quot;: &quot;Demonic Summoning&quot;,
       &quot;displayName&quot;: &quot;恶魔召唤（Demonic Summoning）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -623,7 +1038,7 @@
       &quot;name&quot;: &quot;Midnight Pulse&quot;,
       &quot;displayName&quot;: &quot;午夜凋零（Midnight Pulse）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -683,10 +1098,10 @@
       &quot;name&quot;: &quot;Event Horizon&quot;,
       &quot;displayName&quot;: &quot;事件视界（Event Horizon）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -717,9 +1132,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -728,7 +1143,7 @@
       &quot;name&quot;: &quot;Black Hole&quot;,
       &quot;displayName&quot;: &quot;黑洞（Black Hole）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -787,7 +1202,438 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Enigma&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Malefice&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;
+        },
+        &quot;Demonic Summoning&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;eidelon_base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;
+        },
+        &quot;Midnight Pulse&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Event Horizon&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;speed_bonus&quot;,
+          &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Black Hole&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Malefice&quot;,
+        &quot;key&quot;: &quot;shard_bonus_stun_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;SHARD BONUS STUN DURATION TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0.30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Malefice&quot;,
+        &quot;key&quot;: &quot;stun_instances&quot;,
+        &quot;label&quot;: &quot;INSTANCES:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Malefice&quot;,
+        &quot;key&quot;: &quot;eidolon_spawns_per_tick&quot;,
+        &quot;label&quot;: &quot;EIDOLON SPAWNS PER TICK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Malefice&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;450/500/550/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Malefice&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;spawn_count&quot;,
+        &quot;label&quot;: &quot;SPAWN COUNT:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;split_attack_count&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO MULTIPLY:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidelon_max_health&quot;,
+        &quot;label&quot;: &quot;EIDOLON HP:&quot;,
+        &quot;value&quot;: &quot;180/200/220/240&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;life_extension&quot;,
+        &quot;label&quot;: &quot;LIFE EXTENSION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_damage_spread&quot;,
+        &quot;label&quot;: &quot;EIDOLON DAMAGE SPREAD:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_bonus_damage&quot;,
+        &quot;label&quot;: &quot;EIDOLON BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;EIDOLON BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidelon_base_movespeed&quot;,
+        &quot;label&quot;: &quot;EIDELON BASE MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;280/310/340/370&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;creep_max_level&quot;,
+        &quot;label&quot;: &quot;CREEP MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_magic_resist&quot;,
+        &quot;label&quot;: &quot;EIDOLON MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_attack_range&quot;,
+        &quot;label&quot;: &quot;EIDOLON ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;425/450/475/500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;allied_damage_pct&quot;,
+        &quot;label&quot;: &quot;ALLIED DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;self_modelscale&quot;,
+        &quot;label&quot;: &quot;SELF MODELSCALE:&quot;,
+        &quot;value&quot;: &quot;-40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;spawn_offset&quot;,
+        &quot;label&quot;: &quot;SPAWN OFFSET:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;current_health_pct&quot;,
+        &quot;label&quot;: &quot;CURRENT HEALTH PCT:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_xp_bounty&quot;,
+        &quot;label&quot;: &quot;EIDOLON XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_gold_bounty_min&quot;,
+        &quot;label&quot;: &quot;EIDOLON GOLD BOUNTY MIN:&quot;,
+        &quot;value&quot;: &quot;17&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_gold_bounty_max&quot;,
+        &quot;label&quot;: &quot;EIDOLON GOLD BOUNTY MAX:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;non_splitting_bounty_reduction&quot;,
+        &quot;label&quot;: &quot;NON SPLITTING BOUNTY REDUCTION:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;damage_threshold&quot;,
+        &quot;label&quot;: &quot;DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;damage_reset_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE RESET INTERVAL:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;eidolon_spawns&quot;,
+        &quot;label&quot;: &quot;EIDOLON SPAWNS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Demonic Summoning&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;damage_percent&quot;,
+        &quot;label&quot;: &quot;CURRENT HEALTH AS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;4%/6%/8%/10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;9/10/11/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Midnight Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Event Horizon&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Event Horizon&quot;,
+        &quot;key&quot;: &quot;vision_cone&quot;,
+        &quot;label&quot;: &quot;VISION CONE:&quot;,
+        &quot;value&quot;: &quot;0.08715&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;420&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;pull_speed&quot;,
+        &quot;label&quot;: &quot;PULL SPEED:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;pull_rotate_speed&quot;,
+        &quot;label&quot;: &quot;PULL ROTATE SPEED:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enigma&quot;,
+        &quot;ability&quot;: &quot;Black Hole&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

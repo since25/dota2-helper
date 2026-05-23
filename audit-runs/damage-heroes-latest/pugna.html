@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>帕格纳（Pugna）</h1>
-        <div class="muted">Pugna · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Pugna · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,319 @@
       </div>
       <a href="./pugna.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Nether Blast</td>
+      <td><code>structure_damage_mod</code></td>
+      <td>STRUCTURE DAMAGE MOD:</td>
+      <td>65</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Blast</td>
+      <td><code>delay</code></td>
+      <td>BLAST DELAY:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Blast</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>bonus_heal_amp_pct_allies</code></td>
+      <td>ALLY HEAL AMPLIFICATION:</td>
+      <td>10%/15%/20%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>bonus_movement_speed_allies</code></td>
+      <td>BONUS MOVEMENT SPEED ALLIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>bonus_spell_damage_pct</code></td>
+      <td>ENEMY INCREASED MAGIC DAMAGE:</td>
+      <td>-20%/-30%/-40%/-50%</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>ENEMY MOVE SLOW:</td>
+      <td>-45%/-50%/-55%/-60%</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td>Decrepify</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>radius</code></td>
+      <td>WARD ATTACK RANGE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>mana_multiplier</code></td>
+      <td>DAMAGE PER MANA:</td>
+      <td>1/1.2/1.4/1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>mana_regen</code></td>
+      <td>MANA REGEN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>health_restore_pct</code></td>
+      <td>DAMAGE TO HP:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>mana_restore_pct</code></td>
+      <td>DAMAGE TO MANA:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>attacks_to_destroy</code></td>
+      <td>ATTACKS TO DESTROY:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>spell_damage_reduction</code></td>
+      <td>SPELL DAMAGE REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>nether_ward_gold_bounty</code></td>
+      <td>NETHER WARD GOLD BOUNTY:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>self_restoration_range</code></td>
+      <td>SELF RESTORATION RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>abilityduration</code></td>
+      <td>WARD DURATION:</td>
+      <td>21/24/27/30</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Ward</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Oblivion Savant</td>
+      <td><code>tower_scale</code></td>
+      <td>TOWER SCALE:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>health_drain</code></td>
+      <td>ENEMY DRAIN PER SECOND:</td>
+      <td>150/250/350</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>health_drain_death_boost</code></td>
+      <td>HEALTH DRAIN DEATH BOOST:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>ally_healing</code></td>
+      <td>ALLY DRAIN/HEAL PER SECOND:</td>
+      <td>150/250/350</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>health_to_mana_rate</code></td>
+      <td>HEALTH TO MANA RATE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>drain_buffer</code></td>
+      <td>DRAIN BUFFER:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>MAX DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Life Drain</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Pugna&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Nether Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;blast_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Decrepify&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Nether Ward&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Oblivion Savant&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Life Drain&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,14 +441,14 @@
           <div class="muted">Nether Blast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
         <span>蓝耗：100 / 115 / 130 / 145</span>
-        <span>冷却：5</span>
+        <span>冷却：5 / 5 / 5 / 5</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -150,8 +467,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Nether Blast:instant_fixed:structure_damage_mod</code>
-          <div class="muted">structure_damage_mod</div>
+          <code>Nether Blast:instant_fixed:blast_damage</code>
+          <div class="muted">blast_damage</div>
         </td>
         <td>
           <span class="pill">instant_fixed</span>
@@ -159,7 +476,7 @@
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>65</td><td>-</td><td>-</td><td>-</td>
+        <td>95</td><td>170</td><td>245</td><td>320</td>
         <td></td>
         <td><span class="muted">-</span></td>
         <td>single_value</td>
@@ -177,7 +494,7 @@
           <div class="muted">Decrepify · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +533,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +547,7 @@
           <div class="muted">Nether Ward · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +600,7 @@
           <div class="muted">Life Drain · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +639,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +771,7 @@
       &quot;name&quot;: &quot;Nether Blast&quot;,
       &quot;displayName&quot;: &quot;幽冥爆轰（Nether Blast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -465,17 +782,23 @@
         145
       ],
       &quot;cooldownByAbilityLevel&quot;: [
+        5,
+        5,
+        5,
         5
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Nether Blast:instant_fixed:structure_damage_mod&quot;,
+          &quot;id&quot;: &quot;Nether Blast:instant_fixed:blast_damage&quot;,
           &quot;kind&quot;: &quot;instant_fixed&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;structure_damage_mod&quot;,
+          &quot;label&quot;: &quot;blast_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            65
+            95,
+            170,
+            245,
+            320
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -496,10 +819,10 @@
       &quot;name&quot;: &quot;Decrepify&quot;,
       &quot;displayName&quot;: &quot;衰老（Decrepify）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         80,
@@ -543,9 +866,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -554,7 +877,7 @@
       &quot;name&quot;: &quot;Nether Ward&quot;,
       &quot;displayName&quot;: &quot;幽冥守卫（Nether Ward）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -614,10 +937,10 @@
       &quot;name&quot;: &quot;Life Drain&quot;,
       &quot;displayName&quot;: &quot;生命汲取（Life Drain）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         115,
         160,
@@ -654,15 +977,335 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Pugna&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Nether Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;blast_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Decrepify&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Nether Ward&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Oblivion Savant&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Life Drain&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Blast&quot;,
+        &quot;key&quot;: &quot;structure_damage_mod&quot;,
+        &quot;label&quot;: &quot;STRUCTURE DAMAGE MOD:&quot;,
+        &quot;value&quot;: &quot;65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Blast&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;BLAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Blast&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;bonus_heal_amp_pct_allies&quot;,
+        &quot;label&quot;: &quot;ALLY HEAL AMPLIFICATION:&quot;,
+        &quot;value&quot;: &quot;10%/15%/20%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed_allies&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED ALLIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;bonus_spell_damage_pct&quot;,
+        &quot;label&quot;: &quot;ENEMY INCREASED MAGIC DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-20%/-30%/-40%/-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;ENEMY MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-45%/-50%/-55%/-60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Decrepify&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;WARD ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;mana_multiplier&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER MANA:&quot;,
+        &quot;value&quot;: &quot;1/1.2/1.4/1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;mana_regen&quot;,
+        &quot;label&quot;: &quot;MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;health_restore_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE TO HP:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;mana_restore_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE TO MANA:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;attacks_to_destroy&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;spell_damage_reduction&quot;,
+        &quot;label&quot;: &quot;SPELL DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;nether_ward_gold_bounty&quot;,
+        &quot;label&quot;: &quot;NETHER WARD GOLD BOUNTY:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;self_restoration_range&quot;,
+        &quot;label&quot;: &quot;SELF RESTORATION RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;WARD DURATION:&quot;,
+        &quot;value&quot;: &quot;21/24/27/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Nether Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Oblivion Savant&quot;,
+        &quot;key&quot;: &quot;tower_scale&quot;,
+        &quot;label&quot;: &quot;TOWER SCALE:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;health_drain&quot;,
+        &quot;label&quot;: &quot;ENEMY DRAIN PER SECOND:&quot;,
+        &quot;value&quot;: &quot;150/250/350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;health_drain_death_boost&quot;,
+        &quot;label&quot;: &quot;HEALTH DRAIN DEATH BOOST:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;ally_healing&quot;,
+        &quot;label&quot;: &quot;ALLY DRAIN/HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;150/250/350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;health_to_mana_rate&quot;,
+        &quot;label&quot;: &quot;HEALTH TO MANA RATE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;drain_buffer&quot;,
+        &quot;label&quot;: &quot;DRAIN BUFFER:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;MAX DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pugna&quot;,
+        &quot;ability&quot;: &quot;Life Drain&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

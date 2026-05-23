@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>龙骑士（Dragon Knight）</h1>
-        <div class="muted">Dragon Knight · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Dragon Knight · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,369 @@
       </div>
       <a href="./dragon-knight.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1050</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>20%/24%/28%/32%</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>dragon_form_bonus_pct</code></td>
+      <td>DRAGON FORM BONUS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>duration</code></td>
+      <td>REDUCTION DURATION:</td>
+      <td>11</td>
+    </tr>
+  
+    <tr>
+      <td>Breathe Fire</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>damage_pct</code></td>
+      <td>DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>dragon_cast_range</code></td>
+      <td>DRAGON CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>aoe</code></td>
+      <td>AOE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Tail</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wyrm&#39;s Wrath</td>
+      <td><code>bonus_aoe</code></td>
+      <td>AOE BONUS:</td>
+      <td>25/50/75/100</td>
+    </tr>
+  
+    <tr>
+      <td>Fireball</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Fireball</td>
+      <td><code>linger_duration</code></td>
+      <td>LINGER DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Fireball</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Fireball</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Blood</td>
+      <td><code>health_regen</code></td>
+      <td>BONUS HP REGEN:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Blood</td>
+      <td><code>armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Blood</td>
+      <td><code>regen_and_armor_multiplier_during_dragon_form</code></td>
+      <td>REGEN AND ARMOR MULTIPLIER DURING DRAGON FORM:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>25/30/35/40</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>bonus_attack_range</code></td>
+      <td>BONUS ATTACK RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>bonus_ability_cast_range</code></td>
+      <td>BONUS ABILITY CAST RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>bonus_attack_damage</code></td>
+      <td>BONUS ATTACK DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>model_scale</code></td>
+      <td>MODEL SCALE:</td>
+      <td>10/15/20/30</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>corrosive_duration</code></td>
+      <td>CORROSIVE DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>ranged_splash_damage_pct</code></td>
+      <td>SPLASH DAMAGE:</td>
+      <td>0%/75%/75%/100%</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>ranged_splash_radius</code></td>
+      <td>SPLASH RADIUS:</td>
+      <td>0/275/275/350</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>health_bar_offset</code></td>
+      <td>HEALTH BAR OFFSET:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>0/0/0/20</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>frost_duration</code></td>
+      <td>FROST DURATION:</td>
+      <td>0/0/3/3</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>frost_bonus_movement_speed</code></td>
+      <td>FROST MOVEMENT SLOW:</td>
+      <td>0%/0%/30%/45%</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>frost_bonus_attack_speed</code></td>
+      <td>FROST ATTACK SLOW:</td>
+      <td>0/0/50/65</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>frost_healing_reduction</code></td>
+      <td>FROST HEALING REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Elder Dragon Form</td>
+      <td><code>scepter_bonus_levels</code></td>
+      <td>SCEPTER BONUS LEVELS:</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Dragon Knight&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Breathe Fire&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false
+    },
+    &quot;Dragon Tail&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Wyrm&#39;s Wrath&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;magic_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Fireball&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Dragon Blood&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Elder Dragon Form&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;corrosive_damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +491,7 @@
           <div class="muted">Breathe Fire · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">attack_modifier</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +544,7 @@
           <div class="muted">Dragon Tail · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +597,7 @@
           <div class="muted">Wyrm&#39;s Wrath · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +650,7 @@
           <div class="muted">Fireball · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +703,7 @@
           <div class="muted">Elder Dragon Form · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +874,7 @@
       &quot;name&quot;: &quot;Breathe Fire&quot;,
       &quot;displayName&quot;: &quot;火焰气息（Breathe Fire）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;attack_modifier&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -561,7 +928,7 @@
       &quot;name&quot;: &quot;Dragon Tail&quot;,
       &quot;displayName&quot;: &quot;神龙摆尾（Dragon Tail）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -616,7 +983,7 @@
       &quot;name&quot;: &quot;Wyrm&#39;s Wrath&quot;,
       &quot;displayName&quot;: &quot;飞龙之怒（Wyrm&#39;s Wrath）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -654,7 +1021,7 @@
       &quot;name&quot;: &quot;Fireball&quot;,
       &quot;displayName&quot;: &quot;龙炎火球（Fireball）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -704,7 +1071,7 @@
       &quot;name&quot;: &quot;Elder Dragon Form&quot;,
       &quot;displayName&quot;: &quot;古龙形态（Elder Dragon Form）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -763,7 +1130,383 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Dragon Knight&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Breathe Fire&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false
+        },
+        &quot;Dragon Tail&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Wyrm&#39;s Wrath&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;magic_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Fireball&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Dragon Blood&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Elder Dragon Form&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;corrosive_damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1050&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;20%/24%/28%/32%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;dragon_form_bonus_pct&quot;,
+        &quot;label&quot;: &quot;DRAGON FORM BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;REDUCTION DURATION:&quot;,
+        &quot;value&quot;: &quot;11&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Breathe Fire&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;dragon_cast_range&quot;,
+        &quot;label&quot;: &quot;DRAGON CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;aoe&quot;,
+        &quot;label&quot;: &quot;AOE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Tail&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Wyrm&#39;s Wrath&quot;,
+        &quot;key&quot;: &quot;bonus_aoe&quot;,
+        &quot;label&quot;: &quot;AOE BONUS:&quot;,
+        &quot;value&quot;: &quot;25/50/75/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Fireball&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Fireball&quot;,
+        &quot;key&quot;: &quot;linger_duration&quot;,
+        &quot;label&quot;: &quot;LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Fireball&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Fireball&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Blood&quot;,
+        &quot;key&quot;: &quot;health_regen&quot;,
+        &quot;label&quot;: &quot;BONUS HP REGEN:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Blood&quot;,
+        &quot;key&quot;: &quot;armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Dragon Blood&quot;,
+        &quot;key&quot;: &quot;regen_and_armor_multiplier_during_dragon_form&quot;,
+        &quot;label&quot;: &quot;REGEN AND ARMOR MULTIPLIER DURING DRAGON FORM:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;25/30/35/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;bonus_attack_range&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;bonus_ability_cast_range&quot;,
+        &quot;label&quot;: &quot;BONUS ABILITY CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;bonus_attack_damage&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;model_scale&quot;,
+        &quot;label&quot;: &quot;MODEL SCALE:&quot;,
+        &quot;value&quot;: &quot;10/15/20/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;corrosive_duration&quot;,
+        &quot;label&quot;: &quot;CORROSIVE DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;ranged_splash_damage_pct&quot;,
+        &quot;label&quot;: &quot;SPLASH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0%/75%/75%/100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;ranged_splash_radius&quot;,
+        &quot;label&quot;: &quot;SPLASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;0/275/275/350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;health_bar_offset&quot;,
+        &quot;label&quot;: &quot;HEALTH BAR OFFSET:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0/0/0/20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;frost_duration&quot;,
+        &quot;label&quot;: &quot;FROST DURATION:&quot;,
+        &quot;value&quot;: &quot;0/0/3/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;frost_bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;FROST MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;0%/0%/30%/45%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;frost_bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;FROST ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;0/0/50/65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;frost_healing_reduction&quot;,
+        &quot;label&quot;: &quot;FROST HEALING REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dragon Knight&quot;,
+        &quot;ability&quot;: &quot;Elder Dragon Form&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_levels&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

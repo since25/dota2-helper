@@ -121,7 +121,7 @@
       "name": "Echo Stomp",
       "displayName": "回音重踏（Echo Stomp）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Astral Spirit",
       "displayName": "灵体游魂（Astral Spirit）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -225,10 +225,10 @@
       "name": "Natural Order",
       "displayName": "自然秩序（Natural Order）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -262,9 +262,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -273,10 +273,10 @@
       "name": "Earth Splitter",
       "displayName": "裂地沟壑（Earth Splitter）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         125,
         175,
@@ -315,13 +315,394 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Elder Titan",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Echo Stomp": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "stomp_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "sleep_duration"
+        },
+        "Astral Spirit": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "pass_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "spirit_duration"
+        },
+        "Natural Order": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "armor_reduction_pct",
+          "semanticType": "modifier.armor_reduction.flat",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Move Astral Spirit": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Momentum": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Earth Splitter": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Return Astral Spirit": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "cast_time",
+        "label": "CAST TIME:",
+        "value": "1.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "475",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "initial_stun_duration",
+        "label": "INITIAL STUN DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "wake_damage_limit",
+        "label": "WAKEUP DAMAGE THRESHOLD:",
+        "value": "100/150/200/250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "can_swap_places",
+        "label": "CAN SWAP PLACES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Echo Stomp",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "buff_duration",
+        "label": "BUFF DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "controllable",
+        "label": "CONTROLLABLE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "move_pct_creeps",
+        "label": "BONUS SPEED (CREEPS):",
+        "value": "1.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "move_pct_heroes",
+        "label": "BONUS SPEED (HEROES):",
+        "value": "4%/5%/6%/7%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "damage_creeps",
+        "label": "BONUS DAMAGE (CREEPS):",
+        "value": "3/7/11/15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "damage_heroes",
+        "label": "BONUS DAMAGE (HEROES):",
+        "value": "17/38/59/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "armor_creeps",
+        "label": "ARMOR CREEPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "armor_heroes",
+        "label": "ARMOR HEROES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "move_pct_cap",
+        "label": "MOVE PCT CAP:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "immunity_resist",
+        "label": "IMMUNITY RESIST:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Astral Spirit",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Natural Order",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Natural Order",
+        "key": "magic_resistance_pct",
+        "label": "BASE RESIST REDUCTION:",
+        "value": "40%/60%/80%/100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Momentum",
+        "key": "armor_from_movespeed",
+        "label": "BONUS SPEED TO ARMOR:",
+        "value": "3.6%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "crack_time",
+        "label": "IMPLODE DELAY:",
+        "value": "2.7182",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "crack_width",
+        "label": "CRACK WIDTH:",
+        "value": "315",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "crack_distance",
+        "label": "CRACK LENGTH:",
+        "value": "2400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "damage_pct",
+        "label": "MAX HP AS DAMAGE:",
+        "value": "34%/42%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "vision_width",
+        "label": "VISION WIDTH:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "vision_interval",
+        "label": "VISION INTERVAL:",
+        "value": "0.22",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "vision_step",
+        "label": "VISION STEP:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "total_steps",
+        "label": "TOTAL STEPS:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Elder Titan",
+        "ability": "Earth Splitter",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

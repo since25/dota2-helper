@@ -121,7 +121,7 @@
       "name": "Flux",
       "displayName": "乱流（Flux）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -183,10 +183,10 @@
       "name": "Magnetic Field",
       "displayName": "磁场（Magnetic Field）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         70,
@@ -227,9 +227,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -238,7 +238,7 @@
       "name": "Spark Wraith",
       "displayName": "闪光幽魂（Spark Wraith）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -293,10 +293,10 @@
       "name": "Tempest Double",
       "displayName": "风暴双雄（Tempest Double）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         60,
@@ -331,13 +331,465 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Arc Warden",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Flux": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Magnetic Field": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Spark Wraith": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "spark_damage_base",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Runic Infusion": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Tempest Double": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "search_radius",
+        "label": "ALLY SEARCH RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "think_interval",
+        "label": "THINK INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "move_speed_slow_pct",
+        "label": "MOVEMENT SPEED SLOW:",
+        "value": "14%/21%/28%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500/600/700/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "applies_silence",
+        "label": "APPLIES SILENCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Flux",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "knockback_enemies",
+        "label": "KNOCKBACK ENEMIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "attack_speed_bonus",
+        "label": "ATTACK SPEED BONUS:",
+        "value": "30/60/90/120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "evasion_chance",
+        "label": "EVASION BONUS:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "affects_buildings",
+        "label": "AFFECTS BUILDINGS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "rune_pull_strength",
+        "label": "RUNE PULL FORCE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "rune_pull_max_speed_as_multiplier_of_pull_strength",
+        "label": "RUNE PULL MAX SPEED AS MULTIPLIER OF PULL STRENGTH:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "rune_pull_falloff_multiplier",
+        "label": "RUNE PULL FALLOFF MULTIPLIER:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "rune_pull_radius",
+        "label": "RUNE PULL RADIUS:",
+        "value": "800/1200/1600/2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "rune_activate_radius_buffer",
+        "label": "RUNE ACTIVATE RADIUS BUFFER:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Magnetic Field",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "radius",
+        "label": "SEARCH RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "move_speed_slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "base_activation_delay",
+        "label": "ACTIVATION DELAY:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "wraith_speed_base",
+        "label": "WRAITH SPEED:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "ministun_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.7/0.8/0.9/1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "think_interval",
+        "label": "THINK INTERVAL:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "wraith_vision_radius",
+        "label": "WRAITH VISION RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "wraith_vision_duration",
+        "label": "WRAITH VISION DURATION:",
+        "value": "3.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "maximum_targets",
+        "label": "MAXIMUM TARGETS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "second_wraith_damage_pct",
+        "label": "SECOND WRAITH DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "second_wraith_speed_pct",
+        "label": "SECOND WRAITH SPEED PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "creep_damage_bonus_pct",
+        "label": "CREEP DAMAGE BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Spark Wraith",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Runic Infusion",
+        "key": "regeneration_effect",
+        "label": "REGENERATION EFFECT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Runic Infusion",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Runic Infusion",
+        "key": "water_bounty_rune_duration_pct",
+        "label": "WATER BOUNTY RUNE DURATION PCT:",
+        "value": "67",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Runic Infusion",
+        "key": "bonus_stacks_per_rune_pickup",
+        "label": "BONUS STACKS PER RUNE PICKUP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Runic Infusion",
+        "key": "all_attribute_bonus_per_stack",
+        "label": "ALL ATTRIBUTE BONUS PER STACK:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "bounty",
+        "label": "BOUNTY:",
+        "value": "180/240/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "bounty_gold",
+        "label": "BOUNTY:",
+        "value": "70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "bounty_xp",
+        "label": "BOUNTY XP:",
+        "value": "70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "18/21/24",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "max_blind_chance",
+        "label": "MAX MISS CHANCE:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "max_slow",
+        "label": "MAX SELF SLOW:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "has_debuff",
+        "label": "HAS DEBUFF:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "rune_duration",
+        "label": "RUNE DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "invis_rune",
+        "label": "INVIS RUNE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "arcane_rune",
+        "label": "ARCANE RUNE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "haste_rune",
+        "label": "HASTE RUNE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Arc Warden",
+        "ability": "Tempest Double",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

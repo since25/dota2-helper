@@ -121,7 +121,7 @@
       "name": "Entangle",
       "displayName": "缠绕之根（Entangle）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -171,7 +171,7 @@
       "name": "Summon Spirit Bear",
       "displayName": "熊灵伙伴（Summon Spirit Bear）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
@@ -222,10 +222,10 @@
       "name": "True Form",
       "displayName": "真熊形态（True Form）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         80,
         80,
@@ -266,13 +266,419 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lone Druid",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Entangle": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "counter_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Spirit Link": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Savage Roar": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Summon Spirit Bear": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "backlash_damage",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+        },
+        "True Form": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_attack_damage",
+          "semanticType": "modifier.attack_damage.flat",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "active_radius",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "lone_druid_counters_applied_tooltip",
+        "label": "LONE DRUID COUNTERS APPLIED TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "hits_required",
+        "label": "HITS REQUIRED:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "hits_incremented_on_active",
+        "label": "HITS INCREMENTED ON ACTIVE:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "lone_druid_buff_duration",
+        "label": "LONE DRUID BUFF DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "nostack_protection",
+        "label": "NOSTACK PROTECTION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "root_heroes_on_cast",
+        "label": "ROOT HEROES ON CAST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "entangle_duration",
+        "label": "ROOT DURATION:",
+        "value": "1.2/1.6/2/2.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Entangle",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "bonus_movement_speed_druid",
+        "label": "MOVEMENT SPEED (LONE DRUID):",
+        "value": "10/20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "bonus_movement_speed_bear",
+        "label": "MOVEMENT SPEED (SPIRIT BEAR):",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "lifesteal_percent",
+        "label": "SHARED LIFESTEAL:",
+        "value": "15%/30%/45%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "lifesteal_both_ways",
+        "label": "LIFESTEAL BOTH WAYS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Spirit Link",
+        "key": "active_bonus",
+        "label": "ACTIVE BONUS:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Savage Roar",
+        "key": "radius",
+        "label": "RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Savage Roar",
+        "key": "bonus_speed",
+        "label": "ENEMY MOVEMENT SPEED BONUS:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Savage Roar",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "1.1/1.4/1.7/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Savage Roar",
+        "key": "only_affects_player_units",
+        "label": "ONLY AFFECTS PLAYER UNITS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Savage Roar",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_hp",
+        "label": "BEAR BASE HP:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_regen_tooltip",
+        "label": "BEAR BASE HP REGEN:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_bat",
+        "label": "BEAR BASE ATTACK TIME:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_armor",
+        "label": "BEAR BASE ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_movespeed",
+        "label": "BEAR MOVESPEED:",
+        "value": "310",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_magic_resistance",
+        "label": "BEAR MAGIC RESISTANCE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bonus_bear_hp",
+        "label": "BONUS BEAR HP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bonus_bear_armor",
+        "label": "BONUS BEAR ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "damage_gain_per_druid_level",
+        "label": "DAMAGE GAIN PER DRUID LEVEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "hp_gain_per_druid_level",
+        "label": "HP GAIN PER DRUID LEVEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "bear_attack_leash_range",
+        "label": "BEAR ATTACK LEASH RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "strength_gain_tooltip",
+        "label": "BEAR STRENGTH GAIN:",
+        "value": "4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "agility_gain_tooltip",
+        "label": "BEAR AGILITY GAIN:",
+        "value": "4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "intelligence_gain_tooltip",
+        "label": "BEAR INTELLIGENCE GAIN:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "Summon Spirit Bear",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "10/15/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "bonus_hp",
+        "label": "BONUS HP:",
+        "value": "500/1000/1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "transformation_time",
+        "label": "TRANSFORM TIME:",
+        "value": "1.933",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "transform_bear",
+        "label": "TRANSFORM BEAR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "bonus_slow_resistance",
+        "label": "BONUS SLOW RESISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lone Druid",
+        "ability": "True Form",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

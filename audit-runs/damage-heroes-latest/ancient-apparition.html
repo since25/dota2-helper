@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>远古冰魄（Ancient Apparition）</h1>
-        <div class="muted">Ancient Apparition · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Ancient Apparition · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,320 @@
       </div>
       <a href="./ancient-apparition.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Cold Feet</td>
+      <td><code>break_distance</code></td>
+      <td>BREAK DISTANCE:</td>
+      <td>725/750/775/800</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Feet</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.8/2.2/2.6/3</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Feet</td>
+      <td><code>area_of_effect</code></td>
+      <td>AREA OF EFFECT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Feet</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/800/900/1000</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Feet</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>drag_speed</code></td>
+      <td>DRAG SPEED:</td>
+      <td>40/50/60/70</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>movement_speed_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-8</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>spell_resist_pct</code></td>
+      <td>INCREASED MAGIC DAMAGE:</td>
+      <td>-16/-19/-22/-25</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>vision_aoe</code></td>
+      <td>VISION AOE:</td>
+      <td>200/220/240/260</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>6/8/10/12</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Vortex</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Chilling Touch</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Chilling Touch</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Chilling Touch</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.7/0.8/0.9/1</td>
+    </tr>
+  
+    <tr>
+      <td>Chilling Touch</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>60/90/120/150</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Chill</td>
+      <td><code>tooltip_scepter_bonus</code></td>
+      <td>TOOLTIP SCEPTER BONUS:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Chill</td>
+      <td><code>str_reduction_duration</code></td>
+      <td>DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Chill</td>
+      <td><code>movement_slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>250/325/400</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>radius_min</code></td>
+      <td>RADIUS MIN:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>radius_grow</code></td>
+      <td>RADIUS GROW:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>radius_max</code></td>
+      <td>RADIUS MAX:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>path_radius</code></td>
+      <td>PATH RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>kill_pct</code></td>
+      <td>SHATTER HEALTH THRESHOLD:</td>
+      <td>12/13/14</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>cold_feet_stun_duration_pct</code></td>
+      <td>COLD FEET STUN DURATION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>target_sight_radius</code></td>
+      <td>TARGET SIGHT RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed cold feet/vortex/ice blast sustained fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Cold Feet&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Ice Vortex&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;vortex_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Chilling Touch&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Bone Chill&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;str_reduction&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;magic_damage_instances&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;magic_damage_instances&quot;
+      ],
+      &quot;reason&quot;: &quot;固定命石降低力量，不直接作为技能伤害。&quot;
+    },
+    &quot;Ice Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;frostbite_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。&quot;
+    },
+    &quot;Release&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;释放冰晶爆轰的控制子技能，不直接产生额外伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +442,7 @@
           <div class="muted">Cold Feet · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -160,8 +478,8 @@
         </td>
         <td>Magical</td>
         <td>20</td><td>40</td><td>60</td><td>80</td>
-        <td>36 / 88 / 156 / 240</td>
-        <td><div><code>durationByAbilityLevel</code>: 1.8 / 2.2 / 2.6 / 3</div></td>
+        <td>80 / 160 / 240 / 320</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
@@ -177,7 +495,7 @@
           <div class="muted">Ice Vortex · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +548,7 @@
           <div class="muted">Chilling Touch · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -267,7 +585,7 @@
         <td>Magical</td>
         <td>30</td><td>60</td><td>90</td><td>120</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 3 / 3 / 3 / 3</div></td>
+        <td><span class="muted">-</span></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
@@ -283,8 +601,8 @@
           <div class="muted">Bone Chill · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
@@ -309,20 +627,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Bone Chill:debuff_reference:movement_slow_pct</code>
-          <div class="muted">movement_slow_pct</div>
+          <code>Bone Chill:state_scaling:str_reduction</code>
+          <div class="muted">str_reduction</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
           <div class="muted">reference_only</div>
         </td>
-        <td>Unknown</td>
-        <td>2</td><td>-</td><td>-</td><td>-</td>
+        <td>Magical</td>
+        <td>0.1</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: magic_damage_instances</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>固定命石降低力量，不直接作为技能伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +654,7 @@
           <div class="muted">Ice Blast · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +825,7 @@
       &quot;name&quot;: &quot;Cold Feet&quot;,
       &quot;displayName&quot;: &quot;寒霜之足（Cold Feet）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -537,10 +855,10 @@
             80
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            36,
-            88,
-            156,
-            240
+            80,
+            160,
+            240,
+            320
           ],
           &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
@@ -549,10 +867,10 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              1.8,
-              2.2,
-              2.6,
-              3
+              4,
+              4,
+              4,
+              4
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
@@ -569,7 +887,7 @@
       &quot;name&quot;: &quot;Ice Vortex&quot;,
       &quot;displayName&quot;: &quot;冰霜漩涡（Ice Vortex）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -631,7 +949,7 @@
       &quot;name&quot;: &quot;Chilling Touch&quot;,
       &quot;displayName&quot;: &quot;极寒之触（Chilling Touch）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -666,14 +984,7 @@
           &quot;formula&quot;: {
             &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              3,
-              3,
-              3,
-              3
-            ]
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
@@ -686,43 +997,45 @@
       &quot;name&quot;: &quot;Bone Chill&quot;,
       &quot;displayName&quot;: &quot;刺骨严寒（Bone Chill）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;固定命石降低力量，不直接作为技能伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Bone Chill:debuff_reference:movement_slow_pct&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Bone Chill:state_scaling:str_reduction&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;movement_slow_pct&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;str_reduction&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            2
+            0.1
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
+            &quot;requiredInputs&quot;: [
+              &quot;magic_damage_instances&quot;
+            ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;固定命石降低力量，不直接作为技能伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;固定命石降低力量，不直接作为技能伤害。&quot;
           ]
         }
       ]
@@ -731,10 +1044,10 @@
       &quot;name&quot;: &quot;Ice Blast&quot;,
       &quot;displayName&quot;: &quot;冰晶爆轰（Ice Blast）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         175,
         175,
@@ -777,7 +1090,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -785,7 +1098,327 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed cold feet/vortex/ice blast sustained fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Cold Feet&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Ice Vortex&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;vortex_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Chilling Touch&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Bone Chill&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;str_reduction&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;magic_damage_instances&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;magic_damage_instances&quot;
+          ],
+          &quot;reason&quot;: &quot;固定命石降低力量，不直接作为技能伤害。&quot;
+        },
+        &quot;Ice Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;frostbite_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。&quot;
+        },
+        &quot;Release&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;释放冰晶爆轰的控制子技能，不直接产生额外伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Cold Feet&quot;,
+        &quot;key&quot;: &quot;break_distance&quot;,
+        &quot;label&quot;: &quot;BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;725/750/775/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Cold Feet&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.8/2.2/2.6/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Cold Feet&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;AREA OF EFFECT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Cold Feet&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/800/900/1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Cold Feet&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;drag_speed&quot;,
+        &quot;label&quot;: &quot;DRAG SPEED:&quot;,
+        &quot;value&quot;: &quot;40/50/60/70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;spell_resist_pct&quot;,
+        &quot;label&quot;: &quot;INCREASED MAGIC DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-16/-19/-22/-25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;vision_aoe&quot;,
+        &quot;label&quot;: &quot;VISION AOE:&quot;,
+        &quot;value&quot;: &quot;200/220/240/260&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6/8/10/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Vortex&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Chilling Touch&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Chilling Touch&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Chilling Touch&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.7/0.8/0.9/1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Chilling Touch&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;60/90/120/150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Bone Chill&quot;,
+        &quot;key&quot;: &quot;tooltip_scepter_bonus&quot;,
+        &quot;label&quot;: &quot;TOOLTIP SCEPTER BONUS:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Bone Chill&quot;,
+        &quot;key&quot;: &quot;str_reduction_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Bone Chill&quot;,
+        &quot;key&quot;: &quot;movement_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;250/325/400&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;radius_min&quot;,
+        &quot;label&quot;: &quot;RADIUS MIN:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;radius_grow&quot;,
+        &quot;label&quot;: &quot;RADIUS GROW:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;radius_max&quot;,
+        &quot;label&quot;: &quot;RADIUS MAX:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;path_radius&quot;,
+        &quot;label&quot;: &quot;PATH RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;kill_pct&quot;,
+        &quot;label&quot;: &quot;SHATTER HEALTH THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;12/13/14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;cold_feet_stun_duration_pct&quot;,
+        &quot;label&quot;: &quot;COLD FEET STUN DURATION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;target_sight_radius&quot;,
+        &quot;label&quot;: &quot;TARGET SIGHT RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ancient Apparition&quot;,
+        &quot;ability&quot;: &quot;Ice Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>孽主（Underlord）</h1>
-        <div class="muted">Underlord · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Underlord · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,359 @@
       </div>
       <a href="./underlord.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Firestorm</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>wave_duration</code></td>
+      <td>WAVE DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>wave_interval</code></td>
+      <td>WAVE INTERVAL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>burn_damage</code></td>
+      <td>MAX HP BURN DAMAGE:</td>
+      <td>1.5%/2%/2.5%/3%</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>burn_interval</code></td>
+      <td>BURN INTERVAL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>burn_duration</code></td>
+      <td>BURN DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Firestorm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>pit_interval</code></td>
+      <td>DISABLE INTERVAL:</td>
+      <td>3.6</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>ensnare_duration</code></td>
+      <td>DISABLE DURATION:</td>
+      <td>1.5/1.6/1.7/1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>speed_bonus</code></td>
+      <td>SPEED BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Pit of Malice</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>damage_reduction_pct</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>8%/16%/24%/32%</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>bonus_damage_from_creep</code></td>
+      <td>BONUS DAMAGE (CREEP):</td>
+      <td>2/4/6/8</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>bonus_damage_from_hero</code></td>
+      <td>BONUS DAMAGE (HERO):</td>
+      <td>30/35/40/45</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>bonus_damage_duration</code></td>
+      <td>DURATION:</td>
+      <td>30/40/50/60</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>bonus_shared_by_allies_pct</code></td>
+      <td>BONUS SHARED BY ALLIES PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>cleave_damage_pct</code></td>
+      <td>CLEAVE DAMAGE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>cleave_starting_width</code></td>
+      <td>CLEAVE STARTING WIDTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>cleave_angle</code></td>
+      <td>CLEAVE ANGLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>cleave_distance_base</code></td>
+      <td>CLEAVE DISTANCE (BASE):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Atrophy Aura</td>
+      <td><code>cleave_distance_per_stack</code></td>
+      <td>CLEAVE DISTANCE (PER STACK):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Invading Force</td>
+      <td><code>damage_reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>3.7%</td>
+    </tr>
+  
+    <tr>
+      <td>Invading Force</td>
+      <td><code>bonus_ms</code></td>
+      <td>MOVESPEED:</td>
+      <td>9.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Invading Force</td>
+      <td><code>dark_portal_multiplier</code></td>
+      <td>DARK PORTAL MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Invading Force</td>
+      <td><code>buff_duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>minimum_distance</code></td>
+      <td>MINIMUM DISTANCE:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>warp_channel_duration</code></td>
+      <td>WARP CHANNEL DURATION:</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>distance_from_fountain</code></td>
+      <td>DISTANCE FROM FOUNTAIN:</td>
+      <td>1425</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>dps</code></td>
+      <td>DPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>hull_radius</code></td>
+      <td>HULL RADIUS:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>gold_bounty</code></td>
+      <td>GOLD BOUNTY:</td>
+      <td>20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>xp_bounty</code></td>
+      <td>XP BOUNTY:</td>
+      <td>20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Gate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Underlord&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Firestorm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;multi_wave&quot;,
+      &quot;damagePerWaveKey&quot;: &quot;wave_damage&quot;,
+      &quot;waveCountKey&quot;: &quot;wave_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.wave&quot;
+    },
+    &quot;Pit of Malice&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;pit_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;pit_duration&quot;
+    },
+    &quot;Atrophy Aura&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Invading Force&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Fiend&#39;s Gate&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +481,7 @@
           <div class="muted">Firestorm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">multi_wave</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +534,7 @@
           <div class="muted">Pit of Malice · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +587,7 @@
           <div class="muted">Fiend&#39;s Gate · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +626,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -401,7 +758,7 @@
       &quot;name&quot;: &quot;Firestorm&quot;,
       &quot;displayName&quot;: &quot;火焰风暴（Firestorm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;multi_wave&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -463,7 +820,7 @@
       &quot;name&quot;: &quot;Pit of Malice&quot;,
       &quot;displayName&quot;: &quot;怨念深渊（Pit of Malice）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -518,10 +875,10 @@
       &quot;name&quot;: &quot;Fiend&#39;s Gate&quot;,
       &quot;displayName&quot;: &quot;恶魔之扉（Fiend&#39;s Gate）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         175
       ],
@@ -558,15 +915,382 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Underlord&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Firestorm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;multi_wave&quot;,
+          &quot;damagePerWaveKey&quot;: &quot;wave_damage&quot;,
+          &quot;waveCountKey&quot;: &quot;wave_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.wave&quot;
+        },
+        &quot;Pit of Malice&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;pit_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;pit_duration&quot;
+        },
+        &quot;Atrophy Aura&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Invading Force&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Fiend&#39;s Gate&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;wave_duration&quot;,
+        &quot;label&quot;: &quot;WAVE DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;wave_interval&quot;,
+        &quot;label&quot;: &quot;WAVE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;burn_damage&quot;,
+        &quot;label&quot;: &quot;MAX HP BURN DAMAGE:&quot;,
+        &quot;value&quot;: &quot;1.5%/2%/2.5%/3%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;burn_interval&quot;,
+        &quot;label&quot;: &quot;BURN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;burn_duration&quot;,
+        &quot;label&quot;: &quot;BURN DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Firestorm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;pit_interval&quot;,
+        &quot;label&quot;: &quot;DISABLE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;3.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;ensnare_duration&quot;,
+        &quot;label&quot;: &quot;DISABLE DURATION:&quot;,
+        &quot;value&quot;: &quot;1.5/1.6/1.7/1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;speed_bonus&quot;,
+        &quot;label&quot;: &quot;SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Pit of Malice&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;damage_reduction_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;8%/16%/24%/32%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;bonus_damage_from_creep&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE (CREEP):&quot;,
+        &quot;value&quot;: &quot;2/4/6/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;bonus_damage_from_hero&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE (HERO):&quot;,
+        &quot;value&quot;: &quot;30/35/40/45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;bonus_damage_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;30/40/50/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;bonus_shared_by_allies_pct&quot;,
+        &quot;label&quot;: &quot;BONUS SHARED BY ALLIES PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;cleave_damage_pct&quot;,
+        &quot;label&quot;: &quot;CLEAVE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;cleave_starting_width&quot;,
+        &quot;label&quot;: &quot;CLEAVE STARTING WIDTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;cleave_angle&quot;,
+        &quot;label&quot;: &quot;CLEAVE ANGLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;cleave_distance_base&quot;,
+        &quot;label&quot;: &quot;CLEAVE DISTANCE (BASE):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Atrophy Aura&quot;,
+        &quot;key&quot;: &quot;cleave_distance_per_stack&quot;,
+        &quot;label&quot;: &quot;CLEAVE DISTANCE (PER STACK):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Invading Force&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;3.7%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Invading Force&quot;,
+        &quot;key&quot;: &quot;bonus_ms&quot;,
+        &quot;label&quot;: &quot;MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;9.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Invading Force&quot;,
+        &quot;key&quot;: &quot;dark_portal_multiplier&quot;,
+        &quot;label&quot;: &quot;DARK PORTAL MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Invading Force&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;minimum_distance&quot;,
+        &quot;label&quot;: &quot;MINIMUM DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;warp_channel_duration&quot;,
+        &quot;label&quot;: &quot;WARP CHANNEL DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;distance_from_fountain&quot;,
+        &quot;label&quot;: &quot;DISTANCE FROM FOUNTAIN:&quot;,
+        &quot;value&quot;: &quot;1425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;dps&quot;,
+        &quot;label&quot;: &quot;DPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;hull_radius&quot;,
+        &quot;label&quot;: &quot;HULL RADIUS:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;gold_bounty&quot;,
+        &quot;label&quot;: &quot;GOLD BOUNTY:&quot;,
+        &quot;value&quot;: &quot;20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;xp_bounty&quot;,
+        &quot;label&quot;: &quot;XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Underlord&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Gate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

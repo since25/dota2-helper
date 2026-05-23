@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>冥魂大帝（Wraith King）</h1>
-        <div class="muted">Wraith King · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Wraith King · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,304 @@
       </div>
       <a href="./wraith-king.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>blast_speed</code></td>
+      <td>BLAST SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>blast_stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1/1.2/1.4/1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>blast_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-20%</td>
+    </tr>
+  
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>damage</code></td>
+      <td>IMPACT DAMAGE:</td>
+      <td>80/100/120/140</td>
+    </tr>
+  
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Wraithfire Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>skeleton_duration</code></td>
+      <td>SKELETON DURATION:</td>
+      <td>46</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>max_skeleton_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2/4/6/8</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>min_skeleton_spawn</code></td>
+      <td>MIN SKELETON SPAWN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>spawn_interval</code></td>
+      <td>SPAWN INTERVAL:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>reincarnate_time</code></td>
+      <td>REINCARNATE TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>gold_bounty</code></td>
+      <td>GOLD BOUNTY:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>xp_bounty</code></td>
+      <td>XP BOUNTY:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>skeleton_damage_tooltip</code></td>
+      <td>SKELETON DAMAGE:</td>
+      <td>34/39/43/49</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>talent_skeleton_damage</code></td>
+      <td>TALENT SKELETON DAMAGE:</td>
+      <td>0/5/10/15</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>skeleton_building_damage_reduction</code></td>
+      <td>SKELETON BUILDING DAMAGE REDUCTION:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>skeleton_bonus_hero_damage</code></td>
+      <td>SKELETON HERO BONUS DAMAGE:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>skeleton_charges_per_hero_multiplier</code></td>
+      <td>SKELETON CHARGES PER HERO MULTIPLIER:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Bone Guard</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Mortal Strike</td>
+      <td><code>wraith_cd_mult</code></td>
+      <td>WRAITH CD MULT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Vampiric Spirit</td>
+      <td><code>vampiric_aura</code></td>
+      <td>LIFESTEAL:</td>
+      <td>14%</td>
+    </tr>
+  
+    <tr>
+      <td>Vampiric Spirit</td>
+      <td><code>duration</code></td>
+      <td>WRAITH DURATION:</td>
+      <td>4.25</td>
+    </tr>
+  
+    <tr>
+      <td>Vampiric Spirit</td>
+      <td><code>scepter_move_speed_pct</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>reincarnate_time</code></td>
+      <td>REINCARNATION TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>slow_radius</code></td>
+      <td>SLOW RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>attackslow</code></td>
+      <td>ATTACK SPEED SLOW:</td>
+      <td>-75</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>clear_curse</code></td>
+      <td>CLEAR CURSE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reincarnation</td>
+      <td><code>shard_skeleton_count</code></td>
+      <td>SKELETON COUNT PER HERO:</td>
+      <td>2/3/4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Wraith King&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Wraithfire Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_dot&quot;,
+      &quot;initialDamageKey&quot;: &quot;damage&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;blast_dot_damage&quot;,
+      &quot;durationKey&quot;: &quot;blast_dot_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;reason&quot;: &quot;计入初始伤害和持续灼烧伤害。&quot;
+    },
+    &quot;Bone Guard&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;attackDamageKey&quot;: &quot;skeleton_damage_tooltip&quot;,
+      &quot;attackCountInput&quot;: &quot;summon_attack_count&quot;,
+      &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;summon_attack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;骷髅兵输出取决于召唤物实际攻击次数。&quot;
+    },
+    &quot;Mortal Strike&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;crit_mult&quot;,
+      &quot;semanticType&quot;: &quot;modifier.crit.multiplier&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;critical_strike&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Vampiric Spirit&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;scepter_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Reincarnation&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;movespeed&quot;,
+      &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +426,8 @@
           <div class="muted">Wraithfire Blast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">initial_plus_dot</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +452,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Wraithfire Blast:sustained:blast_dot_damage</code>
-          <div class="muted">blast_dot_damage</div>
+          <code>Wraithfire Blast:initial_plus_dot:damage</code>
+          <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">sustained</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">initial_plus_dot</span>
+          <span class="pill secondary">initial_plus_dot</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>20</td><td>40</td><td>60</td><td>80</td>
-        <td>20 / 48 / 84 / 128</td>
-        <td><div><code>durationByAbilityLevel</code>: 1 / 1.2 / 1.4 / 1.6</div></td>
-        <td>duration * damagePerSecond</td>
-        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+        <td>80</td><td>100</td><td>120</td><td>140</td>
+        <td>120 / 180 / 240 / 300</td>
+        <td><div><code>damagePerSecondKey</code>: blast_dot_damage</div><div><code>damagePerSecondByAbilityLevel</code>: 20 / 40 / 60 / 80</div><div><code>durationByAbilityLevel</code>: 2 / 2 / 2 / 2</div></td>
+        <td>initialDamage + damagePerSecond * duration</td>
+        <td><ul><li>包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,9 +479,9 @@
           <div class="muted">Bone Guard · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">state_scaling</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">summon_attack</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -203,20 +505,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Bone Guard:state_scaling:skeleton_damage_tooltip</code>
+          <code>Bone Guard:summon_attack:skeleton_damage_tooltip</code>
           <div class="muted">skeleton_damage_tooltip</div>
         </td>
         <td>
-          <span class="pill">state_scaling</span>
-          <span class="pill secondary">state_scaling</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">summon_attack</span>
+          <span class="pill secondary">summon_attack</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Physical</td>
         <td>34</td><td>39</td><td>43</td><td>49</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>state_scaling</td>
-        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><div><code>attackCountInput</code>: summon_attack_count</div></td>
+        <td>attackCount * summonAttackDamage</td>
+        <td><ul><li>召唤物、守卫或代理单位伤害需要输入攻击次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +532,7 @@
           <div class="muted">Mortal Strike · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +571,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: physical_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +585,7 @@
           <div class="muted">Vampiric Spirit · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +624,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +638,7 @@
           <div class="muted">Reincarnation · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +677,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: move_speed_pct</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,10 +809,10 @@
       &quot;name&quot;: &quot;Wraithfire Blast&quot;,
       &quot;displayName&quot;: &quot;冥火爆击（Wraithfire Blast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;initial_plus_dot&quot;,
+      &quot;reason&quot;: &quot;计入初始伤害和持续灼烧伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         95,
         110,
@@ -525,42 +827,49 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Wraithfire Blast:sustained:blast_dot_damage&quot;,
-          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;id&quot;: &quot;Wraithfire Blast:initial_plus_dot:damage&quot;,
+          &quot;kind&quot;: &quot;initial_plus_dot&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;blast_dot_damage&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            20,
-            40,
-            60,
-            80
+            80,
+            100,
+            120,
+            140
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            20,
-            48,
-            84,
-            128
+            120,
+            180,
+            240,
+            300
           ],
-          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;totalFormula&quot;: &quot;initialDamage + damagePerSecond * duration&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;duration_times_dps&quot;
+            &quot;type&quot;: &quot;initial_plus_duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
+            &quot;damagePerSecondKey&quot;: &quot;blast_dot_damage&quot;,
+            &quot;damagePerSecondByAbilityLevel&quot;: [
+              20,
+              40,
+              60,
+              80
+            ],
             &quot;durationByAbilityLevel&quot;: [
-              1,
-              1.2,
-              1.4,
-              1.6
+              2,
+              2,
+              2,
+              2
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;model&quot;: &quot;initial_plus_dot&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害和持续灼烧伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+            &quot;包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。&quot;
           ]
         }
       ]
@@ -569,10 +878,10 @@
       &quot;name&quot;: &quot;Bone Guard&quot;,
       &quot;displayName&quot;: &quot;白骨护卫（Bone Guard）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;reason&quot;: &quot;骷髅兵输出取决于召唤物实际攻击次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         70,
         80,
@@ -587,8 +896,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Bone Guard:state_scaling:skeleton_damage_tooltip&quot;,
-          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;id&quot;: &quot;Bone Guard:summon_attack:skeleton_damage_tooltip&quot;,
+          &quot;kind&quot;: &quot;summon_attack&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Physical&quot;,
           &quot;label&quot;: &quot;skeleton_damage_tooltip&quot;,
@@ -599,28 +908,20 @@
             49
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;totalFormula&quot;: &quot;attackCount * summonAttackDamage&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;state_scaling&quot;
+            &quot;type&quot;: &quot;runtime_summon_attack_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [
-              &quot;stack_count&quot;
-            ],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;attackCountInput&quot;: &quot;summon_attack_count&quot;
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;reason&quot;: &quot;骷髅兵输出取决于召唤物实际攻击次数。&quot;,
           &quot;caveats&quot;: [
-            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;召唤物、守卫或代理单位伤害需要输入攻击次数。&quot;
           ]
         }
       ]
@@ -629,10 +930,10 @@
       &quot;name&quot;: &quot;Mortal Strike&quot;,
       &quot;displayName&quot;: &quot;本命一击（Mortal Strike）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [
         6,
@@ -671,9 +972,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -682,10 +983,10 @@
       &quot;name&quot;: &quot;Vampiric Spirit&quot;,
       &quot;displayName&quot;: &quot;吸血灵魂（Vampiric Spirit）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -716,9 +1017,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -727,10 +1028,10 @@
       &quot;name&quot;: &quot;Reincarnation&quot;,
       &quot;displayName&quot;: &quot;绝冥再生（Reincarnation）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         220,
         110,
@@ -769,15 +1070,317 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Wraith King&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Wraithfire Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_dot&quot;,
+          &quot;initialDamageKey&quot;: &quot;damage&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;blast_dot_damage&quot;,
+          &quot;durationKey&quot;: &quot;blast_dot_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害和持续灼烧伤害。&quot;
+        },
+        &quot;Bone Guard&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;attackDamageKey&quot;: &quot;skeleton_damage_tooltip&quot;,
+          &quot;attackCountInput&quot;: &quot;summon_attack_count&quot;,
+          &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;summon_attack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;骷髅兵输出取决于召唤物实际攻击次数。&quot;
+        },
+        &quot;Mortal Strike&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;crit_mult&quot;,
+          &quot;semanticType&quot;: &quot;modifier.crit.multiplier&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;critical_strike&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Vampiric Spirit&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;scepter_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Reincarnation&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;movespeed&quot;,
+          &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;blast_speed&quot;,
+        &quot;label&quot;: &quot;BLAST SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;blast_stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.2/1.4/1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;blast_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;IMPACT DAMAGE:&quot;,
+        &quot;value&quot;: &quot;80/100/120/140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Wraithfire Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;skeleton_duration&quot;,
+        &quot;label&quot;: &quot;SKELETON DURATION:&quot;,
+        &quot;value&quot;: &quot;46&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;max_skeleton_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2/4/6/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;min_skeleton_spawn&quot;,
+        &quot;label&quot;: &quot;MIN SKELETON SPAWN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;spawn_interval&quot;,
+        &quot;label&quot;: &quot;SPAWN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;reincarnate_time&quot;,
+        &quot;label&quot;: &quot;REINCARNATE TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;gold_bounty&quot;,
+        &quot;label&quot;: &quot;GOLD BOUNTY:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;xp_bounty&quot;,
+        &quot;label&quot;: &quot;XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;skeleton_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;SKELETON DAMAGE:&quot;,
+        &quot;value&quot;: &quot;34/39/43/49&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;talent_skeleton_damage&quot;,
+        &quot;label&quot;: &quot;TALENT SKELETON DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0/5/10/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;skeleton_building_damage_reduction&quot;,
+        &quot;label&quot;: &quot;SKELETON BUILDING DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;skeleton_bonus_hero_damage&quot;,
+        &quot;label&quot;: &quot;SKELETON HERO BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;skeleton_charges_per_hero_multiplier&quot;,
+        &quot;label&quot;: &quot;SKELETON CHARGES PER HERO MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Bone Guard&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Mortal Strike&quot;,
+        &quot;key&quot;: &quot;wraith_cd_mult&quot;,
+        &quot;label&quot;: &quot;WRAITH CD MULT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Vampiric Spirit&quot;,
+        &quot;key&quot;: &quot;vampiric_aura&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;14%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Vampiric Spirit&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;WRAITH DURATION:&quot;,
+        &quot;value&quot;: &quot;4.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Vampiric Spirit&quot;,
+        &quot;key&quot;: &quot;scepter_move_speed_pct&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;reincarnate_time&quot;,
+        &quot;label&quot;: &quot;REINCARNATION TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;slow_radius&quot;,
+        &quot;label&quot;: &quot;SLOW RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;attackslow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;-75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;clear_curse&quot;,
+        &quot;label&quot;: &quot;CLEAR CURSE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Wraith King&quot;,
+        &quot;ability&quot;: &quot;Reincarnation&quot;,
+        &quot;key&quot;: &quot;shard_skeleton_count&quot;,
+        &quot;label&quot;: &quot;SKELETON COUNT PER HERO:&quot;,
+        &quot;value&quot;: &quot;2/3/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

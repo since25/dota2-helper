@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>敌法师（Anti-Mage）</h1>
-        <div class="muted">Anti-Mage · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Anti-Mage · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,345 @@
       </div>
       <a href="./anti-mage.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Mana Break</td>
+      <td><code>mana_per_hit</code></td>
+      <td>MANA BURNED PER HIT:</td>
+      <td>25/30/35/40</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Break</td>
+      <td><code>mana_per_hit_pct</code></td>
+      <td>MAX MANA BURNED PER HIT:</td>
+      <td>1.6/2.4/3.2/4</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Break</td>
+      <td><code>illusion_percentage</code></td>
+      <td>ILLUSION PERCENTAGE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Break</td>
+      <td><code>empowered_max_burn_pct</code></td>
+      <td>EMPOWERED MAX BURN PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Break</td>
+      <td><code>empowered_mana_break_debuff_duration</code></td>
+      <td>EMPOWERED MANA BREAK DEBUFF DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>min_blink_range</code></td>
+      <td>MIN BLINK RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>empowered_mana_break_duration</code></td>
+      <td>EMPOWERED MANA BREAK DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>empowered_max_burn_pct_tooltip</code></td>
+      <td>EMPOWERED MAX BURN PCT TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>empowered_mana_break_debuff_duration_tooltip</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>14/21/28/35</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>duration_illusion</code></td>
+      <td>DURATION ILLUSION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>outgoing_damage</code></td>
+      <td>OUTGOING DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>incoming_damage</code></td>
+      <td>INCOMING DAMAGE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>does_reflect</code></td>
+      <td>DOES REFLECT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>reflected_spell_amp</code></td>
+      <td>REFLECTED SPELL AMP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>heal_pct</code></td>
+      <td>HEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Counterspell</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Persecutor</td>
+      <td><code>move_slow_max</code></td>
+      <td>MAX MOVEMENT SLOW:</td>
+      <td>24%</td>
+    </tr>
+  
+    <tr>
+      <td>Persecutor</td>
+      <td><code>mana_threshold</code></td>
+      <td>MANA THRESHOLD:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Persecutor</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Persecutor</td>
+      <td><code>zero_tooltip</code></td>
+      <td>ZERO TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>mana_void_ministun</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>mana_void_aoe_radius</code></td>
+      <td>RADIUS:</td>
+      <td>400/450/500</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>thirst_enabled</code></td>
+      <td>THIRST ENABLED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>thirst_range</code></td>
+      <td>THIRST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>threshold_pct</code></td>
+      <td>THRESHOLD PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>min_bonus_pct</code></td>
+      <td>MIN BONUS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>max_bonus_pct</code></td>
+      <td>MAX BONUS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>bonus_attack_damage</code></td>
+      <td>MANA THIRST MAX ATTACK DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>linger_duration</code></td>
+      <td>LINGER DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Void</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Anti-Mage&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Mana Break&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;percent_damage_per_burn&quot;,
+      &quot;semanticType&quot;: &quot;damage.mana_burn&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+    },
+    &quot;Blink&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Counterspell&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Persecutor&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;move_slow_min&quot;,
+      &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Mana Void&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;mana_void_damage_per_mana&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +467,7 @@
           <div class="muted">Mana Break · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +506,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: target_current_mana / attack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。</li></ul></td>
+        <td><ul><li>全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +520,7 @@
           <div class="muted">Blink · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +559,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +573,7 @@
           <div class="muted">Counterspell · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +612,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +626,7 @@
           <div class="muted">Persecutor · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +665,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +679,7 @@
           <div class="muted">Mana Void · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -507,10 +850,10 @@
       &quot;name&quot;: &quot;Mana Break&quot;,
       &quot;displayName&quot;: &quot;法力损毁（Mana Break）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -544,9 +887,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+            &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
           ]
         }
       ]
@@ -555,10 +898,10 @@
       &quot;name&quot;: &quot;Blink&quot;,
       &quot;displayName&quot;: &quot;闪烁（Blink）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         65,
         60,
@@ -602,9 +945,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -613,10 +956,10 @@
       &quot;name&quot;: &quot;Counterspell&quot;,
       &quot;displayName&quot;: &quot;法术反制（Counterspell）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50
       ],
@@ -654,9 +997,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -665,10 +1008,10 @@
       &quot;name&quot;: &quot;Persecutor&quot;,
       &quot;displayName&quot;: &quot;绝人之路（Persecutor）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -699,9 +1042,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -710,7 +1053,7 @@
       &quot;name&quot;: &quot;Mana Void&quot;,
       &quot;displayName&quot;: &quot;法力虚空（Mana Void）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
@@ -762,7 +1105,355 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Anti-Mage&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Mana Break&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;percent_damage_per_burn&quot;,
+          &quot;semanticType&quot;: &quot;damage.mana_burn&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+        },
+        &quot;Blink&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Counterspell&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Persecutor&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;move_slow_min&quot;,
+          &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Mana Void&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;mana_void_damage_per_mana&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Break&quot;,
+        &quot;key&quot;: &quot;mana_per_hit&quot;,
+        &quot;label&quot;: &quot;MANA BURNED PER HIT:&quot;,
+        &quot;value&quot;: &quot;25/30/35/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Break&quot;,
+        &quot;key&quot;: &quot;mana_per_hit_pct&quot;,
+        &quot;label&quot;: &quot;MAX MANA BURNED PER HIT:&quot;,
+        &quot;value&quot;: &quot;1.6/2.4/3.2/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Break&quot;,
+        &quot;key&quot;: &quot;illusion_percentage&quot;,
+        &quot;label&quot;: &quot;ILLUSION PERCENTAGE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Break&quot;,
+        &quot;key&quot;: &quot;empowered_max_burn_pct&quot;,
+        &quot;label&quot;: &quot;EMPOWERED MAX BURN PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Break&quot;,
+        &quot;key&quot;: &quot;empowered_mana_break_debuff_duration&quot;,
+        &quot;label&quot;: &quot;EMPOWERED MANA BREAK DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;min_blink_range&quot;,
+        &quot;label&quot;: &quot;MIN BLINK RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;empowered_mana_break_duration&quot;,
+        &quot;label&quot;: &quot;EMPOWERED MANA BREAK DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;empowered_max_burn_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;EMPOWERED MAX BURN PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;empowered_mana_break_debuff_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;14/21/28/35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;duration_illusion&quot;,
+        &quot;label&quot;: &quot;DURATION ILLUSION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;outgoing_damage&quot;,
+        &quot;label&quot;: &quot;OUTGOING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;incoming_damage&quot;,
+        &quot;label&quot;: &quot;INCOMING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;does_reflect&quot;,
+        &quot;label&quot;: &quot;DOES REFLECT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;reflected_spell_amp&quot;,
+        &quot;label&quot;: &quot;REFLECTED SPELL AMP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;heal_pct&quot;,
+        &quot;label&quot;: &quot;HEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Counterspell&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Persecutor&quot;,
+        &quot;key&quot;: &quot;move_slow_max&quot;,
+        &quot;label&quot;: &quot;MAX MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;24%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Persecutor&quot;,
+        &quot;key&quot;: &quot;mana_threshold&quot;,
+        &quot;label&quot;: &quot;MANA THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Persecutor&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Persecutor&quot;,
+        &quot;key&quot;: &quot;zero_tooltip&quot;,
+        &quot;label&quot;: &quot;ZERO TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;mana_void_ministun&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;mana_void_aoe_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400/450/500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;thirst_enabled&quot;,
+        &quot;label&quot;: &quot;THIRST ENABLED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;thirst_range&quot;,
+        &quot;label&quot;: &quot;THIRST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;threshold_pct&quot;,
+        &quot;label&quot;: &quot;THRESHOLD PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;min_bonus_pct&quot;,
+        &quot;label&quot;: &quot;MIN BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;max_bonus_pct&quot;,
+        &quot;label&quot;: &quot;MAX BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;bonus_attack_damage&quot;,
+        &quot;label&quot;: &quot;MANA THIRST MAX ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;linger_duration&quot;,
+        &quot;label&quot;: &quot;LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Anti-Mage&quot;,
+        &quot;ability&quot;: &quot;Mana Void&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

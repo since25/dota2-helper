@@ -121,7 +121,7 @@
       "name": "Crypt Swarm",
       "displayName": "地穴虫群（Crypt Swarm）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -156,14 +156,7 @@
           "formula": {
             "type": "single_value"
           },
-          "metadata": {
-            "durationByAbilityLevel": [
-              0,
-              0,
-              0,
-              0
-            ]
-          },
+          "metadata": {},
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
@@ -176,10 +169,10 @@
       "name": "Silence",
       "displayName": "沉默魔法（Silence）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "沉默不直接造成伤害。",
       "manaCostByAbilityLevel": [
         80,
         90,
@@ -194,13 +187,16 @@
       ],
       "components": [
         {
-          "id": "Silence:debuff_reference:abilitycastrange",
+          "id": "Silence:debuff_reference:abilityduration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "abilityduration",
           "valuesByAbilityLevel": [
-            900
+            3.5,
+            4,
+            4.5,
+            5
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -210,8 +206,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "disable_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -220,9 +216,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "沉默不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "沉默不直接造成伤害。"
           ]
         }
       ]
@@ -231,10 +227,10 @@
       "name": "Spirit Siphon",
       "displayName": "吸魂巫术（Spirit Siphon）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。",
       "manaCostByAbilityLevel": [
         80,
         80,
@@ -249,8 +245,8 @@
       ],
       "components": [
         {
-          "id": "Spirit Siphon:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Spirit Siphon:sustained:damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "damage",
@@ -260,11 +256,16 @@
             75,
             100
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            150,
+            300,
+            450,
+            600
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -276,9 +277,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -286,10 +289,10 @@
       "name": "Exorcism",
       "displayName": "驱使恶灵（Exorcism）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
-      "model": "conditional",
-      "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
+      "model": "state_scaling",
+      "reason": "驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。",
       "manaCostByAbilityLevel": [
         200,
         300,
@@ -300,39 +303,373 @@
       ],
       "components": [
         {
-          "id": "Exorcism:conditional:min_damage",
-          "kind": "conditional",
+          "id": "Exorcism:state_scaling:average_damage",
+          "kind": "state_scaling",
           "growthKind": "non_growth",
           "damageType": "Physical",
-          "label": "min_damage",
+          "label": "average_damage",
           "valuesByAbilityLevel": [
-            62
+            64
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "conditional"
+            "type": "state_scaling"
           },
           "metadata": {
             "isDamageReference": true,
             "modifierType": "",
             "affects": "",
-            "condition": "需要触发条件成立才造成伤害。",
-            "requiredInputs": [],
+            "condition": "",
+            "requiredInputs": [
+              "spirit_hit_count"
+            ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
           },
           "source": "curated",
           "status": "reference_only",
-          "model": "conditional",
-          "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
+          "model": "state_scaling",
+          "reason": "驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。",
           "caveats": [
-            "条件伤害首轮模型只作为参考，不默认计入固定爆发。"
+            "驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Death Prophet",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed siphon/exorcism sustained fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Crypt Swarm": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Silence": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilityduration",
+          "semanticType": "control.silence.seconds",
+          "affects": "disable_window",
+          "reason": "沉默不直接造成伤害。"
+        },
+        "Spirit Siphon": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "haunt_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。"
+        },
+        "Exorcism": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "average_damage",
+          "semanticType": "damage.attack_bonus",
+          "requiredInputs": [
+            "spirit_hit_count"
+          ],
+          "conditionInputs": [
+            "spirit_hit_count"
+          ],
+          "reason": "驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "start_radius",
+        "label": "START RADIUS:",
+        "value": "110",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "range",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "slow_percent",
+        "label": "SLOW PERCENT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Crypt Swarm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "damage_per_second",
+        "label": "DAMAGE PER SECOND:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Silence",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "damage_pct",
+        "label": "DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "siphon_buffer",
+        "label": "SIPHON BUFFER:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Spirit Siphon",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "1/2/3/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "spirits",
+        "label": "SPIRITS:",
+        "value": "10/18/26",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "spirit_speed",
+        "label": "SPIRIT SPEED:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "give_up_distance",
+        "label": "GIVE UP DISTANCE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "min_damage",
+        "label": "MIN DAMAGE:",
+        "value": "62",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "max_damage",
+        "label": "MAX DAMAGE:",
+        "value": "67",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "heal_percent",
+        "label": "LIFE DRAIN:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "ghost_spawn_rate",
+        "label": "GHOST SPAWN RATE:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "duration_increase_per_kill",
+        "label": "DURATION INCREASE PER KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "movement_bonus",
+        "label": "ACTIVE MOVEMENT BONUS:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Death Prophet",
+        "ability": "Exorcism",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>沙王（Sand King）</h1>
-        <div class="muted">Sand King · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Sand King · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,329 @@
       </div>
       <a href="./sand-king.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>burrow_width</code></td>
+      <td>BURROW WIDTH:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>burrow_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2/1.4/1.6/1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>burrow_speed</code></td>
+      <td>BURROW SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>burrow_anim_time</code></td>
+      <td>BURROW ANIM TIME:</td>
+      <td>0.52</td>
+    </tr>
+  
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>550/625/700/775</td>
+    </tr>
+  
+    <tr>
+      <td>Burrowstrike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sand Storm</td>
+      <td><code>damage_tick_rate</code></td>
+      <td>DAMAGE TICK RATE:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Sand Storm</td>
+      <td><code>sand_storm_radius</code></td>
+      <td>RADIUS:</td>
+      <td>475/550/625/700</td>
+    </tr>
+  
+    <tr>
+      <td>Sand Storm</td>
+      <td><code>fade_delay</code></td>
+      <td>FADE DELAY:</td>
+      <td>0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Sand Storm</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sand Storm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>230/250/270/290</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>inner_radius</code></td>
+      <td>INNER RADIUS:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>inner_radius_bonus_damage_pct</code></td>
+      <td>INNER RADIUS BONUS DAMAGE PCT:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>inner_radius_procs_caustic</code></td>
+      <td>INNER RADIUS PROCS CAUSTIC:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>debuff_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>4/5/6/7</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>strike_slow</code></td>
+      <td>MOVEMENT SPEED SLOW:</td>
+      <td>10%/12%/14%/16%</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>caustic_damage_pct</code></td>
+      <td>CAUSTIC DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Stinger</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Caustic Finale</td>
+      <td><code>caustic_finale_radius</code></td>
+      <td>EXPLODE RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Caustic Finale</td>
+      <td><code>caustic_finale_damage_pct</code></td>
+      <td>MAX HEALTH DAMAGE:</td>
+      <td>2.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Caustic Finale</td>
+      <td><code>caustic_finale_duration</code></td>
+      <td>DURATION:</td>
+      <td>4.5</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>epicenter_radius_base</code></td>
+      <td>BASE RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>epicenter_radius_increment</code></td>
+      <td>INCREMENTAL RADIUS:</td>
+      <td>13</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>epicenter_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-30%/-40%/-50%</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>epicenter_slow_as</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-50/-55/-60</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>proc_passively</code></td>
+      <td>PROC PASSIVELY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>shard_radius</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>shard_interval</code></td>
+      <td>SHARD INTERVAL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>linger_duration</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>abilityduration</code></td>
+      <td>EPICENTER DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Epicenter</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Sand King&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Burrowstrike&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Sand Storm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;sand_storm_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Stinger&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1
+    },
+    &quot;Caustic Finale&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;caustic_finale_damage_flat&quot;,
+      &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;target_death&quot;
+      ],
+      &quot;condition&quot;: &quot;目标在腐尸毒持续时间内死亡才会爆炸。&quot;,
+      &quot;reason&quot;: &quot;死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。&quot;
+    },
+    &quot;Epicenter&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;multi_wave&quot;,
+      &quot;damagePerWaveKey&quot;: &quot;epicenter_damage&quot;,
+      &quot;waveCountKey&quot;: &quot;epicenter_pulses&quot;,
+      &quot;semanticType&quot;: &quot;damage.wave&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -770,7 +1097,338 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Sand King&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Burrowstrike&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Sand Storm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;sand_storm_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Stinger&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1
+        },
+        &quot;Caustic Finale&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;caustic_finale_damage_flat&quot;,
+          &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;target_death&quot;
+          ],
+          &quot;condition&quot;: &quot;目标在腐尸毒持续时间内死亡才会爆炸。&quot;,
+          &quot;reason&quot;: &quot;死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。&quot;
+        },
+        &quot;Epicenter&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;multi_wave&quot;,
+          &quot;damagePerWaveKey&quot;: &quot;epicenter_damage&quot;,
+          &quot;waveCountKey&quot;: &quot;epicenter_pulses&quot;,
+          &quot;semanticType&quot;: &quot;damage.wave&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;burrow_width&quot;,
+        &quot;label&quot;: &quot;BURROW WIDTH:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;burrow_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2/1.4/1.6/1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;burrow_speed&quot;,
+        &quot;label&quot;: &quot;BURROW SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;burrow_anim_time&quot;,
+        &quot;label&quot;: &quot;BURROW ANIM TIME:&quot;,
+        &quot;value&quot;: &quot;0.52&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;550/625/700/775&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Burrowstrike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Sand Storm&quot;,
+        &quot;key&quot;: &quot;damage_tick_rate&quot;,
+        &quot;label&quot;: &quot;DAMAGE TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Sand Storm&quot;,
+        &quot;key&quot;: &quot;sand_storm_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;475/550/625/700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Sand Storm&quot;,
+        &quot;key&quot;: &quot;fade_delay&quot;,
+        &quot;label&quot;: &quot;FADE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Sand Storm&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Sand Storm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;230/250/270/290&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;inner_radius&quot;,
+        &quot;label&quot;: &quot;INNER RADIUS:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;inner_radius_bonus_damage_pct&quot;,
+        &quot;label&quot;: &quot;INNER RADIUS BONUS DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;inner_radius_procs_caustic&quot;,
+        &quot;label&quot;: &quot;INNER RADIUS PROCS CAUSTIC:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;4/5/6/7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;strike_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;10%/12%/14%/16%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;caustic_damage_pct&quot;,
+        &quot;label&quot;: &quot;CAUSTIC DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Stinger&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Caustic Finale&quot;,
+        &quot;key&quot;: &quot;caustic_finale_radius&quot;,
+        &quot;label&quot;: &quot;EXPLODE RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Caustic Finale&quot;,
+        &quot;key&quot;: &quot;caustic_finale_damage_pct&quot;,
+        &quot;label&quot;: &quot;MAX HEALTH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;2.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Caustic Finale&quot;,
+        &quot;key&quot;: &quot;caustic_finale_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;epicenter_radius_base&quot;,
+        &quot;label&quot;: &quot;BASE RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;epicenter_radius_increment&quot;,
+        &quot;label&quot;: &quot;INCREMENTAL RADIUS:&quot;,
+        &quot;value&quot;: &quot;13&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;epicenter_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-30%/-40%/-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;epicenter_slow_as&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-50/-55/-60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;proc_passively&quot;,
+        &quot;label&quot;: &quot;PROC PASSIVELY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;shard_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;shard_interval&quot;,
+        &quot;label&quot;: &quot;SHARD INTERVAL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;linger_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;EPICENTER DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sand King&quot;,
+        &quot;ability&quot;: &quot;Epicenter&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

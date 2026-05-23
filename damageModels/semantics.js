@@ -78,6 +78,12 @@ const SEMANTIC_DEFINITIONS = {
     label: '已损魔法百分比伤害',
     defaultContextRoute: CONTEXT_ROUTES.SITUATIONAL_DAMAGE
   },
+  'damage.percent_max_mana': {
+    category: CALCULATION_ROLES.DIRECT_DAMAGE,
+    unit: 'percent',
+    label: '最大魔法百分比伤害',
+    defaultContextRoute: CONTEXT_ROUTES.SITUATIONAL_DAMAGE
+  },
   'damage.mana_burn': {
     category: CALCULATION_ROLES.DIRECT_DAMAGE,
     unit: 'scaling',
@@ -163,6 +169,12 @@ const SEMANTIC_DEFINITIONS = {
     defaultContextRoute: CONTEXT_ROUTES.MODIFIER_REFERENCE
   },
   'modifier.damage_amp.percent': {
+    category: CALCULATION_ROLES.OFFENSIVE_MODIFIER,
+    unit: 'percent',
+    label: '伤害加深',
+    defaultContextRoute: CONTEXT_ROUTES.MODIFIER_REFERENCE
+  },
+  'modifier.damage_amplification.percent': {
     category: CALCULATION_ROLES.OFFENSIVE_MODIFIER,
     unit: 'percent',
     label: '伤害加深',

@@ -121,10 +121,10 @@
       "name": "Dual Breath",
       "displayName": "冰火交加（Dual Breath）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "火焰部分为持续伤害；冰减速字段仅作为控制效果。",
       "manaCostByAbilityLevel": [
         135,
         150,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Dual Breath:instant_fixed:burn_damage",
-          "kind": "instant_fixed",
+          "id": "Dual Breath:sustained:burn_damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "burn_damage",
@@ -150,11 +150,16 @@
             60,
             80
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            100,
+            200,
+            300,
+            400
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -166,9 +171,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "火焰部分为持续伤害；冰减速字段仅作为控制效果。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -176,7 +183,7 @@
       "name": "Ice Path",
       "displayName": "冰封路径（Ice Path）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -205,14 +212,7 @@
           "formula": {
             "type": "single_value"
           },
-          "metadata": {
-            "durationByAbilityLevel": [
-              1.25,
-              1.5,
-              1.75,
-              2
-            ]
-          },
+          "metadata": {},
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
@@ -225,7 +225,7 @@
       "name": "Liquid Fire",
       "displayName": "液态火（Liquid Fire）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -293,10 +293,10 @@
       "name": "Liquid Frost",
       "displayName": "液态冰（Liquid Frost）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。",
       "manaCostByAbilityLevel": [
         20,
         20,
@@ -345,8 +345,10 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。",
+          "caveats": [
+            "当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。"
+          ]
         }
       ]
     },
@@ -354,10 +356,10 @@
       "name": "Double Trouble",
       "displayName": "天生一对（Double Trouble）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "固定命石影响普攻输出，不直接作为技能爆发伤害。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -388,9 +390,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "固定命石影响普攻输出，不直接作为技能爆发伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "固定命石影响普攻输出，不直接作为技能爆发伤害。"
           ]
         }
       ]
@@ -399,7 +401,7 @@
       "name": "Macropyre",
       "displayName": "烈焰焚身（Macropyre）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -458,5 +460,441 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Jakiro",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed sustained/tick fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Dual Breath": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "burn_damage",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "火焰部分为持续伤害；冰减速字段仅作为控制效果。"
+        },
+        "Ice Path": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Liquid Fire": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "abilityduration",
+          "tickIntervalKey": "tick_rate",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Liquid Frost": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_rate",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "当前模型计入命中伤害；后续可把易伤 bonus_instance_damage_from_other_abilities 作为修正项。"
+        },
+        "Double Trouble": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "attack_damage_reduction",
+          "semanticType": "modifier.attack_damage.percent",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "固定命石影响普攻输出，不直接作为技能爆发伤害。"
+        },
+        "Macropyre": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "burn_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "start_radius",
+        "label": "START RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "fire_delay",
+        "label": "FIRE DELAY:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "slow_movement_speed_pct",
+        "label": "MOVE SLOW:",
+        "value": "-25%/-30%/-35%/-40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "slow_attack_speed_pct",
+        "label": "ATTACK SLOW:",
+        "value": "-25/-30/-35/-40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "speed_fire",
+        "label": "SPEED FIRE:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Dual Breath",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "path_delay",
+        "label": "FORMATION DELAY:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "stun_duration",
+        "label": "MAX STUN DURATION:",
+        "value": "1.25/1.50/1.75/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "path_duration",
+        "label": "PATH DURATION:",
+        "value": "3/3.5/4/4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "path_radius",
+        "label": "RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "detonate_damage",
+        "label": "SECONDARY DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "detonate_stun_duration",
+        "label": "SECONDARY STUN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "detonate_projectile_speed",
+        "label": "DETONATE PROJECTILE SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Ice Path",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "slow_attack_speed_pct",
+        "label": "ATTACK SLOW:",
+        "value": "-30/-40/-50/-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "pct_health_damage",
+        "label": "PCT HEALTH DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "building_dmg_pct",
+        "label": "BUILDING DAMAGE:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "shares_cooldown",
+        "label": "SHARES COOLDOWN:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Fire",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "bonus_instance_damage_from_other_abilities",
+        "label": "BONUS DAMAGE:",
+        "value": "8/16/24/32",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "pct_health_damage",
+        "label": "PCT HEALTH DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "shares_cooldown",
+        "label": "SHARES COOLDOWN:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Liquid Frost",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Double Trouble",
+        "key": "second_attack_delay",
+        "label": "SECOND ATTACK DELAY:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "path_width",
+        "label": "FLAME WIDTH:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "pure_damage_type",
+        "label": "PURE DAMAGE TYPE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "pierces_magic_immunity",
+        "label": "PIERCES MAGIC IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "ice_edge_path_radius",
+        "label": "ICE EDGE PATH RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "ice_edge_path_offset",
+        "label": "ICE EDGE PATH OFFSET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "ice_edge_linger_duration",
+        "label": "ICE EDGE LINGER DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "ice_edge_movement_slow",
+        "label": "ICE EDGE MOVEMENT SLOW:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Jakiro",
+        "ability": "Macropyre",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

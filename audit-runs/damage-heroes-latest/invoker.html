@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>祈求者（Invoker）</h1>
-        <div class="muted">Invoker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Invoker · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 11</span>
           <span>组件 11</span>
@@ -53,6 +57,964 @@
       </div>
       <a href="./invoker.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Quas</td>
+      <td><code>max_level</code></td>
+      <td>MAX LEVEL:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Quas</td>
+      <td><code>hp_regen_per_instance</code></td>
+      <td>HP REGEN PER INSTANCE:</td>
+      <td>1/2/3/4/5/6/7/8/9/10</td>
+    </tr>
+  
+    <tr>
+      <td>Quas</td>
+      <td><code>upgrade_at_level</code></td>
+      <td>UPGRADE AT LEVEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Quas</td>
+      <td><code>strength_bonus</code></td>
+      <td>BONUS STRENGTH PER LEVEL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Quas</td>
+      <td><code>scepter_bonus_levels</code></td>
+      <td>SCEPTER BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Quas</td>
+      <td><code>facet_bonus_levels</code></td>
+      <td>FACET BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>max_level</code></td>
+      <td>MAX LEVEL:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>move_speed_per_instance</code></td>
+      <td>MOVE SPEED PER INSTANCE:</td>
+      <td>0.6%/1.2%/1.8%/2.4%/3%/3.6%/4.2%/4.8%/5.4%/6%</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>upgrade_at_level</code></td>
+      <td>UPGRADE AT LEVEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>agility_bonus</code></td>
+      <td>BONUS AGILITY PER LEVEL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>scepter_bonus_levels</code></td>
+      <td>SCEPTER BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wex</td>
+      <td><code>facet_bonus_levels</code></td>
+      <td>FACET BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Exort</td>
+      <td><code>max_level</code></td>
+      <td>MAX LEVEL:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Exort</td>
+      <td><code>upgrade_at_level</code></td>
+      <td>UPGRADE AT LEVEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Exort</td>
+      <td><code>intelligence_bonus</code></td>
+      <td>BONUS INTELLIGENCE PER LEVEL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Exort</td>
+      <td><code>scepter_bonus_levels</code></td>
+      <td>SCEPTER BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Exort</td>
+      <td><code>facet_bonus_levels</code></td>
+      <td>FACET BONUS LEVELS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Invoke</td>
+      <td><code>max_invoked_spells</code></td>
+      <td>MAX SPELLS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Invoke</td>
+      <td><code>cooldown_reduction_per_orb</code></td>
+      <td>COOLDOWN REDUCTION PER ORB:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>freeze_duration</code></td>
+      <td>FREEZE DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>freeze_cooldown</code></td>
+      <td>FREEZE COOLDOWN (QUAS):</td>
+      <td>0.80/0.77/0.74/0.71/0.68/0.65/0.62/0.59/0.56/0.53/0.50</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>freeze_heal</code></td>
+      <td>FREEZE HEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>damage_trigger</code></td>
+      <td>DAMAGE TRIGGER:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Snap</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>area_of_effect</code></td>
+      <td>SLOW RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>enemy_slow</code></td>
+      <td>ENEMY SLOW (QUAS):\n</td>
+      <td>-20%/-25%/-30%/-35%/-40%/-45%/-50%/-55%/-60%/-65%/-70%</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>self_slow</code></td>
+      <td>SELF SPEED (WEX):\n</td>
+      <td>-20%/-15%/-10%/-5%/0%/5%/10%/15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>aura_fade_time</code></td>
+      <td>AURA FADE TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>health_regen</code></td>
+      <td>HEALTH REGENERATION (QUAS):</td>
+      <td>2/4/6/8/10/12/14/16/18/20/22</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>mana_regen</code></td>
+      <td>MANA REGENERATION (WEX):\n</td>
+      <td>2/4/6/8/10/12/14/16/18/20/22</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>apply_ice_wall_debuff</code></td>
+      <td>APPLY ICE WALL DEBUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Walk</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>travel_distance</code></td>
+      <td>TRAVEL DISTANCE (WEX):\n</td>
+      <td>1500/1800/2100/2400/2700/3000/3300/3600/3900/4200/4500</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>travel_speed</code></td>
+      <td>TRAVEL SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>vision_distance</code></td>
+      <td>VISION DISTANCE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>lift_duration</code></td>
+      <td>LIFT TIME (QUAS):\n</td>
+      <td>1.2/1.4/1.6/1.8/2/2.2/2.4/2.6/2.8/3/3.2</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>quas_damage</code></td>
+      <td>QUAS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>wex_damage</code></td>
+      <td>ADDED DAMAGE (WEX):</td>
+      <td>45/90/135/180/225/270/315/360/405/450/495</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>twister_distance_interval</code></td>
+      <td>TWISTER DISTANCE INTERVAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>twister_radius</code></td>
+      <td>TWISTER RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>twister_damage</code></td>
+      <td>TWISTER DAMAGE PER SECOND (WEX):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>twister_duration</code></td>
+      <td>TWISTER DURATION (QUAS):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Tornado</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>delay</code></td>
+      <td>CHARGE TIME:</td>
+      <td>2.9</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>mana_burned</code></td>
+      <td>MAX MANA BURNED (WEX):\n</td>
+      <td>100/175/250/325/400/475/550/625/700/775/850</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>drag_speed</code></td>
+      <td>DRAG SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>self_mana_restore_pct</code></td>
+      <td>SELF MANA RESTORE PCT:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>damage_barriers</code></td>
+      <td>DAMAGE BARRIERS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>E.M.P.</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Alacrity</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>BONUS ATTACK SPEED (WEX):\n</td>
+      <td>10/22/34/46/58/70/82/94/106/118/130</td>
+    </tr>
+  
+    <tr>
+      <td>Alacrity</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE (EXORT):\n</td>
+      <td>10/22/34/46/58/70/82/94/106/118/130</td>
+    </tr>
+  
+    <tr>
+      <td>Alacrity</td>
+      <td><code>bonus_attack_range</code></td>
+      <td>BONUS ATTACK RANGE (WEX):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Alacrity</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>9</td>
+    </tr>
+  
+    <tr>
+      <td>Alacrity</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>land_time</code></td>
+      <td>IMPACT DELAY:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>travel_distance</code></td>
+      <td>TRAVEL DISTANCE (WEX):\n</td>
+      <td>465/615/780/930/1095/1245/1410/1575/1725/1890/2055</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>travel_speed</code></td>
+      <td>TRAVEL SPEED:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>damage_interval</code></td>
+      <td>CONTACT DAMAGE TICK:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>vision_distance</code></td>
+      <td>VISION DISTANCE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>burn_duration</code></td>
+      <td>BURN DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>burn_dps</code></td>
+      <td>BURN DAMAGE PER SECOND (EXORT):\n</td>
+      <td>10/15/20/25/30/35/40/45/50/55/60</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>meteor_count</code></td>
+      <td>METEOR COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Meteor</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>1.7</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>vision_distance</code></td>
+      <td>VISION DISTANCE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>cataclysm_count</code></td>
+      <td>CATACLYSM COUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>cataclysm_cooldown</code></td>
+      <td>CATACLYSM COOLDOWN:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>cataclysm_min_range</code></td>
+      <td>CATACLYSM MIN RANGE:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>cataclysm_max_range</code></td>
+      <td>CATACLYSM MAX RANGE:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>cataclysm_damage_pct</code></td>
+      <td>CATACLYSM DAMAGE PCT:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>create_forged_spirit_on_hero_damage</code></td>
+      <td>CREATE FORGED SPIRIT ON HERO DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>spirit_mana</code></td>
+      <td>SPIRIT MANA:</td>
+      <td>100/150/200/250/300/350/400/450/500/550/600</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>spirit_armor</code></td>
+      <td>ARMOR (EXORT):\n</td>
+      <td>0/1/2/3/4/5/6/7/8/9</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>spirit_attack_range</code></td>
+      <td>ATTACK RANGE (QUAS):\n</td>
+      <td>305/360/415/470/525/580/635/690/745/800/855</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>spirit_hp</code></td>
+      <td>HEALTH (QUAS):\n</td>
+      <td>300/400/500/600/700/800/900/1000/1100/1200/1300</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>spirit_duration</code></td>
+      <td>DURATION (QUAS):\n</td>
+      <td>24/30/36/42/48/54/60/66/72/78/84</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>armor_per_attack</code></td>
+      <td>ARMOR PER ATTACK:</td>
+      <td>0.8/0.9/1/1.1/1.2/1.3/1.4/1.5/1.6/1.7/1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>extra_spirit_count_quas</code></td>
+      <td>SPIRIT COUNT (QUAS):\n</td>
+      <td>1/1/1/2/2/2/2/3/3/3/3</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>extra_spirit_count_exort</code></td>
+      <td>SPIRIT COUNT (EXORT):\n</td>
+      <td>1/1/1/2/2/2/2/3/3/3/3</td>
+    </tr>
+  
+    <tr>
+      <td>Forge Spirit</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>slow</code></td>
+      <td>MOVEMENT SLOW (QUAS):\n</td>
+      <td>-20%/-40%/-60%/-80%/-100%/-120%/-140%/-160%/-180%/-200%/-220%</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>wall_place_distance</code></td>
+      <td>WALL PLACE DISTANCE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>wall_total_length</code></td>
+      <td>WALL LENGTH:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>wall_width</code></td>
+      <td>WALL WIDTH:</td>
+      <td>105</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>vector_cast_range</code></td>
+      <td>VECTOR CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>glacier_formation_delay</code></td>
+      <td>GLACIER FORMATION DELAY:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>glacier_formation_speed</code></td>
+      <td>GLACIER FORMATION SPEED:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>root_delay</code></td>
+      <td>ROOT DELAY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>root_duration</code></td>
+      <td>ROOT DURATION (QUAS):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>root_damage</code></td>
+      <td>ROOT DAMAGE (QUAS):</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Wall</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>travel_distance</code></td>
+      <td>TRAVEL DISTANCE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>travel_speed</code></td>
+      <td>TRAVEL SPEED:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>radius_start</code></td>
+      <td>RADIUS START:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>radius_end</code></td>
+      <td>RADIUS END:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION (QUAS):\n</td>
+      <td>1.1/1.2/1.3/1.4/1.5/1.6/1.7/1.8/1.9/2/2.1</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>disarm_duration</code></td>
+      <td>DISARM DURATION (WEX):\n</td>
+      <td>1.5/2/2.5/3/3.5/4/4.5/5/5.5/6/6.5</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>radial_count</code></td>
+      <td>RADIAL COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Deafening Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Invoker&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Quas&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Wex&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_speed_per_instance&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Exort&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_damage_per_instance&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Invoked Spell&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Invoke&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Cold Snap&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;freeze_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Ghost Walk&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Tornado&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;end_vision_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;twister_tick_rate&quot;
+    },
+    &quot;E.M.P.&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_mana_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+    },
+    &quot;Alacrity&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Chaos Meteor&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;main_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;end_vision_duration&quot;
+    },
+    &quot;Sun Strike&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;vision_duration&quot;
+    },
+    &quot;Forge Spirit&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;spirit_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Ice Wall&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Deafening Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;end_vision_duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +1086,7 @@
           <div class="muted">Wex · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +1125,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +1139,7 @@
           <div class="muted">Exort · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +1178,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +1192,7 @@
           <div class="muted">Cold Snap · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +1245,7 @@
           <div class="muted">Tornado · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +1298,7 @@
           <div class="muted">E.M.P. · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +1337,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: target_missing_mana</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。</li></ul></td>
+        <td><ul><li>全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +1351,7 @@
           <div class="muted">Alacrity · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -428,7 +1390,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -442,7 +1404,7 @@
           <div class="muted">Chaos Meteor · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -495,7 +1457,7 @@
           <div class="muted">Sun Strike · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -548,7 +1510,7 @@
           <div class="muted">Forge Spirit · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -601,7 +1563,7 @@
           <div class="muted">Ice Wall · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -654,7 +1616,7 @@
           <div class="muted">Deafening Blast · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -825,10 +1787,10 @@
       &quot;name&quot;: &quot;Wex&quot;,
       &quot;displayName&quot;: &quot;雷（Wex）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0,
         0,
@@ -890,9 +1852,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -901,10 +1863,10 @@
       &quot;name&quot;: &quot;Exort&quot;,
       &quot;displayName&quot;: &quot;火（Exort）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0,
         0,
@@ -966,9 +1928,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -977,7 +1939,7 @@
       &quot;name&quot;: &quot;Cold Snap&quot;,
       &quot;displayName&quot;: &quot;急速冷却（Cold Snap）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1060,7 +2022,7 @@
       &quot;name&quot;: &quot;Tornado&quot;,
       &quot;displayName&quot;: &quot;强袭飓风（Tornado）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1106,10 +2068,10 @@
       &quot;name&quot;: &quot;E.M.P.&quot;,
       &quot;displayName&quot;: &quot;电磁脉冲（E.M.P.）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125
       ],
@@ -1146,9 +2108,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+            &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
           ]
         }
       ]
@@ -1157,10 +2119,10 @@
       &quot;name&quot;: &quot;Alacrity&quot;,
       &quot;displayName&quot;: &quot;灵动迅捷（Alacrity）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75
       ],
@@ -1195,9 +2157,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -1206,7 +2168,7 @@
       &quot;name&quot;: &quot;Chaos Meteor&quot;,
       &quot;displayName&quot;: &quot;混沌陨石（Chaos Meteor）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1289,7 +2251,7 @@
       &quot;name&quot;: &quot;Sun Strike&quot;,
       &quot;displayName&quot;: &quot;阳炎冲击（Sun Strike）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1372,7 +2334,7 @@
       &quot;name&quot;: &quot;Forge Spirit&quot;,
       &quot;displayName&quot;: &quot;熔炉精灵（Forge Spirit）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
@@ -1453,7 +2415,7 @@
       &quot;name&quot;: &quot;Ice Wall&quot;,
       &quot;displayName&quot;: &quot;寒冰之墙（Ice Wall）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1558,7 +2520,7 @@
       &quot;name&quot;: &quot;Deafening Blast&quot;,
       &quot;displayName&quot;: &quot;超震声波（OMG）（Deafening Blast）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1638,7 +2600,1053 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Invoker&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Quas&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Wex&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_speed_per_instance&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Exort&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_damage_per_instance&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Invoked Spell&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Invoke&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Cold Snap&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;freeze_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Ghost Walk&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Tornado&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;end_vision_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;twister_tick_rate&quot;
+        },
+        &quot;E.M.P.&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_mana_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。&quot;
+        },
+        &quot;Alacrity&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Chaos Meteor&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;main_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;end_vision_duration&quot;
+        },
+        &quot;Sun Strike&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;vision_duration&quot;
+        },
+        &quot;Forge Spirit&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;spirit_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Ice Wall&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Deafening Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;end_vision_duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;max_level&quot;,
+        &quot;label&quot;: &quot;MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;hp_regen_per_instance&quot;,
+        &quot;label&quot;: &quot;HP REGEN PER INSTANCE:&quot;,
+        &quot;value&quot;: &quot;1/2/3/4/5/6/7/8/9/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;upgrade_at_level&quot;,
+        &quot;label&quot;: &quot;UPGRADE AT LEVEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;strength_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS STRENGTH PER LEVEL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_levels&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Quas&quot;,
+        &quot;key&quot;: &quot;facet_bonus_levels&quot;,
+        &quot;label&quot;: &quot;FACET BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;max_level&quot;,
+        &quot;label&quot;: &quot;MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;move_speed_per_instance&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED PER INSTANCE:&quot;,
+        &quot;value&quot;: &quot;0.6%/1.2%/1.8%/2.4%/3%/3.6%/4.2%/4.8%/5.4%/6%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;upgrade_at_level&quot;,
+        &quot;label&quot;: &quot;UPGRADE AT LEVEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;agility_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS AGILITY PER LEVEL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_levels&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Wex&quot;,
+        &quot;key&quot;: &quot;facet_bonus_levels&quot;,
+        &quot;label&quot;: &quot;FACET BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Exort&quot;,
+        &quot;key&quot;: &quot;max_level&quot;,
+        &quot;label&quot;: &quot;MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Exort&quot;,
+        &quot;key&quot;: &quot;upgrade_at_level&quot;,
+        &quot;label&quot;: &quot;UPGRADE AT LEVEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Exort&quot;,
+        &quot;key&quot;: &quot;intelligence_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS INTELLIGENCE PER LEVEL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Exort&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_levels&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Exort&quot;,
+        &quot;key&quot;: &quot;facet_bonus_levels&quot;,
+        &quot;label&quot;: &quot;FACET BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Invoke&quot;,
+        &quot;key&quot;: &quot;max_invoked_spells&quot;,
+        &quot;label&quot;: &quot;MAX SPELLS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Invoke&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_per_orb&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION PER ORB:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;freeze_duration&quot;,
+        &quot;label&quot;: &quot;FREEZE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;freeze_cooldown&quot;,
+        &quot;label&quot;: &quot;FREEZE COOLDOWN (QUAS):&quot;,
+        &quot;value&quot;: &quot;0.80/0.77/0.74/0.71/0.68/0.65/0.62/0.59/0.56/0.53/0.50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;freeze_heal&quot;,
+        &quot;label&quot;: &quot;FREEZE HEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;damage_trigger&quot;,
+        &quot;label&quot;: &quot;DAMAGE TRIGGER:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Cold Snap&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;SLOW RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;enemy_slow&quot;,
+        &quot;label&quot;: &quot;ENEMY SLOW (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;-20%/-25%/-30%/-35%/-40%/-45%/-50%/-55%/-60%/-65%/-70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;self_slow&quot;,
+        &quot;label&quot;: &quot;SELF SPEED (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;-20%/-15%/-10%/-5%/0%/5%/10%/15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;aura_fade_time&quot;,
+        &quot;label&quot;: &quot;AURA FADE TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;health_regen&quot;,
+        &quot;label&quot;: &quot;HEALTH REGENERATION (QUAS):&quot;,
+        &quot;value&quot;: &quot;2/4/6/8/10/12/14/16/18/20/22&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;mana_regen&quot;,
+        &quot;label&quot;: &quot;MANA REGENERATION (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;2/4/6/8/10/12/14/16/18/20/22&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;apply_ice_wall_debuff&quot;,
+        &quot;label&quot;: &quot;APPLY ICE WALL DEBUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ghost Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;travel_distance&quot;,
+        &quot;label&quot;: &quot;TRAVEL DISTANCE (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;1500/1800/2100/2400/2700/3000/3300/3600/3900/4200/4500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;travel_speed&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;vision_distance&quot;,
+        &quot;label&quot;: &quot;VISION DISTANCE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;lift_duration&quot;,
+        &quot;label&quot;: &quot;LIFT TIME (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;1.2/1.4/1.6/1.8/2/2.2/2.4/2.6/2.8/3/3.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;quas_damage&quot;,
+        &quot;label&quot;: &quot;QUAS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;wex_damage&quot;,
+        &quot;label&quot;: &quot;ADDED DAMAGE (WEX):&quot;,
+        &quot;value&quot;: &quot;45/90/135/180/225/270/315/360/405/450/495&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;twister_distance_interval&quot;,
+        &quot;label&quot;: &quot;TWISTER DISTANCE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;twister_radius&quot;,
+        &quot;label&quot;: &quot;TWISTER RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;twister_damage&quot;,
+        &quot;label&quot;: &quot;TWISTER DAMAGE PER SECOND (WEX):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;twister_duration&quot;,
+        &quot;label&quot;: &quot;TWISTER DURATION (QUAS):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Tornado&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;CHARGE TIME:&quot;,
+        &quot;value&quot;: &quot;2.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;mana_burned&quot;,
+        &quot;label&quot;: &quot;MAX MANA BURNED (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;100/175/250/325/400/475/550/625/700/775/850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;drag_speed&quot;,
+        &quot;label&quot;: &quot;DRAG SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;self_mana_restore_pct&quot;,
+        &quot;label&quot;: &quot;SELF MANA RESTORE PCT:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;damage_barriers&quot;,
+        &quot;label&quot;: &quot;DAMAGE BARRIERS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;E.M.P.&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Alacrity&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;10/22/34/46/58/70/82/94/106/118/130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Alacrity&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE (EXORT):\\n&quot;,
+        &quot;value&quot;: &quot;10/22/34/46/58/70/82/94/106/118/130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Alacrity&quot;,
+        &quot;key&quot;: &quot;bonus_attack_range&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK RANGE (WEX):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Alacrity&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Alacrity&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;land_time&quot;,
+        &quot;label&quot;: &quot;IMPACT DELAY:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;travel_distance&quot;,
+        &quot;label&quot;: &quot;TRAVEL DISTANCE (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;465/615/780/930/1095/1245/1410/1575/1725/1890/2055&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;travel_speed&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;CONTACT DAMAGE TICK:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;vision_distance&quot;,
+        &quot;label&quot;: &quot;VISION DISTANCE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;burn_duration&quot;,
+        &quot;label&quot;: &quot;BURN DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;burn_dps&quot;,
+        &quot;label&quot;: &quot;BURN DAMAGE PER SECOND (EXORT):\\n&quot;,
+        &quot;value&quot;: &quot;10/15/20/25/30/35/40/45/50/55/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;meteor_count&quot;,
+        &quot;label&quot;: &quot;METEOR COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Chaos Meteor&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;1.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;vision_distance&quot;,
+        &quot;label&quot;: &quot;VISION DISTANCE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;cataclysm_count&quot;,
+        &quot;label&quot;: &quot;CATACLYSM COUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;cataclysm_cooldown&quot;,
+        &quot;label&quot;: &quot;CATACLYSM COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;cataclysm_min_range&quot;,
+        &quot;label&quot;: &quot;CATACLYSM MIN RANGE:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;cataclysm_max_range&quot;,
+        &quot;label&quot;: &quot;CATACLYSM MAX RANGE:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;cataclysm_damage_pct&quot;,
+        &quot;label&quot;: &quot;CATACLYSM DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;create_forged_spirit_on_hero_damage&quot;,
+        &quot;label&quot;: &quot;CREATE FORGED SPIRIT ON HERO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Sun Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_mana&quot;,
+        &quot;label&quot;: &quot;SPIRIT MANA:&quot;,
+        &quot;value&quot;: &quot;100/150/200/250/300/350/400/450/500/550/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_armor&quot;,
+        &quot;label&quot;: &quot;ARMOR (EXORT):\\n&quot;,
+        &quot;value&quot;: &quot;0/1/2/3/4/5/6/7/8/9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_attack_range&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;305/360/415/470/525/580/635/690/745/800/855&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_hp&quot;,
+        &quot;label&quot;: &quot;HEALTH (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;300/400/500/600/700/800/900/1000/1100/1200/1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_duration&quot;,
+        &quot;label&quot;: &quot;DURATION (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;24/30/36/42/48/54/60/66/72/78/84&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;armor_per_attack&quot;,
+        &quot;label&quot;: &quot;ARMOR PER ATTACK:&quot;,
+        &quot;value&quot;: &quot;0.8/0.9/1/1.1/1.2/1.3/1.4/1.5/1.6/1.7/1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;extra_spirit_count_quas&quot;,
+        &quot;label&quot;: &quot;SPIRIT COUNT (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;1/1/1/2/2/2/2/3/3/3/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;extra_spirit_count_exort&quot;,
+        &quot;label&quot;: &quot;SPIRIT COUNT (EXORT):\\n&quot;,
+        &quot;value&quot;: &quot;1/1/1/2/2/2/2/3/3/3/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Forge Spirit&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;-20%/-40%/-60%/-80%/-100%/-120%/-140%/-160%/-180%/-200%/-220%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;wall_place_distance&quot;,
+        &quot;label&quot;: &quot;WALL PLACE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;wall_total_length&quot;,
+        &quot;label&quot;: &quot;WALL LENGTH:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;wall_width&quot;,
+        &quot;label&quot;: &quot;WALL WIDTH:&quot;,
+        &quot;value&quot;: &quot;105&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;vector_cast_range&quot;,
+        &quot;label&quot;: &quot;VECTOR CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;glacier_formation_delay&quot;,
+        &quot;label&quot;: &quot;GLACIER FORMATION DELAY:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;glacier_formation_speed&quot;,
+        &quot;label&quot;: &quot;GLACIER FORMATION SPEED:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;root_delay&quot;,
+        &quot;label&quot;: &quot;ROOT DELAY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;root_duration&quot;,
+        &quot;label&quot;: &quot;ROOT DURATION (QUAS):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;root_damage&quot;,
+        &quot;label&quot;: &quot;ROOT DAMAGE (QUAS):&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Ice Wall&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;travel_distance&quot;,
+        &quot;label&quot;: &quot;TRAVEL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;travel_speed&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;radius_start&quot;,
+        &quot;label&quot;: &quot;RADIUS START:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;radius_end&quot;,
+        &quot;label&quot;: &quot;RADIUS END:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION (QUAS):\\n&quot;,
+        &quot;value&quot;: &quot;1.1/1.2/1.3/1.4/1.5/1.6/1.7/1.8/1.9/2/2.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;disarm_duration&quot;,
+        &quot;label&quot;: &quot;DISARM DURATION (WEX):\\n&quot;,
+        &quot;value&quot;: &quot;1.5/2/2.5/3/3.5/4/4.5/5/5.5/6/6.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;radial_count&quot;,
+        &quot;label&quot;: &quot;RADIAL COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Invoker&quot;,
+        &quot;ability&quot;: &quot;Deafening Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

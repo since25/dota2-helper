@@ -121,7 +121,7 @@
       "name": "Ether Shock",
       "displayName": "苍穹震击（Ether Shock）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -169,10 +169,10 @@
       "name": "Hex",
       "displayName": "妖术（Hex）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         130,
         150,
@@ -213,9 +213,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -224,7 +224,7 @@
       "name": "Shackles",
       "displayName": "枷锁（Shackles）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -285,7 +285,7 @@
       "name": "Urnaconda",
       "displayName": "巨蟒之瓮（Urnaconda）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -328,10 +328,10 @@
       "name": "Mass Serpent Ward",
       "displayName": "群蛇守卫（Mass Serpent Ward）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "summon_attack",
+      "reason": "守卫攻击伤害需要输入实际攻击次数。",
       "manaCostByAbilityLevel": [
         200,
         350,
@@ -344,8 +344,8 @@
       ],
       "components": [
         {
-          "id": "Mass Serpent Ward:instant_fixed:ward_damage_tooltip",
-          "kind": "instant_fixed",
+          "id": "Mass Serpent Ward:summon_attack:ward_damage_tooltip",
+          "kind": "summon_attack",
           "growthKind": "non_growth",
           "damageType": "Physical",
           "label": "ward_damage_tooltip",
@@ -355,26 +355,455 @@
             120
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "attackCount * summonAttackDamage",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "runtime_summon_attack_count_times_damage"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              45,
-              45,
-              45
-            ]
+            "attackCountInput": "ward_attack_count"
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "summon_attack",
+          "reason": "守卫攻击伤害需要输入实际攻击次数。",
+          "caveats": [
+            "召唤物、守卫或代理单位伤害需要输入攻击次数。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Shadow Shaman",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Ether Shock": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Hex": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Shackles": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "total_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "ward_linger_duration",
+          "tickIntervalKey": "tick_interval"
+        },
+        "Fowl Play": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Urnaconda": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "impact_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "ward_duration"
+        },
+        "Mass Serpent Ward": {
+          "status": "implemented",
+          "model": "summon_attack",
+          "attackDamageKey": "ward_damage_tooltip",
+          "attackCountInput": "ward_attack_count",
+          "semanticType": "summon.attack_damage",
+          "conditionInputs": [
+            "ward_attack_count"
+          ],
+          "reason": "守卫攻击伤害需要输入实际攻击次数。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "start_radius",
+        "label": "START RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "end_distance",
+        "label": "END DISTANCE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "targets",
+        "label": "TARGETS:",
+        "value": "3/5/7/9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Ether Shock",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Hex",
+        "key": "movespeed",
+        "label": "MOVESPEED:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Hex",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "2/2.3/2.6/2.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Hex",
+        "key": "damage_amp",
+        "label": "DAMAGE AMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Hex",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "channel_time",
+        "label": "MAX DURATION:",
+        "value": "2.4/3/3.6/4.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "bonus_targets",
+        "label": "BONUS TARGETS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "bonus_targets_search_range",
+        "label": "BONUS TARGETS SEARCH RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "bonus_target_channel_time_pct",
+        "label": "BONUS TARGET CHANNEL TIME PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "heal_percentage",
+        "label": "HEAL PERCENTAGE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "2.4/3/3.6/4.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Shackles",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "hex_duration",
+        "label": "DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "movespeed_bonus_pct",
+        "label": "MOVESPEED BONUS:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "total_chickens",
+        "label": "TOTAL CHICKENS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "damage_reduction_duration",
+        "label": "DAMAGE REDUCTION DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "damage_reduction_pct",
+        "label": "DAMAGE REDUCTION PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "levels_per_chicken",
+        "label": "LEVELS PER CHICKEN:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "invuln_duration",
+        "label": "INVULN DURATION:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Fowl Play",
+        "key": "ally_chicken_images_take_damage_percent",
+        "label": "ALLY CHICKEN IMAGES TAKE DAMAGE PERCENT:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Urnaconda",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Urnaconda",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Urnaconda",
+        "key": "megaward_multiplier_tooltip",
+        "label": "MEGAWARD MULTIPLIER TOOLTIP:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Urnaconda",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Urnaconda",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "ward_count",
+        "label": "WARD COUNT:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "spawn_radius",
+        "label": "SPAWN RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "hits_to_destroy_tooltip",
+        "label": "HITS TO DESTROY:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "ward_health",
+        "label": "WARD HEALTH:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "ward_damage_tooltip",
+        "label": "WARD DAMAGE:",
+        "value": "50/85/120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "mega_ward_multiplier_damage",
+        "label": "MEGA WARD MULTIPLIER DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "mega_ward_multiplier_health",
+        "label": "MEGA WARD MULTIPLIER HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "mega_ward_health_tooltip",
+        "label": "MEGA WARD HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "mega_ward_damage_tooltip",
+        "label": "MEGA WARD DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "mega_ward_model_scale_multiplier",
+        "label": "MEGA WARD MODEL SCALE MULTIPLIER:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Shaman",
+        "ability": "Mass Serpent Ward",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -121,7 +121,7 @@
       "name": "Shrapnel",
       "displayName": "榴霰弹（Shrapnel）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -181,18 +181,18 @@
       "name": "Headshot",
       "displayName": "爆头（Headshot）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attack_modifier",
+      "reason": "爆头是概率攻击附加伤害，需输入攻击次数和触发模式。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Headshot:debuff_reference:damage",
-          "kind": "debuff_reference",
+          "id": "Headshot:attack_modifier:damage",
+          "kind": "attack_modifier",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
+          "damageType": "Physical",
           "label": "damage",
           "valuesByAbilityLevel": [
             20,
@@ -204,23 +204,24 @@
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "attack_modifier"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "",
-            "affects": "all_damage",
-            "condition": "",
-            "requiredInputs": [],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "defaultAttackCount": 1,
+            "attackFactorPctByAbilityLevel": [],
+            "procChancePctByAbilityLevel": [
+              40,
+              40,
+              40,
+              40
+            ]
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "status": "implemented",
+          "model": "attack_modifier",
+          "reason": "爆头是概率攻击附加伤害，需输入攻击次数和触发模式。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "爆头是概率攻击附加伤害，需输入攻击次数和触发模式。"
           ]
         }
       ]
@@ -229,10 +230,10 @@
       "name": "Take Aim",
       "displayName": "瞄准（Take Aim）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -270,9 +271,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -281,7 +282,7 @@
       "name": "Concussive Grenade",
       "displayName": "震荡手雷（Concussive Grenade）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -324,7 +325,7 @@
       "name": "Assassinate",
       "displayName": "暗杀（Assassinate）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -366,5 +367,403 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Sniper",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Shrapnel": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "shrapnel_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Headshot": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "damage",
+          "procChanceKey": "proc_chance",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "attack_count",
+            "proc_mode",
+            "hero_attack_damage"
+          ],
+          "defaultIncluded": false,
+          "reason": "爆头是概率攻击附加伤害，需输入攻击次数和触发模式。"
+        },
+        "Take Aim": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Concussive Grenade": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "debuff_duration"
+        },
+        "Keen Scope": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Assassinate": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "slow_movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-12%/-18%/-24%/-30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400/425/450/475",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "damage_delay",
+        "label": "DAMAGE DELAY:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Shrapnel",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Headshot",
+        "key": "knockback_distance",
+        "label": "MAX KNOCKBACK DISTANCE:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Headshot",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "-100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Headshot",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.2/0.3/0.4/0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "headshot_chance",
+        "label": "HEADSHOT CHANCE:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "active_attack_range_bonus",
+        "label": "ACTIVE BONUS ATTACK RANGE:",
+        "value": "75/150/225/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "passive_attack_range_bonus",
+        "label": "PASSIVE ATTACK RANGE BONUS:",
+        "value": "160/240/320/400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "bonus_vision",
+        "label": "BONUS VISION:",
+        "value": "500/750/1000/1250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "view_restrict",
+        "label": "VIEW RESTRICT:",
+        "value": "140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "does_root",
+        "label": "DOES ROOT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "require_target",
+        "label": "REQUIRE TARGET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "no_reveal",
+        "label": "NO REVEAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Take Aim",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "slow",
+        "label": "MOVE SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "knockback_height",
+        "label": "KNOCKBACK HEIGHT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "475",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "self_push",
+        "label": "SELF PUSH:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Concussive Grenade",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Keen Scope",
+        "key": "bonus_damage_for_range",
+        "label": "BONUS DAMAGE:",
+        "value": "1.50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Keen Scope",
+        "key": "bonus_damage_distance",
+        "label": "BONUS DAMAGE DISTANCE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "2500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "cooldown_reduction_on_kill",
+        "label": "COOLDOWN REDUCTION ON KILL:",
+        "value": "0/5/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "attack_factor",
+        "label": "ATTACK FACTOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "attack_factor_tooltip",
+        "label": "ATTACK FACTOR TOOLTIP:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sniper",
+        "ability": "Assassinate",
+        "key": "abilitycastpoint",
+        "label": "AIM DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

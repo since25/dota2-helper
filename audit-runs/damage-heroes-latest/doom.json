@@ -121,10 +121,10 @@
       "name": "Devour",
       "displayName": "吞噬（Devour）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         40,
         50,
@@ -162,9 +162,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -173,7 +173,7 @@
       "name": "Scorched Earth",
       "displayName": "焦土（Scorched Earth）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -235,7 +235,7 @@
       "name": "Infernal Blade",
       "displayName": "阎刃（Infernal Blade）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -290,7 +290,7 @@
       "name": "Doom",
       "displayName": "末日（Doom）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -347,7 +347,7 @@
       "name": "Lvl ? Pain",
       "displayName": "等级？痛苦（Lvl ? Pain）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -387,5 +387,329 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Doom",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Devour": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Scorched Earth": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Infernal Blade": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "burn_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "burn_duration"
+        },
+        "Devoured Ability": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Doom": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Lvl ? Pain": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_debuff_duration",
+          "durationKey": "damage_debuff_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "bonus_gold",
+        "label": "BONUS GOLD:",
+        "value": "35/70/105/140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "creep_level",
+        "label": "CREEP MAX LEVEL:",
+        "value": "4/5/6/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "ability_bonus_level",
+        "label": "ABILITY BONUS LEVEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "hero_ability_steal_time",
+        "label": "HERO ABILITY STEAL TIME:",
+        "value": "99999",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "magic_resist",
+        "label": "MAGIC RESIST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "bonus_aoe_pct",
+        "label": "BONUS AOE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "bonus_spell_amp_pct",
+        "label": "BONUS SPELL AMP PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Devour",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "bonus_health_regen",
+        "label": "BONUS HP REGEN:",
+        "value": "7/8/9/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "666",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "bonus_movement_speed_pct",
+        "label": "BONUS MOVE SPEED:",
+        "value": "7%/8%/9%/10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "is_permanent",
+        "label": "IS PERMANENT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "666",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Scorched Earth",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Infernal Blade",
+        "key": "burn_damage_pct",
+        "label": "MAX HP AS DAMAGE:",
+        "value": "1%/2%/3%/4%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Infernal Blade",
+        "key": "ministun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.66",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Infernal Blade",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Infernal Blade",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "deniable_pct",
+        "label": "DENIABLE PCT:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "does_break",
+        "label": "DOES BREAK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "does_mute",
+        "label": "DOES MUTE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "scepter_aura_radius",
+        "label": "SCEPTER AURA RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "upgrade_interval",
+        "label": "UPGRADE INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "upgrade_amount",
+        "label": "UPGRADE AMOUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Doom",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Lvl ? Pain",
+        "key": "bonus_damage_pct_base",
+        "label": "BONUS DAMAGE PCT BASE:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Lvl ? Pain",
+        "key": "spread_radius",
+        "label": "SPREAD RADIUS:",
+        "value": "66",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Lvl ? Pain",
+        "key": "level_multiplier",
+        "label": "LEVEL MULTIPLIER:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Doom",
+        "ability": "Lvl ? Pain",
+        "key": "bonus_at_level_pct",
+        "label": "BONUS AT LEVEL PCT:",
+        "value": "66",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

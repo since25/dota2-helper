@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>昆卡（Kunkka）</h1>
-        <div class="muted">Kunkka · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Kunkka · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,443 @@
       </div>
       <a href="./kunkka.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Torrent</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>movespeed_bonus</code></td>
+      <td>MOVE SLOW:</td>
+      <td>-40%</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.4</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>percent_instant</code></td>
+      <td>PERCENT INSTANT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Torrent</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>cleave_starting_width</code></td>
+      <td>CLEAVE STARTING WIDTH:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>cleave_ending_width</code></td>
+      <td>CLEAVE ENDING WIDTH:</td>
+      <td>500/550/600/650</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>cleave_distance</code></td>
+      <td>CLEAVE RANGE:</td>
+      <td>650/775/900/1025</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>damage_bonus</code></td>
+      <td>DAMAGE BONUS:</td>
+      <td>35/70/105/140</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>movespeed_slow</code></td>
+      <td>MOVESPEED SLOW:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>movespeed_slow_duration</code></td>
+      <td>MOVESPEED SLOW DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>cooldown_reduction_per_hero_hit</code></td>
+      <td>HERO HIT COOLDOWN REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>pierces_armor</code></td>
+      <td>PIERCES ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Tidebringer</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>duration</code></td>
+      <td>ENEMY DELAY:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>allied_duration</code></td>
+      <td>ALLIED DELAY:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>fow_range</code></td>
+      <td>FOW RANGE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>fow_duration</code></td>
+      <td>FOW DURATION:</td>
+      <td>5.94</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>ally_ms</code></td>
+      <td>ALLY MS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>ally_armor</code></td>
+      <td>ALLY ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>rum_allies_radius</code></td>
+      <td>RUM SPLASH RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>buff_duration</code></td>
+      <td>RUM DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>movespeed_bonus</code></td>
+      <td>MOVESPEED BONUS:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>ghostship_absorb</code></td>
+      <td>GHOSTSHIP ABSORB:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>X Marks the Spot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>wave_distance_tooltip</code></td>
+      <td>WAVE DISTANCE:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1050</td>
+    </tr>
+  
+    <tr>
+      <td>Tidal Wave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>tooltip_delay</code></td>
+      <td>IMPACT DELAY:</td>
+      <td>3.1</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>ghostship_distance</code></td>
+      <td>RANGE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>ghostship_width</code></td>
+      <td>WIDTH:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>ghostship_speed</code></td>
+      <td>GHOSTSHIP SPEED:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>rum_factor</code></td>
+      <td>RUM FACTOR:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>num_cannon_volleys</code></td>
+      <td>NUM CANNON VOLLEYS:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>base_cannon_rotation</code></td>
+      <td>BASE CANNON ROTATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>rotation_per_cannon</code></td>
+      <td>ROTATION PER CANNON:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>initial_cannon_offset</code></td>
+      <td>INITIAL CANNON OFFSET:</td>
+      <td>-150</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>distance_between_cannons</code></td>
+      <td>DISTANCE BETWEEN CANNONS:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Ghostship</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Kunkka&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Torrent&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;torrent_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;damage_tick_interval&quot;
+    },
+    &quot;Tidebringer&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;cleave_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;X Marks the Spot&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Tidal Wave&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Ghostship&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Return&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +565,7 @@
           <div class="muted">Torrent · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +618,7 @@
           <div class="muted">Tidebringer · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +671,7 @@
           <div class="muted">X Marks the Spot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +710,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +724,7 @@
           <div class="muted">Tidal Wave · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +777,7 @@
           <div class="muted">Ghostship · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +948,7 @@
       &quot;name&quot;: &quot;Torrent&quot;,
       &quot;displayName&quot;: &quot;洪流（Torrent）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -568,7 +1009,7 @@
       &quot;name&quot;: &quot;Tidebringer&quot;,
       &quot;displayName&quot;: &quot;潮汐使者（Tidebringer）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
@@ -621,10 +1062,10 @@
       &quot;name&quot;: &quot;X Marks the Spot&quot;,
       &quot;displayName&quot;: &quot;X标记（X Marks the Spot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         50,
@@ -668,9 +1109,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -679,7 +1120,7 @@
       &quot;name&quot;: &quot;Tidal Wave&quot;,
       &quot;displayName&quot;: &quot;潮汐波（Tidal Wave）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -722,7 +1163,7 @@
       &quot;name&quot;: &quot;Ghostship&quot;,
       &quot;displayName&quot;: &quot;幽灵船（Ghostship）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -770,7 +1211,467 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Kunkka&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Torrent&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;torrent_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;damage_tick_interval&quot;
+        },
+        &quot;Tidebringer&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;cleave_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;X Marks the Spot&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Tidal Wave&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Ghostship&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Return&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;percent_instant&quot;,
+        &quot;label&quot;: &quot;PERCENT INSTANT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Torrent&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;cleave_starting_width&quot;,
+        &quot;label&quot;: &quot;CLEAVE STARTING WIDTH:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;cleave_ending_width&quot;,
+        &quot;label&quot;: &quot;CLEAVE ENDING WIDTH:&quot;,
+        &quot;value&quot;: &quot;500/550/600/650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;cleave_distance&quot;,
+        &quot;label&quot;: &quot;CLEAVE RANGE:&quot;,
+        &quot;value&quot;: &quot;650/775/900/1025&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;damage_bonus&quot;,
+        &quot;label&quot;: &quot;DAMAGE BONUS:&quot;,
+        &quot;value&quot;: &quot;35/70/105/140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;movespeed_slow&quot;,
+        &quot;label&quot;: &quot;MOVESPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;movespeed_slow_duration&quot;,
+        &quot;label&quot;: &quot;MOVESPEED SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_per_hero_hit&quot;,
+        &quot;label&quot;: &quot;HERO HIT COOLDOWN REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;pierces_armor&quot;,
+        &quot;label&quot;: &quot;PIERCES ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidebringer&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;ENEMY DELAY:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;allied_duration&quot;,
+        &quot;label&quot;: &quot;ALLIED DELAY:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;fow_range&quot;,
+        &quot;label&quot;: &quot;FOW RANGE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;fow_duration&quot;,
+        &quot;label&quot;: &quot;FOW DURATION:&quot;,
+        &quot;value&quot;: &quot;5.94&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;ally_ms&quot;,
+        &quot;label&quot;: &quot;ALLY MS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;ally_armor&quot;,
+        &quot;label&quot;: &quot;ALLY ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;rum_allies_radius&quot;,
+        &quot;label&quot;: &quot;RUM SPLASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;RUM DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;ghostship_absorb&quot;,
+        &quot;label&quot;: &quot;GHOSTSHIP ABSORB:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;X Marks the Spot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;wave_distance_tooltip&quot;,
+        &quot;label&quot;: &quot;WAVE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1050&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Tidal Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;tooltip_delay&quot;,
+        &quot;label&quot;: &quot;IMPACT DELAY:&quot;,
+        &quot;value&quot;: &quot;3.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;ghostship_distance&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;ghostship_width&quot;,
+        &quot;label&quot;: &quot;WIDTH:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;ghostship_speed&quot;,
+        &quot;label&quot;: &quot;GHOSTSHIP SPEED:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;rum_factor&quot;,
+        &quot;label&quot;: &quot;RUM FACTOR:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;num_cannon_volleys&quot;,
+        &quot;label&quot;: &quot;NUM CANNON VOLLEYS:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;base_cannon_rotation&quot;,
+        &quot;label&quot;: &quot;BASE CANNON ROTATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;rotation_per_cannon&quot;,
+        &quot;label&quot;: &quot;ROTATION PER CANNON:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;initial_cannon_offset&quot;,
+        &quot;label&quot;: &quot;INITIAL CANNON OFFSET:&quot;,
+        &quot;value&quot;: &quot;-150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;distance_between_cannons&quot;,
+        &quot;label&quot;: &quot;DISTANCE BETWEEN CANNONS:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kunkka&quot;,
+        &quot;ability&quot;: &quot;Ghostship&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

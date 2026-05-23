@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,403 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>宙斯（Zeus）</h1>
-        <div class="muted">Zeus · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Zeus · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 6</span>
-          <span>组件 6</span>
+          <span>技能 7</span>
+          <span>组件 7</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./zeus.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>radius</code></td>
+      <td>JUMP RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>jump_count</code></td>
+      <td>JUMPS:</td>
+      <td>5/7/9/11</td>
+    </tr>
+  
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>has_unlimited_jumps</code></td>
+      <td>HAS UNLIMITED JUMPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>jump_delay</code></td>
+      <td>JUMP DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Arc Lightning</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>true_sight_radius</code></td>
+      <td>TRUE SIGHT RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>sight_radius_day</code></td>
+      <td>SIGHT RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>sight_radius_night</code></td>
+      <td>SIGHT RADIUS NIGHT:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>spread_aoe</code></td>
+      <td>SPREAD AOE:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>ministun_duration</code></td>
+      <td>MINISTUN DURATION:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>creep_damage_bonus_pct</code></td>
+      <td>CREEP DAMAGE BONUS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/750/800/850</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Bolt</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>hop_distance</code></td>
+      <td>LEAP DISTANCE:</td>
+      <td>375/450/525/600</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>hop_duration</code></td>
+      <td>HOP DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>hop_height</code></td>
+      <td>HOP HEIGHT:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>range</code></td>
+      <td>SHOCK RANGE:</td>
+      <td>700/800/900/1000</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>move_slow</code></td>
+      <td>MOVE SPEED SLOW:</td>
+      <td>80</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>aspd_slow</code></td>
+      <td>ATTACK SPEED SLOW:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>targets</code></td>
+      <td>TARGETS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Heavenly Jump</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>26/22/18/14</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>cloud_duration</code></td>
+      <td>DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>cloud_radius</code></td>
+      <td>RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>hits_to_kill_tooltip</code></td>
+      <td>HITS TO DESTROY:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>creep_hits_to_kill_tooltip</code></td>
+      <td>CREEP HITS TO DESTROY:</td>
+      <td>16</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>cloud_bounty_tooltip</code></td>
+      <td>CLOUD BOUNTY TOOLTIP:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nimbus</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Hands</td>
+      <td><code>attack_speed_bonus</code></td>
+      <td>BONUS ATTACK SPEED:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Hands</td>
+      <td><code>arc_lightning_damage_illusion_pct</code></td>
+      <td>ARC LIGHTNING DAMAGE ILLUSION PCT:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Hands</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Thundergod&#39;s Wrath</td>
+      <td><code>sight_radius_day</code></td>
+      <td>TRUE SIGHT RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Thundergod&#39;s Wrath</td>
+      <td><code>sight_radius_night</code></td>
+      <td>SIGHT RADIUS NIGHT:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Thundergod&#39;s Wrath</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Zeus&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed static field, arc lightning, lightning bolt, jump, hands, and ultimate fields against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Arc Lightning&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;arc_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Lightning Bolt&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;sight_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Heavenly Jump&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Nimbus&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;cloud_bolt_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;nimbus_bolt_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;nimbus_bolt_count&quot;
+      ],
+      &quot;reason&quot;: &quot;雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。&quot;
+    },
+    &quot;Lightning Hands&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;arc_lightning_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;arc_lightning_damage&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;arc_lightning_damage&quot;
+      ],
+      &quot;reason&quot;: &quot;霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。&quot;
+    },
+    &quot;Thundergod&#39;s Wrath&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;sight_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Static Field&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_health_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_current_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;enemy_current_health&quot;,
+        &quot;spell_hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;enemy_current_health&quot;,
+        &quot;spell_hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +516,7 @@
           <div class="muted">Arc Lightning · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +569,7 @@
           <div class="muted">Lightning Bolt · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +622,7 @@
           <div class="muted">Heavenly Jump · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -267,7 +659,7 @@
         <td>Magical</td>
         <td>25</td><td>50</td><td>75</td><td>100</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.5 / 0.5 / 0.5 / 0.5</div></td>
+        <td><div><code>durationByAbilityLevel</code>: 1.4 / 1.4 / 1.4 / 1.4</div></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
@@ -283,8 +675,8 @@
           <div class="muted">Nimbus · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
@@ -309,20 +701,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Nimbus:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Nimbus:state_scaling:cloud_bolt_interval</code>
+          <div class="muted">cloud_bolt_interval</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
           <div class="muted">reference_only</div>
         </td>
-        <td>Unknown</td>
-        <td>0</td><td>-</td><td>-</td><td>-</td>
+        <td>Magical</td>
+        <td>2.5</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: nimbus_bolt_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,8 +728,8 @@
           <div class="muted">Lightning Hands · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
@@ -362,20 +754,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Lightning Hands:debuff_reference:attack_speed_bonus</code>
-          <div class="muted">attack_speed_bonus</div>
+          <code>Lightning Hands:state_scaling:arc_lightning_damage_pct</code>
+          <div class="muted">arc_lightning_damage_pct</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
           <div class="muted">reference_only</div>
         </td>
-        <td>Unknown</td>
-        <td>30</td><td>-</td><td>-</td><td>-</td>
+        <td>Magical</td>
+        <td>50</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: attack_count / arc_lightning_damage</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +781,7 @@
           <div class="muted">Thundergod&#39;s Wrath · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -429,6 +821,59 @@
         <td><div><code>durationByAbilityLevel</code>: 3 / 3 / 3</div></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>静电场（Static Field）</h2>
+          <div class="muted">Static Field · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Static Field:state_scaling:damage_health_pct</code>
+          <div class="muted">damage_health_pct</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>3.45</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: enemy_current_health / spell_hit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -560,7 +1005,7 @@
       &quot;name&quot;: &quot;Arc Lightning&quot;,
       &quot;displayName&quot;: &quot;弧形闪电（Arc Lightning）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -608,7 +1053,7 @@
       &quot;name&quot;: &quot;Lightning Bolt&quot;,
       &quot;displayName&quot;: &quot;雷击（Lightning Bolt）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -663,7 +1108,7 @@
       &quot;name&quot;: &quot;Heavenly Jump&quot;,
       &quot;displayName&quot;: &quot;神圣一跳（Heavenly Jump）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -700,10 +1145,10 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              0.5,
-              0.5,
-              0.5,
-              0.5
+              1.4,
+              1.4,
+              1.4,
+              1.4
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
@@ -718,10 +1163,10 @@
       &quot;name&quot;: &quot;Nimbus&quot;,
       &quot;displayName&quot;: &quot;雷云（Nimbus）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         275
       ],
@@ -730,35 +1175,37 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Nimbus:debuff_reference:abilitycastrange&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Nimbus:state_scaling:cloud_bolt_interval&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;cloud_bolt_interval&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            0
+            2.5
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
+            &quot;requiredInputs&quot;: [
+              &quot;nimbus_bolt_count&quot;
+            ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。&quot;
           ]
         }
       ]
@@ -767,10 +1214,10 @@
       &quot;name&quot;: &quot;Lightning Hands&quot;,
       &quot;displayName&quot;: &quot;霹雳之手（Lightning Hands）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0
       ],
@@ -779,35 +1226,38 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Lightning Hands:debuff_reference:attack_speed_bonus&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Lightning Hands:state_scaling:arc_lightning_damage_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;attack_speed_bonus&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;arc_lightning_damage_pct&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            30
+            50
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;attack_speed&quot;,
-            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
+            &quot;requiredInputs&quot;: [
+              &quot;attack_count&quot;,
+              &quot;arc_lightning_damage&quot;
+            ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。&quot;
           ]
         }
       ]
@@ -816,7 +1266,7 @@
       &quot;name&quot;: &quot;Thundergod&#39;s Wrath&quot;,
       &quot;displayName&quot;: &quot;雷神之怒（Thundergod&#39;s Wrath）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -862,9 +1312,458 @@
           &quot;caveats&quot;: []
         }
       ]
+    },
+    {
+      &quot;name&quot;: &quot;Static Field&quot;,
+      &quot;displayName&quot;: &quot;静电场（Static Field）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Static Field:state_scaling:damage_health_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_health_pct&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            3.45
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;enemy_current_health&quot;,
+              &quot;spell_hit_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。&quot;
+          ]
+        }
+      ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Zeus&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed static field, arc lightning, lightning bolt, jump, hands, and ultimate fields against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Arc Lightning&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;arc_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Lightning Bolt&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;sight_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Heavenly Jump&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Nimbus&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;cloud_bolt_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;nimbus_bolt_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;nimbus_bolt_count&quot;
+          ],
+          &quot;reason&quot;: &quot;雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。&quot;
+        },
+        &quot;Lightning Hands&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;arc_lightning_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;arc_lightning_damage&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;arc_lightning_damage&quot;
+          ],
+          &quot;reason&quot;: &quot;霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。&quot;
+        },
+        &quot;Thundergod&#39;s Wrath&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;sight_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Static Field&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_health_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_current_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;enemy_current_health&quot;,
+            &quot;spell_hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;enemy_current_health&quot;,
+            &quot;spell_hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;JUMP RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;jump_count&quot;,
+        &quot;label&quot;: &quot;JUMPS:&quot;,
+        &quot;value&quot;: &quot;5/7/9/11&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;has_unlimited_jumps&quot;,
+        &quot;label&quot;: &quot;HAS UNLIMITED JUMPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;jump_delay&quot;,
+        &quot;label&quot;: &quot;JUMP DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Arc Lightning&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;true_sight_radius&quot;,
+        &quot;label&quot;: &quot;TRUE SIGHT RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;sight_radius_day&quot;,
+        &quot;label&quot;: &quot;SIGHT RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;sight_radius_night&quot;,
+        &quot;label&quot;: &quot;SIGHT RADIUS NIGHT:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;spread_aoe&quot;,
+        &quot;label&quot;: &quot;SPREAD AOE:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;ministun_duration&quot;,
+        &quot;label&quot;: &quot;MINISTUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;creep_damage_bonus_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/750/800/850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;hop_distance&quot;,
+        &quot;label&quot;: &quot;LEAP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;375/450/525/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;hop_duration&quot;,
+        &quot;label&quot;: &quot;HOP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;hop_height&quot;,
+        &quot;label&quot;: &quot;HOP HEIGHT:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;SHOCK RANGE:&quot;,
+        &quot;value&quot;: &quot;700/800/900/1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;aspd_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;targets&quot;,
+        &quot;label&quot;: &quot;TARGETS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Heavenly Jump&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;26/22/18/14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;cloud_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;cloud_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;hits_to_kill_tooltip&quot;,
+        &quot;label&quot;: &quot;HITS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;creep_hits_to_kill_tooltip&quot;,
+        &quot;label&quot;: &quot;CREEP HITS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;cloud_bounty_tooltip&quot;,
+        &quot;label&quot;: &quot;CLOUD BOUNTY TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Nimbus&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Hands&quot;,
+        &quot;key&quot;: &quot;attack_speed_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Hands&quot;,
+        &quot;key&quot;: &quot;arc_lightning_damage_illusion_pct&quot;,
+        &quot;label&quot;: &quot;ARC LIGHTNING DAMAGE ILLUSION PCT:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Lightning Hands&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Thundergod&#39;s Wrath&quot;,
+        &quot;key&quot;: &quot;sight_radius_day&quot;,
+        &quot;label&quot;: &quot;TRUE SIGHT RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Thundergod&#39;s Wrath&quot;,
+        &quot;key&quot;: &quot;sight_radius_night&quot;,
+        &quot;label&quot;: &quot;SIGHT RADIUS NIGHT:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Zeus&quot;,
+        &quot;ability&quot;: &quot;Thundergod&#39;s Wrath&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

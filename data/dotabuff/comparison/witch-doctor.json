@@ -1,0 +1,184 @@
+{
+  "hero": "Witch Doctor",
+  "source": "dotabuff",
+  "modelSource": "manual",
+  "review": {
+    "status": "reviewed",
+    "reviewer": "local",
+    "updatedAt": "2026-05-23",
+    "notes": [
+      "Reviewed cask/maledict/death ward fields for first maintenance batch."
+    ]
+  },
+  "abilityCount": 6,
+  "missingModelCount": 0,
+  "abilities": [
+    {
+      "dotabuffName": "驱邪护符",
+      "hotkey": "",
+      "isInnate": true,
+      "modelName": "Gris-Gris",
+      "modelStatus": "ignored",
+      "modelType": "",
+      "modelKeys": [],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "麻痹药剂",
+      "hotkey": "Q",
+      "isInnate": false,
+      "modelName": "Paralyzing Cask",
+      "modelStatus": "implemented",
+      "modelType": "multi_wave",
+      "modelKeys": [
+        "damagePerWaveKey:base_damage",
+        "waveCountKey:bounces"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "眩晕时间",
+          "value": "0.8"
+        },
+        {
+          "label": "基础伤害",
+          "value": "55 / 70 / 85 / 100"
+        },
+        {
+          "label": "弹跳次数",
+          "value": "3 / 4 / 5 / 6"
+        },
+        {
+          "label": "每次弹跳增加伤害",
+          "value": "20"
+        }
+      ],
+      "resourceLines": [
+        "20 / 18 / 16 / 14",
+        "80 / 100 / 120 / 140",
+        "600"
+      ]
+    },
+    {
+      "dotabuffName": "巫毒疗法",
+      "hotkey": "W",
+      "isInnate": false,
+      "modelName": "Voodoo Restoration",
+      "modelStatus": "reference_only",
+      "modelType": "debuff_reference",
+      "modelKeys": [
+        "valueKey:heal"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "每秒消耗魔法",
+          "value": "9 / 12 / 15 / 18"
+        },
+        {
+          "label": "作用范围",
+          "value": "650"
+        },
+        {
+          "label": "治疗",
+          "value": "20 / 30 / 40 / 50"
+        },
+        {
+          "label": "自身治疗",
+          "value": "0%"
+        }
+      ],
+      "resourceLines": [
+        "25"
+      ]
+    },
+    {
+      "dotabuffName": "巫蛊咒术",
+      "hotkey": "E",
+      "isInnate": false,
+      "modelName": "Maledict",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:dmg",
+        "durationKey:abilityduration"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "作用范围",
+          "value": "200"
+        },
+        {
+          "label": "爆发伤害",
+          "value": "16% / 24% / 32% / 40%"
+        },
+        {
+          "label": "持续时间",
+          "value": "12"
+        }
+      ],
+      "resourceLines": [
+        "30 / 26 / 22 / 18",
+        "105 / 110 / 115 / 120",
+        "600"
+      ]
+    },
+    {
+      "dotabuffName": "巫毒变身术",
+      "hotkey": "D",
+      "isInnate": false,
+      "modelName": "Voodoo Switcheroo",
+      "modelStatus": "reference_only",
+      "modelType": "debuff_reference",
+      "modelKeys": [
+        "valueKey:duration"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "2.5"
+        },
+        {
+          "label": "攻击速度降低",
+          "value": "45"
+        }
+      ],
+      "resourceLines": [
+        "50",
+        "200"
+      ]
+    },
+    {
+      "dotabuffName": "死亡守卫",
+      "hotkey": "R",
+      "isInnate": false,
+      "modelName": "Death Ward",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:damage",
+        "durationKey:abilitychanneltime"
+      ],
+      "dotabuffDamageType": "纯粹",
+      "dotabuffFields": [
+        {
+          "label": "攻击力",
+          "value": "60 / 90 / 120"
+        },
+        {
+          "label": "攻击距离",
+          "value": "600 / 625 / 650"
+        }
+      ],
+      "resourceLines": [
+        "100 / 90 / 80",
+        "200",
+        "500"
+      ]
+    }
+  ]
+}

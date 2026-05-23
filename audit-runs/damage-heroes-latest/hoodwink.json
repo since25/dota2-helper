@@ -121,7 +121,7 @@
       "name": "Acorn Shot",
       "displayName": "爆栗出击（Acorn Shot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Bushwhack",
       "displayName": "野地奇袭（Bushwhack）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,10 +231,10 @@
       "name": "Scurry",
       "displayName": "密林奔走（Scurry）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         35
       ],
@@ -269,9 +269,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -280,10 +280,10 @@
       "name": "Decoy",
       "displayName": "诱敌奇术（Decoy）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60
       ],
@@ -318,9 +318,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -329,7 +329,7 @@
       "name": "Hunter's Boomerang",
       "displayName": "猎手旋镖（Hunter's Boomerang）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -372,7 +372,7 @@
       "name": "Sharpshooter",
       "displayName": "一箭穿心（Sharpshooter）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -426,5 +426,590 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Hoodwink",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Acorn Shot": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "acorn_shot_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "debuff_duration"
+        },
+        "Bushwhack": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "total_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "debuff_duration"
+        },
+        "Scurry": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Decoy": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Hunter's Boomerang": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "mark_duration"
+        },
+        "Sharpshooter": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "max_damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        },
+        "End Sharpshooter": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "bonus_range",
+        "label": "BONUS RANGE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "base_damage_pct",
+        "label": "BASE DAMAGE:",
+        "value": "80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "bounce_count",
+        "label": "BOUNCE COUNT:",
+        "value": "2/3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "bounce_range",
+        "label": "BOUNCE RANGE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "bounce_delay",
+        "label": "BOUNCE DELAY:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "2200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "can_bounce_off_of_trees",
+        "label": "CAN BOUNCE OFF OF TREES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "bounces_after_tree_bounce",
+        "label": "BOUNCES AFTER TREE BOUNCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "675/700/725/750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Acorn Shot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "trap_radius",
+        "label": "RADIUS:",
+        "value": "265",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "visual_height",
+        "label": "VISUAL HEIGHT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Bushwhack",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "redirect_chance",
+        "label": "REDIRECT CHANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "movement_speed_pct",
+        "label": "BONUS MOVEMENT SPEED:",
+        "value": "20%/25%/30%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "duration",
+        "label": "BUFF DURATION:",
+        "value": "3.5/4/4.5/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "evasion_multiplier",
+        "label": "EVASION MULTIPLIER:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "charge_restore_time",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "30/24/18/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Scurry",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "duration",
+        "label": "ILLUSION DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "decoy_detonate_radius",
+        "label": "BUSHWHACK RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "decoy_stun_duration",
+        "label": "BUSHWHACK DURATION:",
+        "value": "1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "images_do_damage_percent",
+        "label": "IMAGES DO DAMAGE PERCENT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "images_take_damage_percent",
+        "label": "IMAGES TAKE DAMAGE PERCENT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "sharpshooter_damage_pct",
+        "label": "SHARPSHOOTER DAMAGE:",
+        "value": "60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Decoy",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "spell_amp",
+        "label": "INCOMING SPELL DAMAGE AMP:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "status_resistance",
+        "label": "STATUS RESISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "spread",
+        "label": "SPREAD:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "min_throw_duration",
+        "label": "MIN THROW DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "max_throw_duration",
+        "label": "MAX THROW DURATION:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Hunter's Boomerang",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "arrow_speed",
+        "label": "ARROW SPEED:",
+        "value": "2200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "arrow_width",
+        "label": "ARROW WIDTH:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "arrow_range",
+        "label": "ARROW RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "arrow_vision",
+        "label": "ARROW VISION:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "max_charge_time",
+        "label": "MAX WIND-UP TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "recoil_distance",
+        "label": "RECOIL DISTANCE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "recoil_height",
+        "label": "RECOIL HEIGHT:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "recoil_duration",
+        "label": "RECOIL DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "max_slow_debuff_duration",
+        "label": "MAX DEBUFF DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "misfire_time",
+        "label": "MISFIRE TIME:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "slow_move_pct",
+        "label": "MOVE SLOW:",
+        "value": "30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "vision_along_indicator",
+        "label": "VISION ALONG INDICATOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "vision_radius_buffer",
+        "label": "VISION RADIUS BUFFER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "base_power",
+        "label": "BASE POWER:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "quick_draw_tooltip_pct_cooldown_reduction",
+        "label": "QUICK DRAW TOOLTIP PCT COOLDOWN REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "quick_draw_tooltip_efficacy_pct",
+        "label": "QUICK DRAW TOOLTIP EFFICACY PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Hoodwink",
+        "ability": "Sharpshooter",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

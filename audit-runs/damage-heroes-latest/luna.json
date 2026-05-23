@@ -121,7 +121,7 @@
       "name": "Lucent Beam",
       "displayName": "月光（Lucent Beam）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Lunar Orbit",
       "displayName": "环月（Lunar Orbit）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -237,10 +237,10 @@
       "name": "Eclipse",
       "displayName": "月蚀（Eclipse）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150,
         200,
@@ -277,13 +277,300 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Luna",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Lucent Beam": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "beam_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Lunar Orbit": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "rotating_glaives_collision_damage",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "Moon Glaives": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Lunar Blessing": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Eclipse": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "glaives_fired",
+        "label": "GLAIVES FIRED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "glaives_attack_radius",
+        "label": "GLAIVES ATTACK RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "damage_buff_duration",
+        "label": "DAMAGE BUFF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "damage_buff_per_beam",
+        "label": "DAMAGE BUFF PER BEAM:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lucent Beam",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_duration",
+        "label": "DURATION:",
+        "value": "5/6/7/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives",
+        "label": "ROTATING GLAIVES:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_movement_radius",
+        "label": "ROTATING GLAIVES MOVEMENT RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_movement_radius_expand_speed_scale",
+        "label": "ROTATING GLAIVES MOVEMENT RADIUS EXPAND SPEED SCALE:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_hit_radius",
+        "label": "COLLISION RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_speed",
+        "label": "ROTATING GLAIVES SPEED:",
+        "value": "160",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaive_collision_speed_damage_tooltip",
+        "label": "ROTATING GLAIVE COLLISION SPEED DAMAGE TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "rotating_glaives_damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "8%/12%/16%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Orbit",
+        "key": "bonus_movement_speed",
+        "label": "BONUS MOVEMENT SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Moon Glaives",
+        "key": "range",
+        "label": "BOUNCE RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Moon Glaives",
+        "key": "bounces",
+        "label": "BOUNCES:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Moon Glaives",
+        "key": "damage_reduction_percent",
+        "label": "DAMAGE REDUCTION PER BOUNCE:",
+        "value": "50%/45%/40%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Blessing",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Lunar Blessing",
+        "key": "bonus_night_vision",
+        "label": "BONUS NIGHT VISION:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "beams",
+        "label": "TOTAL BEAMS:",
+        "value": "6/9/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "beam_interval",
+        "label": "BEAM INTERVAL:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "beam_interval_scepter",
+        "label": "BEAM INTERVAL SCEPTER:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "hit_count",
+        "label": "MAX BEAMS PER UNIT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "abilityduration",
+        "label": "ECLIPSE DURATION:",
+        "value": "2.4/4.2/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "night_duration",
+        "label": "NIGHT DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Luna",
+        "ability": "Eclipse",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

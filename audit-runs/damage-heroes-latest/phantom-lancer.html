@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>幻影长矛手（Phantom Lancer）</h1>
-        <div class="muted">Phantom Lancer · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Phantom Lancer · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,362 @@
       </div>
       <a href="./phantom-lancer.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>lance_speed</code></td>
+      <td>LANCE SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>movement_speed_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-14%/-21%/-28%/-35%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>illusion_duration</code></td>
+      <td>ILLUSION DURATION:</td>
+      <td>3.5/5/6.5/8</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>illusion_damage_out_pct</code></td>
+      <td>ILLUSION DAMAGE OUT PCT:</td>
+      <td>-85</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>tooltip_illusion_damage</code></td>
+      <td>ILLUSION DAMAGE:</td>
+      <td>15%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>illusion_damage_in_pct</code></td>
+      <td>ILLUSION DAMAGE IN PCT:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>tooltip_illusion_total_damage_in_pct</code></td>
+      <td>ILLUSION DAMAGE TAKEN:</td>
+      <td>400%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>fake_lance_distance</code></td>
+      <td>FAKE LANCE DISTANCE:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600/650/700/750</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Lance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_1_damage_out_pct</code></td>
+      <td>ILLUSION 1 DAMAGE OUT PCT:</td>
+      <td>-100</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_1_damage_in_pct</code></td>
+      <td>ILLUSION 1 DAMAGE IN PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_2_damage_out_pct</code></td>
+      <td>ILLUSION 2 DAMAGE OUT PCT:</td>
+      <td>-80</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_2_damage_in_pct</code></td>
+      <td>ILLUSION 2 DAMAGE IN PCT:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>target_aoe</code></td>
+      <td>TARGET AREA SIZE:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>search_radius</code></td>
+      <td>ILLUSION GATHER RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>delay</code></td>
+      <td>REAPPEAR DELAY:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_duration</code></td>
+      <td>DOPPELGANGER DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_extended_duration</code></td>
+      <td>ILLUSION DURATION EXTENSION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>illusion_2_amount</code></td>
+      <td>ILLUSION 2 AMOUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>hp_missing_per_extra_illusion_pct</code></td>
+      <td>HP MISSING PER EXTRA ILLUSION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Doppelganger</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Rush</td>
+      <td><code>min_distance</code></td>
+      <td>MIN RUSH DISTANCE:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Rush</td>
+      <td><code>max_distance</code></td>
+      <td>MAX RUSH DISTANCE:</td>
+      <td>600/675/750/825</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Rush</td>
+      <td><code>bonus_speed</code></td>
+      <td>BONUS SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Rush</td>
+      <td><code>bonus_agility</code></td>
+      <td>BONUS AGILITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Rush</td>
+      <td><code>agility_duration</code></td>
+      <td>BONUS AGILITY DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Armaments</td>
+      <td><code>outgoing_floor</code></td>
+      <td>MIN DAMAGE:</td>
+      <td>17%</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Armaments</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>max_illusions</code></td>
+      <td>MAX ILLUSIONS:</td>
+      <td>6/8/10</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>proc_chance_pct</code></td>
+      <td>HERO TRIGGER CHANCE:</td>
+      <td>40%/45%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>illusion_proc_chance_pct</code></td>
+      <td>ILLUSION TRIGGER CHANCE:</td>
+      <td>9%</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>illusion_duration</code></td>
+      <td>ILLUSION DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>illusion_from_illusion_duration</code></td>
+      <td>ILLUSION FROM ILLUSION DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>illusion_damage_out_pct</code></td>
+      <td>ILLUSION DAMAGE OUT PCT:</td>
+      <td>-85</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>tooltip_illusion_damage</code></td>
+      <td>ILLUSION DAMAGE:</td>
+      <td>15%</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>illusion_damage_in_pct</code></td>
+      <td>ILLUSION DAMAGE IN PCT:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Juxtapose</td>
+      <td><code>tooltip_total_illusion_damage_in_pct</code></td>
+      <td>ILLUSION DAMAGE TAKEN:</td>
+      <td>600%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Spirit Lance&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;lance_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Doppelganger&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Phantom Rush&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;evasion&quot;,
+      &quot;semanticType&quot;: &quot;defense.evasion.percent&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;stackGroup&quot;: &quot;evasion&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Illusory Armaments&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Juxtapose&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;attackDamageKey&quot;: &quot;tooltip_illusion_damage&quot;,
+      &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;,
+      &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;illusion_attack_count&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;reason&quot;: &quot;幻象输出取决于幻象数量、攻击次数和本体攻击力。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +484,7 @@
           <div class="muted">Spirit Lance · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +537,7 @@
           <div class="muted">Doppelganger · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +576,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +590,7 @@
           <div class="muted">Phantom Rush · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +629,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: survivability</div><div><code>affects</code>: survivability</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,9 +643,9 @@
           <div class="muted">Juxtapose · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">state_scaling</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">summon_attack</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -309,20 +669,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Juxtapose:state_scaling:tooltip_illusion_damage</code>
+          <code>Juxtapose:summon_attack:tooltip_illusion_damage</code>
           <div class="muted">tooltip_illusion_damage</div>
         </td>
         <td>
-          <span class="pill">state_scaling</span>
-          <span class="pill secondary">state_scaling</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">summon_attack</span>
+          <span class="pill secondary">summon_attack</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Unknown</td>
         <td>15</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: source_damage / hit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>state_scaling</td>
-        <td><ul><li>来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><div><code>attackCountInput</code>: illusion_attack_count</div></td>
+        <td>attackCount * summonAttackDamage</td>
+        <td><ul><li>召唤物、守卫或代理单位伤害需要输入攻击次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +814,7 @@
       &quot;name&quot;: &quot;Spirit Lance&quot;,
       &quot;displayName&quot;: &quot;灵魂之矛（Spirit Lance）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,10 +869,10 @@
       &quot;name&quot;: &quot;Doppelganger&quot;,
       &quot;displayName&quot;: &quot;神行百变（Doppelganger）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         70
       ],
@@ -550,9 +910,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -561,10 +921,10 @@
       &quot;name&quot;: &quot;Phantom Rush&quot;,
       &quot;displayName&quot;: &quot;幻影冲锋（Phantom Rush）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [
         15,
@@ -603,9 +963,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -614,16 +974,16 @@
       &quot;name&quot;: &quot;Juxtapose&quot;,
       &quot;displayName&quot;: &quot;并列（Juxtapose）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;reason&quot;: &quot;幻象输出取决于幻象数量、攻击次数和本体攻击力。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Juxtapose:state_scaling:tooltip_illusion_damage&quot;,
-          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;id&quot;: &quot;Juxtapose:summon_attack:tooltip_illusion_damage&quot;,
+          &quot;kind&quot;: &quot;summon_attack&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
           &quot;label&quot;: &quot;tooltip_illusion_damage&quot;,
@@ -631,35 +991,395 @@
             15
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;totalFormula&quot;: &quot;attackCount * summonAttackDamage&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;state_scaling&quot;
+            &quot;type&quot;: &quot;runtime_summon_attack_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [
-              &quot;source_damage&quot;,
-              &quot;hit_count&quot;
-            ],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;reason&quot;: &quot;幻象输出取决于幻象数量、攻击次数和本体攻击力。&quot;,
           &quot;caveats&quot;: [
-            &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;召唤物、守卫或代理单位伤害需要输入攻击次数。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Spirit Lance&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;lance_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Doppelganger&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Phantom Rush&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;evasion&quot;,
+          &quot;semanticType&quot;: &quot;defense.evasion.percent&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;stackGroup&quot;: &quot;evasion&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Illusory Armaments&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Juxtapose&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;attackDamageKey&quot;: &quot;tooltip_illusion_damage&quot;,
+          &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;,
+          &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;illusion_attack_count&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;reason&quot;: &quot;幻象输出取决于幻象数量、攻击次数和本体攻击力。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;lance_speed&quot;,
+        &quot;label&quot;: &quot;LANCE SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-14%/-21%/-28%/-35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5/5/6.5/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;illusion_damage_out_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE OUT PCT:&quot;,
+        &quot;value&quot;: &quot;-85&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;tooltip_illusion_damage&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;illusion_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE IN PCT:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;tooltip_illusion_total_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE TAKEN:&quot;,
+        &quot;value&quot;: &quot;400%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;fake_lance_distance&quot;,
+        &quot;label&quot;: &quot;FAKE LANCE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600/650/700/750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Spirit Lance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_1_damage_out_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION 1 DAMAGE OUT PCT:&quot;,
+        &quot;value&quot;: &quot;-100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_1_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION 1 DAMAGE IN PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_2_damage_out_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION 2 DAMAGE OUT PCT:&quot;,
+        &quot;value&quot;: &quot;-80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_2_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION 2 DAMAGE IN PCT:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;target_aoe&quot;,
+        &quot;label&quot;: &quot;TARGET AREA SIZE:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;search_radius&quot;,
+        &quot;label&quot;: &quot;ILLUSION GATHER RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;REAPPEAR DELAY:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;DOPPELGANGER DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_extended_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION EXTENSION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;illusion_2_amount&quot;,
+        &quot;label&quot;: &quot;ILLUSION 2 AMOUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;hp_missing_per_extra_illusion_pct&quot;,
+        &quot;label&quot;: &quot;HP MISSING PER EXTRA ILLUSION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Doppelganger&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Phantom Rush&quot;,
+        &quot;key&quot;: &quot;min_distance&quot;,
+        &quot;label&quot;: &quot;MIN RUSH DISTANCE:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Phantom Rush&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX RUSH DISTANCE:&quot;,
+        &quot;value&quot;: &quot;600/675/750/825&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Phantom Rush&quot;,
+        &quot;key&quot;: &quot;bonus_speed&quot;,
+        &quot;label&quot;: &quot;BONUS SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Phantom Rush&quot;,
+        &quot;key&quot;: &quot;bonus_agility&quot;,
+        &quot;label&quot;: &quot;BONUS AGILITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Phantom Rush&quot;,
+        &quot;key&quot;: &quot;agility_duration&quot;,
+        &quot;label&quot;: &quot;BONUS AGILITY DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Illusory Armaments&quot;,
+        &quot;key&quot;: &quot;outgoing_floor&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE:&quot;,
+        &quot;value&quot;: &quot;17%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Illusory Armaments&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;max_illusions&quot;,
+        &quot;label&quot;: &quot;MAX ILLUSIONS:&quot;,
+        &quot;value&quot;: &quot;6/8/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;proc_chance_pct&quot;,
+        &quot;label&quot;: &quot;HERO TRIGGER CHANCE:&quot;,
+        &quot;value&quot;: &quot;40%/45%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;illusion_proc_chance_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION TRIGGER CHANCE:&quot;,
+        &quot;value&quot;: &quot;9%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;illusion_from_illusion_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION FROM ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;illusion_damage_out_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE OUT PCT:&quot;,
+        &quot;value&quot;: &quot;-85&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;tooltip_illusion_damage&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;illusion_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE IN PCT:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Lancer&quot;,
+        &quot;ability&quot;: &quot;Juxtapose&quot;,
+        &quot;key&quot;: &quot;tooltip_total_illusion_damage_in_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE TAKEN:&quot;,
+        &quot;value&quot;: &quot;600%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

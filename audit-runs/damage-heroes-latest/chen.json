@@ -121,7 +121,7 @@
       "name": "Penitence",
       "displayName": "赎罪（Penitence）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Holy Persuasion",
       "displayName": "神圣劝化（Holy Persuasion）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         110,
         130,
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,10 +228,10 @@
       "name": "Divine Favor",
       "displayName": "神力恩泽（Divine Favor）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75
       ],
@@ -269,9 +269,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -280,10 +280,10 @@
       "name": "Hand of God",
       "displayName": "上帝之手（Hand of God）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         200,
         300,
@@ -324,13 +324,293 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Chen",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Penitence": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Holy Persuasion": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Divine Favor": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Hand of God": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "heal_amount",
+          "semanticType": "defense.heal.flat",
+          "affects": "sustain",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "bonus_movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-12%/-18%/-24%/-30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "self_attack_range_bonus",
+        "label": "SELF ATTACK RANGE BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Penitence",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "max_units",
+        "label": "MAX UNITS:",
+        "value": "1/2/3/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "level_req",
+        "label": "CREEP MAX LEVEL:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "health_min",
+        "label": "HEALTH MINIMUM:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "gold_pct",
+        "label": "PERCENTAGE OF BOUNTY:",
+        "value": "25%/50%/75%/100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "movement_speed_bonus",
+        "label": "MOVE SPEED BONUS:",
+        "value": "5/10/20/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "damage_bonus",
+        "label": "BONUS DAMAGE:",
+        "value": "0%/6%/12%/18%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "is_martyr",
+        "label": "IS MARTYR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "current_hp_pct_tooltip",
+        "label": "CURRENT HP PCT TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "creep_ability_level",
+        "label": "CREEP ABILITY LEVEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "unsummon_time",
+        "label": "UNSUMMON TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Holy Persuasion",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "armor",
+        "label": "ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "heal_rate",
+        "label": "REGEN PER SEC:",
+        "value": "1.5/3/4.5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "aura_radius",
+        "label": "AURA RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "bonus_armor",
+        "label": "ARMOR:",
+        "value": "5/10/15/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "heal_amp",
+        "label": "HEAL AMPLIFICATION:",
+        "value": "5%/10%/15%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "creep_bonus",
+        "label": "CREEP BONUS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Divine Favor",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Hand of God",
+        "key": "hot_duration",
+        "label": "HOT DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Hand of God",
+        "key": "heal_per_second",
+        "label": "HEAL PER SECOND:",
+        "value": "20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chen",
+        "ability": "Hand of God",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

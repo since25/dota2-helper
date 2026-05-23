@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>死亡先知（Death Prophet）</h1>
-        <div class="muted">Death Prophet · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Death Prophet · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,329 @@
       </div>
       <a href="./death-prophet.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>110</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>range</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>slow_percent</code></td>
+      <td>SLOW PERCENT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Crypt Swarm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1750</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>damage_per_second</code></td>
+      <td>DAMAGE PER SECOND:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Silence</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>damage_pct</code></td>
+      <td>DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>siphon_buffer</code></td>
+      <td>SIPHON BUFFER:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Siphon</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>1/2/3/4</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>spirits</code></td>
+      <td>SPIRITS:</td>
+      <td>10/18/26</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>spirit_speed</code></td>
+      <td>SPIRIT SPEED:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>give_up_distance</code></td>
+      <td>GIVE UP DISTANCE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>min_damage</code></td>
+      <td>MIN DAMAGE:</td>
+      <td>62</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>max_damage</code></td>
+      <td>MAX DAMAGE:</td>
+      <td>67</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>heal_percent</code></td>
+      <td>LIFE DRAIN:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>ghost_spawn_rate</code></td>
+      <td>GHOST SPAWN RATE:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>duration_increase_per_kill</code></td>
+      <td>DURATION INCREASE PER KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>movement_bonus</code></td>
+      <td>ACTIVE MOVEMENT BONUS:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Exorcism</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Death Prophet&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed siphon/exorcism sustained fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Crypt Swarm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Silence&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;control.silence.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;沉默不直接造成伤害。&quot;
+    },
+    &quot;Spirit Siphon&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;haunt_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。&quot;
+    },
+    &quot;Exorcism&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;average_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;spirit_hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;spirit_hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +451,7 @@
           <div class="muted">Crypt Swarm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -161,7 +488,7 @@
         <td>Magical</td>
         <td>100</td><td>175</td><td>250</td><td>325</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0 / 0 / 0 / 0</div></td>
+        <td><span class="muted">-</span></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
@@ -177,7 +504,7 @@
           <div class="muted">Silence · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -203,8 +530,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Silence:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Silence:debuff_reference:abilityduration</code>
+          <div class="muted">abilityduration</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -212,11 +539,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>900</td><td>-</td><td>-</td><td>-</td>
+        <td>3.5</td><td>4</td><td>4.5</td><td>5</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: disable_window</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>沉默不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,8 +557,8 @@
           <div class="muted">Spirit Siphon · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -256,20 +583,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Spirit Siphon:instant_fixed:damage</code>
+          <code>Spirit Siphon:sustained:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>25</td><td>50</td><td>75</td><td>100</td>
-        <td></td>
+        <td>150 / 300 / 450 / 600</td>
         <td><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,8 +610,8 @@
           <div class="muted">Exorcism · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">conditional</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
@@ -309,20 +636,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Exorcism:conditional:min_damage</code>
-          <div class="muted">min_damage</div>
+          <code>Exorcism:state_scaling:average_damage</code>
+          <div class="muted">average_damage</div>
         </td>
         <td>
-          <span class="pill">conditional</span>
-          <span class="pill secondary">conditional</span>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
           <div class="muted">reference_only</div>
         </td>
         <td>Physical</td>
-        <td>62</td><td>-</td><td>-</td><td>-</td>
+        <td>64</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: 需要触发条件成立才造成伤害。</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>conditional</td>
-        <td><ul><li>条件伤害首轮模型只作为参考，不默认计入固定爆发。</li></ul></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: spirit_hit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +781,7 @@
       &quot;name&quot;: &quot;Crypt Swarm&quot;,
       &quot;displayName&quot;: &quot;地穴虫群（Crypt Swarm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -489,14 +816,7 @@
           &quot;formula&quot;: {
             &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              0,
-              0,
-              0,
-              0
-            ]
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
@@ -509,10 +829,10 @@
       &quot;name&quot;: &quot;Silence&quot;,
       &quot;displayName&quot;: &quot;沉默魔法（Silence）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;沉默不直接造成伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         90,
@@ -527,13 +847,16 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Silence:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Silence:debuff_reference:abilityduration&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;abilityduration&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            900
+            3.5,
+            4,
+            4.5,
+            5
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -543,8 +866,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;disable_window&quot;,
+            &quot;affects&quot;: &quot;disable_window&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -553,9 +876,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;沉默不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;沉默不直接造成伤害。&quot;
           ]
         }
       ]
@@ -564,10 +887,10 @@
       &quot;name&quot;: &quot;Spirit Siphon&quot;,
       &quot;displayName&quot;: &quot;吸魂巫术（Spirit Siphon）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         80,
@@ -582,8 +905,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Spirit Siphon:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Spirit Siphon:sustained:damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -593,11 +916,16 @@
             75,
             100
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            150,
+            300,
+            450,
+            600
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
@@ -609,9 +937,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -619,10 +949,10 @@
       &quot;name&quot;: &quot;Exorcism&quot;,
       &quot;displayName&quot;: &quot;驱使恶灵（Exorcism）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;conditional&quot;,
-      &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         300,
@@ -633,41 +963,375 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Exorcism:conditional:min_damage&quot;,
-          &quot;kind&quot;: &quot;conditional&quot;,
+          &quot;id&quot;: &quot;Exorcism:state_scaling:average_damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Physical&quot;,
-          &quot;label&quot;: &quot;min_damage&quot;,
+          &quot;label&quot;: &quot;average_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            62
+            64
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;conditional&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: true,
             &quot;modifierType&quot;: &quot;&quot;,
             &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
-            &quot;requiredInputs&quot;: [],
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;spirit_hit_count&quot;
+            ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;conditional&quot;,
-          &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。&quot;,
           &quot;caveats&quot;: [
-            &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+            &quot;驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Death Prophet&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed siphon/exorcism sustained fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Crypt Swarm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Silence&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;control.silence.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;沉默不直接造成伤害。&quot;
+        },
+        &quot;Spirit Siphon&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;haunt_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;按单条吸魂巫术连接计算；多充能叠加后续由次数输入处理。&quot;
+        },
+        &quot;Exorcism&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;average_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;spirit_hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;spirit_hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;驱使恶灵命中次数由站位、距离和回魂路径决定，不能直接用持续时间相乘。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;slow_percent&quot;,
+        &quot;label&quot;: &quot;SLOW PERCENT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Crypt Swarm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;damage_per_second&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER SECOND:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Silence&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;siphon_buffer&quot;,
+        &quot;label&quot;: &quot;SIPHON BUFFER:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit Siphon&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;1/2/3/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;spirits&quot;,
+        &quot;label&quot;: &quot;SPIRITS:&quot;,
+        &quot;value&quot;: &quot;10/18/26&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;spirit_speed&quot;,
+        &quot;label&quot;: &quot;SPIRIT SPEED:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;give_up_distance&quot;,
+        &quot;label&quot;: &quot;GIVE UP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;min_damage&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE:&quot;,
+        &quot;value&quot;: &quot;62&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;max_damage&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE:&quot;,
+        &quot;value&quot;: &quot;67&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;heal_percent&quot;,
+        &quot;label&quot;: &quot;LIFE DRAIN:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;ghost_spawn_rate&quot;,
+        &quot;label&quot;: &quot;GHOST SPAWN RATE:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;duration_increase_per_kill&quot;,
+        &quot;label&quot;: &quot;DURATION INCREASE PER KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;movement_bonus&quot;,
+        &quot;label&quot;: &quot;ACTIVE MOVEMENT BONUS:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Death Prophet&quot;,
+        &quot;ability&quot;: &quot;Exorcism&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

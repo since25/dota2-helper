@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>虚无之灵（Void Spirit）</h1>
-        <div class="muted">Void Spirit · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Void Spirit · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,444 @@
       </div>
       <a href="./void-spirit.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>remnant_watch_distance</code></td>
+      <td>WATCH RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>remnant_watch_radius</code></td>
+      <td>REMNANT WATCH RADIUS:</td>
+      <td>130</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>watch_path_vision_radius</code></td>
+      <td>WATCH PATH VISION RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>activation_delay</code></td>
+      <td>ACTIVATION TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>pull_destination</code></td>
+      <td>PULL DESTINATION:</td>
+      <td>44/50/56/62</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>duration</code></td>
+      <td>REMNANT LIFETIME:</td>
+      <td>17</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>think_interval</code></td>
+      <td>THINK INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>pierces_creeps</code></td>
+      <td>PIERCES CREEPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>creep_damage_pct</code></td>
+      <td>CREEP DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>artifice_duration_override</code></td>
+      <td>ARTIFICE DURATION OVERRIDE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>artifice_pct_effectiveness</code></td>
+      <td>ARTIFICE PCT EFFECTIVENESS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>truesight_range</code></td>
+      <td>TRUESIGHT RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>rotation_speed</code></td>
+      <td>ROTATION SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Aether Remnant</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>destination_fx_radius</code></td>
+      <td>DESTINATION FX RADIUS:</td>
+      <td>183</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>portals_per_ring</code></td>
+      <td>PORTALS PER RING:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>angle_per_ring_portal</code></td>
+      <td>ANGLE PER RING PORTAL:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>first_ring_distance_offset</code></td>
+      <td>FIRST RING DISTANCE OFFSET:</td>
+      <td>520</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>damage_radius</code></td>
+      <td>DAMAGE RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>has_outer_ring</code></td>
+      <td>HAS OUTER RING:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>aether_remnant_count</code></td>
+      <td>AETHER REMNANT COUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>artifice_duration_override_tooltip</code></td>
+      <td>REMNANT DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>artifice_pct_effectiveness_tooltip</code></td>
+      <td>REMNANT EFFECTIVENESS:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>artifice_extra_offset</code></td>
+      <td>ARTIFICE EXTRA OFFSET:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dissimilate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>radius</code></td>
+      <td>PULSE RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>base_absorb_amount</code></td>
+      <td>BASE DAMAGE BARRIER:</td>
+      <td>25/50/75/100</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>absorb_per_hero_hit</code></td>
+      <td>BARRIER AMOUNT PER HERO HIT:</td>
+      <td>50/70/90/110</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>is_all_barrier</code></td>
+      <td>IS ALL BARRIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>return_projectile_speed</code></td>
+      <td>RETURN PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Resonant Pulse</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Intrinsic Edge</td>
+      <td><code>secondary_stat_bonus_pct</code></td>
+      <td>SECONDARY STAT BONUS PCT:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Intrinsic Edge</td>
+      <td><code>damage_stat_bonus_pct</code></td>
+      <td>DAMAGE STAT BONUS PCT:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>170</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>25/20/15</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>min_travel_distance</code></td>
+      <td>MIN TRAVEL DISTANCE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>max_travel_distance</code></td>
+      <td>RANGE:</td>
+      <td>800/900/1000</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>pop_damage_delay</code></td>
+      <td>POP DAMAGE DELAY:</td>
+      <td>1.25</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>movement_slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>40%/60%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>ability_chance_pct</code></td>
+      <td>ABILITY CHANCE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>attack_chance_pct</code></td>
+      <td>ATTACK CHANCE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Step</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Void Spirit&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Aether Remnant&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;pull_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;damage_tick_rate&quot;
+    },
+    &quot;Dissimilate&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;phase_duration&quot;
+    },
+    &quot;Resonant Pulse&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;buff_duration&quot;
+    },
+    &quot;Intrinsic Edge&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Astral Step&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;pop_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;conditionInputs&quot;: [
+        &quot;charge_hit_count&quot;
+      ]
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +566,7 @@
           <div class="muted">Aether Remnant · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +619,7 @@
           <div class="muted">Dissimilate · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +672,7 @@
           <div class="muted">Resonant Pulse · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,14 +725,14 @@
           <div class="muted">Astral Step · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
-        <span>蓝耗：90</span>
-        <span>冷却：0</span>
+        <span>蓝耗：90 / 90 / 90</span>
+        <span>冷却：0 / 0 / 0</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -309,8 +751,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Astral Step:instant_fixed:pop_damage_delay</code>
-          <div class="muted">pop_damage_delay</div>
+          <code>Astral Step:instant_fixed:pop_damage</code>
+          <div class="muted">pop_damage</div>
         </td>
         <td>
           <span class="pill">instant_fixed</span>
@@ -318,7 +760,7 @@
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>1.25</td><td>-</td><td>-</td><td>-</td>
+        <td>130</td><td>230</td><td>330</td><td>-</td>
         <td></td>
         <td><span class="muted">-</span></td>
         <td>single_value</td>
@@ -454,7 +896,7 @@
       &quot;name&quot;: &quot;Aether Remnant&quot;,
       &quot;displayName&quot;: &quot;残阴（Aether Remnant）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -515,7 +957,7 @@
       &quot;name&quot;: &quot;Dissimilate&quot;,
       &quot;displayName&quot;: &quot;异化（Dissimilate）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -570,7 +1012,7 @@
       &quot;name&quot;: &quot;Resonant Pulse&quot;,
       &quot;displayName&quot;: &quot;共鸣脉冲（Resonant Pulse）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -625,25 +1067,31 @@
       &quot;name&quot;: &quot;Astral Step&quot;,
       &quot;displayName&quot;: &quot;太虚之径（Astral Step）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
+        90,
+        90,
         90
       ],
       &quot;cooldownByAbilityLevel&quot;: [
+        0,
+        0,
         0
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Astral Step:instant_fixed:pop_damage_delay&quot;,
+          &quot;id&quot;: &quot;Astral Step:instant_fixed:pop_damage&quot;,
           &quot;kind&quot;: &quot;instant_fixed&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;pop_damage_delay&quot;,
+          &quot;label&quot;: &quot;pop_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            1.25
+            130,
+            230,
+            330
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -661,7 +1109,470 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Void Spirit&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Aether Remnant&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;pull_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;damage_tick_rate&quot;
+        },
+        &quot;Dissimilate&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;phase_duration&quot;
+        },
+        &quot;Resonant Pulse&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;buff_duration&quot;
+        },
+        &quot;Intrinsic Edge&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Astral Step&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;pop_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;conditionInputs&quot;: [
+            &quot;charge_hit_count&quot;
+          ]
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;remnant_watch_distance&quot;,
+        &quot;label&quot;: &quot;WATCH RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;remnant_watch_radius&quot;,
+        &quot;label&quot;: &quot;REMNANT WATCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;watch_path_vision_radius&quot;,
+        &quot;label&quot;: &quot;WATCH PATH VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;activation_delay&quot;,
+        &quot;label&quot;: &quot;ACTIVATION TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;pull_destination&quot;,
+        &quot;label&quot;: &quot;PULL DESTINATION:&quot;,
+        &quot;value&quot;: &quot;44/50/56/62&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;REMNANT LIFETIME:&quot;,
+        &quot;value&quot;: &quot;17&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;think_interval&quot;,
+        &quot;label&quot;: &quot;THINK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;pierces_creeps&quot;,
+        &quot;label&quot;: &quot;PIERCES CREEPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;creep_damage_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;artifice_duration_override&quot;,
+        &quot;label&quot;: &quot;ARTIFICE DURATION OVERRIDE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;artifice_pct_effectiveness&quot;,
+        &quot;label&quot;: &quot;ARTIFICE PCT EFFECTIVENESS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;truesight_range&quot;,
+        &quot;label&quot;: &quot;TRUESIGHT RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;rotation_speed&quot;,
+        &quot;label&quot;: &quot;ROTATION SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Aether Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;destination_fx_radius&quot;,
+        &quot;label&quot;: &quot;DESTINATION FX RADIUS:&quot;,
+        &quot;value&quot;: &quot;183&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;portals_per_ring&quot;,
+        &quot;label&quot;: &quot;PORTALS PER RING:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;angle_per_ring_portal&quot;,
+        &quot;label&quot;: &quot;ANGLE PER RING PORTAL:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;first_ring_distance_offset&quot;,
+        &quot;label&quot;: &quot;FIRST RING DISTANCE OFFSET:&quot;,
+        &quot;value&quot;: &quot;520&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;damage_radius&quot;,
+        &quot;label&quot;: &quot;DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;has_outer_ring&quot;,
+        &quot;label&quot;: &quot;HAS OUTER RING:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;aether_remnant_count&quot;,
+        &quot;label&quot;: &quot;AETHER REMNANT COUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;artifice_duration_override_tooltip&quot;,
+        &quot;label&quot;: &quot;REMNANT DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;artifice_pct_effectiveness_tooltip&quot;,
+        &quot;label&quot;: &quot;REMNANT EFFECTIVENESS:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;artifice_extra_offset&quot;,
+        &quot;label&quot;: &quot;ARTIFICE EXTRA OFFSET:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Dissimilate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;PULSE RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;base_absorb_amount&quot;,
+        &quot;label&quot;: &quot;BASE DAMAGE BARRIER:&quot;,
+        &quot;value&quot;: &quot;25/50/75/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;absorb_per_hero_hit&quot;,
+        &quot;label&quot;: &quot;BARRIER AMOUNT PER HERO HIT:&quot;,
+        &quot;value&quot;: &quot;50/70/90/110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;is_all_barrier&quot;,
+        &quot;label&quot;: &quot;IS ALL BARRIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;return_projectile_speed&quot;,
+        &quot;label&quot;: &quot;RETURN PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Resonant Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Intrinsic Edge&quot;,
+        &quot;key&quot;: &quot;secondary_stat_bonus_pct&quot;,
+        &quot;label&quot;: &quot;SECONDARY STAT BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Intrinsic Edge&quot;,
+        &quot;key&quot;: &quot;damage_stat_bonus_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE STAT BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;170&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;25/20/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;min_travel_distance&quot;,
+        &quot;label&quot;: &quot;MIN TRAVEL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;max_travel_distance&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;800/900/1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;pop_damage_delay&quot;,
+        &quot;label&quot;: &quot;POP DAMAGE DELAY:&quot;,
+        &quot;value&quot;: &quot;1.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;movement_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;40%/60%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;ability_chance_pct&quot;,
+        &quot;label&quot;: &quot;ABILITY CHANCE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;attack_chance_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK CHANCE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Void Spirit&quot;,
+        &quot;ability&quot;: &quot;Astral Step&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

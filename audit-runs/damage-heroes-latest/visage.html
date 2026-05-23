@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>维萨吉（Visage）</h1>
-        <div class="muted">Visage · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Visage · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,570 @@
       </div>
       <a href="./visage.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>chill_duration</code></td>
+      <td>DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>movespeed_bonus</code></td>
+      <td>MOVE SPEED DRAIN:</td>
+      <td>12%/18%/24%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>attackspeed_bonus</code></td>
+      <td>ATTACK SPEED DRAIN:</td>
+      <td>25/40/55/70</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>target_radius</code></td>
+      <td>AOE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>penalty</code></td>
+      <td>SECONDARY TARGET PENALTY:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Grave Chill</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>bolt_speed</code></td>
+      <td>BOLT SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>soul_charge_damage</code></td>
+      <td>DAMAGE PER CHARGE:</td>
+      <td>70</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>soul_charge_gold</code></td>
+      <td>BONUS GOLD PER CHARGE PER KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>gold_creep_pct</code></td>
+      <td>CREEP GOLD:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>gold_grace_period_hero</code></td>
+      <td>GOLD GRACE PERIOD HERO:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>gold_max_tooltip</code></td>
+      <td>GOLD MAX TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>stack_limit</code></td>
+      <td>MAX CHARGES:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>stack_duration</code></td>
+      <td>CHARGE DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>damage_limit</code></td>
+      <td>GATHER DAMAGE THRESHOLD:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>radius</code></td>
+      <td>GATHER DAMAGE RADIUS:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>damage_min</code></td>
+      <td>DAMAGE MIN:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>damage_max</code></td>
+      <td>DAMAGE MAX:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>target_count</code></td>
+      <td>TARGET COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Assumption</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Gravekeeper&#39;s Cloak</td>
+      <td><code>max_layers</code></td>
+      <td>MAX LAYERS:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Gravekeeper&#39;s Cloak</td>
+      <td><code>recovery_time</code></td>
+      <td>LAYER RECOVERY TIME:</td>
+      <td>7/6/5/4</td>
+    </tr>
+  
+    <tr>
+      <td>Gravekeeper&#39;s Cloak</td>
+      <td><code>minimum_damage</code></td>
+      <td>MINIMUM DAMAGE:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Gravekeeper&#39;s Cloak</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Gravekeeper&#39;s Cloak</td>
+      <td><code>max_damage_reduction</code></td>
+      <td>MAX DAMAGE REDUCTION:</td>
+      <td>32%/48%/64%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stun_radius</code></td>
+      <td>STUN RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stun_delay</code></td>
+      <td>STUN DELAY:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stone_duration</code></td>
+      <td>STONE DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>hp_regen</code></td>
+      <td>BONUS REGEN:</td>
+      <td>150/175/200</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>flight_duration</code></td>
+      <td>FLIGHT DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>movespeed_bonus</code></td>
+      <td>BONUS MOVESPEED:</td>
+      <td>12%</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>bonus_duration</code></td>
+      <td>BONUS DAMAGE DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>invis</code></td>
+      <td>INVIS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>fly_timer</code></td>
+      <td>FLY TIMER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Silent as the Grave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_hp</code></td>
+      <td>FAMILIAR HEALTH:</td>
+      <td>450/600/750</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_armor</code></td>
+      <td>FAMILIAR ARMOR:</td>
+      <td>2/3/4</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_attack_range</code></td>
+      <td>FAMILIAR ATTACK RANGE:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_base_movespeed</code></td>
+      <td>FAMILIAR SPEED:</td>
+      <td>430</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_bounty</code></td>
+      <td>FAMILIAR GOLD BOUNTY:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>visage_base_damage</code></td>
+      <td>VISAGE BASE DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>familiar_count</code></td>
+      <td>FAMILIAR COUNT:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>armor_reduction_per_hit</code></td>
+      <td>ARMOR REDUCTION PER HIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>armor_reduction_duration</code></td>
+      <td>ARMOR REDUCTION DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>in_formation</code></td>
+      <td>IN FORMATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>back_distance</code></td>
+      <td>BACK DISTANCE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>side_distance</code></td>
+      <td>SIDE DISTANCE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>return_distance</code></td>
+      <td>RETURN DISTANCE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>recall_duration</code></td>
+      <td>RECALL DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>3500</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>attack_range_buffer</code></td>
+      <td>ATTACK RANGE BUFFER:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>additional_target_search_radius</code></td>
+      <td>ADDITIONAL TARGET SEARCH RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Familiars</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stun_radius</code></td>
+      <td>STUN RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stun_delay</code></td>
+      <td>STUN DELAY:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>stone_duration</code></td>
+      <td>STONE DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>hp_regen</code></td>
+      <td>BONUS REGEN:</td>
+      <td>150/175/200</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Form</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Visage&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Grave Chill&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Soul Assumption&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;soul_base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Gravekeeper&#39;s Cloak&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_reduction&quot;,
+      &quot;semanticType&quot;: &quot;defense.damage_reduction.percent&quot;,
+      &quot;affects&quot;: &quot;incoming_damage&quot;,
+      &quot;reason&quot;: &quot;减伤和最小触发伤害不是对敌伤害，作为防御修正参考。&quot;
+    },
+    &quot;Stone Form&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;stun_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Silent as the Grave&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Summon Familiars&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;familiar_attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +692,7 @@
           <div class="muted">Grave Chill · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +731,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +745,7 @@
           <div class="muted">Soul Assumption · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,9 +798,9 @@
           <div class="muted">Gravekeeper&#39;s Cloak · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
-          <span class="pill secondary">implemented</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
@@ -256,20 +824,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Gravekeeper&#39;s Cloak:instant_fixed:minimum_damage</code>
-          <div class="muted">minimum_damage</div>
+          <code>Gravekeeper&#39;s Cloak:debuff_reference:damage_reduction</code>
+          <div class="muted">damage_reduction</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
-          <div class="muted">implemented</div>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>40</td><td>-</td><td>-</td><td>-</td>
+        <td>8</td><td>12</td><td>16</td><td>20</td>
         <td></td>
-        <td><span class="muted">-</span></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: incoming_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>减伤和最小触发伤害不是对敌伤害，作为防御修正参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +851,7 @@
           <div class="muted">Stone Form · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +904,7 @@
           <div class="muted">Summon Familiars · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">attack_modifier</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +957,7 @@
           <div class="muted">Stone Form · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,10 +1128,10 @@
       &quot;name&quot;: &quot;Grave Chill&quot;,
       &quot;displayName&quot;: &quot;黄泉颤抖（Grave Chill）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75
       ],
@@ -601,9 +1169,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -612,7 +1180,7 @@
       &quot;name&quot;: &quot;Soul Assumption&quot;,
       &quot;displayName&quot;: &quot;灵魂超度（Soul Assumption）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -663,34 +1231,47 @@
       &quot;name&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
       &quot;displayName&quot;: &quot;陵卫斗篷（Gravekeeper&#39;s Cloak）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;减伤和最小触发伤害不是对敌伤害，作为防御修正参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Gravekeeper&#39;s Cloak:instant_fixed:minimum_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Gravekeeper&#39;s Cloak:debuff_reference:damage_reduction&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;minimum_damage&quot;,
+          &quot;label&quot;: &quot;damage_reduction&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            40
+            8,
+            12,
+            16,
+            20
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;debuff_reference&quot;
           },
-          &quot;metadata&quot;: {},
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;incoming_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;减伤和最小触发伤害不是对敌伤害，作为防御修正参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;减伤和最小触发伤害不是对敌伤害，作为防御修正参考。&quot;
+          ]
         }
       ]
     },
@@ -698,7 +1279,7 @@
       &quot;name&quot;: &quot;Stone Form&quot;,
       &quot;displayName&quot;: &quot;石像形态（Stone Form）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -749,7 +1330,7 @@
       &quot;name&quot;: &quot;Summon Familiars&quot;,
       &quot;displayName&quot;: &quot;召唤佣兽（Summon Familiars）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;attack_modifier&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -800,7 +1381,7 @@
       &quot;name&quot;: &quot;Stone Form&quot;,
       &quot;displayName&quot;: &quot;石像形态（Stone Form）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -844,7 +1425,612 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Visage&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Grave Chill&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Soul Assumption&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;soul_base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Gravekeeper&#39;s Cloak&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_reduction&quot;,
+          &quot;semanticType&quot;: &quot;defense.damage_reduction.percent&quot;,
+          &quot;affects&quot;: &quot;incoming_damage&quot;,
+          &quot;reason&quot;: &quot;减伤和最小触发伤害不是对敌伤害，作为防御修正参考。&quot;
+        },
+        &quot;Stone Form&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;stun_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Silent as the Grave&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Summon Familiars&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;familiar_attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;chill_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED DRAIN:&quot;,
+        &quot;value&quot;: &quot;12%/18%/24%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;attackspeed_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED DRAIN:&quot;,
+        &quot;value&quot;: &quot;25/40/55/70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;target_radius&quot;,
+        &quot;label&quot;: &quot;AOE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;penalty&quot;,
+        &quot;label&quot;: &quot;SECONDARY TARGET PENALTY:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Grave Chill&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;bolt_speed&quot;,
+        &quot;label&quot;: &quot;BOLT SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;soul_charge_damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER CHARGE:&quot;,
+        &quot;value&quot;: &quot;70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;soul_charge_gold&quot;,
+        &quot;label&quot;: &quot;BONUS GOLD PER CHARGE PER KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;gold_creep_pct&quot;,
+        &quot;label&quot;: &quot;CREEP GOLD:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;gold_grace_period_hero&quot;,
+        &quot;label&quot;: &quot;GOLD GRACE PERIOD HERO:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;gold_max_tooltip&quot;,
+        &quot;label&quot;: &quot;GOLD MAX TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;stack_limit&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;stack_duration&quot;,
+        &quot;label&quot;: &quot;CHARGE DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;damage_limit&quot;,
+        &quot;label&quot;: &quot;GATHER DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;GATHER DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;damage_min&quot;,
+        &quot;label&quot;: &quot;DAMAGE MIN:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;damage_max&quot;,
+        &quot;label&quot;: &quot;DAMAGE MAX:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;target_count&quot;,
+        &quot;label&quot;: &quot;TARGET COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Soul Assumption&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
+        &quot;key&quot;: &quot;max_layers&quot;,
+        &quot;label&quot;: &quot;MAX LAYERS:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
+        &quot;key&quot;: &quot;recovery_time&quot;,
+        &quot;label&quot;: &quot;LAYER RECOVERY TIME:&quot;,
+        &quot;value&quot;: &quot;7/6/5/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
+        &quot;key&quot;: &quot;minimum_damage&quot;,
+        &quot;label&quot;: &quot;MINIMUM DAMAGE:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Gravekeeper&#39;s Cloak&quot;,
+        &quot;key&quot;: &quot;max_damage_reduction&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;32%/48%/64%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stun_radius&quot;,
+        &quot;label&quot;: &quot;STUN RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stun_delay&quot;,
+        &quot;label&quot;: &quot;STUN DELAY:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stone_duration&quot;,
+        &quot;label&quot;: &quot;STONE DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;hp_regen&quot;,
+        &quot;label&quot;: &quot;BONUS REGEN:&quot;,
+        &quot;value&quot;: &quot;150/175/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;flight_duration&quot;,
+        &quot;label&quot;: &quot;FLIGHT DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;bonus_duration&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;invis&quot;,
+        &quot;label&quot;: &quot;INVIS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;fly_timer&quot;,
+        &quot;label&quot;: &quot;FLY TIMER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Silent as the Grave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_hp&quot;,
+        &quot;label&quot;: &quot;FAMILIAR HEALTH:&quot;,
+        &quot;value&quot;: &quot;450/600/750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_armor&quot;,
+        &quot;label&quot;: &quot;FAMILIAR ARMOR:&quot;,
+        &quot;value&quot;: &quot;2/3/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_attack_range&quot;,
+        &quot;label&quot;: &quot;FAMILIAR ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_base_movespeed&quot;,
+        &quot;label&quot;: &quot;FAMILIAR SPEED:&quot;,
+        &quot;value&quot;: &quot;430&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_bounty&quot;,
+        &quot;label&quot;: &quot;FAMILIAR GOLD BOUNTY:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;visage_base_damage&quot;,
+        &quot;label&quot;: &quot;VISAGE BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;familiar_count&quot;,
+        &quot;label&quot;: &quot;FAMILIAR COUNT:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;armor_reduction_per_hit&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION PER HIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;armor_reduction_duration&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;in_formation&quot;,
+        &quot;label&quot;: &quot;IN FORMATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;back_distance&quot;,
+        &quot;label&quot;: &quot;BACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;side_distance&quot;,
+        &quot;label&quot;: &quot;SIDE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;return_distance&quot;,
+        &quot;label&quot;: &quot;RETURN DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;recall_duration&quot;,
+        &quot;label&quot;: &quot;RECALL DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;3500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;attack_range_buffer&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BUFFER:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;additional_target_search_radius&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL TARGET SEARCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Summon Familiars&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stun_radius&quot;,
+        &quot;label&quot;: &quot;STUN RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stun_delay&quot;,
+        &quot;label&quot;: &quot;STUN DELAY:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;stone_duration&quot;,
+        &quot;label&quot;: &quot;STONE DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;hp_regen&quot;,
+        &quot;label&quot;: &quot;BONUS REGEN:&quot;,
+        &quot;value&quot;: &quot;150/175/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Visage&quot;,
+        &quot;ability&quot;: &quot;Stone Form&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

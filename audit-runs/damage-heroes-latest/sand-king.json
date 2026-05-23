@@ -384,5 +384,336 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Sand King",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Burrowstrike": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Sand Storm": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "sand_storm_damage",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Stinger": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "attack_damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "attack_count",
+            "hero_attack_damage"
+          ],
+          "defaultAttackCount": 1
+        },
+        "Caustic Finale": {
+          "status": "reference_only",
+          "model": "conditional",
+          "valueKey": "caustic_finale_damage_flat",
+          "semanticType": "damage.death_trigger",
+          "conditionInputs": [
+            "target_death"
+          ],
+          "condition": "目标在腐尸毒持续时间内死亡才会爆炸。",
+          "reason": "死亡爆炸依赖目标是否阵亡，当前阶段只作为条件伤害参考。"
+        },
+        "Epicenter": {
+          "status": "implemented",
+          "model": "multi_wave",
+          "damagePerWaveKey": "epicenter_damage",
+          "waveCountKey": "epicenter_pulses",
+          "semanticType": "damage.wave"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "burrow_width",
+        "label": "BURROW WIDTH:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "burrow_duration",
+        "label": "STUN DURATION:",
+        "value": "1.2/1.4/1.6/1.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "burrow_speed",
+        "label": "BURROW SPEED:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "burrow_anim_time",
+        "label": "BURROW ANIM TIME:",
+        "value": "0.52",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "550/625/700/775",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Burrowstrike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Sand Storm",
+        "key": "damage_tick_rate",
+        "label": "DAMAGE TICK RATE:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Sand Storm",
+        "key": "sand_storm_radius",
+        "label": "RADIUS:",
+        "value": "475/550/625/700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Sand Storm",
+        "key": "fade_delay",
+        "label": "FADE DELAY:",
+        "value": "0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Sand Storm",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Sand Storm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "230/250/270/290",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "inner_radius",
+        "label": "INNER RADIUS:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "inner_radius_bonus_damage_pct",
+        "label": "INNER RADIUS BONUS DAMAGE PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "inner_radius_procs_caustic",
+        "label": "INNER RADIUS PROCS CAUSTIC:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "debuff_duration",
+        "label": "SLOW DURATION:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "strike_slow",
+        "label": "MOVEMENT SPEED SLOW:",
+        "value": "10%/12%/14%/16%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "caustic_damage_pct",
+        "label": "CAUSTIC DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Stinger",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Caustic Finale",
+        "key": "caustic_finale_radius",
+        "label": "EXPLODE RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Caustic Finale",
+        "key": "caustic_finale_damage_pct",
+        "label": "MAX HEALTH DAMAGE:",
+        "value": "2.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Caustic Finale",
+        "key": "caustic_finale_duration",
+        "label": "DURATION:",
+        "value": "4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "epicenter_radius_base",
+        "label": "BASE RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "epicenter_radius_increment",
+        "label": "INCREMENTAL RADIUS:",
+        "value": "13",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "epicenter_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "-30%/-40%/-50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "epicenter_slow_as",
+        "label": "ATTACK SLOW:",
+        "value": "-50/-55/-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "proc_passively",
+        "label": "PROC PASSIVELY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "shard_radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "shard_interval",
+        "label": "SHARD INTERVAL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "linger_duration",
+        "label": "DEBUFF DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "abilityduration",
+        "label": "EPICENTER DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sand King",
+        "ability": "Epicenter",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

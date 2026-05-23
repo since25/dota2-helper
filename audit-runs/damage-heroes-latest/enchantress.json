@@ -121,7 +121,7 @@
       "name": "Impetus",
       "displayName": "推进（Impetus）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -179,7 +179,7 @@
       "name": "Enchant",
       "displayName": "魅惑（Enchant）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -234,10 +234,10 @@
       "name": "Little Friends",
       "displayName": "密友（Little Friends）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75
       ],
@@ -272,9 +272,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -283,10 +283,10 @@
       "name": "Untouchable",
       "displayName": "不可侵犯（Untouchable）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -319,13 +319,433 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Enchantress",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Impetus": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "illusion_damage_multiplier",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "Enchant": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "enchant_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "slow_duration"
+        },
+        "Nature's Attendants": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Sproink": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Little Friends": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Untouchable": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "slow_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Rabble-Rouser": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Enchantress",
+        "ability": "Impetus",
+        "key": "distance_damage_pct",
+        "label": "DISTANCE DAMAGE:",
+        "value": "5%/10%/15%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Impetus",
+        "key": "distance_cap",
+        "label": "DISTANCE CAP:",
+        "value": "1750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Impetus",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "575",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Impetus",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Impetus",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "slow_movement_speed",
+        "label": "HERO MOVE SLOW:",
+        "value": "-30%/-40%/-50%/-60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "50/100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "dominate_duration",
+        "label": "DOMINATE DURATION:",
+        "value": "30/60/90/120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "enchant_health",
+        "label": "CREEP MAX HEALTH BONUS:",
+        "value": "150/250/350/450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "xp_gain_pct",
+        "label": "XP GAIN PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "level_req",
+        "label": "CREEP MAX LEVEL:",
+        "value": "4/5/6/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "max_creeps",
+        "label": "MAX ENCHANTED CREEPS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "bonus_health",
+        "label": "BONUS HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "bonus_attackspeed",
+        "label": "BONUS ATTACKSPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500/600/700/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Enchant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "heal_duration",
+        "label": "DURATION:",
+        "value": "7/9/11/13",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "heal_interval",
+        "label": "HEAL INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "heal",
+        "label": "HEAL PER SECOND:",
+        "value": "4/8/12/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "wisp_count",
+        "label": "WISPS:",
+        "value": "9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "movespeed",
+        "label": "MOVESPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "overprotective_damage_threshold",
+        "label": "OVERPROTECTIVE DAMAGE THRESHOLD:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "overprotective_damage_reset_interval",
+        "label": "OVERPROTECTIVE DAMAGE RESET INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "overprotective_wisp_duration",
+        "label": "OVERPROTECTIVE WISP DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "overprotective_wisp_count",
+        "label": "OVERPROTECTIVE WISP COUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "overprotective_max_wisps",
+        "label": "OVERPROTECTIVE MAX WISPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Nature's Attendants",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Sproink",
+        "key": "hop_distance",
+        "label": "LEAP DISTANCE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Sproink",
+        "key": "hop_duration",
+        "label": "HOP DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Sproink",
+        "key": "hop_height",
+        "label": "HOP HEIGHT:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Sproink",
+        "key": "attack_targets",
+        "label": "TARGETS:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Sproink",
+        "key": "bonus_attack_range",
+        "label": "BONUS RANGE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "bonus_move_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "root_base_duration",
+        "label": "MINIMUM ROOT DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "root_per_target",
+        "label": "ROOT DURATION PER UNIT:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Little Friends",
+        "key": "max_root",
+        "label": "MAX ROOT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enchantress",
+        "ability": "Untouchable",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

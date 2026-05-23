@@ -121,7 +121,7 @@
       "name": "Starbreaker",
       "displayName": "星破天惊（Starbreaker）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Celestial Hammer",
       "displayName": "上界重锤（Celestial Hammer）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -244,7 +244,7 @@
       "name": "Solar Guardian",
       "displayName": "天光现世（Solar Guardian）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -298,5 +298,446 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Dawnbreaker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Starbreaker": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "swipe_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Celestial Hammer": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "burn_damage",
+          "durationKey": "flare_debuff_duration",
+          "tickIntervalKey": "burn_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Converge": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Break of Dawn": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Solar Guardian": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "base_damage",
+          "durationKey": "land_stun_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "swipe_radius",
+        "label": "SWIPE/SMASH RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "smash_radius",
+        "label": "SMASH RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "smash_damage",
+        "label": "SMASH DAMAGE:",
+        "value": "25/40/55/70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "215",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "total_attacks",
+        "label": "TOTAL ATTACKS:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "smash_stun_duration",
+        "label": "SMASH STUN DURATION:",
+        "value": "0.6/0.8/1/1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "sweep_stun_duration",
+        "label": "SWEEP STUN DURATION:",
+        "value": "0.12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "self_stun_duration",
+        "label": "SELF STUN DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "swipe_slow",
+        "label": "SWIPE SLOW:",
+        "value": "-100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "smash_distance_from_hero",
+        "label": "SMASH DISTANCE FROM HERO:",
+        "value": "120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "shard_cast_point",
+        "label": "SHARD CAST POINT:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "shard_movement_penalty",
+        "label": "SHARD MOVEMENT PENALTY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "movespeed_bonus_radius",
+        "label": "MOVESPEED BONUS RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "movespeed_bonus_self_max",
+        "label": "MOVESPEED BONUS SELF MAX:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "movespeed_bonus_ally_max",
+        "label": "MOVESPEED BONUS ALLY MAX:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "movespeed_bonus_duration",
+        "label": "MOVESPEED BONUS DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Starbreaker",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "hammer_damage",
+        "label": "HAMMER DAMAGE:",
+        "value": "50/80/110/140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "projectile_radius",
+        "label": "PROJECTILE RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "flare_radius",
+        "label": "FIRE TRAIL RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "move_slow",
+        "label": "FIRE TRAIL MOVEMENT SLOW:",
+        "value": "24%/28%/32%/36%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "targets_allies",
+        "label": "TARGETS ALLIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "pause_duration",
+        "label": "PAUSE DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "hammer_aoe_radius",
+        "label": "HAMMER AOE RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "travel_speed_pct",
+        "label": "TRAVEL SPEED PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "return_anim_distance_threshold",
+        "label": "RETURN ANIM DISTANCE THRESHOLD:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "range",
+        "label": "CAST RANGE:",
+        "value": "700/900/1100/1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "hammer_solar_guardian_radius",
+        "label": "HAMMER SOLAR GUARDIAN RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "hammer_solar_guardian_effectiveness_pct",
+        "label": "HAMMER SOLAR GUARDIAN EFFECTIVENESS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Celestial Hammer",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Break of Dawn",
+        "key": "day_threshold",
+        "label": "DAY THRESHOLD:",
+        "value": "0.006",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Break of Dawn",
+        "key": "max_dmg_pct",
+        "label": "MAX DAMAGE INCREASE:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Break of Dawn",
+        "key": "max_vision_pct",
+        "label": "MAX VISION INCREASE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Break of Dawn",
+        "key": "heal_amp",
+        "label": "HEAL AMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "base_heal",
+        "label": "HEAL PER PULSE:",
+        "value": "45/70/95",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "radius",
+        "label": "LAND RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "pulse_interval",
+        "label": "PULSE INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "land_damage",
+        "label": "LANDING DAMAGE:",
+        "value": "130/160/190",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "max_offset_distance",
+        "label": "MAX OFFSET DISTANCE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "airtime_scepter_movement_speed",
+        "label": "AIRTIME SCEPTER MOVEMENT SPEED:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "airtime_duration",
+        "label": "AIR TIME:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "daytime_duration",
+        "label": "DAYTIME DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dawnbreaker",
+        "ability": "Solar Guardian",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

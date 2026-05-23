@@ -121,7 +121,7 @@
       "name": "Meat Hook",
       "displayName": "肉钩（Meat Hook）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,16 +176,16 @@
       "name": "Rot",
       "displayName": "腐烂（Rot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
+      "model": "sustained_dps",
       "reason": "",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Rot:instant_fixed:rot_damage",
-          "kind": "instant_fixed",
+          "id": "Rot:sustained:rot_damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "rot_damage",
@@ -196,17 +196,27 @@
             120
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
-          "metadata": {},
+          "metadata": {
+            "durationByAbilityLevel": [],
+            "tickIntervalByAbilityLevel": [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
+          "model": "sustained_dps",
           "reason": "",
-          "caveats": []
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -214,10 +224,10 @@
       "name": "Meat Shield",
       "displayName": "肉盾（Meat Shield）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "伤害格挡不是对敌伤害，作为防御修正参考。",
       "manaCostByAbilityLevel": [
         65,
         70,
@@ -232,8 +242,8 @@
       ],
       "components": [
         {
-          "id": "Meat Shield:instant_fixed:damage_block",
-          "kind": "instant_fixed",
+          "id": "Meat Shield:debuff_reference:damage_block",
+          "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
           "label": "damage_block",
@@ -245,23 +255,26 @@
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "debuff_reference"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              4,
-              5,
-              6,
-              7
-            ]
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "incoming_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
           },
           "source": "curated",
-          "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "伤害格挡不是对敌伤害，作为防御修正参考。",
+          "caveats": [
+            "伤害格挡不是对敌伤害，作为防御修正参考。"
+          ]
         }
       ]
     },
@@ -269,7 +282,7 @@
       "name": "Dismember",
       "displayName": "肢解（Dismember）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -319,9 +332,308 @@
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
+        },
+        {
+          "id": "Dismember:attribute_scaling:dismember_damage",
+          "kind": "attribute_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "dismember_damage",
+          "valuesByAbilityLevel": [
+            80,
+            100,
+            120
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "baseDamage + attributeInput * attributeMultiplier",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "base_plus_attribute_times_multiplier"
+          },
+          "metadata": {
+            "attributeInput": "caster_strength",
+            "attributeMultiplierKey": "strength_damage",
+            "attributeMultiplierByAbilityLevel": [
+              0.3,
+              0.6,
+              0.9
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "attribute_scaling",
+          "reason": "",
+          "caveats": [
+            "属性缩放伤害需要施法者属性输入，不能生成固定理论总量。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Pudge",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Meat Hook": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "vision_duration"
+        },
+        "Rot": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "rot_damage",
+          "durationKey": "active_duration",
+          "tickIntervalKey": "rot_tick",
+          "semanticType": "damage.sustained_dps",
+          "conditionInputs": [
+            "active_duration"
+          ],
+          "defaultActiveDuration": "manual"
+        },
+        "Meat Shield": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_block",
+          "semanticType": "defense.damage_block.flat",
+          "affects": "incoming_damage",
+          "reason": "伤害格挡不是对敌伤害，作为防御修正参考。"
+        },
+        "Flesh Heap": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Dismember": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "dismember_damage",
+          "durationKey": "abilitychanneltime",
+          "semanticType": "damage.sustained_dps",
+          "conditionInputs": [
+            "caster_strength",
+            "active_duration"
+          ],
+          "defaultActiveDuration": "full",
+          "extraComponents": [
+            {
+              "status": "implemented",
+              "model": "attribute_scaling",
+              "baseDamageKey": "dismember_damage",
+              "attributeMultiplierKey": "strength_damage",
+              "attributeInput": "caster_strength",
+              "semanticType": "damage.attribute_scaling",
+              "conditionInputs": [
+                "caster_strength"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "hook_speed",
+        "label": "HOOK SPEED:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "hook_width",
+        "label": "HOOK WIDTH:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "reveal_duration",
+        "label": "REVEAL DURATION:",
+        "value": "00",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "vector_target_distance",
+        "label": "VECTOR TARGET DISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "self_stun_duration_percent",
+        "label": "SELF STUN DURATION PERCENT:",
+        "value": "65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Hook",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Rot",
+        "key": "rot_radius",
+        "label": "RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Rot",
+        "key": "rot_slow",
+        "label": "MOVE SLOW:",
+        "value": "-14%/-20%/-26%/-32%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Rot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Meat Shield",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Flesh Heap",
+        "key": "flesh_heap_strength_buff_amount",
+        "label": "FLESH HEAP STRENGTH BUFF AMOUNT:",
+        "value": "1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Flesh Heap",
+        "key": "flesh_heap_range",
+        "label": "FLESH HEAP RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "strength_damage",
+        "label": "STRENGTH MULTIPLIER:",
+        "value": "0.3/0.6/0.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "ticks",
+        "label": "TICKS:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "pull_units_per_second",
+        "label": "PULL UNITS PER SECOND:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "pull_distance_limit",
+        "label": "PULL DISTANCE LIMIT:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "gluttony_strength_bonus",
+        "label": "STRENGTH INCREASE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "glutton_strength_stack_duration",
+        "label": "STRENGTH DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pudge",
+        "ability": "Dismember",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

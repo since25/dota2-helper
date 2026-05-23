@@ -121,10 +121,10 @@
       "name": "Arcane Curse",
       "displayName": "奥术诅咒（Arcane Curse）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "initial_plus_dot",
+      "reason": "计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。",
       "manaCostByAbilityLevel": [
         120,
         130,
@@ -139,24 +139,36 @@
       ],
       "components": [
         {
-          "id": "Arcane Curse:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Arcane Curse:initial_plus_dot:application_damage",
+          "kind": "initial_plus_dot",
           "growthKind": "non_growth",
           "damageType": "Magical",
-          "label": "damage",
+          "label": "application_damage",
           "valuesByAbilityLevel": [
-            16,
-            24,
-            32,
-            40
+            20,
+            40,
+            60,
+            80
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            116,
+            184,
+            252,
+            320
+          ],
+          "totalFormula": "initialDamage + damagePerSecond * duration",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "initial_plus_duration_times_dps"
           },
           "metadata": {
+            "damagePerSecondKey": "damage",
+            "damagePerSecondByAbilityLevel": [
+              16,
+              24,
+              32,
+              40
+            ],
             "durationByAbilityLevel": [
               6,
               6,
@@ -166,9 +178,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "initial_plus_dot",
+          "reason": "计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。",
+          "caveats": [
+            "包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。"
+          ]
         }
       ]
     },
@@ -176,10 +190,10 @@
       "name": "Glaives of Wisdom",
       "displayName": "智慧之刃（Glaives of Wisdom）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         12,
         14,
@@ -217,9 +231,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,10 +242,10 @@
       "name": "Last Word",
       "displayName": "遗言（Last Word）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         105,
@@ -275,13 +289,304 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Silencer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Arcane Curse": {
+          "status": "implemented",
+          "model": "initial_plus_dot",
+          "initialDamageKey": "application_damage",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultIncluded": true,
+          "reason": "计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。"
+        },
+        "Glaives of Wisdom": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Last Word": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        },
+        "Suffer In Silence": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Global Silence": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "application_damage",
+        "label": "INITIAL DAMAGE:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "movespeed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-16%/-19%/-22%/-25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "penalty_duration",
+        "label": "PENALTY DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "penalty_multiplier",
+        "label": "PENALTY MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Arcane Curse",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "intellect_damage_pct",
+        "label": "INT TO DAMAGE:",
+        "value": "35%/50%/65%/80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "int_steal",
+        "label": "INT STEAL:",
+        "value": "2/3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "int_steal_duration",
+        "label": "INT STEAL DURATION:",
+        "value": "10/20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "stacks_for_silence",
+        "label": "STACKS FOR SILENCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "silence_duration",
+        "label": "SILENCE DURATION:",
+        "value": "+2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "debuff_linger_duration",
+        "label": "DEBUFF LINGER DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "pure_pierce_debuff",
+        "label": "PURE PIERCE DEBUFF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Glaives of Wisdom",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "int_multiplier",
+        "label": "INT DIFF MULTIPLIER:",
+        "value": "1/1.5/2/2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "debuff_duration",
+        "label": "ENEMY CAST TIMER:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "duration",
+        "label": "SILENCE DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "radius",
+        "label": "AOE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Last Word",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Suffer In Silence",
+        "key": "permanent_int_steal_range",
+        "label": "PERMANENT INT STEAL RANGE:",
+        "value": "925",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Suffer In Silence",
+        "key": "permanent_int_steal_amount",
+        "label": "PERMANENT INT STEAL AMOUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Suffer In Silence",
+        "key": "silenced_bonus_int_steal_amount",
+        "label": "SILENCED BONUS INT STEAL AMOUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Suffer In Silence",
+        "key": "damage_pct",
+        "label": "SILENCED TARGET DAMAGE:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Global Silence",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "4.5/5.25/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Silencer",
+        "ability": "Global Silence",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

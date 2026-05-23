@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,276 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>复仇之魂（Vengeful Spirit）</h1>
-        <div class="muted">Vengeful Spirit · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Vengeful Spirit · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 4</span>
-          <span>组件 4</span>
+          <span>技能 5</span>
+          <span>组件 6</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./vengeful-spirit.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>magic_missile_speed</code></td>
+      <td>MAGIC MISSILE SPEED:</td>
+      <td>1350</td>
+    </tr>
+  
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>magic_missile_stun</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2/1.4/1.6/1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>bounce_range_pct</code></td>
+      <td>BOUNCE RANGE PCT:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>damage_per_lasthit</code></td>
+      <td>DAMAGE PER LASTHIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Magic Missile</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>wave_speed</code></td>
+      <td>WAVE SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>wave_width</code></td>
+      <td>WAVE WIDTH:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>armor_reduction</code></td>
+      <td>ARMOR REDUCTION:</td>
+      <td>-3/-4/-5/-6</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>attack_reduction</code></td>
+      <td>ATTACK DAMAGE REDUCTION:</td>
+      <td>10%/15%/20%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>vision_aoe</code></td>
+      <td>VISION AOE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>steal_pct</code></td>
+      <td>STEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>abilityduration</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Wave of Terror</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Vengeance Aura</td>
+      <td><code>self_multiplier</code></td>
+      <td>SELF MULTIPLIER:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Vengeance Aura</td>
+      <td><code>aura_radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Vengeance Aura</td>
+      <td><code>revival_time</code></td>
+      <td>REVIVAL TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Vengeance Aura</td>
+      <td><code>restitution_time</code></td>
+      <td>REVENGE WINDOW DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Vengeance Aura</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Swap</td>
+      <td><code>damage_reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Swap</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850/975/1100</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Swap</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed missile, wave armor reduction, aura, and swap fields against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Magic Missile&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;magic_missile_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Wave of Terror&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;vision_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;armor_reduction&quot;,
+          &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+          &quot;affects&quot;: &quot;enemy_armor&quot;,
+          &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+          &quot;reason&quot;: &quot;恐怖波动护甲降低影响后续物理伤害，作为修正项参考。&quot;
+        }
+      ]
+    },
+    &quot;Vengeance Aura&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_base_damage&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+      &quot;affects&quot;: &quot;ally_attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;复仇光环提供攻击力加成，不是独立技能伤害。&quot;
+    },
+    &quot;Retribution&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_damage&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;恶有恶报提供攻击力参考，不直接作为技能爆发。&quot;
+    },
+    &quot;Nether Swap&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;damage_reduction_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +389,7 @@
           <div class="muted">Magic Missile · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +442,7 @@
           <div class="muted">Wave of Terror · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -218,6 +483,24 @@
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
+    
+      <tr>
+        <td>
+          <code>Wave of Terror:debuff_reference:armor_reduction</code>
+          <div class="muted">armor_reduction</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>-3</td><td>-4</td><td>-5</td><td>-6</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: armor_reduction</div><div><code>affects</code>: enemy_armor</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>恐怖波动护甲降低影响后续物理伤害，作为修正项参考。</li></ul></td>
+      </tr>
     </tbody>
         </table>
       </div>
@@ -230,14 +513,14 @@
           <div class="muted">Vengeance Aura · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
         <span>蓝耗：</span>
-        <span>冷却：0</span>
+        <span>冷却：0 / 0 / 0 / 0</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -256,8 +539,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Vengeance Aura:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Vengeance Aura:debuff_reference:bonus_base_damage</code>
+          <div class="muted">bonus_base_damage</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -265,11 +548,64 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>1200</td><td>-</td><td>-</td><td>-</td>
+        <td>10</td><td>15</td><td>20</td><td>25</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: ally_attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>复仇光环提供攻击力加成，不是独立技能伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>恶有恶报（Retribution）</h2>
+          <div class="muted">Retribution · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Retribution:debuff_reference:bonus_damage</code>
+          <div class="muted">bonus_damage</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>20</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>恶有恶报提供攻击力参考，不直接作为技能爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +619,7 @@
           <div class="muted">Nether Swap · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -454,7 +790,7 @@
       &quot;name&quot;: &quot;Magic Missile&quot;,
       &quot;displayName&quot;: &quot;魔法箭（Magic Missile）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -502,7 +838,7 @@
       &quot;name&quot;: &quot;Wave of Terror&quot;,
       &quot;displayName&quot;: &quot;恐怖波动（Wave of Terror）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -550,30 +886,18 @@
           &quot;model&quot;: &quot;instant_fixed&quot;,
           &quot;reason&quot;: &quot;&quot;,
           &quot;caveats&quot;: []
-        }
-      ]
-    },
-    {
-      &quot;name&quot;: &quot;Vengeance Aura&quot;,
-      &quot;displayName&quot;: &quot;复仇光环（Vengeance Aura）&quot;,
-      &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
-      &quot;manaCostByAbilityLevel&quot;: [],
-      &quot;cooldownByAbilityLevel&quot;: [
-        0
-      ],
-      &quot;components&quot;: [
+        },
         {
-          &quot;id&quot;: &quot;Vengeance Aura:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Wave of Terror:debuff_reference:armor_reduction&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;armor_reduction&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            1200
+            -3,
+            -4,
+            -5,
+            -6
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -583,8 +907,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;armor_reduction&quot;,
+            &quot;affects&quot;: &quot;enemy_armor&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -593,9 +917,107 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;恐怖波动护甲降低影响后续物理伤害，作为修正项参考。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Vengeance Aura&quot;,
+      &quot;displayName&quot;: &quot;复仇光环（Vengeance Aura）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;复仇光环提供攻击力加成，不是独立技能伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Vengeance Aura:debuff_reference:bonus_base_damage&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;bonus_base_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            10,
+            15,
+            20,
+            25
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_damage&quot;,
+            &quot;affects&quot;: &quot;ally_attack_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;复仇光环提供攻击力加成，不是独立技能伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;复仇光环提供攻击力加成，不是独立技能伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Retribution&quot;,
+      &quot;displayName&quot;: &quot;恶有恶报（Retribution）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;恶有恶报提供攻击力参考，不直接作为技能爆发。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Retribution:debuff_reference:bonus_damage&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;bonus_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            20
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;attack_damage&quot;,
+            &quot;affects&quot;: &quot;attack_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;恶有恶报提供攻击力参考，不直接作为技能爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;恶有恶报提供攻击力参考，不直接作为技能爆发。&quot;
           ]
         }
       ]
@@ -604,7 +1026,7 @@
       &quot;name&quot;: &quot;Nether Swap&quot;,
       &quot;displayName&quot;: &quot;移形换位（Nether Swap）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -652,7 +1074,266 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed missile, wave armor reduction, aura, and swap fields against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Magic Missile&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;magic_missile_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Wave of Terror&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;vision_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;reference_only&quot;,
+              &quot;model&quot;: &quot;debuff_reference&quot;,
+              &quot;valueKey&quot;: &quot;armor_reduction&quot;,
+              &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+              &quot;affects&quot;: &quot;enemy_armor&quot;,
+              &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+              &quot;reason&quot;: &quot;恐怖波动护甲降低影响后续物理伤害，作为修正项参考。&quot;
+            }
+          ]
+        },
+        &quot;Vengeance Aura&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_base_damage&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+          &quot;affects&quot;: &quot;ally_attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;复仇光环提供攻击力加成，不是独立技能伤害。&quot;
+        },
+        &quot;Retribution&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_damage&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;恶有恶报提供攻击力参考，不直接作为技能爆发。&quot;
+        },
+        &quot;Nether Swap&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;damage_reduction_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;magic_missile_speed&quot;,
+        &quot;label&quot;: &quot;MAGIC MISSILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;magic_missile_stun&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2/1.4/1.6/1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;bounce_range_pct&quot;,
+        &quot;label&quot;: &quot;BOUNCE RANGE PCT:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;damage_per_lasthit&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER LASTHIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Magic Missile&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;wave_speed&quot;,
+        &quot;label&quot;: &quot;WAVE SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;wave_width&quot;,
+        &quot;label&quot;: &quot;WAVE WIDTH:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;armor_reduction&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION:&quot;,
+        &quot;value&quot;: &quot;-3/-4/-5/-6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;attack_reduction&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;10%/15%/20%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;vision_aoe&quot;,
+        &quot;label&quot;: &quot;VISION AOE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;steal_pct&quot;,
+        &quot;label&quot;: &quot;STEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Wave of Terror&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Vengeance Aura&quot;,
+        &quot;key&quot;: &quot;self_multiplier&quot;,
+        &quot;label&quot;: &quot;SELF MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Vengeance Aura&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Vengeance Aura&quot;,
+        &quot;key&quot;: &quot;revival_time&quot;,
+        &quot;label&quot;: &quot;REVIVAL TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Vengeance Aura&quot;,
+        &quot;key&quot;: &quot;restitution_time&quot;,
+        &quot;label&quot;: &quot;REVENGE WINDOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Vengeance Aura&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Nether Swap&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Nether Swap&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850/975/1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Vengeful Spirit&quot;,
+        &quot;ability&quot;: &quot;Nether Swap&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

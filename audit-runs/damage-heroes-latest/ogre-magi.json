@@ -121,7 +121,7 @@
       "name": "Fireblast",
       "displayName": "火焰爆轰（Fireblast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,9 +176,9 @@
       "name": "Ignite",
       "displayName": "引燃（Ignite）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
+      "model": "sustained_dps",
       "reason": "",
       "manaCostByAbilityLevel": [
         80,
@@ -194,8 +194,8 @@
       ],
       "components": [
         {
-          "id": "Ignite:instant_fixed:burn_damage",
-          "kind": "instant_fixed",
+          "id": "Ignite:sustained:burn_damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "burn_damage",
@@ -205,11 +205,16 @@
             40,
             50
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            100,
+            180,
+            280,
+            400
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -221,9 +226,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
+          "model": "sustained_dps",
           "reason": "",
-          "caveats": []
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -231,10 +238,10 @@
       "name": "Bloodlust",
       "displayName": "嗜血术（Bloodlust）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         40,
         50,
@@ -275,9 +282,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -286,7 +293,7 @@
       "name": "Unrefined Fireblast",
       "displayName": "未精通的火焰爆轰（Unrefined Fireblast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
@@ -337,7 +344,7 @@
       "name": "Fire Shield",
       "displayName": "烈火护盾（Fire Shield）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -377,5 +384,350 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Ogre Magi",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Fireblast": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "fireblast_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Ignite": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "burn_damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Bloodlust": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Unrefined Fireblast": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "base_damage",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "hero_attribute"
+          ],
+          "conditionInputs": [
+            "hero_attribute"
+          ],
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+        },
+        "Fire Shield": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Multicast": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fireblast",
+        "key": "multicast_delay",
+        "label": "MULTICAST DELAY:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fireblast",
+        "key": "bonus_cast_speed",
+        "label": "BONUS CAST SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fireblast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fireblast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "slow_movement_speed_pct",
+        "label": "SLOW:",
+        "value": "-25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "multicast_delay",
+        "label": "MULTICAST DELAY:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "ignite_multicast_aoe",
+        "label": "IGNITE MULTICAST AOE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700/800/900/1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Ignite",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "modelscale",
+        "label": "MODELSCALE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "bonus_movement_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "6%/8%/10%/12%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "35/50/65/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "self_bonus",
+        "label": "SELF BONUS ATTACK SPEED:",
+        "value": "40/60/80/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "multicast_bloodlust_aoe",
+        "label": "MULTICAST BLOODLUST AOE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Bloodlust",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "multicast_delay",
+        "label": "MULTICAST DELAY:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "scepter_mana",
+        "label": "SCEPTER MANA:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "str_multiplier",
+        "label": "STR MULTIPLIER:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Unrefined Fireblast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "attacks",
+        "label": "ATTACKS:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "multicast_fireshield_aoe",
+        "label": "MULTICAST FIRESHIELD AOE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "damage_absorb_pct",
+        "label": "DAMAGE ABSORBED:",
+        "value": "85%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Fire Shield",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Multicast",
+        "key": "multicast_2_times",
+        "label": "2X CAST CHANCE:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Multicast",
+        "key": "multicast_3_times",
+        "label": "3X CAST CHANCE:",
+        "value": "0%/30%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Multicast",
+        "key": "multicast_4_times",
+        "label": "4X CAST CHANCE:",
+        "value": "0%/0%/15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Multicast",
+        "key": "strength_for_one_pct",
+        "label": "STRENGTH FOR ONE PCT:",
+        "value": "16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ogre Magi",
+        "ability": "Multicast",
+        "key": "one_tooltip",
+        "label": "ONE TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

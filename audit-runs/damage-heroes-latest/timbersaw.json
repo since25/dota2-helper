@@ -121,7 +121,7 @@
       "name": "Whirling Death",
       "displayName": "死亡旋风（Whirling Death）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
@@ -181,7 +181,7 @@
       "name": "Timber Chain",
       "displayName": "伐木锯链（Timber Chain）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -229,7 +229,7 @@
       "name": "Flamethrower",
       "displayName": "喷火装置（Flamethrower）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -276,7 +276,7 @@
       "name": "Chakram",
       "displayName": "锯齿飞轮（Chakram）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -330,5 +330,365 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Timbersaw",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Whirling Death": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "whirling_damage",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "hero_attribute"
+          ],
+          "conditionInputs": [
+            "hero_attribute"
+          ],
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+        },
+        "Timber Chain": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Reactive Armor": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Flamethrower": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Chakram": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "pass_slow_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Return Chakram": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Exposure Therapy": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "whirling_radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "tree_damage_scale",
+        "label": "TREE BONUS DAMAGE:",
+        "value": "9/16/23/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "whirling_tick",
+        "label": "WHIRLING TICK:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "stat_loss_pct",
+        "label": "STAT LOSS:",
+        "value": "13%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "stat_loss_univ",
+        "label": "STAT LOSS (UNIVERSAL):",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "duration",
+        "label": "STAT LOSS DURATION:",
+        "value": "11/12/13/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Whirling Death",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Timber Chain",
+        "key": "chain_radius",
+        "label": "CHAIN RADIUS:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Timber Chain",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750/900/1050/1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Timber Chain",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Timber Chain",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "2200/2400/2600/2800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Timber Chain",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Reactive Armor",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0.4/0.5/0.6/0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Reactive Armor",
+        "key": "bonus_hp_regen",
+        "label": "BONUS HP REGEN:",
+        "value": "0.4/0.5/0.6/0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Reactive Armor",
+        "key": "stack_limit",
+        "label": "MAX STACKS:",
+        "value": "10/20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Reactive Armor",
+        "key": "stack_duration",
+        "label": "STACK DURATION:",
+        "value": "10/12/14/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Reactive Armor",
+        "key": "stacks_per_hero_attack",
+        "label": "STACKS PER HERO ATTACK:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "width",
+        "label": "WIDTH:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "length",
+        "label": "RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "move_slow_pct",
+        "label": "MOVE SLOW:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "building_dmg_pct",
+        "label": "BUILDING DAMAGE:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "debuff_linger_duration",
+        "label": "DEBUFF LINGER TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Flamethrower",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "pass_damage",
+        "label": "PASS DAMAGE:",
+        "value": "100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "mana_per_second",
+        "label": "MANA COST PER SECOND:",
+        "value": "14/22/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "slow_health_percentage",
+        "label": "SLOW HEALTH PERCENTAGE:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "second_chakram",
+        "label": "SECOND CHAKRAM:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Chakram",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Exposure Therapy",
+        "key": "mana_restore",
+        "label": "MANA RESTORE:",
+        "value": "3.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Timbersaw",
+        "ability": "Exposure Therapy",
+        "key": "health_restore",
+        "label": "HEALTH RESTORE:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

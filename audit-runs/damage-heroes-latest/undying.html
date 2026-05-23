@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>不朽尸王（Undying）</h1>
-        <div class="muted">Undying · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Undying · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,369 @@
       </div>
       <a href="./undying.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Decay</td>
+      <td><code>str_steal</code></td>
+      <td>STRENGTH STEAL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>decay_duration</code></td>
+      <td>STEAL DURATION:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>str_scale_up</code></td>
+      <td>STR SCALE UP:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>creep_damage_multiplier</code></td>
+      <td>CREEP DAMAGE MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>shard_buff_duration</code></td>
+      <td>SHARD BUFF DURATION:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>21/24/27/30</td>
+    </tr>
+  
+    <tr>
+      <td>Decay</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>max_units</code></td>
+      <td>MAX UNITS:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>radius</code></td>
+      <td>RIP RADIUS:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>tombstone_heal</code></td>
+      <td>TOMBSTONE HEAL:</td>
+      <td>4/8/12/16</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>strength_share_percent</code></td>
+      <td>STRENGTH GAIN:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>strength_share_model_scale</code></td>
+      <td>STRENGTH SHARE MODEL SCALE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Soul Rip</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>tombstone_health</code></td>
+      <td>TOMBSTONE HEALTH:</td>
+      <td>20/24/28/32</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>hits_to_destroy_tooltip</code></td>
+      <td>ATTACKS TO DESTROY:</td>
+      <td>5/6/7/8</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>duration</code></td>
+      <td>TOMBSTONE DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>radius</code></td>
+      <td>ZOMBIE SPAWN RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>health_threshold_pct_tooltip</code></td>
+      <td>HEALTH THRESHOLD PCT TOOLTIP:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>zombie_interval</code></td>
+      <td>ZOMBIE SPAWN INTERVAL:</td>
+      <td>4/3.6/3.2/2.8</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>zombie_health</code></td>
+      <td>ZOMBIE HEALTH:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>bunker_units</code></td>
+      <td>BUNKER UNITS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>bunker_heal_pct</code></td>
+      <td>BUNKER HEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>tombstone_grab_radius</code></td>
+      <td>TOMBSTONE GRAB RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>tombstone_bunker_cd</code></td>
+      <td>TOMBSTONE BUNKER CD:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>tombstone_stun_penalty</code></td>
+      <td>TOMBSTONE STUN PENALTY:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>zombie_damage_interval</code></td>
+      <td>ZOMBIE DAMAGE INTERVAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Tombstone</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>slow</code></td>
+      <td>SLOW ON ATTACK:</td>
+      <td>30%/35%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>slow_duration</code></td>
+      <td>DAMAGE AMP DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>str_percentage</code></td>
+      <td>STRENGTH MULTIPLIER:</td>
+      <td>40%/50%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>movement_bonus</code></td>
+      <td>BONUS MOVESPEED:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>spawn_zombie_on_attack</code></td>
+      <td>SPAWN ZOMBIE ON ATTACK:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>zombie_duration</code></td>
+      <td>ZOMBIE DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Golem</td>
+      <td><code>zombie_spawn_padding</code></td>
+      <td>ZOMBIE SPAWN PADDING:</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Undying&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Decay&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;decay_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Soul Rip&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_per_unit&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;strength_share_duration&quot;
+    },
+    &quot;Tombstone&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;zombie_damage_tooltip&quot;,
+      &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;trigger_condition&quot;
+      ],
+      &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+      &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+    },
+    &quot;Flesh Golem&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+      &quot;affects&quot;: &quot;all_damage&quot;,
+      &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +491,7 @@
           <div class="muted">Decay · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +544,7 @@
           <div class="muted">Soul Rip · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +597,7 @@
           <div class="muted">Tombstone · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">conditional</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +650,7 @@
           <div class="muted">Flesh Golem · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +689,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: all_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +821,7 @@
       &quot;name&quot;: &quot;Decay&quot;,
       &quot;displayName&quot;: &quot;腐朽（Decay）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
@@ -514,7 +881,7 @@
       &quot;name&quot;: &quot;Soul Rip&quot;,
       &quot;displayName&quot;: &quot;噬魂（Soul Rip）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -569,7 +936,7 @@
       &quot;name&quot;: &quot;Tombstone&quot;,
       &quot;displayName&quot;: &quot;墓碑（Tombstone）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;conditional&quot;,
       &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
@@ -621,10 +988,10 @@
       &quot;name&quot;: &quot;Flesh Golem&quot;,
       &quot;displayName&quot;: &quot;血肉傀儡（Flesh Golem）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         125,
@@ -665,15 +1032,392 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Undying&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Decay&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;decay_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Soul Rip&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_per_unit&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;strength_share_duration&quot;
+        },
+        &quot;Tombstone&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;zombie_damage_tooltip&quot;,
+          &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;trigger_condition&quot;
+          ],
+          &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+          &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+        },
+        &quot;Flesh Golem&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+          &quot;affects&quot;: &quot;all_damage&quot;,
+          &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;str_steal&quot;,
+        &quot;label&quot;: &quot;STRENGTH STEAL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;decay_duration&quot;,
+        &quot;label&quot;: &quot;STEAL DURATION:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;str_scale_up&quot;,
+        &quot;label&quot;: &quot;STR SCALE UP:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;creep_damage_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;shard_buff_duration&quot;,
+        &quot;label&quot;: &quot;SHARD BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;21/24/27/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Decay&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;max_units&quot;,
+        &quot;label&quot;: &quot;MAX UNITS:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RIP RADIUS:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;tombstone_heal&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE HEAL:&quot;,
+        &quot;value&quot;: &quot;4/8/12/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;strength_share_percent&quot;,
+        &quot;label&quot;: &quot;STRENGTH GAIN:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;strength_share_model_scale&quot;,
+        &quot;label&quot;: &quot;STRENGTH SHARE MODEL SCALE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Soul Rip&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;tombstone_health&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE HEALTH:&quot;,
+        &quot;value&quot;: &quot;20/24/28/32&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;hits_to_destroy_tooltip&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;5/6/7/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;ZOMBIE SPAWN RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;health_threshold_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;HEALTH THRESHOLD PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;zombie_interval&quot;,
+        &quot;label&quot;: &quot;ZOMBIE SPAWN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;4/3.6/3.2/2.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;zombie_health&quot;,
+        &quot;label&quot;: &quot;ZOMBIE HEALTH:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;bunker_units&quot;,
+        &quot;label&quot;: &quot;BUNKER UNITS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;bunker_heal_pct&quot;,
+        &quot;label&quot;: &quot;BUNKER HEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;tombstone_grab_radius&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE GRAB RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;tombstone_bunker_cd&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE BUNKER CD:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;tombstone_stun_penalty&quot;,
+        &quot;label&quot;: &quot;TOMBSTONE STUN PENALTY:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;zombie_damage_interval&quot;,
+        &quot;label&quot;: &quot;ZOMBIE DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Tombstone&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW ON ATTACK:&quot;,
+        &quot;value&quot;: &quot;30%/35%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;DAMAGE AMP DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;str_percentage&quot;,
+        &quot;label&quot;: &quot;STRENGTH MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;40%/50%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;movement_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;spawn_zombie_on_attack&quot;,
+        &quot;label&quot;: &quot;SPAWN ZOMBIE ON ATTACK:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;zombie_duration&quot;,
+        &quot;label&quot;: &quot;ZOMBIE DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Undying&quot;,
+        &quot;ability&quot;: &quot;Flesh Golem&quot;,
+        &quot;key&quot;: &quot;zombie_spawn_padding&quot;,
+        &quot;label&quot;: &quot;ZOMBIE SPAWN PADDING:&quot;,
+        &quot;value&quot;: &quot;36&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>巨魔战将（Troll Warlord）</h1>
-        <div class="muted">Troll Warlord · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Troll Warlord · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,389 @@
       </div>
       <a href="./troll-warlord.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Battle Stance</td>
+      <td><code>bonus_range</code></td>
+      <td>BONUS RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Stance</td>
+      <td><code>base_attack_time</code></td>
+      <td>BASE ATTACK TIME:</td>
+      <td>1.4</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Stance</td>
+      <td><code>armor_per_interval</code></td>
+      <td>ARMOR PER INTERVAL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Stance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>axe_width</code></td>
+      <td>AXE WIDTH:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>axe_speed</code></td>
+      <td>AXE SPEED:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>axe_range</code></td>
+      <td>AXE RANGE:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>axe_spread</code></td>
+      <td>AXE SPREAD:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>axe_count</code></td>
+      <td>AXE COUNT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Ranged)</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>hit_radius</code></td>
+      <td>HIT RADIUS:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>max_range</code></td>
+      <td>RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>axe_movement_speed</code></td>
+      <td>AXE MOVEMENT SPEED:</td>
+      <td>1250</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>blind_pct</code></td>
+      <td>MISS CHANCE:</td>
+      <td>60%</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>whirl_duration</code></td>
+      <td>WHIRL DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>pierces_magic_immunity</code></td>
+      <td>PIERCES MAGIC IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Axes (Melee)</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fervor</td>
+      <td><code>max_stacks</code></td>
+      <td>MAX STACKS:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Fervor</td>
+      <td><code>stack_limit_during_battle_trance</code></td>
+      <td>STACK LIMIT DURING BATTLE TRANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>bonus_move_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>15/25/35/45</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>bonus_range</code></td>
+      <td>BONUS RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>base_attack_time</code></td>
+      <td>BASE ATTACK TIME:</td>
+      <td>1.4</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>ensnare_chance</code></td>
+      <td>ENSNARE CHANCE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>ensnare_duration</code></td>
+      <td>ENSNARE DURATION:</td>
+      <td>0.8/1.2/1.6/2</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>maim_chance</code></td>
+      <td>MAIM CHANCE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>maim_duration</code></td>
+      <td>MAIM DURATION:</td>
+      <td>0.8/1.2/1.6/2</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>maim_slow</code></td>
+      <td>MAIM MOVE SLOW:</td>
+      <td>8%/16%/24%/32%</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Rage</td>
+      <td><code>maim_attack_slow</code></td>
+      <td>MAIM ATTACK SLOW:</td>
+      <td>8/16/24/32</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>trance_duration</code></td>
+      <td>TRANCE DURATION:</td>
+      <td>6.5</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>lifesteal</code></td>
+      <td>LIFESTEAL:</td>
+      <td>40%/60%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>140/170/200</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>attack_speed_share_percent</code></td>
+      <td>ATTACK SPEED SHARE PERCENT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>25%/30%/35%</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>stack_limit_tooltip</code></td>
+      <td>BATTLE TRANCE MAX FERVOR STACKS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>ignore_attack_speed_limit</code></td>
+      <td>IGNORE ATTACK SPEED LIMIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Trance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Troll Warlord&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Battle Stance&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_speed_interval&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Whirling Axes (Ranged)&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;axe_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;axe_slow_duration&quot;
+    },
+    &quot;Whirling Axes (Melee)&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;blind_duration&quot;
+    },
+    &quot;Fervor&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Berserker&#39;s Rage&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;conditional_instant&quot;,
+      &quot;damageKey&quot;: &quot;maim_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;proc_mode&quot;
+      ],
+      &quot;defaultIncluded&quot;: false,
+      &quot;reason&quot;: &quot;残废伤害是攻击概率触发，需输入攻击次数和触发模式。&quot;
+    },
+    &quot;Battle Trance&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +511,7 @@
           <div class="muted">Battle Stance · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +550,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +564,7 @@
           <div class="muted">Whirling Axes (Ranged) · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +617,7 @@
           <div class="muted">Whirling Axes (Melee) · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +670,7 @@
           <div class="muted">Fervor · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +709,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,8 +723,8 @@
           <div class="muted">Berserker&#39;s Rage · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">conditional_instant</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -362,20 +749,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Berserker&#39;s Rage:instant_fixed:maim_damage</code>
+          <code>Berserker&#39;s Rage:conditional_instant:maim_damage</code>
           <div class="muted">maim_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">conditional_instant</span>
+          <span class="pill secondary">conditional_instant</span>
           <div class="muted">implemented</div>
         </td>
         <td>Physical</td>
         <td>10</td><td>15</td><td>20</td><td>25</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.8 / 1.2 / 1.6 / 2</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>conditionInputs</code>: attack_count / proc_mode</div></td>
+        <td>single_value_with_condition</td>
+        <td><ul><li>条件伤害默认不进入固定瞬时总量，需满足条件后再计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +776,7 @@
           <div class="muted">Battle Trance · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -428,7 +815,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -560,10 +947,10 @@
       &quot;name&quot;: &quot;Battle Stance&quot;,
       &quot;displayName&quot;: &quot;战斗姿态（Battle Stance）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -594,9 +981,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -605,7 +992,7 @@
       &quot;name&quot;: &quot;Whirling Axes (Ranged)&quot;,
       &quot;displayName&quot;: &quot;旋风飞斧（远程）（Whirling Axes (Ranged)）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -655,7 +1042,7 @@
       &quot;name&quot;: &quot;Whirling Axes (Melee)&quot;,
       &quot;displayName&quot;: &quot;旋风飞斧（近战）（Whirling Axes (Melee)）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -705,10 +1092,10 @@
       &quot;name&quot;: &quot;Fervor&quot;,
       &quot;displayName&quot;: &quot;热血战魂（Fervor）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -742,9 +1129,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -753,16 +1140,16 @@
       &quot;name&quot;: &quot;Berserker&#39;s Rage&quot;,
       &quot;displayName&quot;: &quot;狂战士之怒（Berserker&#39;s Rage）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;conditional_instant&quot;,
+      &quot;reason&quot;: &quot;残废伤害是攻击概率触发，需输入攻击次数和触发模式。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Berserker&#39;s Rage:instant_fixed:maim_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Berserker&#39;s Rage:conditional_instant:maim_damage&quot;,
+          &quot;kind&quot;: &quot;conditional_instant&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Physical&quot;,
           &quot;label&quot;: &quot;maim_damage&quot;,
@@ -774,23 +1161,23 @@
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;single_value_with_condition&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              0.8,
-              1.2,
-              1.6,
-              2
+            &quot;conditionInputs&quot;: [
+              &quot;attack_count&quot;,
+              &quot;proc_mode&quot;
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;conditional_instant&quot;,
+          &quot;reason&quot;: &quot;残废伤害是攻击概率触发，需输入攻击次数和触发模式。&quot;,
+          &quot;caveats&quot;: [
+            &quot;条件伤害默认不进入固定瞬时总量，需满足条件后再计算。&quot;
+          ]
         }
       ]
     },
@@ -798,10 +1185,10 @@
       &quot;name&quot;: &quot;Battle Trance&quot;,
       &quot;displayName&quot;: &quot;战斗专注（Battle Trance）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150
       ],
@@ -838,15 +1225,413 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Troll Warlord&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Battle Stance&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_speed_interval&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Whirling Axes (Ranged)&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;axe_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;axe_slow_duration&quot;
+        },
+        &quot;Whirling Axes (Melee)&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;blind_duration&quot;
+        },
+        &quot;Fervor&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Berserker&#39;s Rage&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;conditional_instant&quot;,
+          &quot;damageKey&quot;: &quot;maim_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;proc_mode&quot;
+          ],
+          &quot;defaultIncluded&quot;: false,
+          &quot;reason&quot;: &quot;残废伤害是攻击概率触发，需输入攻击次数和触发模式。&quot;
+        },
+        &quot;Battle Trance&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Stance&quot;,
+        &quot;key&quot;: &quot;bonus_range&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Stance&quot;,
+        &quot;key&quot;: &quot;base_attack_time&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Stance&quot;,
+        &quot;key&quot;: &quot;armor_per_interval&quot;,
+        &quot;label&quot;: &quot;ARMOR PER INTERVAL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Stance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;axe_width&quot;,
+        &quot;label&quot;: &quot;AXE WIDTH:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;axe_speed&quot;,
+        &quot;label&quot;: &quot;AXE SPEED:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;axe_range&quot;,
+        &quot;label&quot;: &quot;AXE RANGE:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;axe_spread&quot;,
+        &quot;label&quot;: &quot;AXE SPREAD:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;axe_count&quot;,
+        &quot;label&quot;: &quot;AXE COUNT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Ranged)&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;hit_radius&quot;,
+        &quot;label&quot;: &quot;HIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;max_range&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;axe_movement_speed&quot;,
+        &quot;label&quot;: &quot;AXE MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;1250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;blind_pct&quot;,
+        &quot;label&quot;: &quot;MISS CHANCE:&quot;,
+        &quot;value&quot;: &quot;60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;whirl_duration&quot;,
+        &quot;label&quot;: &quot;WHIRL DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;pierces_magic_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCES MAGIC IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Whirling Axes (Melee)&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Fervor&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Fervor&quot;,
+        &quot;key&quot;: &quot;stack_limit_during_battle_trance&quot;,
+        &quot;label&quot;: &quot;STACK LIMIT DURING BATTLE TRANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;bonus_move_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;15/25/35/45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;bonus_range&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;base_attack_time&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;ensnare_chance&quot;,
+        &quot;label&quot;: &quot;ENSNARE CHANCE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;ensnare_duration&quot;,
+        &quot;label&quot;: &quot;ENSNARE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8/1.2/1.6/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;maim_chance&quot;,
+        &quot;label&quot;: &quot;MAIM CHANCE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;maim_duration&quot;,
+        &quot;label&quot;: &quot;MAIM DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8/1.2/1.6/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;maim_slow&quot;,
+        &quot;label&quot;: &quot;MAIM MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;8%/16%/24%/32%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Rage&quot;,
+        &quot;key&quot;: &quot;maim_attack_slow&quot;,
+        &quot;label&quot;: &quot;MAIM ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;8/16/24/32&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;trance_duration&quot;,
+        &quot;label&quot;: &quot;TRANCE DURATION:&quot;,
+        &quot;value&quot;: &quot;6.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;lifesteal&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;40%/60%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;140/170/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;attack_speed_share_percent&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SHARE PERCENT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;25%/30%/35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;stack_limit_tooltip&quot;,
+        &quot;label&quot;: &quot;BATTLE TRANCE MAX FERVOR STACKS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;ignore_attack_speed_limit&quot;,
+        &quot;label&quot;: &quot;IGNORE ATTACK SPEED LIMIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Troll Warlord&quot;,
+        &quot;ability&quot;: &quot;Battle Trance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

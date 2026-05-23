@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,404 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>剧毒术士（Venomancer）</h1>
-        <div class="muted">Venomancer · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Venomancer · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
-          <span>组件 5</span>
+          <span>组件 6</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./venomancer.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>strike_damage</code></td>
+      <td>INITIAL DAMAGE:</td>
+      <td>25/50/75/100</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>tick_damage</code></td>
+      <td>DAMAGE PER TICK:</td>
+      <td>10/40/70/100</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>movement_slow</code></td>
+      <td>SLOW:</td>
+      <td>-35%/-40%/-45%/-50%</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>create_wards</code></td>
+      <td>CREATE WARDS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>num_created_wards_tooltip</code></td>
+      <td>NUM CREATED WARDS TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>ward_hp_dmg_pct</code></td>
+      <td>WARD HP DMG PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>explosion_damage</code></td>
+      <td>EXPLOSION DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>explosion_stun_duration</code></td>
+      <td>EXPLOSION STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Venomous Gale</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Snakebite</td>
+      <td><code>base_damage</code></td>
+      <td>INITIAL DAMAGE:</td>
+      <td>40/60/80/100</td>
+    </tr>
+  
+    <tr>
+      <td>Snakebite</td>
+      <td><code>tick_damage</code></td>
+      <td>DAMAGE PER SECOND:</td>
+      <td>20/25/30/35</td>
+    </tr>
+  
+    <tr>
+      <td>Snakebite</td>
+      <td><code>undispellable</code></td>
+      <td>UNDISPELLABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Snakebite</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Snakebite</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>can_target</code></td>
+      <td>CAN TARGET:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>gold_bounty_pct</code></td>
+      <td>GOLD BOUNTY PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>ward_multiplier</code></td>
+      <td>WARD MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>ward_model_scale</code></td>
+      <td>WARD MODEL SCALE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>ward_hp_tooltip</code></td>
+      <td>WARD HP:</td>
+      <td>150/250/350/450</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Plague Ward</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Sting</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Sting</td>
+      <td><code>hp_regen_reduction</code></td>
+      <td>HP REGEN REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Sting</td>
+      <td><code>debuff_dmg</code></td>
+      <td>DEBUFF DMG:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>debuff_duration</code></td>
+      <td>DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>damage_per_second</code></td>
+      <td>MAX HEALTH DAMAGE:</td>
+      <td>2%/3%/4%</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>damage_tick_rate</code></td>
+      <td>DAMAGE TICK RATE:</td>
+      <td>.25</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>debuff_time_transfer</code></td>
+      <td>DEBUFF TIME TRANSFER:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>movement_slow</code></td>
+      <td>SLOW:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>debuff_radius</code></td>
+      <td>SPREAD RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>spread_count</code></td>
+      <td>SPREAD COUNT:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>impact_damage_reduce</code></td>
+      <td>IMPACT DAMAGE REDUCE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Noxious Plague</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Venomancer&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed poison sustained fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Venomous Gale&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+      &quot;initialDamageKey&quot;: &quot;strike_damage&quot;,
+      &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.tick&quot;,
+      &quot;reason&quot;: &quot;计入初始命中伤害和完整持续时间内的中毒跳数。&quot;
+    },
+    &quot;Snakebite&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+      &quot;initialDamageKey&quot;: &quot;base_damage&quot;,
+      &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+      &quot;tickIntervalKey&quot;: &quot;damage_interval&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.tick&quot;,
+      &quot;reason&quot;: &quot;计入初始伤害和完整持续时间内的中毒跳数。&quot;
+    },
+    &quot;Plague Ward&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;ward_damage_tooltip&quot;,
+      &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+      &quot;affects&quot;: &quot;summon_attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;ward_attack_count&quot;,
+        &quot;ward_active_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;守卫伤害取决于召唤物存活时间和攻击次数。&quot;
+    },
+    &quot;Poison Sting&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Noxious Plague&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
+          &quot;percentDamageKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;,
+          &quot;healthInput&quot;: &quot;target_max_health&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;target_max_health&quot;
+          ]
+        }
+      ]
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -125,8 +518,8 @@
         </div>
         <div class="tags">
           <span class="pill">curated</span>
-          <span class="pill secondary">conditional</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill secondary">initial_plus_ticks</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -150,20 +543,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Venomous Gale:conditional:strike_damage</code>
+          <code>Venomous Gale:initial_plus_ticks:strike_damage</code>
           <div class="muted">strike_damage</div>
         </td>
         <td>
-          <span class="pill">conditional</span>
-          <span class="pill secondary">conditional</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">initial_plus_ticks</span>
+          <span class="pill secondary">initial_plus_ticks</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>25</td><td>50</td><td>75</td><td>100</td>
-        <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: 初始伤害命中后按 tick 间隔持续掉血。</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>conditional</td>
-        <td><ul><li>该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。</li></ul></td>
+        <td>75 / 250 / 425 / 600</td>
+        <td><div><code>tickDamageKey</code>: tick_damage</div><div><code>tickDamageByAbilityLevel</code>: 10 / 40 / 70 / 100</div><div><code>tickIntervalByAbilityLevel</code>: 3 / 3 / 3 / 3</div><div><code>durationByAbilityLevel</code>: 15 / 15 / 15 / 15</div></td>
+        <td>initialDamage + tickDamage * floor(duration / tickInterval)</td>
+        <td><ul><li>包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -178,8 +571,8 @@
         </div>
         <div class="tags">
           <span class="pill">curated</span>
-          <span class="pill secondary">conditional</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill secondary">initial_plus_ticks</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -203,20 +596,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Snakebite:conditional:base_damage</code>
+          <code>Snakebite:initial_plus_ticks:base_damage</code>
           <div class="muted">base_damage</div>
         </td>
         <td>
-          <span class="pill">conditional</span>
-          <span class="pill secondary">conditional</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">initial_plus_ticks</span>
+          <span class="pill secondary">initial_plus_ticks</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>40</td><td>60</td><td>80</td><td>100</td>
-        <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: 初始伤害命中后按持续时间造成每秒伤害。</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>conditional</td>
-        <td><ul><li>该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。</li></ul></td>
+        <td>280 / 360 / 440 / 520</td>
+        <td><div><code>tickDamageKey</code>: tick_damage</div><div><code>tickDamageByAbilityLevel</code>: 20 / 25 / 30 / 35</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5 / 0.5</div><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
+        <td>initialDamage + tickDamage * floor(duration / tickInterval)</td>
+        <td><ul><li>包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -375,7 +768,25 @@
         <td></td>
         <td><span class="muted">-</span></td>
         <td>single_value</td>
-        <td><ul><li>只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。</li></ul></td>
+        <td><ul><li>计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。</li></ul></td>
+      </tr>
+    
+      <tr>
+        <td>
+          <code>Noxious Plague:percent_health_dot:damage_per_second</code>
+          <div class="muted">damage_per_second</div>
+        </td>
+        <td>
+          <span class="pill">percent_health_dot</span>
+          <span class="pill secondary">percent_health_dot</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>2</td><td>3</td><td>4</td><td>-</td>
+        <td></td>
+        <td><div><code>healthInput</code>: target_max_health</div><div><code>durationByAbilityLevel</code>: 4 / 4 / 4</div></td>
+        <td>healthInput * percentDamage * duration</td>
+        <td><ul><li>百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -508,9 +919,9 @@
       &quot;displayName&quot;: &quot;瘴气（Venomous Gale）&quot;,
       &quot;isUltimate&quot;: false,
       &quot;modelSource&quot;: &quot;curated&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;conditional&quot;,
-      &quot;reason&quot;: &quot;该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+      &quot;reason&quot;: &quot;计入初始命中伤害和完整持续时间内的中毒跳数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         95,
         105,
@@ -525,8 +936,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Venomous Gale:conditional:strike_damage&quot;,
-          &quot;kind&quot;: &quot;conditional&quot;,
+          &quot;id&quot;: &quot;Venomous Gale:initial_plus_ticks:strike_damage&quot;,
+          &quot;kind&quot;: &quot;initial_plus_ticks&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;strike_damage&quot;,
@@ -536,27 +947,44 @@
             75,
             100
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            75,
+            250,
+            425,
+            600
+          ],
+          &quot;totalFormula&quot;: &quot;initialDamage + tickDamage * floor(duration / tickInterval)&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;conditional&quot;
+            &quot;type&quot;: &quot;initial_plus_tick_count_times_tick_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;初始伤害命中后按 tick 间隔持续掉血。&quot;,
-            &quot;requiredInputs&quot;: [],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+            &quot;tickDamageByAbilityLevel&quot;: [
+              10,
+              40,
+              70,
+              100
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              3,
+              3,
+              3,
+              3
+            ],
+            &quot;durationByAbilityLevel&quot;: [
+              15,
+              15,
+              15,
+              15
+            ]
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;conditional&quot;,
-          &quot;reason&quot;: &quot;该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+          &quot;reason&quot;: &quot;计入初始命中伤害和完整持续时间内的中毒跳数。&quot;,
           &quot;caveats&quot;: [
-            &quot;该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。&quot;
+            &quot;包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。&quot;
           ]
         }
       ]
@@ -566,9 +994,9 @@
       &quot;displayName&quot;: &quot;毒蛇撕咬（Snakebite）&quot;,
       &quot;isUltimate&quot;: false,
       &quot;modelSource&quot;: &quot;curated&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;conditional&quot;,
-      &quot;reason&quot;: &quot;该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+      &quot;reason&quot;: &quot;计入初始伤害和完整持续时间内的中毒跳数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         70,
         80,
@@ -583,8 +1011,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Snakebite:conditional:base_damage&quot;,
-          &quot;kind&quot;: &quot;conditional&quot;,
+          &quot;id&quot;: &quot;Snakebite:initial_plus_ticks:base_damage&quot;,
+          &quot;kind&quot;: &quot;initial_plus_ticks&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;base_damage&quot;,
@@ -594,27 +1022,44 @@
             80,
             100
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            280,
+            360,
+            440,
+            520
+          ],
+          &quot;totalFormula&quot;: &quot;initialDamage + tickDamage * floor(duration / tickInterval)&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;conditional&quot;
+            &quot;type&quot;: &quot;initial_plus_tick_count_times_tick_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;初始伤害命中后按持续时间造成每秒伤害。&quot;,
-            &quot;requiredInputs&quot;: [],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+            &quot;tickDamageByAbilityLevel&quot;: [
+              20,
+              25,
+              30,
+              35
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            &quot;durationByAbilityLevel&quot;: [
+              6,
+              6,
+              6,
+              6
+            ]
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;conditional&quot;,
-          &quot;reason&quot;: &quot;该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害和完整持续时间内的中毒跳数。&quot;,
           &quot;caveats&quot;: [
-            &quot;该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。&quot;
+            &quot;包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。&quot;
           ]
         }
       ]
@@ -727,7 +1172,7 @@
       &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。&quot;,
+      &quot;reason&quot;: &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         250,
@@ -760,15 +1205,452 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;,
           &quot;caveats&quot;: [
-            &quot;只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。&quot;
+            &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;Noxious Plague:percent_health_dot:damage_per_second&quot;,
+          &quot;kind&quot;: &quot;percent_health_dot&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_second&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            2,
+            3,
+            4
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;healthInput * percentDamage * duration&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;runtime_health_percent_times_duration&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;healthInput&quot;: &quot;target_max_health&quot;,
+            &quot;durationByAbilityLevel&quot;: [
+              4,
+              4,
+              4
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;,
+          &quot;caveats&quot;: [
+            &quot;百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Venomancer&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed poison sustained fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Venomous Gale&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+          &quot;initialDamageKey&quot;: &quot;strike_damage&quot;,
+          &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.tick&quot;,
+          &quot;reason&quot;: &quot;计入初始命中伤害和完整持续时间内的中毒跳数。&quot;
+        },
+        &quot;Snakebite&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_ticks&quot;,
+          &quot;initialDamageKey&quot;: &quot;base_damage&quot;,
+          &quot;tickDamageKey&quot;: &quot;tick_damage&quot;,
+          &quot;tickIntervalKey&quot;: &quot;damage_interval&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.tick&quot;,
+          &quot;reason&quot;: &quot;计入初始伤害和完整持续时间内的中毒跳数。&quot;
+        },
+        &quot;Plague Ward&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;ward_damage_tooltip&quot;,
+          &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+          &quot;affects&quot;: &quot;summon_attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;ward_attack_count&quot;,
+            &quot;ward_active_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;守卫伤害取决于召唤物存活时间和攻击次数。&quot;
+        },
+        &quot;Poison Sting&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Noxious Plague&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;implemented&quot;,
+              &quot;model&quot;: &quot;percent_health_dot&quot;,
+              &quot;percentDamageKey&quot;: &quot;damage_per_second&quot;,
+              &quot;durationKey&quot;: &quot;debuff_duration&quot;,
+              &quot;healthInput&quot;: &quot;target_max_health&quot;,
+              &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+              &quot;conditionInputs&quot;: [
+                &quot;target_max_health&quot;
+              ]
+            }
+          ]
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;strike_damage&quot;,
+        &quot;label&quot;: &quot;INITIAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25/50/75/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;tick_damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER TICK:&quot;,
+        &quot;value&quot;: &quot;10/40/70/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;-35%/-40%/-45%/-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;create_wards&quot;,
+        &quot;label&quot;: &quot;CREATE WARDS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;num_created_wards_tooltip&quot;,
+        &quot;label&quot;: &quot;NUM CREATED WARDS TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;ward_hp_dmg_pct&quot;,
+        &quot;label&quot;: &quot;WARD HP DMG PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;explosion_damage&quot;,
+        &quot;label&quot;: &quot;EXPLOSION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;explosion_stun_duration&quot;,
+        &quot;label&quot;: &quot;EXPLOSION STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Venomous Gale&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Snakebite&quot;,
+        &quot;key&quot;: &quot;base_damage&quot;,
+        &quot;label&quot;: &quot;INITIAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;40/60/80/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Snakebite&quot;,
+        &quot;key&quot;: &quot;tick_damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER SECOND:&quot;,
+        &quot;value&quot;: &quot;20/25/30/35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Snakebite&quot;,
+        &quot;key&quot;: &quot;undispellable&quot;,
+        &quot;label&quot;: &quot;UNDISPELLABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Snakebite&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Snakebite&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;can_target&quot;,
+        &quot;label&quot;: &quot;CAN TARGET:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;gold_bounty_pct&quot;,
+        &quot;label&quot;: &quot;GOLD BOUNTY PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;ward_multiplier&quot;,
+        &quot;label&quot;: &quot;WARD MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;ward_model_scale&quot;,
+        &quot;label&quot;: &quot;WARD MODEL SCALE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;ward_hp_tooltip&quot;,
+        &quot;label&quot;: &quot;WARD HP:&quot;,
+        &quot;value&quot;: &quot;150/250/350/450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Plague Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Poison Sting&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Poison Sting&quot;,
+        &quot;key&quot;: &quot;hp_regen_reduction&quot;,
+        &quot;label&quot;: &quot;HP REGEN REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Poison Sting&quot;,
+        &quot;key&quot;: &quot;debuff_dmg&quot;,
+        &quot;label&quot;: &quot;DEBUFF DMG:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;damage_per_second&quot;,
+        &quot;label&quot;: &quot;MAX HEALTH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;2%/3%/4%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;damage_tick_rate&quot;,
+        &quot;label&quot;: &quot;DAMAGE TICK RATE:&quot;,
+        &quot;value&quot;: &quot;.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;debuff_time_transfer&quot;,
+        &quot;label&quot;: &quot;DEBUFF TIME TRANSFER:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;debuff_radius&quot;,
+        &quot;label&quot;: &quot;SPREAD RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;spread_count&quot;,
+        &quot;label&quot;: &quot;SPREAD COUNT:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;impact_damage_reduce&quot;,
+        &quot;label&quot;: &quot;IMPACT DAMAGE REDUCE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Venomancer&quot;,
+        &quot;ability&quot;: &quot;Noxious Plague&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

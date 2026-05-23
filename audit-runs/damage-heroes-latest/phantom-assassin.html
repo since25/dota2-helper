@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>幻影刺客（Phantom Assassin）</h1>
-        <div class="muted">Phantom Assassin · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Phantom Assassin · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,329 @@
       </div>
       <a href="./phantom-assassin.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>move_slow</code></td>
+      <td>MOVE SLOW:</td>
+      <td>-50%</td>
+    </tr>
+  
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>dagger_speed</code></td>
+      <td>DAGGER SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>2.1/2.4/2.7/3</td>
+    </tr>
+  
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>attack_factor</code></td>
+      <td>ATTACK FACTOR:</td>
+      <td>-70/-55/-40/-25</td>
+    </tr>
+  
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/850/1000/1150</td>
+    </tr>
+  
+    <tr>
+      <td>Stifling Dagger</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650/750/850/950</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>creep_lifesteal_penalty</code></td>
+      <td>CREEP LIFESTEAL PENALTY:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>charge_restore_time</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>21/18/15/12</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom Strike</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>radius</code></td>
+      <td>VANISH RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>fade_duration</code></td>
+      <td>VANISH BUFFER:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>break_on_attack</code></td>
+      <td>BREAK ON ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>manacost_reduction_during_blur_pct</code></td>
+      <td>MANA COST REDUCTION DURING BLUR:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>buff_duration_after_break</code></td>
+      <td>BUFF DURATION AFTER BLUR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>manacost_reduction_after_blur_pct</code></td>
+      <td>MANA COST REDUCTION AFTER BLUR:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Blur</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>pct_health_damage</code></td>
+      <td>PCT HEALTH DAMAGE:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>degen</code></td>
+      <td>DEGEN:</td>
+      <td>-50</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>duration</code></td>
+      <td>BREAK DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>max_damage_initial</code></td>
+      <td>MAX DAMAGE INITIAL:</td>
+      <td>-1</td>
+    </tr>
+  
+    <tr>
+      <td>Fan of Knives</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Coup de Grace</td>
+      <td><code>dagger_crit_chance</code></td>
+      <td>DAGGER CHANCE OF DEADLY FOCUS:</td>
+      <td>34%</td>
+    </tr>
+  
+    <tr>
+      <td>Coup de Grace</td>
+      <td><code>duration</code></td>
+      <td>DEADLY FOCUS DURATION:</td>
+      <td>6/8/10</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Stifling Dagger&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;base_damage&quot;,
+      &quot;attackFactorKey&quot;: &quot;attack_factor_tooltip&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;formula&quot;: &quot;baseDamage + attackDamage * attackFactorPct&quot;,
+      &quot;defaultIncluded&quot;: false
+    },
+    &quot;Phantom Strike&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;攻速窗口影响普攻次数，不直接造成技能伤害。&quot;
+    },
+    &quot;Blur&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;active_movespeed_bonus&quot;,
+      &quot;semanticType&quot;: &quot;mobility.move_speed.percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;隐身和移速影响进出场，不直接造成伤害。&quot;
+    },
+    &quot;Fan of Knives&quot;: {
+      &quot;status&quot;: &quot;unsupported&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;pct_health_damage_initial&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;reason&quot;: &quot;该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。&quot;
+    },
+    &quot;Immaterial&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;evasion&quot;,
+      &quot;semanticType&quot;: &quot;defense.evasion.percent&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;stackGroup&quot;: &quot;evasion&quot;,
+      &quot;reason&quot;: &quot;闪避影响承伤，不直接造成伤害。&quot;
+    },
+    &quot;Coup de Grace&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;chance_based&quot;,
+      &quot;valueKey&quot;: &quot;crit_bonus&quot;,
+      &quot;semanticType&quot;: &quot;modifier.crit.multiplier&quot;,
+      &quot;damageType&quot;: &quot;Physical&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;critical_strike&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;crit_mode&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;chanceKey&quot;: &quot;crit_chance&quot;,
+      &quot;multiplierKey&quot;: &quot;crit_bonus&quot;,
+      &quot;reason&quot;: &quot;暴击需要普攻次数和是否触发，当前作为概率伤害参考。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -875,7 +1202,335 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Stifling Dagger&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;base_damage&quot;,
+          &quot;attackFactorKey&quot;: &quot;attack_factor_tooltip&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;formula&quot;: &quot;baseDamage + attackDamage * attackFactorPct&quot;,
+          &quot;defaultIncluded&quot;: false
+        },
+        &quot;Phantom Strike&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;攻速窗口影响普攻次数，不直接造成技能伤害。&quot;
+        },
+        &quot;Blur&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;active_movespeed_bonus&quot;,
+          &quot;semanticType&quot;: &quot;mobility.move_speed.percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;隐身和移速影响进出场，不直接造成伤害。&quot;
+        },
+        &quot;Fan of Knives&quot;: {
+          &quot;status&quot;: &quot;unsupported&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;pct_health_damage_initial&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;reason&quot;: &quot;该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。&quot;
+        },
+        &quot;Immaterial&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;evasion&quot;,
+          &quot;semanticType&quot;: &quot;defense.evasion.percent&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;stackGroup&quot;: &quot;evasion&quot;,
+          &quot;reason&quot;: &quot;闪避影响承伤，不直接造成伤害。&quot;
+        },
+        &quot;Coup de Grace&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;chance_based&quot;,
+          &quot;valueKey&quot;: &quot;crit_bonus&quot;,
+          &quot;semanticType&quot;: &quot;modifier.crit.multiplier&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;critical_strike&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;crit_mode&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;chanceKey&quot;: &quot;crit_chance&quot;,
+          &quot;multiplierKey&quot;: &quot;crit_bonus&quot;,
+          &quot;reason&quot;: &quot;暴击需要普攻次数和是否触发，当前作为概率伤害参考。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;dagger_speed&quot;,
+        &quot;label&quot;: &quot;DAGGER SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;2.1/2.4/2.7/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;attack_factor&quot;,
+        &quot;label&quot;: &quot;ATTACK FACTOR:&quot;,
+        &quot;value&quot;: &quot;-70/-55/-40/-25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/850/1000/1150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Stifling Dagger&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650/750/850/950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;creep_lifesteal_penalty&quot;,
+        &quot;label&quot;: &quot;CREEP LIFESTEAL PENALTY:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;charge_restore_time&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;21/18/15/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Phantom Strike&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;VANISH RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;fade_duration&quot;,
+        &quot;label&quot;: &quot;VANISH BUFFER:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;break_on_attack&quot;,
+        &quot;label&quot;: &quot;BREAK ON ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;manacost_reduction_during_blur_pct&quot;,
+        &quot;label&quot;: &quot;MANA COST REDUCTION DURING BLUR:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;buff_duration_after_break&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION AFTER BLUR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;manacost_reduction_after_blur_pct&quot;,
+        &quot;label&quot;: &quot;MANA COST REDUCTION AFTER BLUR:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Blur&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;pct_health_damage&quot;,
+        &quot;label&quot;: &quot;PCT HEALTH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;degen&quot;,
+        &quot;label&quot;: &quot;DEGEN:&quot;,
+        &quot;value&quot;: &quot;-50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;BREAK DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;max_damage_initial&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE INITIAL:&quot;,
+        &quot;value&quot;: &quot;-1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Fan of Knives&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Coup de Grace&quot;,
+        &quot;key&quot;: &quot;dagger_crit_chance&quot;,
+        &quot;label&quot;: &quot;DAGGER CHANCE OF DEADLY FOCUS:&quot;,
+        &quot;value&quot;: &quot;34%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phantom Assassin&quot;,
+        &quot;ability&quot;: &quot;Coup de Grace&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DEADLY FOCUS DURATION:&quot;,
+        &quot;value&quot;: &quot;6/8/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

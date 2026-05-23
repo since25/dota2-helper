@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>沉默术士（Silencer）</h1>
-        <div class="muted">Silencer · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Silencer · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,293 @@
       </div>
       <a href="./silencer.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>application_damage</code></td>
+      <td>INITIAL DAMAGE:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>movespeed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-16%/-19%/-22%/-25%</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>undispellable</code></td>
+      <td>UNDISPELLABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>penalty_duration</code></td>
+      <td>PENALTY DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>penalty_multiplier</code></td>
+      <td>PENALTY MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Curse</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>intellect_damage_pct</code></td>
+      <td>INT TO DAMAGE:</td>
+      <td>35%/50%/65%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>int_steal</code></td>
+      <td>INT STEAL:</td>
+      <td>2/3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>int_steal_duration</code></td>
+      <td>INT STEAL DURATION:</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>stacks_for_silence</code></td>
+      <td>STACKS FOR SILENCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>silence_duration</code></td>
+      <td>SILENCE DURATION:</td>
+      <td>+2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>debuff_linger_duration</code></td>
+      <td>DEBUFF LINGER DURATION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>pure_pierce_debuff</code></td>
+      <td>PURE PIERCE DEBUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Glaives of Wisdom</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>int_multiplier</code></td>
+      <td>INT DIFF MULTIPLIER:</td>
+      <td>1/1.5/2/2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>debuff_duration</code></td>
+      <td>ENEMY CAST TIMER:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>duration</code></td>
+      <td>SILENCE DURATION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>radius</code></td>
+      <td>AOE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Last Word</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Suffer In Silence</td>
+      <td><code>permanent_int_steal_range</code></td>
+      <td>PERMANENT INT STEAL RANGE:</td>
+      <td>925</td>
+    </tr>
+  
+    <tr>
+      <td>Suffer In Silence</td>
+      <td><code>permanent_int_steal_amount</code></td>
+      <td>PERMANENT INT STEAL AMOUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Suffer In Silence</td>
+      <td><code>silenced_bonus_int_steal_amount</code></td>
+      <td>SILENCED BONUS INT STEAL AMOUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Suffer In Silence</td>
+      <td><code>damage_pct</code></td>
+      <td>SILENCED TARGET DAMAGE:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Global Silence</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>4.5/5.25/6</td>
+    </tr>
+  
+    <tr>
+      <td>Global Silence</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Silencer&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Arcane Curse&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;initial_plus_dot&quot;,
+      &quot;initialDamageKey&quot;: &quot;application_damage&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。&quot;
+    },
+    &quot;Glaives of Wisdom&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Last Word&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+      &quot;affects&quot;: &quot;all_damage&quot;,
+      &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+    },
+    &quot;Suffer In Silence&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Global Silence&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +415,8 @@
           <div class="muted">Arcane Curse · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">initial_plus_dot</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +441,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Arcane Curse:instant_fixed:damage</code>
-          <div class="muted">damage</div>
+          <code>Arcane Curse:initial_plus_dot:application_damage</code>
+          <div class="muted">application_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">initial_plus_dot</span>
+          <span class="pill secondary">initial_plus_dot</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>16</td><td>24</td><td>32</td><td>40</td>
-        <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>20</td><td>40</td><td>60</td><td>80</td>
+        <td>116 / 184 / 252 / 320</td>
+        <td><div><code>damagePerSecondKey</code>: damage</div><div><code>damagePerSecondByAbilityLevel</code>: 16 / 24 / 32 / 40</div><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
+        <td>initialDamage + damagePerSecond * duration</td>
+        <td><ul><li>包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +468,7 @@
           <div class="muted">Glaives of Wisdom · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +507,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +521,7 @@
           <div class="muted">Last Word · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +560,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: all_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -401,10 +692,10 @@
       &quot;name&quot;: &quot;Arcane Curse&quot;,
       &quot;displayName&quot;: &quot;奥术诅咒（Arcane Curse）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;initial_plus_dot&quot;,
+      &quot;reason&quot;: &quot;计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         120,
         130,
@@ -419,24 +710,36 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Arcane Curse:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Arcane Curse:initial_plus_dot:application_damage&quot;,
+          &quot;kind&quot;: &quot;initial_plus_dot&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;damage&quot;,
+          &quot;label&quot;: &quot;application_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            16,
-            24,
-            32,
-            40
+            20,
+            40,
+            60,
+            80
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            116,
+            184,
+            252,
+            320
+          ],
+          &quot;totalFormula&quot;: &quot;initialDamage + damagePerSecond * duration&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;initial_plus_duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
+            &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+            &quot;damagePerSecondByAbilityLevel&quot;: [
+              16,
+              24,
+              32,
+              40
+            ],
             &quot;durationByAbilityLevel&quot;: [
               6,
               6,
@@ -446,9 +749,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;initial_plus_dot&quot;,
+          &quot;reason&quot;: &quot;计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。&quot;
+          ]
         }
       ]
     },
@@ -456,10 +761,10 @@
       &quot;name&quot;: &quot;Glaives of Wisdom&quot;,
       &quot;displayName&quot;: &quot;智慧之刃（Glaives of Wisdom）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         12,
         14,
@@ -497,9 +802,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -508,10 +813,10 @@
       &quot;name&quot;: &quot;Last Word&quot;,
       &quot;displayName&quot;: &quot;遗言（Last Word）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         105,
@@ -555,15 +860,306 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Silencer&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Arcane Curse&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;initial_plus_dot&quot;,
+          &quot;initialDamageKey&quot;: &quot;application_damage&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;计入施加伤害和基础持续伤害；惩罚延长由后续条件输入处理。&quot;
+        },
+        &quot;Glaives of Wisdom&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Last Word&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+          &quot;affects&quot;: &quot;all_damage&quot;,
+          &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+        },
+        &quot;Suffer In Silence&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Global Silence&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;application_damage&quot;,
+        &quot;label&quot;: &quot;INITIAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-16%/-19%/-22%/-25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;undispellable&quot;,
+        &quot;label&quot;: &quot;UNDISPELLABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;penalty_duration&quot;,
+        &quot;label&quot;: &quot;PENALTY DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;penalty_multiplier&quot;,
+        &quot;label&quot;: &quot;PENALTY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Arcane Curse&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;intellect_damage_pct&quot;,
+        &quot;label&quot;: &quot;INT TO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;35%/50%/65%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;int_steal&quot;,
+        &quot;label&quot;: &quot;INT STEAL:&quot;,
+        &quot;value&quot;: &quot;2/3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;int_steal_duration&quot;,
+        &quot;label&quot;: &quot;INT STEAL DURATION:&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;stacks_for_silence&quot;,
+        &quot;label&quot;: &quot;STACKS FOR SILENCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;silence_duration&quot;,
+        &quot;label&quot;: &quot;SILENCE DURATION:&quot;,
+        &quot;value&quot;: &quot;+2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;debuff_linger_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;pure_pierce_debuff&quot;,
+        &quot;label&quot;: &quot;PURE PIERCE DEBUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Glaives of Wisdom&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;int_multiplier&quot;,
+        &quot;label&quot;: &quot;INT DIFF MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1/1.5/2/2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;ENEMY CAST TIMER:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;SILENCE DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;AOE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Last Word&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Suffer In Silence&quot;,
+        &quot;key&quot;: &quot;permanent_int_steal_range&quot;,
+        &quot;label&quot;: &quot;PERMANENT INT STEAL RANGE:&quot;,
+        &quot;value&quot;: &quot;925&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Suffer In Silence&quot;,
+        &quot;key&quot;: &quot;permanent_int_steal_amount&quot;,
+        &quot;label&quot;: &quot;PERMANENT INT STEAL AMOUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Suffer In Silence&quot;,
+        &quot;key&quot;: &quot;silenced_bonus_int_steal_amount&quot;,
+        &quot;label&quot;: &quot;SILENCED BONUS INT STEAL AMOUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Suffer In Silence&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;SILENCED TARGET DAMAGE:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Global Silence&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4.5/5.25/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Silencer&quot;,
+        &quot;ability&quot;: &quot;Global Silence&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

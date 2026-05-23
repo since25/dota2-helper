@@ -121,7 +121,7 @@
       "name": "Overwhelming Odds",
       "displayName": "压倒性优势（Overwhelming Odds）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Press The Attack",
       "displayName": "强攻（Press The Attack）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90
       ],
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,7 +228,7 @@
       "name": "Moment of Courage",
       "displayName": "勇气之霎（Moment of Courage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "attack_modifier",
       "reason": "",
@@ -271,7 +271,7 @@
       "name": "Duel",
       "displayName": "决斗（Duel）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -319,5 +319,317 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Legion Commander",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Overwhelming Odds": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Press The Attack": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Moment of Courage": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "secondary_attack_damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "hero_attack_damage",
+            "attack_count"
+          ],
+          "defaultAttackCount": 1,
+          "defaultIncluded": false
+        },
+        "Outfight Them!": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Duel": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "reward_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "damage_per_hero",
+        "label": "DAMAGE PER HERO:",
+        "value": "40/70/100/130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "damage_per_unit",
+        "label": "DAMAGE PER CREEP:",
+        "value": "14/16/18/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "bonus_armor_heroes",
+        "label": "ARMOR PER HERO:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "bonus_armor_creeps",
+        "label": "ARMOR PER CREEP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "bonus_attack_speed_creeps",
+        "label": "BONUS ATTACK SPEED CREEPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "50/75/100/125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Overwhelming Odds",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Press The Attack",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Press The Attack",
+        "key": "move_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "13%/16%/19%/22%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Press The Attack",
+        "key": "hp_regen",
+        "label": "HP REGEN:",
+        "value": "24/36/48/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Press The Attack",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Press The Attack",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Moment of Courage",
+        "key": "trigger_attacks",
+        "label": "ATTACKS TO TRIGGER:",
+        "value": "7/6/5/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Moment of Courage",
+        "key": "buff_duration",
+        "label": "BUFF DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Moment of Courage",
+        "key": "hp_leech_percent",
+        "label": "LIFESTEAL:",
+        "value": "55%/65%/75%/85%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Outfight Them!",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Outfight Them!",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Outfight Them!",
+        "key": "armor",
+        "label": "ARMOR:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Outfight Them!",
+        "key": "ally_factor",
+        "label": "ALLY FACTOR:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "trigger_pta_on_victory",
+        "label": "TRIGGER PTA ON VICTORY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "duel_refresh_on_victory",
+        "label": "DUEL REFRESH ON VICTORY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "damage_reduction_pct",
+        "label": "DAMAGE REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "team_duel",
+        "label": "TEAM DUEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "team_duel_damage_pct",
+        "label": "TEAM DUEL DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "team_duel_radius",
+        "label": "TEAM DUEL RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Legion Commander",
+        "ability": "Duel",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

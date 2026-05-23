@@ -43,6 +43,8 @@ test('buildMatchContext normalizes Chinese heroes and includes rich data section
   assert.ok(context.dataCoverage.available.includes('player hero abilities'));
   assert.ok(context.dataCoverage.available.includes('ability mana and cooldown'));
   assert.ok(context.dataCoverage.available.includes('aghanim item basics'));
+  assert.ok(context.dataCoverage.available.includes('shop item semantic models'));
+  assert.equal(context.itemSemanticCoverage.total, 188);
   assert.ok(!context.dataCoverage.missing.includes('player hero facets'));
   assert.equal(context.upgradeItems.scepter.cost, 4200);
   assert.equal(context.upgradeItems.shard.cost, 1400);
@@ -80,6 +82,10 @@ test('buildGroundedChinesePrompt requires Chinese output and forbids invented nu
   assert.match(prompt, /神杖与魔晶参考/);
   assert.match(prompt, /阿哈利姆神杖（Aghanim's Scepter）（4200 金）/);
   assert.match(prompt, /阿哈利姆魔晶（Aghanim's Shard）（1400 金）/);
+  assert.match(prompt, /商店物品语义覆盖/);
+  assert.match(prompt, /已建模商店物品 188 个/);
+  assert.match(prompt, /raw\.reference 是审计字段，不是未知伤害/);
+  assert.match(prompt, /神杖和魔晶是条件升级入口/);
   assert.match(prompt, /关键等级爆发窗口/);
   assert.match(prompt, /默认25%魔抗估算/);
   assert.match(prompt, /### 关键等级爆发与斩杀线/);

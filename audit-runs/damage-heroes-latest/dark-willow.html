@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>邪影芳灵（Dark Willow）</h1>
-        <div class="muted">Dark Willow · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Dark Willow · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,425 @@
       </div>
       <a href="./dark-willow.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>placement_range</code></td>
+      <td>PLACEMENT RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>placement_count</code></td>
+      <td>PLACEMENT COUNT:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>extra_brambles_placement_duration</code></td>
+      <td>EXTRA BRAMBLES PLACEMENT DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>latch_duration</code></td>
+      <td>LATCH ROOT DURATION:</td>
+      <td>1/1.5/2/2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>latch_range</code></td>
+      <td>BRAMBLE LATCH RADIUS:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>spell_amp</code></td>
+      <td>SPELL AMP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>latch_creation_interval</code></td>
+      <td>LATCH CREATION INTERVAL:</td>
+      <td>0.075</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>latch_creation_delay</code></td>
+      <td>LATCH CREATION DELAY:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>initial_creation_delay</code></td>
+      <td>INITIAL CREATION DELAY:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000/1100/1200/1300</td>
+    </tr>
+  
+    <tr>
+      <td>Bramble Maze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>fade_time</code></td>
+      <td>FADE TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>damage</code></td>
+      <td>MAX DAMAGE:</td>
+      <td>120/200/280/360</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>aura_radius</code></td>
+      <td>AURA RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>aura_linger</code></td>
+      <td>AURA LINGER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>aura_damage_pct</code></td>
+      <td>AURA DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Realm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.5/1.8/2.1/2.4</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>stun_radius</code></td>
+      <td>EFFECT RADIUS:</td>
+      <td>360</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>accumulated_damage_pct</code></td>
+      <td>ACCUMULATED DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>accumulated_damage_pct_ally</code></td>
+      <td>ACCUMULATED DAMAGE PCT ALLY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cursed Crown</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>attack_interval</code></td>
+      <td>ATTACK INTERVAL:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>attack_radius</code></td>
+      <td>ATTACK RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>attack_targets</code></td>
+      <td>ATTACK TARGETS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>roaming_radius</code></td>
+      <td>ROAMING RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>roaming_seconds_per_rotation</code></td>
+      <td>ROAMING SECONDS PER ROTATION:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>roaming_duration</code></td>
+      <td>ROAMING DURATION:</td>
+      <td>5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>target_count</code></td>
+      <td>TARGET COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>travel_speed</code></td>
+      <td>TRAVEL SPEED:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>unit_targetable</code></td>
+      <td>UNIT TARGETABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>damage_reduction_pct</code></td>
+      <td>DAMAGE REDUCTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bedlam</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Pixie Dust</td>
+      <td><code>hp_regen_amp</code></td>
+      <td>HP REGEN AMP:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Pixie Dust</td>
+      <td><code>mana_regen_amp</code></td>
+      <td>MANA REGEN AMP:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Pixie Dust</td>
+      <td><code>hp_regen_amp_out_of_world</code></td>
+      <td>HP REGEN AMP OUT OF WORLD:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Pixie Dust</td>
+      <td><code>mana_regen_amp_out_of_world</code></td>
+      <td>MANA REGEN AMP OUT OF WORLD:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>destination_travel_speed</code></td>
+      <td>DESTINATION TRAVEL SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>destination_radius</code></td>
+      <td>RADIUS:</td>
+      <td>400/450/500</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>destination_status_duration</code></td>
+      <td>FEAR DURATION:</td>
+      <td>2.8/3/3.2</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>return_travel_speed</code></td>
+      <td>RETURN TRAVEL SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>starting_height</code></td>
+      <td>STARTING HEIGHT:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>telegraph_to_enemies</code></td>
+      <td>TELEGRAPH TO ENEMIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Terrorize</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Dark Willow&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Bramble Maze&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_tick&quot;,
+      &quot;durationKey&quot;: &quot;placement_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Shadow Realm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;max_damage_duration&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Cursed Crown&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Bedlam&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false
+    },
+    &quot;Pixie Dust&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Terrorize&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +547,7 @@
           <div class="muted">Bramble Maze · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +600,7 @@
           <div class="muted">Shadow Realm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +653,7 @@
           <div class="muted">Cursed Crown · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +692,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +706,7 @@
           <div class="muted">Bedlam · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">attack_modifier</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +759,7 @@
           <div class="muted">Terrorize · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +798,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +930,7 @@
       &quot;name&quot;: &quot;Bramble Maze&quot;,
       &quot;displayName&quot;: &quot;荆棘迷宫（Bramble Maze）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -569,7 +992,7 @@
       &quot;name&quot;: &quot;Shadow Realm&quot;,
       &quot;displayName&quot;: &quot;暗影之境（Shadow Realm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -622,10 +1045,10 @@
       &quot;name&quot;: &quot;Cursed Crown&quot;,
       &quot;displayName&quot;: &quot;诅咒王冠（Cursed Crown）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         90,
@@ -669,9 +1092,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -680,7 +1103,7 @@
       &quot;name&quot;: &quot;Bedlam&quot;,
       &quot;displayName&quot;: &quot;作祟（Bedlam）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;attack_modifier&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -731,10 +1154,10 @@
       &quot;name&quot;: &quot;Terrorize&quot;,
       &quot;displayName&quot;: &quot;恐吓（Terrorize）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150
       ],
@@ -771,15 +1194,455 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Dark Willow&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Bramble Maze&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_tick&quot;,
+          &quot;durationKey&quot;: &quot;placement_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Shadow Realm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;max_damage_duration&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Cursed Crown&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Bedlam&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false
+        },
+        &quot;Pixie Dust&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Terrorize&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;placement_range&quot;,
+        &quot;label&quot;: &quot;PLACEMENT RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;placement_count&quot;,
+        &quot;label&quot;: &quot;PLACEMENT COUNT:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;extra_brambles_placement_duration&quot;,
+        &quot;label&quot;: &quot;EXTRA BRAMBLES PLACEMENT DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;latch_duration&quot;,
+        &quot;label&quot;: &quot;LATCH ROOT DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.5/2/2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;latch_range&quot;,
+        &quot;label&quot;: &quot;BRAMBLE LATCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;spell_amp&quot;,
+        &quot;label&quot;: &quot;SPELL AMP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;latch_creation_interval&quot;,
+        &quot;label&quot;: &quot;LATCH CREATION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.075&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;latch_creation_delay&quot;,
+        &quot;label&quot;: &quot;LATCH CREATION DELAY:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;initial_creation_delay&quot;,
+        &quot;label&quot;: &quot;INITIAL CREATION DELAY:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000/1100/1200/1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bramble Maze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;fade_time&quot;,
+        &quot;label&quot;: &quot;FADE TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE:&quot;,
+        &quot;value&quot;: &quot;120/200/280/360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;AURA RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;aura_linger&quot;,
+        &quot;label&quot;: &quot;AURA LINGER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;aura_damage_pct&quot;,
+        &quot;label&quot;: &quot;AURA DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Shadow Realm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.5/1.8/2.1/2.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;stun_radius&quot;,
+        &quot;label&quot;: &quot;EFFECT RADIUS:&quot;,
+        &quot;value&quot;: &quot;360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;accumulated_damage_pct&quot;,
+        &quot;label&quot;: &quot;ACCUMULATED DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;accumulated_damage_pct_ally&quot;,
+        &quot;label&quot;: &quot;ACCUMULATED DAMAGE PCT ALLY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Cursed Crown&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;attack_interval&quot;,
+        &quot;label&quot;: &quot;ATTACK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;attack_radius&quot;,
+        &quot;label&quot;: &quot;ATTACK RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;attack_targets&quot;,
+        &quot;label&quot;: &quot;ATTACK TARGETS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;roaming_radius&quot;,
+        &quot;label&quot;: &quot;ROAMING RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;roaming_seconds_per_rotation&quot;,
+        &quot;label&quot;: &quot;ROAMING SECONDS PER ROTATION:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;roaming_duration&quot;,
+        &quot;label&quot;: &quot;ROAMING DURATION:&quot;,
+        &quot;value&quot;: &quot;5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;target_count&quot;,
+        &quot;label&quot;: &quot;TARGET COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;travel_speed&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;unit_targetable&quot;,
+        &quot;label&quot;: &quot;UNIT TARGETABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;damage_reduction_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Bedlam&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Pixie Dust&quot;,
+        &quot;key&quot;: &quot;hp_regen_amp&quot;,
+        &quot;label&quot;: &quot;HP REGEN AMP:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Pixie Dust&quot;,
+        &quot;key&quot;: &quot;mana_regen_amp&quot;,
+        &quot;label&quot;: &quot;MANA REGEN AMP:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Pixie Dust&quot;,
+        &quot;key&quot;: &quot;hp_regen_amp_out_of_world&quot;,
+        &quot;label&quot;: &quot;HP REGEN AMP OUT OF WORLD:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Pixie Dust&quot;,
+        &quot;key&quot;: &quot;mana_regen_amp_out_of_world&quot;,
+        &quot;label&quot;: &quot;MANA REGEN AMP OUT OF WORLD:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;destination_travel_speed&quot;,
+        &quot;label&quot;: &quot;DESTINATION TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;destination_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400/450/500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;destination_status_duration&quot;,
+        &quot;label&quot;: &quot;FEAR DURATION:&quot;,
+        &quot;value&quot;: &quot;2.8/3/3.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;return_travel_speed&quot;,
+        &quot;label&quot;: &quot;RETURN TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;starting_height&quot;,
+        &quot;label&quot;: &quot;STARTING HEIGHT:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;telegraph_to_enemies&quot;,
+        &quot;label&quot;: &quot;TELEGRAPH TO ENEMIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Willow&quot;,
+        &quot;ability&quot;: &quot;Terrorize&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

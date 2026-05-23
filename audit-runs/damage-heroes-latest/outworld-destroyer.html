@@ -3,31 +3,969 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Outworld Destroyer 伤害模型错误</title>
+  <title>殁境神蚀者（Outworld Destroyer） 伤害模型审核</title>
   <style>
-    body { margin: 0; background: #f5f7f9; color: #16202a; font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    main { max-width: 860px; margin: 0 auto; padding: 28px; }
-    .panel { background: #fff; border: 1px solid #d9e1e8; border-radius: 8px; padding: 18px; }
-    a { color: #0f766e; text-decoration: none; }
+    :root { color-scheme: light; --bg: #f5f7f9; --text: #16202a; --muted: #64748b; --line: #d9e1e8; --panel: #ffffff; --accent: #0f766e; --accent-soft: #dff5f1; --warn: #92400e; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
+    .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
+    h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; }
+    a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    h1 { margin: 10px 0 8px; font-size: 26px; }
-    .muted { color: #64748b; font-size: 12px; }
-    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #fee2e2; }
+    .muted { color: var(--muted); font-size: 12px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 14px 0; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); }
+    .summary { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .summary span, .pill { display: inline-flex; align-items: center; min-height: 24px; padding: 2px 8px; border-radius: 999px; background: var(--accent-soft); color: #115e59; font-size: 12px; font-weight: 600; }
+    .pill.secondary { background: #edf2f7; color: #475569; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 12px; }
+    .stat { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: #fbfdff; }
+    .stat span { display: block; color: var(--muted); font-size: 12px; }
+    .stat strong { display: block; margin-top: 4px; font-size: 16px; }
+    .ability-header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+    th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
+    td code { font-size: 12px; color: #334155; }
+    ul { margin: 0; padding-left: 18px; color: var(--warn); }
+    details { margin-top: 16px; }
+    pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
 <body>
-  <main>
-    <a href="./index.html">返回索引</a>
+  <main class="page">
+    <div class="topbar">
+      <div>
+        <a href="./index.html">返回索引</a>
+        <h1>殁境神蚀者（Outworld Destroyer）</h1>
+        <div class="muted">Outworld Destroyer · 生成时间 2026-05-23T11:03:06.444Z</div>
+        <div class="summary">
+          <span>技能 5</span>
+          <span>组件 5</span>
+          <span>源 http://localhost:3002</span>
+        </div>
+      </div>
+      <a href="./outworld-destroyer.json">查看原始 JSON</a>
+    </div>
+    
     <section class="panel">
-      <h1>Outworld Destroyer</h1>
-      <div class="muted">生成时间 2026-05-23T04:33:41.087Z · API http://localhost:3002</div>
-      <p>这个英雄未能从 <code>/api/damage/heroes/:hero</code> 获取伤害模型数据。</p>
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody><tr><td colspan="4"><span class="muted">无</span></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Outworld Destroyer&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Arcane Orb&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;mana_pool_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;caster_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;caster_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。&quot;
+    },
+    &quot;Astral Imprisonment&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;prison_duration&quot;
+    },
+    &quot;Objurgation&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;barrier_flat&quot;,
+      &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;reason&quot;: &quot;护盾不直接造成伤害。&quot;
+    },
+    &quot;Essence Flux&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;mana_restore&quot;,
+      &quot;semanticType&quot;: &quot;resource.mana_cost&quot;,
+      &quot;affects&quot;: &quot;resource_sustain&quot;,
+      &quot;reason&quot;: &quot;回蓝机制影响续航，不直接造成伤害。&quot;
+    },
+    &quot;Sanity&#39;s Eclipse&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_multiplier&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;caster_current_mana&quot;,
+        &quot;target_current_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;caster_current_mana&quot;,
+        &quot;target_current_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
+    
+    <section class="panel">
+      <h2>英雄属性</h2>
+      <div class="stat-grid">
+        
+          <div class="stat">
+            <span>主属性</span>
+            <strong>int</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础力量</span>
+            <strong>21</strong>
+          </div>
+        
+          <div class="stat">
+            <span>力量成长</span>
+            <strong>2.9</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础敏捷</span>
+            <strong>17</strong>
+          </div>
+        
+          <div class="stat">
+            <span>敏捷成长</span>
+            <strong>1.6</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础智力</span>
+            <strong>30</strong>
+          </div>
+        
+          <div class="stat">
+            <span>智力成长</span>
+            <strong>4.2</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础攻击</span>
+            <strong>19 - 31</strong>
+          </div>
+        
+          <div class="stat">
+            <span>基础护甲</span>
+            <strong>0</strong>
+          </div>
+        
+          <div class="stat">
+            <span>攻击距离</span>
+            <strong>450</strong>
+          </div>
+        
+          <div class="stat">
+            <span>移动速度</span>
+            <strong>315</strong>
+          </div>
+        
+      </div>
+    </section>
+  
+    
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>奥术天球（Arcane Orb）</h2>
+          <div class="muted">Arcane Orb · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0 / 0</span>
+        <span>冷却：4.5 / 3 / 1.5 / 0</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Arcane Orb:state_scaling:mana_pool_damage_pct</code>
+          <div class="muted">mana_pool_damage_pct</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Pure</td>
+        <td>10</td><td>11</td><td>12</td><td>13</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: caster_current_mana / attack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>星体禁锢（Astral Imprisonment）</h2>
+          <div class="muted">Astral Imprisonment · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：150 / 150 / 150 / 150</span>
+        <span>冷却：18 / 16 / 14 / 12</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Astral Imprisonment:instant_fixed:damage</code>
+          <div class="muted">damage</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>90</td><td>180</td><td>270</td><td>360</td>
+        <td></td>
+        <td><div><code>durationByAbilityLevel</code>: 1.75 / 2.5 / 3.25 / 4</div></td>
+        <td>single_value</td>
+        <td><span class="muted">-</span></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>责难（Objurgation）</h2>
+          <div class="muted">Objurgation · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：250 / 250 / 250 / 250</span>
+        <span>冷却：36 / 34 / 32 / 30</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Objurgation:debuff_reference:barrier_flat</code>
+          <div class="muted">barrier_flat</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>120</td><td>180</td><td>240</td><td>300</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: survivability</div><div><code>affects</code>: survivability</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>护盾不直接造成伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>精华变迁（Essence Flux）</h2>
+          <div class="muted">Essence Flux · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Essence Flux:debuff_reference:mana_restore</code>
+          <div class="muted">mana_restore</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>40</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: resource_sustain</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>回蓝机制影响续航，不直接造成伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>神智之蚀（Sanity&#39;s Eclipse）</h2>
+          <div class="muted">Sanity&#39;s Eclipse · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：200 / 300 / 400</span>
+        <span>冷却：140 / 130 / 120</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Sanity&#39;s Eclipse:state_scaling:damage_multiplier</code>
+          <div class="muted">damage_multiplier</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>0.4</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: caster_current_mana / target_current_mana</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <details class="panel">
+      <summary>页面内嵌原始 JSON</summary>
       <pre>{
   &quot;hero&quot;: &quot;Outworld Destroyer&quot;,
-  &quot;error&quot;: &quot;Unknown hero: Outworld Destroyer&quot;
+  &quot;displayName&quot;: &quot;殁境神蚀者（Outworld Destroyer）&quot;,
+  &quot;levels&quot;: {
+    &quot;selectedDefault&quot;: 1,
+    &quot;max&quot;: 30
+  },
+  &quot;stats&quot;: {
+    &quot;attackRange&quot;: 450,
+    &quot;attackRate&quot;: 1.9,
+    &quot;attackPoint&quot;: 0.46,
+    &quot;projectileSpeed&quot;: 900,
+    &quot;moveSpeed&quot;: 315,
+    &quot;turnRate&quot;: null,
+    &quot;baseHealth&quot;: 120,
+    &quot;baseHealthRegen&quot;: 1,
+    &quot;baseMana&quot;: 75,
+    &quot;baseManaRegen&quot;: 0,
+    &quot;baseArmor&quot;: 0,
+    &quot;baseMagicResistance&quot;: 25,
+    &quot;baseAttackMin&quot;: 19,
+    &quot;baseAttackMax&quot;: 31,
+    &quot;baseStrength&quot;: 21,
+    &quot;baseAgility&quot;: 17,
+    &quot;baseIntelligence&quot;: 30,
+    &quot;strengthGain&quot;: 2.9,
+    &quot;agilityGain&quot;: 1.6,
+    &quot;intelligenceGain&quot;: 4.2,
+    &quot;primaryAttribute&quot;: &quot;int&quot;,
+    &quot;attackType&quot;: &quot;Ranged&quot;,
+    &quot;derived&quot;: {
+      &quot;rules&quot;: {
+        &quot;healthPerStrength&quot;: 22,
+        &quot;manaPerIntelligence&quot;: 12,
+        &quot;armorPerAgility&quot;: 0.16666666666666666,
+        &quot;damagePerUniversalAttribute&quot;: 0.7
+      },
+      &quot;level1&quot;: {
+        &quot;level&quot;: 1,
+        &quot;strength&quot;: 21,
+        &quot;agility&quot;: 17,
+        &quot;intelligence&quot;: 30,
+        &quot;maxHealth&quot;: 582,
+        &quot;maxMana&quot;: 435,
+        &quot;armor&quot;: 2.83,
+        &quot;attackMin&quot;: 49,
+        &quot;attackMax&quot;: 61
+      },
+      &quot;keyLevels&quot;: {
+        &quot;level3&quot;: {
+          &quot;level&quot;: 3,
+          &quot;strength&quot;: 26.8,
+          &quot;agility&quot;: 20.2,
+          &quot;intelligence&quot;: 38.4,
+          &quot;maxHealth&quot;: 710,
+          &quot;maxMana&quot;: 536,
+          &quot;armor&quot;: 3.37,
+          &quot;attackMin&quot;: 57,
+          &quot;attackMax&quot;: 69
+        },
+        &quot;level5&quot;: {
+          &quot;level&quot;: 5,
+          &quot;strength&quot;: 32.6,
+          &quot;agility&quot;: 23.4,
+          &quot;intelligence&quot;: 46.8,
+          &quot;maxHealth&quot;: 837,
+          &quot;maxMana&quot;: 637,
+          &quot;armor&quot;: 3.9,
+          &quot;attackMin&quot;: 66,
+          &quot;attackMax&quot;: 78
+        },
+        &quot;level6&quot;: {
+          &quot;level&quot;: 6,
+          &quot;strength&quot;: 35.5,
+          &quot;agility&quot;: 25,
+          &quot;intelligence&quot;: 51,
+          &quot;maxHealth&quot;: 901,
+          &quot;maxMana&quot;: 687,
+          &quot;armor&quot;: 4.17,
+          &quot;attackMin&quot;: 70,
+          &quot;attackMax&quot;: 82
+        },
+        &quot;level7&quot;: {
+          &quot;level&quot;: 7,
+          &quot;strength&quot;: 38.4,
+          &quot;agility&quot;: 26.6,
+          &quot;intelligence&quot;: 55.2,
+          &quot;maxHealth&quot;: 965,
+          &quot;maxMana&quot;: 737,
+          &quot;armor&quot;: 4.43,
+          &quot;attackMin&quot;: 74,
+          &quot;attackMax&quot;: 86
+        },
+        &quot;level12&quot;: {
+          &quot;level&quot;: 12,
+          &quot;strength&quot;: 52.9,
+          &quot;agility&quot;: 34.6,
+          &quot;intelligence&quot;: 76.2,
+          &quot;maxHealth&quot;: 1284,
+          &quot;maxMana&quot;: 989,
+          &quot;armor&quot;: 5.77,
+          &quot;attackMin&quot;: 95,
+          &quot;attackMax&quot;: 107
+        },
+        &quot;level18&quot;: {
+          &quot;level&quot;: 18,
+          &quot;strength&quot;: 70.3,
+          &quot;agility&quot;: 44.2,
+          &quot;intelligence&quot;: 101.4,
+          &quot;maxHealth&quot;: 1667,
+          &quot;maxMana&quot;: 1292,
+          &quot;armor&quot;: 7.37,
+          &quot;attackMin&quot;: 120,
+          &quot;attackMax&quot;: 132
+        }
+      }
+    }
+  },
+  &quot;abilities&quot;: [
+    {
+      &quot;name&quot;: &quot;Arcane Orb&quot;,
+      &quot;displayName&quot;: &quot;奥术天球（Arcane Orb）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        4.5,
+        3,
+        1.5,
+        0
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Arcane Orb:state_scaling:mana_pool_damage_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Pure&quot;,
+          &quot;label&quot;: &quot;mana_pool_damage_pct&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            10,
+            11,
+            12,
+            13
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;caster_current_mana&quot;,
+              &quot;attack_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。&quot;,
+          &quot;caveats&quot;: [
+            &quot;奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Astral Imprisonment&quot;,
+      &quot;displayName&quot;: &quot;星体禁锢（Astral Imprisonment）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        150,
+        150,
+        150,
+        150
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        18,
+        16,
+        14,
+        12
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Astral Imprisonment:instant_fixed:damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            90,
+            180,
+            270,
+            360
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              1.75,
+              2.5,
+              3.25,
+              4
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: []
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Objurgation&quot;,
+      &quot;displayName&quot;: &quot;责难（Objurgation）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;护盾不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        250,
+        250,
+        250,
+        250
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        36,
+        34,
+        32,
+        30
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Objurgation:debuff_reference:barrier_flat&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;barrier_flat&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            120,
+            180,
+            240,
+            300
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;survivability&quot;,
+            &quot;affects&quot;: &quot;survivability&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;护盾不直接造成伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;护盾不直接造成伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Essence Flux&quot;,
+      &quot;displayName&quot;: &quot;精华变迁（Essence Flux）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;回蓝机制影响续航，不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Essence Flux:debuff_reference:mana_restore&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;mana_restore&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            40
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;resource_sustain&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;回蓝机制影响续航，不直接造成伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;回蓝机制影响续航，不直接造成伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Sanity&#39;s Eclipse&quot;,
+      &quot;displayName&quot;: &quot;神智之蚀（Sanity&#39;s Eclipse）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        200,
+        300,
+        400
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        140,
+        130,
+        120
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Sanity&#39;s Eclipse:state_scaling:damage_multiplier&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_multiplier&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            0.4
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;caster_current_mana&quot;,
+              &quot;target_current_mana&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。&quot;,
+          &quot;caveats&quot;: [
+            &quot;神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。&quot;
+          ]
+        }
+      ]
+    }
+  ],
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Outworld Destroyer&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Arcane Orb&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;mana_pool_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;caster_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;caster_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。&quot;
+        },
+        &quot;Astral Imprisonment&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;prison_duration&quot;
+        },
+        &quot;Objurgation&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;barrier_flat&quot;,
+          &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;reason&quot;: &quot;护盾不直接造成伤害。&quot;
+        },
+        &quot;Essence Flux&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;mana_restore&quot;,
+          &quot;semanticType&quot;: &quot;resource.mana_cost&quot;,
+          &quot;affects&quot;: &quot;resource_sustain&quot;,
+          &quot;reason&quot;: &quot;回蓝机制影响续航，不直接造成伤害。&quot;
+        },
+        &quot;Sanity&#39;s Eclipse&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_multiplier&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;caster_current_mana&quot;,
+            &quot;target_current_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;caster_current_mana&quot;,
+            &quot;target_current_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
-      <p><a href="./outworld-destroyer.error.json">查看错误 JSON</a></p>
-    </section>
+    </details>
   </main>
 </body>
 </html>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>巫妖（Lich）</h1>
-        <div class="muted">Lich · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Lich · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,452 @@
       </div>
       <a href="./lich.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>slow_movement_speed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-25%</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>slow_attack_speed_primary</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-30/-40/-50/-60</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>aoe_damage</code></td>
+      <td>AREA DAMAGE:</td>
+      <td>80/120/160/200</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>575/600/625/650</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>damage_reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>45%/50%/55%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>movement_slow</code></td>
+      <td>SLOW:</td>
+      <td>20%/25%/30%/35%</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>bonus_duration_per_hero_killed</code></td>
+      <td>BONUS DURATION ON HERO KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>bonus_duration_per_creep_killed</code></td>
+      <td>BONUS DURATION ON CREEP KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>30/25/20/15</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Frost Shield</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>1.10/1.4/1.7/2</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>destination</code></td>
+      <td>DISTANCE MOVED:</td>
+      <td>32%/38%/44%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>mana_drain</code></td>
+      <td>MANA DRAIN PER SECOND:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>slow_resistance</code></td>
+      <td>SLOW RESISTANCE REDUCTION:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>post_gaze_debuff_duration_multiplier</code></td>
+      <td>POST GAZE DEBUFF DURATION MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sinister Gaze</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>bonus_movespeed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-25%</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>aura_radius</code></td>
+      <td>EFFECT RADIUS:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>max_hero_attacks</code></td>
+      <td>MAX HERO ATTACKS:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>max_creep_attacks</code></td>
+      <td>MAX CREEP ATTACKS:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Ice Spire</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Sacrifice</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Sacrifice</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Sacrifice</td>
+      <td><code>xp_pct</code></td>
+      <td>EXPERIENCE BOUNTY:</td>
+      <td>69%</td>
+    </tr>
+  
+    <tr>
+      <td>Sacrifice</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Sacrifice</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>bonus_jump_damage</code></td>
+      <td>INCREMENTAL DAMAGE:</td>
+      <td>15/20/25</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>jumps</code></td>
+      <td>JUMPS:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>jump_range</code></td>
+      <td>BOUNCE RANGE:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>slow_movement_speed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-65%</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>slow_attack_speed</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-65</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>initial_projectile_speed</code></td>
+      <td>INITIAL PROJECTILE SPEED:</td>
+      <td>1050</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>has_unlimited_jumps</code></td>
+      <td>HAS UNLIMITED JUMPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>bonus_jumps_per_hero_killed</code></td>
+      <td>BONUS JUMPS ON HERO KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>bonus_jumps_per_creep_killed</code></td>
+      <td>BONUS JUMPS ON CREEP KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>frostbound_duration</code></td>
+      <td>LINGER DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Chain Frost</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Lich&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed frost blast, frost shield, and chain frost fields against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Frost Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。&quot;
+    },
+    &quot;Frost Shield&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;active_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。&quot;
+    },
+    &quot;Sinister Gaze&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;channel_duration&quot;,
+      &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;阴邪凝视为持续控制和抽蓝，不直接造成伤害。&quot;
+    },
+    &quot;Ice Spire&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;summon.duration&quot;,
+      &quot;affects&quot;: &quot;area_control&quot;,
+      &quot;reason&quot;: &quot;寒冰尖柱本身不直接造成伤害。&quot;
+    },
+    &quot;Sacrifice&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;active_mana_restore_pct_of_health&quot;,
+      &quot;semanticType&quot;: &quot;resource.mana_drain_per_second&quot;,
+      &quot;affects&quot;: &quot;resource_timing&quot;,
+      &quot;reason&quot;: &quot;献身提供资源转换，不直接造成伤害。&quot;
+    },
+    &quot;Chain Frost&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +574,7 @@
           <div class="muted">Frost Blast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -163,7 +613,7 @@
         <td></td>
         <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4</div></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,8 +627,8 @@
           <div class="muted">Frost Shield · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -203,20 +653,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Frost Shield:instant_fixed:damage</code>
+          <code>Frost Shield:sustained:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>18</td><td>32</td><td>46</td><td>60</td>
-        <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.5 / 0.5 / 0.5 / 0.5</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>72 / 160 / 276 / 420</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 5 / 6 / 7</div><div><code>tickIntervalByAbilityLevel</code>: 1 / 1 / 1 / 1</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,13 +680,13 @@
           <div class="muted">Sinister Gaze · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
-        <span>蓝耗：25</span>
+        <span>蓝耗：25 / 25 / 25 / 25</span>
         <span>冷却：24 / 22 / 20 / 18</span>
       </div>
       <div class="table-wrap">
@@ -256,8 +706,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Sinister Gaze:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Sinister Gaze:debuff_reference:channel_duration</code>
+          <div class="muted">channel_duration</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -265,11 +715,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>600</td><td>-</td><td>-</td><td>-</td>
+        <td>1.1</td><td>1.4</td><td>1.7</td><td>2</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: disable_window</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>阴邪凝视为持续控制和抽蓝，不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +733,7 @@
           <div class="muted">Ice Spire · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -309,8 +759,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Ice Spire:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Ice Spire:debuff_reference:duration</code>
+          <div class="muted">duration</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -318,11 +768,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>750</td><td>-</td><td>-</td><td>-</td>
+        <td>15</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: area_control</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>寒冰尖柱本身不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +786,7 @@
           <div class="muted">Sacrifice · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -362,8 +812,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Sacrifice:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Sacrifice:debuff_reference:active_mana_restore_pct_of_health</code>
+          <div class="muted">active_mana_restore_pct_of_health</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -371,11 +821,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>700</td><td>-</td><td>-</td><td>-</td>
+        <td>42</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: resource_timing</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>献身提供资源转换，不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +839,7 @@
           <div class="muted">Chain Frost · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -428,7 +878,7 @@
         <td></td>
         <td><div><code>durationByAbilityLevel</code>: 2.5 / 2.5 / 2.5</div></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -560,10 +1010,10 @@
       &quot;name&quot;: &quot;Frost Blast&quot;,
       &quot;displayName&quot;: &quot;寒霜爆发（Frost Blast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         110,
         120,
@@ -606,8 +1056,10 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。&quot;,
+          &quot;caveats&quot;: [
+            &quot;寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。&quot;
+          ]
         }
       ]
     },
@@ -615,10 +1067,10 @@
       &quot;name&quot;: &quot;Frost Shield&quot;,
       &quot;displayName&quot;: &quot;冰霜魔盾（Frost Shield）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         110,
@@ -633,8 +1085,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Frost Shield:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Frost Shield:sustained:damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -644,25 +1096,38 @@
             46,
             60
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            72,
+            160,
+            276,
+            420
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              0.5,
-              0.5,
-              0.5,
-              0.5
+              4,
+              5,
+              6,
+              7
+            ],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              1,
+              1,
+              1,
+              1
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -670,11 +1135,14 @@
       &quot;name&quot;: &quot;Sinister Gaze&quot;,
       &quot;displayName&quot;: &quot;阴邪凝视（Sinister Gaze）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;阴邪凝视为持续控制和抽蓝，不直接造成伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
+        25,
+        25,
+        25,
         25
       ],
       &quot;cooldownByAbilityLevel&quot;: [
@@ -685,13 +1153,16 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Sinister Gaze:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Sinister Gaze:debuff_reference:channel_duration&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;channel_duration&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            600
+            1.1,
+            1.4,
+            1.7,
+            2
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -701,8 +1172,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;disable_window&quot;,
+            &quot;affects&quot;: &quot;disable_window&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -711,9 +1182,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;阴邪凝视为持续控制和抽蓝，不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;阴邪凝视为持续控制和抽蓝，不直接造成伤害。&quot;
           ]
         }
       ]
@@ -722,10 +1193,10 @@
       &quot;name&quot;: &quot;Ice Spire&quot;,
       &quot;displayName&quot;: &quot;寒冰尖柱（Ice Spire）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;寒冰尖柱本身不直接造成伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150
       ],
@@ -734,13 +1205,13 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Ice Spire:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Ice Spire:debuff_reference:duration&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;duration&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            750
+            15
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -750,8 +1221,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;disable_window&quot;,
+            &quot;affects&quot;: &quot;area_control&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -760,9 +1231,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;寒冰尖柱本身不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;寒冰尖柱本身不直接造成伤害。&quot;
           ]
         }
       ]
@@ -771,23 +1242,23 @@
       &quot;name&quot;: &quot;Sacrifice&quot;,
       &quot;displayName&quot;: &quot;献身（Sacrifice）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;献身提供资源转换，不直接造成伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [
         0
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Sacrifice:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Sacrifice:debuff_reference:active_mana_restore_pct_of_health&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;active_mana_restore_pct_of_health&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            700
+            42
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -797,8 +1268,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;resource_timing&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -807,9 +1278,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;献身提供资源转换，不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;献身提供资源转换，不直接造成伤害。&quot;
           ]
         }
       ]
@@ -818,10 +1289,10 @@
       &quot;name&quot;: &quot;Chain Frost&quot;,
       &quot;displayName&quot;: &quot;连环霜冻（Chain Frost）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         180,
         300,
@@ -860,13 +1331,485 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Lich&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed frost blast, frost shield, and chain frost fields against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Frost Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。&quot;
+        },
+        &quot;Frost Shield&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。&quot;
+        },
+        &quot;Sinister Gaze&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;channel_duration&quot;,
+          &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;阴邪凝视为持续控制和抽蓝，不直接造成伤害。&quot;
+        },
+        &quot;Ice Spire&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;summon.duration&quot;,
+          &quot;affects&quot;: &quot;area_control&quot;,
+          &quot;reason&quot;: &quot;寒冰尖柱本身不直接造成伤害。&quot;
+        },
+        &quot;Sacrifice&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;active_mana_restore_pct_of_health&quot;,
+          &quot;semanticType&quot;: &quot;resource.mana_drain_per_second&quot;,
+          &quot;affects&quot;: &quot;resource_timing&quot;,
+          &quot;reason&quot;: &quot;献身提供资源转换，不直接造成伤害。&quot;
+        },
+        &quot;Chain Frost&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;slow_attack_speed_primary&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-30/-40/-50/-60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;aoe_damage&quot;,
+        &quot;label&quot;: &quot;AREA DAMAGE:&quot;,
+        &quot;value&quot;: &quot;80/120/160/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;575/600/625/650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;45%/50%/55%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;20%/25%/30%/35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;bonus_duration_per_hero_killed&quot;,
+        &quot;label&quot;: &quot;BONUS DURATION ON HERO KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;bonus_duration_per_creep_killed&quot;,
+        &quot;label&quot;: &quot;BONUS DURATION ON CREEP KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;30/25/20/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Frost Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;1.10/1.4/1.7/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;destination&quot;,
+        &quot;label&quot;: &quot;DISTANCE MOVED:&quot;,
+        &quot;value&quot;: &quot;32%/38%/44%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;mana_drain&quot;,
+        &quot;label&quot;: &quot;MANA DRAIN PER SECOND:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;slow_resistance&quot;,
+        &quot;label&quot;: &quot;SLOW RESISTANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;post_gaze_debuff_duration_multiplier&quot;,
+        &quot;label&quot;: &quot;POST GAZE DEBUFF DURATION MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sinister Gaze&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;bonus_movespeed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;EFFECT RADIUS:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;max_hero_attacks&quot;,
+        &quot;label&quot;: &quot;MAX HERO ATTACKS:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;max_creep_attacks&quot;,
+        &quot;label&quot;: &quot;MAX CREEP ATTACKS:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Ice Spire&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sacrifice&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sacrifice&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sacrifice&quot;,
+        &quot;key&quot;: &quot;xp_pct&quot;,
+        &quot;label&quot;: &quot;EXPERIENCE BOUNTY:&quot;,
+        &quot;value&quot;: &quot;69%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sacrifice&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Sacrifice&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;bonus_jump_damage&quot;,
+        &quot;label&quot;: &quot;INCREMENTAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;15/20/25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;jumps&quot;,
+        &quot;label&quot;: &quot;JUMPS:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;jump_range&quot;,
+        &quot;label&quot;: &quot;BOUNCE RANGE:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-65%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;slow_attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;initial_projectile_speed&quot;,
+        &quot;label&quot;: &quot;INITIAL PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1050&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;has_unlimited_jumps&quot;,
+        &quot;label&quot;: &quot;HAS UNLIMITED JUMPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;bonus_jumps_per_hero_killed&quot;,
+        &quot;label&quot;: &quot;BONUS JUMPS ON HERO KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;bonus_jumps_per_creep_killed&quot;,
+        &quot;label&quot;: &quot;BONUS JUMPS ON CREEP KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;frostbound_duration&quot;,
+        &quot;label&quot;: &quot;LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lich&quot;,
+        &quot;ability&quot;: &quot;Chain Frost&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

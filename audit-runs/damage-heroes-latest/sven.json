@@ -121,7 +121,7 @@
       "name": "Storm Hammer",
       "displayName": "风暴之拳（Storm Hammer）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Great Cleave",
       "displayName": "巨力挥舞（Great Cleave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -224,5 +224,240 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Sven",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Storm Hammer": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "bolt_stun_duration"
+        },
+        "Great Cleave": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "great_cleave_damage",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "Warcry": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "God's Strength": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Wrath of God": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "bolt_speed",
+        "label": "BOLT SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "bolt_aoe",
+        "label": "RADIUS:",
+        "value": "250/270/290/310",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "scepter_bonus_damage",
+        "label": "SCEPTER BONUS DAMAGE:",
+        "value": "180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "bonus_damage_pct",
+        "label": "BONUS DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Storm Hammer",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Great Cleave",
+        "key": "cleave_starting_width",
+        "label": "CLEAVE STARTING WIDTH:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Great Cleave",
+        "key": "cleave_ending_width",
+        "label": "CLEAVE ENDING WIDTH:",
+        "value": "270/300/330/360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Great Cleave",
+        "key": "cleave_distance",
+        "label": "CLEAVE DISTANCE:",
+        "value": "400/500/600/700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Great Cleave",
+        "key": "strength_bonus",
+        "label": "STRENGTH BONUS:",
+        "value": "00",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "movespeed",
+        "label": "BONUS SPEED:",
+        "value": "6%/9%/12%/15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "5/8/11/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Warcry",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "God's Strength",
+        "key": "gods_strength_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "110%/150%/190%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "God's Strength",
+        "key": "bonus_slow_resistance",
+        "label": "SLOW RESISTANCE:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "God's Strength",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "God's Strength",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Sven",
+        "ability": "Wrath of God",
+        "key": "bonus_damage_per_str",
+        "label": "DAMAGE PER STRENGTH:",
+        "value": "0.08",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

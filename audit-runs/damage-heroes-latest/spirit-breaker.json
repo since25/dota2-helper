@@ -121,10 +121,10 @@
       "name": "Charge of Darkness",
       "displayName": "暗影冲刺（Charge of Darkness）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90,
         100,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,10 +176,10 @@
       "name": "Bulldoze",
       "displayName": "威吓（Bulldoze）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         30,
         40,
@@ -220,9 +220,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -231,7 +231,7 @@
       "name": "Greater Bash",
       "displayName": "巨力重击（Greater Bash）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
@@ -267,7 +267,9 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "move_speed"
+              "move_speed",
+              "attack_count",
+              "proc_mode"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -286,10 +288,10 @@
       "name": "Planar Pocket",
       "displayName": "位面空洞（Planar Pocket）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100
       ],
@@ -324,9 +326,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -335,7 +337,7 @@
       "name": "Nether Strike",
       "displayName": "幽冥一击（Nether Strike）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -389,5 +391,464 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Spirit Breaker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Charge of Darkness": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Bulldoze": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_barrier",
+          "semanticType": "defense.barrier.flat",
+          "affects": "survivability",
+          "stackGroup": "barrier",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Greater Bash": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "move_speed",
+            "attack_count",
+            "proc_mode"
+          ],
+          "conditionInputs": [
+            "move_speed",
+            "attack_count",
+            "proc_mode"
+          ],
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+        },
+        "Planar Pocket": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Empowering Haste": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Nether Strike": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "movement_speed",
+        "label": "CHARGE BONUS SPEED:",
+        "value": "275/325/375/425",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.3/1.6/1.9/2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "bash_radius",
+        "label": "BASH RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "0.94",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "out_of_world_time",
+        "label": "OUT OF WORLD TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "guaranteed_bash_time",
+        "label": "GUARANTEED BASH TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "reveal_charge",
+        "label": "REVEAL CHARGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "windup_time",
+        "label": "WINDUP TIME:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "min_movespeed_bonus_pct",
+        "label": "MIN MOVESPEED BONUS PCT:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "linger_time_min",
+        "label": "MIN LINGER TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "linger_time_max",
+        "label": "MAX LINGER TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "charge_for_max_linger",
+        "label": "CHARGE FOR MAX LINGER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Charge of Darkness",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Bulldoze",
+        "key": "movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "8%/12%/16%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Bulldoze",
+        "key": "status_resistance",
+        "label": "STATUS RESISTANCE:",
+        "value": "40%/50%/60%/70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Bulldoze",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "chance_pct",
+        "label": "CHANCE TO BASH:",
+        "value": "17%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "bonus_chance_pct",
+        "label": "BONUS CHANCE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "bonus_chance_duration",
+        "label": "BONUS CHANCE DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "duration",
+        "label": "STUN DURATION:",
+        "value": "0.9/1.1/1.3/1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bash_cooldown",
+        "label": "CASCADING BASH COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bashes_damage_multiplier",
+        "label": "CASCADING BASHES DAMAGE MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bashes_creep_penalty",
+        "label": "CASCADING BASHES CREEP PENALTY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bashes_nether_strike_additional_cooldown",
+        "label": "CASCADING BASHES NETHER STRIKE ADDITIONAL COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bashes_hero_hitbox",
+        "label": "CASCADING BASHES HERO HITBOX:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "cascading_bashes_creep_hitbox",
+        "label": "CASCADING BASHES CREEP HITBOX:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "143/152/158/162",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "knockback_height",
+        "label": "KNOCKBACK HEIGHT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "projectile_body_vision",
+        "label": "PROJECTILE BODY VISION:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "bonus_knockback_multiplier",
+        "label": "BONUS KNOCKBACK MULTIPLIER:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "bonus_movespeed_pct",
+        "label": "BONUS MOVESPEED PCT:",
+        "value": "17",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "movespeed_duration",
+        "label": "MOVESPEED DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Greater Bash",
+        "key": "creep_multiplier",
+        "label": "CREEP MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Planar Pocket",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Planar Pocket",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Planar Pocket",
+        "key": "magic_resistance",
+        "label": "SELF MAGIC RESISTANCE:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Planar Pocket",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Planar Pocket",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Empowering Haste",
+        "key": "hero_duration",
+        "label": "HERO DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Empowering Haste",
+        "key": "creep_duration",
+        "label": "CREEP DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Empowering Haste",
+        "key": "hero_movespeed_percent",
+        "label": "HERO MOVESPEED:",
+        "value": "8%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Empowering Haste",
+        "key": "creep_movespeed_percent",
+        "label": "CREEP MOVESPEED:",
+        "value": "2%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Nether Strike",
+        "key": "fade_time",
+        "label": "FADE TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Nether Strike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spirit Breaker",
+        "ability": "Nether Strike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

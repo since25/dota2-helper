@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>瘟疫法师（Necrophos）</h1>
-        <div class="muted">Necrophos · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Necrophos · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,313 @@
       </div>
       <a href="./necrophos.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Death Pulse</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pulse</td>
+      <td><code>heal</code></td>
+      <td>HEAL:</td>
+      <td>70/90/110/130</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pulse</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pulse</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pulse</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3/3.5/4/4.5</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>heal_bonus</code></td>
+      <td>RESTORATION AMPLIFICATION:</td>
+      <td>55%/65%/75%/85%</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>enemies_negative_heal_bonus_as_pct_of_self</code></td>
+      <td>ENEMIES NEGATIVE HEAL BONUS AS PCT OF SELF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>movement_transfer</code></td>
+      <td>MOVEMENT TRANSFER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>slow_aoe</code></td>
+      <td>SLOW RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>bonus_damage</code></td>
+      <td>INCREASED MAGIC DAMAGE:</td>
+      <td>-20%</td>
+    </tr>
+  
+    <tr>
+      <td>Ghost Shroud</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Heartstopper Aura</td>
+      <td><code>aura_radius</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Heartstopper Aura</td>
+      <td><code>heal_reduction_pct</code></td>
+      <td>HEAL REDUCTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Heartstopper Aura</td>
+      <td><code>heal_regen_to_damage</code></td>
+      <td>HEAL REGEN TO DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Death Seeker</td>
+      <td><code>projectile_multiplier</code></td>
+      <td>PROJECTILE MULTIPLIER:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Death Seeker</td>
+      <td><code>ethereal_duration</code></td>
+      <td>ETHEREAL DURATION:</td>
+      <td>2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Death Seeker</td>
+      <td><code>magic_resistance_reduction</code></td>
+      <td>MAGIC RESISTANCE REDUCTION:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Death Seeker</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Sadist</td>
+      <td><code>regen</code></td>
+      <td>HP/MANA REGEN:</td>
+      <td>3.7</td>
+    </tr>
+  
+    <tr>
+      <td>Sadist</td>
+      <td><code>bonus_aoe</code></td>
+      <td>AOE BONUS PER KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sadist</td>
+      <td><code>hero_multiplier</code></td>
+      <td>HERO KILL MULTIPLIER:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Sadist</td>
+      <td><code>regen_duration</code></td>
+      <td>DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Reaper&#39;s Scythe</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Reaper&#39;s Scythe</td>
+      <td><code>hp_per_kill</code></td>
+      <td>HP REGEN:</td>
+      <td>1/2/3</td>
+    </tr>
+  
+    <tr>
+      <td>Reaper&#39;s Scythe</td>
+      <td><code>mana_per_kill</code></td>
+      <td>MANA REGEN:</td>
+      <td>1/2/3</td>
+    </tr>
+  
+    <tr>
+      <td>Reaper&#39;s Scythe</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Reaper&#39;s Scythe</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.45</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Necrophos&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Death Pulse&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;trigger_condition&quot;
+      ],
+      &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+      &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+    },
+    &quot;Ghost Shroud&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;movement_speed&quot;,
+      &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Heartstopper Aura&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;aura_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Death Seeker&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Sadist&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_spell_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+      &quot;affects&quot;: &quot;spell_amplification&quot;,
+      &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Reaper&#39;s Scythe&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_health&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +435,7 @@
           <div class="muted">Death Pulse · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">conditional</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +488,7 @@
           <div class="muted">Ghost Shroud · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +527,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: move_speed_pct</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +541,7 @@
           <div class="muted">Heartstopper Aura · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +594,7 @@
           <div class="muted">Death Seeker · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +633,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +647,7 @@
           <div class="muted">Sadist · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +686,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: spell_amplification_pct</div><div><code>affects</code>: spell_amplification</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +700,7 @@
           <div class="muted">Reaper&#39;s Scythe · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -560,7 +871,7 @@
       &quot;name&quot;: &quot;Death Pulse&quot;,
       &quot;displayName&quot;: &quot;死亡脉冲（Death Pulse）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;conditional&quot;,
       &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
@@ -618,10 +929,10 @@
       &quot;name&quot;: &quot;Ghost Shroud&quot;,
       &quot;displayName&quot;: &quot;幽魂护罩（Ghost Shroud）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75,
         75,
@@ -665,9 +976,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -676,7 +987,7 @@
       &quot;name&quot;: &quot;Heartstopper Aura&quot;,
       &quot;displayName&quot;: &quot;竭心光环（Heartstopper Aura）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;,
@@ -726,10 +1037,10 @@
       &quot;name&quot;: &quot;Death Seeker&quot;,
       &quot;displayName&quot;: &quot;死亡搜寻（Death Seeker）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125
       ],
@@ -764,9 +1075,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -775,10 +1086,10 @@
       &quot;name&quot;: &quot;Sadist&quot;,
       &quot;displayName&quot;: &quot;施虐之心（Sadist）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -809,9 +1120,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -820,7 +1131,7 @@
       &quot;name&quot;: &quot;Reaper&#39;s Scythe&quot;,
       &quot;displayName&quot;: &quot;死神镰刀（Reaper&#39;s Scythe）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
@@ -874,7 +1185,317 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Necrophos&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Death Pulse&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;trigger_condition&quot;
+          ],
+          &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+          &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+        },
+        &quot;Ghost Shroud&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;movement_speed&quot;,
+          &quot;semanticType&quot;: &quot;control.slow.move_percent&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Heartstopper Aura&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;aura_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Death Seeker&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Sadist&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_spell_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+          &quot;affects&quot;: &quot;spell_amplification&quot;,
+          &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Reaper&#39;s Scythe&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_health&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Pulse&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Pulse&quot;,
+        &quot;key&quot;: &quot;heal&quot;,
+        &quot;label&quot;: &quot;HEAL:&quot;,
+        &quot;value&quot;: &quot;70/90/110/130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Pulse&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Pulse&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3/3.5/4/4.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;heal_bonus&quot;,
+        &quot;label&quot;: &quot;RESTORATION AMPLIFICATION:&quot;,
+        &quot;value&quot;: &quot;55%/65%/75%/85%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;enemies_negative_heal_bonus_as_pct_of_self&quot;,
+        &quot;label&quot;: &quot;ENEMIES NEGATIVE HEAL BONUS AS PCT OF SELF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;movement_transfer&quot;,
+        &quot;label&quot;: &quot;MOVEMENT TRANSFER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;slow_aoe&quot;,
+        &quot;label&quot;: &quot;SLOW RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;INCREASED MAGIC DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Ghost Shroud&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Heartstopper Aura&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Heartstopper Aura&quot;,
+        &quot;key&quot;: &quot;heal_reduction_pct&quot;,
+        &quot;label&quot;: &quot;HEAL REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Heartstopper Aura&quot;,
+        &quot;key&quot;: &quot;heal_regen_to_damage&quot;,
+        &quot;label&quot;: &quot;HEAL REGEN TO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Seeker&quot;,
+        &quot;key&quot;: &quot;projectile_multiplier&quot;,
+        &quot;label&quot;: &quot;PROJECTILE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Seeker&quot;,
+        &quot;key&quot;: &quot;ethereal_duration&quot;,
+        &quot;label&quot;: &quot;ETHEREAL DURATION:&quot;,
+        &quot;value&quot;: &quot;2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Seeker&quot;,
+        &quot;key&quot;: &quot;magic_resistance_reduction&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Death Seeker&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Sadist&quot;,
+        &quot;key&quot;: &quot;regen&quot;,
+        &quot;label&quot;: &quot;HP/MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;3.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Sadist&quot;,
+        &quot;key&quot;: &quot;bonus_aoe&quot;,
+        &quot;label&quot;: &quot;AOE BONUS PER KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Sadist&quot;,
+        &quot;key&quot;: &quot;hero_multiplier&quot;,
+        &quot;label&quot;: &quot;HERO KILL MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Sadist&quot;,
+        &quot;key&quot;: &quot;regen_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Reaper&#39;s Scythe&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Reaper&#39;s Scythe&quot;,
+        &quot;key&quot;: &quot;hp_per_kill&quot;,
+        &quot;label&quot;: &quot;HP REGEN:&quot;,
+        &quot;value&quot;: &quot;1/2/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Reaper&#39;s Scythe&quot;,
+        &quot;key&quot;: &quot;mana_per_kill&quot;,
+        &quot;label&quot;: &quot;MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;1/2/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Reaper&#39;s Scythe&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Necrophos&quot;,
+        &quot;ability&quot;: &quot;Reaper&#39;s Scythe&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

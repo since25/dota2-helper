@@ -1,0 +1,209 @@
+{
+  "hero": "Phoenix",
+  "source": "dotabuff",
+  "modelSource": "manual",
+  "review": {
+    "status": "reviewed",
+    "reviewer": "local",
+    "updatedAt": "2026-05-23",
+    "notes": [
+      "Reviewed burn/channel/supernova tick fields for first maintenance batch."
+    ]
+  },
+  "abilityCount": 6,
+  "missingModelCount": 0,
+  "abilities": [
+    {
+      "dotabuffName": "消逝之光",
+      "hotkey": "",
+      "isInnate": true,
+      "modelName": "Dying Light",
+      "modelStatus": "reference_only",
+      "modelType": "state_scaling",
+      "modelKeys": [
+        "valueKey:damage_pct"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "凤凰冲击",
+      "hotkey": "Q",
+      "isInnate": false,
+      "modelName": "Icarus Dive",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:damage_per_second",
+        "durationKey:burn_duration",
+        "tickIntervalKey:burn_tick_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "生命值消耗",
+          "value": "15%"
+        },
+        {
+          "label": "冲击长度",
+          "value": "1100 / 1200 / 1300 / 1400"
+        },
+        {
+          "label": "烧灼持续时间",
+          "value": "4"
+        },
+        {
+          "label": "每秒烧灼伤害",
+          "value": "20 / 40 / 60 / 80"
+        },
+        {
+          "label": "移动速度减缓",
+          "value": "10% / 15% / 20% / 25%"
+        }
+      ],
+      "resourceLines": [
+        "40 / 35 / 30 / 25"
+      ]
+    },
+    {
+      "dotabuffName": "烈火精灵",
+      "hotkey": "W",
+      "isInnate": false,
+      "modelName": "Fire Spirits",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:damage_per_second",
+        "durationKey:duration",
+        "tickIntervalKey:tick_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "生命值消耗",
+          "value": "20%"
+        },
+        {
+          "label": "烈火精灵持续时间",
+          "value": "20"
+        },
+        {
+          "label": "作用范围",
+          "value": "200"
+        },
+        {
+          "label": "烧灼持续时间",
+          "value": "4"
+        },
+        {
+          "label": "攻击速度减少",
+          "value": "50 / 80 / 110 / 140"
+        },
+        {
+          "label": "每秒烧灼伤害",
+          "value": "20 / 40 / 60 / 80"
+        }
+      ],
+      "resourceLines": [
+        "50 / 40 / 30 / 20",
+        "100",
+        "1400"
+      ]
+    },
+    {
+      "dotabuffName": "烈日炙烤",
+      "hotkey": "E",
+      "isInnate": false,
+      "modelName": "Sun Ray",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:base_damage",
+        "durationKey:abilityduration",
+        "tickIntervalKey:tick_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "每秒生命值消耗",
+          "value": "5%"
+        },
+        {
+          "label": "每秒基础伤害",
+          "value": "15 / 20 / 25 / 30"
+        },
+        {
+          "label": "最大生命值伤害",
+          "value": "1.5% / 3% / 4.5% / 6%"
+        },
+        {
+          "label": "每秒基础治疗",
+          "value": "7 / 10 / 13 / 16"
+        },
+        {
+          "label": "最大生命值治疗",
+          "value": "0.4% / 0.8% / 1.2% / 1.6%"
+        }
+      ],
+      "resourceLines": [
+        "30",
+        "100 / 110 / 120 / 130",
+        "1200"
+      ]
+    },
+    {
+      "dotabuffName": "切换移动状态",
+      "hotkey": "D",
+      "isInnate": false,
+      "modelName": "Toggle Movement",
+      "modelStatus": "ignored",
+      "modelType": "",
+      "modelKeys": [],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "超新星",
+      "hotkey": "R",
+      "isInnate": false,
+      "modelName": "Supernova",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:damage_per_sec",
+        "durationKey:abilityduration",
+        "tickIntervalKey:tick_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "驱散类型",
+          "value": "强驱散"
+        },
+        {
+          "label": "作用范围",
+          "value": "1200"
+        },
+        {
+          "label": "每秒造成伤害",
+          "value": "50 / 80 / 110"
+        },
+        {
+          "label": "眩晕时间",
+          "value": "1.6 / 2 / 2.4"
+        },
+        {
+          "label": "击碎所需攻击次数",
+          "value": "6 / 8 / 10"
+        }
+      ],
+      "resourceLines": [
+        "120",
+        "150 / 200 / 250",
+        "450"
+      ]
+    }
+  ]
+}

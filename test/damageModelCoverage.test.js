@@ -41,3 +41,18 @@ test('buildDamageModelCoverage exposes semantic coverage gates', async () => {
   assert.equal(slowBurn.semanticType, 'damage.source_damage_percent');
   assert.ok(slowBurn.reason.includes('上游伤害事件'));
 });
+
+test('buildDamageModelCoverage reports the all-reviewed manual model set', async () => {
+  const report = await buildDamageModelCoverage();
+
+  assert.equal(report.totalHeroes, CANONICAL_HERO_NAMES.length);
+  assert.equal(report.manualReviewedHeroes, report.totalHeroes);
+  assert.equal(report.autoOnlyHeroes, 0);
+  assert.equal(
+    report.manualReviewedHeroes + report.manualCandidateHeroes + report.autoOnlyHeroes,
+    report.totalHeroes
+  );
+  assert.ok(report.heroReports.some((entry) =>
+    entry.hero === 'Abaddon' && entry.modelSource === 'manual' && entry.reviewStatus === 'reviewed'
+  ));
+});

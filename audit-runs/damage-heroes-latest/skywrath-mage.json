@@ -121,10 +121,10 @@
       "name": "Arcane Bolt",
       "displayName": "奥法鹰隼（Arcane Bolt）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "state_scaling",
-      "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "attribute_scaling",
+      "reason": "奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。",
       "manaCostByAbilityLevel": [
         70,
         70,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Arcane Bolt:state_scaling:bolt_damage",
-          "kind": "state_scaling",
+          "id": "Arcane Bolt:attribute_scaling:bolt_damage",
+          "kind": "attribute_scaling",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "bolt_damage",
@@ -151,28 +151,27 @@
             150
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "totalFormula": "baseDamage + attributeInput * attributeMultiplier",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "state_scaling"
+            "type": "base_plus_attribute_times_multiplier"
           },
           "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "",
-            "requiredInputs": [
-              "hero_attribute"
-            ],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "attributeInput": "caster_intelligence",
+            "attributeMultiplierKey": "int_multiplier",
+            "attributeMultiplierByAbilityLevel": [
+              1.5,
+              1.5,
+              1.5,
+              1.5
+            ]
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "state_scaling",
-          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
+          "status": "implemented",
+          "model": "attribute_scaling",
+          "reason": "奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。",
           "caveats": [
-            "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+            "属性缩放伤害需要施法者属性输入，不能生成固定理论总量。"
           ]
         }
       ]
@@ -181,7 +180,7 @@
       "name": "Concussive Shot",
       "displayName": "震荡光弹（Concussive Shot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -236,10 +235,10 @@
       "name": "Ancient Seal",
       "displayName": "上古封印（Ancient Seal）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         80,
         90,
@@ -283,9 +282,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -294,7 +293,7 @@
       "name": "Shield of the Scion",
       "displayName": "天裔之盾（Shield of the Scion）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -341,7 +340,7 @@
       "name": "Mystic Flare",
       "displayName": "神秘之耀（Mystic Flare）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -389,5 +388,294 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Skywrath Mage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Arcane Bolt": {
+          "status": "implemented",
+          "model": "attribute_scaling",
+          "baseDamageKey": "bolt_damage",
+          "attributeMultiplierKey": "int_multiplier",
+          "attributeInput": "caster_intelligence",
+          "semanticType": "damage.attribute_scaling",
+          "conditionInputs": [
+            "caster_intelligence"
+          ],
+          "reason": "奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。"
+        },
+        "Concussive Shot": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "slow_duration"
+        },
+        "Ancient Seal": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Shield of the Scion": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_barrier",
+          "semanticType": "defense.barrier.flat",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Mystic Flare": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "875",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "bolt_speed",
+        "label": "BOLT SPEED:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "bolt_vision",
+        "label": "BOLT VISION:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "bolt_damage",
+        "label": "BASE DAMAGE:",
+        "value": "60/90/120/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "int_multiplier",
+        "label": "INT DAMAGE MULTIPLIER:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "extra_bolt_search_radius",
+        "label": "EXTRA BOLT SEARCH RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "total_bolt_count",
+        "label": "TOTAL BOLT COUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Arcane Bolt",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "launch_radius",
+        "label": "SHOT RANGE:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "slow_radius",
+        "label": "DAMAGE RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "movement_speed_pct",
+        "label": "SLOW:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "shot_vision",
+        "label": "SHOT VISION:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Concussive Shot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Ancient Seal",
+        "key": "resist_debuff",
+        "label": "INCREASED MAGIC DAMAGE:",
+        "value": "-20%/-25%/-30%/-35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Ancient Seal",
+        "key": "seal_duration",
+        "label": "DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Ancient Seal",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Shield of the Scion",
+        "key": "stack_duration",
+        "label": "STACK DURATION:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Shield of the Scion",
+        "key": "bonus_intelligence",
+        "label": "BONUS INTELLIGENCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Shield of the Scion",
+        "key": "barrier_duration",
+        "label": "DURATION:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Mystic Flare",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "170",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Mystic Flare",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Mystic Flare",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Skywrath Mage",
+        "ability": "Mystic Flare",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

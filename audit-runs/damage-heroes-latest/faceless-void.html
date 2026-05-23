@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>虚空假面（Faceless Void）</h1>
-        <div class="muted">Faceless Void · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Faceless Void · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,311 @@
       </div>
       <a href="./faceless-void.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Time Walk</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Time Walk</td>
+      <td><code>backtrack_duration</code></td>
+      <td>BACKTRACK DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Time Walk</td>
+      <td><code>backtrack_time_walk_duration</code></td>
+      <td>BACKTRACK TIME WALK DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Time Walk</td>
+      <td><code>dodge_chance_pct</code></td>
+      <td>DODGE CHANCE PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Time Walk</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Time Walk</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>775</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>7/8/9/10</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>slow</code></td>
+      <td>MOVEMENT SLOW PER STACK:</td>
+      <td>4%/5%/6%/7%</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>attack_slow_tooltip_only</code></td>
+      <td>ATTACK SLOW PER STACK:</td>
+      <td>4/5/6/7</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>cooldown_percentage</code></td>
+      <td>COOLDOWN PROGRESSION SLOW:</td>
+      <td>30%/40%/50%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>base_damage</code></td>
+      <td>BASE DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>self_movespeed_tooltip</code></td>
+      <td>SELF MOVESPEED PER STACK:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>self_attackspeed_tooltip</code></td>
+      <td>SELF ATTACK SPEED PER STACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Time Dilation</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Time Lock</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Time Lock</td>
+      <td><code>duration_creep</code></td>
+      <td>DURATION CREEP:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Time Lock</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Reverse Time Walk</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Reverse Time Walk</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reverse Time Walk</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Distortion Field</td>
+      <td><code>slow_distance_max</code></td>
+      <td>SLOW DISTANCE MAX:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Distortion Field</td>
+      <td><code>friendly_hero_distance</code></td>
+      <td>FRIENDLY HERO DISTANCE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Chronosphere</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Chronosphere</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>475</td>
+    </tr>
+  
+    <tr>
+      <td>Chronosphere</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>BONUS ATTACK SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chronosphere</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Chronosphere</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Faceless Void&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Time Walk&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;range&quot;,
+      &quot;semanticType&quot;: &quot;mobility.dash_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;位移和回溯影响进出场，不直接造成伤害。&quot;
+    },
+    &quot;Time Dilation&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_stack&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;cooling_ability_count&quot;,
+        &quot;active_duration&quot;
+      ],
+      &quot;requiredInputs&quot;: [
+        &quot;目标冷却中的技能数量&quot;,
+        &quot;实际作用时间&quot;
+      ],
+      &quot;reason&quot;: &quot;每层每秒伤害依赖敌方当前技能冷却数量。&quot;
+    },
+    &quot;Time Lock&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;bonus_damage&quot;,
+      &quot;procChanceKey&quot;: &quot;chance_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;proc_chance&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;reason&quot;: &quot;按一次时间锁定触发的额外伤害计算，触发概率作为参考。&quot;
+    },
+    &quot;Reverse Time Walk&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;buff_duration&quot;,
+      &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;反向位移不直接造成伤害。&quot;
+    },
+    &quot;Distortion Field&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_projectile_slow&quot;,
+      &quot;semanticType&quot;: &quot;modifier.projectile_speed_slow.percent&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;stackGroup&quot;: &quot;projectile_speed_slow&quot;,
+      &quot;reason&quot;: &quot;弹道减速影响承伤，不直接造成伤害。&quot;
+    },
+    &quot;Chronosphere&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;control.stun.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;控制窗口决定普攻和队友输出时间，本身不直接造成伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -874,7 +1183,315 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Faceless Void&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Time Walk&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;range&quot;,
+          &quot;semanticType&quot;: &quot;mobility.dash_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;位移和回溯影响进出场，不直接造成伤害。&quot;
+        },
+        &quot;Time Dilation&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_stack&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;cooling_ability_count&quot;,
+            &quot;active_duration&quot;
+          ],
+          &quot;requiredInputs&quot;: [
+            &quot;目标冷却中的技能数量&quot;,
+            &quot;实际作用时间&quot;
+          ],
+          &quot;reason&quot;: &quot;每层每秒伤害依赖敌方当前技能冷却数量。&quot;
+        },
+        &quot;Time Lock&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;bonus_damage&quot;,
+          &quot;procChanceKey&quot;: &quot;chance_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;proc_chance&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;reason&quot;: &quot;按一次时间锁定触发的额外伤害计算，触发概率作为参考。&quot;
+        },
+        &quot;Reverse Time Walk&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;buff_duration&quot;,
+          &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;反向位移不直接造成伤害。&quot;
+        },
+        &quot;Distortion Field&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_projectile_slow&quot;,
+          &quot;semanticType&quot;: &quot;modifier.projectile_speed_slow.percent&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;stackGroup&quot;: &quot;projectile_speed_slow&quot;,
+          &quot;reason&quot;: &quot;弹道减速影响承伤，不直接造成伤害。&quot;
+        },
+        &quot;Chronosphere&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;control.stun.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;控制窗口决定普攻和队友输出时间，本身不直接造成伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;backtrack_duration&quot;,
+        &quot;label&quot;: &quot;BACKTRACK DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;backtrack_time_walk_duration&quot;,
+        &quot;label&quot;: &quot;BACKTRACK TIME WALK DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;dodge_chance_pct&quot;,
+        &quot;label&quot;: &quot;DODGE CHANCE PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;775&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;7/8/9/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW PER STACK:&quot;,
+        &quot;value&quot;: &quot;4%/5%/6%/7%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;attack_slow_tooltip_only&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW PER STACK:&quot;,
+        &quot;value&quot;: &quot;4/5/6/7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;cooldown_percentage&quot;,
+        &quot;label&quot;: &quot;COOLDOWN PROGRESSION SLOW:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;base_damage&quot;,
+        &quot;label&quot;: &quot;BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;self_movespeed_tooltip&quot;,
+        &quot;label&quot;: &quot;SELF MOVESPEED PER STACK:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;self_attackspeed_tooltip&quot;,
+        &quot;label&quot;: &quot;SELF ATTACK SPEED PER STACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Dilation&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Lock&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Lock&quot;,
+        &quot;key&quot;: &quot;duration_creep&quot;,
+        &quot;label&quot;: &quot;DURATION CREEP:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Time Lock&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Reverse Time Walk&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Reverse Time Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Reverse Time Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Distortion Field&quot;,
+        &quot;key&quot;: &quot;slow_distance_max&quot;,
+        &quot;label&quot;: &quot;SLOW DISTANCE MAX:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Distortion Field&quot;,
+        &quot;key&quot;: &quot;friendly_hero_distance&quot;,
+        &quot;label&quot;: &quot;FRIENDLY HERO DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Chronosphere&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Chronosphere&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;475&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Chronosphere&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Chronosphere&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Faceless Void&quot;,
+        &quot;ability&quot;: &quot;Chronosphere&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

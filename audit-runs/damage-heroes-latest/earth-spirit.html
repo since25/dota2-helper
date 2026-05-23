@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>大地之灵（Earth Spirit）</h1>
-        <div class="muted">Earth Spirit · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Earth Spirit · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,514 @@
       </div>
       <a href="./earth-spirit.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>rock_search_aoe</code></td>
+      <td>REMNANT SMASH RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>move_slow</code></td>
+      <td>SLOW AMOUNT:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>speed</code></td>
+      <td>TRAVEL SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>unit_distance</code></td>
+      <td>DISTANCE:</td>
+      <td>500/600/700/800</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>rock_distance</code></td>
+      <td>DISTANCE (REMNANT):</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>remnant_smash_radius_tooltip</code></td>
+      <td>REMNANT SMASH RADIUS TOOLTIP:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>creep_multiplier</code></td>
+      <td>CREEP MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Boulder Smash</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>160</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>rock_speed</code></td>
+      <td>SPEED (REMNANT):</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>distance</code></td>
+      <td>DISTANCE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>rock_distance_multiplier</code></td>
+      <td>DISTANCE MULTIPLIER (REMNANT):</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>rock_bonus_duration</code></td>
+      <td>ROCK BONUS STUN DURATION:</td>
+      <td>0.3/0.5/0.7/0.9</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>damage_str</code></td>
+      <td>DAMAGE STR:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>destroy_stone</code></td>
+      <td>DESTROY STONE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>can_roll_over_allied_heroes</code></td>
+      <td>CAN ROLL OVER ALLIED HEROES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Boulder</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>pull_units_per_second</code></td>
+      <td>REMNANT PULL SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>pull_units_per_second_heroes</code></td>
+      <td>ALLIED UNIT PULL SPEED:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>cast_range_heroes</code></td>
+      <td>ALLIED UNIT CAST RANGE:</td>
+      <td>550/600/650/700</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>total_pull_distance</code></td>
+      <td>TOTAL PULL DISTANCE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000/1100/1200/1300</td>
+    </tr>
+  
+    <tr>
+      <td>Geomagnetic Grip</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>polarization_distance</code></td>
+      <td>POLARIZATION DISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>rolling_offset_distance</code></td>
+      <td>ROLLING OFFSET DISTANCE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>attack_damage_per_stone_used</code></td>
+      <td>ATTACK DAMAGE PER STONE USED:</td>
+      <td>7.5</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>buff_duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Remnant</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Remnant</td>
+      <td><code>aoe</code></td>
+      <td>SHATTER RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Remnant</td>
+      <td><code>ally_cast_range</code></td>
+      <td>CAST RANGE ON ALLIES:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Remnant</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Remnant</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>cast_radius</code></td>
+      <td>RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>rock_search_radius</code></td>
+      <td>REMNANT REFRESH/EXPLOSION RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>rock_explosion_radius</code></td>
+      <td>ROCK EXPLOSION RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>rock_explosion_delay</code></td>
+      <td>ROCK EXPLOSION DELAY:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>silence_duration</code></td>
+      <td>SILENCE DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>magnetized_rocks_buff_self</code></td>
+      <td>MAGNETIZED ROCKS BUFF SELF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>magnetized_rocks_buff_self_duration</code></td>
+      <td>MAGNETIZED ROCKS BUFF SELF DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>magnetized_rocks_bonus_self_damage</code></td>
+      <td>MAGNETIZED ROCKS BONUS SELF DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>magnetize_self</code></td>
+      <td>MAGNETIZE SELF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Magnetize</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Earth Spirit&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Boulder Smash&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;rock_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Rolling Boulder&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Geomagnetic Grip&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;rock_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Stone Remnant&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;attack_damage_per_stone&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Enchant Remnant&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Magnetize&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;damage_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +636,7 @@
           <div class="muted">Boulder Smash · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +689,7 @@
           <div class="muted">Rolling Boulder · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +742,7 @@
           <div class="muted">Geomagnetic Grip · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +795,7 @@
           <div class="muted">Stone Remnant · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +848,7 @@
           <div class="muted">Enchant Remnant · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +901,7 @@
           <div class="muted">Magnetize · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,7 +1072,7 @@
       &quot;name&quot;: &quot;Boulder Smash&quot;,
       &quot;displayName&quot;: &quot;巨石冲击（Boulder Smash）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -615,7 +1127,7 @@
       &quot;name&quot;: &quot;Rolling Boulder&quot;,
       &quot;displayName&quot;: &quot;巨石翻滚（Rolling Boulder）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -670,7 +1182,7 @@
       &quot;name&quot;: &quot;Geomagnetic Grip&quot;,
       &quot;displayName&quot;: &quot;地磁之握（Geomagnetic Grip）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -725,7 +1237,7 @@
       &quot;name&quot;: &quot;Stone Remnant&quot;,
       &quot;displayName&quot;: &quot;残岩（Stone Remnant）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -776,7 +1288,7 @@
       &quot;name&quot;: &quot;Enchant Remnant&quot;,
       &quot;displayName&quot;: &quot;残岩魔咒（Enchant Remnant）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -819,7 +1331,7 @@
       &quot;name&quot;: &quot;Magnetize&quot;,
       &quot;displayName&quot;: &quot;磁化（Magnetize）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -873,7 +1385,548 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Earth Spirit&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Boulder Smash&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;rock_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Rolling Boulder&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Geomagnetic Grip&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;rock_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Stone Remnant&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;attack_damage_per_stone&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Enchant Remnant&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Magnetize&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;damage_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;rock_search_aoe&quot;,
+        &quot;label&quot;: &quot;REMNANT SMASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;SLOW AMOUNT:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;unit_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;500/600/700/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;rock_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE (REMNANT):&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;remnant_smash_radius_tooltip&quot;,
+        &quot;label&quot;: &quot;REMNANT SMASH RADIUS TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;creep_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Boulder Smash&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;160&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;rock_speed&quot;,
+        &quot;label&quot;: &quot;SPEED (REMNANT):&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;rock_distance_multiplier&quot;,
+        &quot;label&quot;: &quot;DISTANCE MULTIPLIER (REMNANT):&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;rock_bonus_duration&quot;,
+        &quot;label&quot;: &quot;ROCK BONUS STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.3/0.5/0.7/0.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;damage_str&quot;,
+        &quot;label&quot;: &quot;DAMAGE STR:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;destroy_stone&quot;,
+        &quot;label&quot;: &quot;DESTROY STONE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;can_roll_over_allied_heroes&quot;,
+        &quot;label&quot;: &quot;CAN ROLL OVER ALLIED HEROES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Rolling Boulder&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;pull_units_per_second&quot;,
+        &quot;label&quot;: &quot;REMNANT PULL SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;pull_units_per_second_heroes&quot;,
+        &quot;label&quot;: &quot;ALLIED UNIT PULL SPEED:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;cast_range_heroes&quot;,
+        &quot;label&quot;: &quot;ALLIED UNIT CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;550/600/650/700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;total_pull_distance&quot;,
+        &quot;label&quot;: &quot;TOTAL PULL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000/1100/1200/1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Geomagnetic Grip&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;polarization_distance&quot;,
+        &quot;label&quot;: &quot;POLARIZATION DISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;rolling_offset_distance&quot;,
+        &quot;label&quot;: &quot;ROLLING OFFSET DISTANCE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;attack_damage_per_stone_used&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE PER STONE USED:&quot;,
+        &quot;value&quot;: &quot;7.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Stone Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Enchant Remnant&quot;,
+        &quot;key&quot;: &quot;aoe&quot;,
+        &quot;label&quot;: &quot;SHATTER RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Enchant Remnant&quot;,
+        &quot;key&quot;: &quot;ally_cast_range&quot;,
+        &quot;label&quot;: &quot;CAST RANGE ON ALLIES:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Enchant Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Enchant Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;cast_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;rock_search_radius&quot;,
+        &quot;label&quot;: &quot;REMNANT REFRESH/EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;rock_explosion_radius&quot;,
+        &quot;label&quot;: &quot;ROCK EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;rock_explosion_delay&quot;,
+        &quot;label&quot;: &quot;ROCK EXPLOSION DELAY:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;silence_duration&quot;,
+        &quot;label&quot;: &quot;SILENCE DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;magnetized_rocks_buff_self&quot;,
+        &quot;label&quot;: &quot;MAGNETIZED ROCKS BUFF SELF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;magnetized_rocks_buff_self_duration&quot;,
+        &quot;label&quot;: &quot;MAGNETIZED ROCKS BUFF SELF DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;magnetized_rocks_bonus_self_damage&quot;,
+        &quot;label&quot;: &quot;MAGNETIZED ROCKS BONUS SELF DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;magnetize_self&quot;,
+        &quot;label&quot;: &quot;MAGNETIZE SELF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earth Spirit&quot;,
+        &quot;ability&quot;: &quot;Magnetize&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

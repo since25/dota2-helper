@@ -121,7 +121,7 @@
       "name": "Spectral Dagger",
       "displayName": "幽鬼之刃（Spectral Dagger）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Shadow Step",
       "displayName": "如影随形（Shadow Step）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         65,
@@ -223,9 +223,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -234,10 +234,10 @@
       "name": "Haunt",
       "displayName": "鬼影重重（Haunt）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         125,
         150,
@@ -276,13 +276,417 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Spectre",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Spectral Dagger": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "dagger_path_duration"
+        },
+        "Shadow Step": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Dispersion": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Reality": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Desolate": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Haunt": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "fear_movespeed_slow",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "bonus_movespeed",
+        "label": "MOVEMENT SPEED CHANGE:",
+        "value": "10%/14%/18%/22%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "hero_path_duration",
+        "label": "DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "buff_persistence",
+        "label": "BUFF PERSISTENCE:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "dagger_radius",
+        "label": "DAGGER RADIUS:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "path_radius",
+        "label": "PATH RADIUS:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "dagger_grace_period",
+        "label": "DAGGER GRACE PERIOD:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "applies_desolate",
+        "label": "APPLIES DESOLATE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Spectral Dagger",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3.5/4/4.5/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "illusion_damage_incoming",
+        "label": "ILLUSION DAMAGE INCOMING:",
+        "value": "100/85/70/55",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "tooltip_illusion_total_damage_incoming",
+        "label": "ILLUSION DAMAGE TAKEN:",
+        "value": "200%/185%/170%/155%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "illusion_outgoing_damage",
+        "label": "ILLUSION DAMAGE:",
+        "value": "35%/40%/45%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "move_speed",
+        "label": "MOVE SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "bonus_move_speed_illusion_pct",
+        "label": "BONUS MOVE SPEED ILLUSION PCT:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Shadow Step",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "damage_reflection_pct",
+        "label": "DAMAGE REFLECTED:",
+        "value": "8%/12%/16%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "min_radius",
+        "label": "MIN RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "max_radius",
+        "label": "MAX RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "activation_cooldown",
+        "label": "ACTIVATION COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "activation_manacost",
+        "label": "ACTIVATION MANACOST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "activation_bonus_pct",
+        "label": "ACTIVATION BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Dispersion",
+        "key": "activation_duration",
+        "label": "ACTIVATION DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Reality",
+        "key": "cast_dagger_on_target",
+        "label": "CAST DAGGER ON TARGET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Reality",
+        "key": "may_target_shadow_step",
+        "label": "MAY TARGET SHADOW STEP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Reality",
+        "key": "travel_time",
+        "label": "TRAVEL TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Reality",
+        "key": "min_speed",
+        "label": "MIN SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Reality",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Desolate",
+        "key": "bonus_damage",
+        "label": "DAMAGE:",
+        "value": "23",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Desolate",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "scepter_cooldown_reduction_tooltip",
+        "label": "SCEPTER COOLDOWN REDUCTION TOOLTIP:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "duration",
+        "label": "HAUNT DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "illusion_damage_outgoing",
+        "label": "ILLUSION DAMAGE OUTGOING:",
+        "value": "-70/-50/-30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "tooltip_outgoing",
+        "label": "HAUNT DAMAGE:",
+        "value": "30%/50%/70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "illusion_damage_incoming",
+        "label": "ILLUSION DAMAGE INCOMING:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "tooltip_illusion_total_damage_incoming",
+        "label": "HAUNT DAMAGE TAKEN:",
+        "value": "200%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "attack_delay",
+        "label": "ATTACK DELAY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "destroy_if_target_is_dead",
+        "label": "DESTROY IF TARGET IS DEAD:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "fear_duration",
+        "label": "FEAR DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "fear_aoe",
+        "label": "FEAR AOE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Spectre",
+        "ability": "Haunt",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

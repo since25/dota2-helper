@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,396 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>蝙蝠骑士（Batrider）</h1>
-        <div class="muted">Batrider · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Batrider · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
-          <span>组件 5</span>
+          <span>组件 6</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./batrider.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>max_level</code></td>
+      <td>MAX LEVEL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>stacks_per_cast</code></td>
+      <td>STACKS PER CAST:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>movement_speed_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-.75%/-1.5%/-2.25%/-3%</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>turn_rate_pct</code></td>
+      <td>TURN RATE SLOW:</td>
+      <td>-10%/-30%/-50%/-70%</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>max_stacks</code></td>
+      <td>MAX STACKS:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>unlimited_stacks</code></td>
+      <td>UNLIMITED STACKS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>creep_damage_pct</code></td>
+      <td>CREEP DAMAGE PCT:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>application_damage</code></td>
+      <td>APPLICATION DAMAGE:</td>
+      <td>5/10/15/20</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>building_damage_pct</code></td>
+      <td>BUILDING DAMAGE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>napalm_stacks_on_attack</code></td>
+      <td>NAPALM STACKS ON ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sticky Napalm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>damage_per_second</code></td>
+      <td>DAMAGE PER SECOND:</td>
+      <td>25/30/35/40</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>damage_duration</code></td>
+      <td>BURN DURATION:</td>
+      <td>2/3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>explosion_radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>collision_radius</code></td>
+      <td>COLLISION RADIUS:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1700</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>knockback_height</code></td>
+      <td>KNOCKBACK HEIGHT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>napalm_stacks</code></td>
+      <td>NAPALM STACKS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>6%/12%/18%/24%</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Flamebreak</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Firefly</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Firefly</td>
+      <td><code>tree_radius</code></td>
+      <td>TREE RADIUS:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Firefly</td>
+      <td><code>movement_speed_pct_total</code></td>
+      <td>MAX MOVEMENT SPEED BONUS:</td>
+      <td>12%/18%/24%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Firefly</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Smoldering Resin</td>
+      <td><code>total_ticks</code></td>
+      <td>TOTAL TICKS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Smoldering Resin</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Flaming Lasso</td>
+      <td><code>drag_distance</code></td>
+      <td>DRAG DISTANCE:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Flaming Lasso</td>
+      <td><code>break_distance</code></td>
+      <td>BREAK DISTANCE:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Flaming Lasso</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Flaming Lasso</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Batrider&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed sticky napalm, flamebreak, firefly, and lasso fields against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Sticky Napalm&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;napalm_stack_count&quot;,
+        &quot;damage_instance_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;napalm_stack_count&quot;,
+        &quot;damage_instance_count&quot;
+      ],
+      &quot;reason&quot;: &quot;粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。&quot;
+    },
+    &quot;Flamebreak&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_impact&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;damage_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;
+          ]
+        }
+      ]
+    },
+    &quot;Firefly&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;active_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;火焰飞行为地面持续伤害，实际命中时间由走位决定。&quot;
+    },
+    &quot;Smoldering Resin&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;tick_attack_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;attack_damage&quot;,
+        &quot;tick_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;attack_damage&quot;,
+        &quot;tick_count&quot;
+      ],
+      &quot;reason&quot;: &quot;先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。&quot;
+    },
+    &quot;Flaming Lasso&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +509,7 @@
           <div class="muted">Sticky Napalm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -161,9 +546,9 @@
         <td>Magical</td>
         <td>2.5</td><td>5</td><td>7.5</td><td>10</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: move_speed</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: napalm_stack_count / damage_instance_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><ul><li>粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,8 +562,8 @@
           <div class="muted">Flamebreak · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -201,6 +586,24 @@
             </tr>
           </thead>
           <tbody>
+      <tr>
+        <td>
+          <code>Flamebreak:instant_fixed:damage_impact</code>
+          <div class="muted">damage_impact</div>
+        </td>
+        <td>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>25</td><td>50</td><td>75</td><td>100</td>
+        <td></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。</li></ul></td>
+      </tr>
+    
       <tr>
         <td>
           <code>Flamebreak:sustained:damage_per_second</code>
@@ -230,7 +633,7 @@
           <div class="muted">Firefly · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,8 +686,8 @@
           <div class="muted">Smoldering Resin · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
@@ -309,20 +712,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Smoldering Resin:debuff_reference:tick_attack_damage_pct</code>
+          <code>Smoldering Resin:state_scaling:tick_attack_damage_pct</code>
           <div class="muted">tick_attack_damage_pct</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
         <td>20</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: attack_damage / tick_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +739,7 @@
           <div class="muted">Flaming Lasso · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -375,7 +778,7 @@
         <td></td>
         <td><div><code>durationByAbilityLevel</code>: 2.25 / 2.75 / 3.25</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5</div></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,10 +910,10 @@
       &quot;name&quot;: &quot;Sticky Napalm&quot;,
       &quot;displayName&quot;: &quot;粘性燃油（Sticky Napalm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;reason&quot;: &quot;粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         22,
         22,
@@ -548,7 +951,8 @@
             &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [
-              &quot;move_speed&quot;
+              &quot;napalm_stack_count&quot;,
+              &quot;damage_instance_count&quot;
             ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
@@ -556,9 +960,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。&quot;,
           &quot;caveats&quot;: [
-            &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。&quot;
           ]
         }
       ]
@@ -567,10 +971,10 @@
       &quot;name&quot;: &quot;Flamebreak&quot;,
       &quot;displayName&quot;: &quot;烈焰破击（Flamebreak）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         110,
         110,
@@ -584,6 +988,33 @@
         13
       ],
       &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Flamebreak:instant_fixed:damage_impact&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_impact&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            25,
+            50,
+            75,
+            100
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;single_value&quot;
+          },
+          &quot;metadata&quot;: {},
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;,
+          &quot;caveats&quot;: [
+            &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;
+          ]
+        },
         {
           &quot;id&quot;: &quot;Flamebreak:sustained:damage_per_second&quot;,
           &quot;kind&quot;: &quot;sustained&quot;,
@@ -618,7 +1049,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -629,10 +1060,10 @@
       &quot;name&quot;: &quot;Firefly&quot;,
       &quot;displayName&quot;: &quot;火焰飞行（Firefly）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;火焰飞行为地面持续伤害，实际命中时间由走位决定。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         100,
@@ -686,7 +1117,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;火焰飞行为地面持续伤害，实际命中时间由走位决定。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -697,16 +1128,16 @@
       &quot;name&quot;: &quot;Smoldering Resin&quot;,
       &quot;displayName&quot;: &quot;闷烧树脂（Smoldering Resin）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Smoldering Resin:debuff_reference:tick_attack_damage_pct&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Smoldering Resin:state_scaling:tick_attack_damage_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
           &quot;label&quot;: &quot;tick_attack_damage_pct&quot;,
@@ -717,23 +1148,26 @@
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;attack_damage&quot;,
-            &quot;affects&quot;: &quot;attack_damage&quot;,
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
+            &quot;requiredInputs&quot;: [
+              &quot;attack_damage&quot;,
+              &quot;tick_count&quot;
+            ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。&quot;
           ]
         }
       ]
@@ -742,10 +1176,10 @@
       &quot;name&quot;: &quot;Flaming Lasso&quot;,
       &quot;displayName&quot;: &quot;燃烧枷锁（Flaming Lasso）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125,
         150,
@@ -789,13 +1223,408 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Batrider&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed sticky napalm, flamebreak, firefly, and lasso fields against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Sticky Napalm&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;napalm_stack_count&quot;,
+            &quot;damage_instance_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;napalm_stack_count&quot;,
+            &quot;damage_instance_count&quot;
+          ],
+          &quot;reason&quot;: &quot;粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。&quot;
+        },
+        &quot;Flamebreak&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_impact&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;implemented&quot;,
+              &quot;model&quot;: &quot;sustained_dps&quot;,
+              &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+              &quot;durationKey&quot;: &quot;damage_duration&quot;,
+              &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+              &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+              &quot;conditionInputs&quot;: [
+                &quot;active_duration&quot;
+              ]
+            }
+          ]
+        },
+        &quot;Firefly&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;火焰飞行为地面持续伤害，实际命中时间由走位决定。&quot;
+        },
+        &quot;Smoldering Resin&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;tick_attack_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;attack_damage&quot;,
+            &quot;tick_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;attack_damage&quot;,
+            &quot;tick_count&quot;
+          ],
+          &quot;reason&quot;: &quot;先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。&quot;
+        },
+        &quot;Flaming Lasso&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;max_level&quot;,
+        &quot;label&quot;: &quot;MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;stacks_per_cast&quot;,
+        &quot;label&quot;: &quot;STACKS PER CAST:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-.75%/-1.5%/-2.25%/-3%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;turn_rate_pct&quot;,
+        &quot;label&quot;: &quot;TURN RATE SLOW:&quot;,
+        &quot;value&quot;: &quot;-10%/-30%/-50%/-70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;unlimited_stacks&quot;,
+        &quot;label&quot;: &quot;UNLIMITED STACKS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;creep_damage_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;application_damage&quot;,
+        &quot;label&quot;: &quot;APPLICATION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;5/10/15/20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;building_damage_pct&quot;,
+        &quot;label&quot;: &quot;BUILDING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;napalm_stacks_on_attack&quot;,
+        &quot;label&quot;: &quot;NAPALM STACKS ON ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Sticky Napalm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;damage_per_second&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER SECOND:&quot;,
+        &quot;value&quot;: &quot;25/30/35/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;damage_duration&quot;,
+        &quot;label&quot;: &quot;BURN DURATION:&quot;,
+        &quot;value&quot;: &quot;2/3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;explosion_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;collision_radius&quot;,
+        &quot;label&quot;: &quot;COLLISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;knockback_height&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK HEIGHT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;napalm_stacks&quot;,
+        &quot;label&quot;: &quot;NAPALM STACKS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;6%/12%/18%/24%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flamebreak&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Firefly&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Firefly&quot;,
+        &quot;key&quot;: &quot;tree_radius&quot;,
+        &quot;label&quot;: &quot;TREE RADIUS:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Firefly&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct_total&quot;,
+        &quot;label&quot;: &quot;MAX MOVEMENT SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;12%/18%/24%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Firefly&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Smoldering Resin&quot;,
+        &quot;key&quot;: &quot;total_ticks&quot;,
+        &quot;label&quot;: &quot;TOTAL TICKS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Smoldering Resin&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flaming Lasso&quot;,
+        &quot;key&quot;: &quot;drag_distance&quot;,
+        &quot;label&quot;: &quot;DRAG DISTANCE:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flaming Lasso&quot;,
+        &quot;key&quot;: &quot;break_distance&quot;,
+        &quot;label&quot;: &quot;BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flaming Lasso&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Batrider&quot;,
+        &quot;ability&quot;: &quot;Flaming Lasso&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dota 2 英雄列表</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="data-viewer.css">
+  <link rel="icon" type="image/png" href="images/dota2_favicon.png">
+</head>
+<body>
+  <main class="data-shell">
+    <header class="data-header">
+      <div>
+        <h1>英雄列表</h1>
+        <p>把 <code>/api/heroes</code> 转换为可读表格，保留中文名、英文名与别名。</p>
+      </div>
+      <nav class="data-actions" aria-label="页面导航">
+        <a href="/" class="data-link">返回对局助手</a>
+        <a href="/api/heroes" class="data-link" target="_blank" rel="noopener noreferrer">查看原始 JSON</a>
+      </nav>
+    </header>
+
+    <section class="data-panel data-toolbar">
+      <label>
+        搜索英雄
+        <input id="heroSearchInput" type="search" placeholder="输入中文名、英文名或别名">
+      </label>
+      <div class="data-count" id="heroCount">加载中...</div>
+    </section>
+
+    <section class="data-panel">
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>中文名</th>
+              <th>英文名</th>
+              <th>常用别名</th>
+              <th>伤害模型</th>
+            </tr>
+          </thead>
+          <tbody id="heroRows"></tbody>
+        </table>
+      </div>
+      <p id="heroStatus" class="data-status"></p>
+    </section>
+  </main>
+
+  <script src="heroes.js"></script>
+</body>
+</html>

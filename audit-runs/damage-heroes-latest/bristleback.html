@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>钢背兽（Bristleback）</h1>
-        <div class="muted">Bristleback · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Bristleback · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,405 @@
       </div>
       <a href="./bristleback.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>goo_speed</code></td>
+      <td>GOO SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>goo_duration</code></td>
+      <td>GOO DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>base_armor</code></td>
+      <td>BASE ARMOR LOSS:</td>
+      <td>1.5/2/2.5/3</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>armor_per_stack</code></td>
+      <td>ARMOR LOSS PER STACK:</td>
+      <td>2/2.5/3/3.5</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>base_move_slow</code></td>
+      <td>BASE MOVEMENT SLOW:</td>
+      <td>12%</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>move_slow_per_stack</code></td>
+      <td>MOVE SLOW PER STACK:</td>
+      <td>3%/6%/9%/12%</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>stack_limit</code></td>
+      <td>STACK LIMIT:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Viscous Nasal Goo</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Quill Spray</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Quill Spray</td>
+      <td><code>quill_stack_damage</code></td>
+      <td>QUILL STACK DAMAGE:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Quill Spray</td>
+      <td><code>max_damage</code></td>
+      <td>MAX DAMAGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Quill Spray</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>2400</td>
+    </tr>
+  
+    <tr>
+      <td>Quill Spray</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>side_damage_reduction</code></td>
+      <td>SIDE DAMAGE REDUCTION:</td>
+      <td>8%/12%/16%/20%</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>back_damage_reduction</code></td>
+      <td>BACK DAMAGE REDUCTION:</td>
+      <td>16%/24%/32%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>side_angle</code></td>
+      <td>SIDE ANGLE:</td>
+      <td>110</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>back_angle</code></td>
+      <td>BACK ANGLE:</td>
+      <td>70</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>quill_release_threshold</code></td>
+      <td>DAMAGE THRESHOLD:</td>
+      <td>275/250/225/200</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>quill_release_interval</code></td>
+      <td>QUILL RELEASE INTERVAL:</td>
+      <td>.1</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>goo_radius</code></td>
+      <td>NASAL GOO RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_cooldown</code></td>
+      <td>ACTIVATION COOLDOWN:</td>
+      <td>24</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_manacost</code></td>
+      <td>ACTIVATION MANACOST:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_delay</code></td>
+      <td>ACTIVATION DELAY:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_num_quill_sprays</code></td>
+      <td>ACTIVATION NUM QUILL SPRAYS:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_spray_interval</code></td>
+      <td>ACTIVATION SPRAY INTERVAL:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_angle</code></td>
+      <td>ACTIVATION ANGLE:</td>
+      <td>45</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_movement_speed_pct</code></td>
+      <td>ACTIVATION MOVEMENT SPEED PCT:</td>
+      <td>-40</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_turn_rate_pct</code></td>
+      <td>ACTIVATION TURN RATE PCT:</td>
+      <td>-100</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_disable_turning</code></td>
+      <td>ACTIVATION DISABLE TURNING:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_ignore_cast_angle</code></td>
+      <td>ACTIVATION IGNORE CAST ANGLE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>activation_turn_rate</code></td>
+      <td>ACTIVATION TURN RATE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Bristleback</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hairball</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Hairball</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Hairball</td>
+      <td><code>quill_stacks</code></td>
+      <td>QUILL STACKS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Hairball</td>
+      <td><code>goo_stacks</code></td>
+      <td>GOO STACKS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Hairball</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Warpath</td>
+      <td><code>aspd_per_stack</code></td>
+      <td>ASPD PER STACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Warpath</td>
+      <td><code>move_speed_per_stack</code></td>
+      <td>MOVEMENT PER STACK:</td>
+      <td>2%/2.5%/3%</td>
+    </tr>
+  
+    <tr>
+      <td>Warpath</td>
+      <td><code>stack_duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>16/18/20</td>
+    </tr>
+  
+    <tr>
+      <td>Warpath</td>
+      <td><code>max_stacks</code></td>
+      <td>MAX STACKS:</td>
+      <td>8/10/12</td>
+    </tr>
+  
+    <tr>
+      <td>Prickly</td>
+      <td><code>amp_pct</code></td>
+      <td>DAMAGE AND DEBUFF DURATION AMP:</td>
+      <td>4.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Prickly</td>
+      <td><code>angle</code></td>
+      <td>ANGLE:</td>
+      <td>110</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Bristleback&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Viscous Nasal Goo&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Quill Spray&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;quill_base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;quill_stack_duration&quot;
+    },
+    &quot;Bristleback&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;cast_range_bonus&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Hairball&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Warpath&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_stack&quot;,
+      &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;move_speed&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;move_speed&quot;
+      ],
+      &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Prickly&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +527,7 @@
           <div class="muted">Viscous Nasal Goo · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +566,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +580,7 @@
           <div class="muted">Quill Spray · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +633,7 @@
           <div class="muted">Bristleback · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +672,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +686,7 @@
           <div class="muted">Hairball · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +725,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +739,7 @@
           <div class="muted">Warpath · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -507,10 +910,10 @@
       &quot;name&quot;: &quot;Viscous Nasal Goo&quot;,
       &quot;displayName&quot;: &quot;粘稠鼻液（Viscous Nasal Goo）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         12,
         16,
@@ -548,9 +951,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -559,7 +962,7 @@
       &quot;name&quot;: &quot;Quill Spray&quot;,
       &quot;displayName&quot;: &quot;刺针扫射（Quill Spray）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -614,10 +1017,10 @@
       &quot;name&quot;: &quot;Bristleback&quot;,
       &quot;displayName&quot;: &quot;钢毛后背（Bristleback）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -648,9 +1051,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -659,10 +1062,10 @@
       &quot;name&quot;: &quot;Hairball&quot;,
       &quot;displayName&quot;: &quot;毛团（Hairball）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60
       ],
@@ -697,9 +1100,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -708,7 +1111,7 @@
       &quot;name&quot;: &quot;Warpath&quot;,
       &quot;displayName&quot;: &quot;战意（Warpath）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
@@ -754,7 +1157,424 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Bristleback&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Viscous Nasal Goo&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Quill Spray&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;quill_base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;quill_stack_duration&quot;
+        },
+        &quot;Bristleback&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;cast_range_bonus&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Hairball&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Warpath&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_stack&quot;,
+          &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;move_speed&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;move_speed&quot;
+          ],
+          &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Prickly&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;goo_speed&quot;,
+        &quot;label&quot;: &quot;GOO SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;goo_duration&quot;,
+        &quot;label&quot;: &quot;GOO DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;base_armor&quot;,
+        &quot;label&quot;: &quot;BASE ARMOR LOSS:&quot;,
+        &quot;value&quot;: &quot;1.5/2/2.5/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;armor_per_stack&quot;,
+        &quot;label&quot;: &quot;ARMOR LOSS PER STACK:&quot;,
+        &quot;value&quot;: &quot;2/2.5/3/3.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;base_move_slow&quot;,
+        &quot;label&quot;: &quot;BASE MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;move_slow_per_stack&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW PER STACK:&quot;,
+        &quot;value&quot;: &quot;3%/6%/9%/12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;stack_limit&quot;,
+        &quot;label&quot;: &quot;STACK LIMIT:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Viscous Nasal Goo&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Quill Spray&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Quill Spray&quot;,
+        &quot;key&quot;: &quot;quill_stack_damage&quot;,
+        &quot;label&quot;: &quot;QUILL STACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Quill Spray&quot;,
+        &quot;key&quot;: &quot;max_damage&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Quill Spray&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;2400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Quill Spray&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;side_damage_reduction&quot;,
+        &quot;label&quot;: &quot;SIDE DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;8%/12%/16%/20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;back_damage_reduction&quot;,
+        &quot;label&quot;: &quot;BACK DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;16%/24%/32%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;side_angle&quot;,
+        &quot;label&quot;: &quot;SIDE ANGLE:&quot;,
+        &quot;value&quot;: &quot;110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;back_angle&quot;,
+        &quot;label&quot;: &quot;BACK ANGLE:&quot;,
+        &quot;value&quot;: &quot;70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;quill_release_threshold&quot;,
+        &quot;label&quot;: &quot;DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;275/250/225/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;quill_release_interval&quot;,
+        &quot;label&quot;: &quot;QUILL RELEASE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;goo_radius&quot;,
+        &quot;label&quot;: &quot;NASAL GOO RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_cooldown&quot;,
+        &quot;label&quot;: &quot;ACTIVATION COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;24&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_manacost&quot;,
+        &quot;label&quot;: &quot;ACTIVATION MANACOST:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_delay&quot;,
+        &quot;label&quot;: &quot;ACTIVATION DELAY:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_num_quill_sprays&quot;,
+        &quot;label&quot;: &quot;ACTIVATION NUM QUILL SPRAYS:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_spray_interval&quot;,
+        &quot;label&quot;: &quot;ACTIVATION SPRAY INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_angle&quot;,
+        &quot;label&quot;: &quot;ACTIVATION ANGLE:&quot;,
+        &quot;value&quot;: &quot;45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;ACTIVATION MOVEMENT SPEED PCT:&quot;,
+        &quot;value&quot;: &quot;-40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_turn_rate_pct&quot;,
+        &quot;label&quot;: &quot;ACTIVATION TURN RATE PCT:&quot;,
+        &quot;value&quot;: &quot;-100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_disable_turning&quot;,
+        &quot;label&quot;: &quot;ACTIVATION DISABLE TURNING:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_ignore_cast_angle&quot;,
+        &quot;label&quot;: &quot;ACTIVATION IGNORE CAST ANGLE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;activation_turn_rate&quot;,
+        &quot;label&quot;: &quot;ACTIVATION TURN RATE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Bristleback&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Hairball&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Hairball&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Hairball&quot;,
+        &quot;key&quot;: &quot;quill_stacks&quot;,
+        &quot;label&quot;: &quot;QUILL STACKS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Hairball&quot;,
+        &quot;key&quot;: &quot;goo_stacks&quot;,
+        &quot;label&quot;: &quot;GOO STACKS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Hairball&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Warpath&quot;,
+        &quot;key&quot;: &quot;aspd_per_stack&quot;,
+        &quot;label&quot;: &quot;ASPD PER STACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Warpath&quot;,
+        &quot;key&quot;: &quot;move_speed_per_stack&quot;,
+        &quot;label&quot;: &quot;MOVEMENT PER STACK:&quot;,
+        &quot;value&quot;: &quot;2%/2.5%/3%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Warpath&quot;,
+        &quot;key&quot;: &quot;stack_duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;16/18/20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Warpath&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;8/10/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Prickly&quot;,
+        &quot;key&quot;: &quot;amp_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE AND DEBUFF DURATION AMP:&quot;,
+        &quot;value&quot;: &quot;4.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bristleback&quot;,
+        &quot;ability&quot;: &quot;Prickly&quot;,
+        &quot;key&quot;: &quot;angle&quot;,
+        &quot;label&quot;: &quot;ANGLE:&quot;,
+        &quot;value&quot;: &quot;110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

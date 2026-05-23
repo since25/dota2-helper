@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>帕克（Puck）</h1>
-        <div class="muted">Puck · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Puck · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,350 @@
       </div>
       <a href="./puck.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>1950</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>orb_speed</code></td>
+      <td>SPEED:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>orb_vision</code></td>
+      <td>ORB VISION:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>warning_sound_time</code></td>
+      <td>WARNING SOUND TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>curve_orb</code></td>
+      <td>CURVE ORB:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>curve_orb_duration_multiplier</code></td>
+      <td>CURVE ORB DURATION MULTIPLIER:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>curve_orb_max_acceleration</code></td>
+      <td>CURVE ORB MAX ACCELERATION:</td>
+      <td>0.0015</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>curve_orb_pullback_bonus_launch_speed</code></td>
+      <td>CURVE ORB PULLBACK BONUS LAUNCH SPEED:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>curve_strength</code></td>
+      <td>CURVE STRENGTH:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>vector_reticle_distance</code></td>
+      <td>VECTOR RETICLE DISTANCE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>vector_reticle_radius</code></td>
+      <td>VECTOR RETICLE RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>increase_per_sec</code></td>
+      <td>INCREASE PER SEC:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>damage_over_time_pct</code></td>
+      <td>DAMAGE OVER TIME PCT:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>max_orb_duration_tooltip</code></td>
+      <td>MAX ORB DURATION:</td>
+      <td>5.2</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1950</td>
+    </tr>
+  
+    <tr>
+      <td>Illusory Orb</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Waning Rift</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Waning Rift</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Waning Rift</td>
+      <td><code>push_pull_enabled</code></td>
+      <td>PUSH PULL ENABLED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Waning Rift</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Phase Shift</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>1/1.75/2.5/3.25</td>
+    </tr>
+  
+    <tr>
+      <td>Phase Shift</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>1/1.75/2.5/3.25</td>
+    </tr>
+  
+    <tr>
+      <td>Phase Shift</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Puckish</td>
+      <td><code>mana_and_health_restore_pct</code></td>
+      <td>MANA AND HEALTH RESTORE PCT:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Puckish</td>
+      <td><code>dodged_spell_multiplier</code></td>
+      <td>DODGED SPELL MULTIPLIER:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_break_radius</code></td>
+      <td>BREAK RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_stun_duration</code></td>
+      <td>BREAK STUN DURATION:</td>
+      <td>1.5/2/2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_break_damage</code></td>
+      <td>BREAK DAMAGE:</td>
+      <td>200/300/400</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_radius</code></td>
+      <td>COIL RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_rapid_fire_rate</code></td>
+      <td>COIL RAPID FIRE RATE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>coil_rapid_fire_z_offset</code></td>
+      <td>COIL RAPID FIRE Z OFFSET:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>attack_rate_pct</code></td>
+      <td>ATTACK RATE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Dream Coil</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Puck&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Illusory Orb&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;vision_duration&quot;
+    },
+    &quot;Waning Rift&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;silence_duration&quot;
+    },
+    &quot;Phase Shift&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Ethereal Jaunt&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Puckish&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Dream Coil&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;coil_initial_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;coil_duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +472,7 @@
           <div class="muted">Illusory Orb · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +525,7 @@
           <div class="muted">Waning Rift · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +578,7 @@
           <div class="muted">Dream Coil · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -401,7 +749,7 @@
       &quot;name&quot;: &quot;Illusory Orb&quot;,
       &quot;displayName&quot;: &quot;幻象法球（Illusory Orb）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -456,7 +804,7 @@
       &quot;name&quot;: &quot;Waning Rift&quot;,
       &quot;displayName&quot;: &quot;新月之痕（Waning Rift）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -511,7 +859,7 @@
       &quot;name&quot;: &quot;Dream Coil&quot;,
       &quot;displayName&quot;: &quot;梦境缠绕（Dream Coil）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -559,7 +907,363 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Puck&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Illusory Orb&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;vision_duration&quot;
+        },
+        &quot;Waning Rift&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;silence_duration&quot;
+        },
+        &quot;Phase Shift&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Ethereal Jaunt&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Puckish&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Dream Coil&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;coil_initial_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;coil_duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;orb_speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;orb_vision&quot;,
+        &quot;label&quot;: &quot;ORB VISION:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;warning_sound_time&quot;,
+        &quot;label&quot;: &quot;WARNING SOUND TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;curve_orb&quot;,
+        &quot;label&quot;: &quot;CURVE ORB:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;curve_orb_duration_multiplier&quot;,
+        &quot;label&quot;: &quot;CURVE ORB DURATION MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;curve_orb_max_acceleration&quot;,
+        &quot;label&quot;: &quot;CURVE ORB MAX ACCELERATION:&quot;,
+        &quot;value&quot;: &quot;0.0015&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;curve_orb_pullback_bonus_launch_speed&quot;,
+        &quot;label&quot;: &quot;CURVE ORB PULLBACK BONUS LAUNCH SPEED:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;curve_strength&quot;,
+        &quot;label&quot;: &quot;CURVE STRENGTH:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;vector_reticle_distance&quot;,
+        &quot;label&quot;: &quot;VECTOR RETICLE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;vector_reticle_radius&quot;,
+        &quot;label&quot;: &quot;VECTOR RETICLE RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;increase_per_sec&quot;,
+        &quot;label&quot;: &quot;INCREASE PER SEC:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;damage_over_time_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE OVER TIME PCT:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;max_orb_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;MAX ORB DURATION:&quot;,
+        &quot;value&quot;: &quot;5.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Illusory Orb&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Waning Rift&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Waning Rift&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Waning Rift&quot;,
+        &quot;key&quot;: &quot;push_pull_enabled&quot;,
+        &quot;label&quot;: &quot;PUSH PULL ENABLED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Waning Rift&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Phase Shift&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.75/2.5/3.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Phase Shift&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;1/1.75/2.5/3.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Phase Shift&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Puckish&quot;,
+        &quot;key&quot;: &quot;mana_and_health_restore_pct&quot;,
+        &quot;label&quot;: &quot;MANA AND HEALTH RESTORE PCT:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Puckish&quot;,
+        &quot;key&quot;: &quot;dodged_spell_multiplier&quot;,
+        &quot;label&quot;: &quot;DODGED SPELL MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_break_radius&quot;,
+        &quot;label&quot;: &quot;BREAK RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_stun_duration&quot;,
+        &quot;label&quot;: &quot;BREAK STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.5/2/2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_break_damage&quot;,
+        &quot;label&quot;: &quot;BREAK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;200/300/400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_radius&quot;,
+        &quot;label&quot;: &quot;COIL RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_rapid_fire_rate&quot;,
+        &quot;label&quot;: &quot;COIL RAPID FIRE RATE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;coil_rapid_fire_z_offset&quot;,
+        &quot;label&quot;: &quot;COIL RAPID FIRE Z OFFSET:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;attack_rate_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK RATE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Puck&quot;,
+        &quot;ability&quot;: &quot;Dream Coil&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>兽王（Beastmaster）</h1>
-        <div class="muted">Beastmaster · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Beastmaster · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,502 @@
       </div>
       <a href="./beastmaster.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>spread</code></td>
+      <td>SPREAD:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>range</code></td>
+      <td>CAST RANGE:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>damage_amp</code></td>
+      <td>DAMAGE AMP PER STACK:</td>
+      <td>5%/6%/7%/8%</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>min_throw_duration</code></td>
+      <td>MIN THROW DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>max_throw_duration</code></td>
+      <td>MAX THROW DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Wild Axes</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_base_max_health</code></td>
+      <td>BOAR BASE HEALTH:</td>
+      <td>300/450/600/750</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_total_damage_tooltip</code></td>
+      <td>BOAR ATTACK DAMAGE:</td>
+      <td>30/45/60/75</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_bonus_damage</code></td>
+      <td>BOAR BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_base_xp_bounty</code></td>
+      <td>BOAR BASE XP BOUNTY:</td>
+      <td>60/70/80/90</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_base_movespeed</code></td>
+      <td>BOAR BASE MOVESPEED:</td>
+      <td>320/330/340/350</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_moveslow_tooltip</code></td>
+      <td>BOAR SLOW:</td>
+      <td>10%/18%/26%/34%</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>boar_poison_duration_tooltip</code></td>
+      <td>BOAR POISON DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Razorback</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_spawn_interval</code></td>
+      <td>HAWK SPAWN INTERVAL:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_max_health</code></td>
+      <td>HAWK BASE HEALTH:</td>
+      <td>200/325/450/625</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_gold_bounty</code></td>
+      <td>HAWK BASE GOLD BOUNTY:</td>
+      <td>30/40/50/60</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_vision_range</code></td>
+      <td>HAWK BASE VISION RANGE:</td>
+      <td>600/650/700/750</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_xp_bounty</code></td>
+      <td>HAWK BASE XP BOUNTY:</td>
+      <td>40/50/60/70</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_magic_resist</code></td>
+      <td>HAWK BASE MAGIC RESISTANCE:</td>
+      <td>30%/40%/50%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>attack_radius</code></td>
+      <td>ATTACK RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_count</code></td>
+      <td>HAWK COUNT:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>dive_root_duration</code></td>
+      <td>ROOT DURATION:</td>
+      <td>0.4/0.6/0.8/1</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>roaming_radius</code></td>
+      <td>ROAMING RADIUS:</td>
+      <td>280</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>roaming_seconds_per_rotation</code></td>
+      <td>ROAMING SECONDS PER ROTATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>hawk_base_attack_interval</code></td>
+      <td>HAWK BASE ATTACK INTERVAL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>min_move_speed</code></td>
+      <td>MIN MOVE SPEED:</td>
+      <td>455</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>max_move_speed</code></td>
+      <td>MAX MOVE SPEED:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Raptors</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Inner Beast</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Inner Beast</td>
+      <td><code>attack_speed_per_unit</code></td>
+      <td>BONUS ATTACK SPEED PER UNIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Inner Beast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>radius</code></td>
+      <td>DAMAGE RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>max_stacks</code></td>
+      <td>ATTACKS FOR SHORTEST INTERVAL:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>stack_decay_time</code></td>
+      <td>STACK DECAY TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>min_drum_hit_interval</code></td>
+      <td>SHORTEST DRUM INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>max_drum_hit_interval</code></td>
+      <td>LONGEST DRUM INTERVAL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>heal_pct</code></td>
+      <td>HEAL FROM HEROES:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>creep_damage_pct</code></td>
+      <td>CREEP DAMAGE PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>creep_heal_pct</code></td>
+      <td>HEAL FROM CREEPS:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>aura_radius</code></td>
+      <td>AURA RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>primal_roar_stacks</code></td>
+      <td>PRIMAL ROAR STACKS:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Drums of Slom</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>side_damage</code></td>
+      <td>SIDE DAMAGE:</td>
+      <td>150/225/300</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>damage_radius</code></td>
+      <td>SHOUT WIDTH:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>slow_movement_speed_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-60%</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>slow_attack_speed_pct</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-60</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>push_distance</code></td>
+      <td>PUSH DISTANCE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>push_duration</code></td>
+      <td>PUSH DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>3/3.5/4</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>movement_speed_duration</code></td>
+      <td>MOVEMENT SPEED DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Roar</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Beastmaster&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Wild Axes&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;axe_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Summon Razorback&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;boar_base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Summon Raptors&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dive_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Inner Beast&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Drums of Slom&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Primal Roar&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +624,7 @@
           <div class="muted">Wild Axes · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +677,7 @@
           <div class="muted">Summon Razorback · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +730,7 @@
           <div class="muted">Summon Raptors · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +783,7 @@
           <div class="muted">Inner Beast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +822,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +836,7 @@
           <div class="muted">Drums of Slom · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +889,7 @@
           <div class="muted">Primal Roar · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,7 +1060,7 @@
       &quot;name&quot;: &quot;Wild Axes&quot;,
       &quot;displayName&quot;: &quot;野性之斧（Wild Axes）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -615,7 +1115,7 @@
       &quot;name&quot;: &quot;Summon Razorback&quot;,
       &quot;displayName&quot;: &quot;召唤刀背兽（Summon Razorback）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -670,7 +1170,7 @@
       &quot;name&quot;: &quot;Summon Raptors&quot;,
       &quot;displayName&quot;: &quot;召唤猛禽（Summon Raptors）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -725,10 +1225,10 @@
       &quot;name&quot;: &quot;Inner Beast&quot;,
       &quot;displayName&quot;: &quot;野性之心（Inner Beast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -759,9 +1259,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -770,7 +1270,7 @@
       &quot;name&quot;: &quot;Drums of Slom&quot;,
       &quot;displayName&quot;: &quot;斯洛姆战鼓（Drums of Slom）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -805,7 +1305,7 @@
       &quot;name&quot;: &quot;Primal Roar&quot;,
       &quot;displayName&quot;: &quot;原始咆哮（Primal Roar）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -853,7 +1353,535 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Beastmaster&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Wild Axes&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;axe_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Summon Razorback&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;boar_base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Summon Raptors&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dive_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Inner Beast&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Drums of Slom&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Primal Roar&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;spread&quot;,
+        &quot;label&quot;: &quot;SPREAD:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;damage_amp&quot;,
+        &quot;label&quot;: &quot;DAMAGE AMP PER STACK:&quot;,
+        &quot;value&quot;: &quot;5%/6%/7%/8%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;min_throw_duration&quot;,
+        &quot;label&quot;: &quot;MIN THROW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;max_throw_duration&quot;,
+        &quot;label&quot;: &quot;MAX THROW DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Wild Axes&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_base_max_health&quot;,
+        &quot;label&quot;: &quot;BOAR BASE HEALTH:&quot;,
+        &quot;value&quot;: &quot;300/450/600/750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_total_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;BOAR ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30/45/60/75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_bonus_damage&quot;,
+        &quot;label&quot;: &quot;BOAR BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_base_xp_bounty&quot;,
+        &quot;label&quot;: &quot;BOAR BASE XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;60/70/80/90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_base_movespeed&quot;,
+        &quot;label&quot;: &quot;BOAR BASE MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;320/330/340/350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_moveslow_tooltip&quot;,
+        &quot;label&quot;: &quot;BOAR SLOW:&quot;,
+        &quot;value&quot;: &quot;10%/18%/26%/34%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;boar_poison_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;BOAR POISON DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Razorback&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_spawn_interval&quot;,
+        &quot;label&quot;: &quot;HAWK SPAWN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_max_health&quot;,
+        &quot;label&quot;: &quot;HAWK BASE HEALTH:&quot;,
+        &quot;value&quot;: &quot;200/325/450/625&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_gold_bounty&quot;,
+        &quot;label&quot;: &quot;HAWK BASE GOLD BOUNTY:&quot;,
+        &quot;value&quot;: &quot;30/40/50/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_vision_range&quot;,
+        &quot;label&quot;: &quot;HAWK BASE VISION RANGE:&quot;,
+        &quot;value&quot;: &quot;600/650/700/750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_xp_bounty&quot;,
+        &quot;label&quot;: &quot;HAWK BASE XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;40/50/60/70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_magic_resist&quot;,
+        &quot;label&quot;: &quot;HAWK BASE MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;attack_radius&quot;,
+        &quot;label&quot;: &quot;ATTACK RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_count&quot;,
+        &quot;label&quot;: &quot;HAWK COUNT:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;dive_root_duration&quot;,
+        &quot;label&quot;: &quot;ROOT DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4/0.6/0.8/1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;roaming_radius&quot;,
+        &quot;label&quot;: &quot;ROAMING RADIUS:&quot;,
+        &quot;value&quot;: &quot;280&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;roaming_seconds_per_rotation&quot;,
+        &quot;label&quot;: &quot;ROAMING SECONDS PER ROTATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;hawk_base_attack_interval&quot;,
+        &quot;label&quot;: &quot;HAWK BASE ATTACK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;min_move_speed&quot;,
+        &quot;label&quot;: &quot;MIN MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;455&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;max_move_speed&quot;,
+        &quot;label&quot;: &quot;MAX MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Summon Raptors&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Inner Beast&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Inner Beast&quot;,
+        &quot;key&quot;: &quot;attack_speed_per_unit&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED PER UNIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Inner Beast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;ATTACKS FOR SHORTEST INTERVAL:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;stack_decay_time&quot;,
+        &quot;label&quot;: &quot;STACK DECAY TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;min_drum_hit_interval&quot;,
+        &quot;label&quot;: &quot;SHORTEST DRUM INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;max_drum_hit_interval&quot;,
+        &quot;label&quot;: &quot;LONGEST DRUM INTERVAL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;heal_pct&quot;,
+        &quot;label&quot;: &quot;HEAL FROM HEROES:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;creep_damage_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;creep_heal_pct&quot;,
+        &quot;label&quot;: &quot;HEAL FROM CREEPS:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;AURA RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;primal_roar_stacks&quot;,
+        &quot;label&quot;: &quot;PRIMAL ROAR STACKS:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Drums of Slom&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;side_damage&quot;,
+        &quot;label&quot;: &quot;SIDE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;150/225/300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;damage_radius&quot;,
+        &quot;label&quot;: &quot;SHOUT WIDTH:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;slow_attack_speed_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;push_distance&quot;,
+        &quot;label&quot;: &quot;PUSH DISTANCE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;push_duration&quot;,
+        &quot;label&quot;: &quot;PUSH DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3/3.5/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;movement_speed_duration&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Beastmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Roar&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

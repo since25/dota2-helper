@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,304 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>拉席克（Leshrac）</h1>
-        <div class="muted">Leshrac · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Leshrac · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 4</span>
-          <span>组件 4</span>
+          <span>技能 5</span>
+          <span>组件 5</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./leshrac.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Split Earth</td>
+      <td><code>delay</code></td>
+      <td>STUN DELAY:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Split Earth</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>150/170/190/210</td>
+    </tr>
+  
+    <tr>
+      <td>Split Earth</td>
+      <td><code>duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.7</td>
+    </tr>
+  
+    <tr>
+      <td>Split Earth</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Split Earth</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Split Earth</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>tower_bonus</code></td>
+      <td>TOWER BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>affects_buildings</code></td>
+      <td>AFFECTS BUILDINGS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>targets</code></td>
+      <td>TARGETS PER EXPLOSION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Diabolic Edict</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>jump_count</code></td>
+      <td>LIGHTNING STRIKES:</td>
+      <td>5/7/9/11</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>radius</code></td>
+      <td>LIGHTNING JUMP RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>jump_delay</code></td>
+      <td>JUMP DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>movespeed_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>75%</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.45/0.7/0.95/1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>bounce_twice</code></td>
+      <td>BOUNCE TWICE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>pulse_nova_lightning_interval</code></td>
+      <td>PULSE NOVA LIGHTNING INTERVAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Lightning Storm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Nihilism</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Nihilism</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>30%</td>
+    </tr>
+  
+    <tr>
+      <td>Nihilism</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Pulse Nova</td>
+      <td><code>mana_cost_per_second</code></td>
+      <td>MANA/SEC:</td>
+      <td>25/45/65</td>
+    </tr>
+  
+    <tr>
+      <td>Pulse Nova</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Pulse Nova</td>
+      <td><code>damage_resistance</code></td>
+      <td>DAMAGE RESISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Pulse Nova</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Leshrac&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed edict/pulse sustained fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Split Earth&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Diabolic Edict&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;multi_wave&quot;,
+      &quot;damagePerWaveKey&quot;: &quot;damage&quot;,
+      &quot;waveCountKey&quot;: &quot;num_explosions&quot;,
+      &quot;semanticType&quot;: &quot;damage.wave&quot;,
+      &quot;reason&quot;: &quot;理论总量为所有爆炸都命中同一目标的上限。&quot;
+    },
+    &quot;Lightning Storm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。&quot;
+    },
+    &quot;Nihilism&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;magic_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+      &quot;affects&quot;: &quot;magical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+      &quot;reason&quot;: &quot;提高魔法伤害承受，作为独立修正项，不直接造成伤害。&quot;
+    },
+    &quot;Pulse Nova&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;active_duration&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;active_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +417,7 @@
           <div class="muted">Split Earth · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -161,7 +454,7 @@
         <td>Magical</td>
         <td>115</td><td>170</td><td>225</td><td>280</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 1.7 / 1.7 / 1.7 / 1.7</div></td>
+        <td><span class="muted">-</span></td>
         <td>single_value</td>
         <td><span class="muted">-</span></td>
       </tr>
@@ -177,8 +470,8 @@
           <div class="muted">Diabolic Edict · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">multi_wave</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -203,20 +496,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Diabolic Edict:instant_fixed:damage</code>
+          <code>Diabolic Edict:multi_wave:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">multi_wave</span>
+          <span class="pill secondary">multi_wave</span>
           <div class="muted">implemented</div>
         </td>
         <td>Pure</td>
         <td>10</td><td>18</td><td>26</td><td>34</td>
-        <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 8 / 8 / 8 / 8</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>400 / 720 / 1040 / 1360</td>
+        <td><div><code>waveCountByAbilityLevel</code>: 40 / 40 / 40 / 40</div></td>
+        <td>waveCount * damagePerWave</td>
+        <td><ul><li>包含多波伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +523,7 @@
           <div class="muted">Lightning Storm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -267,9 +560,62 @@
         <td>Magical</td>
         <td>90</td><td>140</td><td>190</td><td>240</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.45 / 0.7 / 0.95 / 1.2</div></td>
-        <td>single_value</td>
         <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>虚无主义（Nihilism）</h2>
+          <div class="muted">Nihilism · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：75</span>
+        <span>冷却：25</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Nihilism:debuff_reference:magic_amp</code>
+          <div class="muted">magic_amp</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>30</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: magical_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>提高魔法伤害承受，作为独立修正项，不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +629,7 @@
           <div class="muted">Pulse Nova · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -320,9 +666,9 @@
         <td>Magical</td>
         <td>80</td><td>135</td><td>180</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: target_missing_mana</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: active_duration</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><ul><li>脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +800,7 @@
       &quot;name&quot;: &quot;Split Earth&quot;,
       &quot;displayName&quot;: &quot;撕裂大地（Split Earth）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -489,14 +835,7 @@
           &quot;formula&quot;: {
             &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              1.7,
-              1.7,
-              1.7,
-              1.7
-            ]
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
@@ -509,10 +848,10 @@
       &quot;name&quot;: &quot;Diabolic Edict&quot;,
       &quot;displayName&quot;: &quot;恶魔敕令（Diabolic Edict）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;multi_wave&quot;,
+      &quot;reason&quot;: &quot;理论总量为所有爆炸都命中同一目标的上限。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         90,
         120,
@@ -527,8 +866,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Diabolic Edict:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Diabolic Edict:multi_wave:damage&quot;,
+          &quot;kind&quot;: &quot;multi_wave&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Pure&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -538,25 +877,32 @@
             26,
             34
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            400,
+            720,
+            1040,
+            1360
+          ],
+          &quot;totalFormula&quot;: &quot;waveCount * damagePerWave&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;wave_count_times_damage_per_wave&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              8,
-              8,
-              8,
-              8
+            &quot;waveCountByAbilityLevel&quot;: [
+              40,
+              40,
+              40,
+              40
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;multi_wave&quot;,
+          &quot;reason&quot;: &quot;理论总量为所有爆炸都命中同一目标的上限。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含多波伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -564,10 +910,10 @@
       &quot;name&quot;: &quot;Lightning Storm&quot;,
       &quot;displayName&quot;: &quot;闪电风暴（Lightning Storm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         100,
@@ -599,19 +945,63 @@
           &quot;formula&quot;: {
             &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              0.45,
-              0.7,
-              0.95,
-              1.2
-            ]
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。&quot;,
+          &quot;caveats&quot;: [
+            &quot;单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Nihilism&quot;,
+      &quot;displayName&quot;: &quot;虚无主义（Nihilism）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;提高魔法伤害承受，作为独立修正项，不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        75
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        25
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Nihilism:debuff_reference:magic_amp&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;magic_amp&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            30
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;magical_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;提高魔法伤害承受，作为独立修正项，不直接造成伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;提高魔法伤害承受，作为独立修正项，不直接造成伤害。&quot;
+          ]
         }
       ]
     },
@@ -619,10 +1009,10 @@
       &quot;name&quot;: &quot;Pulse Nova&quot;,
       &quot;displayName&quot;: &quot;脉冲新星（Pulse Nova）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;reason&quot;: &quot;脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         60,
@@ -657,7 +1047,7 @@
             &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [
-              &quot;target_missing_mana&quot;
+              &quot;active_duration&quot;
             ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
@@ -665,15 +1055,307 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。&quot;,
           &quot;caveats&quot;: [
-            &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Leshrac&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed edict/pulse sustained fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Split Earth&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Diabolic Edict&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;multi_wave&quot;,
+          &quot;damagePerWaveKey&quot;: &quot;damage&quot;,
+          &quot;waveCountKey&quot;: &quot;num_explosions&quot;,
+          &quot;semanticType&quot;: &quot;damage.wave&quot;,
+          &quot;reason&quot;: &quot;理论总量为所有爆炸都命中同一目标的上限。&quot;
+        },
+        &quot;Lightning Storm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。&quot;
+        },
+        &quot;Nihilism&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;magic_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+          &quot;affects&quot;: &quot;magical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+          &quot;reason&quot;: &quot;提高魔法伤害承受，作为独立修正项，不直接造成伤害。&quot;
+        },
+        &quot;Pulse Nova&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;active_duration&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;STUN DELAY:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;150/170/190/210&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Split Earth&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;tower_bonus&quot;,
+        &quot;label&quot;: &quot;TOWER BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;affects_buildings&quot;,
+        &quot;label&quot;: &quot;AFFECTS BUILDINGS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;targets&quot;,
+        &quot;label&quot;: &quot;TARGETS PER EXPLOSION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Diabolic Edict&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;jump_count&quot;,
+        &quot;label&quot;: &quot;LIGHTNING STRIKES:&quot;,
+        &quot;value&quot;: &quot;5/7/9/11&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;LIGHTNING JUMP RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;jump_delay&quot;,
+        &quot;label&quot;: &quot;JUMP DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;movespeed_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;75%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.45/0.7/0.95/1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;bounce_twice&quot;,
+        &quot;label&quot;: &quot;BOUNCE TWICE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;pulse_nova_lightning_interval&quot;,
+        &quot;label&quot;: &quot;PULSE NOVA LIGHTNING INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Lightning Storm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Nihilism&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Nihilism&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Nihilism&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Pulse Nova&quot;,
+        &quot;key&quot;: &quot;mana_cost_per_second&quot;,
+        &quot;label&quot;: &quot;MANA/SEC:&quot;,
+        &quot;value&quot;: &quot;25/45/65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Pulse Nova&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Pulse Nova&quot;,
+        &quot;key&quot;: &quot;damage_resistance&quot;,
+        &quot;label&quot;: &quot;DAMAGE RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Leshrac&quot;,
+        &quot;ability&quot;: &quot;Pulse Nova&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

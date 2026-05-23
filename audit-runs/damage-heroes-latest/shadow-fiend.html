@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>影魔（Shadow Fiend）</h1>
-        <div class="muted">Shadow Fiend · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Shadow Fiend · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 7</span>
           <span>组件 7</span>
@@ -53,6 +57,569 @@
       </div>
       <a href="./shadow-fiend.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_radius</code></td>
+      <td>SHADOWRAZE RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_range</code></td>
+      <td>RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_cooldown</code></td>
+      <td>SHADOWRAZE COOLDOWN:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>stack_bonus_damage</code></td>
+      <td>BONUS PER STACK:</td>
+      <td>35/50/65/80</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>procs_attack</code></td>
+      <td>PROCS ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>movement_speed_debuff</code></td>
+      <td>MOVEMENT SPEED DEBUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>turn_rate_pct</code></td>
+      <td>TURN RATE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>cooldown_reduction_on_hero_hit</code></td>
+      <td>COOLDOWN REDUCTION ON HERO HIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>damage_per_soul</code></td>
+      <td>BONUS DAMAGE PER SOUL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_radius</code></td>
+      <td>SHADOWRAZE RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_range</code></td>
+      <td>RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_cooldown</code></td>
+      <td>SHADOWRAZE COOLDOWN:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>stack_bonus_damage</code></td>
+      <td>BONUS PER STACK:</td>
+      <td>35/50/65/80</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>procs_attack</code></td>
+      <td>PROCS ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>movement_speed_debuff</code></td>
+      <td>MOVEMENT SPEED DEBUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>turn_rate_pct</code></td>
+      <td>TURN RATE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>cooldown_reduction_on_hero_hit</code></td>
+      <td>COOLDOWN REDUCTION ON HERO HIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>damage_per_soul</code></td>
+      <td>BONUS DAMAGE PER SOUL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_radius</code></td>
+      <td>SHADOWRAZE RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_range</code></td>
+      <td>RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>shadowraze_cooldown</code></td>
+      <td>SHADOWRAZE COOLDOWN:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>stack_bonus_damage</code></td>
+      <td>BONUS PER STACK:</td>
+      <td>35/50/65/80</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>procs_attack</code></td>
+      <td>PROCS ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>movement_speed_debuff</code></td>
+      <td>MOVEMENT SPEED DEBUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>turn_rate_pct</code></td>
+      <td>TURN RATE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>cooldown_reduction_on_hero_hit</code></td>
+      <td>COOLDOWN REDUCTION ON HERO HIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>damage_per_soul</code></td>
+      <td>BONUS DAMAGE PER SOUL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadowraze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>bonus_move_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>4%/6%/8%/10%</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>cast_speed_pct</code></td>
+      <td>CAST SPEED PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>cast_speed_pct_tooltip</code></td>
+      <td>CAST SPEED PCT TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>max_collection_count</code></td>
+      <td>MAX COLLECTION TARGETS:</td>
+      <td>4/6/8/10</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>soul_collection_per_interval</code></td>
+      <td>SOUL COLLECTION PER INTERVAL:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>soul_collection_radius</code></td>
+      <td>SOUL COLLECTION RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>soul_collection_interval</code></td>
+      <td>SOUL COLLECTION INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>soul_collection_per_hero</code></td>
+      <td>SOULS PER HERO:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>soul_collection_per_creep</code></td>
+      <td>SOULS PER CREEP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Feast of Souls</td>
+      <td><code>linger_duration</code></td>
+      <td>LINGER DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Presence of the Dark Lord</td>
+      <td><code>presence_radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Presence of the Dark Lord</td>
+      <td><code>bonus_armor_per_stack</code></td>
+      <td>REDUCTION PER HERO:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Presence of the Dark Lord</td>
+      <td><code>kill_buff_duration</code></td>
+      <td>HERO REDUCTION DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Presence of the Dark Lord</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_radius</code></td>
+      <td>REQUIEM RADIUS:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_reduction_ms</code></td>
+      <td>MOVEMENT REDUCTION:</td>
+      <td>-20%/-25%/-30%</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_reduction_mres</code></td>
+      <td>MAGIC RESIST REDUCTION:</td>
+      <td>-5%/-10%/-15%</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_slow_duration</code></td>
+      <td>FEAR DURATION PER SOUL HIT:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_slow_duration_max</code></td>
+      <td>FEAR DURATION MAX:</td>
+      <td>2.15</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_soul_conversion</code></td>
+      <td>REQUIEM SOUL CONVERSION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_line_width_start</code></td>
+      <td>REQUIEM LINE WIDTH START:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_line_width_end</code></td>
+      <td>REQUIEM LINE WIDTH END:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>requiem_line_speed</code></td>
+      <td>REQUIEM LINE SPEED:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>soul_death_release</code></td>
+      <td>SOUL DEATH RELEASE:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>max_soul_release</code></td>
+      <td>MAX SOUL RELEASE:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Requiem of Souls</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST DELAY:</td>
+      <td>1.67</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>necromastery_max_souls</code></td>
+      <td>BASE MAX SOULS:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>souls_per_kill</code></td>
+      <td>SOULS PER KILL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>souls_per_hero_kill</code></td>
+      <td>SOULS PER HERO KILL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>necromastery_soul_release</code></td>
+      <td>NECROMASTERY SOUL RELEASE:</td>
+      <td>0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>soul_release_tooltip</code></td>
+      <td>SOUL RELEASE TOOLTIP:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Necromastery</td>
+      <td><code>max_soul_increase_on_hero_kill</code></td>
+      <td>MAX SOUL INCREASE ON HERO KILL:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Shadowraze&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;shadowraze_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;
+    },
+    &quot;Feast of Souls&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;攻速和移速加成影响持续输出，不直接造成技能伤害。&quot;
+    },
+    &quot;Presence of the Dark Lord&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;presence_armor_reduction&quot;,
+      &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+      &quot;reason&quot;: &quot;减甲会放大后续物理伤害，当前总量不自动串联减甲。&quot;
+    },
+    &quot;Requiem of Souls&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;按单条魂线命中计算，多条命中需要后续按命中线数扩展。&quot;
+    },
+    &quot;Necromastery&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;necromastery_damage_per_soul&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;current_soul_count&quot;
+      ],
+      &quot;reason&quot;: &quot;魂数提供攻击力成长，需要当前魂数作为输入。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -958,7 +1525,612 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Shadowraze&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;shadowraze_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。&quot;
+        },
+        &quot;Feast of Souls&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;攻速和移速加成影响持续输出，不直接造成技能伤害。&quot;
+        },
+        &quot;Presence of the Dark Lord&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;presence_armor_reduction&quot;,
+          &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+          &quot;reason&quot;: &quot;减甲会放大后续物理伤害，当前总量不自动串联减甲。&quot;
+        },
+        &quot;Requiem of Souls&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;按单条魂线命中计算，多条命中需要后续按命中线数扩展。&quot;
+        },
+        &quot;Necromastery&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;necromastery_damage_per_soul&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;current_soul_count&quot;
+          ],
+          &quot;reason&quot;: &quot;魂数提供攻击力成长，需要当前魂数作为输入。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_radius&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_cooldown&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;stack_bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS PER STACK:&quot;,
+        &quot;value&quot;: &quot;35/50/65/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;procs_attack&quot;,
+        &quot;label&quot;: &quot;PROCS ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;movement_speed_debuff&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED DEBUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;turn_rate_pct&quot;,
+        &quot;label&quot;: &quot;TURN RATE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_on_hero_hit&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION ON HERO HIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;damage_per_soul&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE PER SOUL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_radius&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_cooldown&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;stack_bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS PER STACK:&quot;,
+        &quot;value&quot;: &quot;35/50/65/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;procs_attack&quot;,
+        &quot;label&quot;: &quot;PROCS ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;movement_speed_debuff&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED DEBUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;turn_rate_pct&quot;,
+        &quot;label&quot;: &quot;TURN RATE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_on_hero_hit&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION ON HERO HIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;damage_per_soul&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE PER SOUL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_radius&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;shadowraze_cooldown&quot;,
+        &quot;label&quot;: &quot;SHADOWRAZE COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;stack_bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS PER STACK:&quot;,
+        &quot;value&quot;: &quot;35/50/65/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;procs_attack&quot;,
+        &quot;label&quot;: &quot;PROCS ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;movement_speed_debuff&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED DEBUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;turn_rate_pct&quot;,
+        &quot;label&quot;: &quot;TURN RATE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_on_hero_hit&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION ON HERO HIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;damage_per_soul&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE PER SOUL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Shadowraze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;bonus_move_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;4%/6%/8%/10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;cast_speed_pct&quot;,
+        &quot;label&quot;: &quot;CAST SPEED PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;cast_speed_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;CAST SPEED PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;max_collection_count&quot;,
+        &quot;label&quot;: &quot;MAX COLLECTION TARGETS:&quot;,
+        &quot;value&quot;: &quot;4/6/8/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;soul_collection_per_interval&quot;,
+        &quot;label&quot;: &quot;SOUL COLLECTION PER INTERVAL:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;soul_collection_radius&quot;,
+        &quot;label&quot;: &quot;SOUL COLLECTION RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;soul_collection_interval&quot;,
+        &quot;label&quot;: &quot;SOUL COLLECTION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;soul_collection_per_hero&quot;,
+        &quot;label&quot;: &quot;SOULS PER HERO:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;soul_collection_per_creep&quot;,
+        &quot;label&quot;: &quot;SOULS PER CREEP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Feast of Souls&quot;,
+        &quot;key&quot;: &quot;linger_duration&quot;,
+        &quot;label&quot;: &quot;LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Presence of the Dark Lord&quot;,
+        &quot;key&quot;: &quot;presence_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Presence of the Dark Lord&quot;,
+        &quot;key&quot;: &quot;bonus_armor_per_stack&quot;,
+        &quot;label&quot;: &quot;REDUCTION PER HERO:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Presence of the Dark Lord&quot;,
+        &quot;key&quot;: &quot;kill_buff_duration&quot;,
+        &quot;label&quot;: &quot;HERO REDUCTION DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Presence of the Dark Lord&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_radius&quot;,
+        &quot;label&quot;: &quot;REQUIEM RADIUS:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_reduction_ms&quot;,
+        &quot;label&quot;: &quot;MOVEMENT REDUCTION:&quot;,
+        &quot;value&quot;: &quot;-20%/-25%/-30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_reduction_mres&quot;,
+        &quot;label&quot;: &quot;MAGIC RESIST REDUCTION:&quot;,
+        &quot;value&quot;: &quot;-5%/-10%/-15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_slow_duration&quot;,
+        &quot;label&quot;: &quot;FEAR DURATION PER SOUL HIT:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_slow_duration_max&quot;,
+        &quot;label&quot;: &quot;FEAR DURATION MAX:&quot;,
+        &quot;value&quot;: &quot;2.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_soul_conversion&quot;,
+        &quot;label&quot;: &quot;REQUIEM SOUL CONVERSION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_line_width_start&quot;,
+        &quot;label&quot;: &quot;REQUIEM LINE WIDTH START:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_line_width_end&quot;,
+        &quot;label&quot;: &quot;REQUIEM LINE WIDTH END:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;requiem_line_speed&quot;,
+        &quot;label&quot;: &quot;REQUIEM LINE SPEED:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;soul_death_release&quot;,
+        &quot;label&quot;: &quot;SOUL DEATH RELEASE:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;max_soul_release&quot;,
+        &quot;label&quot;: &quot;MAX SOUL RELEASE:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Requiem of Souls&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST DELAY:&quot;,
+        &quot;value&quot;: &quot;1.67&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;necromastery_max_souls&quot;,
+        &quot;label&quot;: &quot;BASE MAX SOULS:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;souls_per_kill&quot;,
+        &quot;label&quot;: &quot;SOULS PER KILL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;souls_per_hero_kill&quot;,
+        &quot;label&quot;: &quot;SOULS PER HERO KILL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;necromastery_soul_release&quot;,
+        &quot;label&quot;: &quot;NECROMASTERY SOUL RELEASE:&quot;,
+        &quot;value&quot;: &quot;0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;soul_release_tooltip&quot;,
+        &quot;label&quot;: &quot;SOUL RELEASE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Fiend&quot;,
+        &quot;ability&quot;: &quot;Necromastery&quot;,
+        &quot;key&quot;: &quot;max_soul_increase_on_hero_kill&quot;,
+        &quot;label&quot;: &quot;MAX SOUL INCREASE ON HERO KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

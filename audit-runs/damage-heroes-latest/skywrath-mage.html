@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>天怒法师（Skywrath Mage）</h1>
-        <div class="muted">Skywrath Mage · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Skywrath Mage · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,293 @@
       </div>
       <a href="./skywrath-mage.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>875</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>bolt_speed</code></td>
+      <td>BOLT SPEED:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>bolt_vision</code></td>
+      <td>BOLT VISION:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>bolt_damage</code></td>
+      <td>BASE DAMAGE:</td>
+      <td>60/90/120/150</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>int_multiplier</code></td>
+      <td>INT DAMAGE MULTIPLIER:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>3.34</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>extra_bolt_search_radius</code></td>
+      <td>EXTRA BOLT SEARCH RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>total_bolt_count</code></td>
+      <td>TOTAL BOLT COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Bolt</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>launch_radius</code></td>
+      <td>SHOT RANGE:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>slow_radius</code></td>
+      <td>DAMAGE RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>movement_speed_pct</code></td>
+      <td>SLOW:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>shot_vision</code></td>
+      <td>SHOT VISION:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>3.34</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Shot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ancient Seal</td>
+      <td><code>resist_debuff</code></td>
+      <td>INCREASED MAGIC DAMAGE:</td>
+      <td>-20%/-25%/-30%/-35%</td>
+    </tr>
+  
+    <tr>
+      <td>Ancient Seal</td>
+      <td><code>seal_duration</code></td>
+      <td>DURATION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Ancient Seal</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Shield of the Scion</td>
+      <td><code>stack_duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Shield of the Scion</td>
+      <td><code>bonus_intelligence</code></td>
+      <td>BONUS INTELLIGENCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shield of the Scion</td>
+      <td><code>barrier_duration</code></td>
+      <td>DURATION:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Flare</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>170</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Flare</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Flare</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Flare</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Arcane Bolt&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attribute_scaling&quot;,
+      &quot;baseDamageKey&quot;: &quot;bolt_damage&quot;,
+      &quot;attributeMultiplierKey&quot;: &quot;int_multiplier&quot;,
+      &quot;attributeInput&quot;: &quot;caster_intelligence&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;caster_intelligence&quot;
+      ],
+      &quot;reason&quot;: &quot;奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。&quot;
+    },
+    &quot;Concussive Shot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;
+    },
+    &quot;Ancient Seal&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Shield of the Scion&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_barrier&quot;,
+      &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Mystic Flare&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,9 +415,9 @@
           <div class="muted">Arcane Bolt · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">state_scaling</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">attribute_scaling</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -150,20 +441,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Arcane Bolt:state_scaling:bolt_damage</code>
+          <code>Arcane Bolt:attribute_scaling:bolt_damage</code>
           <div class="muted">bolt_damage</div>
         </td>
         <td>
-          <span class="pill">state_scaling</span>
-          <span class="pill secondary">state_scaling</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">attribute_scaling</span>
+          <span class="pill secondary">attribute_scaling</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>60</td><td>90</td><td>120</td><td>150</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: hero_attribute</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>state_scaling</td>
-        <td><ul><li>属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><div><code>attributeInput</code>: caster_intelligence</div><div><code>attributeMultiplierKey</code>: int_multiplier</div><div><code>attributeMultiplierByAbilityLevel</code>: 1.5 / 1.5 / 1.5 / 1.5</div></td>
+        <td>baseDamage + attributeInput * attributeMultiplier</td>
+        <td><ul><li>属性缩放伤害需要施法者属性输入，不能生成固定理论总量。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +468,7 @@
           <div class="muted">Concussive Shot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +521,7 @@
           <div class="muted">Ancient Seal · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +560,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +574,7 @@
           <div class="muted">Shield of the Scion · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +627,7 @@
           <div class="muted">Mystic Flare · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,10 +798,10 @@
       &quot;name&quot;: &quot;Arcane Bolt&quot;,
       &quot;displayName&quot;: &quot;奥法鹰隼（Arcane Bolt）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attribute_scaling&quot;,
+      &quot;reason&quot;: &quot;奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         70,
         70,
@@ -525,8 +816,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Arcane Bolt:state_scaling:bolt_damage&quot;,
-          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;id&quot;: &quot;Arcane Bolt:attribute_scaling:bolt_damage&quot;,
+          &quot;kind&quot;: &quot;attribute_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;bolt_damage&quot;,
@@ -537,28 +828,27 @@
             150
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;totalFormula&quot;: &quot;baseDamage + attributeInput * attributeMultiplier&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;state_scaling&quot;
+            &quot;type&quot;: &quot;base_plus_attribute_times_multiplier&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [
-              &quot;hero_attribute&quot;
-            ],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;attributeInput&quot;: &quot;caster_intelligence&quot;,
+            &quot;attributeMultiplierKey&quot;: &quot;int_multiplier&quot;,
+            &quot;attributeMultiplierByAbilityLevel&quot;: [
+              1.5,
+              1.5,
+              1.5,
+              1.5
+            ]
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attribute_scaling&quot;,
+          &quot;reason&quot;: &quot;奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。&quot;,
           &quot;caveats&quot;: [
-            &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;属性缩放伤害需要施法者属性输入，不能生成固定理论总量。&quot;
           ]
         }
       ]
@@ -567,7 +857,7 @@
       &quot;name&quot;: &quot;Concussive Shot&quot;,
       &quot;displayName&quot;: &quot;震荡光弹（Concussive Shot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -622,10 +912,10 @@
       &quot;name&quot;: &quot;Ancient Seal&quot;,
       &quot;displayName&quot;: &quot;上古封印（Ancient Seal）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         90,
@@ -669,9 +959,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -680,7 +970,7 @@
       &quot;name&quot;: &quot;Shield of the Scion&quot;,
       &quot;displayName&quot;: &quot;天裔之盾（Shield of the Scion）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -727,7 +1017,7 @@
       &quot;name&quot;: &quot;Mystic Flare&quot;,
       &quot;displayName&quot;: &quot;神秘之耀（Mystic Flare）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -775,7 +1065,296 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Arcane Bolt&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attribute_scaling&quot;,
+          &quot;baseDamageKey&quot;: &quot;bolt_damage&quot;,
+          &quot;attributeMultiplierKey&quot;: &quot;int_multiplier&quot;,
+          &quot;attributeInput&quot;: &quot;caster_intelligence&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;caster_intelligence&quot;
+          ],
+          &quot;reason&quot;: &quot;奥法鹰隼为基础伤害加智力系数，需要施法者智力输入。&quot;
+        },
+        &quot;Concussive Shot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;
+        },
+        &quot;Ancient Seal&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Shield of the Scion&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_barrier&quot;,
+          &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Mystic Flare&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;875&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;bolt_speed&quot;,
+        &quot;label&quot;: &quot;BOLT SPEED:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;bolt_vision&quot;,
+        &quot;label&quot;: &quot;BOLT VISION:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;bolt_damage&quot;,
+        &quot;label&quot;: &quot;BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;60/90/120/150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;int_multiplier&quot;,
+        &quot;label&quot;: &quot;INT DAMAGE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;3.34&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;extra_bolt_search_radius&quot;,
+        &quot;label&quot;: &quot;EXTRA BOLT SEARCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;total_bolt_count&quot;,
+        &quot;label&quot;: &quot;TOTAL BOLT COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Arcane Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;launch_radius&quot;,
+        &quot;label&quot;: &quot;SHOT RANGE:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;slow_radius&quot;,
+        &quot;label&quot;: &quot;DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;shot_vision&quot;,
+        &quot;label&quot;: &quot;SHOT VISION:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;3.34&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Concussive Shot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Ancient Seal&quot;,
+        &quot;key&quot;: &quot;resist_debuff&quot;,
+        &quot;label&quot;: &quot;INCREASED MAGIC DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-20%/-25%/-30%/-35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Ancient Seal&quot;,
+        &quot;key&quot;: &quot;seal_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Ancient Seal&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Shield of the Scion&quot;,
+        &quot;key&quot;: &quot;stack_duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Shield of the Scion&quot;,
+        &quot;key&quot;: &quot;bonus_intelligence&quot;,
+        &quot;label&quot;: &quot;BONUS INTELLIGENCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Shield of the Scion&quot;,
+        &quot;key&quot;: &quot;barrier_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Mystic Flare&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;170&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Mystic Flare&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Mystic Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Skywrath Mage&quot;,
+        &quot;ability&quot;: &quot;Mystic Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>暗影萨满（Shadow Shaman）</h1>
-        <div class="muted">Shadow Shaman · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Shadow Shaman · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,417 @@
       </div>
       <a href="./shadow-shaman.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>end_distance</code></td>
+      <td>END DISTANCE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>targets</code></td>
+      <td>TARGETS:</td>
+      <td>3/5/7/9</td>
+    </tr>
+  
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Ether Shock</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>movespeed</code></td>
+      <td>MOVESPEED:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>2/2.3/2.6/2.9</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>damage_amp</code></td>
+      <td>DAMAGE AMP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>channel_time</code></td>
+      <td>MAX DURATION:</td>
+      <td>2.4/3/3.6/4.2</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>bonus_targets</code></td>
+      <td>BONUS TARGETS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>bonus_targets_search_range</code></td>
+      <td>BONUS TARGETS SEARCH RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>bonus_target_channel_time_pct</code></td>
+      <td>BONUS TARGET CHANNEL TIME PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>heal_percentage</code></td>
+      <td>HEAL PERCENTAGE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>2.4/3/3.6/4.2</td>
+    </tr>
+  
+    <tr>
+      <td>Shackles</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>hex_duration</code></td>
+      <td>DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>movespeed_bonus_pct</code></td>
+      <td>MOVESPEED BONUS:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>total_chickens</code></td>
+      <td>TOTAL CHICKENS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>damage_reduction_duration</code></td>
+      <td>DAMAGE REDUCTION DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>damage_reduction_pct</code></td>
+      <td>DAMAGE REDUCTION PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>levels_per_chicken</code></td>
+      <td>LEVELS PER CHICKEN:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>invuln_duration</code></td>
+      <td>INVULN DURATION:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Fowl Play</td>
+      <td><code>ally_chicken_images_take_damage_percent</code></td>
+      <td>ALLY CHICKEN IMAGES TAKE DAMAGE PERCENT:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Urnaconda</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Urnaconda</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Urnaconda</td>
+      <td><code>megaward_multiplier_tooltip</code></td>
+      <td>MEGAWARD MULTIPLIER TOOLTIP:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Urnaconda</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Urnaconda</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>ward_count</code></td>
+      <td>WARD COUNT:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>45</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>spawn_radius</code></td>
+      <td>SPAWN RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>hits_to_destroy_tooltip</code></td>
+      <td>HITS TO DESTROY:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>ward_health</code></td>
+      <td>WARD HEALTH:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>ward_damage_tooltip</code></td>
+      <td>WARD DAMAGE:</td>
+      <td>50/85/120</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>mega_ward_multiplier_damage</code></td>
+      <td>MEGA WARD MULTIPLIER DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>mega_ward_multiplier_health</code></td>
+      <td>MEGA WARD MULTIPLIER HEALTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>mega_ward_health_tooltip</code></td>
+      <td>MEGA WARD HEALTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>mega_ward_damage_tooltip</code></td>
+      <td>MEGA WARD DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>mega_ward_model_scale_multiplier</code></td>
+      <td>MEGA WARD MODEL SCALE MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Mass Serpent Ward</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Ether Shock&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Hex&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Shackles&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;total_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;ward_linger_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;
+    },
+    &quot;Fowl Play&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Urnaconda&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;ward_duration&quot;
+    },
+    &quot;Mass Serpent Ward&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;attackDamageKey&quot;: &quot;ward_damage_tooltip&quot;,
+      &quot;attackCountInput&quot;: &quot;ward_attack_count&quot;,
+      &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;ward_attack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;守卫攻击伤害需要输入实际攻击次数。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +539,7 @@
           <div class="muted">Ether Shock · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +592,7 @@
           <div class="muted">Hex · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +631,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +645,7 @@
           <div class="muted">Shackles · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +698,7 @@
           <div class="muted">Urnaconda · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,8 +751,8 @@
           <div class="muted">Mass Serpent Ward · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">summon_attack</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -362,20 +777,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Mass Serpent Ward:instant_fixed:ward_damage_tooltip</code>
+          <code>Mass Serpent Ward:summon_attack:ward_damage_tooltip</code>
           <div class="muted">ward_damage_tooltip</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">summon_attack</span>
+          <span class="pill secondary">summon_attack</span>
           <div class="muted">implemented</div>
         </td>
         <td>Physical</td>
         <td>50</td><td>85</td><td>120</td><td>-</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 45 / 45 / 45</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>attackCountInput</code>: ward_attack_count</div></td>
+        <td>attackCount * summonAttackDamage</td>
+        <td><ul><li>召唤物、守卫或代理单位伤害需要输入攻击次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +922,7 @@
       &quot;name&quot;: &quot;Ether Shock&quot;,
       &quot;displayName&quot;: &quot;苍穹震击（Ether Shock）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -555,10 +970,10 @@
       &quot;name&quot;: &quot;Hex&quot;,
       &quot;displayName&quot;: &quot;妖术（Hex）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         130,
         150,
@@ -599,9 +1014,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -610,7 +1025,7 @@
       &quot;name&quot;: &quot;Shackles&quot;,
       &quot;displayName&quot;: &quot;枷锁（Shackles）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -671,7 +1086,7 @@
       &quot;name&quot;: &quot;Urnaconda&quot;,
       &quot;displayName&quot;: &quot;巨蟒之瓮（Urnaconda）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -714,10 +1129,10 @@
       &quot;name&quot;: &quot;Mass Serpent Ward&quot;,
       &quot;displayName&quot;: &quot;群蛇守卫（Mass Serpent Ward）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;reason&quot;: &quot;守卫攻击伤害需要输入实际攻击次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         350,
@@ -730,8 +1145,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Mass Serpent Ward:instant_fixed:ward_damage_tooltip&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Mass Serpent Ward:summon_attack:ward_damage_tooltip&quot;,
+          &quot;kind&quot;: &quot;summon_attack&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Physical&quot;,
           &quot;label&quot;: &quot;ward_damage_tooltip&quot;,
@@ -741,28 +1156,457 @@
             120
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;attackCount * summonAttackDamage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;runtime_summon_attack_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              45,
-              45,
-              45
-            ]
+            &quot;attackCountInput&quot;: &quot;ward_attack_count&quot;
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;reason&quot;: &quot;守卫攻击伤害需要输入实际攻击次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;召唤物、守卫或代理单位伤害需要输入攻击次数。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Ether Shock&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Hex&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Shackles&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;total_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;ward_linger_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;
+        },
+        &quot;Fowl Play&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Urnaconda&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;ward_duration&quot;
+        },
+        &quot;Mass Serpent Ward&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;attackDamageKey&quot;: &quot;ward_damage_tooltip&quot;,
+          &quot;attackCountInput&quot;: &quot;ward_attack_count&quot;,
+          &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;ward_attack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;守卫攻击伤害需要输入实际攻击次数。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;end_distance&quot;,
+        &quot;label&quot;: &quot;END DISTANCE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;targets&quot;,
+        &quot;label&quot;: &quot;TARGETS:&quot;,
+        &quot;value&quot;: &quot;3/5/7/9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Ether Shock&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;2/2.3/2.6/2.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;damage_amp&quot;,
+        &quot;label&quot;: &quot;DAMAGE AMP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;channel_time&quot;,
+        &quot;label&quot;: &quot;MAX DURATION:&quot;,
+        &quot;value&quot;: &quot;2.4/3/3.6/4.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;bonus_targets&quot;,
+        &quot;label&quot;: &quot;BONUS TARGETS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;bonus_targets_search_range&quot;,
+        &quot;label&quot;: &quot;BONUS TARGETS SEARCH RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;bonus_target_channel_time_pct&quot;,
+        &quot;label&quot;: &quot;BONUS TARGET CHANNEL TIME PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;heal_percentage&quot;,
+        &quot;label&quot;: &quot;HEAL PERCENTAGE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;2.4/3/3.6/4.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Shackles&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;hex_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_pct&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;total_chickens&quot;,
+        &quot;label&quot;: &quot;TOTAL CHICKENS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;damage_reduction_duration&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;damage_reduction_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;levels_per_chicken&quot;,
+        &quot;label&quot;: &quot;LEVELS PER CHICKEN:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;invuln_duration&quot;,
+        &quot;label&quot;: &quot;INVULN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Fowl Play&quot;,
+        &quot;key&quot;: &quot;ally_chicken_images_take_damage_percent&quot;,
+        &quot;label&quot;: &quot;ALLY CHICKEN IMAGES TAKE DAMAGE PERCENT:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Urnaconda&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Urnaconda&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Urnaconda&quot;,
+        &quot;key&quot;: &quot;megaward_multiplier_tooltip&quot;,
+        &quot;label&quot;: &quot;MEGAWARD MULTIPLIER TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Urnaconda&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Urnaconda&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;ward_count&quot;,
+        &quot;label&quot;: &quot;WARD COUNT:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;spawn_radius&quot;,
+        &quot;label&quot;: &quot;SPAWN RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;hits_to_destroy_tooltip&quot;,
+        &quot;label&quot;: &quot;HITS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;ward_health&quot;,
+        &quot;label&quot;: &quot;WARD HEALTH:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;ward_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;WARD DAMAGE:&quot;,
+        &quot;value&quot;: &quot;50/85/120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;mega_ward_multiplier_damage&quot;,
+        &quot;label&quot;: &quot;MEGA WARD MULTIPLIER DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;mega_ward_multiplier_health&quot;,
+        &quot;label&quot;: &quot;MEGA WARD MULTIPLIER HEALTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;mega_ward_health_tooltip&quot;,
+        &quot;label&quot;: &quot;MEGA WARD HEALTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;mega_ward_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;MEGA WARD DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;mega_ward_model_scale_multiplier&quot;,
+        &quot;label&quot;: &quot;MEGA WARD MODEL SCALE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Shadow Shaman&quot;,
+        &quot;ability&quot;: &quot;Mass Serpent Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

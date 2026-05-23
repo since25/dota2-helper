@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>戴泽（Dazzle）</h1>
-        <div class="muted">Dazzle · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Dazzle · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,416 @@
       </div>
       <a href="./dazzle.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>end_distance</code></td>
+      <td>END DISTANCE:</td>
+      <td>600/700/800/900</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>targets</code></td>
+      <td>TARGETS:</td>
+      <td>2/4/6/8</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>-13%/-16%/-19%/-22%</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>bonus_slow</code></td>
+      <td>BONUS SLOW PER HIT:</td>
+      <td>-2%/-2.5%/-3%/-3.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>split_radius</code></td>
+      <td>SPLIT RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>split_damage</code></td>
+      <td>SPLIT DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>attacks_to_split</code></td>
+      <td>ATTACKS TO SPLIT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500/600/700/800</td>
+    </tr>
+  
+    <tr>
+      <td>Poison Touch</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Shallow Grave</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>4/4.5/5/5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Shallow Grave</td>
+      <td><code>fx_halo_height</code></td>
+      <td>FX HALO HEIGHT:</td>
+      <td>190/240/300/350</td>
+    </tr>
+  
+    <tr>
+      <td>Shallow Grave</td>
+      <td><code>heal_amplify</code></td>
+      <td>HEAL AMPLIFICATION PER 10% MISSING:</td>
+      <td>3%/5%/7%/9%</td>
+    </tr>
+  
+    <tr>
+      <td>Shallow Grave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>bounce_radius</code></td>
+      <td>HEAL ARC RADIUS:</td>
+      <td>475</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>damage_radius</code></td>
+      <td>DAMAGE RADIUS:</td>
+      <td>185</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>max_targets</code></td>
+      <td>MAX TARGETS:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>tooltip_max_targets_inc_dazzle</code></td>
+      <td>MAX HEAL TARGETS:</td>
+      <td>4/5/6/7</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>scepter_heal_pct</code></td>
+      <td>SCEPTER HEAL PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>scepter_cd_increase</code></td>
+      <td>SCEPTER CD INCREASE:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Wave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>armor_change</code></td>
+      <td>ARMOR CHANGE PER STACK:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6.9</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>affects_allies</code></td>
+      <td>AFFECTS ALLIES:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>affects_enemies</code></td>
+      <td>AFFECTS ENEMIES:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>heal_amplification_pct</code></td>
+      <td>HEAL AMPLIFICATION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>ultimate_always_applies</code></td>
+      <td>ULTIMATE ALWAYS APPLIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>ally_multiplier</code></td>
+      <td>ALLY MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Weave</td>
+      <td><code>enemy_multiplier</code></td>
+      <td>ENEMY MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>min_duration</code></td>
+      <td>MIN DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>max_duration</code></td>
+      <td>MAX DURATION:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>initial_travel_speed</code></td>
+      <td>INITIAL TRAVEL SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>soul_return_time</code></td>
+      <td>SOUL RETURN TIME:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>soul_return_min_speed</code></td>
+      <td>SOUL RETURN MIN SPEED:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>leash_start</code></td>
+      <td>LEASH START:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>base_leash_pull</code></td>
+      <td>BASE LEASH PULL:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>leash_increase</code></td>
+      <td>LEASH INCREASE:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>poison_touch_hex</code></td>
+      <td>HEX DURATION:</td>
+      <td>1.4/1.6/1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>shallow_grave_heal</code></td>
+      <td>SHALLOW GRAVE HEAL:</td>
+      <td>225/300/375</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>shadow_wave_cdr</code></td>
+      <td>SHADOW WAVE COOLDOWN REDUCTION:</td>
+      <td>30%/40%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Nothl Projection</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Dazzle&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Poison Touch&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Shallow Grave&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Shadow Wave&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Weave&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Nothl Projection&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;End Projection&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +538,7 @@
           <div class="muted">Poison Touch · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +591,7 @@
           <div class="muted">Shallow Grave · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +630,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +644,7 @@
           <div class="muted">Shadow Wave · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +697,7 @@
           <div class="muted">Nothl Projection · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +736,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +868,7 @@
       &quot;name&quot;: &quot;Poison Touch&quot;,
       &quot;displayName&quot;: &quot;剧毒之触（Poison Touch）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -516,10 +930,10 @@
       &quot;name&quot;: &quot;Shallow Grave&quot;,
       &quot;displayName&quot;: &quot;薄葬（Shallow Grave）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         90,
         100,
@@ -560,9 +974,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -571,7 +985,7 @@
       &quot;name&quot;: &quot;Shadow Wave&quot;,
       &quot;displayName&quot;: &quot;暗影波（Shadow Wave）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -619,10 +1033,10 @@
       &quot;name&quot;: &quot;Nothl Projection&quot;,
       &quot;displayName&quot;: &quot;虚无投影（Nothl Projection）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         150,
@@ -661,15 +1075,446 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Dazzle&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Poison Touch&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Shallow Grave&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Shadow Wave&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Weave&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Nothl Projection&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;End Projection&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;end_distance&quot;,
+        &quot;label&quot;: &quot;END DISTANCE:&quot;,
+        &quot;value&quot;: &quot;600/700/800/900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;targets&quot;,
+        &quot;label&quot;: &quot;TARGETS:&quot;,
+        &quot;value&quot;: &quot;2/4/6/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;-13%/-16%/-19%/-22%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;bonus_slow&quot;,
+        &quot;label&quot;: &quot;BONUS SLOW PER HIT:&quot;,
+        &quot;value&quot;: &quot;-2%/-2.5%/-3%/-3.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;split_radius&quot;,
+        &quot;label&quot;: &quot;SPLIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;split_damage&quot;,
+        &quot;label&quot;: &quot;SPLIT DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;attacks_to_split&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO SPLIT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500/600/700/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Poison Touch&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shallow Grave&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4/4.5/5/5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shallow Grave&quot;,
+        &quot;key&quot;: &quot;fx_halo_height&quot;,
+        &quot;label&quot;: &quot;FX HALO HEIGHT:&quot;,
+        &quot;value&quot;: &quot;190/240/300/350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shallow Grave&quot;,
+        &quot;key&quot;: &quot;heal_amplify&quot;,
+        &quot;label&quot;: &quot;HEAL AMPLIFICATION PER 10% MISSING:&quot;,
+        &quot;value&quot;: &quot;3%/5%/7%/9%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shallow Grave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;bounce_radius&quot;,
+        &quot;label&quot;: &quot;HEAL ARC RADIUS:&quot;,
+        &quot;value&quot;: &quot;475&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;damage_radius&quot;,
+        &quot;label&quot;: &quot;DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;185&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;max_targets&quot;,
+        &quot;label&quot;: &quot;MAX TARGETS:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;tooltip_max_targets_inc_dazzle&quot;,
+        &quot;label&quot;: &quot;MAX HEAL TARGETS:&quot;,
+        &quot;value&quot;: &quot;4/5/6/7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;scepter_heal_pct&quot;,
+        &quot;label&quot;: &quot;SCEPTER HEAL PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;scepter_cd_increase&quot;,
+        &quot;label&quot;: &quot;SCEPTER CD INCREASE:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Shadow Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;armor_change&quot;,
+        &quot;label&quot;: &quot;ARMOR CHANGE PER STACK:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;affects_allies&quot;,
+        &quot;label&quot;: &quot;AFFECTS ALLIES:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;affects_enemies&quot;,
+        &quot;label&quot;: &quot;AFFECTS ENEMIES:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;heal_amplification_pct&quot;,
+        &quot;label&quot;: &quot;HEAL AMPLIFICATION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;ultimate_always_applies&quot;,
+        &quot;label&quot;: &quot;ULTIMATE ALWAYS APPLIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;ally_multiplier&quot;,
+        &quot;label&quot;: &quot;ALLY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Weave&quot;,
+        &quot;key&quot;: &quot;enemy_multiplier&quot;,
+        &quot;label&quot;: &quot;ENEMY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;min_duration&quot;,
+        &quot;label&quot;: &quot;MIN DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;max_duration&quot;,
+        &quot;label&quot;: &quot;MAX DURATION:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;initial_travel_speed&quot;,
+        &quot;label&quot;: &quot;INITIAL TRAVEL SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;soul_return_time&quot;,
+        &quot;label&quot;: &quot;SOUL RETURN TIME:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;soul_return_min_speed&quot;,
+        &quot;label&quot;: &quot;SOUL RETURN MIN SPEED:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;leash_start&quot;,
+        &quot;label&quot;: &quot;LEASH START:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;base_leash_pull&quot;,
+        &quot;label&quot;: &quot;BASE LEASH PULL:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;leash_increase&quot;,
+        &quot;label&quot;: &quot;LEASH INCREASE:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;poison_touch_hex&quot;,
+        &quot;label&quot;: &quot;HEX DURATION:&quot;,
+        &quot;value&quot;: &quot;1.4/1.6/1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;shallow_grave_heal&quot;,
+        &quot;label&quot;: &quot;SHALLOW GRAVE HEAL:&quot;,
+        &quot;value&quot;: &quot;225/300/375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;shadow_wave_cdr&quot;,
+        &quot;label&quot;: &quot;SHADOW WAVE COOLDOWN REDUCTION:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dazzle&quot;,
+        &quot;ability&quot;: &quot;Nothl Projection&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

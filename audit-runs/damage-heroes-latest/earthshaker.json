@@ -121,7 +121,7 @@
       "name": "Fissure",
       "displayName": "沟壑（Fissure）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Enchant Totem",
       "displayName": "强化图腾（Enchant Totem）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。",
       "manaCostByAbilityLevel": [
         45,
         55,
@@ -187,17 +187,23 @@
         75
       ],
       "cooldownByAbilityLevel": [
+        5,
+        5,
+        5,
         5
       ],
       "components": [
         {
-          "id": "Enchant Totem:debuff_reference:abilitycastrange",
+          "id": "Enchant Totem:debuff_reference:totem_damage_percentage",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "totem_damage_percentage",
           "valuesByAbilityLevel": [
-            0
+            100,
+            200,
+            300,
+            400
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -207,8 +213,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -217,9 +223,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。"
           ]
         }
       ]
@@ -228,7 +234,7 @@
       "name": "Aftershock",
       "displayName": "余震（Aftershock）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -273,10 +279,10 @@
       "name": "Echo Slam",
       "displayName": "回音击（Echo Slam）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "回音击拆分为初始伤害和按附近单位数量变化的回音伤害。",
       "manaCostByAbilityLevel": [
         150,
         200,
@@ -289,13 +295,15 @@
       ],
       "components": [
         {
-          "id": "Echo Slam:instant_fixed:echo_slam_damage_range",
+          "id": "Echo Slam:instant_fixed:echo_slam_initial_damage",
           "kind": "instant_fixed",
           "growthKind": "non_growth",
           "damageType": "Magical",
-          "label": "echo_slam_damage_range",
+          "label": "echo_slam_initial_damage",
           "valuesByAbilityLevel": [
-            700
+            100,
+            140,
+            180
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -307,30 +315,21 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
-        }
-      ]
-    },
-    {
-      "name": "Slugger",
-      "displayName": "强击图腾（Slugger）",
-      "isUltimate": true,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "state_scaling",
-      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
-      "manaCostByAbilityLevel": [],
-      "cooldownByAbilityLevel": [],
-      "components": [
+          "reason": "回音击拆分为初始伤害和按附近单位数量变化的回音伤害。",
+          "caveats": [
+            "回音击拆分为初始伤害和按附近单位数量变化的回音伤害。"
+          ]
+        },
         {
-          "id": "Slugger:state_scaling:projectile_body_damage_creep",
+          "id": "Echo Slam:state_scaling:echo_slam_echo_damage",
           "kind": "state_scaling",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
-          "label": "projectile_body_damage_creep",
+          "damageType": "Magical",
+          "label": "echo_slam_echo_damage",
           "valuesByAbilityLevel": [
-            27
+            70,
+            90,
+            110
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -344,7 +343,7 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "stack_count"
+              "nearby_unit_count"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -352,13 +351,411 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "reason": "回音击拆分为初始伤害和按附近单位数量变化的回音伤害。",
           "caveats": [
-            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+            "每个附近单位产生一次回音伤害，需输入附近单位数量。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Slugger",
+      "displayName": "强击图腾（Slugger）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Slugger:state_scaling:projectile_body_damage_hero",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "projectile_body_damage_hero",
+          "valuesByAbilityLevel": [
+            135
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "thrown_body_target_type",
+              "enemy_max_health"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。",
+          "caveats": [
+            "强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Earthshaker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed fissure, aftershock, and echo slam split components against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Fissure": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "fissure_damage",
+          "durationKey": "fissure_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Enchant Totem": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "totem_damage_percentage",
+          "semanticType": "modifier.attack_damage.percent",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。"
+        },
+        "Aftershock": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "aftershock_damage",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Echo Slam": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "echo_slam_initial_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "回音击拆分为初始伤害和按附近单位数量变化的回音伤害。",
+          "extraComponents": [
+            {
+              "status": "reference_only",
+              "model": "state_scaling",
+              "valueKey": "echo_slam_echo_damage",
+              "semanticType": "damage.stack_scaling",
+              "requiredInputs": [
+                "nearby_unit_count"
+              ],
+              "conditionInputs": [
+                "nearby_unit_count"
+              ],
+              "reason": "每个附近单位产生一次回音伤害，需输入附近单位数量。"
+            }
+          ]
+        },
+        "Slugger": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "projectile_body_damage_hero",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "thrown_body_target_type",
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "thrown_body_target_type",
+            "enemy_max_health"
+          ],
+          "reason": "强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "fissure_radius",
+        "label": "FISSURE RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1/1.2/1.4/1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "free_pathing_application_radius",
+        "label": "FREE PATHING APPLICATION RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "fissure_max_distance_moved",
+        "label": "FISSURE MAX DISTANCE MOVED:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "echoes_radius",
+        "label": "ECHOES RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "echoes_damage_multiplier",
+        "label": "ECHOES DAMAGE MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Fissure",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.69",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "scepter_height",
+        "label": "SCEPTER HEIGHT:",
+        "value": "950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "scepter_height_arcbuffer",
+        "label": "SCEPTER HEIGHT ARCBUFFER:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "scepter_acceleration_z",
+        "label": "SCEPTER ACCELERATION Z:",
+        "value": "4000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "scepter_acceleration_horizontal",
+        "label": "SCEPTER ACCELERATION HORIZONTAL:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "scepter_leap_duration",
+        "label": "SCEPTER LEAP DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "bonus_attack_range",
+        "label": "BONUS ATTACK RANGE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Enchant Totem",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Aftershock",
+        "key": "aftershock_range",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Echo Slam",
+        "key": "echo_slam_damage_range",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Echo Slam",
+        "key": "echo_slam_echo_search_range",
+        "label": "ECHO SLAM ECHO SEARCH RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Echo Slam",
+        "key": "echo_slam_echo_range",
+        "label": "ECHO SLAM ECHO RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Echo Slam",
+        "key": "echo_slam_echo_damage",
+        "label": "ECHO DAMAGE:",
+        "value": "70/90/110",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Echo Slam",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_on_kill",
+        "label": "PROJECTILE BODY ON KILL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_initial_impact_radius",
+        "label": "PROJECTILE BODY INITIAL IMPACT RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_speed",
+        "label": "SPEED:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_distance",
+        "label": "DISTANCE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_width_creep",
+        "label": "PROJECTILE BODY WIDTH CREEP:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_width_hero",
+        "label": "PROJECTILE BODY WIDTH HERO:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_vision",
+        "label": "PROJECTILE BODY VISION:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_damage_creep",
+        "label": "DAMAGE (CREEPS):",
+        "value": "27",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earthshaker",
+        "ability": "Slugger",
+        "key": "projectile_body_damage_additional_percent_health",
+        "label": "FLYING ENEMY'S MAX HEALTH AS DAMAGE:",
+        "value": "7%",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

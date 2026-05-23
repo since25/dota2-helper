@@ -166,6 +166,12 @@ npm run damage:coverage
 npm run semantic:audit
 ```
 
+抓取 Dotabuff 技能页面快照：
+
+```bash
+npm run dotabuff:fetch -- --hero Abaddon
+```
+
 探测 `dota2-datawrapper`：
 
 ```bash
@@ -245,6 +251,67 @@ npm run damage:audit-pages -- --strict
 audit-runs/damage-heroes-latest/index.html
 ```
 
+## Dotabuff 语义校对快照
+
+Dotabuff 作为人工语义校对来源，不作为计算器的主结构化数据源。脚本只保存公开页面快照和请求元数据，不绕过 Cloudflare challenge、登录或反爬限制。
+
+抓取单个英雄：
+
+```bash
+npm run dotabuff:fetch -- --hero Abaddon
+```
+
+抓取全部英雄：
+
+```bash
+npm run dotabuff:fetch -- --all --continue-on-error
+```
+
+如果普通 HTTP 抓取遇到 `403` 或 challenge，可使用本地 Chrome/Playwright 渲染抓取：
+
+```bash
+npm run dotabuff:capture -- --hero Abaddon --force
+npm run dotabuff:capture -- --all --force --continue-on-error
+```
+
+将已保存的 Dotabuff HTML/text 快照解析成结构化语义字段：
+
+```bash
+npm run dotabuff:parse -- --hero Abaddon --compare
+npm run dotabuff:parse -- --all --compare
+```
+
+常用参数：
+
+```bash
+npm run dotabuff:fetch -- --out data/dotabuff/ability-pages
+npm run dotabuff:fetch -- --force
+npm run dotabuff:fetch -- --delay-ms 2000
+```
+
+输出目录：
+
+```text
+data/dotabuff/ability-pages/
+```
+
+每个英雄会生成：
+
+```text
+abaddon.html
+abaddon.text.txt
+abaddon.meta.json
+```
+
+解析后会生成：
+
+```text
+data/dotabuff/parsed/abaddon.json
+data/dotabuff/comparison/abaddon.json
+```
+
+如果 Dotabuff 返回 `403`、`429` 或 Cloudflare challenge，脚本会写入 `.meta.json` 记录失败原因，但不会尝试绕过。后续人工审核时，建议先用这些快照校对语义，再把结论写入 `docs/hero-audit-notes/` 和 `damageModels/heroes/`。
+
 ## 当前开发进度
 
 ### 已完成
@@ -258,34 +325,36 @@ audit-runs/damage-heroes-latest/index.html
 - 已建立伤害语义层，区分瞬时伤害、持续伤害、多波伤害、普攻触发、属性缩放、百分比伤害、护甲削减、增伤、资源消耗等类型。
 - 已完成 126 个 canonical 英雄的伤害模型入口覆盖。
 - 已覆盖 733 个可见技能模型入口。
-- 已有首批手工校验模型：Slardar、Sand King、Queen of Pain、Lion、Lina、Axe、Shadow Fiend、Phantom Assassin、Faceless Void、Venomancer。
-- 其余英雄已通过自动模型生成首轮可审计配置。
+- 覆盖率已区分三类状态：`manual reviewed` 表示人工复核，`manual candidate` 表示人工候选但未完成复核，`auto-only` 表示仅由自动模型覆盖。
+- 已有手工复核模型：Slardar、Sand King、Queen of Pain、Lion、Lina、Axe、Shadow Fiend、Phantom Assassin、Faceless Void、Venomancer、Jakiro、Viper、Phoenix、Leshrac、Death Prophet、Witch Doctor、Ancient Apparition。
+- 其余英雄仍通过自动模型生成首轮可审计配置，不能视为已经人工确认准确。
 - 已修正多个错误分类：
   - Disruptor 伤害阈值不再被当成爆发伤害。
   - Sand King 的持续伤害、普攻触发和多波伤害分离。
   - Slardar 的被动按攻击次数建模。
   - Jakiro 的 `Liquid Fire` 识别为持续伤害，并保留 `duration/tick_rate`。
   - Jakiro 的 `Liquid Frost` 保留持续效果元数据。
+  - Jakiro、Viper、Phoenix、Leshrac、Death Prophet、Witch Doctor、Ancient Apparition、Venomancer 已进入 Batch B 持续/跳伤人工复核模型。
   - Primal Beast 的攻击力百分比倍率不再被当成固定伤害。
 - 已完成独立伤害组合计算器，支持手动敌方护甲、魔抗、持续作用时间和部分普攻相关输入。
-- 已新增批量审核页导出脚本，用于人工逐英雄校验。
-- 当前测试集通过：`npm test` 为 102 项通过。
+- 已新增批量审核页导出脚本，用于人工逐英雄校验；页面会显示当前模型 JSON、未引用原始数值字段和可疑映射。
+- 已修复 `Outworld Destroyer` / `Ringmaster` 与 dotaconstants 中 `Outworld Devourer` / `Ring Master` 的命名兼容问题。
 
 ### 当前已知问题
 
-- `Outworld Destroyer` 和 `Ringmaster` 当前在 `/api/heroes` 中存在，但 `/api/damage/heroes/:hero` 返回 `Unknown hero`。审核导出脚本会为它们生成错误页，方便后续修复。
 - 自动模型只是首轮覆盖，不代表 126 个英雄都已人工确认准确。复杂机制仍需要逐英雄审核。
 - `Liquid Frost` 的持续期间“Jakiro 其他攻击/技能追加伤害”目前只保留持续时间元数据，还未建成完整增伤组件。
+- 当前模型 schema 仍以单技能单主组件为主，复合技能的“初始伤害 + 持续伤害 + 百分比/条件爆发”还需要下一阶段扩展。
 - 物品层的伤害、护甲削减、魔抗削减、主动技能和神杖/魔晶收益仍需要继续扩展。
 - `dota2-datawrapper` 仍处于实验阶段，后续需要和 `dotaconstants` 做字段完整性对比后再决定迁移范围。
 
 ### 下一阶段建议
 
 - 使用 `npm run damage:audit-pages -- --out audit-runs/damage-heroes-latest` 导出全英雄审核页。
-- 按英雄批次人工校验自动模型，把关键英雄从 `auto` 升级为手工模型。
+- 继续 Batch B，优先把剩余持续/跳伤/引导英雄从 `auto-only` 升级为 `reviewed`。
 - 优先校验持续伤害、普攻触发、百分比伤害、召唤物、分身、变身、复制技能和装备联动。
+- 扩展复合技能模型，支持同一技能同时包含初始伤害、持续伤害、每跳伤害和条件爆发。
 - 补齐物品语义层，特别是黯灭、强袭、冰甲、纷争、虚灵、血棘、神杖、魔晶等会改变伤害窗口的道具。
-- 处理 `Outworld Destroyer` 和 `Ringmaster` 的英雄命名/API 兼容问题。
 
 ## 数据来源说明
 

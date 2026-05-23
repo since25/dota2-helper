@@ -121,7 +121,7 @@
       "name": "Torrent",
       "displayName": "洪流（Torrent）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -182,7 +182,7 @@
       "name": "Tidebringer",
       "displayName": "潮汐使者（Tidebringer）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -235,10 +235,10 @@
       "name": "X Marks the Spot",
       "displayName": "X标记（X Marks the Spot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50,
         50,
@@ -282,9 +282,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -293,7 +293,7 @@
       "name": "Tidal Wave",
       "displayName": "潮汐波（Tidal Wave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -336,7 +336,7 @@
       "name": "Ghostship",
       "displayName": "幽灵船（Ghostship）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -384,5 +384,465 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Kunkka",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Torrent": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "torrent_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "slow_duration",
+          "tickIntervalKey": "damage_tick_interval"
+        },
+        "Tidebringer": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "cleave_damage",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "X Marks the Spot": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Tidal Wave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Ghostship": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Return": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "movespeed_bonus",
+        "label": "MOVE SLOW:",
+        "value": "-40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "delay",
+        "label": "DELAY:",
+        "value": "1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "percent_instant",
+        "label": "PERCENT INSTANT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Torrent",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "cleave_starting_width",
+        "label": "CLEAVE STARTING WIDTH:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "cleave_ending_width",
+        "label": "CLEAVE ENDING WIDTH:",
+        "value": "500/550/600/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "cleave_distance",
+        "label": "CLEAVE RANGE:",
+        "value": "650/775/900/1025",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "damage_bonus",
+        "label": "DAMAGE BONUS:",
+        "value": "35/70/105/140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "movespeed_slow",
+        "label": "MOVESPEED SLOW:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "movespeed_slow_duration",
+        "label": "MOVESPEED SLOW DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "cooldown_reduction_per_hero_hit",
+        "label": "HERO HIT COOLDOWN REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "pierces_armor",
+        "label": "PIERCES ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidebringer",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "duration",
+        "label": "ENEMY DELAY:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "allied_duration",
+        "label": "ALLIED DELAY:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "fow_range",
+        "label": "FOW RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "fow_duration",
+        "label": "FOW DURATION:",
+        "value": "5.94",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "ally_ms",
+        "label": "ALLY MS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "ally_armor",
+        "label": "ALLY ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "rum_allies_radius",
+        "label": "RUM SPLASH RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "buff_duration",
+        "label": "RUM DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "movespeed_bonus",
+        "label": "MOVESPEED BONUS:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "ghostship_absorb",
+        "label": "GHOSTSHIP ABSORB:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "X Marks the Spot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "wave_distance_tooltip",
+        "label": "WAVE DISTANCE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Tidal Wave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "tooltip_delay",
+        "label": "IMPACT DELAY:",
+        "value": "3.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "ghostship_distance",
+        "label": "RANGE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "ghostship_width",
+        "label": "WIDTH:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "ghostship_speed",
+        "label": "GHOSTSHIP SPEED:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "rum_factor",
+        "label": "RUM FACTOR:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "num_cannon_volleys",
+        "label": "NUM CANNON VOLLEYS:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "base_cannon_rotation",
+        "label": "BASE CANNON ROTATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "rotation_per_cannon",
+        "label": "ROTATION PER CANNON:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "initial_cannon_offset",
+        "label": "INITIAL CANNON OFFSET:",
+        "value": "-150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "distance_between_cannons",
+        "label": "DISTANCE BETWEEN CANNONS:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Kunkka",
+        "ability": "Ghostship",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

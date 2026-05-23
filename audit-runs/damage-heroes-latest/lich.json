@@ -121,10 +121,10 @@
       "name": "Frost Blast",
       "displayName": "寒霜爆发（Frost Blast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。",
       "manaCostByAbilityLevel": [
         110,
         120,
@@ -167,8 +167,10 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。",
+          "caveats": [
+            "寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。"
+          ]
         }
       ]
     },
@@ -176,10 +178,10 @@
       "name": "Frost Shield",
       "displayName": "冰霜魔盾（Frost Shield）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。",
       "manaCostByAbilityLevel": [
         100,
         110,
@@ -194,8 +196,8 @@
       ],
       "components": [
         {
-          "id": "Frost Shield:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Frost Shield:sustained:damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "damage",
@@ -205,25 +207,38 @@
             46,
             60
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            72,
+            160,
+            276,
+            420
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
-              0.5,
-              0.5,
-              0.5,
-              0.5
+              4,
+              5,
+              6,
+              7
+            ],
+            "tickIntervalByAbilityLevel": [
+              1,
+              1,
+              1,
+              1
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -231,11 +246,14 @@
       "name": "Sinister Gaze",
       "displayName": "阴邪凝视（Sinister Gaze）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "阴邪凝视为持续控制和抽蓝，不直接造成伤害。",
       "manaCostByAbilityLevel": [
+        25,
+        25,
+        25,
         25
       ],
       "cooldownByAbilityLevel": [
@@ -246,13 +264,16 @@
       ],
       "components": [
         {
-          "id": "Sinister Gaze:debuff_reference:abilitycastrange",
+          "id": "Sinister Gaze:debuff_reference:channel_duration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "channel_duration",
           "valuesByAbilityLevel": [
-            600
+            1.1,
+            1.4,
+            1.7,
+            2
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -262,8 +283,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "disable_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -272,9 +293,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "阴邪凝视为持续控制和抽蓝，不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "阴邪凝视为持续控制和抽蓝，不直接造成伤害。"
           ]
         }
       ]
@@ -283,10 +304,10 @@
       "name": "Ice Spire",
       "displayName": "寒冰尖柱（Ice Spire）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "寒冰尖柱本身不直接造成伤害。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -295,13 +316,13 @@
       ],
       "components": [
         {
-          "id": "Ice Spire:debuff_reference:abilitycastrange",
+          "id": "Ice Spire:debuff_reference:duration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "duration",
           "valuesByAbilityLevel": [
-            750
+            15
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -311,8 +332,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "area_control",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -321,9 +342,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "寒冰尖柱本身不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "寒冰尖柱本身不直接造成伤害。"
           ]
         }
       ]
@@ -332,23 +353,23 @@
       "name": "Sacrifice",
       "displayName": "献身（Sacrifice）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "献身提供资源转换，不直接造成伤害。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         0
       ],
       "components": [
         {
-          "id": "Sacrifice:debuff_reference:abilitycastrange",
+          "id": "Sacrifice:debuff_reference:active_mana_restore_pct_of_health",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "active_mana_restore_pct_of_health",
           "valuesByAbilityLevel": [
-            700
+            42
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -358,8 +379,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "",
+            "affects": "resource_timing",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -368,9 +389,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "献身提供资源转换，不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "献身提供资源转换，不直接造成伤害。"
           ]
         }
       ]
@@ -379,10 +400,10 @@
       "name": "Chain Frost",
       "displayName": "连环霜冻（Chain Frost）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。",
       "manaCostByAbilityLevel": [
         180,
         300,
@@ -421,11 +442,483 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。",
+          "caveats": [
+            "连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lich",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed frost blast, frost shield, and chain frost fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Frost Blast": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "寒霜爆发主目标伤害使用 damage；aoe_damage 后续可作为范围副目标组件拆分。"
+        },
+        "Frost Shield": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "conditionInputs": [
+            "active_duration"
+          ],
+          "reason": "冰霜魔盾每秒对周围敌人造成伤害，实际总量取决于贴近时间。"
+        },
+        "Sinister Gaze": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "channel_duration",
+          "semanticType": "window.debuff_duration.seconds",
+          "affects": "disable_window",
+          "reason": "阴邪凝视为持续控制和抽蓝，不直接造成伤害。"
+        },
+        "Ice Spire": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "summon.duration",
+          "affects": "area_control",
+          "reason": "寒冰尖柱本身不直接造成伤害。"
+        },
+        "Sacrifice": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "active_mana_restore_pct_of_health",
+          "semanticType": "resource.mana_drain_per_second",
+          "affects": "resource_timing",
+          "reason": "献身提供资源转换，不直接造成伤害。"
+        },
+        "Chain Frost": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "slow_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "连环霜冻单次弹跳伤害为 damage；多次弹跳总量需要结合命中次数。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "slow_movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "slow_attack_speed_primary",
+        "label": "ATTACK SLOW:",
+        "value": "-30/-40/-50/-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "aoe_damage",
+        "label": "AREA DAMAGE:",
+        "value": "80/120/160/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "575/600/625/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Blast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "45%/50%/55%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "movement_slow",
+        "label": "SLOW:",
+        "value": "20%/25%/30%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "bonus_duration_per_hero_killed",
+        "label": "BONUS DURATION ON HERO KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "bonus_duration_per_creep_killed",
+        "label": "BONUS DURATION ON CREEP KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "30/25/20/15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Frost Shield",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1.10/1.4/1.7/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "destination",
+        "label": "DISTANCE MOVED:",
+        "value": "32%/38%/44%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "mana_drain",
+        "label": "MANA DRAIN PER SECOND:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "slow_resistance",
+        "label": "SLOW RESISTANCE REDUCTION:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "post_gaze_debuff_duration_multiplier",
+        "label": "POST GAZE DEBUFF DURATION MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sinister Gaze",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "bonus_movespeed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "aura_radius",
+        "label": "EFFECT RADIUS:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "max_hero_attacks",
+        "label": "MAX HERO ATTACKS:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "max_creep_attacks",
+        "label": "MAX CREEP ATTACKS:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Ice Spire",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sacrifice",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sacrifice",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sacrifice",
+        "key": "xp_pct",
+        "label": "EXPERIENCE BOUNTY:",
+        "value": "69%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sacrifice",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Sacrifice",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "bonus_jump_damage",
+        "label": "INCREMENTAL DAMAGE:",
+        "value": "15/20/25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "jumps",
+        "label": "JUMPS:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "jump_range",
+        "label": "BOUNCE RANGE:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "slow_movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-65%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "slow_attack_speed",
+        "label": "ATTACK SLOW:",
+        "value": "-65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "initial_projectile_speed",
+        "label": "INITIAL PROJECTILE SPEED:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "has_unlimited_jumps",
+        "label": "HAS UNLIMITED JUMPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "bonus_jumps_per_hero_killed",
+        "label": "BONUS JUMPS ON HERO KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "bonus_jumps_per_creep_killed",
+        "label": "BONUS JUMPS ON CREEP KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "frostbound_duration",
+        "label": "LINGER DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lich",
+        "ability": "Chain Frost",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

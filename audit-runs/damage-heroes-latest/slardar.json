@@ -371,5 +371,301 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Slardar",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Guardian Sprint": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_speed",
+          "semanticType": "mobility.move_speed.percent",
+          "modifierType": "move_speed_pct",
+          "affects": "positioning",
+          "reason": "移动速度影响追击和出手窗口，但不直接造成伤害。"
+        },
+        "Slithereen Crush": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "crush_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Bash of the Deep": {
+          "status": "implemented",
+          "model": "attack_sequence",
+          "procDamageKey": "bonus_damage",
+          "attackCountKey": "attack_count",
+          "semanticType": "damage.attack_sequence_proc",
+          "conditionInputs": [
+            "attack_count",
+            "hero_attack_damage"
+          ],
+          "formula": "attackCount * attackDamage + procDamage",
+          "defaultIncluded": true
+        },
+        "Seaborn Sentinel": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "river_damage_pct",
+          "semanticType": "modifier.attack_damage.percent",
+          "modifierType": "attack_damage_pct",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "需要水洼、轨迹或河道状态；当前作为攻击力修正参考。"
+        },
+        "Corrosive Haze": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "armor_reduction",
+          "semanticType": "modifier.armor_reduction.flat",
+          "modifierType": "armor_reduction",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "减甲会放大后续物理伤害；当前不自动串联进总伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Slardar",
+        "ability": "Guardian Sprint",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Guardian Sprint",
+        "key": "speed_burst_max_duration",
+        "label": "SPEED BURST MAX DURATION:",
+        "value": "2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Guardian Sprint",
+        "key": "slow_resistance_tooltip",
+        "label": "SLOW RESISTANCE TOOLTIP:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Guardian Sprint",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Guardian Sprint",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "crush_radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "crush_extra_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "-20%/-25%/-30%/-35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "crush_attack_slow_tooltip",
+        "label": "ATTACK SLOW:",
+        "value": "-20/-25/-30/-35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "crush_extra_slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "puddle_duration",
+        "label": "PUDDLE DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "puddle_radius",
+        "label": "PUDDLE RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Slithereen Crush",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Bash of the Deep",
+        "key": "duration",
+        "label": "BASH DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Seaborn Sentinel",
+        "key": "river_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "18%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Seaborn Sentinel",
+        "key": "puddle_regen",
+        "label": "HP REGEN:",
+        "value": "1.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Seaborn Sentinel",
+        "key": "puddle_armor",
+        "label": "BONUS ARMOR:",
+        "value": "1.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Seaborn Sentinel",
+        "key": "scepter_puddle_radius_tooltip",
+        "label": "SCEPTER PUDDLE RADIUS TOOLTIP:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Seaborn Sentinel",
+        "key": "scepter_puddle_duration_increase_tooltip",
+        "label": "SCEPTER PUDDLE DURATION INCREASE TOOLTIP:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "puddle_radius",
+        "label": "TRAIL RADIUS:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "puddle_duration",
+        "label": "TRAIL DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "has_self_buff",
+        "label": "HAS SELF BUFF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "armor_pct",
+        "label": "ARMOR PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Slardar",
+        "ability": "Corrosive Haze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

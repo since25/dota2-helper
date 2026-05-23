@@ -121,7 +121,7 @@
       "name": "Blade Fury",
       "displayName": "剑刃风暴（Blade Fury）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -189,10 +189,10 @@
       "name": "Healing Ward",
       "displayName": "治疗守卫（Healing Ward）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         120
       ],
@@ -227,9 +227,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -238,10 +238,10 @@
       "name": "Blade Dance",
       "displayName": "剑舞（Blade Dance）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -272,9 +272,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -283,10 +283,10 @@
       "name": "Swiftslash",
       "displayName": "迅风斩（Swiftslash）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -321,9 +321,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -332,10 +332,10 @@
       "name": "Omnislash",
       "displayName": "无敌斩（Omnislash）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         200,
         275,
@@ -372,13 +372,347 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Juggernaut",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Blade Fury": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "blade_fury_damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "blade_fury_damage_tick",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Healing Ward": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Blade Dance": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "blade_dance_crit_chance",
+          "semanticType": "modifier.crit.chance",
+          "affects": "physical_damage",
+          "stackGroup": "critical_strike",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Swiftslash": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Bladeform": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Omnislash": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "blade_fury_aspd_multiplier",
+        "label": "ATTACK SPEED MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "blade_fury_radius",
+        "label": "RADIUS:",
+        "value": "260",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "bonus_movespeed",
+        "label": "BONUS MOVESPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "can_crit",
+        "label": "CAN CRIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "blade_fury_outer_radius",
+        "label": "OUTER RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "attack_interval",
+        "label": "ATTACK INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "immunity_resist",
+        "label": "IMMUNITY RESIST:",
+        "value": "80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Fury",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "healing_ward_heal_amount",
+        "label": "MAX HEALTH PER SECOND:",
+        "value": "2%/3%/4%/5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "healing_ward_aura_radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "healing_ward_movespeed_tooltip",
+        "label": "HEALING WARD MOVESPEED TOOLTIP:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "healing_ward_bonus_health",
+        "label": "HEALING WARD BONUS HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "healing_ward_hits_to_kill_tooltip",
+        "label": "HITS TO DESTROY:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "18/20/22/24",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Healing Ward",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Dance",
+        "key": "blade_dance_crit_mult",
+        "label": "CRITICAL DAMAGE:",
+        "value": "130%/150%/170%/190%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Blade Dance",
+        "key": "blade_dance_lifesteal",
+        "label": "BLADE DANCE LIFESTEAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Swiftslash",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Swiftslash",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Bladeform",
+        "key": "max_stacks",
+        "label": "MAX STACKS:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Bladeform",
+        "key": "stack_gain_time",
+        "label": "STACK GAIN TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Bladeform",
+        "key": "agi_bonus_pct_per_stack",
+        "label": "BASE AGILITY PCT PER STACK:",
+        "value": "2.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Bladeform",
+        "key": "movement_speed_pct_per_stack",
+        "label": "MOVEMENT SPEED PER STACK:",
+        "value": "1%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Bladeform",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "attack_rate_multiplier",
+        "label": "SLASHES RATE MULTIPLIER:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "25/30/35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3/3.25/3.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "omni_slash_radius",
+        "label": "SLASH JUMP RADIUS:",
+        "value": "425",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "dispel",
+        "label": "DISPEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Juggernaut",
+        "ability": "Omnislash",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

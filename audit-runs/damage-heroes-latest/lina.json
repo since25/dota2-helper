@@ -401,5 +401,342 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lina",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Dragon Slave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dragon_slave_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Light Strike Array": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "light_strike_array_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Fiery Soul": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "fiery_soul_attack_speed_bonus",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "攻速叠层影响后续普攻，不直接作为技能爆发伤害。"
+        },
+        "Flame Cloak": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "spell_amp",
+          "semanticType": "modifier.spell_amplification.percent",
+          "affects": "spell_amplification",
+          "stackGroup": "spell_amplification",
+          "reason": "法术增强会放大后续技能，当前总量不自动串联增伤。"
+        },
+        "Slow Burn": {
+          "status": "unsupported",
+          "model": "state_scaling",
+          "valueKey": "burn_damage_pct",
+          "semanticType": "damage.source_damage_percent",
+          "conditionInputs": [
+            "source_damage",
+            "burn_duration"
+          ],
+          "reason": "该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。"
+        },
+        "Laguna Blade": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "dragon_slave_speed",
+        "label": "DRAGON SLAVE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "dragon_slave_width_initial",
+        "label": "DRAGON SLAVE WIDTH INITIAL:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "dragon_slave_width_end",
+        "label": "DRAGON SLAVE WIDTH END:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "dragon_slave_distance",
+        "label": "DRAGON SLAVE DISTANCE:",
+        "value": "1075",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1075",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "0.6875",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Dragon Slave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Light Strike Array",
+        "key": "light_strike_array_aoe",
+        "label": "RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Light Strike Array",
+        "key": "light_strike_array_delay_time",
+        "label": "CAST DELAY:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Light Strike Array",
+        "key": "light_strike_array_stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.2/1.6/2/2.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Light Strike Array",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Light Strike Array",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Fiery Soul",
+        "key": "fiery_soul_move_speed_bonus",
+        "label": "MOVE SPEED BONUS:",
+        "value": "1%/1.5%/2%/2.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Fiery Soul",
+        "key": "fiery_soul_max_stacks",
+        "label": "MAX STACKS:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Fiery Soul",
+        "key": "fiery_soul_stack_duration",
+        "label": "DURATION:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Fiery Soul",
+        "key": "bonus_spell_damage",
+        "label": "BONUS SPELL DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Flame Cloak",
+        "key": "flame_cloak_duration",
+        "label": "DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Flame Cloak",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Flame Cloak",
+        "key": "visualzdelta",
+        "label": "VISUALZDELTA:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Flame Cloak",
+        "key": "zchangespeed",
+        "label": "ZCHANGESPEED:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Flame Cloak",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Slow Burn",
+        "key": "impact_damage_pct",
+        "label": "IMPACT DAMAGE PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Slow Burn",
+        "key": "burn_duration",
+        "label": "BURN DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Slow Burn",
+        "key": "additional_tick_total_damage_tooltip",
+        "label": "ADDITIONAL TICK TOTAL DAMAGE TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Slow Burn",
+        "key": "target_crit_multiplier",
+        "label": "TARGET CRIT MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "damage_delay",
+        "label": "DAMAGE DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "pierce_immunity",
+        "label": "PIERCE IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "supercharge_duration",
+        "label": "SUPERCHARGE DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "supercharge_stacks",
+        "label": "SUPERCHARGE STACKS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "barrier_pct",
+        "label": "BARRIER PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "barrier_duration",
+        "label": "BARRIER DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lina",
+        "ability": "Laguna Blade",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

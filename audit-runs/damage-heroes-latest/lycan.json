@@ -121,7 +121,7 @@
       "name": "Summon Wolves",
       "displayName": "召狼（Summon Wolves）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -182,10 +182,10 @@
       "name": "Howl",
       "displayName": "嗥叫（Howl）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         40,
         40,
@@ -229,9 +229,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -240,10 +240,10 @@
       "name": "Wolf Bite",
       "displayName": "饿狼撕咬（Wolf Bite）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -280,9 +280,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -291,10 +291,10 @@
       "name": "Apex Predator",
       "displayName": "顶级掠食者（Apex Predator）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -325,9 +325,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
@@ -336,10 +336,10 @@
       "name": "Shapeshift",
       "displayName": "变身（Shapeshift）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100
       ],
@@ -376,13 +376,348 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Lycan",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Summon Wolves": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "wolf_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "wolf_duration"
+        },
+        "Howl": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "armor",
+          "semanticType": "modifier.armor_reduction.flat",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Feral Impulse": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Wolf Bite": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Apex Predator": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_amp",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        },
+        "Shapeshift": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "crit_chance",
+          "semanticType": "modifier.crit.chance",
+          "affects": "physical_damage",
+          "stackGroup": "critical_strike",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "wolf_index",
+        "label": "WOLF INDEX:",
+        "value": "1/2/3/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "wolf_bat",
+        "label": "BASE ATTACK TIME:",
+        "value": "1.2/1.1/1/0.9/0.9/0.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "wolf_hp",
+        "label": "HP:",
+        "value": "325/375/425/475/525/575",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bonus_health",
+        "label": "BONUS HEALTH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bash_chance",
+        "label": "BASH CHANCE:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bash_duration",
+        "label": "BASH DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "wolf_count",
+        "label": "WOLF COUNT:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "bonus_levels",
+        "label": "BONUS LEVELS:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Summon Wolves",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "howl_duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "attack_damage_reduction",
+        "label": "ATTACK DAMAGE REDUCTION:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "total_attack_damage_reduction",
+        "label": "TOTAL ATTACK DAMAGE REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "fear_duration",
+        "label": "FEAR DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Howl",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Feral Impulse",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "10%/20%/30%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Feral Impulse",
+        "key": "bonus_hp_regen",
+        "label": "BONUS HP REGEN:",
+        "value": "1/3/5/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Feral Impulse",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Wolf Bite",
+        "key": "lifesteal_percent",
+        "label": "LIFESTEAL PERCENT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Wolf Bite",
+        "key": "lifesteal_range",
+        "label": "LIFESTEAL RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Wolf Bite",
+        "key": "attack_range",
+        "label": "ATTACK RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Wolf Bite",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "speed",
+        "label": "SHAPESHIFT MOVE SPEED:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "bonus_night_vision",
+        "label": "BONUS NIGHT VISION:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "transformation_time",
+        "label": "TRANSFORM TIME:",
+        "value": "1.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "crit_multiplier",
+        "label": "CRITICAL DAMAGE:",
+        "value": "160%/200%/240%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "health_bonus",
+        "label": "HEALTH BONUS:",
+        "value": "225/325/425",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "is_wolfpack",
+        "label": "IS WOLFPACK:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Lycan",
+        "ability": "Shapeshift",
+        "key": "kill_duration_extension",
+        "label": "KILL DURATION EXTENSION:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

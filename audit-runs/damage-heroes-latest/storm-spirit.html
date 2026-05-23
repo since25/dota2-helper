@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>风暴之灵（Storm Spirit）</h1>
-        <div class="muted">Storm Spirit · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Storm Spirit · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,358 @@
       </div>
       <a href="./storm-spirit.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_radius</code></td>
+      <td>STATIC REMNANT RADIUS:</td>
+      <td>235</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_delay</code></td>
+      <td>STATIC REMNANT DELAY:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_damage</code></td>
+      <td>DAMAGE:</td>
+      <td>100/160/220/280</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>is_point_targeted</code></td>
+      <td>IS POINT TARGETED:</td>
+      <td>+1</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_travel_speed</code></td>
+      <td>REMNANT SPEED:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_vision_radius_day</code></td>
+      <td>VISION RADIUS:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>static_remnant_vision_radius_night</code></td>
+      <td>STATIC REMNANT VISION RADIUS NIGHT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Static Remnant</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>electric_vortex_pull_distance</code></td>
+      <td>PULL DISTANCE:</td>
+      <td>180/220/260/300</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>electric_vortex_pull_tether_range</code></td>
+      <td>ELECTRIC VORTEX PULL TETHER RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>electric_vortex_self_slow</code></td>
+      <td>ELECTRIC VORTEX SELF SLOW:</td>
+      <td>-50</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>electric_vortex_self_slow_duration</code></td>
+      <td>ELECTRIC VORTEX SELF SLOW DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>1.1/1.4/1.7/2</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>enemy_overload_duration</code></td>
+      <td>ENEMY OVERLOAD DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Electric Vortex</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Overload</td>
+      <td><code>overload_aoe</code></td>
+      <td>RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Overload</td>
+      <td><code>overload_move_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-80%</td>
+    </tr>
+  
+    <tr>
+      <td>Overload</td>
+      <td><code>overload_attack_slow</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-90</td>
+    </tr>
+  
+    <tr>
+      <td>Overload</td>
+      <td><code>overload_cast_range</code></td>
+      <td>OVERLOAD CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overload</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_initial_mana_percentage</code></td>
+      <td>BALL LIGHTNING INITIAL MANA PERCENTAGE:</td>
+      <td>7.5</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_initial_mana_base</code></td>
+      <td>BALL LIGHTNING INITIAL MANA BASE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_move_speed</code></td>
+      <td>SPEED:</td>
+      <td>1400/1850/2300</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_aoe</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_travel_cost_base</code></td>
+      <td>BALL LIGHTNING TRAVEL COST BASE:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_travel_cost_percent</code></td>
+      <td>MANA DRAIN PER 100 UNITS:</td>
+      <td>0.65%</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>ball_lightning_vision_radius</code></td>
+      <td>BALL LIGHTNING VISION RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>blocker_duration</code></td>
+      <td>BLOCKER DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>scepter_remnant_interval</code></td>
+      <td>SCEPTER REMNANT INTERVAL:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Ball Lightning</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Galvanized</td>
+      <td><code>perma_mp_per_kill</code></td>
+      <td>PERMA MP PER KILL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Galvanized</td>
+      <td><code>mp_per_kill</code></td>
+      <td>MP PER KILL:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Galvanized</td>
+      <td><code>aoe</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Galvanized</td>
+      <td><code>charges_per_death</code></td>
+      <td>CHARGES PER DEATH:</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Storm Spirit&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Static Remnant&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;static_remnant_damage_radius&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Electric Vortex&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Overload&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;overload_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Ball Lightning&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Galvanized&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +480,7 @@
           <div class="muted">Static Remnant · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +533,7 @@
           <div class="muted">Electric Vortex · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +572,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +586,7 @@
           <div class="muted">Overload · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +639,7 @@
           <div class="muted">Ball Lightning · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -454,7 +810,7 @@
       &quot;name&quot;: &quot;Static Remnant&quot;,
       &quot;displayName&quot;: &quot;残影（Static Remnant）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -508,10 +864,10 @@
       &quot;name&quot;: &quot;Electric Vortex&quot;,
       &quot;displayName&quot;: &quot;电子涡流（Electric Vortex）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60,
         70,
@@ -552,9 +908,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -563,7 +919,7 @@
       &quot;name&quot;: &quot;Overload&quot;,
       &quot;displayName&quot;: &quot;超负荷（Overload）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -613,7 +969,7 @@
       &quot;name&quot;: &quot;Ball Lightning&quot;,
       &quot;displayName&quot;: &quot;球状闪电（Ball Lightning）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
@@ -663,7 +1019,370 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Storm Spirit&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Static Remnant&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;static_remnant_damage_radius&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Electric Vortex&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Overload&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;overload_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Ball Lightning&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Galvanized&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_radius&quot;,
+        &quot;label&quot;: &quot;STATIC REMNANT RADIUS:&quot;,
+        &quot;value&quot;: &quot;235&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_delay&quot;,
+        &quot;label&quot;: &quot;STATIC REMNANT DELAY:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE:&quot;,
+        &quot;value&quot;: &quot;100/160/220/280&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;is_point_targeted&quot;,
+        &quot;label&quot;: &quot;IS POINT TARGETED:&quot;,
+        &quot;value&quot;: &quot;+1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_travel_speed&quot;,
+        &quot;label&quot;: &quot;REMNANT SPEED:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_vision_radius_day&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;static_remnant_vision_radius_night&quot;,
+        &quot;label&quot;: &quot;STATIC REMNANT VISION RADIUS NIGHT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Static Remnant&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;electric_vortex_pull_distance&quot;,
+        &quot;label&quot;: &quot;PULL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;180/220/260/300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;electric_vortex_pull_tether_range&quot;,
+        &quot;label&quot;: &quot;ELECTRIC VORTEX PULL TETHER RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;electric_vortex_self_slow&quot;,
+        &quot;label&quot;: &quot;ELECTRIC VORTEX SELF SLOW:&quot;,
+        &quot;value&quot;: &quot;-50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;electric_vortex_self_slow_duration&quot;,
+        &quot;label&quot;: &quot;ELECTRIC VORTEX SELF SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1.1/1.4/1.7/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;enemy_overload_duration&quot;,
+        &quot;label&quot;: &quot;ENEMY OVERLOAD DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Electric Vortex&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Overload&quot;,
+        &quot;key&quot;: &quot;overload_aoe&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Overload&quot;,
+        &quot;key&quot;: &quot;overload_move_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Overload&quot;,
+        &quot;key&quot;: &quot;overload_attack_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Overload&quot;,
+        &quot;key&quot;: &quot;overload_cast_range&quot;,
+        &quot;label&quot;: &quot;OVERLOAD CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Overload&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_initial_mana_percentage&quot;,
+        &quot;label&quot;: &quot;BALL LIGHTNING INITIAL MANA PERCENTAGE:&quot;,
+        &quot;value&quot;: &quot;7.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_initial_mana_base&quot;,
+        &quot;label&quot;: &quot;BALL LIGHTNING INITIAL MANA BASE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_move_speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1400/1850/2300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_aoe&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_travel_cost_base&quot;,
+        &quot;label&quot;: &quot;BALL LIGHTNING TRAVEL COST BASE:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_travel_cost_percent&quot;,
+        &quot;label&quot;: &quot;MANA DRAIN PER 100 UNITS:&quot;,
+        &quot;value&quot;: &quot;0.65%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;ball_lightning_vision_radius&quot;,
+        &quot;label&quot;: &quot;BALL LIGHTNING VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;blocker_duration&quot;,
+        &quot;label&quot;: &quot;BLOCKER DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;scepter_remnant_interval&quot;,
+        &quot;label&quot;: &quot;SCEPTER REMNANT INTERVAL:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Ball Lightning&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Galvanized&quot;,
+        &quot;key&quot;: &quot;perma_mp_per_kill&quot;,
+        &quot;label&quot;: &quot;PERMA MP PER KILL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Galvanized&quot;,
+        &quot;key&quot;: &quot;mp_per_kill&quot;,
+        &quot;label&quot;: &quot;MP PER KILL:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Galvanized&quot;,
+        &quot;key&quot;: &quot;aoe&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Storm Spirit&quot;,
+        &quot;ability&quot;: &quot;Galvanized&quot;,
+        &quot;key&quot;: &quot;charges_per_death&quot;,
+        &quot;label&quot;: &quot;CHARGES PER DEATH:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>德鲁伊（Lone Druid）</h1>
-        <div class="muted">Lone Druid · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Lone Druid · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,394 @@
       </div>
       <a href="./lone-druid.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Entangle</td>
+      <td><code>active_radius</code></td>
+      <td>RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>lone_druid_counters_applied_tooltip</code></td>
+      <td>LONE DRUID COUNTERS APPLIED TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>hits_required</code></td>
+      <td>HITS REQUIRED:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>hits_incremented_on_active</code></td>
+      <td>HITS INCREMENTED ON ACTIVE:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>lone_druid_buff_duration</code></td>
+      <td>LONE DRUID BUFF DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>nostack_protection</code></td>
+      <td>NOSTACK PROTECTION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>root_heroes_on_cast</code></td>
+      <td>ROOT HEROES ON CAST:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>entangle_duration</code></td>
+      <td>ROOT DURATION:</td>
+      <td>1.2/1.6/2/2.4</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Entangle</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>bonus_movement_speed_druid</code></td>
+      <td>MOVEMENT SPEED (LONE DRUID):</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>bonus_movement_speed_bear</code></td>
+      <td>MOVEMENT SPEED (SPIRIT BEAR):</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>lifesteal_percent</code></td>
+      <td>SHARED LIFESTEAL:</td>
+      <td>15%/30%/45%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>lifesteal_both_ways</code></td>
+      <td>LIFESTEAL BOTH WAYS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Link</td>
+      <td><code>active_bonus</code></td>
+      <td>ACTIVE BONUS:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Savage Roar</td>
+      <td><code>radius</code></td>
+      <td>RANGE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Savage Roar</td>
+      <td><code>bonus_speed</code></td>
+      <td>ENEMY MOVEMENT SPEED BONUS:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Savage Roar</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>1.1/1.4/1.7/2</td>
+    </tr>
+  
+    <tr>
+      <td>Savage Roar</td>
+      <td><code>only_affects_player_units</code></td>
+      <td>ONLY AFFECTS PLAYER UNITS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Savage Roar</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_hp</code></td>
+      <td>BEAR BASE HP:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_regen_tooltip</code></td>
+      <td>BEAR BASE HP REGEN:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_bat</code></td>
+      <td>BEAR BASE ATTACK TIME:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_armor</code></td>
+      <td>BEAR BASE ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_movespeed</code></td>
+      <td>BEAR MOVESPEED:</td>
+      <td>310</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_magic_resistance</code></td>
+      <td>BEAR MAGIC RESISTANCE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bonus_bear_hp</code></td>
+      <td>BONUS BEAR HP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bonus_bear_armor</code></td>
+      <td>BONUS BEAR ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>damage_gain_per_druid_level</code></td>
+      <td>DAMAGE GAIN PER DRUID LEVEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>hp_gain_per_druid_level</code></td>
+      <td>HP GAIN PER DRUID LEVEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>bear_attack_leash_range</code></td>
+      <td>BEAR ATTACK LEASH RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>strength_gain_tooltip</code></td>
+      <td>BEAR STRENGTH GAIN:</td>
+      <td>4.5</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>agility_gain_tooltip</code></td>
+      <td>BEAR AGILITY GAIN:</td>
+      <td>4.5</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>intelligence_gain_tooltip</code></td>
+      <td>BEAR INTELLIGENCE GAIN:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Summon Spirit Bear</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>10/15/20</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>bonus_hp</code></td>
+      <td>BONUS HP:</td>
+      <td>500/1000/1500</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>transformation_time</code></td>
+      <td>TRANSFORM TIME:</td>
+      <td>1.933</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>transform_bear</code></td>
+      <td>TRANSFORM BEAR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>bonus_slow_resistance</code></td>
+      <td>BONUS SLOW RESISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>True Form</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Lone Druid&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Entangle&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;counter_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Spirit Link&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Savage Roar&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Summon Spirit Bear&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;backlash_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;True Form&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +516,7 @@
           <div class="muted">Entangle · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +569,7 @@
           <div class="muted">Summon Spirit Bear · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +622,7 @@
           <div class="muted">True Form · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +661,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -401,7 +793,7 @@
       &quot;name&quot;: &quot;Entangle&quot;,
       &quot;displayName&quot;: &quot;缠绕之根（Entangle）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -451,7 +843,7 @@
       &quot;name&quot;: &quot;Summon Spirit Bear&quot;,
       &quot;displayName&quot;: &quot;熊灵伙伴（Summon Spirit Bear）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;,
@@ -502,10 +894,10 @@
       &quot;name&quot;: &quot;True Form&quot;,
       &quot;displayName&quot;: &quot;真熊形态（True Form）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         80,
@@ -546,15 +938,421 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Lone Druid&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Entangle&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;counter_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Spirit Link&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Savage Roar&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Summon Spirit Bear&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;backlash_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;True Form&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;active_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;lone_druid_counters_applied_tooltip&quot;,
+        &quot;label&quot;: &quot;LONE DRUID COUNTERS APPLIED TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;hits_required&quot;,
+        &quot;label&quot;: &quot;HITS REQUIRED:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;hits_incremented_on_active&quot;,
+        &quot;label&quot;: &quot;HITS INCREMENTED ON ACTIVE:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;lone_druid_buff_duration&quot;,
+        &quot;label&quot;: &quot;LONE DRUID BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;nostack_protection&quot;,
+        &quot;label&quot;: &quot;NOSTACK PROTECTION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;root_heroes_on_cast&quot;,
+        &quot;label&quot;: &quot;ROOT HEROES ON CAST:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;entangle_duration&quot;,
+        &quot;label&quot;: &quot;ROOT DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2/1.6/2/2.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Entangle&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed_druid&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED (LONE DRUID):&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed_bear&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED (SPIRIT BEAR):&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;lifesteal_percent&quot;,
+        &quot;label&quot;: &quot;SHARED LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;15%/30%/45%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;lifesteal_both_ways&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL BOTH WAYS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Spirit Link&quot;,
+        &quot;key&quot;: &quot;active_bonus&quot;,
+        &quot;label&quot;: &quot;ACTIVE BONUS:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Savage Roar&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Savage Roar&quot;,
+        &quot;key&quot;: &quot;bonus_speed&quot;,
+        &quot;label&quot;: &quot;ENEMY MOVEMENT SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Savage Roar&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1.1/1.4/1.7/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Savage Roar&quot;,
+        &quot;key&quot;: &quot;only_affects_player_units&quot;,
+        &quot;label&quot;: &quot;ONLY AFFECTS PLAYER UNITS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Savage Roar&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_hp&quot;,
+        &quot;label&quot;: &quot;BEAR BASE HP:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_regen_tooltip&quot;,
+        &quot;label&quot;: &quot;BEAR BASE HP REGEN:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_bat&quot;,
+        &quot;label&quot;: &quot;BEAR BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_armor&quot;,
+        &quot;label&quot;: &quot;BEAR BASE ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_movespeed&quot;,
+        &quot;label&quot;: &quot;BEAR MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;310&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_magic_resistance&quot;,
+        &quot;label&quot;: &quot;BEAR MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bonus_bear_hp&quot;,
+        &quot;label&quot;: &quot;BONUS BEAR HP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bonus_bear_armor&quot;,
+        &quot;label&quot;: &quot;BONUS BEAR ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;damage_gain_per_druid_level&quot;,
+        &quot;label&quot;: &quot;DAMAGE GAIN PER DRUID LEVEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;hp_gain_per_druid_level&quot;,
+        &quot;label&quot;: &quot;HP GAIN PER DRUID LEVEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;bear_attack_leash_range&quot;,
+        &quot;label&quot;: &quot;BEAR ATTACK LEASH RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;strength_gain_tooltip&quot;,
+        &quot;label&quot;: &quot;BEAR STRENGTH GAIN:&quot;,
+        &quot;value&quot;: &quot;4.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;agility_gain_tooltip&quot;,
+        &quot;label&quot;: &quot;BEAR AGILITY GAIN:&quot;,
+        &quot;value&quot;: &quot;4.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;intelligence_gain_tooltip&quot;,
+        &quot;label&quot;: &quot;BEAR INTELLIGENCE GAIN:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;Summon Spirit Bear&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;10/15/20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;bonus_hp&quot;,
+        &quot;label&quot;: &quot;BONUS HP:&quot;,
+        &quot;value&quot;: &quot;500/1000/1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;transformation_time&quot;,
+        &quot;label&quot;: &quot;TRANSFORM TIME:&quot;,
+        &quot;value&quot;: &quot;1.933&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;transform_bear&quot;,
+        &quot;label&quot;: &quot;TRANSFORM BEAR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;bonus_slow_resistance&quot;,
+        &quot;label&quot;: &quot;BONUS SLOW RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lone Druid&quot;,
+        &quot;ability&quot;: &quot;True Form&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

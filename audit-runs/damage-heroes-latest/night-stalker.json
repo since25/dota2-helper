@@ -121,7 +121,7 @@
       "name": "Void",
       "displayName": "虚空（Void）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Hunter in the Night",
       "displayName": "暗夜猎影（Hunter in the Night）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -210,13 +210,254 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Night Stalker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Void": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "tickIntervalKey": "invisible_damage_tickrate"
+        },
+        "Crippling Fear": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Hunter in the Night": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_attack_speed_night",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Dark Ascension": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "duration_day",
+        "label": "DAY DURATION:",
+        "value": "1.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "duration_night",
+        "label": "NIGHT DURATION:",
+        "value": "1.6/2.2/2.8/3.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "movespeed_slow",
+        "label": "MOVE SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "attackspeed_slow",
+        "label": "ATTACK SLOW:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "invisible_damage_pers",
+        "label": "DAMAGE PER SECOND WHEN NOT VISIBLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "cast_radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "cast_radius_tooltip",
+        "label": "CAST RADIUS TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Void",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "duration_day",
+        "label": "DAY DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "duration_night",
+        "label": "NIGHT DURATION:",
+        "value": "4.5/5/5.5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "mana_pct_cost",
+        "label": "MANA COST:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "mana_interval",
+        "label": "MANA INTERVAL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "toggled",
+        "label": "TOGGLED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "radius",
+        "label": "AURA RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "dps",
+        "label": "DAMAGE PER SECOND:",
+        "value": "25/30/35/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "tick_rate",
+        "label": "TICK RATE:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "death_refresh",
+        "label": "DEATH REFRESH:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Crippling Fear",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Hunter in the Night",
+        "key": "bonus_movement_speed_pct_night",
+        "label": "MOVE SPEED:",
+        "value": "24%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Dark Ascension",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Dark Ascension",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "50/100/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Night Stalker",
+        "ability": "Dark Ascension",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

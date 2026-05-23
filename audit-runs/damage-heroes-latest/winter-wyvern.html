@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>寒冬飞龙（Winter Wyvern）</h1>
-        <div class="muted">Winter Wyvern · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Winter Wyvern · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,337 @@
       </div>
       <a href="./winter-wyvern.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>BONUS ATTACK RANGE:</td>
+      <td>250/275/300/325</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>percent_damage</code></td>
+      <td>HEALTH BURN:</td>
+      <td>4%/6%/8%/10%</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>damage_duration</code></td>
+      <td>BURN DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>move_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>projectile_speed_bonus</code></td>
+      <td>PROJECTILE SPEED BONUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>tree_destruction_radius</code></td>
+      <td>TREE DESTRUCTION RADIUS:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>attack_point</code></td>
+      <td>ATTACK POINT:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>max_attacks</code></td>
+      <td>MAX ATTACKS:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Arctic Burn</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>projectile_max_time</code></td>
+      <td>PROJECTILE MAX TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>split_radius</code></td>
+      <td>SHATTER RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>bonus_movespeed</code></td>
+      <td>BONUS MOVESPEED:</td>
+      <td>-28/-32/-36/-40</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>movespeed_slow_tooltip</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>28%/32%/36%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>secondary_projectile_speed</code></td>
+      <td>SECONDARY PROJECTILE SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1150</td>
+    </tr>
+  
+    <tr>
+      <td>Splinter Blast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>heal_additive</code></td>
+      <td>BASE HEAL PER SECOND:</td>
+      <td>40/45/50/55</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>heal_percentage</code></td>
+      <td>MAX HP HEAL PER SECOND:</td>
+      <td>2.25%/3%/3.75%/4.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>shard_splinter_range</code></td>
+      <td>SHARD SPLINTER RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Embrace</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>damage_reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>50/65/80</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>duration</code></td>
+      <td>MINIMUM DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>max_duration</code></td>
+      <td>MAXIMUM DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>bonus_duration_per_hero</code></td>
+      <td>BONUS DURATION PER HERO:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>bonus_duration_per_creep</code></td>
+      <td>BONUS DURATION PER CREEP:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>transfer_on_death</code></td>
+      <td>TRANSFER ON DEATH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>transfer_duration_pct</code></td>
+      <td>TRANSFER DURATION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Winter&#39;s Curse</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Arctic Burn&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;percent_health_dot&quot;,
+      &quot;percentDamageKey&quot;: &quot;percent_damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;healthInput&quot;: &quot;target_current_health&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_current_health&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;target_current_health&quot;
+      ]
+    },
+    &quot;Splinter Blast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;
+    },
+    &quot;Cold Embrace&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Winter&#39;s Curse&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,13 +459,13 @@
           <div class="muted">Arctic Burn · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">percent_health_dot</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
-        <span>蓝耗：100</span>
+        <span>蓝耗：100 / 100 / 100 / 100</span>
         <span>冷却：26 / 24 / 22 / 20</span>
       </div>
       <div class="table-wrap">
@@ -150,20 +485,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Arctic Burn:sustained:damage_duration</code>
-          <div class="muted">damage_duration</div>
+          <code>Arctic Burn:percent_health_dot:percent_damage</code>
+          <div class="muted">percent_damage</div>
         </td>
         <td>
-          <span class="pill">sustained</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">percent_health_dot</span>
+          <span class="pill secondary">percent_health_dot</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>3</td><td>-</td><td>-</td><td>-</td>
-        <td>21 / 24 / 27 / 30</td>
-        <td><div><code>durationByAbilityLevel</code>: 7 / 8 / 9 / 10</div><div><code>tickIntervalByAbilityLevel</code>: 0.5</div></td>
-        <td>duration * damagePerSecond</td>
-        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+        <td>4</td><td>6</td><td>8</td><td>10</td>
+        <td></td>
+        <td><div><code>healthInput</code>: target_current_health</div><div><code>durationByAbilityLevel</code>: 7 / 8 / 9 / 10</div></td>
+        <td>healthInput * percentDamage * duration</td>
+        <td><ul><li>百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +512,7 @@
           <div class="muted">Splinter Blast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +565,7 @@
           <div class="muted">Cold Embrace · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +604,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +618,7 @@
           <div class="muted">Winter&#39;s Curse · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +657,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,11 +789,14 @@
       &quot;name&quot;: &quot;Arctic Burn&quot;,
       &quot;displayName&quot;: &quot;严寒烧灼（Arctic Burn）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;model&quot;: &quot;percent_health_dot&quot;,
       &quot;reason&quot;: &quot;&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        100,
+        100,
         100
       ],
       &quot;cooldownByAbilityLevel&quot;: [
@@ -469,42 +807,38 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Arctic Burn:sustained:damage_duration&quot;,
-          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;id&quot;: &quot;Arctic Burn:percent_health_dot:percent_damage&quot;,
+          &quot;kind&quot;: &quot;percent_health_dot&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;damage_duration&quot;,
+          &quot;label&quot;: &quot;percent_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            3
+            4,
+            6,
+            8,
+            10
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [
-            21,
-            24,
-            27,
-            30
-          ],
-          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;healthInput * percentDamage * duration&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;duration_times_dps&quot;
+            &quot;type&quot;: &quot;runtime_health_percent_times_duration&quot;
           },
           &quot;metadata&quot;: {
+            &quot;healthInput&quot;: &quot;target_current_health&quot;,
             &quot;durationByAbilityLevel&quot;: [
               7,
               8,
               9,
               10
-            ],
-            &quot;tickIntervalByAbilityLevel&quot;: [
-              0.5
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
           &quot;reason&quot;: &quot;&quot;,
           &quot;caveats&quot;: [
-            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+            &quot;百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。&quot;
           ]
         }
       ]
@@ -513,7 +847,7 @@
       &quot;name&quot;: &quot;Splinter Blast&quot;,
       &quot;displayName&quot;: &quot;碎裂冲击（Splinter Blast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -568,10 +902,10 @@
       &quot;name&quot;: &quot;Cold Embrace&quot;,
       &quot;displayName&quot;: &quot;极寒之拥（Cold Embrace）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         60,
@@ -615,9 +949,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -626,10 +960,10 @@
       &quot;name&quot;: &quot;Winter&#39;s Curse&quot;,
       &quot;displayName&quot;: &quot;寒冬诅咒（Winter&#39;s Curse）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150,
         200,
@@ -668,15 +1002,356 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Arctic Burn&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
+          &quot;percentDamageKey&quot;: &quot;percent_damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;healthInput&quot;: &quot;target_current_health&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_current_health&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;target_current_health&quot;
+          ]
+        },
+        &quot;Splinter Blast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;
+        },
+        &quot;Cold Embrace&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Winter&#39;s Curse&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;250/275/300/325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;percent_damage&quot;,
+        &quot;label&quot;: &quot;HEALTH BURN:&quot;,
+        &quot;value&quot;: &quot;4%/6%/8%/10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;damage_duration&quot;,
+        &quot;label&quot;: &quot;BURN DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;projectile_speed_bonus&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;tree_destruction_radius&quot;,
+        &quot;label&quot;: &quot;TREE DESTRUCTION RADIUS:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;attack_point&quot;,
+        &quot;label&quot;: &quot;ATTACK POINT:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;max_attacks&quot;,
+        &quot;label&quot;: &quot;MAX ATTACKS:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Arctic Burn&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;projectile_max_time&quot;,
+        &quot;label&quot;: &quot;PROJECTILE MAX TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;split_radius&quot;,
+        &quot;label&quot;: &quot;SHATTER RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;bonus_movespeed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;-28/-32/-36/-40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;movespeed_slow_tooltip&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;28%/32%/36%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;secondary_projectile_speed&quot;,
+        &quot;label&quot;: &quot;SECONDARY PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Splinter Blast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;heal_additive&quot;,
+        &quot;label&quot;: &quot;BASE HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;40/45/50/55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;heal_percentage&quot;,
+        &quot;label&quot;: &quot;MAX HP HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;2.25%/3%/3.75%/4.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;shard_splinter_range&quot;,
+        &quot;label&quot;: &quot;SHARD SPLINTER RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Cold Embrace&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;50/65/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;MINIMUM DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;max_duration&quot;,
+        &quot;label&quot;: &quot;MAXIMUM DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;bonus_duration_per_hero&quot;,
+        &quot;label&quot;: &quot;BONUS DURATION PER HERO:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;bonus_duration_per_creep&quot;,
+        &quot;label&quot;: &quot;BONUS DURATION PER CREEP:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;transfer_on_death&quot;,
+        &quot;label&quot;: &quot;TRANSFER ON DEATH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;transfer_duration_pct&quot;,
+        &quot;label&quot;: &quot;TRANSFER DURATION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Winter Wyvern&quot;,
+        &quot;ability&quot;: &quot;Winter&#39;s Curse&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

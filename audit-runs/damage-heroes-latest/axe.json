@@ -373,5 +373,244 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Axe",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Berserker's Call": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "control.taunt.seconds",
+          "affects": "disable_window",
+          "reason": "嘲讽和护甲影响换血窗口，不直接造成伤害。"
+        },
+        "Battle Hunger": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Counter Helix": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": false,
+          "reason": "按一次反击螺旋触发计算，触发次数需要由使用者选择。"
+        },
+        "Culling Blade": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "One Man Army": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "armor_pct_as_strength",
+          "semanticType": "modifier.attribute_conversion.percent",
+          "affects": "survivability",
+          "stackGroup": "attribute_conversion",
+          "reason": "固定机制影响身板和输出环境，不直接造成伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Axe",
+        "ability": "Berserker's Call",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Berserker's Call",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "315",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Berserker's Call",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "12/13/14/15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Berserker's Call",
+        "key": "bonus_attack_speed",
+        "label": "ENEMY ATTACK SPEED BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Berserker's Call",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Battle Hunger",
+        "key": "slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "18/22/26/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Battle Hunger",
+        "key": "speed_bonus",
+        "label": "SPEED BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Battle Hunger",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700/775/850/925",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Battle Hunger",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Counter Helix",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Counter Helix",
+        "key": "trigger_attacks",
+        "label": "ATTACKS TO HELIX:",
+        "value": "7/6/5/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Counter Helix",
+        "key": "helix_lifesteal",
+        "label": "HELIX LIFESTEAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "speed_bonus",
+        "label": "KILL MOVE SPEED BONUS:",
+        "value": "20/25/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "armor_bonus",
+        "label": "KILL ARMOR BONUS:",
+        "value": "10/15/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "speed_duration",
+        "label": "KILL BUFF DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "speed_aoe",
+        "label": "KILL BUFF RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "charge_speed",
+        "label": "CHARGE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "armor_per_stack",
+        "label": "ARMOR PER STACK:",
+        "value": "1/1.5/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "Culling Blade",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "One Man Army",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Axe",
+        "ability": "One Man Army",
+        "key": "bonus_linger_duration",
+        "label": "BONUS LINGER DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

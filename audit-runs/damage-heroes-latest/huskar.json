@@ -121,7 +121,7 @@
       "name": "Inner Fire",
       "displayName": "心炎（Inner Fire）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -176,7 +176,7 @@
       "name": "Burning Spear",
       "displayName": "沸血之矛（Burning Spear）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -236,10 +236,10 @@
       "name": "Berserker's Blood",
       "displayName": "狂战士之血（Berserker's Blood）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -273,9 +273,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -284,7 +284,7 @@
       "name": "Life Break",
       "displayName": "牺牲（Life Break）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
@@ -338,5 +338,433 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Huskar",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Inner Fire": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        },
+        "Burning Spear": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "burn_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Berserker's Blood": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "maximum_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Blood Magic": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Life Break": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "health_damage",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "health_cost",
+        "label": "HEALTH COST:",
+        "value": "75/100/125/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "disarm_duration",
+        "label": "DURATION:",
+        "value": "1.5/2/2.5/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK TO:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "min_knockback_distance",
+        "label": "MIN KNOCKBACK DISTANCE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "min_knockback_duration",
+        "label": "MIN KNOCKBACK DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "movement_slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "hero_damage_heal_pct",
+        "label": "HERO DAMAGE AS HEAL:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "creep_damage_heal_pct",
+        "label": "NON-HERO DAMAGE AS HEAL:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Inner Fire",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Burning Spear",
+        "key": "max_health_cost",
+        "label": "MAX HEALTH COST:",
+        "value": "2%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Burning Spear",
+        "key": "burn_damage_max_pct",
+        "label": "MAX HEALTH BURN:",
+        "value": "0.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Burning Spear",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Burning Spear",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Burning Spear",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "maximum_health_regen",
+        "label": "MAX STR REGEN:",
+        "value": "25%/40%/55%/70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "aura_radius",
+        "label": "AURA RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "aura_effectiveness",
+        "label": "AURA EFFECTIVENESS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "maximum_magic_resist",
+        "label": "MAX MAGIC RESIST:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "hp_threshold_max",
+        "label": "HP FOR MAX BONUS:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "activatable",
+        "label": "ACTIVATABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "activation_healthcost_pct",
+        "label": "CURRENT HP COST:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "activation_cooldown",
+        "label": "COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "activation_delay",
+        "label": "CAUTERIZE DELAY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "activation_heal_pct_per_debuff",
+        "label": "MAX HP HEAL PER DEBUFF:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Berserker's Blood",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "health_cost_percent",
+        "label": "HEALTH COST PERCENT:",
+        "value": "0.32/0.38/0.44",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "charge_speed",
+        "label": "CHARGE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "tooltip_health_damage",
+        "label": "DAMAGE DEALT:",
+        "value": "32%/38%/44%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "tooltip_health_cost_percent",
+        "label": "DAMAGE TAKEN:",
+        "value": "32%/38%/44%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "movespeed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "60/100/140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "slow_duration_tooltip",
+        "label": "SLOW DURATION:",
+        "value": "3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "taunt_duration",
+        "label": "TAUNT DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "cast_range_bonus",
+        "label": "CAST RANGE BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "splash_radius",
+        "label": "SPLASH RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "life_break_heal_radius",
+        "label": "HEAL RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "life_break_heal_pct",
+        "label": "LIFE BREAK HEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "immunity_resist",
+        "label": "IMMUNITY RESIST:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Huskar",
+        "ability": "Life Break",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -121,7 +121,7 @@
       "name": "Bramble Maze",
       "displayName": "荆棘迷宫（Bramble Maze）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -183,7 +183,7 @@
       "name": "Shadow Realm",
       "displayName": "暗影之境（Shadow Realm）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -236,10 +236,10 @@
       "name": "Cursed Crown",
       "displayName": "诅咒王冠（Cursed Crown）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         80,
         90,
@@ -283,9 +283,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -294,7 +294,7 @@
       "name": "Bedlam",
       "displayName": "作祟（Bedlam）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "attack_modifier",
       "reason": "",
@@ -345,10 +345,10 @@
       "name": "Terrorize",
       "displayName": "恐吓（Terrorize）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150
       ],
@@ -385,13 +385,453 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Dark Willow",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Bramble Maze": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_tick",
+          "durationKey": "placement_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Shadow Realm": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "max_damage_duration",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Cursed Crown": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Bedlam": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "attack_damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "hero_attack_damage",
+            "attack_count"
+          ],
+          "defaultAttackCount": 1,
+          "defaultIncluded": false
+        },
+        "Pixie Dust": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Terrorize": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "placement_range",
+        "label": "PLACEMENT RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "placement_count",
+        "label": "PLACEMENT COUNT:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "extra_brambles_placement_duration",
+        "label": "EXTRA BRAMBLES PLACEMENT DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "latch_duration",
+        "label": "LATCH ROOT DURATION:",
+        "value": "1/1.5/2/2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "latch_range",
+        "label": "BRAMBLE LATCH RADIUS:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "spell_amp",
+        "label": "SPELL AMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "latch_creation_interval",
+        "label": "LATCH CREATION INTERVAL:",
+        "value": "0.075",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "latch_creation_delay",
+        "label": "LATCH CREATION DELAY:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "initial_creation_delay",
+        "label": "INITIAL CREATION DELAY:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000/1100/1200/1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bramble Maze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "fade_time",
+        "label": "FADE TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "damage",
+        "label": "MAX DAMAGE:",
+        "value": "120/200/280/360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "aura_radius",
+        "label": "AURA RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "aura_linger",
+        "label": "AURA LINGER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "aura_damage_pct",
+        "label": "AURA DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Shadow Realm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "delay",
+        "label": "DELAY:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.5/1.8/2.1/2.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "stun_radius",
+        "label": "EFFECT RADIUS:",
+        "value": "360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "accumulated_damage_pct",
+        "label": "ACCUMULATED DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "accumulated_damage_pct_ally",
+        "label": "ACCUMULATED DAMAGE PCT ALLY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Cursed Crown",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "attack_interval",
+        "label": "ATTACK INTERVAL:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "attack_radius",
+        "label": "ATTACK RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "attack_targets",
+        "label": "ATTACK TARGETS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "roaming_radius",
+        "label": "ROAMING RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "roaming_seconds_per_rotation",
+        "label": "ROAMING SECONDS PER ROTATION:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "roaming_duration",
+        "label": "ROAMING DURATION:",
+        "value": "5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "target_count",
+        "label": "TARGET COUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "travel_speed",
+        "label": "TRAVEL SPEED:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "unit_targetable",
+        "label": "UNIT TARGETABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "damage_reduction_pct",
+        "label": "DAMAGE REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Bedlam",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Pixie Dust",
+        "key": "hp_regen_amp",
+        "label": "HP REGEN AMP:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Pixie Dust",
+        "key": "mana_regen_amp",
+        "label": "MANA REGEN AMP:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Pixie Dust",
+        "key": "hp_regen_amp_out_of_world",
+        "label": "HP REGEN AMP OUT OF WORLD:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Pixie Dust",
+        "key": "mana_regen_amp_out_of_world",
+        "label": "MANA REGEN AMP OUT OF WORLD:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "destination_travel_speed",
+        "label": "DESTINATION TRAVEL SPEED:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "destination_radius",
+        "label": "RADIUS:",
+        "value": "400/450/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "destination_status_duration",
+        "label": "FEAR DURATION:",
+        "value": "2.8/3/3.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "return_travel_speed",
+        "label": "RETURN TRAVEL SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "starting_height",
+        "label": "STARTING HEIGHT:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "telegraph_to_enemies",
+        "label": "TELEGRAPH TO ENEMIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dark Willow",
+        "ability": "Terrorize",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

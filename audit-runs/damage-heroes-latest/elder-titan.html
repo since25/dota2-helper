@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>上古巨神（Elder Titan）</h1>
-        <div class="muted">Elder Titan · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Elder Titan · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,373 @@
       </div>
       <a href="./elder-titan.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>cast_time</code></td>
+      <td>CAST TIME:</td>
+      <td>1.7</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>475</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>initial_stun_duration</code></td>
+      <td>INITIAL STUN DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>wake_damage_limit</code></td>
+      <td>WAKEUP DAMAGE THRESHOLD:</td>
+      <td>100/150/200/250</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>can_swap_places</code></td>
+      <td>CAN SWAP PLACES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Stomp</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>buff_duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>controllable</code></td>
+      <td>CONTROLLABLE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>move_pct_creeps</code></td>
+      <td>BONUS SPEED (CREEPS):</td>
+      <td>1.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>move_pct_heroes</code></td>
+      <td>BONUS SPEED (HEROES):</td>
+      <td>4%/5%/6%/7%</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>damage_creeps</code></td>
+      <td>BONUS DAMAGE (CREEPS):</td>
+      <td>3/7/11/15</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>damage_heroes</code></td>
+      <td>BONUS DAMAGE (HEROES):</td>
+      <td>17/38/59/80</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>armor_creeps</code></td>
+      <td>ARMOR CREEPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>armor_heroes</code></td>
+      <td>ARMOR HEROES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>move_pct_cap</code></td>
+      <td>MOVE PCT CAP:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>immunity_resist</code></td>
+      <td>IMMUNITY RESIST:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Astral Spirit</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Natural Order</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Natural Order</td>
+      <td><code>magic_resistance_pct</code></td>
+      <td>BASE RESIST REDUCTION:</td>
+      <td>40%/60%/80%/100%</td>
+    </tr>
+  
+    <tr>
+      <td>Momentum</td>
+      <td><code>armor_from_movespeed</code></td>
+      <td>BONUS SPEED TO ARMOR:</td>
+      <td>3.6%</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>crack_time</code></td>
+      <td>IMPLODE DELAY:</td>
+      <td>2.7182</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>crack_width</code></td>
+      <td>CRACK WIDTH:</td>
+      <td>315</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>crack_distance</code></td>
+      <td>CRACK LENGTH:</td>
+      <td>2400</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>30%/40%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>damage_pct</code></td>
+      <td>MAX HP AS DAMAGE:</td>
+      <td>34%/42%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>vision_width</code></td>
+      <td>VISION WIDTH:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>vision_interval</code></td>
+      <td>VISION INTERVAL:</td>
+      <td>0.22</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>vision_step</code></td>
+      <td>VISION STEP:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>total_steps</code></td>
+      <td>TOTAL STEPS:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Splitter</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Elder Titan&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Echo Stomp&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;stomp_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;sleep_duration&quot;
+    },
+    &quot;Astral Spirit&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;pass_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;spirit_duration&quot;
+    },
+    &quot;Natural Order&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;armor_reduction_pct&quot;,
+      &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Move Astral Spirit&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Momentum&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Earth Splitter&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Return Astral Spirit&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +495,7 @@
           <div class="muted">Echo Stomp · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +548,7 @@
           <div class="muted">Astral Spirit · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +601,7 @@
           <div class="muted">Natural Order · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +640,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: armor_reduction</div><div><code>affects</code>: physical_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +654,7 @@
           <div class="muted">Earth Splitter · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +693,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +825,7 @@
       &quot;name&quot;: &quot;Echo Stomp&quot;,
       &quot;displayName&quot;: &quot;回音重踏（Echo Stomp）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,7 +880,7 @@
       &quot;name&quot;: &quot;Astral Spirit&quot;,
       &quot;displayName&quot;: &quot;灵体游魂（Astral Spirit）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -558,10 +929,10 @@
       &quot;name&quot;: &quot;Natural Order&quot;,
       &quot;displayName&quot;: &quot;自然秩序（Natural Order）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -595,9 +966,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -606,10 +977,10 @@
       &quot;name&quot;: &quot;Earth Splitter&quot;,
       &quot;displayName&quot;: &quot;裂地沟壑（Earth Splitter）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125,
         175,
@@ -648,15 +1019,396 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Elder Titan&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Echo Stomp&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;stomp_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;sleep_duration&quot;
+        },
+        &quot;Astral Spirit&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;pass_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;spirit_duration&quot;
+        },
+        &quot;Natural Order&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;armor_reduction_pct&quot;,
+          &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Move Astral Spirit&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Momentum&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Earth Splitter&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Return Astral Spirit&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;cast_time&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;475&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;initial_stun_duration&quot;,
+        &quot;label&quot;: &quot;INITIAL STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;wake_damage_limit&quot;,
+        &quot;label&quot;: &quot;WAKEUP DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;100/150/200/250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;can_swap_places&quot;,
+        &quot;label&quot;: &quot;CAN SWAP PLACES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Echo Stomp&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;controllable&quot;,
+        &quot;label&quot;: &quot;CONTROLLABLE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;move_pct_creeps&quot;,
+        &quot;label&quot;: &quot;BONUS SPEED (CREEPS):&quot;,
+        &quot;value&quot;: &quot;1.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;move_pct_heroes&quot;,
+        &quot;label&quot;: &quot;BONUS SPEED (HEROES):&quot;,
+        &quot;value&quot;: &quot;4%/5%/6%/7%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;damage_creeps&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE (CREEPS):&quot;,
+        &quot;value&quot;: &quot;3/7/11/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;damage_heroes&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE (HEROES):&quot;,
+        &quot;value&quot;: &quot;17/38/59/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;armor_creeps&quot;,
+        &quot;label&quot;: &quot;ARMOR CREEPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;armor_heroes&quot;,
+        &quot;label&quot;: &quot;ARMOR HEROES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;move_pct_cap&quot;,
+        &quot;label&quot;: &quot;MOVE PCT CAP:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;immunity_resist&quot;,
+        &quot;label&quot;: &quot;IMMUNITY RESIST:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Astral Spirit&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Natural Order&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Natural Order&quot;,
+        &quot;key&quot;: &quot;magic_resistance_pct&quot;,
+        &quot;label&quot;: &quot;BASE RESIST REDUCTION:&quot;,
+        &quot;value&quot;: &quot;40%/60%/80%/100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Momentum&quot;,
+        &quot;key&quot;: &quot;armor_from_movespeed&quot;,
+        &quot;label&quot;: &quot;BONUS SPEED TO ARMOR:&quot;,
+        &quot;value&quot;: &quot;3.6%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;crack_time&quot;,
+        &quot;label&quot;: &quot;IMPLODE DELAY:&quot;,
+        &quot;value&quot;: &quot;2.7182&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;crack_width&quot;,
+        &quot;label&quot;: &quot;CRACK WIDTH:&quot;,
+        &quot;value&quot;: &quot;315&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;crack_distance&quot;,
+        &quot;label&quot;: &quot;CRACK LENGTH:&quot;,
+        &quot;value&quot;: &quot;2400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;MAX HP AS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;34%/42%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;vision_width&quot;,
+        &quot;label&quot;: &quot;VISION WIDTH:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;vision_interval&quot;,
+        &quot;label&quot;: &quot;VISION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.22&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;vision_step&quot;,
+        &quot;label&quot;: &quot;VISION STEP:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;total_steps&quot;,
+        &quot;label&quot;: &quot;TOTAL STEPS:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Elder Titan&quot;,
+        &quot;ability&quot;: &quot;Earth Splitter&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

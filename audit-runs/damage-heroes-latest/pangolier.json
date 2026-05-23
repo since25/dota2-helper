@@ -121,10 +121,10 @@
       "name": "Swashbuckle",
       "displayName": "虚张声势（Swashbuckle）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "repeated_trigger",
+      "reason": "每次刺击独立造成伤害，实际总量取决于命中刺击次数。",
       "manaCostByAbilityLevel": [
         75,
         80,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Swashbuckle:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Swashbuckle:repeated_trigger:damage",
+          "kind": "repeated_trigger",
           "growthKind": "non_growth",
           "damageType": "Physical",
           "label": "damage",
@@ -151,24 +151,21 @@
             125
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "triggerCount * damage",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "runtime_trigger_count_times_damage"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              0.6,
-              0.6,
-              0.6,
-              0.6
-            ]
+            "triggerCountInput": "strike_count"
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "repeated_trigger",
+          "reason": "每次刺击独立造成伤害，实际总量取决于命中刺击次数。",
+          "caveats": [
+            "需要输入实际触发次数，不能默认按满额命中计算。"
+          ]
         }
       ]
     },
@@ -176,7 +173,7 @@
       "name": "Shield Crash",
       "displayName": "甲盾冲击（Shield Crash）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,10 +228,10 @@
       "name": "Lucky Shot",
       "displayName": "幸运一击（Lucky Shot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -268,9 +265,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -279,10 +276,10 @@
       "name": "Roll Up",
       "displayName": "卷土重来（Roll Up）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -317,9 +314,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -328,10 +325,10 @@
       "name": "Rolling Thunder",
       "displayName": "地雷滚滚（Rolling Thunder）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "reason": "滚动碰撞可多次命中，实际总量取决于碰撞次数。",
       "manaCostByAbilityLevel": [
         100,
         125,
@@ -366,7 +363,7 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "move_speed"
+              "collision_count"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -374,13 +371,626 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "reason": "滚动碰撞可多次命中，实际总量取决于碰撞次数。",
           "caveats": [
-            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+            "滚动碰撞可多次命中，实际总量取决于碰撞次数。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Pangolier",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Swashbuckle": {
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "damageKey": "damage",
+          "triggerCountInput": "strike_count",
+          "semanticType": "damage.instant",
+          "conditionInputs": [
+            "strike_count"
+          ],
+          "reason": "每次刺击独立造成伤害，实际总量取决于命中刺击次数。"
+        },
+        "Shield Crash": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Lucky Shot": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "armor",
+          "semanticType": "modifier.armor_reduction.flat",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Roll Up": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Rolling Thunder": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "dmg",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "collision_count"
+          ],
+          "conditionInputs": [
+            "collision_count"
+          ],
+          "reason": "滚动碰撞可多次命中，实际总量取决于碰撞次数。"
+        },
+        "Stop Rolling": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "End Roll Up": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Fortune Favors the Bold": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "dash_range",
+        "label": "DASH RANGE:",
+        "value": "575/650/725/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "range",
+        "label": "SLASH RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "attack_damage",
+        "label": "ATTACK DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "dash_speed",
+        "label": "DASH SPEED:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "attack_interval",
+        "label": "ATTACK INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "start_radius",
+        "label": "SLASH WIDTH:",
+        "value": "155",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "155",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "strikes",
+        "label": "STRIKES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "procs_onhit_effects",
+        "label": "PROCS ONHIT EFFECTS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "slow_percent",
+        "label": "SLOW:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "damage_penalty",
+        "label": "DAMAGE PENALTY:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "575/650/725/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Swashbuckle",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "base_shield",
+        "label": "BASE SHIELD:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "hero_shield",
+        "label": "BARRIER:",
+        "value": "60/120/180/240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "can_double_jump",
+        "label": "CAN DOUBLE JUMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "min_damage_increase_pct",
+        "label": "MIN DAMAGE INCREASE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "max_damage_increase_pct",
+        "label": "MAX DAMAGE INCREASE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "max_barrier_increase_pct_tooltip",
+        "label": "MAX BARRIER INCREASE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "jump_duration",
+        "label": "JUMP DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "jump_duration_gyroshell",
+        "label": "JUMP DURATION GYROSHELL:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "jump_height",
+        "label": "JUMP HEIGHT:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "jump_height_gyroshell",
+        "label": "JUMP HEIGHT GYROSHELL:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "jump_horizontal_distance",
+        "label": "JUMP HORIZONTAL DISTANCE:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "scepter_damage_outgoing_tooltip",
+        "label": "SCEPTER DAMAGE OUTGOING TOOLTIP:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Shield Crash",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Lucky Shot",
+        "key": "chance_pct",
+        "label": "CHANCE:",
+        "value": "17%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Lucky Shot",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3.5/4/4.5/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Lucky Shot",
+        "key": "attack_slow",
+        "label": "ATTACK SPEED REDUCTION:",
+        "value": "40/80/120/160",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "cast_time_tooltip",
+        "label": "CAST TIME TOOLTIP:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0.05",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "forward_move_speed",
+        "label": "FORWARD MOVE SPEED:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "turn_rate_boosted",
+        "label": "TURN RATE BOOSTED:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "hit_radius",
+        "label": "HIT RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "bounce_duration",
+        "label": "BOUNCE DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1/1.25/1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "knockback_radius",
+        "label": "KNOCKBACK RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "2.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "jump_recover_time",
+        "label": "JUMP RECOVER TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "rollup_bounce_duration",
+        "label": "ROLL AWAY DURATION:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Roll Up",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "damage_pct",
+        "label": "TOTAL ATTACK DAMAGE AS DAMAGE:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "cast_time_tooltip",
+        "label": "TRANSFORM TIME:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0.05",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "forward_move_speed",
+        "label": "ROLL SPEED:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "move_speed_ramp_up_time",
+        "label": "MOVE SPEED RAMP UP TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "turn_rate_boosted",
+        "label": "TURN RATE BOOSTED:",
+        "value": "165",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "hit_radius",
+        "label": "RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "bounce_duration",
+        "label": "BOUNCE DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "knockback_radius",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "10/11/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "jump_recover_time",
+        "label": "JUMP RECOVER TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Rolling Thunder",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Fortune Favors the Bold",
+        "key": "aura_radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Pangolier",
+        "ability": "Fortune Favors the Bold",
+        "key": "chance_reduce",
+        "label": "CHANCE REDUCTION:",
+        "value": "-50%",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

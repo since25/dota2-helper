@@ -121,10 +121,10 @@
       "name": "Ensnare",
       "displayName": "诱捕（Ensnare）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         70,
         80,
@@ -168,9 +168,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -179,7 +179,7 @@
       "name": "Rip Tide",
       "displayName": "激流（Rip Tide）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -224,10 +224,10 @@
       "name": "Reel In",
       "displayName": "捕捞（Reel In）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -262,9 +262,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -273,10 +273,10 @@
       "name": "Eelskin",
       "displayName": "鳗鱼皮（Eelskin）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -307,9 +307,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -318,10 +318,10 @@
       "name": "Song of the Siren",
       "displayName": "海妖之歌（Song of the Siren）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150,
         250,
@@ -362,13 +362,326 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Naga Siren",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Mirror Image": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Ensnare": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Rip Tide": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Reel In": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Eelskin": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "evasion_per_naga",
+          "semanticType": "defense.evasion.percent",
+          "affects": "survivability",
+          "stackGroup": "evasion",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Song of the Siren": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Song of the Siren End": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "illusion_duration",
+        "label": "IMAGE DURATION:",
+        "value": "26",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "outgoing_damage",
+        "label": "OUTGOING DAMAGE:",
+        "value": "-75/-70/-65/-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "outgoing_damage_tooltip",
+        "label": "IMAGE DAMAGE:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "incoming_damage",
+        "label": "INCOMING DAMAGE:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "tooltip_incoming_damage_total_pct",
+        "label": "IMAGE DAMAGE TAKEN:",
+        "value": "350%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "images_count",
+        "label": "IMAGE COUNT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "invuln_duration",
+        "label": "INVULN DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Mirror Image",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "2.75/3.5/4.25/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "net_speed",
+        "label": "NET SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "fake_ensnare_distance",
+        "label": "FAKE ENSNARE DISTANCE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "can_target_magic_immune",
+        "label": "CAN TARGET MAGIC IMMUNE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "does_break",
+        "label": "DOES BREAK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Ensnare",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Rip Tide",
+        "key": "hits",
+        "label": "HITS:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Rip Tide",
+        "key": "armor_reduction",
+        "label": "ARMOR REDUCTION:",
+        "value": "-2/-4/-6/-8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Rip Tide",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Rip Tide",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "pull_strength",
+        "label": "PULL STRENGTH:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "min_pull_distance",
+        "label": "MIN PULL DISTANCE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "can_target_magic_immune",
+        "label": "CAN TARGET MAGIC IMMUNE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Reel In",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Eelskin",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Song of the Siren",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "900/1150/1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Song of the Siren",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Song of the Siren",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0.55",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Song of the Siren",
+        "key": "heal_pct",
+        "label": "MAX HP REGEN PER SECOND:",
+        "value": "1%/2%/3%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Naga Siren",
+        "ability": "Song of the Siren",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

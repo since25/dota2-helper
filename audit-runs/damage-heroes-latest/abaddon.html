@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,291 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>亚巴顿（Abaddon）</h1>
-        <div class="muted">Abaddon · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Abaddon · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 3</span>
-          <span>组件 3</span>
+          <span>技能 5</span>
+          <span>组件 5</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./abaddon.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>self_damage</code></td>
+      <td>SELF DAMAGE:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>self_damage_enemy_target</code></td>
+      <td>SELF DAMAGE ENEMY TARGET:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>missile_speed</code></td>
+      <td>MISSILE SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>effect_radius</code></td>
+      <td>EFFECT RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>perform_attack</code></td>
+      <td>PERFORM ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>damage_percentage_on_perform_attack</code></td>
+      <td>DAMAGE PERCENTAGE ON PERFORM ATTACK:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>625</td>
+    </tr>
+  
+    <tr>
+      <td>Mist Coil</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>radius</code></td>
+      <td>BURST RADIUS:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>regen</code></td>
+      <td>REGEN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>absorb_to_damage</code></td>
+      <td>ABSORB TO DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>absorb_damage_aoe</code></td>
+      <td>RETURN DAMAGE RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Aphotic Shield</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>hit_count</code></td>
+      <td>HIT COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>curse_slow</code></td>
+      <td>SLOW:</td>
+      <td>10%/15%/20%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>curse_attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>tower_dps_pct</code></td>
+      <td>TOWER DPS PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of Avernus</td>
+      <td><code>curse_interval</code></td>
+      <td>CURSE INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Withering Mist</td>
+      <td><code>hp_threshold_pct</code></td>
+      <td>HP THRESHOLD PCT:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Withering Mist</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Withering Mist</td>
+      <td><code>cooldown_reduction_creeps</code></td>
+      <td>COOLDOWN REDUCTION CREEPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Withering Mist</td>
+      <td><code>cooldown_reduction_heroes</code></td>
+      <td>COOLDOWN REDUCTION HEROES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Borrowed Time</td>
+      <td><code>hp_threshold</code></td>
+      <td>HEALTH THRESHOLD:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Borrowed Time</td>
+      <td><code>immolate_tick</code></td>
+      <td>IMMOLATE TICK:</td>
+      <td>.25</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Abaddon&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed against local Dotabuff Chinese semantic snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Withering Mist&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;heal_reduction_pct&quot;,
+      &quot;semanticType&quot;: &quot;defense.regen.hp_per_second&quot;,
+      &quot;affects&quot;: &quot;enemy_healing&quot;,
+      &quot;reason&quot;: &quot;固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。&quot;
+    },
+    &quot;Mist Coil&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_heal&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。&quot;
+    },
+    &quot;Aphotic Shield&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_absorb&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。&quot;
+    },
+    &quot;Curse of Avernus&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;curse_dps&quot;,
+      &quot;durationKey&quot;: &quot;curse_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;
+      ],
+      &quot;condition&quot;: &quot;需要普攻命中目标后触发。&quot;,
+      &quot;reason&quot;: &quot;被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。&quot;
+    },
+    &quot;Borrowed Time&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;reason&quot;: &quot;回光返照将受到伤害转化为治疗，不直接造成对敌伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,9 +404,9 @@
           <div class="muted">Mist Coil · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -150,20 +430,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Mist Coil:debuff_reference:self_damage</code>
-          <div class="muted">self_damage</div>
+          <code>Mist Coil:instant_fixed:damage_heal</code>
+          <div class="muted">damage_heal</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
         </td>
-        <td>Unknown</td>
-        <td>40</td><td>-</td><td>-</td><td>-</td>
+        <td>Magical</td>
+        <td>95</td><td>170</td><td>245</td><td>320</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: self_resource</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +457,7 @@
           <div class="muted">Aphotic Shield · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -216,7 +496,7 @@
         <td></td>
         <td><div><code>durationByAbilityLevel</code>: 12 / 12 / 12 / 12</div></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +510,60 @@
           <div class="muted">Curse of Avernus · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Curse of Avernus:sustained:curse_dps</code>
+          <div class="muted">curse_dps</div>
+        </td>
+        <td>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>15</td><td>25</td><td>35</td><td>45</td>
+        <td>30 / 50 / 70 / 90</td>
+        <td><div><code>durationByAbilityLevel</code>: 2 / 2 / 2 / 2</div><div><code>condition</code>: 需要普攻命中目标后触发。</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>凋零迷雾（Withering Mist）</h2>
+          <div class="muted">Withering Mist · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -256,8 +589,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Curse of Avernus:debuff_reference:curse_attack_speed</code>
-          <div class="muted">curse_attack_speed</div>
+          <code>Withering Mist:debuff_reference:heal_reduction_pct</code>
+          <div class="muted">heal_reduction_pct</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -265,11 +598,64 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>10</td><td>20</td><td>30</td><td>40</td>
+        <td>24.5</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: enemy_healing</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>回光返照（Borrowed Time）</h2>
+          <div class="muted">Borrowed Time · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：0 / 0 / 0</span>
+        <span>冷却：85 / 75 / 65</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Borrowed Time:debuff_reference:duration</code>
+          <div class="muted">duration</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>4</td><td>5</td><td>6</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: survivability</div><div><code>affects</code>: survivability</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>回光返照将受到伤害转化为治疗，不直接造成对敌伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -401,10 +787,10 @@
       &quot;name&quot;: &quot;Mist Coil&quot;,
       &quot;displayName&quot;: &quot;迷雾缠绕（Mist Coil）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         55,
@@ -419,35 +805,30 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Mist Coil:debuff_reference:self_damage&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Mist Coil:instant_fixed:damage_heal&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;self_damage&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_heal&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            40
+            95,
+            170,
+            245,
+            320
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;countInFixedInstantTotal&quot;: true,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;self_resource&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。&quot;
           ]
         }
       ]
@@ -456,10 +837,10 @@
       &quot;name&quot;: &quot;Aphotic Shield&quot;,
       &quot;displayName&quot;: &quot;无光之盾（Aphotic Shield）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         110,
         120,
@@ -502,8 +883,10 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;reason&quot;: &quot;护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。&quot;
+          ]
         }
       ]
     },
@@ -511,24 +894,74 @@
       &quot;name&quot;: &quot;Curse of Avernus&quot;,
       &quot;displayName&quot;: &quot;魔霭诅咒（Curse of Avernus）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Curse of Avernus:debuff_reference:curse_attack_speed&quot;,
+          &quot;id&quot;: &quot;Curse of Avernus:sustained:curse_dps&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;curse_dps&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            15,
+            25,
+            35,
+            45
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            30,
+            50,
+            70,
+            90
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;duration_times_dps&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              2,
+              2,
+              2,
+              2
+            ],
+            &quot;condition&quot;: &quot;需要普攻命中目标后触发。&quot;
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Withering Mist&quot;,
+      &quot;displayName&quot;: &quot;凋零迷雾（Withering Mist）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Withering Mist:debuff_reference:heal_reduction_pct&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;curse_attack_speed&quot;,
+          &quot;label&quot;: &quot;heal_reduction_pct&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            10,
-            20,
-            30,
-            40
+            24.5
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -538,8 +971,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;attack_speed&quot;,
-            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;enemy_healing&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -548,15 +981,347 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Borrowed Time&quot;,
+      &quot;displayName&quot;: &quot;回光返照（Borrowed Time）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;回光返照将受到伤害转化为治疗，不直接造成对敌伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        0,
+        0,
+        0
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        85,
+        75,
+        65
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Borrowed Time:debuff_reference:duration&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;duration&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            4,
+            5,
+            6
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;survivability&quot;,
+            &quot;affects&quot;: &quot;survivability&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;回光返照将受到伤害转化为治疗，不直接造成对敌伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;回光返照将受到伤害转化为治疗，不直接造成对敌伤害。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Abaddon&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed against local Dotabuff Chinese semantic snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Withering Mist&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;heal_reduction_pct&quot;,
+          &quot;semanticType&quot;: &quot;defense.regen.hp_per_second&quot;,
+          &quot;affects&quot;: &quot;enemy_healing&quot;,
+          &quot;reason&quot;: &quot;固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。&quot;
+        },
+        &quot;Mist Coil&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_heal&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。&quot;
+        },
+        &quot;Aphotic Shield&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_absorb&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。&quot;
+        },
+        &quot;Curse of Avernus&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;curse_dps&quot;,
+          &quot;durationKey&quot;: &quot;curse_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;
+          ],
+          &quot;condition&quot;: &quot;需要普攻命中目标后触发。&quot;,
+          &quot;reason&quot;: &quot;被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。&quot;
+        },
+        &quot;Borrowed Time&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;reason&quot;: &quot;回光返照将受到伤害转化为治疗，不直接造成对敌伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;self_damage&quot;,
+        &quot;label&quot;: &quot;SELF DAMAGE:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;self_damage_enemy_target&quot;,
+        &quot;label&quot;: &quot;SELF DAMAGE ENEMY TARGET:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;missile_speed&quot;,
+        &quot;label&quot;: &quot;MISSILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;effect_radius&quot;,
+        &quot;label&quot;: &quot;EFFECT RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;perform_attack&quot;,
+        &quot;label&quot;: &quot;PERFORM ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;damage_percentage_on_perform_attack&quot;,
+        &quot;label&quot;: &quot;DAMAGE PERCENTAGE ON PERFORM ATTACK:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;625&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Mist Coil&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;BURST RADIUS:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;regen&quot;,
+        &quot;label&quot;: &quot;REGEN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;absorb_to_damage&quot;,
+        &quot;label&quot;: &quot;ABSORB TO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;absorb_damage_aoe&quot;,
+        &quot;label&quot;: &quot;RETURN DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Aphotic Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;hit_count&quot;,
+        &quot;label&quot;: &quot;HIT COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;curse_slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;10%/15%/20%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;curse_attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;tower_dps_pct&quot;,
+        &quot;label&quot;: &quot;TOWER DPS PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Curse of Avernus&quot;,
+        &quot;key&quot;: &quot;curse_interval&quot;,
+        &quot;label&quot;: &quot;CURSE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Withering Mist&quot;,
+        &quot;key&quot;: &quot;hp_threshold_pct&quot;,
+        &quot;label&quot;: &quot;HP THRESHOLD PCT:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Withering Mist&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Withering Mist&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_creeps&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION CREEPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Withering Mist&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_heroes&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION HEROES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Borrowed Time&quot;,
+        &quot;key&quot;: &quot;hp_threshold&quot;,
+        &quot;label&quot;: &quot;HEALTH THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Abaddon&quot;,
+        &quot;ability&quot;: &quot;Borrowed Time&quot;,
+        &quot;key&quot;: &quot;immolate_tick&quot;,
+        &quot;label&quot;: &quot;IMMOLATE TICK:&quot;,
+        &quot;value&quot;: &quot;.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

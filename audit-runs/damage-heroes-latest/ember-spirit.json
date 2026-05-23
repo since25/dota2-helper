@@ -121,7 +121,7 @@
       "name": "Searing Chains",
       "displayName": "炎阳索（Searing Chains）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -183,10 +183,10 @@
       "name": "Sleight of Fist",
       "displayName": "无影拳（Sleight of Fist）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         65,
@@ -227,9 +227,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -238,7 +238,7 @@
       "name": "Flame Guard",
       "displayName": "烈火罩（Flame Guard）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -306,7 +306,7 @@
       "name": "Activate Fire Remnant",
       "displayName": "激活残焰（Activate Fire Remnant）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -351,7 +351,7 @@
       "name": "Immolation",
       "displayName": "献祭心（Immolation）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "持续伤害缺少可确认的持续时间字段，首轮模型只作为条件伤害参考。",
@@ -398,7 +398,7 @@
       "name": "Fire Remnant",
       "displayName": "残焰（Fire Remnant）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -446,5 +446,387 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Ember Spirit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Searing Chains": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Sleight of Fist": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Flame Guard": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Activate Fire Remnant": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Immolation": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.sustained_dps",
+          "requiredInputs": [
+            "active_duration"
+          ],
+          "conditionInputs": [
+            "active_duration"
+          ],
+          "reason": "持续伤害缺少可确认的持续时间字段，首轮模型只作为条件伤害参考。"
+        },
+        "Fire Remnant": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Ember Spirit",
+        "ability": "Searing Chains",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Searing Chains",
+        "key": "unit_count",
+        "label": "UNIT COUNT:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Searing Chains",
+        "key": "remnant_chains",
+        "label": "REMNANT CHAINS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Searing Chains",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Searing Chains",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "250/350/450/550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "bonus_hero_damage",
+        "label": "BONUS HERO DAMAGE:",
+        "value": "50/90/130/170",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "attack_interval",
+        "label": "ATTACK INTERVAL:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "creep_damage_penalty",
+        "label": "CREEP DAMAGE PENALTY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "13/11/9/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "min_enemies_for_double_sleight",
+        "label": "MIN ENEMIES FOR DOUBLE SLEIGHT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "second_attack_damage_penalty",
+        "label": "SECOND ATTACK DAMAGE PENALTY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Sleight of Fist",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "passive_radius",
+        "label": "PASSIVE RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "shield_pct_absorb",
+        "label": "PERCENTAGE ABSORBED:",
+        "value": "70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "absorb_amount",
+        "label": "MAGIC BARRIER:",
+        "value": "60/140/220/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Flame Guard",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "speed_multiplier",
+        "label": "SPEED MULTIPLIER:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "charge_restore_time",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "99999",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Activate Fire Remnant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Immolation",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Immolation",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "speed_multiplier",
+        "label": "SPEED MULTIPLIER:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "shard_charge_radius",
+        "label": "CHARGE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "apply_immolation_to_remnant",
+        "label": "APPLY IMMOLATION TO REMNANT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ember Spirit",
+        "ability": "Fire Remnant",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

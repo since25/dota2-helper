@@ -2,6 +2,7 @@ const { getHeroDetails } = require('./dotaDataContext');
 const { extractAbilityDamage, valueAtLevel } = require('./damageExtractor');
 const { resolveHeroDamageModel } = require('./damageModels/resolver');
 const { localizeHeroName, localizeTerm } = require('./dotaLocalization');
+const { listItemModels, getItemModel } = require('./itemModels/registry');
 
 function roundDamage(value) {
   return Math.round(value * 100) / 100;
@@ -11,14 +12,22 @@ function physicalMultiplier(armor) {
   return 1 - (0.06 * armor) / (1 + 0.06 * Math.abs(armor));
 }
 
-function adjustDamageByType(raw, damageType, { enemyArmor = 0, enemyMagicResistancePercent = 25 } = {}) {
+function adjustDamageByType(raw, damageType, {
+  enemyArmor = 0,
+  enemyMagicResistancePercent = 25,
+  damageAmpPercent = 0,
+  spellAmpPercent = 0
+} = {}) {
+  const spellAmpMultiplier = damageType === 'Magical' ? 1 + spellAmpPercent / 100 : 1;
+  const damageAmpMultiplier = 1 + damageAmpPercent / 100;
+  const amplifiedRaw = raw * spellAmpMultiplier * damageAmpMultiplier;
   if (damageType === 'Magical') {
-    return roundDamage(raw * (1 - enemyMagicResistancePercent / 100));
+    return roundDamage(amplifiedRaw * (1 - enemyMagicResistancePercent / 100));
   }
   if (damageType === 'Physical') {
-    return roundDamage(raw * physicalMultiplier(enemyArmor));
+    return roundDamage(amplifiedRaw * physicalMultiplier(enemyArmor));
   }
-  return roundDamage(raw);
+  return roundDamage(amplifiedRaw);
 }
 
 function componentId(abilityName, component) {
@@ -80,6 +89,7 @@ function buildAbilityDamageEntry(ability) {
       totalFormula: component.totalFormula,
       countInFixedInstantTotal: component.countInFixedInstantTotal,
       formula: component.formula,
+      semantic: component.semantic,
       metadata: component.metadata,
       source: component.source || ability.modelSource || 'inferred',
       status: component.status || ability.status || 'inferred',
@@ -87,6 +97,58 @@ function buildAbilityDamageEntry(ability) {
       reason: component.reason || ability.reason || '',
       caveats: component.caveats || extracted?.caveats || []
     }))
+  };
+}
+
+function itemComponentId(itemKey, index, effect) {
+  return `${itemKey}:${effect.type}:${effect.key || effect.abilityName || index}`;
+}
+
+function itemDamageType(effect) {
+  const text = `${effect.description || ''} ${effect.label || ''}`.toLowerCase();
+  if (text.includes('physical')) return 'Physical';
+  if (text.includes('pure')) return 'Pure';
+  return 'Magical';
+}
+
+function itemKind(effect) {
+  if (effect.type === 'damage.sustained_dps' || effect.type === 'damage.damage_over_time') return 'sustained';
+  if (effect.type === 'damage.attack_proc') return 'attack_proc';
+  if (effect.type === 'damage.attribute_scaling') return 'attribute_scaling';
+  if (effect.type.startsWith('modifier.')) return 'modifier';
+  if (effect.type.startsWith('upgrade.')) return 'upgrade';
+  return 'instant_fixed';
+}
+
+function isCalculatorItemEffect(effect) {
+  return effect.type.startsWith('damage.')
+    || effect.type.startsWith('modifier.')
+    || effect.type.startsWith('upgrade.');
+}
+
+function buildItemDamageEntry(model) {
+  return {
+    key: model.key,
+    name: model.name,
+    displayName: model.name,
+    cost: model.cost,
+    quality: model.quality,
+    components: model.effects
+      .map((effect, index) => ({ effect, index }))
+      .filter(({ effect }) => isCalculatorItemEffect(effect))
+      .map(({ effect, index }) => ({
+        id: itemComponentId(model.key, index, effect),
+        itemKey: model.key,
+        kind: itemKind(effect),
+        semanticType: effect.type,
+        label: effect.label,
+        damageType: effect.type.startsWith('damage.') ? itemDamageType(effect) : 'None',
+        values: effect.values || [],
+        sourceKey: effect.key || effect.abilityName || effect.source || '',
+        source: effect.source || 'item_model',
+        description: effect.description || '',
+        status: 'implemented'
+      }))
   };
 }
 
@@ -107,7 +169,9 @@ async function getHeroDamageProfile(heroName) {
     abilities: resolveHeroDamageModel(details).abilities
       .map(buildAbilityDamageEntry)
       .filter((ability) => ability.components.length > 0),
-    items: []
+    items: listItemModels()
+      .map(buildItemDamageEntry)
+      .filter((item) => item.components.length > 0)
   };
 }
 
@@ -122,6 +186,15 @@ function findSelectedComponent(profile, selection) {
 function numericInput(value) {
   const number = Number(value);
   return Number.isFinite(number) ? number : null;
+}
+
+function firstNumeric(values) {
+  if (!Array.isArray(values)) return null;
+  for (const value of values) {
+    const number = numericInput(value);
+    if (number !== null) return number;
+  }
+  return null;
 }
 
 function boundedDuration(value, limit) {
@@ -192,6 +265,34 @@ function resolveAttackModifierDamage(component, abilityLevel, selection, profile
   };
 }
 
+function healthInputValue(selection, inputName) {
+  const byName = {
+    target_max_health: selection.targetMaxHealth,
+    target_current_health: selection.targetCurrentHealth,
+    enemy_current_health: selection.targetCurrentHealth,
+    enemy_max_health: selection.targetMaxHealth
+  };
+  return numericInput(byName[inputName]) ?? numericInput(selection.healthValue) ?? 0;
+}
+
+function attributeInputValue(selection, inputName, profile, heroLevel) {
+  const stats = profile.stats || {};
+  const levelsGained = Math.max(0, Number(heroLevel || 1) - 1);
+  const strength = Number(stats.baseStrength || 0) + Number(stats.strengthGain || 0) * levelsGained;
+  const agility = Number(stats.baseAgility || 0) + Number(stats.agilityGain || 0) * levelsGained;
+  const intelligence = Number(stats.baseIntelligence || 0) + Number(stats.intelligenceGain || 0) * levelsGained;
+  const byName = {
+    caster_strength: selection.casterStrength ?? strength,
+    hero_strength: selection.casterStrength ?? strength,
+    caster_agility: selection.casterAgility ?? agility,
+    hero_agility: selection.casterAgility ?? agility,
+    caster_intelligence: selection.casterIntelligence ?? intelligence,
+    hero_intelligence: selection.casterIntelligence ?? intelligence,
+    hero_attribute: selection.casterAttribute
+  };
+  return numericInput(byName[inputName]) ?? numericInput(selection.attributeValue) ?? 0;
+}
+
 function resolveComponentDamage(component, abilityLevel, selection, profile, heroLevel) {
   const baseValue = valueAtLevel(component.valuesByAbilityLevel || [], abilityLevel) || 0;
 
@@ -204,6 +305,75 @@ function resolveComponentDamage(component, abilityLevel, selection, profile, her
   }
 
   if (selection.valueMode === 'theoretical') {
+    if (component.kind === 'repeated_trigger') {
+      const triggerCount = numericInput(selection.triggerCount) ?? numericInput(selection.attackCount) ?? 1;
+      const bonusDamage = valueAtLevel(component.metadata?.bounceBonusDamageByAbilityLevel || [], abilityLevel) || 0;
+      return {
+        raw: roundDamage(baseValue * triggerCount + bonusDamage * Math.max(0, triggerCount - 1)),
+        formula: bonusDamage
+          ? 'triggerCount * damage + bonusDamage * (triggerCount - 1)'
+          : 'triggerCount * damage',
+        triggerCount,
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
+      };
+    }
+
+    if (component.kind === 'summon_attack') {
+      const attackCount = numericInput(selection.attackCount) ?? numericInput(selection.triggerCount) ?? 1;
+      const attackDamage = numericInput(selection.attackDamage);
+      const percentProbe = `${component.semantic?.unit || ''} ${component.totalFormula || ''} ${component.label || ''}`;
+      const isPercent = /%|percent|illusion/i.test(percentProbe);
+      const perAttack = attackDamage !== null && isPercent
+        ? attackDamage * (baseValue / 100)
+        : baseValue;
+      return {
+        raw: roundDamage(perAttack * attackCount),
+        formula: attackDamage !== null && isPercent
+          ? 'attackCount * attackDamage * summonDamagePercent'
+          : 'attackCount * summonAttackDamage',
+        attackCount,
+        attackDamage: attackDamage !== null ? attackDamage : null,
+        procDamage: perAttack,
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
+      };
+    }
+
+    if (component.kind === 'percent_health_dot') {
+      const durationLimit = valueAtLevel(component.metadata?.durationByAbilityLevel || [], abilityLevel);
+      const activeDurationSeconds = boundedDuration(selection.activeDurationSeconds, durationLimit) ?? durationLimit ?? 1;
+      const healthValue = healthInputValue(selection, component.metadata?.healthInput);
+      return {
+        raw: roundDamage(healthValue * (baseValue / 100) * activeDurationSeconds),
+        formula: 'healthInput * percentDamage * duration',
+        activeDurationSeconds,
+        durationLimitSeconds: durationLimit
+      };
+    }
+
+    if (component.kind === 'attribute_scaling') {
+      const multiplier = valueAtLevel(component.metadata?.attributeMultiplierByAbilityLevel || [], abilityLevel) || 0;
+      const attributeValue = attributeInputValue(selection, component.metadata?.attributeInput, profile, heroLevel);
+      return {
+        raw: roundDamage(baseValue + attributeValue * multiplier),
+        formula: 'baseDamage + attributeInput * attributeMultiplier',
+        attributeValue,
+        attributeMultiplier: multiplier,
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
+      };
+    }
+
+    if (component.kind === 'conditional_instant' && !selection.conditionMet) {
+      return {
+        raw: 0,
+        formula: 'condition_not_met',
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
+      };
+    }
+
     const durationLimit = valueAtLevel(component.metadata?.durationByAbilityLevel || [], abilityLevel);
     const activeDurationSeconds = component.kind === 'sustained'
       ? boundedDuration(selection.activeDurationSeconds, durationLimit)
@@ -241,6 +411,16 @@ function resolveComponentDamage(component, abilityLevel, selection, profile, her
   };
 }
 
+function resolveBasicAttackDamage(selection, profile, heroLevel) {
+  const attackCount = numericInput(selection.attackCount) ?? 1;
+  const attackDamage = numericInput(selection.attackDamage) ?? attackDamageAtLevel(profile.stats, heroLevel);
+  return {
+    raw: roundDamage(attackCount * attackDamage),
+    attackCount,
+    attackDamage
+  };
+}
+
 function addTypeTotal(byType, damageType, raw, adjusted) {
   const key = damageType || 'Unknown';
   if (!byType[key]) byType[key] = { raw: 0, adjusted: 0 };
@@ -248,17 +428,180 @@ function addTypeTotal(byType, damageType, raw, adjusted) {
   byType[key].adjusted = roundDamage(byType[key].adjusted + adjusted);
 }
 
+function findSelectedItemComponent(selection) {
+  const model = getItemModel(selection.itemKey);
+  if (!model) return null;
+  const entry = buildItemDamageEntry(model);
+  const component = entry.components.find((itemComponent) => itemComponent.id === selection.componentId);
+  if (!component) return null;
+  return { item: entry, component };
+}
+
+function resolveItemModifier(component) {
+  const value = firstNumeric(component.values) || 0;
+  if (component.semanticType === 'modifier.armor.flat') return { enemyArmorDelta: value };
+  if (component.semanticType === 'modifier.magic_resistance.percent') return { enemyMagicResistanceDelta: value };
+  if (component.semanticType === 'modifier.damage_amp.percent') return { damageAmpPercent: Math.abs(value) };
+  if (component.semanticType === 'modifier.spell_amp.percent') return { spellAmpPercent: Math.abs(value) };
+  if (component.semanticType === 'modifier.attack_damage.flat') return { attackDamageBonus: value };
+  return {};
+}
+
+function collectItemModifiers(selections) {
+  const modifiers = {
+    enemyArmorDelta: 0,
+    enemyMagicResistanceDelta: 0,
+    damageAmpPercent: 0,
+    spellAmpPercent: 0,
+    attackDamageBonus: 0,
+    applied: []
+  };
+  for (const selection of selections) {
+    if (selection.sourceType !== 'item') continue;
+    const match = findSelectedItemComponent(selection);
+    if (!match || match.component.kind !== 'modifier') continue;
+    const modifier = resolveItemModifier(match.component);
+    modifiers.enemyArmorDelta += modifier.enemyArmorDelta || 0;
+    modifiers.enemyMagicResistanceDelta += modifier.enemyMagicResistanceDelta || 0;
+    modifiers.damageAmpPercent += modifier.damageAmpPercent || 0;
+    modifiers.spellAmpPercent += modifier.spellAmpPercent || 0;
+    modifiers.attackDamageBonus += modifier.attackDamageBonus || 0;
+    modifiers.applied.push({
+      itemKey: match.item.key,
+      itemName: match.item.name,
+      componentId: match.component.id,
+      label: match.component.label,
+      semanticType: match.component.semanticType,
+      value: firstNumeric(match.component.values) || 0
+    });
+  }
+  return modifiers;
+}
+
+function resolveItemDamage(component, selection, profile, heroLevel, modifiers) {
+  const value = numericInput(selection.value) ?? firstNumeric(component.values) ?? 0;
+  if (component.kind === 'sustained') {
+    const duration = numericInput(selection.activeDurationSeconds) ?? 1;
+    return {
+      raw: roundDamage(value * Math.max(0, duration)),
+      formula: 'activeDurationSeconds * itemDamagePerSecond',
+      activeDurationSeconds: Math.max(0, duration)
+    };
+  }
+  if (component.kind === 'attack_proc') {
+    const triggerCount = numericInput(selection.triggerCount) ?? numericInput(selection.attackCount) ?? 1;
+    return {
+      raw: roundDamage(value * Math.max(0, triggerCount)),
+      formula: 'triggerCount * itemProcDamage',
+      triggerCount: Math.max(0, triggerCount)
+    };
+  }
+  if (component.kind === 'attribute_scaling') {
+    const attributeValue = numericInput(selection.attributeValue)
+      ?? numericInput(selection.casterAttribute)
+      ?? attributeInputValue(selection, 'hero_attribute', profile, heroLevel);
+    return {
+      raw: roundDamage(value * attributeValue),
+      formula: 'attributeInput * itemAttributeMultiplier',
+      attributeValue,
+      attributeMultiplier: value
+    };
+  }
+  if (component.kind === 'modifier' || component.kind === 'upgrade') {
+    return {
+      raw: 0,
+      formula: component.kind === 'modifier' ? 'item_modifier_applied_globally' : 'item_upgrade_condition',
+      modifierOnly: true
+    };
+  }
+  return {
+    raw: value,
+    formula: 'item_single_value'
+  };
+}
+
 async function calculateDamageCombo(request) {
   const profile = await getHeroDamageProfile(request.hero);
+  const itemModifiers = collectItemModifiers(request.selectedComponents || []);
   const params = {
-    enemyArmor: Number(request.enemyArmor ?? 0),
-    enemyMagicResistancePercent: Number(request.enemyMagicResistancePercent ?? 25)
+    enemyArmor: Number(request.enemyArmor ?? 0) + itemModifiers.enemyArmorDelta,
+    enemyMagicResistancePercent: Number(request.enemyMagicResistancePercent ?? 25) + itemModifiers.enemyMagicResistanceDelta,
+    damageAmpPercent: itemModifiers.damageAmpPercent,
+    spellAmpPercent: itemModifiers.spellAmpPercent
   };
   const components = [];
   const warnings = [];
   const byType = {};
 
   for (const selection of request.selectedComponents || []) {
+    if (selection.sourceType === 'basic_attack') {
+      const heroLevel = Number(request.heroLevel || 1);
+      const damage = resolveBasicAttackDamage(selection, profile, heroLevel);
+      damage.attackDamage = roundDamage(damage.attackDamage + itemModifiers.attackDamageBonus);
+      damage.raw = roundDamage(damage.attackCount * damage.attackDamage);
+      const raw = damage.raw;
+      const adjusted = adjustDamageByType(raw, 'Physical', params);
+      addTypeTotal(byType, 'Physical', raw, adjusted);
+      components.push({
+        name: 'Basic Attack',
+        displayName: '普攻',
+        kind: 'basic_attack',
+        growthKind: 'attack',
+        damageType: 'Physical',
+        raw,
+        adjusted,
+        abilityLevel: 0,
+        formula: 'attackCount * attackDamage',
+        activeDurationSeconds: null,
+        durationLimitSeconds: null,
+        attackCount: damage.attackCount,
+        attackDamage: damage.attackDamage,
+        procDamage: null,
+        attackFactorPct: null,
+        caveats: []
+      });
+      continue;
+    }
+
+    if (selection.sourceType === 'item') {
+      const match = findSelectedItemComponent(selection);
+      if (!match) {
+        warnings.push(`未找到物品组件: ${selection.componentId}`);
+        continue;
+      }
+      const damage = resolveItemDamage(match.component, selection, profile, Number(request.heroLevel || 1), itemModifiers);
+      const raw = roundDamage(damage.raw);
+      const adjusted = match.component.damageType === 'None'
+        ? 0
+        : adjustDamageByType(raw, match.component.damageType, params);
+      if (match.component.damageType !== 'None') {
+        addTypeTotal(byType, match.component.damageType, raw, adjusted);
+      }
+      components.push({
+        name: match.item.key,
+        displayName: match.item.name,
+        itemKey: match.item.key,
+        componentId: match.component.id,
+        kind: match.component.kind,
+        growthKind: 'item',
+        damageType: match.component.damageType,
+        raw,
+        adjusted,
+        abilityLevel: 0,
+        formula: damage.formula,
+        activeDurationSeconds: damage.activeDurationSeconds ?? null,
+        durationLimitSeconds: null,
+        triggerCount: damage.triggerCount,
+        attributeValue: damage.attributeValue,
+        attributeMultiplier: damage.attributeMultiplier,
+        semanticType: match.component.semanticType,
+        caveats: match.component.kind === 'upgrade'
+          ? ['神杖/魔晶本身是条件升级入口，英雄专属技能变化由英雄模型决定。']
+          : []
+      });
+      continue;
+    }
+
     const match = findSelectedComponent(profile, selection);
     if (!match) {
       warnings.push(`未找到组件: ${selection.componentId}`);
@@ -290,6 +633,9 @@ async function calculateDamageCombo(request) {
       attackDamage: damage.attackDamage,
       procDamage: damage.procDamage,
       attackFactorPct: damage.attackFactorPct,
+      triggerCount: damage.triggerCount,
+      attributeValue: damage.attributeValue,
+      attributeMultiplier: damage.attributeMultiplier,
       caveats: component.caveats || []
     });
   }
@@ -300,8 +646,11 @@ async function calculateDamageCombo(request) {
   return {
     hero: profile.hero,
     heroLevel: Number(request.heroLevel || 1),
-    enemyArmor: params.enemyArmor,
-    enemyMagicResistancePercent: params.enemyMagicResistancePercent,
+    enemyArmor: Number(request.enemyArmor ?? 0),
+    enemyMagicResistancePercent: Number(request.enemyMagicResistancePercent ?? 25),
+    effectiveEnemyArmor: params.enemyArmor,
+    effectiveEnemyMagicResistancePercent: params.enemyMagicResistancePercent,
+    itemModifiers,
     totals: {
       raw,
       adjusted,

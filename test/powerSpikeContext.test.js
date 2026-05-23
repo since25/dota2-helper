@@ -59,6 +59,39 @@ test('buildHeroPowerSpikes does not count Disruptor damage threshold as burst', 
   assert.ok(level6.situationalSkills.some((skill) => skill.name === 'Static Storm'));
 });
 
+test('buildHeroPowerSpikes excludes Ogre Magi shard Fire Shield from level 3 fixed burst', async () => {
+  const spikes = buildHeroPowerSpikes(await getHeroDetails('Ogre Magi'));
+  const level3 = spikes.find((spike) => spike.level === 3);
+
+  assert.ok(level3);
+  assert.equal(level3.fixedInstantDamage.raw, 130);
+  assert.deepEqual(level3.fixedInstantDamage.skills.map((skill) => skill.name), ['Fireblast']);
+  assert.ok(level3.situationalDamageRefs.some((skill) => skill.name === 'Fire Shield'));
+});
+
+test('buildHeroPowerSpikes excludes Aghanim unlocked abilities from default fixed burst', async () => {
+  const expectations = [
+    ['Techies', 'Minefield Sign'],
+    ['Tusk', 'Ice Shards'],
+    ['Tusk', 'Walrus Kick'],
+    ['Earth Spirit', 'Enchant Remnant'],
+    ['Hoodwink', "Hunter's Boomerang"],
+    ['Keeper of the Light', 'Will-O-Wisp'],
+    ['Kunkka', 'Tidal Wave'],
+    ['Magnus', 'Horn Toss'],
+    ['Tinker', 'Warp Flare']
+  ];
+
+  for (const [hero, abilityName] of expectations) {
+    const spikes = buildHeroPowerSpikes(await getHeroDetails(hero));
+    const fixedNames = spikes.flatMap((spike) => spike.fixedInstantDamage.skills.map((skill) => skill.name));
+    const situationalNames = spikes.flatMap((spike) => spike.situationalDamageRefs.map((skill) => skill.name));
+
+    assert.ok(!fixedNames.includes(abilityName), `${hero}.${abilityName} should not be fixed burst`);
+    assert.ok(situationalNames.includes(abilityName), `${hero}.${abilityName} should remain situational`);
+  }
+});
+
 test('buildHeroPowerSpikes counts Sand King level 5 direct burst without sustained or conditional damage', async () => {
   const spikes = buildHeroPowerSpikes(await getHeroDetails('Sand King'));
   const level5 = spikes.find((spike) => spike.level === 5);

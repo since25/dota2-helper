@@ -121,7 +121,7 @@
       "name": "Laser",
       "displayName": "激光（Laser）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "March of the Machines",
       "displayName": "机械行军（March of the Machines）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "repeated_trigger",
+      "reason": "机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。",
       "manaCostByAbilityLevel": [
         100,
         120,
@@ -194,8 +194,8 @@
       ],
       "components": [
         {
-          "id": "March of the Machines:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "March of the Machines:repeated_trigger:damage",
+          "kind": "repeated_trigger",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "damage",
@@ -206,24 +206,21 @@
             40
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "triggerCount * damage",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "runtime_trigger_count_times_damage"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              6,
-              6,
-              6,
-              6
-            ]
+            "triggerCountInput": "machine_hit_count"
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "repeated_trigger",
+          "reason": "机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。",
+          "caveats": [
+            "需要输入实际触发次数，不能默认按满额命中计算。"
+          ]
         }
       ]
     },
@@ -231,7 +228,7 @@
       "name": "Warp Flare",
       "displayName": "折跃耀光（Warp Flare）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -274,10 +271,10 @@
       "name": "Keen Conveyance",
       "displayName": "基恩载具（Keen Conveyance）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "基恩载具是传送机动能力，不直接造成伤害。",
       "manaCostByAbilityLevel": [
         75
       ],
@@ -286,13 +283,13 @@
       ],
       "components": [
         {
-          "id": "Keen Conveyance:debuff_reference:abilitycastrange",
+          "id": "Keen Conveyance:debuff_reference:abilitychanneltime",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "abilitychanneltime",
           "valuesByAbilityLevel": [
-            0
+            3
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -302,8 +299,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "",
+            "affects": "mobility_timing",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -312,13 +309,499 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "基恩载具是传送机动能力，不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "基恩载具是传送机动能力，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rearm",
+      "displayName": "再装填（Rearm）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        100,
+        150,
+        200
+      ],
+      "cooldownByAbilityLevel": [
+        5.5,
+        5,
+        4.5
+      ],
+      "components": [
+        {
+          "id": "Rearm:debuff_reference:abilitychanneltime",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "abilitychanneltime",
+          "valuesByAbilityLevel": [
+            2.75,
+            2,
+            1.25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "combo_reset",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。",
+          "caveats": [
+            "再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eureka!",
+      "displayName": "尤里卡！（Eureka!）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "尤里卡提供冷却缩减换算，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Eureka!:debuff_reference:int_per_one_cdr",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "int_per_one_cdr",
+          "valuesByAbilityLevel": [
+            3
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "cooldown_reduction",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "尤里卡提供冷却缩减换算，不直接造成伤害。",
+          "caveats": [
+            "尤里卡提供冷却缩减换算，不直接造成伤害。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Tinker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed laser, march, warp flare, conveyance, and rearm fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Laser": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "laser_damage",
+          "durationKey": "duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "March of the Machines": {
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "damageKey": "damage",
+          "triggerCountInput": "machine_hit_count",
+          "semanticType": "damage.stack_scaling",
+          "conditionInputs": [
+            "machine_hit_count"
+          ],
+          "reason": "机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。"
+        },
+        "Warp Flare": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "debuff_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Keen Conveyance": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitychanneltime",
+          "semanticType": "window.buff_duration.seconds",
+          "affects": "mobility_timing",
+          "reason": "基恩载具是传送机动能力，不直接造成伤害。"
+        },
+        "Rearm": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitychanneltime",
+          "semanticType": "resource.cooldown",
+          "affects": "combo_reset",
+          "reason": "再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。"
+        },
+        "Eureka!": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "int_per_one_cdr",
+          "semanticType": "resource.cooldown",
+          "affects": "cooldown_reduction",
+          "reason": "尤里卡提供冷却缩减换算，不直接造成伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "miss_rate",
+        "label": "BLIND MISS RATE:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "radius_explosion",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "splash_pct",
+        "label": "SPLASH PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "scepter_reduction_pierces_debuff_immunity",
+        "label": "SCEPTER REDUCTION PIERCES DEBUFF IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Laser",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "collision_radius",
+        "label": "COLLISION RADIUS:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "splash_radius",
+        "label": "SPLASH RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "machines_per_sec",
+        "label": "MACHINES PER SEC:",
+        "value": "24",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "distance",
+        "label": "DISTANCE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "March of the Machines",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.53",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "warp_distance_factor",
+        "label": "WARP DISTANCE FACTOR:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "warp_distance_pct_tooltip",
+        "label": "WARP DISTANCE PCT TOOLTIP:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "range_reduction",
+        "label": "CAST/ATTACK RANGE REDUCTION:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Warp Flare",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "minimun_distance",
+        "label": "MINIMUN DISTANCE:",
+        "value": "70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "maximum_distance",
+        "label": "MAXIMUM DISTANCE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "channel_time_tooltip",
+        "label": "CHANNEL TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "additional_starting_cooldown",
+        "label": "ADDITIONAL STARTING COOLDOWN:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "creep_teleport_level",
+        "label": "CREEP TELEPORT LEVEL:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "hero_teleport_level",
+        "label": "HERO TELEPORT LEVEL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "outpost_channel_time",
+        "label": "OUTPOST CHANNEL TIME:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "jungle_outpost_channel_time",
+        "label": "JUNGLE OUTPOST CHANNEL TIME:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Keen Conveyance",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Rearm",
+        "key": "magic_resistance",
+        "label": "BONUS MAGIC RESISTANCE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Rearm",
+        "key": "armor_duration",
+        "label": "ARMOR DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Rearm",
+        "key": "affects_items",
+        "label": "AFFECTS ITEMS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Rearm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Eureka!",
+        "key": "one_percent_tooltip",
+        "label": "ONE PERCENT TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tinker",
+        "ability": "Eureka!",
+        "key": "max_cdr",
+        "label": "MAX CDR:",
+        "value": "60",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

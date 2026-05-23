@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>克林克兹（Clinkz）</h1>
-        <div class="muted">Clinkz · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Clinkz · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,428 @@
       </div>
       <a href="./clinkz.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Strafe</td>
+      <td><code>attack_speed_bonus</code></td>
+      <td>ATTACK SPEED BONUS:</td>
+      <td>120/160/200/240</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>strafe_skeleton_radius</code></td>
+      <td>STRAFE SKELETON RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>archer_attack_speed_pct</code></td>
+      <td>ARCHER ATTACK SPEED PCT:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>debuff_duration</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>blind_pct</code></td>
+      <td>BLIND PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Strafe</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Searing Arrows</td>
+      <td><code>damage_bonus</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>20/35/50/65</td>
+    </tr>
+  
+    <tr>
+      <td>Searing Arrows</td>
+      <td><code>skeleton_damage_pct</code></td>
+      <td>SKELETON DAMAGE PCT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Searing Arrows</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>45</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>1/1/2/2</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>health_gain</code></td>
+      <td>BONUS HEALTH:</td>
+      <td>175/250/325/400</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>skeletons_spawned</code></td>
+      <td>SKELETONS SPAWNED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>spawn_skeleton_on_origin</code></td>
+      <td>SPAWN SKELETON ON ORIGIN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>creep_level</code></td>
+      <td>CREEP MAX LEVEL:</td>
+      <td>4/5/6/6</td>
+    </tr>
+  
+    <tr>
+      <td>Death Pact</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>wave_count</code></td>
+      <td>ARROWS FIRED:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>damage_pct</code></td>
+      <td>DAMAGE PER ARROW:</td>
+      <td>75%</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>projectile_width</code></td>
+      <td>PROJECTILE WIDTH:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>archers_use_barrage</code></td>
+      <td>ARCHERS USE BARRAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Barrage</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Army</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Army</td>
+      <td><code>count</code></td>
+      <td>COUNT:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Army</td>
+      <td><code>spawn_interval</code></td>
+      <td>SPAWN INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Burning Army</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>35/40/45</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>fade_time</code></td>
+      <td>FADE TIME:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>move_speed_bonus_pct</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>25%/35%/45%</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_count</code></td>
+      <td>SKELETON ARCHER COUNT:</td>
+      <td>2/3/4</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_offset</code></td>
+      <td>SKELETON OFFSET:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_offset_min</code></td>
+      <td>SKELETON OFFSET MIN:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_duration</code></td>
+      <td>SKELETON ARCHER DURATION:</td>
+      <td>20/25/30</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_health</code></td>
+      <td>SKELETON HEALTH:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_health_tooltip</code></td>
+      <td>SKELETON ARCHER HITS TO KILL:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>skeleton_building_damage_reduction</code></td>
+      <td>SKELETON BUILDING DAMAGE REDUCTION:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>attack_rate</code></td>
+      <td>SKELETON ARCHER ATTACK RATE:</td>
+      <td>1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>damage_percent</code></td>
+      <td>SKELETON ARCHER DAMAGE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Skeleton Walk</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Infernal Shred</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Infernal Shred</td>
+      <td><code>hero_stacks</code></td>
+      <td>HERO STACKS:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Infernal Shred</td>
+      <td><code>skeleton_stacks</code></td>
+      <td>SKELETON STACKS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Infernal Shred</td>
+      <td><code>max_armor_piercing_pct</code></td>
+      <td>MAX ARMOR PIERCING PCT:</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Clinkz&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Strafe&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Searing Arrows&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Death Pact&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Burning Barrage&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Burning Army&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Skeleton Walk&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Infernal Shred&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +550,7 @@
           <div class="muted">Strafe · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +589,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +603,7 @@
           <div class="muted">Searing Arrows · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +642,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +656,7 @@
           <div class="muted">Death Pact · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +695,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +709,7 @@
           <div class="muted">Burning Army · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +748,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,10 +880,10 @@
       &quot;name&quot;: &quot;Strafe&quot;,
       &quot;displayName&quot;: &quot;扫射（Strafe）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60,
         70,
@@ -498,9 +924,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -509,10 +935,10 @@
       &quot;name&quot;: &quot;Searing Arrows&quot;,
       &quot;displayName&quot;: &quot;灼热之箭（Searing Arrows）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         10
       ],
@@ -547,9 +973,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -558,10 +984,10 @@
       &quot;name&quot;: &quot;Death Pact&quot;,
       &quot;displayName&quot;: &quot;死亡契约（Death Pact）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60
       ],
@@ -596,9 +1022,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -607,10 +1033,10 @@
       &quot;name&quot;: &quot;Burning Army&quot;,
       &quot;displayName&quot;: &quot;烈焰之军（Burning Army）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150
       ],
@@ -645,15 +1071,459 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Clinkz&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Strafe&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Searing Arrows&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Death Pact&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Burning Barrage&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Burning Army&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Skeleton Walk&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Infernal Shred&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;attack_speed_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;120/160/200/240&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;strafe_skeleton_radius&quot;,
+        &quot;label&quot;: &quot;STRAFE SKELETON RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;archer_attack_speed_pct&quot;,
+        &quot;label&quot;: &quot;ARCHER ATTACK SPEED PCT:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;blind_pct&quot;,
+        &quot;label&quot;: &quot;BLIND PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Strafe&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Searing Arrows&quot;,
+        &quot;key&quot;: &quot;damage_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;20/35/50/65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Searing Arrows&quot;,
+        &quot;key&quot;: &quot;skeleton_damage_pct&quot;,
+        &quot;label&quot;: &quot;SKELETON DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Searing Arrows&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;1/1/2/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;health_gain&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH:&quot;,
+        &quot;value&quot;: &quot;175/250/325/400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;skeletons_spawned&quot;,
+        &quot;label&quot;: &quot;SKELETONS SPAWNED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;spawn_skeleton_on_origin&quot;,
+        &quot;label&quot;: &quot;SPAWN SKELETON ON ORIGIN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;creep_level&quot;,
+        &quot;label&quot;: &quot;CREEP MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;4/5/6/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Death Pact&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;wave_count&quot;,
+        &quot;label&quot;: &quot;ARROWS FIRED:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER ARROW:&quot;,
+        &quot;value&quot;: &quot;75%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;projectile_width&quot;,
+        &quot;label&quot;: &quot;PROJECTILE WIDTH:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;archers_use_barrage&quot;,
+        &quot;label&quot;: &quot;ARCHERS USE BARRAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Barrage&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Army&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Army&quot;,
+        &quot;key&quot;: &quot;count&quot;,
+        &quot;label&quot;: &quot;COUNT:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Army&quot;,
+        &quot;key&quot;: &quot;spawn_interval&quot;,
+        &quot;label&quot;: &quot;SPAWN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Burning Army&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;35/40/45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;fade_time&quot;,
+        &quot;label&quot;: &quot;FADE TIME:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;move_speed_bonus_pct&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;25%/35%/45%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_count&quot;,
+        &quot;label&quot;: &quot;SKELETON ARCHER COUNT:&quot;,
+        &quot;value&quot;: &quot;2/3/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_offset&quot;,
+        &quot;label&quot;: &quot;SKELETON OFFSET:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_offset_min&quot;,
+        &quot;label&quot;: &quot;SKELETON OFFSET MIN:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_duration&quot;,
+        &quot;label&quot;: &quot;SKELETON ARCHER DURATION:&quot;,
+        &quot;value&quot;: &quot;20/25/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_health&quot;,
+        &quot;label&quot;: &quot;SKELETON HEALTH:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_health_tooltip&quot;,
+        &quot;label&quot;: &quot;SKELETON ARCHER HITS TO KILL:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;skeleton_building_damage_reduction&quot;,
+        &quot;label&quot;: &quot;SKELETON BUILDING DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;attack_rate&quot;,
+        &quot;label&quot;: &quot;SKELETON ARCHER ATTACK RATE:&quot;,
+        &quot;value&quot;: &quot;1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;damage_percent&quot;,
+        &quot;label&quot;: &quot;SKELETON ARCHER DAMAGE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Skeleton Walk&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Infernal Shred&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Infernal Shred&quot;,
+        &quot;key&quot;: &quot;hero_stacks&quot;,
+        &quot;label&quot;: &quot;HERO STACKS:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Infernal Shred&quot;,
+        &quot;key&quot;: &quot;skeleton_stacks&quot;,
+        &quot;label&quot;: &quot;SKELETON STACKS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clinkz&quot;,
+        &quot;ability&quot;: &quot;Infernal Shred&quot;,
+        &quot;key&quot;: &quot;max_armor_piercing_pct&quot;,
+        &quot;label&quot;: &quot;MAX ARMOR PIERCING PCT:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dota 2 英雄伤害模型</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="data-viewer.css">
+  <link rel="icon" type="image/png" href="images/dota2_favicon.png">
+</head>
+<body>
+  <main class="data-shell">
+    <header class="data-header">
+      <div>
+        <h1 id="profileTitle">英雄伤害模型</h1>
+        <p>把 <code>/api/damage/heroes/:hero</code> 转换为可读页面，便于人工审核技能组件。</p>
+      </div>
+      <nav class="data-actions" aria-label="页面导航">
+        <a href="/" class="data-link">返回对局助手</a>
+        <a href="/heroes.html" class="data-link">英雄列表</a>
+        <a id="rawJsonLink" href="/api/damage/heroes/Lich" class="data-link" target="_blank" rel="noopener noreferrer">查看原始 JSON</a>
+      </nav>
+    </header>
+
+    <section class="data-panel data-toolbar">
+      <label>
+        英雄
+        <select id="heroSelect"></select>
+      </label>
+      <button id="reloadButton" type="button">加载模型</button>
+      <p id="profileStatus" class="data-status">加载中...</p>
+    </section>
+
+    <section class="profile-grid">
+      <article class="data-panel">
+        <h2>英雄属性</h2>
+        <div id="statsGrid" class="stats-grid"></div>
+      </article>
+      <article class="data-panel">
+        <h2>模型概览</h2>
+        <div id="profileSummary" class="summary-grid"></div>
+      </article>
+    </section>
+
+    <section class="data-panel">
+      <h2>技能组件</h2>
+      <div id="abilityCards" class="ability-card-list"></div>
+    </section>
+
+    <section class="data-panel">
+      <details>
+        <summary>原始 JSON</summary>
+        <pre id="rawJsonBlock" class="json-block"></pre>
+      </details>
+    </section>
+  </main>
+
+  <script src="damage-profile.js"></script>
+</body>
+</html>

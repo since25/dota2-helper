@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>天涯墨客（Grimstroke）</h1>
-        <div class="muted">Grimstroke · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Grimstroke · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,443 @@
       </div>
       <a href="./grimstroke.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>reflected_stroke</code></td>
+      <td>REFLECTED STROKE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>start_radius</code></td>
+      <td>START RADIUS:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>160</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>bonus_damage_per_hero</code></td>
+      <td>BONUS DMG PER HERO:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>bonus_damage_per_creep</code></td>
+      <td>BONUS DMG PER ILLUSION/CREEP:</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>movement_slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>50%/60%/70%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_min_cos_facing_angle</code></td>
+      <td>VECTOR MIN COS FACING ANGLE:</td>
+      <td>-0.99</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_strength</code></td>
+      <td>VECTOR STRENGTH:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_max_travel_time_multiplier</code></td>
+      <td>VECTOR MAX TRAVEL TIME MULTIPLIER:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_acceptable_radian_to_snap_velocity</code></td>
+      <td>VECTOR ACCEPTABLE RADIAN TO SNAP VELOCITY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_distance_to_start_force_turning</code></td>
+      <td>VECTOR DISTANCE TO START FORCE TURNING:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_deg_turn_divisor</code></td>
+      <td>VECTOR DEG TURN DIVISOR:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_deg_turn_max</code></td>
+      <td>VECTOR DEG TURN MAX:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_reticle_distance</code></td>
+      <td>VECTOR RETICLE DISTANCE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>vector_reticle_radius</code></td>
+      <td>VECTOR RETICLE RADIUS:</td>
+      <td>140</td>
+    </tr>
+  
+    <tr>
+      <td>Stroke of Fate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>spawn_time</code></td>
+      <td>SPAWN TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1150</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>destroy_attacks</code></td>
+      <td>ATTACKS TO DESTROY:</td>
+      <td>6/6/9/9</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>hero_attack_multiplier</code></td>
+      <td>HERO ATTACK MULTIPLIER:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>enemy_vision_time</code></td>
+      <td>ENEMY VISION TIME:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>infection_search_radius</code></td>
+      <td>INFECTION SEARCH RADIUS:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>pop_damage</code></td>
+      <td>REND DAMAGE:</td>
+      <td>120/200/280/360</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>return_projectile_speed</code></td>
+      <td>RETURN PROJECTILE SPEED:</td>
+      <td>1150</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>latched_unit_offset</code></td>
+      <td>LATCHED UNIT OFFSET:</td>
+      <td>130</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>latched_unit_offset_short</code></td>
+      <td>LATCHED UNIT OFFSET SHORT:</td>
+      <td>95</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Phantom&#39;s Embrace</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>movespeed_bonus_pct</code></td>
+      <td>MOVEMENT SPEED BONUS:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>max_damage</code></td>
+      <td>MAX DAMAGE:</td>
+      <td>90/180/270/360</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>max_stun</code></td>
+      <td>MAX STUN DURATION:</td>
+      <td>1.6/2/2.4/2.8</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>tick_dps_tooltip</code></td>
+      <td>INK TENDRILS DPS:</td>
+      <td>30/45/60/75</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>max_threshold_duration</code></td>
+      <td>MAX THRESHOLD DURATION:</td>
+      <td>2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>can_end_early</code></td>
+      <td>CAN END EARLY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650/700/750/800</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Swell</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>chain_duration</code></td>
+      <td>DURATION:</td>
+      <td>6/7/8</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>chain_latch_radius</code></td>
+      <td>BIND RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>chain_break_distance</code></td>
+      <td>CHAIN BREAK DISTANCE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>leash_limit_multiplier</code></td>
+      <td>LEASH LIMIT MULTIPLIER:</td>
+      <td>1.3</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>leash_radius_buffer</code></td>
+      <td>LEASH RADIUS BUFFER:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>creep_duration_pct</code></td>
+      <td>CREEP DURATION PCT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>bonus_reflected_spell_damage</code></td>
+      <td>BONUS REFLECTED SPELL DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Soulbind</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Trail</td>
+      <td><code>debuff_duration</code></td>
+      <td>DEBUFF DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Ink Trail</td>
+      <td><code>damage_reduction</code></td>
+      <td>DAMAGE REDUCTION:</td>
+      <td>5%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Grimstroke&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Stroke of Fate&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;
+    },
+    &quot;Phantom&#39;s Embrace&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;latch_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Ink Swell&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_tick&quot;,
+      &quot;durationKey&quot;: &quot;buff_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Soulbind&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Ink Trail&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +565,7 @@
           <div class="muted">Stroke of Fate · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +618,7 @@
           <div class="muted">Phantom&#39;s Embrace · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +671,7 @@
           <div class="muted">Ink Swell · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +724,7 @@
           <div class="muted">Soulbind · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +763,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +895,7 @@
       &quot;name&quot;: &quot;Stroke of Fate&quot;,
       &quot;displayName&quot;: &quot;绝笔（Stroke of Fate）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,7 +950,7 @@
       &quot;name&quot;: &quot;Phantom&#39;s Embrace&quot;,
       &quot;displayName&quot;: &quot;戾影（Phantom&#39;s Embrace）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -577,7 +1018,7 @@
       &quot;name&quot;: &quot;Ink Swell&quot;,
       &quot;displayName&quot;: &quot;墨涌（Ink Swell）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -645,10 +1086,10 @@
       &quot;name&quot;: &quot;Soulbind&quot;,
       &quot;displayName&quot;: &quot;缚魂（Soulbind）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150,
         200,
@@ -689,15 +1130,477 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Grimstroke&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Stroke of Fate&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;
+        },
+        &quot;Phantom&#39;s Embrace&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;latch_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Ink Swell&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_tick&quot;,
+          &quot;durationKey&quot;: &quot;buff_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Soulbind&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Ink Trail&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;reflected_stroke&quot;,
+        &quot;label&quot;: &quot;REFLECTED STROKE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;START RADIUS:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;160&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;bonus_damage_per_hero&quot;,
+        &quot;label&quot;: &quot;BONUS DMG PER HERO:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;bonus_damage_per_creep&quot;,
+        &quot;label&quot;: &quot;BONUS DMG PER ILLUSION/CREEP:&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;movement_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;50%/60%/70%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_min_cos_facing_angle&quot;,
+        &quot;label&quot;: &quot;VECTOR MIN COS FACING ANGLE:&quot;,
+        &quot;value&quot;: &quot;-0.99&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_strength&quot;,
+        &quot;label&quot;: &quot;VECTOR STRENGTH:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_max_travel_time_multiplier&quot;,
+        &quot;label&quot;: &quot;VECTOR MAX TRAVEL TIME MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_acceptable_radian_to_snap_velocity&quot;,
+        &quot;label&quot;: &quot;VECTOR ACCEPTABLE RADIAN TO SNAP VELOCITY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_distance_to_start_force_turning&quot;,
+        &quot;label&quot;: &quot;VECTOR DISTANCE TO START FORCE TURNING:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_deg_turn_divisor&quot;,
+        &quot;label&quot;: &quot;VECTOR DEG TURN DIVISOR:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_deg_turn_max&quot;,
+        &quot;label&quot;: &quot;VECTOR DEG TURN MAX:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_reticle_distance&quot;,
+        &quot;label&quot;: &quot;VECTOR RETICLE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;vector_reticle_radius&quot;,
+        &quot;label&quot;: &quot;VECTOR RETICLE RADIUS:&quot;,
+        &quot;value&quot;: &quot;140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Stroke of Fate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;spawn_time&quot;,
+        &quot;label&quot;: &quot;SPAWN TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;destroy_attacks&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;6/6/9/9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;hero_attack_multiplier&quot;,
+        &quot;label&quot;: &quot;HERO ATTACK MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;enemy_vision_time&quot;,
+        &quot;label&quot;: &quot;ENEMY VISION TIME:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;infection_search_radius&quot;,
+        &quot;label&quot;: &quot;INFECTION SEARCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;pop_damage&quot;,
+        &quot;label&quot;: &quot;REND DAMAGE:&quot;,
+        &quot;value&quot;: &quot;120/200/280/360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;return_projectile_speed&quot;,
+        &quot;label&quot;: &quot;RETURN PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;latched_unit_offset&quot;,
+        &quot;label&quot;: &quot;LATCHED UNIT OFFSET:&quot;,
+        &quot;value&quot;: &quot;130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;latched_unit_offset_short&quot;,
+        &quot;label&quot;: &quot;LATCHED UNIT OFFSET SHORT:&quot;,
+        &quot;value&quot;: &quot;95&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Phantom&#39;s Embrace&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;max_damage&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE:&quot;,
+        &quot;value&quot;: &quot;90/180/270/360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;max_stun&quot;,
+        &quot;label&quot;: &quot;MAX STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.6/2/2.4/2.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;tick_dps_tooltip&quot;,
+        &quot;label&quot;: &quot;INK TENDRILS DPS:&quot;,
+        &quot;value&quot;: &quot;30/45/60/75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;max_threshold_duration&quot;,
+        &quot;label&quot;: &quot;MAX THRESHOLD DURATION:&quot;,
+        &quot;value&quot;: &quot;2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;can_end_early&quot;,
+        &quot;label&quot;: &quot;CAN END EARLY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650/700/750/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Swell&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;chain_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6/7/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;chain_latch_radius&quot;,
+        &quot;label&quot;: &quot;BIND RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;chain_break_distance&quot;,
+        &quot;label&quot;: &quot;CHAIN BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;leash_limit_multiplier&quot;,
+        &quot;label&quot;: &quot;LEASH LIMIT MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;leash_radius_buffer&quot;,
+        &quot;label&quot;: &quot;LEASH RADIUS BUFFER:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;creep_duration_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DURATION PCT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;bonus_reflected_spell_damage&quot;,
+        &quot;label&quot;: &quot;BONUS REFLECTED SPELL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Soulbind&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Trail&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Grimstroke&quot;,
+        &quot;ability&quot;: &quot;Ink Trail&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

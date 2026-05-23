@@ -5,11 +5,10 @@ const path = require('node:path');
 
 const css = fs.readFileSync(path.join(__dirname, '..', 'damage-calculator.css'), 'utf8');
 
-test('damage calculator table keeps usable input widths instead of compressing columns', () => {
-  assert.match(css, /\.damage-main\s*\{[\s\S]*min-width:\s*0/);
-  assert.match(css, /\.damage-section\s*\{[\s\S]*min-width:\s*0/);
-  assert.match(css, /\.damage-table\s*\{[\s\S]*min-width:\s*1220px/);
-  assert.match(css, /\.damage-table\s+select\.ability-level[\s\S]*min-width:\s*56px/);
-  assert.match(css, /\.damage-table\s+input\.active-duration[\s\S]*min-width:\s*92px/);
-  assert.match(css, /\.damage-table\s+select\.value-mode[\s\S]*min-width:\s*108px/);
+test('damage calculator v2 workbench keeps controls readable without table compression', () => {
+  assert.match(css, /\.workbench-layout\s*\{[\s\S]*grid-template-columns:\s*280px minmax\(0, 1fr\) 340px/);
+  assert.match(css, /\.workbench-center\s*\{[\s\S]*min-width:\s*0/);
+  assert.match(css, /\.ability-workbench-grid\s*\{[\s\S]*grid-template-columns:\s*repeat\(auto-fit, minmax\(310px, 1fr\)\)/);
+  assert.match(css, /\.shop-grid\s*\{[\s\S]*grid-template-columns:\s*repeat\(auto-fill, minmax\(180px, 1fr\)\)/);
+  assert.match(css, /\.selected-item-controls\s*\{[\s\S]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
 });

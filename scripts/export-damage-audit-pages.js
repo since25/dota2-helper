@@ -2,6 +2,8 @@
 
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { getHeroDamageModel } = require('../damageModels/registry');
+const { buildSemanticAudit } = require('./semantic-audit');
 
 const DEFAULT_BASE_URL = 'http://localhost:3002';
 const DEFAULT_CONCURRENCY = 8;
@@ -88,6 +90,61 @@ function renderStats(stats = {}) {
           </div>
         `).join('')}
       </div>
+    </section>
+  `;
+}
+
+function renderRawFieldRows(fields = []) {
+  if (!fields.length) {
+    return '<tr><td colspan="4"><span class="muted">无</span></td></tr>';
+  }
+  return fields.map((field) => `
+    <tr>
+      <td>${escapeHtml(field.ability || '-')}</td>
+      <td><code>${escapeHtml(field.key || '-')}</code></td>
+      <td>${escapeHtml(field.label || '-')}</td>
+      <td>${escapeHtml(formatValue(field.value))}</td>
+    </tr>
+  `).join('');
+}
+
+function renderModelAudit(modelAudit = null) {
+  if (!modelAudit) return '';
+  const rawFields = modelAudit.rawNumericFieldsNotReferenced || [];
+  const suspicious = modelAudit.suspiciousMappings || [];
+  return `
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">${escapeHtml(modelAudit.source || '-')}</span>
+          <span class="pill secondary">${escapeHtml(modelAudit.reviewStatus || 'candidate')}</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>${renderRawFieldRows(rawFields)}</tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>${escapeHtml(JSON.stringify(suspicious, null, 2))}</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>${escapeHtml(JSON.stringify(modelAudit.manualModel || modelAudit.model || {}, null, 2))}</pre>
+      </details>
     </section>
   `;
 }
@@ -179,6 +236,7 @@ function renderHeroHtml(profile, options = {}) {
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -197,12 +255,15 @@ function renderHeroHtml(profile, options = {}) {
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -221,6 +282,7 @@ function renderHeroHtml(profile, options = {}) {
       </div>
       <a href="./${escapeHtml(jsonFile)}">查看原始 JSON</a>
     </div>
+    ${renderModelAudit(profile.modelAudit)}
     ${renderStats(profile.stats)}
     ${(profile.abilities || []).map((ability) => renderAbilitySection(ability, maxColumns)).join('')}
     <details class="panel">
@@ -230,6 +292,21 @@ function renderHeroHtml(profile, options = {}) {
   </main>
 </body>
 </html>`;
+}
+
+async function buildModelAuditContext(heroName) {
+  const model = getHeroDamageModel(heroName);
+  const semanticReport = await buildSemanticAudit({ hero: heroName });
+  const heroReport = semanticReport.heroReports.find((entry) => entry.hero === heroName) || {};
+  return {
+    source: model?.source || 'missing',
+    reviewStatus: model?.review?.status || (model?.source === 'auto' ? 'candidate' : 'candidate'),
+    manualModel: model || null,
+    rawNumericFieldsNotReferenced: heroReport.rawNumericFieldsNotReferenced || [],
+    suspiciousMappings: heroReport.suspiciousMappings || [],
+    modelEntriesMissingSemanticType: heroReport.modelEntriesMissingSemanticType || [],
+    unmodeledVisibleAbilities: heroReport.unmodeledVisibleAbilities || []
+  };
 }
 
 function renderErrorHtml(entry, options = {}) {
@@ -437,8 +514,12 @@ async function exportHero(baseUrl, outDir, heroName, generatedAt) {
   const htmlFile = `${slug}.html`;
   try {
     const profile = await fetchJson(baseUrl, `/api/damage/heroes/${encodeURIComponent(heroName)}`);
-    await fs.writeFile(path.join(outDir, jsonFile), `${JSON.stringify(profile, null, 2)}\n`);
-    await fs.writeFile(path.join(outDir, htmlFile), renderHeroHtml(profile, {
+    const auditProfile = {
+      ...profile,
+      modelAudit: await buildModelAuditContext(profile.hero || heroName)
+    };
+    await fs.writeFile(path.join(outDir, jsonFile), `${JSON.stringify(auditProfile, null, 2)}\n`);
+    await fs.writeFile(path.join(outDir, htmlFile), renderHeroHtml(auditProfile, {
       baseUrl,
       generatedAt,
       jsonFile
@@ -529,6 +610,7 @@ module.exports = {
   renderErrorHtml,
   renderHeroHtml,
   renderIndexHtml,
+  buildModelAuditContext,
   run,
   selectHeroNames,
   slugifyHeroName

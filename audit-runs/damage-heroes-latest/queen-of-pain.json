@@ -372,5 +372,307 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Queen of Pain",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Shadow Strike": {
+          "status": "reference_only",
+          "model": "conditional",
+          "valueKey": "strike_damage",
+          "semanticType": "damage.tick",
+          "condition": "先造成初始伤害，随后按 tick 间隔造成持续伤害。",
+          "reason": "该技能包含初始伤害和间隔伤害，组合 tick 模型将在后续批次补齐。"
+        },
+        "Blink": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "位移技能影响进场和逃生，不直接造成伤害。"
+        },
+        "Scream Of Pain": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Succubus": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "spell_lifesteal",
+          "semanticType": "defense.lifesteal.percent",
+          "affects": "sustain",
+          "stackGroup": "lifesteal",
+          "reason": "固定命石/被动提供续航，不直接造成伤害。"
+        },
+        "Sonic Wave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "duration_damage",
+        "label": "DAMAGE PER TICK:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "-25%/-35%/-45%/-55%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "duration_heal",
+        "label": "DURATION HEAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "generate_scream",
+        "label": "GENERATE SCREAM:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "aoe_radius",
+        "label": "AOE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450/500/550/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Shadow Strike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Blink",
+        "key": "min_blink_range",
+        "label": "MIN BLINK RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Blink",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.33",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Scream Of Pain",
+        "key": "area_of_effect",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Scream Of Pain",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Scream Of Pain",
+        "key": "damage_reflected_to_self",
+        "label": "DAMAGE REFLECTED TO SELF:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Scream Of Pain",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Scream Of Pain",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Succubus",
+        "key": "close_radius",
+        "label": "CLOSE RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Succubus",
+        "key": "max_radius",
+        "label": "MAX RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Succubus",
+        "key": "spell_lifesteal_close",
+        "label": "MAXIMUM LIFESTEAL:",
+        "value": "14%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Succubus",
+        "key": "lifesteal_reflected",
+        "label": "LIFESTEAL REFLECTED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "starting_aoe",
+        "label": "STARTING AOE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "distance",
+        "label": "DISTANCE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "final_aoe",
+        "label": "WAVE MAX RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "tick_rate",
+        "label": "TICK RATE:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Queen of Pain",
+        "ability": "Sonic Wave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.452",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

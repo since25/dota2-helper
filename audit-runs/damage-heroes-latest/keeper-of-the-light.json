@@ -121,7 +121,7 @@
       "name": "Illuminate",
       "displayName": "冲击波（Illuminate）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Blinding Light",
       "displayName": "致盲之光（Blinding Light）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -236,10 +236,10 @@
       "name": "Chakra Magic",
       "displayName": "查克拉魔法（Chakra Magic）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -277,9 +277,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -288,10 +288,10 @@
       "name": "Solar Bind",
       "displayName": "炎阳之缚（Solar Bind）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         120
       ],
@@ -326,9 +326,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -337,7 +337,7 @@
       "name": "Will-O-Wisp",
       "displayName": "灵光（Will-O-Wisp）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -380,10 +380,10 @@
       "name": "Spirit Form",
       "displayName": "灵魂形态（Spirit Form）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75,
         125,
@@ -424,13 +424,482 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Keeper of the Light",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Illuminate": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "total_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "vision_duration"
+        },
+        "Blinding Light": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        },
+        "Chakra Magic": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Solar Bind": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Will-O-Wisp": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "wisp_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "off_duration"
+        },
+        "Spirit Form": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "cast_range",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Release Illuminate": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Bright Speed": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "max_channel_time",
+        "label": "MAX CHANNEL TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "radius",
+        "label": "WIDTH:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "1550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "channel_vision_radius",
+        "label": "CHANNEL VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "channel_vision_interval",
+        "label": "CHANNEL VISION INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "channel_vision_duration",
+        "label": "CHANNEL VISION DURATION:",
+        "value": "10.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "channel_vision_step",
+        "label": "CHANNEL VISION STEP:",
+        "value": "150/180/210/240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Illuminate",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "miss_rate",
+        "label": "MISS CHANCE:",
+        "value": "45%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "425/450/475/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500/575/650/725",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Blinding Light",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "mana_restore",
+        "label": "MANA RESTORE:",
+        "value": "105/170/235/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "cooldown_reduction",
+        "label": "COOLDOWN REDUCTION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "mana_leak_pct",
+        "label": "MANA LEAK PCT:",
+        "value": "4.5/5/5.5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "self_bonus",
+        "label": "SELF BONUS:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Chakra Magic",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "slow",
+        "label": "SLOW PER 100 UNITS:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE REDUCTION:",
+        "value": "20%/30%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Solar Bind",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "on_count",
+        "label": "ON COUNT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "725",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "hit_count",
+        "label": "HIT COUNT:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "on_duration",
+        "label": "ON DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "off_duration_initial",
+        "label": "OFF DURATION INITIAL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "fixed_movement_speed",
+        "label": "FIXED MOVEMENT SPEED:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "bounty",
+        "label": "BOUNTY:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Will-O-Wisp",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Spirit Form",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "40/45/50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Spirit Form",
+        "key": "movement_speed",
+        "label": "BRIGHT SPEED BONUS MOVEMENT:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Spirit Form",
+        "key": "illuminate_heal",
+        "label": "ILLUMINATE HEAL:",
+        "value": "70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Bright Speed",
+        "key": "intelligence_per_speed",
+        "label": "INTELLIGENCE PER SPEED:",
+        "value": "2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Bright Speed",
+        "key": "movement_per_vision",
+        "label": "MOVEMENT PER VISION:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Bright Speed",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Keeper of the Light",
+        "ability": "Bright Speed",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

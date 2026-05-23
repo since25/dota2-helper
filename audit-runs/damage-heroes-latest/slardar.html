@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>斯拉达（Slardar）</h1>
-        <div class="muted">Slardar · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Slardar · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,299 @@
       </div>
       <a href="./slardar.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Guardian Sprint</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Guardian Sprint</td>
+      <td><code>speed_burst_max_duration</code></td>
+      <td>SPEED BURST MAX DURATION:</td>
+      <td>2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Guardian Sprint</td>
+      <td><code>slow_resistance_tooltip</code></td>
+      <td>SLOW RESISTANCE TOOLTIP:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Guardian Sprint</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Guardian Sprint</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>crush_radius</code></td>
+      <td>RADIUS:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>crush_extra_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-20%/-25%/-30%/-35%</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>crush_attack_slow_tooltip</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-20/-25/-30/-35</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>crush_extra_slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>puddle_duration</code></td>
+      <td>PUDDLE DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>puddle_radius</code></td>
+      <td>PUDDLE RADIUS:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Slithereen Crush</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Bash of the Deep</td>
+      <td><code>duration</code></td>
+      <td>BASH DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Seaborn Sentinel</td>
+      <td><code>river_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>18%</td>
+    </tr>
+  
+    <tr>
+      <td>Seaborn Sentinel</td>
+      <td><code>puddle_regen</code></td>
+      <td>HP REGEN:</td>
+      <td>1.75</td>
+    </tr>
+  
+    <tr>
+      <td>Seaborn Sentinel</td>
+      <td><code>puddle_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>1.8</td>
+    </tr>
+  
+    <tr>
+      <td>Seaborn Sentinel</td>
+      <td><code>scepter_puddle_radius_tooltip</code></td>
+      <td>SCEPTER PUDDLE RADIUS TOOLTIP:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Seaborn Sentinel</td>
+      <td><code>scepter_puddle_duration_increase_tooltip</code></td>
+      <td>SCEPTER PUDDLE DURATION INCREASE TOOLTIP:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>undispellable</code></td>
+      <td>UNDISPELLABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>puddle_radius</code></td>
+      <td>TRAIL RADIUS:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>puddle_duration</code></td>
+      <td>TRAIL DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>has_self_buff</code></td>
+      <td>HAS SELF BUFF:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>armor_pct</code></td>
+      <td>ARMOR PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Corrosive Haze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Slardar&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Guardian Sprint&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_speed&quot;,
+      &quot;semanticType&quot;: &quot;mobility.move_speed.percent&quot;,
+      &quot;modifierType&quot;: &quot;move_speed_pct&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;移动速度影响追击和出手窗口，但不直接造成伤害。&quot;
+    },
+    &quot;Slithereen Crush&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;crush_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Bash of the Deep&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_sequence&quot;,
+      &quot;procDamageKey&quot;: &quot;bonus_damage&quot;,
+      &quot;attackCountKey&quot;: &quot;attack_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_sequence_proc&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;formula&quot;: &quot;attackCount * attackDamage + procDamage&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Seaborn Sentinel&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;river_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+      &quot;modifierType&quot;: &quot;attack_damage_pct&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;需要水洼、轨迹或河道状态；当前作为攻击力修正参考。&quot;
+    },
+    &quot;Corrosive Haze&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;armor_reduction&quot;,
+      &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+      &quot;modifierType&quot;: &quot;armor_reduction&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+      &quot;reason&quot;: &quot;减甲会放大后续物理伤害；当前不自动串联进总伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -757,7 +1054,303 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Slardar&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Guardian Sprint&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_speed&quot;,
+          &quot;semanticType&quot;: &quot;mobility.move_speed.percent&quot;,
+          &quot;modifierType&quot;: &quot;move_speed_pct&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;移动速度影响追击和出手窗口，但不直接造成伤害。&quot;
+        },
+        &quot;Slithereen Crush&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;crush_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Bash of the Deep&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_sequence&quot;,
+          &quot;procDamageKey&quot;: &quot;bonus_damage&quot;,
+          &quot;attackCountKey&quot;: &quot;attack_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_sequence_proc&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;formula&quot;: &quot;attackCount * attackDamage + procDamage&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Seaborn Sentinel&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;river_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+          &quot;modifierType&quot;: &quot;attack_damage_pct&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;需要水洼、轨迹或河道状态；当前作为攻击力修正参考。&quot;
+        },
+        &quot;Corrosive Haze&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;armor_reduction&quot;,
+          &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+          &quot;modifierType&quot;: &quot;armor_reduction&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+          &quot;reason&quot;: &quot;减甲会放大后续物理伤害；当前不自动串联进总伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Guardian Sprint&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Guardian Sprint&quot;,
+        &quot;key&quot;: &quot;speed_burst_max_duration&quot;,
+        &quot;label&quot;: &quot;SPEED BURST MAX DURATION:&quot;,
+        &quot;value&quot;: &quot;2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Guardian Sprint&quot;,
+        &quot;key&quot;: &quot;slow_resistance_tooltip&quot;,
+        &quot;label&quot;: &quot;SLOW RESISTANCE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Guardian Sprint&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Guardian Sprint&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;crush_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;crush_extra_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-20%/-25%/-30%/-35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;crush_attack_slow_tooltip&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-20/-25/-30/-35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;crush_extra_slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;puddle_duration&quot;,
+        &quot;label&quot;: &quot;PUDDLE DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;puddle_radius&quot;,
+        &quot;label&quot;: &quot;PUDDLE RADIUS:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Slithereen Crush&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Bash of the Deep&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;BASH DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Seaborn Sentinel&quot;,
+        &quot;key&quot;: &quot;river_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;18%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Seaborn Sentinel&quot;,
+        &quot;key&quot;: &quot;puddle_regen&quot;,
+        &quot;label&quot;: &quot;HP REGEN:&quot;,
+        &quot;value&quot;: &quot;1.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Seaborn Sentinel&quot;,
+        &quot;key&quot;: &quot;puddle_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;1.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Seaborn Sentinel&quot;,
+        &quot;key&quot;: &quot;scepter_puddle_radius_tooltip&quot;,
+        &quot;label&quot;: &quot;SCEPTER PUDDLE RADIUS TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Seaborn Sentinel&quot;,
+        &quot;key&quot;: &quot;scepter_puddle_duration_increase_tooltip&quot;,
+        &quot;label&quot;: &quot;SCEPTER PUDDLE DURATION INCREASE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;undispellable&quot;,
+        &quot;label&quot;: &quot;UNDISPELLABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;puddle_radius&quot;,
+        &quot;label&quot;: &quot;TRAIL RADIUS:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;puddle_duration&quot;,
+        &quot;label&quot;: &quot;TRAIL DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;has_self_buff&quot;,
+        &quot;label&quot;: &quot;HAS SELF BUFF:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;armor_pct&quot;,
+        &quot;label&quot;: &quot;ARMOR PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Slardar&quot;,
+        &quot;ability&quot;: &quot;Corrosive Haze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

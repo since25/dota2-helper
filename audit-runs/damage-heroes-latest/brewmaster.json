@@ -121,7 +121,7 @@
       "name": "Thunder Clap",
       "displayName": "雷霆一击（Thunder Clap）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Cinder Brew",
       "displayName": "余烬佳酿（Cinder Brew）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,10 +231,10 @@
       "name": "Drunken Brawler",
       "displayName": "醉拳（Drunken Brawler）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0,
         0,
@@ -278,9 +278,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -289,10 +289,10 @@
       "name": "Liquid Courage",
       "displayName": "壮胆酒（Liquid Courage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -327,9 +327,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -338,7 +338,7 @@
       "name": "Primal Split",
       "displayName": "元素分离（Primal Split）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -389,5 +389,486 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Brewmaster",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Thunder Clap": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Cinder Brew": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "total_ignite_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Drunken Brawler": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Liquid Courage": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Primal Split": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "tooltip_earth_brewling_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Brewmaster",
+        "ability": "Thunder Clap",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Thunder Clap",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "15%/30%/45%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Thunder Clap",
+        "key": "attack_speed_slow",
+        "label": "ATTACK SLOW:",
+        "value": "15/30/45/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Thunder Clap",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "24%/28%/32%/36%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "extra_duration",
+        "label": "EXTRA DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "projectile_speed",
+        "label": "BARREL SPEED:",
+        "value": "950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "projectile_width",
+        "label": "PROJECTILE WIDTH:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "barrel_width",
+        "label": "BARREL WIDTH:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "barrel_impact_damage",
+        "label": "BARREL IMPACT DAMAGE:",
+        "value": "40/70/100/130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "min_movement",
+        "label": "MIN MOVEMENT:",
+        "value": "-15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "max_movement",
+        "label": "MAX MOVEMENT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Cinder Brew",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "magic_resist",
+        "label": "MAGIC RESIST:",
+        "value": "8%/12%/16%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "bonus_armor",
+        "label": "ARMOR:",
+        "value": "3/5/7/9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "dodge_chance",
+        "label": "EVASION:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "bonus_move_speed",
+        "label": "MOVE SPEED:",
+        "value": "4%/6%/8%/10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "crit_chance",
+        "label": "CRIT CHANCE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "crit_multiplier",
+        "label": "CRIT DAMAGE:",
+        "value": "120%/140%/160%/180%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "brewed_up_duration",
+        "label": "BREWED UP DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "brewed_up_duration_extend",
+        "label": "BREWED UP DURATION EXTEND:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "brewed_up_bonus",
+        "label": "BREWED UP BONUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Drunken Brawler",
+        "key": "hangover_time",
+        "label": "HANGOVER TIME:",
+        "value": "9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "min_health_threshold",
+        "label": "MIN HEALTH THRESHOLD:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "max_health_threshold",
+        "label": "MAX HEALTH THRESHOLD:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "status_resist",
+        "label": "MAX STATUS RESIST:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "min_speed",
+        "label": "MAX SPEED SLOW:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "max_speed",
+        "label": "MAX SPEED INCREASE:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "speed_toggle_time",
+        "label": "SPEED TOGGLE TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "drink_duration",
+        "label": "DRINK DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Liquid Courage",
+        "key": "max_hp_regen",
+        "label": "MAX HP REGEN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "split_duration",
+        "label": "SPLIT DURATION:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "tooltip_earth_brewling_hp",
+        "label": "EARTH BREWLING HP:",
+        "value": "1400/2300/3200/4100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "tooltip_storm_brewling_hp",
+        "label": "STORM BREWLING HP:",
+        "value": "1000/1500/2000/2500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "tooltip_storm_brewling_damage",
+        "label": "STORM BREWLING DAMAGE:",
+        "value": "30/50/70/90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "tooltip_fire_brewling_hp",
+        "label": "FIRE BREWLING HP:",
+        "value": "1300/1450/1600/1750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "tooltip_fire_brewling_damage",
+        "label": "FIRE BREWLING DAMAGE:",
+        "value": "70/120/170/220",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "current_hp_agi",
+        "label": "CURRENT HP AGI:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "current_dmg_agi",
+        "label": "CURRENT DMG AGI:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "bonus_brewling_hp",
+        "label": "BONUS BREWLING HP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "primal_split_cancel",
+        "label": "PRIMAL SPLIT CANCEL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "hp_per_attribute",
+        "label": "HP PER ATTRIBUTE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "dmg_per_attribute",
+        "label": "DMG PER ATTRIBUTE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "attribute_share_pct",
+        "label": "ATTRIBUTE SHARE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "give_brawler_passive",
+        "label": "GIVE BRAWLER PASSIVE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "scepter_bonus_levels",
+        "label": "SCEPTER BONUS LEVELS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Brewmaster",
+        "ability": "Primal Split",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.55",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

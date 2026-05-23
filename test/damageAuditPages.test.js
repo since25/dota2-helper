@@ -21,6 +21,22 @@ test('renderHeroHtml exposes component values, duration metadata, and raw JSON s
   const html = renderHeroHtml({
     hero: 'Jakiro',
     displayName: '杰奇洛（Jakiro）',
+    modelAudit: {
+      source: 'manual',
+      reviewStatus: 'reviewed',
+      manualModel: {
+        hero: 'Jakiro',
+        review: { status: 'reviewed' },
+        abilities: { 'Liquid Fire': { model: 'sustained_dps' } }
+      },
+      rawNumericFieldsNotReferenced: [{
+        ability: 'Liquid Fire',
+        key: 'attack_slow',
+        label: 'ATTACK SLOW',
+        value: '-30'
+      }],
+      suspiciousMappings: []
+    },
     stats: {
       primaryAttribute: 'int',
       baseIntelligence: 26,
@@ -62,6 +78,10 @@ test('renderHeroHtml exposes component values, duration metadata, and raw JSON s
   assert.match(html, /75 \/ 125 \/ 175 \/ 225/);
   assert.match(html, /durationByAbilityLevel/);
   assert.match(html, /tickIntervalByAbilityLevel/);
+  assert.match(html, /模型审核上下文/);
+  assert.match(html, /原始未引用数值字段/);
+  assert.match(html, /attack_slow/);
+  assert.match(html, /sustained_dps/);
   assert.match(html, /&lt;script&gt;/);
   assert.doesNotMatch(html, /<script>/);
 });

@@ -121,7 +121,7 @@
       "name": "Onslaught",
       "displayName": "突（Onslaught）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -181,7 +181,7 @@
       "name": "Trample",
       "displayName": "踏（Trample）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -236,7 +236,7 @@
       "name": "Uproar",
       "displayName": "咤（Uproar）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -285,7 +285,7 @@
       "name": "Rock Throw",
       "displayName": "砸（Rock Throw）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -336,10 +336,10 @@
       "name": "Pulverize",
       "displayName": "捶（Pulverize）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "repeated_trigger",
+      "reason": "按实际砸地脉冲次数计算，不能默认打满。",
       "manaCostByAbilityLevel": [
         100,
         100,
@@ -352,8 +352,8 @@
       ],
       "components": [
         {
-          "id": "Pulverize:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Pulverize:repeated_trigger:damage",
+          "kind": "repeated_trigger",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "damage",
@@ -363,20 +363,525 @@
             250
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "triggerCount * damage",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "runtime_trigger_count_times_damage"
           },
-          "metadata": {},
+          "metadata": {
+            "triggerCountInput": "pulse_count"
+          },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "repeated_trigger",
+          "reason": "按实际砸地脉冲次数计算，不能默认打满。",
+          "caveats": [
+            "需要输入实际触发次数，不能默认按满额命中计算。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Primal Beast",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Onslaught": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "knockback_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Trample": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "attack_damage",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "Uproar": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_limit",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Rock Throw": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "base_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Begin Onslaught": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Pulverize": {
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "damageKey": "damage",
+          "triggerCountInput": "pulse_count",
+          "semanticType": "damage.instant",
+          "conditionInputs": [
+            "pulse_count"
+          ],
+          "reason": "按实际砸地脉冲次数计算，不能默认打满。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "charge_speed",
+        "label": "RUN SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "chargeup_time",
+        "label": "CHARGEUP TIME:",
+        "value": "2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "knockback_radius",
+        "label": "KNOCKBACK RADIUS:",
+        "value": "190",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "max_charge_time",
+        "label": "TIME TO MAX CHARGE:",
+        "value": "1.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "base_power",
+        "label": "BASE POWER:",
+        "value": "0.05",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "movement_turn_rate",
+        "label": "MOVEMENT TURN RATE:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.7/1/1.3/1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Onslaught",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "effect_radius",
+        "label": "DAMAGE AOE:",
+        "value": "230",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "step_distance",
+        "label": "STEP DISTANCE:",
+        "value": "140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "base_damage",
+        "label": "BASE DAMAGE:",
+        "value": "15/30/45/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "bonus_magic_resistance",
+        "label": "BONUS MAGIC RESISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "unslowable",
+        "label": "UNSLOWABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Trample",
+        "key": "proc_attack_modifiers",
+        "label": "PROC ATTACK MODIFIERS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "bonus_damage_per_stack",
+        "label": "BONUS DAMAGE PER STACK:",
+        "value": "10/20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "stack_limit",
+        "label": "MAX STACKS:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "stack_count_increase_on_disable",
+        "label": "STACK COUNT INCREASE ON DISABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "stack_duration",
+        "label": "STACK DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "move_slow_per_stack",
+        "label": "SLOW PER STACK:",
+        "value": "4%/6%/8%/10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "damage_min",
+        "label": "DAMAGE MIN:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "damage_max",
+        "label": "DAMAGE MAX:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "radius",
+        "label": "ROAR RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "roared_bonus_attack_speed",
+        "label": "ROARED BONUS ATTACK SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "roared_bonus_armor",
+        "label": "ROAR ARMOR BONUS PER STACK:",
+        "value": "2/3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Uproar",
+        "key": "roar_duration",
+        "label": "ROAR DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "min_range",
+        "label": "MIN RANGE:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "min_travel_time",
+        "label": "MIN TRAVEL TIME:",
+        "value": "0.65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "max_travel_time",
+        "label": "MAX TRAVEL TIME:",
+        "value": "1.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "bounce_travel_time",
+        "label": "BOUNCE TRAVEL TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "fragment_impact_distance",
+        "label": "FRAGMENT FLIGHT DISTANCE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "fragment_impact_radius",
+        "label": "FRAGMENT IMPACT RADIUS:",
+        "value": "185",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Rock Throw",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "splash_radius",
+        "label": "AOE RADIUS:",
+        "value": "575",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "interval",
+        "label": "HIT INTERVAL:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "ministun",
+        "label": "STUN DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "cast_range",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "channel_time",
+        "label": "CHANNEL TIME:",
+        "value": "2.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "pierce_immunity",
+        "label": "PIERCE IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "bonus_damage_per_hit",
+        "label": "BONUS DAMAGE PER HIT:",
+        "value": "20/40/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Primal Beast",
+        "ability": "Pulverize",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

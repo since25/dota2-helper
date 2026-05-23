@@ -11,6 +11,9 @@ const { getHeroLocalizationList } = require('./heroAliases');
 const { getActiveDataProvider } = require('./dataProviders');
 const { buildChineseCoachMessages } = require('./dotaDataContext');
 const { calculateDamageCombo, getHeroDamageProfile } = require('./damageCalculator');
+const { buildCalculatorWorkbench } = require('./calculatorWorkbench');
+const { getItemModel, listItemModels, summarizeItemModelCoverage } = require('./itemModels/registry');
+const { loadChineseItemMap, localizeItemModelName } = require('./itemLocalization');
 
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const STRIPE_PRICE_ID = process.env.STRIPE_PRICE_ID;
@@ -477,6 +480,49 @@ app.get('/api/damage/heroes/:hero', async (req, res) => {
     } catch (error) {
         console.error('Error building damage profile:', error);
         res.status(404).json({ error: error.message || 'Failed to build damage profile.' });
+    }
+});
+
+app.get('/api/calculator/workbench/:hero', async (req, res) => {
+    try {
+        const workbench = await buildCalculatorWorkbench(req.params.hero, {
+            heroLevel: Number(req.query.heroLevel || 6)
+        });
+        res.json(workbench);
+    } catch (error) {
+        console.error('Error building calculator workbench:', error);
+        res.status(404).json({ error: error.message || 'Failed to build calculator workbench.' });
+    }
+});
+
+app.get('/api/items/models', async (req, res) => {
+    try {
+        const chineseItemMap = await loadChineseItemMap();
+        res.json({
+            summary: summarizeItemModelCoverage(),
+            items: listItemModels().map((item) => ({
+                ...item,
+                ...localizeItemModelName(item, chineseItemMap)
+            }))
+        });
+    } catch (error) {
+        console.error('Error listing item models:', error);
+        res.status(500).json({ error: error.message || 'Failed to list item models.' });
+    }
+});
+
+app.get('/api/items/models/:itemKey', async (req, res) => {
+    try {
+        const model = getItemModel(req.params.itemKey);
+        if (!model) return res.status(404).json({ error: `Unknown item model: ${req.params.itemKey}` });
+        const chineseItemMap = await loadChineseItemMap();
+        res.json({
+            ...model,
+            ...localizeItemModelName(model, chineseItemMap)
+        });
+    } catch (error) {
+        console.error('Error loading item model:', error);
+        res.status(500).json({ error: error.message || 'Failed to load item model.' });
     }
 });
 

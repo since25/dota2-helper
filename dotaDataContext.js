@@ -8,10 +8,15 @@ const {
 } = require('./dotaLocalization');
 const { buildHeroPowerSpikes } = require('./powerSpikeContext');
 const { localizeAbilityName } = require('./abilityLocalization');
+const { getItemModel, summarizeItemModelCoverage } = require('./itemModels/registry');
 const fs = require('fs');
 const path = require('path');
 
 const VALID_HERO_NAMES_SET = new Set(CANONICAL_HERO_NAMES);
+const PROVIDER_HERO_NAME_ALIASES = {
+  'Outworld Destroyer': ['Outworld Devourer'],
+  Ringmaster: ['Ring Master']
+};
 const ROLES = ['Safe Lane', 'Midlane', 'Offlane', 'Support', 'Hard Support'];
 const DOTACONSTANTS_VERSION = getInstalledPackageVersion('dotaconstants') || 'unknown';
 const ATTRIBUTE_RULES = {
@@ -104,7 +109,8 @@ function validateUniqueHeroes(myTeam, opponentTeam) {
 }
 
 function findHeroRecord(heroes, heroName) {
-  return Object.values(heroes).find((hero) => hero.localized_name === heroName);
+  const providerNames = [heroName, ...(PROVIDER_HERO_NAME_ALIASES[heroName] || [])];
+  return Object.values(heroes).find((hero) => providerNames.includes(hero.localized_name));
 }
 
 async function buildAbilitySummary(ability, slotIndex = 0) {
@@ -227,7 +233,8 @@ async function getHeroDetails(heroName) {
 
   return {
     id: hero.id,
-    name: hero.localized_name,
+    name: heroName,
+    providerName: hero.localized_name,
     internalName: hero.name,
     stats: buildHeroStats(hero),
     abilities: await Promise.all(abilitySummaries),
@@ -280,6 +287,7 @@ async function buildPowerSpikeEntries(team) {
 
 function buildItemSummary(itemKey, item) {
   if (!item || !item.dname) return null;
+  const model = getItemModel(itemKey);
 
   return {
     key: itemKey,
@@ -296,7 +304,17 @@ function buildItemSummary(itemKey, item) {
       type: ability.type,
       title: ability.title,
       description: ability.description || ''
-    }))
+    })),
+    semantics: model
+      ? model.effects
+        .filter((effect) => effect.type !== 'raw.reference')
+        .map((effect) => ({
+          type: effect.type,
+          label: effect.label,
+          key: effect.key || effect.abilityName || '',
+          values: effect.values || []
+        }))
+      : []
   };
 }
 
@@ -319,6 +337,23 @@ async function buildUpgradeItems() {
   };
 }
 
+function buildItemSemanticCoverage() {
+  const summary = summarizeItemModelCoverage();
+  return {
+    total: summary.total,
+    damageItems: Object.entries(summary.byEffectType)
+      .filter(([type]) => type.startsWith('damage.'))
+      .reduce((sum, [, count]) => sum + count, 0),
+    modifierItems: Object.entries(summary.byEffectType)
+      .filter(([type]) => type.startsWith('modifier.'))
+      .reduce((sum, [, count]) => sum + count, 0),
+    upgradeItems: Object.entries(summary.byEffectType)
+      .filter(([type]) => type.startsWith('upgrade.'))
+      .reduce((sum, [, count]) => sum + count, 0),
+    byEffectType: summary.byEffectType
+  };
+}
+
 function getDotaconstantsMetadata() {
   return {
     name: 'dotaconstants',
@@ -337,7 +372,8 @@ function buildDataCoverage(context) {
     'ability mana and cooldown',
     'lane opponent abilities',
     'role item data',
-    'aghanim item basics'
+    'aghanim item basics',
+    'shop item semantic models'
   ];
   const missing = [];
 
@@ -349,6 +385,9 @@ function buildDataCoverage(context) {
   }
   if (context.upgradeItems.heroSpecificUpgradeSource) {
     missing.push('hero-specific Aghanim upgrade details');
+  }
+  if (!context.itemSemanticCoverage?.total) {
+    missing.push('shop item semantic models');
   }
 
   return { available, missing };
@@ -376,6 +415,7 @@ async function buildMatchContext(myTeamInput, opponentTeamInput) {
   const laneOpponentAbilities = await buildLaneOpponentAbilities(laneOpponents);
   const roleItems = await buildRoleItems(player.role);
   const upgradeItems = await buildUpgradeItems();
+  const itemSemanticCoverage = buildItemSemanticCoverage();
   const playerPowerSpikes = buildHeroPowerSpikes(playerHero);
   const enemyPowerSpikes = await buildPowerSpikeEntries(opponentTeam);
   const lanePowerSpikes = enemyPowerSpikes.filter((entry) =>
@@ -406,6 +446,7 @@ async function buildMatchContext(myTeamInput, opponentTeamInput) {
     laneOpponentAbilities,
     roleItems,
     upgradeItems,
+    itemSemanticCoverage,
     playerPowerSpikes,
     enemyPowerSpikes,
     lanePowerSpikes
@@ -443,8 +484,34 @@ function formatItemForPrompt(item) {
   const abilities = item.abilities.length
     ? item.abilities.map((ability) => `${ability.type}: ${ability.title}${ability.description ? ` - ${ability.description}` : ''}`).join('; ')
     : '本地数据未提供主动/被动说明';
+  const semantics = item.semantics?.length
+    ? item.semantics
+      .slice(0, 8)
+      .map((effect) => `${effect.label} [${effect.type}]${effect.values?.length ? `=${effect.values.join('/')}` : ''}`)
+      .join('; ')
+    : '本地语义模型未提供可计算项';
 
-  return `- ${localizeTerm(item.name, true)}（${item.cost} 金）: ${attrs}; ${abilities}`;
+  return `- ${localizeTerm(item.name, true)}（${item.cost} 金）: ${attrs}; ${abilities}; 结构化语义: ${semantics}`;
+}
+
+function formatItemSemanticCoverageForPrompt(coverage) {
+  if (!coverage) return '本地未加载商店物品语义模型。';
+  const importantTypes = [
+    'damage.instant',
+    'damage.sustained_dps',
+    'damage.attack_proc',
+    'damage.attribute_scaling',
+    'modifier.armor.flat',
+    'modifier.magic_resistance.percent',
+    'modifier.damage_amp.percent',
+    'modifier.spell_amp.percent',
+    'upgrade.aghanims_scepter',
+    'upgrade.aghanims_shard'
+  ];
+  const counts = importantTypes
+    .map((type) => `${type}: ${coverage.byEffectType[type] || 0}`)
+    .join('; ');
+  return `已建模商店物品 ${coverage.total} 个。语义计数: ${counts}。raw.reference 仅为非伤害审计字段，不得当作未知伤害引用。`;
 }
 
 function formatUpgradeItemsForPrompt(upgradeItems) {
@@ -599,6 +666,7 @@ function buildGroundedChinesePrompt(context) {
   }).join('\n\n') || '本地数据未提供对线敌人技能信息';
   const roleItems = context.roleItems.map(formatItemForPrompt).join('\n') || '本地数据未提供该分路物品信息';
   const upgradeItems = formatUpgradeItemsForPrompt(context.upgradeItems);
+  const itemSemanticCoverage = formatItemSemanticCoverageForPrompt(context.itemSemanticCoverage);
   const playerPowerSpikes = formatPowerSpikeEntryForPrompt({
     hero: context.player.hero,
     role: context.player.role,
@@ -616,6 +684,8 @@ function buildGroundedChinesePrompt(context) {
 - 如果建议需要某个数值但上下文没有提供，请明确说“本地数据未提供”。
 - 可以基于阵容和技能机制做策略推理，但要把事实和建议区分开。
 - 技能和物品的英文原文描述只作为理解机制的输入，回答时不要复述英文原句。
+- 物品数值必须优先使用“结构化语义”；raw.reference 是审计字段，不是未知伤害。
+- 神杖和魔晶是条件升级入口，只有英雄模型或上下文明确提供升级效果时，才把升级伤害计入斩杀线。
 - 当前补丁若已移除的机制不要当作数据缺口。不要把偷取技能继承细节或买活价格/冷却列为数据缺口；这些属于当前阶段暂不分析的动态机制。
 
 本地数据上下文：
@@ -650,6 +720,9 @@ ${roleItems}
 
 神杖与魔晶参考:
 ${upgradeItems}
+
+商店物品语义覆盖:
+${itemSemanticCoverage}
 
 关键等级爆发窗口:
 说明：以下“固定瞬时伤害”只计入能直接命中的固定伤害技能。持续伤害、每秒/每跳/每波伤害、按目标状态变化的伤害、普攻触发伤害、死亡/叠层等条件触发伤害会列入“条件/持续伤害参考”，但不计入固定瞬时伤害和默认魔抗估算。默认25%魔抗估算只折减 Magical 伤害；Pure 不折减；Physical 暂不按护甲折减。

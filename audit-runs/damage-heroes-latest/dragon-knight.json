@@ -121,7 +121,7 @@
       "name": "Breathe Fire",
       "displayName": "火焰气息（Breathe Fire）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "attack_modifier",
       "reason": "",
@@ -175,7 +175,7 @@
       "name": "Dragon Tail",
       "displayName": "神龙摆尾（Dragon Tail）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -230,7 +230,7 @@
       "name": "Wyrm's Wrath",
       "displayName": "飞龙之怒（Wyrm's Wrath）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -268,7 +268,7 @@
       "name": "Fireball",
       "displayName": "龙炎火球（Fireball）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -318,7 +318,7 @@
       "name": "Elder Dragon Form",
       "displayName": "古龙形态（Elder Dragon Form）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -377,5 +377,381 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Dragon Knight",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Breathe Fire": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "hero_attack_damage",
+            "attack_count"
+          ],
+          "defaultAttackCount": 1,
+          "defaultIncluded": false
+        },
+        "Dragon Tail": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Wyrm's Wrath": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "magic_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Fireball": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "burn_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Dragon Blood": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Elder Dragon Form": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "corrosive_damage_per_second",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "start_radius",
+        "label": "START RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "20%/24%/28%/32%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "dragon_form_bonus_pct",
+        "label": "DRAGON FORM BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "duration",
+        "label": "REDUCTION DURATION:",
+        "value": "11",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Breathe Fire",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "damage_pct",
+        "label": "DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "dragon_cast_range",
+        "label": "DRAGON CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "aoe",
+        "label": "AOE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Tail",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Wyrm's Wrath",
+        "key": "bonus_aoe",
+        "label": "AOE BONUS:",
+        "value": "25/50/75/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Fireball",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Fireball",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Fireball",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Fireball",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Blood",
+        "key": "health_regen",
+        "label": "BONUS HP REGEN:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Blood",
+        "key": "armor",
+        "label": "BONUS ARMOR:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Dragon Blood",
+        "key": "regen_and_armor_multiplier_during_dragon_form",
+        "label": "REGEN AND ARMOR MULTIPLIER DURING DRAGON FORM:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "bonus_movement_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "25/30/35/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "bonus_attack_range",
+        "label": "BONUS ATTACK RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "bonus_ability_cast_range",
+        "label": "BONUS ABILITY CAST RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "bonus_attack_damage",
+        "label": "BONUS ATTACK DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "model_scale",
+        "label": "MODEL SCALE:",
+        "value": "10/15/20/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "corrosive_duration",
+        "label": "CORROSIVE DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "ranged_splash_damage_pct",
+        "label": "SPLASH DAMAGE:",
+        "value": "0%/75%/75%/100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "ranged_splash_radius",
+        "label": "SPLASH RADIUS:",
+        "value": "0/275/275/350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "health_bar_offset",
+        "label": "HEALTH BAR OFFSET:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "0/0/0/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "frost_duration",
+        "label": "FROST DURATION:",
+        "value": "0/0/3/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "frost_bonus_movement_speed",
+        "label": "FROST MOVEMENT SLOW:",
+        "value": "0%/0%/30%/45%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "frost_bonus_attack_speed",
+        "label": "FROST ATTACK SLOW:",
+        "value": "0/0/50/65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "frost_healing_reduction",
+        "label": "FROST HEALING REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dragon Knight",
+        "ability": "Elder Dragon Form",
+        "key": "scepter_bonus_levels",
+        "label": "SCEPTER BONUS LEVELS:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>莉娜（Lina）</h1>
-        <div class="muted">Lina · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Lina · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,335 @@
       </div>
       <a href="./lina.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>dragon_slave_speed</code></td>
+      <td>DRAGON SLAVE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>dragon_slave_width_initial</code></td>
+      <td>DRAGON SLAVE WIDTH INITIAL:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>dragon_slave_width_end</code></td>
+      <td>DRAGON SLAVE WIDTH END:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>dragon_slave_distance</code></td>
+      <td>DRAGON SLAVE DISTANCE:</td>
+      <td>1075</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1075</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>0.6875</td>
+    </tr>
+  
+    <tr>
+      <td>Dragon Slave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Light Strike Array</td>
+      <td><code>light_strike_array_aoe</code></td>
+      <td>RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Light Strike Array</td>
+      <td><code>light_strike_array_delay_time</code></td>
+      <td>CAST DELAY:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Light Strike Array</td>
+      <td><code>light_strike_array_stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2/1.6/2/2.4</td>
+    </tr>
+  
+    <tr>
+      <td>Light Strike Array</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Light Strike Array</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.45</td>
+    </tr>
+  
+    <tr>
+      <td>Fiery Soul</td>
+      <td><code>fiery_soul_move_speed_bonus</code></td>
+      <td>MOVE SPEED BONUS:</td>
+      <td>1%/1.5%/2%/2.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Fiery Soul</td>
+      <td><code>fiery_soul_max_stacks</code></td>
+      <td>MAX STACKS:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Fiery Soul</td>
+      <td><code>fiery_soul_stack_duration</code></td>
+      <td>DURATION:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Fiery Soul</td>
+      <td><code>bonus_spell_damage</code></td>
+      <td>BONUS SPELL DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Flame Cloak</td>
+      <td><code>flame_cloak_duration</code></td>
+      <td>DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Flame Cloak</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Flame Cloak</td>
+      <td><code>visualzdelta</code></td>
+      <td>VISUALZDELTA:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Flame Cloak</td>
+      <td><code>zchangespeed</code></td>
+      <td>ZCHANGESPEED:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Flame Cloak</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Slow Burn</td>
+      <td><code>impact_damage_pct</code></td>
+      <td>IMPACT DAMAGE PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Slow Burn</td>
+      <td><code>burn_duration</code></td>
+      <td>BURN DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Slow Burn</td>
+      <td><code>additional_tick_total_damage_tooltip</code></td>
+      <td>ADDITIONAL TICK TOTAL DAMAGE TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Slow Burn</td>
+      <td><code>target_crit_multiplier</code></td>
+      <td>TARGET CRIT MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>damage_delay</code></td>
+      <td>DAMAGE DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>pierce_immunity</code></td>
+      <td>PIERCE IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>supercharge_duration</code></td>
+      <td>SUPERCHARGE DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>supercharge_stacks</code></td>
+      <td>SUPERCHARGE STACKS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>barrier_pct</code></td>
+      <td>BARRIER PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>barrier_duration</code></td>
+      <td>BARRIER DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Laguna Blade</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Lina&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Dragon Slave&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;dragon_slave_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Light Strike Array&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;light_strike_array_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Fiery Soul&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;fiery_soul_attack_speed_bonus&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;攻速叠层影响后续普攻，不直接作为技能爆发伤害。&quot;
+    },
+    &quot;Flame Cloak&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;spell_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+      &quot;affects&quot;: &quot;spell_amplification&quot;,
+      &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+      &quot;reason&quot;: &quot;法术增强会放大后续技能，当前总量不自动串联增伤。&quot;
+    },
+    &quot;Slow Burn&quot;: {
+      &quot;status&quot;: &quot;unsupported&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;burn_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;burn_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。&quot;
+    },
+    &quot;Laguna Blade&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -840,7 +1173,344 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Lina&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Dragon Slave&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;dragon_slave_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Light Strike Array&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;light_strike_array_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Fiery Soul&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;fiery_soul_attack_speed_bonus&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;攻速叠层影响后续普攻，不直接作为技能爆发伤害。&quot;
+        },
+        &quot;Flame Cloak&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;spell_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+          &quot;affects&quot;: &quot;spell_amplification&quot;,
+          &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+          &quot;reason&quot;: &quot;法术增强会放大后续技能，当前总量不自动串联增伤。&quot;
+        },
+        &quot;Slow Burn&quot;: {
+          &quot;status&quot;: &quot;unsupported&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;burn_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;burn_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。&quot;
+        },
+        &quot;Laguna Blade&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;dragon_slave_speed&quot;,
+        &quot;label&quot;: &quot;DRAGON SLAVE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;dragon_slave_width_initial&quot;,
+        &quot;label&quot;: &quot;DRAGON SLAVE WIDTH INITIAL:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;dragon_slave_width_end&quot;,
+        &quot;label&quot;: &quot;DRAGON SLAVE WIDTH END:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;dragon_slave_distance&quot;,
+        &quot;label&quot;: &quot;DRAGON SLAVE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1075&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1075&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6875&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Dragon Slave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Light Strike Array&quot;,
+        &quot;key&quot;: &quot;light_strike_array_aoe&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Light Strike Array&quot;,
+        &quot;key&quot;: &quot;light_strike_array_delay_time&quot;,
+        &quot;label&quot;: &quot;CAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Light Strike Array&quot;,
+        &quot;key&quot;: &quot;light_strike_array_stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2/1.6/2/2.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Light Strike Array&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Light Strike Array&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Fiery Soul&quot;,
+        &quot;key&quot;: &quot;fiery_soul_move_speed_bonus&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;1%/1.5%/2%/2.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Fiery Soul&quot;,
+        &quot;key&quot;: &quot;fiery_soul_max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Fiery Soul&quot;,
+        &quot;key&quot;: &quot;fiery_soul_stack_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Fiery Soul&quot;,
+        &quot;key&quot;: &quot;bonus_spell_damage&quot;,
+        &quot;label&quot;: &quot;BONUS SPELL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Flame Cloak&quot;,
+        &quot;key&quot;: &quot;flame_cloak_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Flame Cloak&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Flame Cloak&quot;,
+        &quot;key&quot;: &quot;visualzdelta&quot;,
+        &quot;label&quot;: &quot;VISUALZDELTA:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Flame Cloak&quot;,
+        &quot;key&quot;: &quot;zchangespeed&quot;,
+        &quot;label&quot;: &quot;ZCHANGESPEED:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Flame Cloak&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Slow Burn&quot;,
+        &quot;key&quot;: &quot;impact_damage_pct&quot;,
+        &quot;label&quot;: &quot;IMPACT DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Slow Burn&quot;,
+        &quot;key&quot;: &quot;burn_duration&quot;,
+        &quot;label&quot;: &quot;BURN DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Slow Burn&quot;,
+        &quot;key&quot;: &quot;additional_tick_total_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL TICK TOTAL DAMAGE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Slow Burn&quot;,
+        &quot;key&quot;: &quot;target_crit_multiplier&quot;,
+        &quot;label&quot;: &quot;TARGET CRIT MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;damage_delay&quot;,
+        &quot;label&quot;: &quot;DAMAGE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;pierce_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCE IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;supercharge_duration&quot;,
+        &quot;label&quot;: &quot;SUPERCHARGE DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;supercharge_stacks&quot;,
+        &quot;label&quot;: &quot;SUPERCHARGE STACKS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;barrier_pct&quot;,
+        &quot;label&quot;: &quot;BARRIER PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;barrier_duration&quot;,
+        &quot;label&quot;: &quot;BARRIER DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lina&quot;,
+        &quot;ability&quot;: &quot;Laguna Blade&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

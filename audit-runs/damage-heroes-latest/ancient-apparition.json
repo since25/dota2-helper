@@ -121,7 +121,7 @@
       "name": "Cold Feet",
       "displayName": "寒霜之足（Cold Feet）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -151,10 +151,10 @@
             80
           ],
           "theoreticalTotalByAbilityLevel": [
-            36,
-            88,
-            156,
-            240
+            80,
+            160,
+            240,
+            320
           ],
           "totalFormula": "duration * damagePerSecond",
           "countInFixedInstantTotal": false,
@@ -163,10 +163,10 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              1.8,
-              2.2,
-              2.6,
-              3
+              4,
+              4,
+              4,
+              4
             ]
           },
           "source": "curated",
@@ -183,7 +183,7 @@
       "name": "Ice Vortex",
       "displayName": "冰霜漩涡（Ice Vortex）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -245,7 +245,7 @@
       "name": "Chilling Touch",
       "displayName": "极寒之触（Chilling Touch）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -280,14 +280,7 @@
           "formula": {
             "type": "single_value"
           },
-          "metadata": {
-            "durationByAbilityLevel": [
-              3,
-              3,
-              3,
-              3
-            ]
-          },
+          "metadata": {},
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
@@ -300,43 +293,45 @@
       "name": "Bone Chill",
       "displayName": "刺骨严寒（Bone Chill）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "model": "state_scaling",
+      "reason": "固定命石降低力量，不直接作为技能伤害。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Bone Chill:debuff_reference:movement_slow_pct",
-          "kind": "debuff_reference",
+          "id": "Bone Chill:state_scaling:str_reduction",
+          "kind": "state_scaling",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
-          "label": "movement_slow_pct",
+          "damageType": "Magical",
+          "label": "str_reduction",
           "valuesByAbilityLevel": [
-            2
+            0.1
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "state_scaling"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "positioning",
-            "affects": "positioning",
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
             "condition": "",
-            "requiredInputs": [],
+            "requiredInputs": [
+              "magic_damage_instances"
+            ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
           },
           "source": "curated",
           "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "model": "state_scaling",
+          "reason": "固定命石降低力量，不直接作为技能伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "固定命石降低力量，不直接作为技能伤害。"
           ]
         }
       ]
@@ -345,10 +340,10 @@
       "name": "Ice Blast",
       "displayName": "冰晶爆轰（Ice Blast）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。",
       "manaCostByAbilityLevel": [
         175,
         175,
@@ -391,7 +386,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -399,5 +394,325 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Ancient Apparition",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed cold feet/vortex/ice blast sustained fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Cold Feet": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Ice Vortex": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "vortex_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Chilling Touch": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Bone Chill": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "str_reduction",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "magic_damage_instances"
+          ],
+          "conditionInputs": [
+            "magic_damage_instances"
+          ],
+          "reason": "固定命石降低力量，不直接作为技能伤害。"
+        },
+        "Ice Blast": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "frostbite_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "当前模型计入霜寒持续伤害；命中爆炸 dmg 和斩杀阈值后续拆分。"
+        },
+        "Release": {
+          "status": "ignored",
+          "reason": "释放冰晶爆轰的控制子技能，不直接产生额外伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Cold Feet",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "725/750/775/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Cold Feet",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.8/2.2/2.6/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Cold Feet",
+        "key": "area_of_effect",
+        "label": "AREA OF EFFECT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Cold Feet",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700/800/900/1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Cold Feet",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "drag_speed",
+        "label": "DRAG SPEED:",
+        "value": "40/50/60/70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "movement_speed_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "-8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "spell_resist_pct",
+        "label": "INCREASED MAGIC DAMAGE:",
+        "value": "-16/-19/-22/-25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "vision_aoe",
+        "label": "VISION AOE:",
+        "value": "200/220/240/260",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "6/8/10/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Vortex",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Chilling Touch",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Chilling Touch",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Chilling Touch",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.7/0.8/0.9/1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Chilling Touch",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "60/90/120/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Bone Chill",
+        "key": "tooltip_scepter_bonus",
+        "label": "TOOLTIP SCEPTER BONUS:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Bone Chill",
+        "key": "str_reduction_duration",
+        "label": "DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Bone Chill",
+        "key": "movement_slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "250/325/400",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "radius_min",
+        "label": "RADIUS MIN:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "radius_grow",
+        "label": "RADIUS GROW:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "radius_max",
+        "label": "RADIUS MAX:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "path_radius",
+        "label": "PATH RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "kill_pct",
+        "label": "SHATTER HEALTH THRESHOLD:",
+        "value": "12/13/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "cold_feet_stun_duration_pct",
+        "label": "COLD FEET STUN DURATION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "target_sight_radius",
+        "label": "TARGET SIGHT RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ancient Apparition",
+        "ability": "Ice Blast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>酒仙（Brewmaster）</h1>
-        <div class="muted">Brewmaster · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Brewmaster · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,460 @@
       </div>
       <a href="./brewmaster.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Thunder Clap</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Thunder Clap</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>15%/30%/45%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Thunder Clap</td>
+      <td><code>attack_speed_slow</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>15/30/45/60</td>
+    </tr>
+  
+    <tr>
+      <td>Thunder Clap</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>24%/28%/32%/36%</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>extra_duration</code></td>
+      <td>EXTRA DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>projectile_speed</code></td>
+      <td>BARREL SPEED:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>projectile_width</code></td>
+      <td>PROJECTILE WIDTH:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>barrel_width</code></td>
+      <td>BARREL WIDTH:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>barrel_impact_damage</code></td>
+      <td>BARREL IMPACT DAMAGE:</td>
+      <td>40/70/100/130</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>min_movement</code></td>
+      <td>MIN MOVEMENT:</td>
+      <td>-15</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>max_movement</code></td>
+      <td>MAX MOVEMENT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Cinder Brew</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>magic_resist</code></td>
+      <td>MAGIC RESIST:</td>
+      <td>8%/12%/16%/20%</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>bonus_armor</code></td>
+      <td>ARMOR:</td>
+      <td>3/5/7/9</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>dodge_chance</code></td>
+      <td>EVASION:</td>
+      <td>15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>bonus_move_speed</code></td>
+      <td>MOVE SPEED:</td>
+      <td>4%/6%/8%/10%</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>crit_chance</code></td>
+      <td>CRIT CHANCE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>crit_multiplier</code></td>
+      <td>CRIT DAMAGE:</td>
+      <td>120%/140%/160%/180%</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>brewed_up_duration</code></td>
+      <td>BREWED UP DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>brewed_up_duration_extend</code></td>
+      <td>BREWED UP DURATION EXTEND:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>brewed_up_bonus</code></td>
+      <td>BREWED UP BONUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Drunken Brawler</td>
+      <td><code>hangover_time</code></td>
+      <td>HANGOVER TIME:</td>
+      <td>9</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>min_health_threshold</code></td>
+      <td>MIN HEALTH THRESHOLD:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>max_health_threshold</code></td>
+      <td>MAX HEALTH THRESHOLD:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>status_resist</code></td>
+      <td>MAX STATUS RESIST:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>min_speed</code></td>
+      <td>MAX SPEED SLOW:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>max_speed</code></td>
+      <td>MAX SPEED INCREASE:</td>
+      <td>30%</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>speed_toggle_time</code></td>
+      <td>SPEED TOGGLE TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>drink_duration</code></td>
+      <td>DRINK DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Liquid Courage</td>
+      <td><code>max_hp_regen</code></td>
+      <td>MAX HP REGEN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>split_duration</code></td>
+      <td>SPLIT DURATION:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>tooltip_earth_brewling_hp</code></td>
+      <td>EARTH BREWLING HP:</td>
+      <td>1400/2300/3200/4100</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>tooltip_storm_brewling_hp</code></td>
+      <td>STORM BREWLING HP:</td>
+      <td>1000/1500/2000/2500</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>tooltip_storm_brewling_damage</code></td>
+      <td>STORM BREWLING DAMAGE:</td>
+      <td>30/50/70/90</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>tooltip_fire_brewling_hp</code></td>
+      <td>FIRE BREWLING HP:</td>
+      <td>1300/1450/1600/1750</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>tooltip_fire_brewling_damage</code></td>
+      <td>FIRE BREWLING DAMAGE:</td>
+      <td>70/120/170/220</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>current_hp_agi</code></td>
+      <td>CURRENT HP AGI:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>current_dmg_agi</code></td>
+      <td>CURRENT DMG AGI:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>bonus_brewling_hp</code></td>
+      <td>BONUS BREWLING HP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>primal_split_cancel</code></td>
+      <td>PRIMAL SPLIT CANCEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>hp_per_attribute</code></td>
+      <td>HP PER ATTRIBUTE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>dmg_per_attribute</code></td>
+      <td>DMG PER ATTRIBUTE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>attribute_share_pct</code></td>
+      <td>ATTRIBUTE SHARE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>give_brawler_passive</code></td>
+      <td>GIVE BRAWLER PASSIVE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>scepter_bonus_levels</code></td>
+      <td>SCEPTER BONUS LEVELS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Split</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.55</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Brewmaster&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Thunder Clap&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Cinder Brew&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;total_ignite_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Drunken Brawler&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Liquid Courage&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Primal Split&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;tooltip_earth_brewling_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +582,7 @@
           <div class="muted">Thunder Clap · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +635,7 @@
           <div class="muted">Cinder Brew · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +688,7 @@
           <div class="muted">Drunken Brawler · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +727,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +741,7 @@
           <div class="muted">Liquid Courage · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +780,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +794,7 @@
           <div class="muted">Primal Split · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +965,7 @@
       &quot;name&quot;: &quot;Thunder Clap&quot;,
       &quot;displayName&quot;: &quot;雷霆一击（Thunder Clap）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +1020,7 @@
       &quot;name&quot;: &quot;Cinder Brew&quot;,
       &quot;displayName&quot;: &quot;余烬佳酿（Cinder Brew）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -617,10 +1075,10 @@
       &quot;name&quot;: &quot;Drunken Brawler&quot;,
       &quot;displayName&quot;: &quot;醉拳（Drunken Brawler）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0,
         0,
@@ -664,9 +1122,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -675,10 +1133,10 @@
       &quot;name&quot;: &quot;Liquid Courage&quot;,
       &quot;displayName&quot;: &quot;壮胆酒（Liquid Courage）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0
       ],
@@ -713,9 +1171,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -724,7 +1182,7 @@
       &quot;name&quot;: &quot;Primal Split&quot;,
       &quot;displayName&quot;: &quot;元素分离（Primal Split）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -775,7 +1233,488 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Brewmaster&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Thunder Clap&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Cinder Brew&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;total_ignite_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Drunken Brawler&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Liquid Courage&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Primal Split&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;tooltip_earth_brewling_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Thunder Clap&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Thunder Clap&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/30%/45%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Thunder Clap&quot;,
+        &quot;key&quot;: &quot;attack_speed_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;15/30/45/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Thunder Clap&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;24%/28%/32%/36%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;extra_duration&quot;,
+        &quot;label&quot;: &quot;EXTRA DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;BARREL SPEED:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;projectile_width&quot;,
+        &quot;label&quot;: &quot;PROJECTILE WIDTH:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;barrel_width&quot;,
+        &quot;label&quot;: &quot;BARREL WIDTH:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;barrel_impact_damage&quot;,
+        &quot;label&quot;: &quot;BARREL IMPACT DAMAGE:&quot;,
+        &quot;value&quot;: &quot;40/70/100/130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;min_movement&quot;,
+        &quot;label&quot;: &quot;MIN MOVEMENT:&quot;,
+        &quot;value&quot;: &quot;-15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;max_movement&quot;,
+        &quot;label&quot;: &quot;MAX MOVEMENT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Cinder Brew&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;magic_resist&quot;,
+        &quot;label&quot;: &quot;MAGIC RESIST:&quot;,
+        &quot;value&quot;: &quot;8%/12%/16%/20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;ARMOR:&quot;,
+        &quot;value&quot;: &quot;3/5/7/9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;dodge_chance&quot;,
+        &quot;label&quot;: &quot;EVASION:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;bonus_move_speed&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;4%/6%/8%/10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;crit_chance&quot;,
+        &quot;label&quot;: &quot;CRIT CHANCE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;crit_multiplier&quot;,
+        &quot;label&quot;: &quot;CRIT DAMAGE:&quot;,
+        &quot;value&quot;: &quot;120%/140%/160%/180%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;brewed_up_duration&quot;,
+        &quot;label&quot;: &quot;BREWED UP DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;brewed_up_duration_extend&quot;,
+        &quot;label&quot;: &quot;BREWED UP DURATION EXTEND:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;brewed_up_bonus&quot;,
+        &quot;label&quot;: &quot;BREWED UP BONUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Drunken Brawler&quot;,
+        &quot;key&quot;: &quot;hangover_time&quot;,
+        &quot;label&quot;: &quot;HANGOVER TIME:&quot;,
+        &quot;value&quot;: &quot;9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;min_health_threshold&quot;,
+        &quot;label&quot;: &quot;MIN HEALTH THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;max_health_threshold&quot;,
+        &quot;label&quot;: &quot;MAX HEALTH THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;status_resist&quot;,
+        &quot;label&quot;: &quot;MAX STATUS RESIST:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;min_speed&quot;,
+        &quot;label&quot;: &quot;MAX SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;max_speed&quot;,
+        &quot;label&quot;: &quot;MAX SPEED INCREASE:&quot;,
+        &quot;value&quot;: &quot;30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;speed_toggle_time&quot;,
+        &quot;label&quot;: &quot;SPEED TOGGLE TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;drink_duration&quot;,
+        &quot;label&quot;: &quot;DRINK DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Liquid Courage&quot;,
+        &quot;key&quot;: &quot;max_hp_regen&quot;,
+        &quot;label&quot;: &quot;MAX HP REGEN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;split_duration&quot;,
+        &quot;label&quot;: &quot;SPLIT DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;tooltip_earth_brewling_hp&quot;,
+        &quot;label&quot;: &quot;EARTH BREWLING HP:&quot;,
+        &quot;value&quot;: &quot;1400/2300/3200/4100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;tooltip_storm_brewling_hp&quot;,
+        &quot;label&quot;: &quot;STORM BREWLING HP:&quot;,
+        &quot;value&quot;: &quot;1000/1500/2000/2500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;tooltip_storm_brewling_damage&quot;,
+        &quot;label&quot;: &quot;STORM BREWLING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30/50/70/90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;tooltip_fire_brewling_hp&quot;,
+        &quot;label&quot;: &quot;FIRE BREWLING HP:&quot;,
+        &quot;value&quot;: &quot;1300/1450/1600/1750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;tooltip_fire_brewling_damage&quot;,
+        &quot;label&quot;: &quot;FIRE BREWLING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;70/120/170/220&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;current_hp_agi&quot;,
+        &quot;label&quot;: &quot;CURRENT HP AGI:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;current_dmg_agi&quot;,
+        &quot;label&quot;: &quot;CURRENT DMG AGI:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;bonus_brewling_hp&quot;,
+        &quot;label&quot;: &quot;BONUS BREWLING HP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;primal_split_cancel&quot;,
+        &quot;label&quot;: &quot;PRIMAL SPLIT CANCEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;hp_per_attribute&quot;,
+        &quot;label&quot;: &quot;HP PER ATTRIBUTE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;dmg_per_attribute&quot;,
+        &quot;label&quot;: &quot;DMG PER ATTRIBUTE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;attribute_share_pct&quot;,
+        &quot;label&quot;: &quot;ATTRIBUTE SHARE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;give_brawler_passive&quot;,
+        &quot;label&quot;: &quot;GIVE BRAWLER PASSIVE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;scepter_bonus_levels&quot;,
+        &quot;label&quot;: &quot;SCEPTER BONUS LEVELS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Brewmaster&quot;,
+        &quot;ability&quot;: &quot;Primal Split&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

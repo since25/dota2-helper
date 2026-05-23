@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>水晶室女（Crystal Maiden）</h1>
-        <div class="muted">Crystal Maiden · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Crystal Maiden · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,376 @@
       </div>
       <a href="./crystal-maiden.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>movespeed_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-20%/-30%/-40%/-50%</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>attackspeed_slow</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-30/-45/-60/-75</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>physical_barrier_amount</code></td>
+      <td>PHYSICAL BARRIER AMOUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>physical_barrier_self_amount</code></td>
+      <td>SELF PHYSICAL BARRIER AMOUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Nova</td>
+      <td><code>physical_barrier_duration</code></td>
+      <td>BARRIER DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Frostbite</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Frostbite</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Frostbite</td>
+      <td><code>creep_multiplier</code></td>
+      <td>CREEP MULTIPLIER:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Aura</td>
+      <td><code>base_mana_regen</code></td>
+      <td>MANA REGEN:</td>
+      <td>0.4/0.6/0.8/1</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Aura</td>
+      <td><code>proximity_mana_regen_tooltip</code></td>
+      <td>CLOSE MANA REGEN:</td>
+      <td>1.2/1.8/2.4/3</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Aura</td>
+      <td><code>mana_regen_amp</code></td>
+      <td>MANA REGEN AMPLIFICATION:</td>
+      <td>20%/40%/60%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Aura</td>
+      <td><code>proximity_bonus_factor</code></td>
+      <td>PROXIMITY BONUS FACTOR:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Arcane Aura</td>
+      <td><code>proximity_bonus_radius</code></td>
+      <td>PROXIMITY BONUS RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>hop_distance</code></td>
+      <td>DISTANCE:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>hop_duration</code></td>
+      <td>HOP DURATION:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>clone_duration</code></td>
+      <td>CLONE DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>anim_delay</code></td>
+      <td>ANIM DELAY:</td>
+      <td>0.02</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>clone_health</code></td>
+      <td>CLONE HEALTH:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Crystal Clone</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>-1</td>
+    </tr>
+  
+    <tr>
+      <td>Glacial Guard</td>
+      <td><code>barrier_duration</code></td>
+      <td>BARRIER DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>810</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>explosion_radius</code></td>
+      <td>EXPLOSION RADIUS:</td>
+      <td>320</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>explosion_interval</code></td>
+      <td>EXPLOSION INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>movespeed_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-40%</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>attack_slow</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>-80/-120/-160</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>explosion_min_dist</code></td>
+      <td>EXPLOSION MIN DIST:</td>
+      <td>195</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>explosion_max_dist</code></td>
+      <td>EXPLOSION MAX DIST:</td>
+      <td>785</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>frostbite_delay</code></td>
+      <td>FROSTBITE DELAY:</td>
+      <td>-1</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>self_cast_range_bonus</code></td>
+      <td>CAST RANGE BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Freezing Field</td>
+      <td><code>aoe_bonus</code></td>
+      <td>AOE BONUS:</td>
+      <td>0%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed nova, frostbite, clone, and freezing field semantics against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Crystal Nova&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;nova_damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Frostbite&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Arcane Aura&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;奥术光环是回蓝和魔法恢复增幅，不直接造成伤害。&quot;
+    },
+    &quot;Crystal Clone&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;frostbite_radius&quot;,
+      &quot;semanticType&quot;: &quot;area.radius.units&quot;,
+      &quot;affects&quot;: &quot;area_control&quot;,
+      &quot;reason&quot;: &quot;冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。&quot;
+    },
+    &quot;Glacial Guard&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;mana_multiplier&quot;,
+      &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;reason&quot;: &quot;冰川护体为护盾相关先天效果，不直接造成对敌伤害。&quot;
+    },
+    &quot;Freezing Field&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;active_duration&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;active_duration&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。&quot;
+    },
+    &quot;Stop Freezing Field&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;停止持续施法的控制子技能，不产生额外伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +498,7 @@
           <div class="muted">Crystal Nova · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +551,7 @@
           <div class="muted">Frostbite · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +604,7 @@
           <div class="muted">Crystal Clone · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -256,8 +630,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Crystal Clone:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Crystal Clone:debuff_reference:frostbite_radius</code>
+          <div class="muted">frostbite_radius</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -265,11 +639,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>-1</td><td>-</td><td>-</td><td>-</td>
+        <td>450</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: area_control</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +657,7 @@
           <div class="muted">Glacial Guard · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +696,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: survivability</div><div><code>affects</code>: survivability</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>冰川护体为护盾相关先天效果，不直接造成对敌伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,9 +710,9 @@
           <div class="muted">Freezing Field · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
-          <span class="pill secondary">implemented</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
@@ -362,20 +736,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Freezing Field:instant_fixed:damage</code>
+          <code>Freezing Field:state_scaling:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
-          <div class="muted">implemented</div>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
         </td>
         <td>Magical</td>
         <td>110</td><td>180</td><td>250</td><td>-</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 10 / 10 / 10</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: active_duration / hit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +881,7 @@
       &quot;name&quot;: &quot;Crystal Nova&quot;,
       &quot;displayName&quot;: &quot;冰霜新星（Crystal Nova）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +936,7 @@
       &quot;name&quot;: &quot;Frostbite&quot;,
       &quot;displayName&quot;: &quot;冰封禁制（Frostbite）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -624,10 +998,10 @@
       &quot;name&quot;: &quot;Crystal Clone&quot;,
       &quot;displayName&quot;: &quot;冰晶克隆（Crystal Clone）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150
       ],
@@ -636,13 +1010,13 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Crystal Clone:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Crystal Clone:debuff_reference:frostbite_radius&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;frostbite_radius&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            -1
+            450
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -652,8 +1026,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;area_control&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -662,9 +1036,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。&quot;
           ]
         }
       ]
@@ -673,10 +1047,10 @@
       &quot;name&quot;: &quot;Glacial Guard&quot;,
       &quot;displayName&quot;: &quot;冰川护体（Glacial Guard）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;冰川护体为护盾相关先天效果，不直接造成对敌伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -707,9 +1081,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;冰川护体为护盾相关先天效果，不直接造成对敌伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;冰川护体为护盾相关先天效果，不直接造成对敌伤害。&quot;
           ]
         }
       ]
@@ -718,10 +1092,10 @@
       &quot;name&quot;: &quot;Freezing Field&quot;,
       &quot;displayName&quot;: &quot;极寒领域（Freezing Field）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         400,
@@ -734,8 +1108,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Freezing Field:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Freezing Field:state_scaling:damage&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -746,27 +1120,417 @@
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;state_scaling&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              10,
-              10,
-              10
-            ]
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;active_duration&quot;,
+              &quot;hit_count&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed nova, frostbite, clone, and freezing field semantics against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Crystal Nova&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;nova_damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Frostbite&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Arcane Aura&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;奥术光环是回蓝和魔法恢复增幅，不直接造成伤害。&quot;
+        },
+        &quot;Crystal Clone&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;frostbite_radius&quot;,
+          &quot;semanticType&quot;: &quot;area.radius.units&quot;,
+          &quot;affects&quot;: &quot;area_control&quot;,
+          &quot;reason&quot;: &quot;冰晶克隆提供位移和范围控制参考，当前不作为额外伤害源。&quot;
+        },
+        &quot;Glacial Guard&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;mana_multiplier&quot;,
+          &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;reason&quot;: &quot;冰川护体为护盾相关先天效果，不直接造成对敌伤害。&quot;
+        },
+        &quot;Freezing Field&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;active_duration&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;极寒领域每次爆炸造成 damage，实际总伤害取决于持续施法时间和命中爆炸次数。&quot;
+        },
+        &quot;Stop Freezing Field&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;停止持续施法的控制子技能，不产生额外伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;movespeed_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-20%/-30%/-40%/-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;attackspeed_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-30/-45/-60/-75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;physical_barrier_amount&quot;,
+        &quot;label&quot;: &quot;PHYSICAL BARRIER AMOUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;physical_barrier_self_amount&quot;,
+        &quot;label&quot;: &quot;SELF PHYSICAL BARRIER AMOUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Nova&quot;,
+        &quot;key&quot;: &quot;physical_barrier_duration&quot;,
+        &quot;label&quot;: &quot;BARRIER DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Frostbite&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Frostbite&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Frostbite&quot;,
+        &quot;key&quot;: &quot;creep_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Arcane Aura&quot;,
+        &quot;key&quot;: &quot;base_mana_regen&quot;,
+        &quot;label&quot;: &quot;MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;0.4/0.6/0.8/1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Arcane Aura&quot;,
+        &quot;key&quot;: &quot;proximity_mana_regen_tooltip&quot;,
+        &quot;label&quot;: &quot;CLOSE MANA REGEN:&quot;,
+        &quot;value&quot;: &quot;1.2/1.8/2.4/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Arcane Aura&quot;,
+        &quot;key&quot;: &quot;mana_regen_amp&quot;,
+        &quot;label&quot;: &quot;MANA REGEN AMPLIFICATION:&quot;,
+        &quot;value&quot;: &quot;20%/40%/60%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Arcane Aura&quot;,
+        &quot;key&quot;: &quot;proximity_bonus_factor&quot;,
+        &quot;label&quot;: &quot;PROXIMITY BONUS FACTOR:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Arcane Aura&quot;,
+        &quot;key&quot;: &quot;proximity_bonus_radius&quot;,
+        &quot;label&quot;: &quot;PROXIMITY BONUS RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;hop_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;hop_duration&quot;,
+        &quot;label&quot;: &quot;HOP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;clone_duration&quot;,
+        &quot;label&quot;: &quot;CLONE DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;anim_delay&quot;,
+        &quot;label&quot;: &quot;ANIM DELAY:&quot;,
+        &quot;value&quot;: &quot;0.02&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;clone_health&quot;,
+        &quot;label&quot;: &quot;CLONE HEALTH:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Crystal Clone&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;-1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Glacial Guard&quot;,
+        &quot;key&quot;: &quot;barrier_duration&quot;,
+        &quot;label&quot;: &quot;BARRIER DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;810&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;explosion_radius&quot;,
+        &quot;label&quot;: &quot;EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;320&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;explosion_interval&quot;,
+        &quot;label&quot;: &quot;EXPLOSION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;movespeed_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;attack_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;-80/-120/-160&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;explosion_min_dist&quot;,
+        &quot;label&quot;: &quot;EXPLOSION MIN DIST:&quot;,
+        &quot;value&quot;: &quot;195&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;explosion_max_dist&quot;,
+        &quot;label&quot;: &quot;EXPLOSION MAX DIST:&quot;,
+        &quot;value&quot;: &quot;785&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;frostbite_delay&quot;,
+        &quot;label&quot;: &quot;FROSTBITE DELAY:&quot;,
+        &quot;value&quot;: &quot;-1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;self_cast_range_bonus&quot;,
+        &quot;label&quot;: &quot;CAST RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Crystal Maiden&quot;,
+        &quot;ability&quot;: &quot;Freezing Field&quot;,
+        &quot;key&quot;: &quot;aoe_bonus&quot;,
+        &quot;label&quot;: &quot;AOE BONUS:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

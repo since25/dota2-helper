@@ -121,7 +121,7 @@
       "name": "Poison Touch",
       "displayName": "剧毒之触（Poison Touch）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -183,10 +183,10 @@
       "name": "Shallow Grave",
       "displayName": "薄葬（Shallow Grave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90,
         100,
@@ -227,9 +227,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -238,7 +238,7 @@
       "name": "Shadow Wave",
       "displayName": "暗影波（Shadow Wave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -286,10 +286,10 @@
       "name": "Nothl Projection",
       "displayName": "虚无投影（Nothl Projection）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         150,
@@ -328,13 +328,444 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Dazzle",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Poison Touch": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Shallow Grave": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Shadow Wave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Weave": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Nothl Projection": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "End Projection": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "start_radius",
+        "label": "START RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "end_radius",
+        "label": "END RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "end_distance",
+        "label": "END DISTANCE:",
+        "value": "600/700/800/900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "targets",
+        "label": "TARGETS:",
+        "value": "2/4/6/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "-13%/-16%/-19%/-22%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "bonus_slow",
+        "label": "BONUS SLOW PER HIT:",
+        "value": "-2%/-2.5%/-3%/-3.5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "split_radius",
+        "label": "SPLIT RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "split_damage",
+        "label": "SPLIT DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "attacks_to_split",
+        "label": "ATTACKS TO SPLIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500/600/700/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Poison Touch",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shallow Grave",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4/4.5/5/5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shallow Grave",
+        "key": "fx_halo_height",
+        "label": "FX HALO HEIGHT:",
+        "value": "190/240/300/350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shallow Grave",
+        "key": "heal_amplify",
+        "label": "HEAL AMPLIFICATION PER 10% MISSING:",
+        "value": "3%/5%/7%/9%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shallow Grave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "bounce_radius",
+        "label": "HEAL ARC RADIUS:",
+        "value": "475",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "damage_radius",
+        "label": "DAMAGE RADIUS:",
+        "value": "185",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "max_targets",
+        "label": "MAX TARGETS:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "tooltip_max_targets_inc_dazzle",
+        "label": "MAX HEAL TARGETS:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "scepter_heal_pct",
+        "label": "SCEPTER HEAL PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "scepter_cd_increase",
+        "label": "SCEPTER CD INCREASE:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Shadow Wave",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "armor_change",
+        "label": "ARMOR CHANGE PER STACK:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "affects_allies",
+        "label": "AFFECTS ALLIES:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "affects_enemies",
+        "label": "AFFECTS ENEMIES:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "heal_amplification_pct",
+        "label": "HEAL AMPLIFICATION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "ultimate_always_applies",
+        "label": "ULTIMATE ALWAYS APPLIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "ally_multiplier",
+        "label": "ALLY MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Weave",
+        "key": "enemy_multiplier",
+        "label": "ENEMY MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "min_duration",
+        "label": "MIN DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "max_duration",
+        "label": "MAX DURATION:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "initial_travel_speed",
+        "label": "INITIAL TRAVEL SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "soul_return_time",
+        "label": "SOUL RETURN TIME:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "soul_return_min_speed",
+        "label": "SOUL RETURN MIN SPEED:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "leash_start",
+        "label": "LEASH START:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "base_leash_pull",
+        "label": "BASE LEASH PULL:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "leash_increase",
+        "label": "LEASH INCREASE:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "poison_touch_hex",
+        "label": "HEX DURATION:",
+        "value": "1.4/1.6/1.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "shallow_grave_heal",
+        "label": "SHALLOW GRAVE HEAL:",
+        "value": "225/300/375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "shadow_wave_cdr",
+        "label": "SHADOW WAVE COOLDOWN REDUCTION:",
+        "value": "30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Dazzle",
+        "ability": "Nothl Projection",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

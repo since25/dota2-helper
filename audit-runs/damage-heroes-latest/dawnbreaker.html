@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>破晓辰星（Dawnbreaker）</h1>
-        <div class="muted">Dawnbreaker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Dawnbreaker · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,424 @@
       </div>
       <a href="./dawnbreaker.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>swipe_radius</code></td>
+      <td>SWIPE/SMASH RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>smash_radius</code></td>
+      <td>SMASH RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>smash_damage</code></td>
+      <td>SMASH DAMAGE:</td>
+      <td>25/40/55/70</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>215</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>total_attacks</code></td>
+      <td>TOTAL ATTACKS:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>smash_stun_duration</code></td>
+      <td>SMASH STUN DURATION:</td>
+      <td>0.6/0.8/1/1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>sweep_stun_duration</code></td>
+      <td>SWEEP STUN DURATION:</td>
+      <td>0.12</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>self_stun_duration</code></td>
+      <td>SELF STUN DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>swipe_slow</code></td>
+      <td>SWIPE SLOW:</td>
+      <td>-100</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>smash_distance_from_hero</code></td>
+      <td>SMASH DISTANCE FROM HERO:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>shard_cast_point</code></td>
+      <td>SHARD CAST POINT:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>shard_movement_penalty</code></td>
+      <td>SHARD MOVEMENT PENALTY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>movespeed_bonus_radius</code></td>
+      <td>MOVESPEED BONUS RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>movespeed_bonus_self_max</code></td>
+      <td>MOVESPEED BONUS SELF MAX:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>movespeed_bonus_ally_max</code></td>
+      <td>MOVESPEED BONUS ALLY MAX:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>movespeed_bonus_duration</code></td>
+      <td>MOVESPEED BONUS DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Starbreaker</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>hammer_damage</code></td>
+      <td>HAMMER DAMAGE:</td>
+      <td>50/80/110/140</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>projectile_radius</code></td>
+      <td>PROJECTILE RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>flare_radius</code></td>
+      <td>FIRE TRAIL RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>move_slow</code></td>
+      <td>FIRE TRAIL MOVEMENT SLOW:</td>
+      <td>24%/28%/32%/36%</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>targets_allies</code></td>
+      <td>TARGETS ALLIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>pause_duration</code></td>
+      <td>PAUSE DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>hammer_aoe_radius</code></td>
+      <td>HAMMER AOE RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>travel_speed_pct</code></td>
+      <td>TRAVEL SPEED PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>return_anim_distance_threshold</code></td>
+      <td>RETURN ANIM DISTANCE THRESHOLD:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>range</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/900/1100/1300</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>hammer_solar_guardian_radius</code></td>
+      <td>HAMMER SOLAR GUARDIAN RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>hammer_solar_guardian_effectiveness_pct</code></td>
+      <td>HAMMER SOLAR GUARDIAN EFFECTIVENESS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Hammer</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Break of Dawn</td>
+      <td><code>day_threshold</code></td>
+      <td>DAY THRESHOLD:</td>
+      <td>0.006</td>
+    </tr>
+  
+    <tr>
+      <td>Break of Dawn</td>
+      <td><code>max_dmg_pct</code></td>
+      <td>MAX DAMAGE INCREASE:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Break of Dawn</td>
+      <td><code>max_vision_pct</code></td>
+      <td>MAX VISION INCREASE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Break of Dawn</td>
+      <td><code>heal_amp</code></td>
+      <td>HEAL AMP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>base_heal</code></td>
+      <td>HEAL PER PULSE:</td>
+      <td>45/70/95</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>radius</code></td>
+      <td>LAND RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>pulse_interval</code></td>
+      <td>PULSE INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>land_damage</code></td>
+      <td>LANDING DAMAGE:</td>
+      <td>130/160/190</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>max_offset_distance</code></td>
+      <td>MAX OFFSET DISTANCE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>airtime_scepter_movement_speed</code></td>
+      <td>AIRTIME SCEPTER MOVEMENT SPEED:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>airtime_duration</code></td>
+      <td>AIR TIME:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>daytime_duration</code></td>
+      <td>DAYTIME DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>1.7</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Guardian</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Starbreaker&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;swipe_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Celestial Hammer&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+      &quot;durationKey&quot;: &quot;flare_debuff_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Converge&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Break of Dawn&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Solar Guardian&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;base_damage&quot;,
+      &quot;durationKey&quot;: &quot;land_stun_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +546,7 @@
           <div class="muted">Starbreaker · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +599,7 @@
           <div class="muted">Celestial Hammer · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +652,7 @@
           <div class="muted">Solar Guardian · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -401,7 +823,7 @@
       &quot;name&quot;: &quot;Starbreaker&quot;,
       &quot;displayName&quot;: &quot;星破天惊（Starbreaker）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -456,7 +878,7 @@
       &quot;name&quot;: &quot;Celestial Hammer&quot;,
       &quot;displayName&quot;: &quot;上界重锤（Celestial Hammer）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -524,7 +946,7 @@
       &quot;name&quot;: &quot;Solar Guardian&quot;,
       &quot;displayName&quot;: &quot;天光现世（Solar Guardian）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -578,7 +1000,448 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Starbreaker&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;swipe_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Celestial Hammer&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+          &quot;durationKey&quot;: &quot;flare_debuff_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Converge&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Break of Dawn&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Solar Guardian&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;base_damage&quot;,
+          &quot;durationKey&quot;: &quot;land_stun_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;swipe_radius&quot;,
+        &quot;label&quot;: &quot;SWIPE/SMASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;smash_radius&quot;,
+        &quot;label&quot;: &quot;SMASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;smash_damage&quot;,
+        &quot;label&quot;: &quot;SMASH DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25/40/55/70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;215&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;total_attacks&quot;,
+        &quot;label&quot;: &quot;TOTAL ATTACKS:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;smash_stun_duration&quot;,
+        &quot;label&quot;: &quot;SMASH STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6/0.8/1/1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;sweep_stun_duration&quot;,
+        &quot;label&quot;: &quot;SWEEP STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;self_stun_duration&quot;,
+        &quot;label&quot;: &quot;SELF STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;swipe_slow&quot;,
+        &quot;label&quot;: &quot;SWIPE SLOW:&quot;,
+        &quot;value&quot;: &quot;-100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;smash_distance_from_hero&quot;,
+        &quot;label&quot;: &quot;SMASH DISTANCE FROM HERO:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;shard_cast_point&quot;,
+        &quot;label&quot;: &quot;SHARD CAST POINT:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;shard_movement_penalty&quot;,
+        &quot;label&quot;: &quot;SHARD MOVEMENT PENALTY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_radius&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_self_max&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS SELF MAX:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_ally_max&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS ALLY MAX:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_duration&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Starbreaker&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;hammer_damage&quot;,
+        &quot;label&quot;: &quot;HAMMER DAMAGE:&quot;,
+        &quot;value&quot;: &quot;50/80/110/140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;projectile_radius&quot;,
+        &quot;label&quot;: &quot;PROJECTILE RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;flare_radius&quot;,
+        &quot;label&quot;: &quot;FIRE TRAIL RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;FIRE TRAIL MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;24%/28%/32%/36%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;targets_allies&quot;,
+        &quot;label&quot;: &quot;TARGETS ALLIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;pause_duration&quot;,
+        &quot;label&quot;: &quot;PAUSE DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;hammer_aoe_radius&quot;,
+        &quot;label&quot;: &quot;HAMMER AOE RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;travel_speed_pct&quot;,
+        &quot;label&quot;: &quot;TRAVEL SPEED PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;return_anim_distance_threshold&quot;,
+        &quot;label&quot;: &quot;RETURN ANIM DISTANCE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/900/1100/1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;hammer_solar_guardian_radius&quot;,
+        &quot;label&quot;: &quot;HAMMER SOLAR GUARDIAN RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;hammer_solar_guardian_effectiveness_pct&quot;,
+        &quot;label&quot;: &quot;HAMMER SOLAR GUARDIAN EFFECTIVENESS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Celestial Hammer&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Break of Dawn&quot;,
+        &quot;key&quot;: &quot;day_threshold&quot;,
+        &quot;label&quot;: &quot;DAY THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;0.006&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Break of Dawn&quot;,
+        &quot;key&quot;: &quot;max_dmg_pct&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE INCREASE:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Break of Dawn&quot;,
+        &quot;key&quot;: &quot;max_vision_pct&quot;,
+        &quot;label&quot;: &quot;MAX VISION INCREASE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Break of Dawn&quot;,
+        &quot;key&quot;: &quot;heal_amp&quot;,
+        &quot;label&quot;: &quot;HEAL AMP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;base_heal&quot;,
+        &quot;label&quot;: &quot;HEAL PER PULSE:&quot;,
+        &quot;value&quot;: &quot;45/70/95&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;LAND RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;pulse_interval&quot;,
+        &quot;label&quot;: &quot;PULSE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;land_damage&quot;,
+        &quot;label&quot;: &quot;LANDING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;130/160/190&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;max_offset_distance&quot;,
+        &quot;label&quot;: &quot;MAX OFFSET DISTANCE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;airtime_scepter_movement_speed&quot;,
+        &quot;label&quot;: &quot;AIRTIME SCEPTER MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;airtime_duration&quot;,
+        &quot;label&quot;: &quot;AIR TIME:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;daytime_duration&quot;,
+        &quot;label&quot;: &quot;DAYTIME DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;1.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dawnbreaker&quot;,
+        &quot;ability&quot;: &quot;Solar Guardian&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

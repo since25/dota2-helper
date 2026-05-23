@@ -4,6 +4,40 @@ const assert = require('node:assert/strict');
 const { getHeroDetails } = require('../dotaDataContext');
 const { resolveHeroDamageModel } = require('../damageModels/resolver');
 
+function resolveFixtureHero(abilities, modelAbilities) {
+  const registryPath = require.resolve('../damageModels/registry');
+  const resolverPath = require.resolve('../damageModels/resolver');
+  const registry = require(registryPath);
+  const originalGetHeroDamageModel = registry.getHeroDamageModel;
+  delete require.cache[resolverPath];
+  registry.getHeroDamageModel = () => ({
+    hero: 'Primitive Fixture',
+    abilities: modelAbilities
+  });
+  try {
+    return require('../damageModels/resolver').resolveHeroDamageModel({
+      name: 'Primitive Fixture',
+      abilities
+    });
+  } finally {
+    registry.getHeroDamageModel = originalGetHeroDamageModel;
+    delete require.cache[resolverPath];
+    require('../damageModels/resolver');
+  }
+}
+
+function fixtureAbility(name, rawAttributes, damageType = 'Magical') {
+  return {
+    name,
+    displayName: name,
+    damageType,
+    damage: [],
+    manaCost: [],
+    cooldown: [],
+    rawAttributes: Object.entries(rawAttributes).map(([key, value]) => ({ key, value }))
+  };
+}
+
 test('resolveHeroDamageModel returns curated Slardar Bash component', async () => {
   const details = await getHeroDetails('Slardar');
   const resolved = resolveHeroDamageModel(details);
@@ -15,6 +49,111 @@ test('resolveHeroDamageModel returns curated Slardar Bash component', async () =
   assert.equal(component.model, 'attack_sequence');
   assert.deepEqual(component.valuesByAbilityLevel, [35, 90, 145, 200]);
   assert.deepEqual(component.metadata.attackCountByAbilityLevel, [3, 3, 3, 3]);
+});
+
+test('resolveHeroDamageModel supports semantic primitive components', () => {
+  const resolved = resolveFixtureHero([
+    fixtureAbility('Initial Dot', {
+      initial_damage: [50, 100],
+      dps: [10, 20],
+      duration: [3, 4]
+    }),
+    fixtureAbility('Initial Ticks', {
+      initial_damage: [40],
+      tick_damage: [12],
+      tick_interval: [0.5],
+      duration: [2]
+    }),
+    fixtureAbility('Repeated Trigger', {
+      damage: [30, 60]
+    }),
+    fixtureAbility('Summon Attack', {
+      attack_damage: [25, 50]
+    }, 'Physical'),
+    fixtureAbility('Percent Dot', {
+      percent_damage: [1.5, 2],
+      duration: [4, 5]
+    }),
+    fixtureAbility('Attribute Scaling', {
+      base_damage: [20, 40],
+      int_multiplier: [1.2, 1.8]
+    }),
+    fixtureAbility('Conditional Instant', {
+      damage: [80, 160]
+    })
+  ], {
+    'Initial Dot': {
+      status: 'implemented',
+      model: 'initial_plus_dot',
+      initialDamageKey: 'initial_damage',
+      damagePerSecondKey: 'dps',
+      durationKey: 'duration',
+      semanticType: 'damage.instant'
+    },
+    'Initial Ticks': {
+      status: 'implemented',
+      model: 'initial_plus_ticks',
+      initialDamageKey: 'initial_damage',
+      tickDamageKey: 'tick_damage',
+      tickIntervalKey: 'tick_interval',
+      durationKey: 'duration',
+      semanticType: 'damage.tick'
+    },
+    'Repeated Trigger': {
+      status: 'implemented',
+      model: 'repeated_trigger',
+      damageKey: 'damage',
+      triggerCountInput: 'hit_count',
+      semanticType: 'damage.instant'
+    },
+    'Summon Attack': {
+      status: 'implemented',
+      model: 'summon_attack',
+      attackDamageKey: 'attack_damage',
+      attackCountInput: 'ward_attack_count',
+      semanticType: 'summon.attack_damage'
+    },
+    'Percent Dot': {
+      status: 'implemented',
+      model: 'percent_health_dot',
+      percentDamageKey: 'percent_damage',
+      durationKey: 'duration',
+      healthInput: 'target_max_health',
+      semanticType: 'damage.percent_max_health'
+    },
+    'Attribute Scaling': {
+      status: 'implemented',
+      model: 'attribute_scaling',
+      baseDamageKey: 'base_damage',
+      attributeMultiplierKey: 'int_multiplier',
+      attributeInput: 'caster_intelligence',
+      semanticType: 'damage.attribute_scaling'
+    },
+    'Conditional Instant': {
+      status: 'implemented',
+      model: 'conditional_instant',
+      damageKey: 'damage',
+      conditionInputs: ['target_is_stunned'],
+      semanticType: 'damage.instant'
+    }
+  });
+
+  const components = Object.fromEntries(resolved.abilities.map((ability) => [
+    ability.name,
+    ability.components[0]
+  ]));
+
+  assert.deepEqual(components['Initial Dot'].theoreticalTotalByAbilityLevel, [80, 180]);
+  assert.deepEqual(components['Initial Ticks'].theoreticalTotalByAbilityLevel, [88]);
+  assert.equal(components['Repeated Trigger'].metadata.triggerCountInput, 'hit_count');
+  assert.equal(components['Summon Attack'].metadata.attackCountInput, 'ward_attack_count');
+  assert.deepEqual(components['Summon Attack'].valuesByAbilityLevel, [25, 50]);
+  assert.equal(components['Percent Dot'].metadata.healthInput, 'target_max_health');
+  assert.deepEqual(components['Percent Dot'].theoreticalTotalByAbilityLevel, []);
+  assert.deepEqual(components['Attribute Scaling'].valuesByAbilityLevel, [20, 40]);
+  assert.deepEqual(components['Attribute Scaling'].metadata.attributeMultiplierByAbilityLevel, [1.2, 1.8]);
+  assert.equal(components['Conditional Instant'].countInFixedInstantTotal, false);
+  assert.deepEqual(components['Conditional Instant'].semantic.conditionInputs, ['target_is_stunned']);
 });
 
 test('resolveHeroDamageModel keeps Slardar non-damage modifiers out of Unknown damage', async () => {
@@ -100,4 +239,38 @@ test('resolveHeroDamageModel allows curated damage references to override missin
   assert.equal(component.damageType, 'Physical');
   assert.equal(component.semantic.type, 'modifier.crit.multiplier');
   assert.equal(component.semantic.contextRoute, 'modifier_reference');
+});
+
+test('resolveHeroDamageModel fixes P0 wrong-damage semantic mappings', async () => {
+  const pugna = resolveHeroDamageModel(await getHeroDetails('Pugna'));
+  const netherBlast = pugna.abilities.find((ability) => ability.name === 'Nether Blast').components[0];
+  assert.equal(netherBlast.sourceKey, 'blast_damage');
+  assert.deepEqual(netherBlast.valuesByAbilityLevel, [95, 170, 245, 320]);
+
+  const voidSpirit = resolveHeroDamageModel(await getHeroDetails('Void Spirit'));
+  const astralStep = voidSpirit.abilities.find((ability) => ability.name === 'Astral Step').components[0];
+  assert.equal(astralStep.sourceKey, 'pop_damage');
+  assert.deepEqual(astralStep.valuesByAbilityLevel, [130, 230, 330]);
+
+  const winterWyvern = resolveHeroDamageModel(await getHeroDetails('Winter Wyvern'));
+  const arcticBurn = winterWyvern.abilities.find((ability) => ability.name === 'Arctic Burn').components[0];
+  assert.equal(arcticBurn.model, 'percent_health_dot');
+  assert.equal(arcticBurn.sourceKey, 'percent_damage');
+  assert.equal(arcticBurn.metadata.healthInput, 'target_current_health');
+  assert.deepEqual(arcticBurn.theoreticalTotalByAbilityLevel, []);
+
+  const pudge = resolveHeroDamageModel(await getHeroDetails('Pudge'));
+  const meatShield = pudge.abilities.find((ability) => ability.name === 'Meat Shield').components[0];
+  assert.equal(meatShield.semantic.category, 'defensive_modifier');
+  assert.equal(meatShield.countInFixedInstantTotal, false);
+
+  const treant = resolveHeroDamageModel(await getHeroDetails('Treant Protector'));
+  const livingArmor = treant.abilities.find((ability) => ability.name === 'Living Armor').components[0];
+  assert.equal(livingArmor.semantic.category, 'defensive_modifier');
+  assert.equal(livingArmor.countInFixedInstantTotal, false);
+
+  const visage = resolveHeroDamageModel(await getHeroDetails('Visage'));
+  const cloak = visage.abilities.find((ability) => ability.name === "Gravekeeper's Cloak").components[0];
+  assert.equal(cloak.semantic.category, 'defensive_modifier');
+  assert.equal(cloak.countInFixedInstantTotal, false);
 });

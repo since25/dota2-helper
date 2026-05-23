@@ -121,10 +121,10 @@
       "name": "Enfeeble",
       "displayName": "虚弱（Enfeeble）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         110,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Enfeeble:instant_fixed:enfeeble_tick_damage",
-          "kind": "instant_fixed",
+          "id": "Enfeeble:sustained:enfeeble_tick_damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Pure",
           "label": "enfeeble_tick_damage",
@@ -150,11 +150,16 @@
             24,
             30
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            108,
+            162,
+            216,
+            270
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -172,9 +177,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -182,7 +189,7 @@
       "name": "Brain Sap",
       "displayName": "蚀脑（Brain Sap）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -230,10 +237,10 @@
       "name": "Nightmare",
       "displayName": "噩梦（Nightmare）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "噩梦本身是控制窗口，不直接造成对敌爆发伤害。",
       "manaCostByAbilityLevel": [
         120,
         130,
@@ -248,16 +255,16 @@
       ],
       "components": [
         {
-          "id": "Nightmare:debuff_reference:abilitycastrange",
+          "id": "Nightmare:debuff_reference:abilityduration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "abilityduration",
           "valuesByAbilityLevel": [
-            550,
-            600,
-            650,
-            700
+            3.5,
+            4.5,
+            5.5,
+            6.5
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -267,8 +274,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "disable_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -277,9 +284,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "噩梦本身是控制窗口，不直接造成对敌爆发伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "噩梦本身是控制窗口，不直接造成对敌爆发伤害。"
           ]
         }
       ]
@@ -288,10 +295,10 @@
       "name": "Fiend's Grip",
       "displayName": "魔爪（Fiend's Grip）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "魔爪为持续施法伤害，实际总量取决于持续施法时间。",
       "manaCostByAbilityLevel": [
         200,
         300,
@@ -339,7 +346,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "魔爪为持续施法伤害，实际总量取决于持续施法时间。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -347,5 +354,258 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Bane",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed against local Dotabuff Chinese semantic snapshot."
+        ]
+      },
+      "abilities": {
+        "Enfeeble": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "enfeeble_tick_damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "damage_tick_rate",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。"
+        },
+        "Brain Sap": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "brain_sap_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Nightmare": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilityduration",
+          "semanticType": "window.debuff_duration.seconds",
+          "affects": "disable_window",
+          "reason": "噩梦本身是控制窗口，不直接造成对敌爆发伤害。"
+        },
+        "Fiend's Grip": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "fiend_grip_damage",
+          "durationKey": "abilitychanneltime",
+          "tickIntervalKey": "fiend_grip_tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "conditionInputs": [
+            "channel_duration"
+          ],
+          "reason": "魔爪为持续施法伤害，实际总量取决于持续施法时间。"
+        },
+        "Nightmare End": {
+          "status": "ignored",
+          "reason": "结束噩梦的控制子技能，不产生额外伤害。"
+        },
+        "Ichor of Nyctasha": {
+          "status": "ignored",
+          "reason": "当前本地字段没有可用伤害数值，先不参与伤害计算。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "damage_reduction",
+        "label": "ATTACK DAMAGE REDUCTION:",
+        "value": "55%/60%/65%/70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "heal_reduction",
+        "label": "HEAL REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "cast_reduction",
+        "label": "CAST RANGE REDUCTION:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "enfeeble_heal_pct",
+        "label": "ENFEEBLE HEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700/800/900/1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Enfeeble",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Brain Sap",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Brain Sap",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "nightmare_invuln_time",
+        "label": "NIGHTMARE INVULN TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "bonus_attack_speed",
+        "label": "ATTACK SPEED BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "vector_render_radius",
+        "label": "VECTOR RENDER RADIUS:",
+        "value": "120",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "walk_speed",
+        "label": "WALK SPEED:",
+        "value": "110",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "550/600/650/700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Nightmare",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Fiend's Grip",
+        "key": "fiend_grip_mana_drain",
+        "label": "MANA DRAIN PER SECOND:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Fiend's Grip",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Fiend's Grip",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Ichor of Nyctasha",
+        "key": "damage_tick_rate",
+        "label": "DAMAGE TICK RATE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Ichor of Nyctasha",
+        "key": "damage_per_terror",
+        "label": "DAMAGE PER TERROR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Ichor of Nyctasha",
+        "key": "max_terrors",
+        "label": "MAX TERRORS PER HERO:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bane",
+        "ability": "Ichor of Nyctasha",
+        "key": "status_resistance",
+        "label": "STATUS RESISTANCE PER TERROR:",
+        "value": "5%",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

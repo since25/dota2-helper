@@ -121,10 +121,10 @@
       "name": "Poison Attack",
       "displayName": "毒性攻击（Poison Attack）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "单层毒性攻击持续伤害；多层叠加由后续 stack 输入处理。",
       "manaCostByAbilityLevel": [
         20,
         20,
@@ -172,7 +172,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "单层毒性攻击持续伤害；多层叠加由后续 stack 输入处理。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -183,10 +183,10 @@
       "name": "Nethertoxin",
       "displayName": "幽冥剧毒（Nethertoxin）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "采用满额 DPS 作为理论上限，min_damage/max_duration 用于后续成长曲线模型。",
       "manaCostByAbilityLevel": [
         70,
         70,
@@ -201,36 +201,43 @@
       ],
       "components": [
         {
-          "id": "Nethertoxin:instant_fixed:min_damage",
-          "kind": "instant_fixed",
+          "id": "Nethertoxin:sustained:max_damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
-          "label": "min_damage",
+          "label": "max_damage",
           "valuesByAbilityLevel": [
-            15,
-            25,
             35,
-            45
+            65,
+            95,
+            125
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            227.5,
+            455,
+            712.5,
+            1000
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
-              4,
-              4,
-              4,
-              4
+              6.5,
+              7,
+              7.5,
+              8
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "采用满额 DPS 作为理论上限，min_damage/max_duration 用于后续成长曲线模型。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -238,7 +245,7 @@
       "name": "Corrosive Skin",
       "displayName": "腐蚀皮肤（Corrosive Skin）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -290,10 +297,10 @@
       "name": "Nosedive",
       "displayName": "极恶俯冲（Nosedive）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "落地施加腐蚀皮肤/幽冥剧毒效果，伤害来自关联技能，避免重复计算。",
       "manaCostByAbilityLevel": [
         75
       ],
@@ -302,13 +309,13 @@
       ],
       "components": [
         {
-          "id": "Nosedive:debuff_reference:abilitycastrange",
+          "id": "Nosedive:debuff_reference:effect_duration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "effect_duration",
           "valuesByAbilityLevel": [
-            700
+            4
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -318,8 +325,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "damage_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -328,9 +335,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "落地施加腐蚀皮肤/幽冥剧毒效果，伤害来自关联技能，避免重复计算。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "落地施加腐蚀皮肤/幽冥剧毒效果，伤害来自关联技能，避免重复计算。"
           ]
         }
       ]
@@ -339,7 +346,7 @@
       "name": "Viper Strike",
       "displayName": "蝮蛇突袭（Viper Strike）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -393,5 +400,358 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Viper",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed sustained poison and area damage fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Poison Attack": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "单层毒性攻击持续伤害；多层叠加由后续 stack 输入处理。"
+        },
+        "Nethertoxin": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "max_damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "采用满额 DPS 作为理论上限，min_damage/max_duration 用于后续成长曲线模型。"
+        },
+        "Corrosive Skin": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Nosedive": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "effect_duration",
+          "semanticType": "window.debuff_duration.seconds",
+          "affects": "damage_window",
+          "reason": "落地施加腐蚀皮肤/幽冥剧毒效果，伤害来自关联技能，避免重复计算。"
+        },
+        "Viper Strike": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "movement_speed",
+        "label": "MOVE SLOW:",
+        "value": "3/6/9/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "4/6/8/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "max_stacks",
+        "label": "MAX STACKS:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "bonus_range",
+        "label": "BONUS RANGE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "expiration_damage_radius",
+        "label": "RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "accumulated_damage_explosion_pct",
+        "label": "ACCUMULATED DAMAGE EXPLOSION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Poison Attack",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "min_damage",
+        "label": "MIN DPS:",
+        "value": "15/25/35/45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "max_duration",
+        "label": "MAX DPS DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "attack_slow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "30/40/50/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "2400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "radius_increase",
+        "label": "RADIUS INCREASE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "expand_interval",
+        "label": "EXPAND INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nethertoxin",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Corrosive Skin",
+        "key": "bonus_attack_speed",
+        "label": "ATTACK SLOW:",
+        "value": "9/18/27/36",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Corrosive Skin",
+        "key": "bonus_magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "10/15/20/25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Corrosive Skin",
+        "key": "max_range",
+        "label": "MAX RANGE RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "corrosive_radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "dive_speed",
+        "label": "DIVE SPEED:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "start_height",
+        "label": "START HEIGHT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "movespeed_slow",
+        "label": "MOVESPEED SLOW:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Nosedive",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "bonus_movement_speed",
+        "label": "MOVE SLOW:",
+        "value": "60/70/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "bonus_attack_speed",
+        "label": "ATTACK SLOW:",
+        "value": "100/140/180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "charge_restore_time",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "does_break",
+        "label": "DOES BREAK:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Viper",
+        "ability": "Viper Strike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

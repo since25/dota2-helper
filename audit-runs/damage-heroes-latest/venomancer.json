@@ -122,9 +122,9 @@
       "displayName": "瘴气（Venomous Gale）",
       "isUltimate": false,
       "modelSource": "curated",
-      "status": "reference_only",
-      "model": "conditional",
-      "reason": "该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。",
+      "status": "implemented",
+      "model": "initial_plus_ticks",
+      "reason": "计入初始命中伤害和完整持续时间内的中毒跳数。",
       "manaCostByAbilityLevel": [
         95,
         105,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Venomous Gale:conditional:strike_damage",
-          "kind": "conditional",
+          "id": "Venomous Gale:initial_plus_ticks:strike_damage",
+          "kind": "initial_plus_ticks",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "strike_damage",
@@ -150,27 +150,44 @@
             75,
             100
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "theoreticalTotalByAbilityLevel": [
+            75,
+            250,
+            425,
+            600
+          ],
+          "totalFormula": "initialDamage + tickDamage * floor(duration / tickInterval)",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "conditional"
+            "type": "initial_plus_tick_count_times_tick_damage"
           },
           "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "初始伤害命中后按 tick 间隔持续掉血。",
-            "requiredInputs": [],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "tickDamageKey": "tick_damage",
+            "tickDamageByAbilityLevel": [
+              10,
+              40,
+              70,
+              100
+            ],
+            "tickIntervalByAbilityLevel": [
+              3,
+              3,
+              3,
+              3
+            ],
+            "durationByAbilityLevel": [
+              15,
+              15,
+              15,
+              15
+            ]
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "conditional",
-          "reason": "该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。",
+          "status": "implemented",
+          "model": "initial_plus_ticks",
+          "reason": "计入初始命中伤害和完整持续时间内的中毒跳数。",
           "caveats": [
-            "该技能包含初始伤害和每跳伤害，组合 tick 模型将在后续批次补齐。"
+            "包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。"
           ]
         }
       ]
@@ -180,9 +197,9 @@
       "displayName": "毒蛇撕咬（Snakebite）",
       "isUltimate": false,
       "modelSource": "curated",
-      "status": "reference_only",
-      "model": "conditional",
-      "reason": "该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。",
+      "status": "implemented",
+      "model": "initial_plus_ticks",
+      "reason": "计入初始伤害和完整持续时间内的中毒跳数。",
       "manaCostByAbilityLevel": [
         70,
         80,
@@ -197,8 +214,8 @@
       ],
       "components": [
         {
-          "id": "Snakebite:conditional:base_damage",
-          "kind": "conditional",
+          "id": "Snakebite:initial_plus_ticks:base_damage",
+          "kind": "initial_plus_ticks",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "base_damage",
@@ -208,27 +225,44 @@
             80,
             100
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "theoreticalTotalByAbilityLevel": [
+            280,
+            360,
+            440,
+            520
+          ],
+          "totalFormula": "initialDamage + tickDamage * floor(duration / tickInterval)",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "conditional"
+            "type": "initial_plus_tick_count_times_tick_damage"
           },
           "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "初始伤害命中后按持续时间造成每秒伤害。",
-            "requiredInputs": [],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "tickDamageKey": "tick_damage",
+            "tickDamageByAbilityLevel": [
+              20,
+              25,
+              30,
+              35
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5,
+              0.5,
+              0.5,
+              0.5
+            ],
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "conditional",
-          "reason": "该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。",
+          "status": "implemented",
+          "model": "initial_plus_ticks",
+          "reason": "计入初始伤害和完整持续时间内的中毒跳数。",
           "caveats": [
-            "该技能包含初始伤害和持续伤害，组合模型将在后续批次补齐。"
+            "包含瞬时伤害和跳数伤害，理论总量依赖实际作用时间和跳数。"
           ]
         }
       ]
@@ -341,7 +375,7 @@
       "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。",
+      "reason": "计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。",
       "manaCostByAbilityLevel": [
         200,
         250,
@@ -374,13 +408,450 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。",
+          "reason": "计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。",
           "caveats": [
-            "只计入初始伤害；最大生命百分比持续伤害暂作为后续扩展。"
+            "计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。"
+          ]
+        },
+        {
+          "id": "Noxious Plague:percent_health_dot:damage_per_second",
+          "kind": "percent_health_dot",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_second",
+          "valuesByAbilityLevel": [
+            2,
+            3,
+            4
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "healthInput * percentDamage * duration",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "runtime_health_percent_times_duration"
+          },
+          "metadata": {
+            "healthInput": "target_max_health",
+            "durationByAbilityLevel": [
+              4,
+              4,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "percent_health_dot",
+          "reason": "计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。",
+          "caveats": [
+            "百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Venomancer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed poison sustained fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Venomous Gale": {
+          "status": "implemented",
+          "model": "initial_plus_ticks",
+          "initialDamageKey": "strike_damage",
+          "tickDamageKey": "tick_damage",
+          "tickIntervalKey": "tick_interval",
+          "durationKey": "duration",
+          "semanticType": "damage.tick",
+          "reason": "计入初始命中伤害和完整持续时间内的中毒跳数。"
+        },
+        "Snakebite": {
+          "status": "implemented",
+          "model": "initial_plus_ticks",
+          "initialDamageKey": "base_damage",
+          "tickDamageKey": "tick_damage",
+          "tickIntervalKey": "damage_interval",
+          "durationKey": "duration",
+          "semanticType": "damage.tick",
+          "reason": "计入初始伤害和完整持续时间内的中毒跳数。"
+        },
+        "Plague Ward": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "ward_damage_tooltip",
+          "semanticType": "summon.attack_damage",
+          "affects": "summon_attack_damage",
+          "conditionInputs": [
+            "ward_attack_count",
+            "ward_active_duration"
+          ],
+          "reason": "守卫伤害取决于召唤物存活时间和攻击次数。"
+        },
+        "Poison Sting": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Noxious Plague": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "impact_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "计入初始伤害；最大生命百分比持续伤害作为额外运行时组件。",
+          "extraComponents": [
+            {
+              "status": "implemented",
+              "model": "percent_health_dot",
+              "percentDamageKey": "damage_per_second",
+              "durationKey": "debuff_duration",
+              "healthInput": "target_max_health",
+              "semanticType": "damage.percent_max_health",
+              "conditionInputs": [
+                "target_max_health"
+              ]
+            }
+          ]
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "strike_damage",
+        "label": "INITIAL DAMAGE:",
+        "value": "25/50/75/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "tick_damage",
+        "label": "DAMAGE PER TICK:",
+        "value": "10/40/70/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "movement_slow",
+        "label": "SLOW:",
+        "value": "-35%/-40%/-45%/-50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "create_wards",
+        "label": "CREATE WARDS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "num_created_wards_tooltip",
+        "label": "NUM CREATED WARDS TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "ward_hp_dmg_pct",
+        "label": "WARD HP DMG PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "explosion_damage",
+        "label": "EXPLOSION DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "explosion_stun_duration",
+        "label": "EXPLOSION STUN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Venomous Gale",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Snakebite",
+        "key": "base_damage",
+        "label": "INITIAL DAMAGE:",
+        "value": "40/60/80/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Snakebite",
+        "key": "tick_damage",
+        "label": "DAMAGE PER SECOND:",
+        "value": "20/25/30/35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Snakebite",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Snakebite",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Snakebite",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "can_target",
+        "label": "CAN TARGET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "gold_bounty_pct",
+        "label": "GOLD BOUNTY PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "ward_multiplier",
+        "label": "WARD MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "ward_model_scale",
+        "label": "WARD MODEL SCALE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "ward_hp_tooltip",
+        "label": "WARD HP:",
+        "value": "150/250/350/450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Plague Ward",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Poison Sting",
+        "key": "movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Poison Sting",
+        "key": "hp_regen_reduction",
+        "label": "HP REGEN REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Poison Sting",
+        "key": "debuff_dmg",
+        "label": "DEBUFF DMG:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "debuff_duration",
+        "label": "DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "damage_per_second",
+        "label": "MAX HEALTH DAMAGE:",
+        "value": "2%/3%/4%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "damage_tick_rate",
+        "label": "DAMAGE TICK RATE:",
+        "value": ".25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "debuff_time_transfer",
+        "label": "DEBUFF TIME TRANSFER:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "movement_slow",
+        "label": "SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "debuff_radius",
+        "label": "SPREAD RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "spread_count",
+        "label": "SPREAD COUNT:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "impact_damage_reduce",
+        "label": "IMPACT DAMAGE REDUCE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Venomancer",
+        "ability": "Noxious Plague",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

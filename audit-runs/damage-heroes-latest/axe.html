@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>斧王（Axe）</h1>
-        <div class="muted">Axe · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Axe · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,248 @@
       </div>
       <a href="./axe.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Berserker&#39;s Call</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Call</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>315</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Call</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>12/13/14/15</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Call</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>ENEMY ATTACK SPEED BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Berserker&#39;s Call</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Hunger</td>
+      <td><code>slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>18/22/26/30</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Hunger</td>
+      <td><code>speed_bonus</code></td>
+      <td>SPEED BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Hunger</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/775/850/925</td>
+    </tr>
+  
+    <tr>
+      <td>Battle Hunger</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Counter Helix</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Counter Helix</td>
+      <td><code>trigger_attacks</code></td>
+      <td>ATTACKS TO HELIX:</td>
+      <td>7/6/5/4</td>
+    </tr>
+  
+    <tr>
+      <td>Counter Helix</td>
+      <td><code>helix_lifesteal</code></td>
+      <td>HELIX LIFESTEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>speed_bonus</code></td>
+      <td>KILL MOVE SPEED BONUS:</td>
+      <td>20/25/30</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>armor_bonus</code></td>
+      <td>KILL ARMOR BONUS:</td>
+      <td>10/15/20</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>speed_duration</code></td>
+      <td>KILL BUFF DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>speed_aoe</code></td>
+      <td>KILL BUFF RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>charge_speed</code></td>
+      <td>CHARGE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>armor_per_stack</code></td>
+      <td>ARMOR PER STACK:</td>
+      <td>1/1.5/2</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Culling Blade</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>One Man Army</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>One Man Army</td>
+      <td><code>bonus_linger_duration</code></td>
+      <td>BONUS LINGER DURATION:</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Axe&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Berserker&#39;s Call&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;control.taunt.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;嘲讽和护甲影响换血窗口，不直接造成伤害。&quot;
+    },
+    &quot;Battle Hunger&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Counter Helix&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: false,
+      &quot;reason&quot;: &quot;按一次反击螺旋触发计算，触发次数需要由使用者选择。&quot;
+    },
+    &quot;Culling Blade&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;One Man Army&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;armor_pct_as_strength&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attribute_conversion.percent&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;stackGroup&quot;: &quot;attribute_conversion&quot;,
+      &quot;reason&quot;: &quot;固定机制影响身板和输出环境，不直接造成伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -759,7 +1005,246 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Axe&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Berserker&#39;s Call&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;control.taunt.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;嘲讽和护甲影响换血窗口，不直接造成伤害。&quot;
+        },
+        &quot;Battle Hunger&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Counter Helix&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: false,
+          &quot;reason&quot;: &quot;按一次反击螺旋触发计算，触发次数需要由使用者选择。&quot;
+        },
+        &quot;Culling Blade&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;One Man Army&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;armor_pct_as_strength&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attribute_conversion.percent&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;stackGroup&quot;: &quot;attribute_conversion&quot;,
+          &quot;reason&quot;: &quot;固定机制影响身板和输出环境，不直接造成伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Call&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Call&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;315&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Call&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;12/13/14/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Call&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;ENEMY ATTACK SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Berserker&#39;s Call&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Battle Hunger&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;18/22/26/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Battle Hunger&quot;,
+        &quot;key&quot;: &quot;speed_bonus&quot;,
+        &quot;label&quot;: &quot;SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Battle Hunger&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/775/850/925&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Battle Hunger&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Counter Helix&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Counter Helix&quot;,
+        &quot;key&quot;: &quot;trigger_attacks&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO HELIX:&quot;,
+        &quot;value&quot;: &quot;7/6/5/4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Counter Helix&quot;,
+        &quot;key&quot;: &quot;helix_lifesteal&quot;,
+        &quot;label&quot;: &quot;HELIX LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;speed_bonus&quot;,
+        &quot;label&quot;: &quot;KILL MOVE SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;20/25/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;armor_bonus&quot;,
+        &quot;label&quot;: &quot;KILL ARMOR BONUS:&quot;,
+        &quot;value&quot;: &quot;10/15/20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;speed_duration&quot;,
+        &quot;label&quot;: &quot;KILL BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;speed_aoe&quot;,
+        &quot;label&quot;: &quot;KILL BUFF RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;charge_speed&quot;,
+        &quot;label&quot;: &quot;CHARGE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;armor_per_stack&quot;,
+        &quot;label&quot;: &quot;ARMOR PER STACK:&quot;,
+        &quot;value&quot;: &quot;1/1.5/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;Culling Blade&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;One Man Army&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Axe&quot;,
+        &quot;ability&quot;: &quot;One Man Army&quot;,
+        &quot;key&quot;: &quot;bonus_linger_duration&quot;,
+        &quot;label&quot;: &quot;BONUS LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

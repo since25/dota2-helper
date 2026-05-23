@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,357 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>撼地者（Earthshaker）</h1>
-        <div class="muted">Earthshaker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Earthshaker · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
-          <span>组件 5</span>
+          <span>组件 6</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./earthshaker.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Fissure</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>fissure_radius</code></td>
+      <td>FISSURE RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1/1.2/1.4/1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>free_pathing_application_radius</code></td>
+      <td>FREE PATHING APPLICATION RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>fissure_max_distance_moved</code></td>
+      <td>FISSURE MAX DISTANCE MOVED:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>echoes_radius</code></td>
+      <td>ECHOES RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>echoes_damage_multiplier</code></td>
+      <td>ECHOES DAMAGE MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fissure</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.69</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>scepter_height</code></td>
+      <td>SCEPTER HEIGHT:</td>
+      <td>950</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>scepter_height_arcbuffer</code></td>
+      <td>SCEPTER HEIGHT ARCBUFFER:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>scepter_acceleration_z</code></td>
+      <td>SCEPTER ACCELERATION Z:</td>
+      <td>4000</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>scepter_acceleration_horizontal</code></td>
+      <td>SCEPTER ACCELERATION HORIZONTAL:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>scepter_leap_duration</code></td>
+      <td>SCEPTER LEAP DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>bonus_attack_range</code></td>
+      <td>BONUS ATTACK RANGE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>14</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant Totem</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Aftershock</td>
+      <td><code>aftershock_range</code></td>
+      <td>RADIUS:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slam</td>
+      <td><code>echo_slam_damage_range</code></td>
+      <td>RADIUS:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slam</td>
+      <td><code>echo_slam_echo_search_range</code></td>
+      <td>ECHO SLAM ECHO SEARCH RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slam</td>
+      <td><code>echo_slam_echo_range</code></td>
+      <td>ECHO SLAM ECHO RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slam</td>
+      <td><code>echo_slam_echo_damage</code></td>
+      <td>ECHO DAMAGE:</td>
+      <td>70/90/110</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slam</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_on_kill</code></td>
+      <td>PROJECTILE BODY ON KILL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_initial_impact_radius</code></td>
+      <td>PROJECTILE BODY INITIAL IMPACT RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_speed</code></td>
+      <td>SPEED:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_distance</code></td>
+      <td>DISTANCE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_width_creep</code></td>
+      <td>PROJECTILE BODY WIDTH CREEP:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_width_hero</code></td>
+      <td>PROJECTILE BODY WIDTH HERO:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_vision</code></td>
+      <td>PROJECTILE BODY VISION:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_damage_creep</code></td>
+      <td>DAMAGE (CREEPS):</td>
+      <td>27</td>
+    </tr>
+  
+    <tr>
+      <td>Slugger</td>
+      <td><code>projectile_body_damage_additional_percent_health</code></td>
+      <td>FLYING ENEMY&#39;S MAX HEALTH AS DAMAGE:</td>
+      <td>7%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Earthshaker&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed fissure, aftershock, and echo slam split components against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Fissure&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;fissure_damage&quot;,
+      &quot;durationKey&quot;: &quot;fissure_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Enchant Totem&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;totem_damage_percentage&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。&quot;
+    },
+    &quot;Aftershock&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;aftershock_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Echo Slam&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;echo_slam_initial_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;reason&quot;: &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;echo_slam_echo_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;nearby_unit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;nearby_unit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;每个附近单位产生一次回音伤害，需输入附近单位数量。&quot;
+        }
+      ]
+    },
+    &quot;Slugger&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;projectile_body_damage_hero&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;thrown_body_target_type&quot;,
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;thrown_body_target_type&quot;,
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;reason&quot;: &quot;强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +470,7 @@
           <div class="muted">Fissure · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,14 +523,14 @@
           <div class="muted">Enchant Totem · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
         <span>蓝耗：45 / 55 / 65 / 75</span>
-        <span>冷却：5</span>
+        <span>冷却：5 / 5 / 5 / 5</span>
       </div>
       <div class="table-wrap">
         <table>
@@ -203,8 +549,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Enchant Totem:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Enchant Totem:debuff_reference:totem_damage_percentage</code>
+          <div class="muted">totem_damage_percentage</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -212,11 +558,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>0</td><td>-</td><td>-</td><td>-</td>
+        <td>100</td><td>200</td><td>300</td><td>400</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +576,7 @@
           <div class="muted">Aftershock · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +629,7 @@
           <div class="muted">Echo Slam · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -309,8 +655,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Echo Slam:instant_fixed:echo_slam_damage_range</code>
-          <div class="muted">echo_slam_damage_range</div>
+          <code>Echo Slam:instant_fixed:echo_slam_initial_damage</code>
+          <div class="muted">echo_slam_initial_damage</div>
         </td>
         <td>
           <span class="pill">instant_fixed</span>
@@ -318,11 +664,29 @@
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
-        <td>700</td><td>-</td><td>-</td><td>-</td>
+        <td>100</td><td>140</td><td>180</td><td>-</td>
         <td></td>
         <td><span class="muted">-</span></td>
         <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><ul><li>回音击拆分为初始伤害和按附近单位数量变化的回音伤害。</li></ul></td>
+      </tr>
+    
+      <tr>
+        <td>
+          <code>Echo Slam:state_scaling:echo_slam_echo_damage</code>
+          <div class="muted">echo_slam_echo_damage</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Magical</td>
+        <td>70</td><td>90</td><td>110</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: nearby_unit_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>每个附近单位产生一次回音伤害，需输入附近单位数量。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +700,7 @@
           <div class="muted">Slugger · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -362,8 +726,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Slugger:state_scaling:projectile_body_damage_creep</code>
-          <div class="muted">projectile_body_damage_creep</div>
+          <code>Slugger:state_scaling:projectile_body_damage_hero</code>
+          <div class="muted">projectile_body_damage_hero</div>
         </td>
         <td>
           <span class="pill">state_scaling</span>
@@ -371,11 +735,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>27</td><td>-</td><td>-</td><td>-</td>
+        <td>135</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: stack_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: thrown_body_target_type / enemy_max_health</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><ul><li>强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +871,7 @@
       &quot;name&quot;: &quot;Fissure&quot;,
       &quot;displayName&quot;: &quot;沟壑（Fissure）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,10 +926,10 @@
       &quot;name&quot;: &quot;Enchant Totem&quot;,
       &quot;displayName&quot;: &quot;强化图腾（Enchant Totem）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         45,
         55,
@@ -573,17 +937,23 @@
         75
       ],
       &quot;cooldownByAbilityLevel&quot;: [
+        5,
+        5,
+        5,
         5
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Enchant Totem:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Enchant Totem:debuff_reference:totem_damage_percentage&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;totem_damage_percentage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            0
+            100,
+            200,
+            300,
+            400
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -593,8 +963,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;attack_damage&quot;,
+            &quot;affects&quot;: &quot;attack_damage&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -603,9 +973,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。&quot;
           ]
         }
       ]
@@ -614,7 +984,7 @@
       &quot;name&quot;: &quot;Aftershock&quot;,
       &quot;displayName&quot;: &quot;余震（Aftershock）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -659,10 +1029,10 @@
       &quot;name&quot;: &quot;Echo Slam&quot;,
       &quot;displayName&quot;: &quot;回音击（Echo Slam）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         150,
         200,
@@ -675,13 +1045,15 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Echo Slam:instant_fixed:echo_slam_damage_range&quot;,
+          &quot;id&quot;: &quot;Echo Slam:instant_fixed:echo_slam_initial_damage&quot;,
           &quot;kind&quot;: &quot;instant_fixed&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
-          &quot;label&quot;: &quot;echo_slam_damage_range&quot;,
+          &quot;label&quot;: &quot;echo_slam_initial_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            700
+            100,
+            140,
+            180
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -693,30 +1065,21 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
-        }
-      ]
-    },
-    {
-      &quot;name&quot;: &quot;Slugger&quot;,
-      &quot;displayName&quot;: &quot;强击图腾（Slugger）&quot;,
-      &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
-      &quot;manaCostByAbilityLevel&quot;: [],
-      &quot;cooldownByAbilityLevel&quot;: [],
-      &quot;components&quot;: [
+          &quot;reason&quot;: &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;
+          ]
+        },
         {
-          &quot;id&quot;: &quot;Slugger:state_scaling:projectile_body_damage_creep&quot;,
+          &quot;id&quot;: &quot;Echo Slam:state_scaling:echo_slam_echo_damage&quot;,
           &quot;kind&quot;: &quot;state_scaling&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;projectile_body_damage_creep&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;echo_slam_echo_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            27
+            70,
+            90,
+            110
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -730,7 +1093,7 @@
             &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [
-              &quot;stack_count&quot;
+              &quot;nearby_unit_count&quot;
             ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
@@ -738,15 +1101,413 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;每个附近单位产生一次回音伤害，需输入附近单位数量。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Slugger&quot;,
+      &quot;displayName&quot;: &quot;强击图腾（Slugger）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Slugger:state_scaling:projectile_body_damage_hero&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;projectile_body_damage_hero&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            135
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;thrown_body_target_type&quot;,
+              &quot;enemy_max_health&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Earthshaker&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed fissure, aftershock, and echo slam split components against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Fissure&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;fissure_damage&quot;,
+          &quot;durationKey&quot;: &quot;fissure_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Enchant Totem&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;totem_damage_percentage&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.percent&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;强化图腾按下一次普攻攻击力百分比增伤，需要结合英雄当前攻击力。&quot;
+        },
+        &quot;Aftershock&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;aftershock_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Echo Slam&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;echo_slam_initial_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;reason&quot;: &quot;回音击拆分为初始伤害和按附近单位数量变化的回音伤害。&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;reference_only&quot;,
+              &quot;model&quot;: &quot;state_scaling&quot;,
+              &quot;valueKey&quot;: &quot;echo_slam_echo_damage&quot;,
+              &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+              &quot;requiredInputs&quot;: [
+                &quot;nearby_unit_count&quot;
+              ],
+              &quot;conditionInputs&quot;: [
+                &quot;nearby_unit_count&quot;
+              ],
+              &quot;reason&quot;: &quot;每个附近单位产生一次回音伤害，需输入附近单位数量。&quot;
+            }
+          ]
+        },
+        &quot;Slugger&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;projectile_body_damage_hero&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;thrown_body_target_type&quot;,
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;thrown_body_target_type&quot;,
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;reason&quot;: &quot;强击图腾先天效果依赖击杀后投掷单位和目标生命，不进入基础连招固定伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;fissure_radius&quot;,
+        &quot;label&quot;: &quot;FISSURE RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.2/1.4/1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;free_pathing_application_radius&quot;,
+        &quot;label&quot;: &quot;FREE PATHING APPLICATION RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;fissure_max_distance_moved&quot;,
+        &quot;label&quot;: &quot;FISSURE MAX DISTANCE MOVED:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;echoes_radius&quot;,
+        &quot;label&quot;: &quot;ECHOES RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;echoes_damage_multiplier&quot;,
+        &quot;label&quot;: &quot;ECHOES DAMAGE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Fissure&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.69&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;scepter_height&quot;,
+        &quot;label&quot;: &quot;SCEPTER HEIGHT:&quot;,
+        &quot;value&quot;: &quot;950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;scepter_height_arcbuffer&quot;,
+        &quot;label&quot;: &quot;SCEPTER HEIGHT ARCBUFFER:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;scepter_acceleration_z&quot;,
+        &quot;label&quot;: &quot;SCEPTER ACCELERATION Z:&quot;,
+        &quot;value&quot;: &quot;4000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;scepter_acceleration_horizontal&quot;,
+        &quot;label&quot;: &quot;SCEPTER ACCELERATION HORIZONTAL:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;scepter_leap_duration&quot;,
+        &quot;label&quot;: &quot;SCEPTER LEAP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;bonus_attack_range&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Enchant Totem&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Aftershock&quot;,
+        &quot;key&quot;: &quot;aftershock_range&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Echo Slam&quot;,
+        &quot;key&quot;: &quot;echo_slam_damage_range&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Echo Slam&quot;,
+        &quot;key&quot;: &quot;echo_slam_echo_search_range&quot;,
+        &quot;label&quot;: &quot;ECHO SLAM ECHO SEARCH RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Echo Slam&quot;,
+        &quot;key&quot;: &quot;echo_slam_echo_range&quot;,
+        &quot;label&quot;: &quot;ECHO SLAM ECHO RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Echo Slam&quot;,
+        &quot;key&quot;: &quot;echo_slam_echo_damage&quot;,
+        &quot;label&quot;: &quot;ECHO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;70/90/110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Echo Slam&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_on_kill&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY ON KILL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_initial_impact_radius&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY INITIAL IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_width_creep&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY WIDTH CREEP:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_width_hero&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY WIDTH HERO:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_vision&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY VISION:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_damage_creep&quot;,
+        &quot;label&quot;: &quot;DAMAGE (CREEPS):&quot;,
+        &quot;value&quot;: &quot;27&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Earthshaker&quot;,
+        &quot;ability&quot;: &quot;Slugger&quot;,
+        &quot;key&quot;: &quot;projectile_body_damage_additional_percent_health&quot;,
+        &quot;label&quot;: &quot;FLYING ENEMY&#39;S MAX HEALTH AS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;7%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

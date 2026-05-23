@@ -121,10 +121,10 @@
       "name": "Purification",
       "displayName": "洗礼（Purification）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90,
         105,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,10 +176,10 @@
       "name": "Repel",
       "displayName": "驱逐（Repel）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90,
         105,
@@ -220,9 +220,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -231,7 +231,7 @@
       "name": "Hammer of Purity",
       "displayName": "纯洁之锤（Hammer of Purity）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
@@ -292,10 +292,10 @@
       "name": "Degen Aura",
       "displayName": "退化光环（Degen Aura）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -326,13 +326,336 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Omniknight",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Purification": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Repel": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Hammer of Purity": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "base_damage",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "conditionInputs": [
+            "source_damage",
+            "hit_count"
+          ],
+          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+        },
+        "Degen Aura": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "speed_bonus",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Guardian Angel": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Omniknight",
+        "ability": "Purification",
+        "key": "heal",
+        "label": "HEAL/DAMAGE:",
+        "value": "90/160/230/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Purification",
+        "key": "radius",
+        "label": "DAMAGE RADIUS:",
+        "value": "260",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Purification",
+        "key": "recast_delay",
+        "label": "RECAST DELAY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Purification",
+        "key": "recast_effectiveness_pct",
+        "label": "RECAST EFFECTIVENESS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Purification",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Repel",
+        "key": "base_hpregen",
+        "label": "BONUS HP REGEN:",
+        "value": "8/12/16/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Repel",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Repel",
+        "key": "magic_resist",
+        "label": "MAGIC RESISTANCE:",
+        "value": "60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Repel",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "bonus_damage",
+        "label": "DAMAGE:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "heal_pct",
+        "label": "HEAL PCT:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "heal_duration",
+        "label": "HEAL DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "attack_cooldown",
+        "label": "ATTACK COOLDOWN:",
+        "value": "-1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "attack_range_bonus",
+        "label": "RANGE BONUS:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "duration",
+        "label": "SLOW DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "movement_slow",
+        "label": "SLOW:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Hammer of Purity",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Degen Aura",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Degen Aura",
+        "key": "bonus_damage_per_stack",
+        "label": "BONUS DAMAGE PER STACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Degen Aura",
+        "key": "stack_interval",
+        "label": "STACK INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Degen Aura",
+        "key": "max_stacks",
+        "label": "MAX BONUS DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Degen Aura",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4/4.5/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "is_global",
+        "label": "IS GLOBAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "affects_buildings",
+        "label": "AFFECTS BUILDINGS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "heal_and_regen_amp",
+        "label": "BONUS HEALTH RESTORATION:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "model_scale",
+        "label": "MODEL SCALE:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "flying",
+        "label": "FLYING:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Omniknight",
+        "ability": "Guardian Angel",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

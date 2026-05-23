@@ -121,7 +121,7 @@
       "name": "Magic Missile",
       "displayName": "魔法箭（Magic Missile）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -169,7 +169,7 @@
       "name": "Wave of Terror",
       "displayName": "恐怖波动（Wave of Terror）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -217,30 +217,18 @@
           "model": "instant_fixed",
           "reason": "",
           "caveats": []
-        }
-      ]
-    },
-    {
-      "name": "Vengeance Aura",
-      "displayName": "复仇光环（Vengeance Aura）",
-      "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
-      "manaCostByAbilityLevel": [],
-      "cooldownByAbilityLevel": [
-        0
-      ],
-      "components": [
+        },
         {
-          "id": "Vengeance Aura:debuff_reference:abilitycastrange",
+          "id": "Wave of Terror:debuff_reference:armor_reduction",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "armor_reduction",
           "valuesByAbilityLevel": [
-            1200
+            -3,
+            -4,
+            -5,
+            -6
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -250,8 +238,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "armor_reduction",
+            "affects": "enemy_armor",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -260,9 +248,107 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "恐怖波动护甲降低影响后续物理伤害，作为修正项参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vengeance Aura",
+      "displayName": "复仇光环（Vengeance Aura）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "复仇光环提供攻击力加成，不是独立技能伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "components": [
+        {
+          "id": "Vengeance Aura:debuff_reference:bonus_base_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_base_damage",
+          "valuesByAbilityLevel": [
+            10,
+            15,
+            20,
+            25
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "ally_attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "复仇光环提供攻击力加成，不是独立技能伤害。",
+          "caveats": [
+            "复仇光环提供攻击力加成，不是独立技能伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Retribution",
+      "displayName": "恶有恶报（Retribution）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "恶有恶报提供攻击力参考，不直接作为技能爆发。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Retribution:debuff_reference:bonus_damage",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "bonus_damage",
+          "valuesByAbilityLevel": [
+            20
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "attack_damage",
+            "affects": "attack_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "恶有恶报提供攻击力参考，不直接作为技能爆发。",
+          "caveats": [
+            "恶有恶报提供攻击力参考，不直接作为技能爆发。"
           ]
         }
       ]
@@ -271,7 +357,7 @@
       "name": "Nether Swap",
       "displayName": "移形换位（Nether Swap）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -319,5 +405,264 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Vengeful Spirit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed missile, wave armor reduction, aura, and swap fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Magic Missile": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "magic_missile_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Wave of Terror": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "vision_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "extraComponents": [
+            {
+              "status": "reference_only",
+              "model": "debuff_reference",
+              "valueKey": "armor_reduction",
+              "semanticType": "modifier.armor_reduction.flat",
+              "affects": "enemy_armor",
+              "stackGroup": "armor_reduction",
+              "reason": "恐怖波动护甲降低影响后续物理伤害，作为修正项参考。"
+            }
+          ]
+        },
+        "Vengeance Aura": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_base_damage",
+          "semanticType": "modifier.attack_damage.percent",
+          "affects": "ally_attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "复仇光环提供攻击力加成，不是独立技能伤害。"
+        },
+        "Retribution": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_damage",
+          "semanticType": "modifier.attack_damage.flat",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "恶有恶报提供攻击力参考，不直接作为技能爆发。"
+        },
+        "Nether Swap": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "damage_reduction_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "magic_missile_speed",
+        "label": "MAGIC MISSILE SPEED:",
+        "value": "1350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "magic_missile_stun",
+        "label": "STUN DURATION:",
+        "value": "1.2/1.4/1.6/1.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "bounce_range_pct",
+        "label": "BOUNCE RANGE PCT:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "damage_per_lasthit",
+        "label": "DAMAGE PER LASTHIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Magic Missile",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "wave_speed",
+        "label": "WAVE SPEED:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "wave_width",
+        "label": "WAVE WIDTH:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "armor_reduction",
+        "label": "ARMOR REDUCTION:",
+        "value": "-3/-4/-5/-6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "attack_reduction",
+        "label": "ATTACK DAMAGE REDUCTION:",
+        "value": "10%/15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "vision_aoe",
+        "label": "VISION AOE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "steal_pct",
+        "label": "STEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "abilityduration",
+        "label": "DEBUFF DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Wave of Terror",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Vengeance Aura",
+        "key": "self_multiplier",
+        "label": "SELF MULTIPLIER:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Vengeance Aura",
+        "key": "aura_radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Vengeance Aura",
+        "key": "revival_time",
+        "label": "REVIVAL TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Vengeance Aura",
+        "key": "restitution_time",
+        "label": "REVENGE WINDOW DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Vengeance Aura",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Nether Swap",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Nether Swap",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "850/975/1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Vengeful Spirit",
+        "ability": "Nether Swap",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

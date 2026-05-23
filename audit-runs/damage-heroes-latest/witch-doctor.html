@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>巫医（Witch Doctor）</h1>
-        <div class="muted">Witch Doctor · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Witch Doctor · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,325 @@
       </div>
       <a href="./witch-doctor.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>hero_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>creep_duration</code></td>
+      <td>CREEP DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>bounce_range</code></td>
+      <td>BOUNCE RANGE:</td>
+      <td>575</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>bounces</code></td>
+      <td>BOUNCES:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>bounce_delay</code></td>
+      <td>BOUNCE DELAY:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>creep_damage_pct</code></td>
+      <td>CREEP DAMAGE PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Paralyzing Cask</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>mana_per_second</code></td>
+      <td>MANA PER SEC:</td>
+      <td>9/12/15/18</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>500/550/600/650</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>heal_interval</code></td>
+      <td>HEAL INTERVAL:</td>
+      <td>0.33</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>does_heal_all_allies</code></td>
+      <td>DOES HEAL ALL ALLIES:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>does_damage</code></td>
+      <td>DOES DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Restoration</td>
+      <td><code>self_only_heal_percentage</code></td>
+      <td>SELF HEAL:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>bonus_damage</code></td>
+      <td>LOST HEALTH BURST DAMAGE:</td>
+      <td>16%/24%/32%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>bonus_damage_threshold</code></td>
+      <td>BONUS DAMAGE THRESHOLD:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>ticks</code></td>
+      <td>TICKS:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>spread_speed</code></td>
+      <td>SPREAD SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Maledict</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Switcheroo</td>
+      <td><code>attack_speed_reduction</code></td>
+      <td>ATTACK SPEED REDUCTION:</td>
+      <td>45</td>
+    </tr>
+  
+    <tr>
+      <td>Voodoo Switcheroo</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Gris-Gris</td>
+      <td><code>death_gold_lost_reduction_pct_tooltip</code></td>
+      <td>DEATH GOLD LOST REDUCTION PCT TOOLTIP:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Gris-Gris</td>
+      <td><code>gold_tick_interval_tooltip</code></td>
+      <td>GOLD TICK INTERVAL TOOLTIP:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>attack_range_tooltip</code></td>
+      <td>ATTACK RANGE:</td>
+      <td>600/625/650</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>bonus_attack_range</code></td>
+      <td>BONUS ATTACK RANGE:</td>
+      <td>0/25/50</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>bonus_accuracy</code></td>
+      <td>BONUS ACCURACY:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>initial_target_count</code></td>
+      <td>INITIAL TARGET COUNT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Death Ward</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Witch Doctor&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed cask/maledict/death ward fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Paralyzing Cask&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;damageKey&quot;: &quot;base_damage&quot;,
+      &quot;triggerCountInput&quot;: &quot;bounce_count&quot;,
+      &quot;bonusDamageKey&quot;: &quot;bounce_bonus_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.wave&quot;,
+      &quot;reason&quot;: &quot;弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。&quot;
+    },
+    &quot;Voodoo Restoration&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;heal&quot;,
+      &quot;semanticType&quot;: &quot;defense.heal.flat&quot;,
+      &quot;affects&quot;: &quot;ally_healing&quot;,
+      &quot;reason&quot;: &quot;当前数据 does_damage 为 0，仅作为治疗参考。&quot;
+    },
+    &quot;Maledict&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;dmg&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。&quot;
+    },
+    &quot;Voodoo Switcheroo&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;damage_window&quot;,
+      &quot;reason&quot;: &quot;临时变为死亡守卫，具体伤害复用 Death Ward。&quot;
+    },
+    &quot;Gris-Gris&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;经济机制不直接造成伤害。&quot;
+    },
+    &quot;Death Ward&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +447,8 @@
           <div class="muted">Paralyzing Cask · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">repeated_trigger</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +473,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Paralyzing Cask:instant_fixed:base_damage</code>
+          <code>Paralyzing Cask:repeated_trigger:base_damage</code>
           <div class="muted">base_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">repeated_trigger</span>
+          <span class="pill secondary">repeated_trigger</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>55</td><td>70</td><td>85</td><td>100</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.8 / 0.8 / 0.8 / 0.8</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>triggerCountInput</code>: bounce_count</div><div><code>bonusDamageKey</code>: bounce_bonus_damage</div><div><code>bounceBonusDamageByAbilityLevel</code>: 20 / 20 / 20 / 20</div></td>
+        <td>triggerCount * damage</td>
+        <td><ul><li>需要输入实际触发次数，不能默认按满额命中计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +500,7 @@
           <div class="muted">Voodoo Restoration · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -214,9 +537,9 @@
         <td>Unknown</td>
         <td>20</td><td>30</td><td>40</td><td>50</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: sustain</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: ally_healing</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>当前数据 does_damage 为 0，仅作为治疗参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,8 +553,8 @@
           <div class="muted">Maledict · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -256,20 +579,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Maledict:instant_fixed:dmg</code>
+          <code>Maledict:sustained:dmg</code>
           <div class="muted">dmg</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>18</td><td>22</td><td>26</td><td>30</td>
-        <td></td>
+        <td>216 / 264 / 312 / 360</td>
         <td><div><code>durationByAbilityLevel</code>: 12 / 12 / 12 / 12</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +606,7 @@
           <div class="muted">Voodoo Switcheroo · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -309,8 +632,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Voodoo Switcheroo:debuff_reference:attack_speed_reduction</code>
-          <div class="muted">attack_speed_reduction</div>
+          <code>Voodoo Switcheroo:debuff_reference:duration</code>
+          <div class="muted">duration</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -318,11 +641,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>45</td><td>-</td><td>-</td><td>-</td>
+        <td>2.5</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: damage_window</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>临时变为死亡守卫，具体伤害复用 Death Ward。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,8 +659,8 @@
           <div class="muted">Death Ward · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -362,20 +685,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Death Ward:instant_fixed:damage</code>
+          <code>Death Ward:sustained:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Pure</td>
         <td>60</td><td>90</td><td>120</td><td>-</td>
-        <td></td>
-        <td><span class="muted">-</span></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>480 / 720 / 960</td>
+        <td><div><code>durationByAbilityLevel</code>: 8 / 8 / 8</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,10 +830,10 @@
       &quot;name&quot;: &quot;Paralyzing Cask&quot;,
       &quot;displayName&quot;: &quot;麻痹药剂（Paralyzing Cask）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;reason&quot;: &quot;弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
         100,
@@ -525,8 +848,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Paralyzing Cask:instant_fixed:base_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Paralyzing Cask:repeated_trigger:base_damage&quot;,
+          &quot;kind&quot;: &quot;repeated_trigger&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;base_damage&quot;,
@@ -537,24 +860,28 @@
             100
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;triggerCount * damage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;runtime_trigger_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              0.8,
-              0.8,
-              0.8,
-              0.8
+            &quot;triggerCountInput&quot;: &quot;bounce_count&quot;,
+            &quot;bonusDamageKey&quot;: &quot;bounce_bonus_damage&quot;,
+            &quot;bounceBonusDamageByAbilityLevel&quot;: [
+              20,
+              20,
+              20,
+              20
             ]
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;reason&quot;: &quot;弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。&quot;,
+          &quot;caveats&quot;: [
+            &quot;需要输入实际触发次数，不能默认按满额命中计算。&quot;
+          ]
         }
       ]
     },
@@ -562,10 +889,10 @@
       &quot;name&quot;: &quot;Voodoo Restoration&quot;,
       &quot;displayName&quot;: &quot;巫毒疗法（Voodoo Restoration）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;当前数据 does_damage 为 0，仅作为治疗参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         25,
         25,
@@ -600,7 +927,7 @@
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
             &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;sustain&quot;,
+            &quot;affects&quot;: &quot;ally_healing&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -609,9 +936,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;当前数据 does_damage 为 0，仅作为治疗参考。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;当前数据 does_damage 为 0，仅作为治疗参考。&quot;
           ]
         }
       ]
@@ -620,10 +947,10 @@
       &quot;name&quot;: &quot;Maledict&quot;,
       &quot;displayName&quot;: &quot;巫蛊咒术（Maledict）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         105,
         110,
@@ -638,8 +965,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Maledict:instant_fixed:dmg&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Maledict:sustained:dmg&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;dmg&quot;,
@@ -649,11 +976,16 @@
             26,
             30
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            216,
+            264,
+            312,
+            360
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
@@ -665,9 +997,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -675,10 +1009,10 @@
       &quot;name&quot;: &quot;Voodoo Switcheroo&quot;,
       &quot;displayName&quot;: &quot;巫毒变身术（Voodoo Switcheroo）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;临时变为死亡守卫，具体伤害复用 Death Ward。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200
       ],
@@ -687,13 +1021,13 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Voodoo Switcheroo:debuff_reference:attack_speed_reduction&quot;,
+          &quot;id&quot;: &quot;Voodoo Switcheroo:debuff_reference:duration&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;attack_speed_reduction&quot;,
+          &quot;label&quot;: &quot;duration&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            45
+            2.5
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -703,8 +1037,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;attack_speed&quot;,
-            &quot;affects&quot;: &quot;attack_speed&quot;,
+            &quot;modifierType&quot;: &quot;disable_window&quot;,
+            &quot;affects&quot;: &quot;damage_window&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -713,9 +1047,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;临时变为死亡守卫，具体伤害复用 Death Ward。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;临时变为死亡守卫，具体伤害复用 Death Ward。&quot;
           ]
         }
       ]
@@ -724,10 +1058,10 @@
       &quot;name&quot;: &quot;Death Ward&quot;,
       &quot;displayName&quot;: &quot;死亡守卫（Death Ward）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         200,
@@ -740,8 +1074,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Death Ward:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Death Ward:sustained:damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Pure&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -750,23 +1084,361 @@
             90,
             120
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            480,
+            720,
+            960
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
-          &quot;metadata&quot;: {},
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [
+              8,
+              8,
+              8
+            ]
+          },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Witch Doctor&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed cask/maledict/death ward fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Paralyzing Cask&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;damageKey&quot;: &quot;base_damage&quot;,
+          &quot;triggerCountInput&quot;: &quot;bounce_count&quot;,
+          &quot;bonusDamageKey&quot;: &quot;bounce_bonus_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.wave&quot;,
+          &quot;reason&quot;: &quot;弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。&quot;
+        },
+        &quot;Voodoo Restoration&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;heal&quot;,
+          &quot;semanticType&quot;: &quot;defense.heal.flat&quot;,
+          &quot;affects&quot;: &quot;ally_healing&quot;,
+          &quot;reason&quot;: &quot;当前数据 does_damage 为 0，仅作为治疗参考。&quot;
+        },
+        &quot;Maledict&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;dmg&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。&quot;
+        },
+        &quot;Voodoo Switcheroo&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;damage_window&quot;,
+          &quot;reason&quot;: &quot;临时变为死亡守卫，具体伤害复用 Death Ward。&quot;
+        },
+        &quot;Gris-Gris&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;经济机制不直接造成伤害。&quot;
+        },
+        &quot;Death Ward&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;hero_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;creep_duration&quot;,
+        &quot;label&quot;: &quot;CREEP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;bounce_range&quot;,
+        &quot;label&quot;: &quot;BOUNCE RANGE:&quot;,
+        &quot;value&quot;: &quot;575&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;bounces&quot;,
+        &quot;label&quot;: &quot;BOUNCES:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;bounce_delay&quot;,
+        &quot;label&quot;: &quot;BOUNCE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;creep_damage_pct&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Paralyzing Cask&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;mana_per_second&quot;,
+        &quot;label&quot;: &quot;MANA PER SEC:&quot;,
+        &quot;value&quot;: &quot;9/12/15/18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500/550/600/650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;heal_interval&quot;,
+        &quot;label&quot;: &quot;HEAL INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.33&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;does_heal_all_allies&quot;,
+        &quot;label&quot;: &quot;DOES HEAL ALL ALLIES:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;does_damage&quot;,
+        &quot;label&quot;: &quot;DOES DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Restoration&quot;,
+        &quot;key&quot;: &quot;self_only_heal_percentage&quot;,
+        &quot;label&quot;: &quot;SELF HEAL:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;LOST HEALTH BURST DAMAGE:&quot;,
+        &quot;value&quot;: &quot;16%/24%/32%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;bonus_damage_threshold&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;ticks&quot;,
+        &quot;label&quot;: &quot;TICKS:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;spread_speed&quot;,
+        &quot;label&quot;: &quot;SPREAD SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Maledict&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Switcheroo&quot;,
+        &quot;key&quot;: &quot;attack_speed_reduction&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED REDUCTION:&quot;,
+        &quot;value&quot;: &quot;45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Voodoo Switcheroo&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Gris-Gris&quot;,
+        &quot;key&quot;: &quot;death_gold_lost_reduction_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;DEATH GOLD LOST REDUCTION PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Gris-Gris&quot;,
+        &quot;key&quot;: &quot;gold_tick_interval_tooltip&quot;,
+        &quot;label&quot;: &quot;GOLD TICK INTERVAL TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;attack_range_tooltip&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;600/625/650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;bonus_attack_range&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;0/25/50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;bonus_accuracy&quot;,
+        &quot;label&quot;: &quot;BONUS ACCURACY:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;initial_target_count&quot;,
+        &quot;label&quot;: &quot;INITIAL TARGET COUNT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Witch Doctor&quot;,
+        &quot;ability&quot;: &quot;Death Ward&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>齐天大圣（Monkey King）</h1>
-        <div class="muted">Monkey King · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Monkey King · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,494 @@
       </div>
       <a href="./monkey-king.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>strike_crit_mult</code></td>
+      <td>CRITICAL DAMAGE:</td>
+      <td>120%/140%/160%/180%</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>strike_radius</code></td>
+      <td>STRIKE RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>strike_cast_range</code></td>
+      <td>DISTANCE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>soldier_spawn_duration</code></td>
+      <td>SOLDIER SPAWN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>acceleration_z</code></td>
+      <td>ACCELERATION Z:</td>
+      <td>5000</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>min_height_above_lowest</code></td>
+      <td>MIN HEIGHT ABOVE LOWEST:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>min_height_above_highest</code></td>
+      <td>MIN HEIGHT ABOVE HIGHEST:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>max_horizontal_acceleration</code></td>
+      <td>MAX HORIZONTAL ACCELERATION:</td>
+      <td>30000</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>spring_channel_pct</code></td>
+      <td>SPRING CHANNEL PCT:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Boundless Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>leap_speed</code></td>
+      <td>LEAP SPEED:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>spring_leap_speed</code></td>
+      <td>SPRING LEAP SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>give_up_distance</code></td>
+      <td>GIVE UP DISTANCE:</td>
+      <td>1850</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>ground_jump_distance</code></td>
+      <td>GROUND JUMP DISTANCE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>perched_jump_distance</code></td>
+      <td>DISTANCE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>jump_damage_cooldown</code></td>
+      <td>DAMAGE COOLDOWN:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>perched_day_vision</code></td>
+      <td>PERCHED DAY VISION:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>perched_night_vision</code></td>
+      <td>PERCHED NIGHT VISION:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>perched_spot_height</code></td>
+      <td>PERCHED SPOT HEIGHT:</td>
+      <td>192</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>top_level_height</code></td>
+      <td>TOP LEVEL HEIGHT:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>impact_movement_slow_tooltip</code></td>
+      <td>IMPACT MOVEMENT SLOW TOOLTIP:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>max_level</code></td>
+      <td>MAX LEVEL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Tree Dance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Spring</td>
+      <td><code>impact_movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>35%/50%/65%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Spring</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Spring</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Spring</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>1.75</td>
+    </tr>
+  
+    <tr>
+      <td>Primal Spring</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>required_hits</code></td>
+      <td>REQUIRED HITS:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>counter_duration</code></td>
+      <td>COUNTER DURATION:</td>
+      <td>5.5/7/8.5/10</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>charges</code></td>
+      <td>CHARGES:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>30/80/130/180</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>lifesteal</code></td>
+      <td>BONUS LIFESTEAL:</td>
+      <td>20%/40%/60%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>max_duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Jingu Mastery</td>
+      <td><code>buff_is_undispellable</code></td>
+      <td>BUFF IS UNDISPELLABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mischief</td>
+      <td><code>movespeed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>8%</td>
+    </tr>
+  
+    <tr>
+      <td>Mischief</td>
+      <td><code>reveal_radius</code></td>
+      <td>REVEAL RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Mischief</td>
+      <td><code>invul_duration</code></td>
+      <td>INVUL DURATION:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Mischief</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>first_radius</code></td>
+      <td>FIRST RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>second_radius</code></td>
+      <td>SECOND RADIUS:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>num_first_soldiers</code></td>
+      <td>NUM FIRST SOLDIERS:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>num_second_soldiers</code></td>
+      <td>NUM SECOND SOLDIERS:</td>
+      <td>9</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>move_speed</code></td>
+      <td>MOVE SPEED:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>15/20/25</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>1.1</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>attack_speed_pct</code></td>
+      <td>ATTACK SPEED PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>damage_pct</code></td>
+      <td>SOLDIER DAMAGE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>14</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>leadership_time_buffer</code></td>
+      <td>LEADERSHIP TIME BUFFER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>outer_attack_buffer</code></td>
+      <td>OUTER ATTACK BUFFER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wukong&#39;s Command</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Monkey King&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Boundless Strike&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;strike_flat_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Tree Dance&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage_tooltip&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;unperched_stunned_duration&quot;
+    },
+    &quot;Primal Spring&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;impact_slow_duration&quot;
+    },
+    &quot;Jingu Mastery&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Mischief&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Wukong&#39;s Command&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;cast_range&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +616,7 @@
           <div class="muted">Boundless Strike · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +669,7 @@
           <div class="muted">Tree Dance · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +722,7 @@
           <div class="muted">Primal Spring · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +775,7 @@
           <div class="muted">Wukong&#39;s Command · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +814,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +946,7 @@
       &quot;name&quot;: &quot;Boundless Strike&quot;,
       &quot;displayName&quot;: &quot;棒击大地（Boundless Strike）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,7 +1001,7 @@
       &quot;name&quot;: &quot;Tree Dance&quot;,
       &quot;displayName&quot;: &quot;丛林之舞（Tree Dance）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -564,7 +1056,7 @@
       &quot;name&quot;: &quot;Primal Spring&quot;,
       &quot;displayName&quot;: &quot;乾坤之跃（Primal Spring）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -619,10 +1111,10 @@
       &quot;name&quot;: &quot;Wukong&#39;s Command&quot;,
       &quot;displayName&quot;: &quot;猴子猴孙（Wukong&#39;s Command）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100
       ],
@@ -659,15 +1151,535 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Monkey King&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Boundless Strike&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;strike_flat_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Tree Dance&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage_tooltip&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;unperched_stunned_duration&quot;
+        },
+        &quot;Primal Spring&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;impact_slow_duration&quot;
+        },
+        &quot;Jingu Mastery&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Mischief&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Wukong&#39;s Command&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;cast_range&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;strike_crit_mult&quot;,
+        &quot;label&quot;: &quot;CRITICAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;120%/140%/160%/180%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;strike_radius&quot;,
+        &quot;label&quot;: &quot;STRIKE RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;strike_cast_range&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;soldier_spawn_duration&quot;,
+        &quot;label&quot;: &quot;SOLDIER SPAWN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;acceleration_z&quot;,
+        &quot;label&quot;: &quot;ACCELERATION Z:&quot;,
+        &quot;value&quot;: &quot;5000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;min_height_above_lowest&quot;,
+        &quot;label&quot;: &quot;MIN HEIGHT ABOVE LOWEST:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;min_height_above_highest&quot;,
+        &quot;label&quot;: &quot;MIN HEIGHT ABOVE HIGHEST:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;max_horizontal_acceleration&quot;,
+        &quot;label&quot;: &quot;MAX HORIZONTAL ACCELERATION:&quot;,
+        &quot;value&quot;: &quot;30000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;spring_channel_pct&quot;,
+        &quot;label&quot;: &quot;SPRING CHANNEL PCT:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Boundless Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;leap_speed&quot;,
+        &quot;label&quot;: &quot;LEAP SPEED:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;spring_leap_speed&quot;,
+        &quot;label&quot;: &quot;SPRING LEAP SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;give_up_distance&quot;,
+        &quot;label&quot;: &quot;GIVE UP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;ground_jump_distance&quot;,
+        &quot;label&quot;: &quot;GROUND JUMP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;perched_jump_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;jump_damage_cooldown&quot;,
+        &quot;label&quot;: &quot;DAMAGE COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;perched_day_vision&quot;,
+        &quot;label&quot;: &quot;PERCHED DAY VISION:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;perched_night_vision&quot;,
+        &quot;label&quot;: &quot;PERCHED NIGHT VISION:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;perched_spot_height&quot;,
+        &quot;label&quot;: &quot;PERCHED SPOT HEIGHT:&quot;,
+        &quot;value&quot;: &quot;192&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;top_level_height&quot;,
+        &quot;label&quot;: &quot;TOP LEVEL HEIGHT:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;impact_movement_slow_tooltip&quot;,
+        &quot;label&quot;: &quot;IMPACT MOVEMENT SLOW TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;max_level&quot;,
+        &quot;label&quot;: &quot;MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Tree Dance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Primal Spring&quot;,
+        &quot;key&quot;: &quot;impact_movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;35%/50%/65%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Primal Spring&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Primal Spring&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Primal Spring&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;1.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Primal Spring&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;required_hits&quot;,
+        &quot;label&quot;: &quot;REQUIRED HITS:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;counter_duration&quot;,
+        &quot;label&quot;: &quot;COUNTER DURATION:&quot;,
+        &quot;value&quot;: &quot;5.5/7/8.5/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;charges&quot;,
+        &quot;label&quot;: &quot;CHARGES:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30/80/130/180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;lifesteal&quot;,
+        &quot;label&quot;: &quot;BONUS LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;20%/40%/60%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;max_duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Jingu Mastery&quot;,
+        &quot;key&quot;: &quot;buff_is_undispellable&quot;,
+        &quot;label&quot;: &quot;BUFF IS UNDISPELLABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Mischief&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;8%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Mischief&quot;,
+        &quot;key&quot;: &quot;reveal_radius&quot;,
+        &quot;label&quot;: &quot;REVEAL RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Mischief&quot;,
+        &quot;key&quot;: &quot;invul_duration&quot;,
+        &quot;label&quot;: &quot;INVUL DURATION:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Mischief&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;first_radius&quot;,
+        &quot;label&quot;: &quot;FIRST RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;second_radius&quot;,
+        &quot;label&quot;: &quot;SECOND RADIUS:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;num_first_soldiers&quot;,
+        &quot;label&quot;: &quot;NUM FIRST SOLDIERS:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;num_second_soldiers&quot;,
+        &quot;label&quot;: &quot;NUM SECOND SOLDIERS:&quot;,
+        &quot;value&quot;: &quot;9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;move_speed&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;15/20/25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;1.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;attack_speed_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;SOLDIER DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;leadership_time_buffer&quot;,
+        &quot;label&quot;: &quot;LEADERSHIP TIME BUFFER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;outer_attack_buffer&quot;,
+        &quot;label&quot;: &quot;OUTER ATTACK BUFFER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Monkey King&quot;,
+        &quot;ability&quot;: &quot;Wukong&#39;s Command&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,682 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>电炎绝手（Snapfire）</h1>
-        <div class="muted">Snapfire · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Snapfire · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 7</span>
-          <span>组件 7</span>
+          <span>组件 8</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./snapfire.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>blast_speed</code></td>
+      <td>BLAST SPEED:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>blast_width_initial</code></td>
+      <td>BLAST WIDTH INITIAL:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>blast_width_end</code></td>
+      <td>BLAST WIDTH END:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>movement_slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>attack_slow_pct</code></td>
+      <td>ATTACK SLOW:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>point_blank_range</code></td>
+      <td>POINT-BLANK RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>point_blank_dmg_bonus_pct</code></td>
+      <td>POINT BLANK DMG BONUS PCT:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>point_blank_debuff_duration_pct</code></td>
+      <td>POINT BLANK DEBUFF DURATION PCT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>bonus_applies_at_long_range</code></td>
+      <td>BONUS APPLIES AT LONG RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Scatterblast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>21/19/17/15</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>pre_hop_duration</code></td>
+      <td>PRE HOP DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>jump_duration</code></td>
+      <td>JUMP DURATION:</td>
+      <td>0.484</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>jump_height</code></td>
+      <td>JUMP HEIGHT:</td>
+      <td>257</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>jump_horizontal_distance</code></td>
+      <td>HOP DISTANCE:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>pre_land_anim_time</code></td>
+      <td>PRE LAND ANIM TIME:</td>
+      <td>0.14</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>landing_gesture_duration</code></td>
+      <td>LANDING GESTURE DURATION:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>impact_stun_duration</code></td>
+      <td>IMPACT STUN DURATION:</td>
+      <td>1/1.4/1.8/2.2</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>self_cast_delay</code></td>
+      <td>SELF CAST DELAY:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>target_heal</code></td>
+      <td>HEAL AMOUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>shard_damage_multiplier_tooltip</code></td>
+      <td>SHARD DAMAGE MULTIPLIER TOOLTIP:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Firesnap Cookie</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>buffed_attacks</code></td>
+      <td>BUFFED ATTACKS:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>damage_pct</code></td>
+      <td>ATTACK DAMAGE:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>attack_speed_bonus</code></td>
+      <td>ATTACK SPEED BONUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>BONUS RANGE:</td>
+      <td>160/240/320/400</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>buff_duration_tooltip</code></td>
+      <td>BUFF DURATION TOOLTIP:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>base_attack_time</code></td>
+      <td>BASE ATTACK TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>armor_reduction_per_attack</code></td>
+      <td>ARMOR LOSS PER STACK:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>armor_duration</code></td>
+      <td>ARMOR LOSS DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Lil&#39; Shredder</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Gobble Up</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>projectile_width</code></td>
+      <td>PROJECTILE WIDTH:</td>
+      <td>130</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>projectile_vision</code></td>
+      <td>PROJECTILE VISION:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>move_slow_pct</code></td>
+      <td>MOVE SLOW PCT:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>min_lob_travel_time</code></td>
+      <td>MIN LOB TRAVEL TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>max_lob_travel_time</code></td>
+      <td>MAX LOB TRAVEL TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>burn_linger_duration</code></td>
+      <td>BURN LINGER DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>min_height_above_lowest</code></td>
+      <td>MIN HEIGHT ABOVE LOWEST:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>min_height_above_highest</code></td>
+      <td>MIN HEIGHT ABOVE HIGHEST:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>min_acceleration</code></td>
+      <td>MIN ACCELERATION:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>max_acceleration</code></td>
+      <td>MAX ACCELERATION:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Spit Out</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>projectile_count</code></td>
+      <td>GLOB COUNT:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>projectile_width</code></td>
+      <td>PROJECTILE WIDTH:</td>
+      <td>130</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>duration_tooltip</code></td>
+      <td>DURATION TOOLTIP:</td>
+      <td>5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>projectile_vision</code></td>
+      <td>PROJECTILE VISION:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>burn_interval</code></td>
+      <td>BURN INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>burn_damage</code></td>
+      <td>BURN DPS:</td>
+      <td>60/80/100</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>move_slow_pct</code></td>
+      <td>ENEMY MOVEMENT SLOW:</td>
+      <td>15%/20%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>burn_ground_duration</code></td>
+      <td>FIRESPIT POOL DURATION:</td>
+      <td>3.5</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>dist_change_speed</code></td>
+      <td>DIST CHANGE SPEED:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>min_range</code></td>
+      <td>MIN RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>min_lob_travel_time</code></td>
+      <td>MIN LOB TRAVEL TIME:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>max_lob_travel_time</code></td>
+      <td>MAX LOB TRAVEL TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>delay_after_last_projectile</code></td>
+      <td>DELAY AFTER LAST PROJECTILE:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>burn_linger_duration</code></td>
+      <td>BURN LINGER DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Mortimer Kisses</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Boomstick</td>
+      <td><code>damage_amp_min</code></td>
+      <td>MIN DAMAGE AMP:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Boomstick</td>
+      <td><code>distance_threshold_max</code></td>
+      <td>MIN DAMAGE RANGE:</td>
+      <td>495</td>
+    </tr>
+  
+    <tr>
+      <td>Boomstick</td>
+      <td><code>distance_threshold_min</code></td>
+      <td>MAX DAMAGE RANGE:</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Snapfire&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Scatterblast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;debuff_duration&quot;
+    },
+    &quot;Firesnap Cookie&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;impact_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;conditionInputs&quot;: [
+        &quot;impact_hit&quot;
+      ],
+      &quot;reason&quot;: &quot;曲奇撞击是固定伤害，不按距离缩放。&quot;
+    },
+    &quot;Lil&#39; Shredder&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false
+    },
+    &quot;Gobble Up&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Spit Out&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+      &quot;durationKey&quot;: &quot;burn_ground_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Mortimer Kisses&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;damageKey&quot;: &quot;damage_per_impact&quot;,
+      &quot;triggerCountInput&quot;: &quot;kiss_impact_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;kiss_impact_count&quot;
+      ],
+      &quot;reason&quot;: &quot;火团直接命中按命中次数计算；地面燃烧作为额外持续组件。&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+          &quot;durationKey&quot;: &quot;burn_ground_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      ]
+    },
+    &quot;Boomstick&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_amp_max&quot;,
+      &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+      &quot;affects&quot;: &quot;all_damage&quot;,
+      &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +795,7 @@
           <div class="muted">Scatterblast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,9 +848,9 @@
           <div class="muted">Firesnap Cookie · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">state_scaling</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">instant_fixed</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -203,20 +874,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Firesnap Cookie:state_scaling:impact_damage</code>
+          <code>Firesnap Cookie:instant_fixed:impact_damage</code>
           <div class="muted">impact_damage</div>
         </td>
         <td>
-          <span class="pill">state_scaling</span>
-          <span class="pill secondary">state_scaling</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">instant_fixed</span>
+          <span class="pill secondary">instant_fixed</span>
+          <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>75</td><td>150</td><td>225</td><td>300</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: distance</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>state_scaling</td>
-        <td><ul><li>距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><span class="muted">-</span></td>
+        <td>single_value</td>
+        <td><ul><li>曲奇撞击是固定伤害，不按距离缩放。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +901,7 @@
           <div class="muted">Lil&#39; Shredder · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">attack_modifier</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +954,7 @@
           <div class="muted">Gobble Up · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +993,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +1007,7 @@
           <div class="muted">Spit Out · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,8 +1060,8 @@
           <div class="muted">Mortimer Kisses · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">sustained_dps</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">repeated_trigger</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -415,6 +1086,24 @@
           <tbody>
       <tr>
         <td>
+          <code>Mortimer Kisses:repeated_trigger:damage_per_impact</code>
+          <div class="muted">damage_per_impact</div>
+        </td>
+        <td>
+          <span class="pill">repeated_trigger</span>
+          <span class="pill secondary">repeated_trigger</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>180</td><td>270</td><td>360</td><td>-</td>
+        <td></td>
+        <td><div><code>triggerCountInput</code>: kiss_impact_count</div></td>
+        <td>triggerCount * damage</td>
+        <td><ul><li>需要输入实际触发次数，不能默认按满额命中计算。</li></ul></td>
+      </tr>
+    
+      <tr>
+        <td>
           <code>Mortimer Kisses:sustained:burn_damage</code>
           <div class="muted">burn_damage</div>
         </td>
@@ -425,8 +1114,8 @@
         </td>
         <td>Magical</td>
         <td>60</td><td>80</td><td>100</td><td>-</td>
-        <td>330 / 440 / 550</td>
-        <td><div><code>durationByAbilityLevel</code>: 5.5 / 5.5 / 5.5</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5</div></td>
+        <td>210 / 280 / 350</td>
+        <td><div><code>durationByAbilityLevel</code>: 3.5 / 3.5 / 3.5</div><div><code>tickIntervalByAbilityLevel</code>: 0.5 / 0.5 / 0.5</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
@@ -442,7 +1131,7 @@
           <div class="muted">Boomstick · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -481,7 +1170,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: all_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -613,7 +1302,7 @@
       &quot;name&quot;: &quot;Scatterblast&quot;,
       &quot;displayName&quot;: &quot;电光石火（Scatterblast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -668,10 +1357,10 @@
       &quot;name&quot;: &quot;Firesnap Cookie&quot;,
       &quot;displayName&quot;: &quot;龙炎饼干（Firesnap Cookie）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;reason&quot;: &quot;曲奇撞击是固定伤害，不按距离缩放。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         105,
         105,
@@ -686,8 +1375,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Firesnap Cookie:state_scaling:impact_damage&quot;,
-          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;id&quot;: &quot;Firesnap Cookie:instant_fixed:impact_damage&quot;,
+          &quot;kind&quot;: &quot;instant_fixed&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;impact_damage&quot;,
@@ -699,27 +1388,17 @@
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;countInFixedInstantTotal&quot;: true,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;state_scaling&quot;
+            &quot;type&quot;: &quot;single_value&quot;
           },
-          &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: true,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [
-              &quot;distance&quot;
-            ],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
-          },
+          &quot;metadata&quot;: {},
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;reason&quot;: &quot;曲奇撞击是固定伤害，不按距离缩放。&quot;,
           &quot;caveats&quot;: [
-            &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;曲奇撞击是固定伤害，不按距离缩放。&quot;
           ]
         }
       ]
@@ -728,7 +1407,7 @@
       &quot;name&quot;: &quot;Lil&#39; Shredder&quot;,
       &quot;displayName&quot;: &quot;霹雳铁手（Lil&#39; Shredder）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;attack_modifier&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -782,10 +1461,10 @@
       &quot;name&quot;: &quot;Gobble Up&quot;,
       &quot;displayName&quot;: &quot;血盆大口（Gobble Up）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         120
       ],
@@ -820,9 +1499,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -831,7 +1510,7 @@
       &quot;name&quot;: &quot;Spit Out&quot;,
       &quot;displayName&quot;: &quot;喷吐（Spit Out）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -879,10 +1558,10 @@
       &quot;name&quot;: &quot;Mortimer Kisses&quot;,
       &quot;displayName&quot;: &quot;蜥蜴绝吻（Mortimer Kisses）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;reason&quot;: &quot;火团直接命中按命中次数计算；地面燃烧作为额外持续组件。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125,
         150,
@@ -895,6 +1574,34 @@
       ],
       &quot;components&quot;: [
         {
+          &quot;id&quot;: &quot;Mortimer Kisses:repeated_trigger:damage_per_impact&quot;,
+          &quot;kind&quot;: &quot;repeated_trigger&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;damage_per_impact&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            180,
+            270,
+            360
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;triggerCount * damage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;runtime_trigger_count_times_damage&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;triggerCountInput&quot;: &quot;kiss_impact_count&quot;
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;reason&quot;: &quot;火团直接命中按命中次数计算；地面燃烧作为额外持续组件。&quot;,
+          &quot;caveats&quot;: [
+            &quot;需要输入实际触发次数，不能默认按满额命中计算。&quot;
+          ]
+        },
+        {
           &quot;id&quot;: &quot;Mortimer Kisses:sustained:burn_damage&quot;,
           &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
@@ -906,9 +1613,9 @@
             100
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            330,
-            440,
-            550
+            210,
+            280,
+            350
           ],
           &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
@@ -917,9 +1624,9 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              5.5,
-              5.5,
-              5.5
+              3.5,
+              3.5,
+              3.5
             ],
             &quot;tickIntervalByAbilityLevel&quot;: [
               0.5,
@@ -930,7 +1637,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;火团直接命中按命中次数计算；地面燃烧作为额外持续组件。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -941,10 +1648,10 @@
       &quot;name&quot;: &quot;Boomstick&quot;,
       &quot;displayName&quot;: &quot;猎枪（Boomstick）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -975,15 +1682,734 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Snapfire&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Scatterblast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;
+        },
+        &quot;Firesnap Cookie&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;impact_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;conditionInputs&quot;: [
+            &quot;impact_hit&quot;
+          ],
+          &quot;reason&quot;: &quot;曲奇撞击是固定伤害，不按距离缩放。&quot;
+        },
+        &quot;Lil&#39; Shredder&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false
+        },
+        &quot;Gobble Up&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Spit Out&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+          &quot;durationKey&quot;: &quot;burn_ground_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Mortimer Kisses&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;damageKey&quot;: &quot;damage_per_impact&quot;,
+          &quot;triggerCountInput&quot;: &quot;kiss_impact_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;kiss_impact_count&quot;
+          ],
+          &quot;reason&quot;: &quot;火团直接命中按命中次数计算；地面燃烧作为额外持续组件。&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;implemented&quot;,
+              &quot;model&quot;: &quot;sustained_dps&quot;,
+              &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+              &quot;durationKey&quot;: &quot;burn_ground_duration&quot;,
+              &quot;tickIntervalKey&quot;: &quot;burn_interval&quot;,
+              &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+              &quot;defaultActiveDuration&quot;: &quot;full&quot;
+            }
+          ]
+        },
+        &quot;Boomstick&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_amp_max&quot;,
+          &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+          &quot;affects&quot;: &quot;all_damage&quot;,
+          &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;blast_speed&quot;,
+        &quot;label&quot;: &quot;BLAST SPEED:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;blast_width_initial&quot;,
+        &quot;label&quot;: &quot;BLAST WIDTH INITIAL:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;blast_width_end&quot;,
+        &quot;label&quot;: &quot;BLAST WIDTH END:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;movement_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;attack_slow_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;point_blank_range&quot;,
+        &quot;label&quot;: &quot;POINT-BLANK RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;point_blank_dmg_bonus_pct&quot;,
+        &quot;label&quot;: &quot;POINT BLANK DMG BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;point_blank_debuff_duration_pct&quot;,
+        &quot;label&quot;: &quot;POINT BLANK DEBUFF DURATION PCT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;bonus_applies_at_long_range&quot;,
+        &quot;label&quot;: &quot;BONUS APPLIES AT LONG RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Scatterblast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;21/19/17/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;pre_hop_duration&quot;,
+        &quot;label&quot;: &quot;PRE HOP DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;jump_duration&quot;,
+        &quot;label&quot;: &quot;JUMP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.484&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;jump_height&quot;,
+        &quot;label&quot;: &quot;JUMP HEIGHT:&quot;,
+        &quot;value&quot;: &quot;257&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;jump_horizontal_distance&quot;,
+        &quot;label&quot;: &quot;HOP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;pre_land_anim_time&quot;,
+        &quot;label&quot;: &quot;PRE LAND ANIM TIME:&quot;,
+        &quot;value&quot;: &quot;0.14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;landing_gesture_duration&quot;,
+        &quot;label&quot;: &quot;LANDING GESTURE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;impact_stun_duration&quot;,
+        &quot;label&quot;: &quot;IMPACT STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.4/1.8/2.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;self_cast_delay&quot;,
+        &quot;label&quot;: &quot;SELF CAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;target_heal&quot;,
+        &quot;label&quot;: &quot;HEAL AMOUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;shard_damage_multiplier_tooltip&quot;,
+        &quot;label&quot;: &quot;SHARD DAMAGE MULTIPLIER TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Firesnap Cookie&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;buffed_attacks&quot;,
+        &quot;label&quot;: &quot;BUFFED ATTACKS:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;attack_speed_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;160/240/320/400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;buff_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;base_attack_time&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;armor_reduction_per_attack&quot;,
+        &quot;label&quot;: &quot;ARMOR LOSS PER STACK:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;armor_duration&quot;,
+        &quot;label&quot;: &quot;ARMOR LOSS DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Lil&#39; Shredder&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Gobble Up&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;projectile_width&quot;,
+        &quot;label&quot;: &quot;PROJECTILE WIDTH:&quot;,
+        &quot;value&quot;: &quot;130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;projectile_vision&quot;,
+        &quot;label&quot;: &quot;PROJECTILE VISION:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;move_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW PCT:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;min_lob_travel_time&quot;,
+        &quot;label&quot;: &quot;MIN LOB TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;max_lob_travel_time&quot;,
+        &quot;label&quot;: &quot;MAX LOB TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;burn_linger_duration&quot;,
+        &quot;label&quot;: &quot;BURN LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;min_height_above_lowest&quot;,
+        &quot;label&quot;: &quot;MIN HEIGHT ABOVE LOWEST:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;min_height_above_highest&quot;,
+        &quot;label&quot;: &quot;MIN HEIGHT ABOVE HIGHEST:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;min_acceleration&quot;,
+        &quot;label&quot;: &quot;MIN ACCELERATION:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;max_acceleration&quot;,
+        &quot;label&quot;: &quot;MAX ACCELERATION:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Spit Out&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;projectile_count&quot;,
+        &quot;label&quot;: &quot;GLOB COUNT:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;projectile_width&quot;,
+        &quot;label&quot;: &quot;PROJECTILE WIDTH:&quot;,
+        &quot;value&quot;: &quot;130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;duration_tooltip&quot;,
+        &quot;label&quot;: &quot;DURATION TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;projectile_vision&quot;,
+        &quot;label&quot;: &quot;PROJECTILE VISION:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;burn_interval&quot;,
+        &quot;label&quot;: &quot;BURN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;burn_damage&quot;,
+        &quot;label&quot;: &quot;BURN DPS:&quot;,
+        &quot;value&quot;: &quot;60/80/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;move_slow_pct&quot;,
+        &quot;label&quot;: &quot;ENEMY MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;burn_ground_duration&quot;,
+        &quot;label&quot;: &quot;FIRESPIT POOL DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;dist_change_speed&quot;,
+        &quot;label&quot;: &quot;DIST CHANGE SPEED:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;min_range&quot;,
+        &quot;label&quot;: &quot;MIN RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;min_lob_travel_time&quot;,
+        &quot;label&quot;: &quot;MIN LOB TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;max_lob_travel_time&quot;,
+        &quot;label&quot;: &quot;MAX LOB TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;delay_after_last_projectile&quot;,
+        &quot;label&quot;: &quot;DELAY AFTER LAST PROJECTILE:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;burn_linger_duration&quot;,
+        &quot;label&quot;: &quot;BURN LINGER DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Mortimer Kisses&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Boomstick&quot;,
+        &quot;key&quot;: &quot;damage_amp_min&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE AMP:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Boomstick&quot;,
+        &quot;key&quot;: &quot;distance_threshold_max&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE RANGE:&quot;,
+        &quot;value&quot;: &quot;495&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Snapfire&quot;,
+        &quot;ability&quot;: &quot;Boomstick&quot;,
+        &quot;key&quot;: &quot;distance_threshold_min&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE RANGE:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

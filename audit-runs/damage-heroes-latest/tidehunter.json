@@ -121,7 +121,7 @@
       "name": "Gush",
       "displayName": "巨浪（Gush）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -169,32 +169,18 @@
           "model": "instant_fixed",
           "reason": "",
           "caveats": []
-        }
-      ]
-    },
-    {
-      "name": "Kraken Shell",
-      "displayName": "海妖外壳（Kraken Shell）",
-      "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
-      "manaCostByAbilityLevel": [
-        45
-      ],
-      "cooldownByAbilityLevel": [
-        30
-      ],
-      "components": [
+        },
         {
-          "id": "Kraken Shell:debuff_reference:abilitycastrange",
+          "id": "Gush:debuff_reference:negative_armor",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "negative_armor",
           "valuesByAbilityLevel": [
-            0
+            3,
+            4,
+            5,
+            6
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -204,8 +190,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "",
+            "affects": "enemy_armor",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -214,9 +200,67 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "巨浪护甲降低影响后续物理伤害，作为修正项参考。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kraken Shell",
+      "displayName": "海妖外壳（Kraken Shell）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "海妖外壳提供伤害格挡和驱散，不直接造成对敌伤害。",
+      "manaCostByAbilityLevel": [
+        45,
+        45,
+        45,
+        45
+      ],
+      "cooldownByAbilityLevel": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "components": [
+        {
+          "id": "Kraken Shell:debuff_reference:damage_reduction",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_reduction",
+          "valuesByAbilityLevel": [
+            15,
+            35,
+            55,
+            75
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "海妖外壳提供伤害格挡和驱散，不直接造成对敌伤害。",
+          "caveats": [
+            "海妖外壳提供伤害格挡和驱散，不直接造成对敌伤害。"
           ]
         }
       ]
@@ -225,10 +269,10 @@
       "name": "Anchor Smash",
       "displayName": "锚击（Anchor Smash）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "attack_modifier",
-      "reason": "",
+      "reason": "锚击基于一次攻击并附加 attack_damage，需要结合英雄攻击力。",
       "manaCostByAbilityLevel": [
         40,
         45,
@@ -268,9 +312,9 @@
           "source": "curated",
           "status": "implemented",
           "model": "attack_modifier",
-          "reason": "",
+          "reason": "锚击基于一次攻击并附加 attack_damage，需要结合英雄攻击力。",
           "caveats": [
-            "包含普攻或攻击触发伤害，需要结合普攻次数、触发概率或英雄攻击力计算。"
+            "锚击基于一次攻击并附加 attack_damage，需要结合英雄攻击力。"
           ]
         }
       ]
@@ -279,10 +323,10 @@
       "name": "Dead in the Water",
       "displayName": "重如铁锚（Dead in the Water）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "重如铁锚提供位移限制，不直接造成伤害。",
       "manaCostByAbilityLevel": [
         110
       ],
@@ -291,13 +335,13 @@
       ],
       "components": [
         {
-          "id": "Dead in the Water:debuff_reference:abilitycastrange",
+          "id": "Dead in the Water:debuff_reference:duration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "duration",
           "valuesByAbilityLevel": [
-            350
+            10
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -307,8 +351,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "modifierType": "disable_window",
+            "affects": "disable_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -317,9 +361,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "重如铁锚提供位移限制，不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "重如铁锚提供位移限制，不直接造成伤害。"
           ]
         }
       ]
@@ -328,7 +372,7 @@
       "name": "Ravage",
       "displayName": "毁灭（Ravage）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -376,5 +420,322 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Tidehunter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed gush armor reduction, anchor smash attack damage, and ravage fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Gush": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "gush_damage",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "extraComponents": [
+            {
+              "status": "reference_only",
+              "model": "debuff_reference",
+              "valueKey": "negative_armor",
+              "semanticType": "modifier.armor_reduction.flat",
+              "affects": "enemy_armor",
+              "stackGroup": "armor_reduction",
+              "reason": "巨浪护甲降低影响后续物理伤害，作为修正项参考。"
+            }
+          ]
+        },
+        "Kraken Shell": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_reduction",
+          "semanticType": "defense.damage_block.flat",
+          "affects": "survivability",
+          "reason": "海妖外壳提供伤害格挡和驱散，不直接造成对敌伤害。"
+        },
+        "Anchor Smash": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "attack_damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "hero_attack_damage",
+            "attack_count"
+          ],
+          "reason": "锚击基于一次攻击并附加 attack_damage，需要结合英雄攻击力。"
+        },
+        "Dead in the Water": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "window.debuff_duration.seconds",
+          "affects": "disable_window",
+          "reason": "重如铁锚提供位移限制，不直接造成伤害。"
+        },
+        "Ravage": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "durationKey": "duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Tidehunter",
+        "ability": "Gush",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "2500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Gush",
+        "key": "movement_speed",
+        "label": "SLOW:",
+        "value": "-40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Gush",
+        "key": "negative_armor",
+        "label": "ARMOR REDUCTION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Gush",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Gush",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "bonus_reduction_per_kill",
+        "label": "DAMAGE BLOCK PER KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "creep_reduction_penalty_pct",
+        "label": "CREEP PENALTY:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "active_pct_effectiveness",
+        "label": "ACTIVE PCT EFFECTIVENESS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "active_move_speed_penalty_pct",
+        "label": "ACTIVE MOVE SPEED PENALTY PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "active_duration",
+        "label": "ACTIVE DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "damage_cleanse",
+        "label": "DAMAGE CLEANSE THRESHOLD:",
+        "value": "600/550/500/450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "damage_reset_interval",
+        "label": "DAMAGE RESET INTERVAL:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Kraken Shell",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Anchor Smash",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "-25%/-30%/-35%/-40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Anchor Smash",
+        "key": "reduction_duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Anchor Smash",
+        "key": "targets_buildings",
+        "label": "TARGETS BUILDINGS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Anchor Smash",
+        "key": "additional_range",
+        "label": "ADDITIONAL RANGE:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Anchor Smash",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "attacks_to_destroy",
+        "label": "ATTACKS TO DESTROY:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "max_movement_speed",
+        "label": "ANCHOR DRAG SPEED:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "chain_length",
+        "label": "CHAIN LENGTH:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Dead in the Water",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Ravage",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Ravage",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "725",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Ravage",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Tidehunter",
+        "ability": "Ravage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

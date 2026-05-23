@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>莱恩（Lion）</h1>
-        <div class="muted">Lion · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Lion · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,359 @@
       </div>
       <a href="./lion.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>width</code></td>
+      <td>WIDTH:</td>
+      <td>140</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.3/1.6/1.9/2.2</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>length_buffer</code></td>
+      <td>LENGTH BUFFER:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>2800</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>pierces_immunity</code></td>
+      <td>PIERCES IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>cone_shaped</code></td>
+      <td>CONE SHAPED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Earth Spike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>movespeed</code></td>
+      <td>MOVESPEED:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>575/600/625/650</td>
+    </tr>
+  
+    <tr>
+      <td>Hex</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>duration</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>break_distance</code></td>
+      <td>BREAK DISTANCE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>movespeed</code></td>
+      <td>MOVEMENT SLOW/BONUS:</td>
+      <td>15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>movespeed_bonus_when_empty_pct</code></td>
+      <td>MOVESPEED BONUS WHEN EMPTY PCT:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>damage_pct</code></td>
+      <td>DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>ally_pct</code></td>
+      <td>ALLY PCT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>5.1</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Drain</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>To Hell and Back</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>To Hell and Back</td>
+      <td><code>damage_window</code></td>
+      <td>DAMAGE WINDOW:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>To Hell and Back</td>
+      <td><code>debuff_amp</code></td>
+      <td>DEBUFF AMP:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>damage_per_kill</code></td>
+      <td>DAMAGE PER KILL:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>grace_period</code></td>
+      <td>GRACE PERIOD:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>damage_delay</code></td>
+      <td>DAMAGE DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>punch_duration</code></td>
+      <td>MELEE DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>punch_bonus_movespeed</code></td>
+      <td>MELEE BONUS MOVE SPEED:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>punch_attack_range</code></td>
+      <td>PUNCH ATTACK RANGE:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>punch_bonus_damage_base</code></td>
+      <td>MELEE BONUS DAMAGE:</td>
+      <td>20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>cleave_damage</code></td>
+      <td>CLEAVE DAMAGE:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>cleave_starting_width</code></td>
+      <td>CLEAVE STARTING WIDTH:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>cleave_ending_width</code></td>
+      <td>CLEAVE ENDING WIDTH:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>cleave_distance</code></td>
+      <td>CLEAVE DISTANCE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Finger of Death</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Lion&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Earth Spike&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Hex&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;control.hex.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;控制时间影响接技能窗口，但不直接造成伤害。&quot;
+    },
+    &quot;Mana Drain&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;mana_per_second&quot;,
+      &quot;semanticType&quot;: &quot;resource.mana_drain_per_second&quot;,
+      &quot;affects&quot;: &quot;mana_pressure&quot;,
+      &quot;reason&quot;: &quot;当前只记录抽蓝/减速，不计为生命伤害。&quot;
+    },
+    &quot;To Hell and Back&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;spell_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+      &quot;affects&quot;: &quot;spell_amplification&quot;,
+      &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+      &quot;reason&quot;: &quot;固定机制会影响法术强度，但当前伤害总量不自动串联增伤。&quot;
+    },
+    &quot;Finger of Death&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -758,7 +1115,373 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Lion&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Earth Spike&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Hex&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;control.hex.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;控制时间影响接技能窗口，但不直接造成伤害。&quot;
+        },
+        &quot;Mana Drain&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;mana_per_second&quot;,
+          &quot;semanticType&quot;: &quot;resource.mana_drain_per_second&quot;,
+          &quot;affects&quot;: &quot;mana_pressure&quot;,
+          &quot;reason&quot;: &quot;当前只记录抽蓝/减速，不计为生命伤害。&quot;
+        },
+        &quot;To Hell and Back&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;spell_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+          &quot;affects&quot;: &quot;spell_amplification&quot;,
+          &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+          &quot;reason&quot;: &quot;固定机制会影响法术强度，但当前伤害总量不自动串联增伤。&quot;
+        },
+        &quot;Finger of Death&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;width&quot;,
+        &quot;label&quot;: &quot;WIDTH:&quot;,
+        &quot;value&quot;: &quot;140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.3/1.6/1.9/2.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;length_buffer&quot;,
+        &quot;label&quot;: &quot;LENGTH BUFFER:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;2800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;pierces_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCES IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;cone_shaped&quot;,
+        &quot;label&quot;: &quot;CONE SHAPED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Earth Spike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;575/600/625/650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Hex&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;break_distance&quot;,
+        &quot;label&quot;: &quot;BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW/BONUS:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;movespeed_bonus_when_empty_pct&quot;,
+        &quot;label&quot;: &quot;MOVESPEED BONUS WHEN EMPTY PCT:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;ally_pct&quot;,
+        &quot;label&quot;: &quot;ALLY PCT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;5.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Mana Drain&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;To Hell and Back&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;To Hell and Back&quot;,
+        &quot;key&quot;: &quot;damage_window&quot;,
+        &quot;label&quot;: &quot;DAMAGE WINDOW:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;To Hell and Back&quot;,
+        &quot;key&quot;: &quot;debuff_amp&quot;,
+        &quot;label&quot;: &quot;DEBUFF AMP:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;damage_per_kill&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER KILL:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;grace_period&quot;,
+        &quot;label&quot;: &quot;GRACE PERIOD:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;damage_delay&quot;,
+        &quot;label&quot;: &quot;DAMAGE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;punch_duration&quot;,
+        &quot;label&quot;: &quot;MELEE DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;punch_bonus_movespeed&quot;,
+        &quot;label&quot;: &quot;MELEE BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;punch_attack_range&quot;,
+        &quot;label&quot;: &quot;PUNCH ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;punch_bonus_damage_base&quot;,
+        &quot;label&quot;: &quot;MELEE BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;cleave_damage&quot;,
+        &quot;label&quot;: &quot;CLEAVE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;cleave_starting_width&quot;,
+        &quot;label&quot;: &quot;CLEAVE STARTING WIDTH:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;cleave_ending_width&quot;,
+        &quot;label&quot;: &quot;CLEAVE ENDING WIDTH:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;cleave_distance&quot;,
+        &quot;label&quot;: &quot;CLEAVE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Lion&quot;,
+        &quot;ability&quot;: &quot;Finger of Death&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

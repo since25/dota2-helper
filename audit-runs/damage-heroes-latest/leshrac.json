@@ -121,7 +121,7 @@
       "name": "Split Earth",
       "displayName": "撕裂大地（Split Earth）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -156,14 +156,7 @@
           "formula": {
             "type": "single_value"
           },
-          "metadata": {
-            "durationByAbilityLevel": [
-              1.7,
-              1.7,
-              1.7,
-              1.7
-            ]
-          },
+          "metadata": {},
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
@@ -176,10 +169,10 @@
       "name": "Diabolic Edict",
       "displayName": "恶魔敕令（Diabolic Edict）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "multi_wave",
+      "reason": "理论总量为所有爆炸都命中同一目标的上限。",
       "manaCostByAbilityLevel": [
         90,
         120,
@@ -194,8 +187,8 @@
       ],
       "components": [
         {
-          "id": "Diabolic Edict:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Diabolic Edict:multi_wave:damage",
+          "kind": "multi_wave",
           "growthKind": "non_growth",
           "damageType": "Pure",
           "label": "damage",
@@ -205,25 +198,32 @@
             26,
             34
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            400,
+            720,
+            1040,
+            1360
+          ],
+          "totalFormula": "waveCount * damagePerWave",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "wave_count_times_damage_per_wave"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              8,
-              8,
-              8,
-              8
+            "waveCountByAbilityLevel": [
+              40,
+              40,
+              40,
+              40
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "multi_wave",
+          "reason": "理论总量为所有爆炸都命中同一目标的上限。",
+          "caveats": [
+            "包含多波伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -231,10 +231,10 @@
       "name": "Lightning Storm",
       "displayName": "闪电风暴（Lightning Storm）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。",
       "manaCostByAbilityLevel": [
         80,
         100,
@@ -266,19 +266,63 @@
           "formula": {
             "type": "single_value"
           },
-          "metadata": {
-            "durationByAbilityLevel": [
-              0.45,
-              0.7,
-              0.95,
-              1.2
-            ]
-          },
+          "metadata": {},
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。",
+          "caveats": [
+            "单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nihilism",
+      "displayName": "虚无主义（Nihilism）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "提高魔法伤害承受，作为独立修正项，不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        75
+      ],
+      "cooldownByAbilityLevel": [
+        25
+      ],
+      "components": [
+        {
+          "id": "Nihilism:debuff_reference:magic_amp",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "magic_amp",
+          "valuesByAbilityLevel": [
+            30
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "magical_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "提高魔法伤害承受，作为独立修正项，不直接造成伤害。",
+          "caveats": [
+            "提高魔法伤害承受，作为独立修正项，不直接造成伤害。"
+          ]
         }
       ]
     },
@@ -286,10 +330,10 @@
       "name": "Pulse Nova",
       "displayName": "脉冲新星（Pulse Nova）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "reason": "脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。",
       "manaCostByAbilityLevel": [
         50,
         60,
@@ -324,7 +368,7 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "target_missing_mana"
+              "active_duration"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -332,13 +376,305 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "reason": "脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。",
           "caveats": [
-            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+            "脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Leshrac",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed edict/pulse sustained fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Split Earth": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Diabolic Edict": {
+          "status": "implemented",
+          "model": "multi_wave",
+          "damagePerWaveKey": "damage",
+          "waveCountKey": "num_explosions",
+          "semanticType": "damage.wave",
+          "reason": "理论总量为所有爆炸都命中同一目标的上限。"
+        },
+        "Lightning Storm": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "单目标仅计入一次闪电伤害，弹跳总量需由命中目标数量处理。"
+        },
+        "Nihilism": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "magic_amp",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "magical_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "提高魔法伤害承受，作为独立修正项，不直接造成伤害。"
+        },
+        "Pulse Nova": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.sustained_dps",
+          "requiredInputs": [
+            "active_duration"
+          ],
+          "conditionInputs": [
+            "active_duration"
+          ],
+          "reason": "脉冲新星为开关技能，本地没有固定持续时间，需要由作用时间输入计算。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "delay",
+        "label": "STUN DELAY:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "150/170/190/210",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "duration",
+        "label": "STUN DURATION:",
+        "value": "1.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Split Earth",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "tower_bonus",
+        "label": "TOWER BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "affects_buildings",
+        "label": "AFFECTS BUILDINGS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "targets",
+        "label": "TARGETS PER EXPLOSION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Diabolic Edict",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "jump_count",
+        "label": "LIGHTNING STRIKES:",
+        "value": "5/7/9/11",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "radius",
+        "label": "LIGHTNING JUMP RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "jump_delay",
+        "label": "JUMP DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "movespeed_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.45/0.7/0.95/1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "bounce_twice",
+        "label": "BOUNCE TWICE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "pulse_nova_lightning_interval",
+        "label": "PULSE NOVA LIGHTNING INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Lightning Storm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Nihilism",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Nihilism",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Nihilism",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Pulse Nova",
+        "key": "mana_cost_per_second",
+        "label": "MANA/SEC:",
+        "value": "25/45/65",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Pulse Nova",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Pulse Nova",
+        "key": "damage_resistance",
+        "label": "DAMAGE RESISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Leshrac",
+        "ability": "Pulse Nova",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

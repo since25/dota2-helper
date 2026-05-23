@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>发条技师（Clockwerk）</h1>
-        <div class="muted">Clockwerk · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Clockwerk · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,599 @@
       </div>
       <a href="./clockwerk.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Battery Assault</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Battery Assault</td>
+      <td><code>overclocking_radius</code></td>
+      <td>OVERCLOCKING RADIUS:</td>
+      <td>330</td>
+    </tr>
+  
+    <tr>
+      <td>Battery Assault</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>10.5</td>
+    </tr>
+  
+    <tr>
+      <td>Battery Assault</td>
+      <td><code>interval</code></td>
+      <td>INTERVAL:</td>
+      <td>0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Battery Assault</td>
+      <td><code>creep_damage_multiplier</code></td>
+      <td>CREEP DAMAGE MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5/6/7/8</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>mana_burn</code></td>
+      <td>MANA BURN:</td>
+      <td>35/75/115/155</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>mana_burn_as_damage_pct</code></td>
+      <td>MANA BURN AS DAMAGE PCT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>magic_barrier</code></td>
+      <td>MAGIC BARRIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>attacks_to_destroy</code></td>
+      <td>ATTACKS REQUIRED:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>push_length</code></td>
+      <td>PUSH LENGTH:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>push_duration</code></td>
+      <td>PUSH DURATION:</td>
+      <td>0.8</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>cogs_radius</code></td>
+      <td>FORMATION RADIUS:</td>
+      <td>215</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>trigger_distance</code></td>
+      <td>TRIGGER DISTANCE:</td>
+      <td>185</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>inside_cogs_distance_reduction</code></td>
+      <td>INSIDE COGS DISTANCE REDUCTION:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>extra_pull_buffer</code></td>
+      <td>EXTRA PULL BUFFER:</td>
+      <td>-10</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>projectile_distance</code></td>
+      <td>PROJECTILE DISTANCE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>push_duration_overclock</code></td>
+      <td>PUSH DURATION OVERCLOCK:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>cogs_radius_overclock</code></td>
+      <td>COGS RADIUS OVERCLOCK:</td>
+      <td>330</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>trigger_distance_overclock</code></td>
+      <td>TRIGGER DISTANCE OVERCLOCK:</td>
+      <td>115</td>
+    </tr>
+  
+    <tr>
+      <td>Power Cogs</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>2250</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>projectile_vision_radius</code></td>
+      <td>PROJECTILE VISION RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>projectile_vision_duration</code></td>
+      <td>PROJECTILE VISION DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>20/18/16/14</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rocket Flare</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>buff_duration</code></td>
+      <td>DURATION:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>debuff_duration</code></td>
+      <td>SELF SLOW DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>bonus_armor_pct</code></td>
+      <td>BONUS ARMOR NEAR COGS:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>battery_assault_radius</code></td>
+      <td>BATTERY ASSAULT RADIUS:</td>
+      <td>330</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>cogs_radius</code></td>
+      <td>COGS RADIUS:</td>
+      <td>330</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>hookshot_damage_bonus_pct</code></td>
+      <td>HOOKSHOT DAMAGE BONUS PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>hookshot_radius_bonus_pct</code></td>
+      <td>HOOKSHOT RADIUS BONUS:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>hookshot_duration_bonus_pct</code></td>
+      <td>HOOKSHOT DURATION BONUS:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>rocket_flare_interval</code></td>
+      <td>ROCKET FLARE INTERVAL:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>rocket_flare_offset_pct</code></td>
+      <td>ROCKET FLARE OFFSET PCT:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>rocket_flare_rockets</code></td>
+      <td>BONUS ROCKET FLARES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>rocket_flare_duration_pct</code></td>
+      <td>ROCKET FLARE DURATION BONUS:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>rocket_flare_damage_pct</code></td>
+      <td>ROCKET FLARE DAMAGE BONUS:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>jetpack_bonus_speed</code></td>
+      <td>JETPACK SPEED:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Overclocking</td>
+      <td><code>jetpack_turn_rate</code></td>
+      <td>JETPACK TURN RATE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Jetpack</td>
+      <td><code>bonus_speed</code></td>
+      <td>BONUS SPEED:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Jetpack</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Jetpack</td>
+      <td><code>height</code></td>
+      <td>HEIGHT:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Jetpack</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>latch_radius</code></td>
+      <td>LATCH RADIUS:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>stun_radius</code></td>
+      <td>STUN RADIUS:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>radius_ally</code></td>
+      <td>RADIUS ALLY:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>cooldown_refund_ally</code></td>
+      <td>COOLDOWN/MANACOST REFUND:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>allied_armor_bonus</code></td>
+      <td>ALLY ARMOR BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2/1.4/1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>4000/5000/6000</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>2000/2500/3000</td>
+    </tr>
+  
+    <tr>
+      <td>Hookshot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Armor Power</td>
+      <td><code>can_consume_chainmail</code></td>
+      <td>CAN CONSUME CHAINMAIL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Armor Power</td>
+      <td><code>armor_per_chainmail</code></td>
+      <td>ARMOR PER CHAINMAIL:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Armor Power</td>
+      <td><code>model_scale_per_chainmail</code></td>
+      <td>MODEL SCALE PER CHAINMAIL:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Armor Power</td>
+      <td><code>model_scale_maximum</code></td>
+      <td>MODEL SCALE MAXIMUM:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Armor Power</td>
+      <td><code>health_bar_offset_per_stack</code></td>
+      <td>HEALTH BAR OFFSET PER STACK:</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Clockwerk&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Battery Assault&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Power Cogs&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.mana_burn&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_current_mana&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Rocket Flare&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;projectile_vision_tick_rate&quot;
+    },
+    &quot;Overclocking&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Jetpack&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Hookshot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;ally_shield_duration&quot;
+    },
+    &quot;Armor Power&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_armor&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Jetpack Toggle&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +721,7 @@
           <div class="muted">Battery Assault · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +774,7 @@
           <div class="muted">Power Cogs · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +827,7 @@
           <div class="muted">Rocket Flare · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +880,7 @@
           <div class="muted">Overclocking · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +919,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +933,7 @@
           <div class="muted">Hookshot · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +986,7 @@
           <div class="muted">Armor Power · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -560,7 +1157,7 @@
       &quot;name&quot;: &quot;Battery Assault&quot;,
       &quot;displayName&quot;: &quot;弹幕冲击（Battery Assault）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -620,7 +1217,7 @@
       &quot;name&quot;: &quot;Power Cogs&quot;,
       &quot;displayName&quot;: &quot;能量齿轮（Power Cogs）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。&quot;,
@@ -681,7 +1278,7 @@
       &quot;name&quot;: &quot;Rocket Flare&quot;,
       &quot;displayName&quot;: &quot;照明火箭（Rocket Flare）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -742,10 +1339,10 @@
       &quot;name&quot;: &quot;Overclocking&quot;,
       &quot;displayName&quot;: &quot;超速运转（Overclocking）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         90
       ],
@@ -780,9 +1377,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -791,7 +1388,7 @@
       &quot;name&quot;: &quot;Hookshot&quot;,
       &quot;displayName&quot;: &quot;发射钩爪（Hookshot）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -842,7 +1439,7 @@
       &quot;name&quot;: &quot;Armor Power&quot;,
       &quot;displayName&quot;: &quot;装甲力量（Armor Power）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -886,7 +1483,642 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Clockwerk&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Battery Assault&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Power Cogs&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.mana_burn&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_current_mana&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Rocket Flare&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;projectile_vision_tick_rate&quot;
+        },
+        &quot;Overclocking&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Jetpack&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Hookshot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;ally_shield_duration&quot;
+        },
+        &quot;Armor Power&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_armor&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Jetpack Toggle&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Battery Assault&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Battery Assault&quot;,
+        &quot;key&quot;: &quot;overclocking_radius&quot;,
+        &quot;label&quot;: &quot;OVERCLOCKING RADIUS:&quot;,
+        &quot;value&quot;: &quot;330&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Battery Assault&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Battery Assault&quot;,
+        &quot;key&quot;: &quot;interval&quot;,
+        &quot;label&quot;: &quot;INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Battery Assault&quot;,
+        &quot;key&quot;: &quot;creep_damage_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP DAMAGE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5/6/7/8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;mana_burn&quot;,
+        &quot;label&quot;: &quot;MANA BURN:&quot;,
+        &quot;value&quot;: &quot;35/75/115/155&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;mana_burn_as_damage_pct&quot;,
+        &quot;label&quot;: &quot;MANA BURN AS DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;magic_barrier&quot;,
+        &quot;label&quot;: &quot;MAGIC BARRIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;attacks_to_destroy&quot;,
+        &quot;label&quot;: &quot;ATTACKS REQUIRED:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;push_length&quot;,
+        &quot;label&quot;: &quot;PUSH LENGTH:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;push_duration&quot;,
+        &quot;label&quot;: &quot;PUSH DURATION:&quot;,
+        &quot;value&quot;: &quot;0.8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;cogs_radius&quot;,
+        &quot;label&quot;: &quot;FORMATION RADIUS:&quot;,
+        &quot;value&quot;: &quot;215&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;trigger_distance&quot;,
+        &quot;label&quot;: &quot;TRIGGER DISTANCE:&quot;,
+        &quot;value&quot;: &quot;185&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;inside_cogs_distance_reduction&quot;,
+        &quot;label&quot;: &quot;INSIDE COGS DISTANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;extra_pull_buffer&quot;,
+        &quot;label&quot;: &quot;EXTRA PULL BUFFER:&quot;,
+        &quot;value&quot;: &quot;-10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;projectile_distance&quot;,
+        &quot;label&quot;: &quot;PROJECTILE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;push_duration_overclock&quot;,
+        &quot;label&quot;: &quot;PUSH DURATION OVERCLOCK:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;cogs_radius_overclock&quot;,
+        &quot;label&quot;: &quot;COGS RADIUS OVERCLOCK:&quot;,
+        &quot;value&quot;: &quot;330&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;trigger_distance_overclock&quot;,
+        &quot;label&quot;: &quot;TRIGGER DISTANCE OVERCLOCK:&quot;,
+        &quot;value&quot;: &quot;115&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Power Cogs&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;2250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;projectile_vision_radius&quot;,
+        &quot;label&quot;: &quot;PROJECTILE VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;projectile_vision_duration&quot;,
+        &quot;label&quot;: &quot;PROJECTILE VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;20/18/16/14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Rocket Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;SELF SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;bonus_armor_pct&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR NEAR COGS:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;battery_assault_radius&quot;,
+        &quot;label&quot;: &quot;BATTERY ASSAULT RADIUS:&quot;,
+        &quot;value&quot;: &quot;330&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;cogs_radius&quot;,
+        &quot;label&quot;: &quot;COGS RADIUS:&quot;,
+        &quot;value&quot;: &quot;330&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;hookshot_damage_bonus_pct&quot;,
+        &quot;label&quot;: &quot;HOOKSHOT DAMAGE BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;hookshot_radius_bonus_pct&quot;,
+        &quot;label&quot;: &quot;HOOKSHOT RADIUS BONUS:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;hookshot_duration_bonus_pct&quot;,
+        &quot;label&quot;: &quot;HOOKSHOT DURATION BONUS:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;rocket_flare_interval&quot;,
+        &quot;label&quot;: &quot;ROCKET FLARE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;rocket_flare_offset_pct&quot;,
+        &quot;label&quot;: &quot;ROCKET FLARE OFFSET PCT:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;rocket_flare_rockets&quot;,
+        &quot;label&quot;: &quot;BONUS ROCKET FLARES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;rocket_flare_duration_pct&quot;,
+        &quot;label&quot;: &quot;ROCKET FLARE DURATION BONUS:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;rocket_flare_damage_pct&quot;,
+        &quot;label&quot;: &quot;ROCKET FLARE DAMAGE BONUS:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;jetpack_bonus_speed&quot;,
+        &quot;label&quot;: &quot;JETPACK SPEED:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Overclocking&quot;,
+        &quot;key&quot;: &quot;jetpack_turn_rate&quot;,
+        &quot;label&quot;: &quot;JETPACK TURN RATE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Jetpack&quot;,
+        &quot;key&quot;: &quot;bonus_speed&quot;,
+        &quot;label&quot;: &quot;BONUS SPEED:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Jetpack&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Jetpack&quot;,
+        &quot;key&quot;: &quot;height&quot;,
+        &quot;label&quot;: &quot;HEIGHT:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Jetpack&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;latch_radius&quot;,
+        &quot;label&quot;: &quot;LATCH RADIUS:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;stun_radius&quot;,
+        &quot;label&quot;: &quot;STUN RADIUS:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;radius_ally&quot;,
+        &quot;label&quot;: &quot;RADIUS ALLY:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;cooldown_refund_ally&quot;,
+        &quot;label&quot;: &quot;COOLDOWN/MANACOST REFUND:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;allied_armor_bonus&quot;,
+        &quot;label&quot;: &quot;ALLY ARMOR BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2/1.4/1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;4000/5000/6000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;2000/2500/3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Hookshot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Armor Power&quot;,
+        &quot;key&quot;: &quot;can_consume_chainmail&quot;,
+        &quot;label&quot;: &quot;CAN CONSUME CHAINMAIL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Armor Power&quot;,
+        &quot;key&quot;: &quot;armor_per_chainmail&quot;,
+        &quot;label&quot;: &quot;ARMOR PER CHAINMAIL:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Armor Power&quot;,
+        &quot;key&quot;: &quot;model_scale_per_chainmail&quot;,
+        &quot;label&quot;: &quot;MODEL SCALE PER CHAINMAIL:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Armor Power&quot;,
+        &quot;key&quot;: &quot;model_scale_maximum&quot;,
+        &quot;label&quot;: &quot;MODEL SCALE MAXIMUM:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Clockwerk&quot;,
+        &quot;ability&quot;: &quot;Armor Power&quot;,
+        &quot;key&quot;: &quot;health_bar_offset_per_stack&quot;,
+        &quot;label&quot;: &quot;HEALTH BAR OFFSET PER STACK:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -121,10 +121,10 @@
       "name": "Sticky Napalm",
       "displayName": "粘性燃油（Sticky Napalm）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+      "reason": "粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。",
       "manaCostByAbilityLevel": [
         22,
         22,
@@ -162,7 +162,8 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "move_speed"
+              "napalm_stack_count",
+              "damage_instance_count"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -170,9 +171,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
+          "reason": "粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。",
           "caveats": [
-            "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+            "粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。"
           ]
         }
       ]
@@ -181,10 +182,10 @@
       "name": "Flamebreak",
       "displayName": "烈焰破击（Flamebreak）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "sustained_dps",
-      "reason": "",
+      "model": "instant_fixed",
+      "reason": "烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。",
       "manaCostByAbilityLevel": [
         110,
         110,
@@ -198,6 +199,33 @@
         13
       ],
       "components": [
+        {
+          "id": "Flamebreak:instant_fixed:damage_impact",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_impact",
+          "valuesByAbilityLevel": [
+            25,
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {},
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。",
+          "caveats": [
+            "烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。"
+          ]
+        },
         {
           "id": "Flamebreak:sustained:damage_per_second",
           "kind": "sustained",
@@ -232,7 +260,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -243,10 +271,10 @@
       "name": "Firefly",
       "displayName": "火焰飞行（Firefly）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "火焰飞行为地面持续伤害，实际命中时间由走位决定。",
       "manaCostByAbilityLevel": [
         100,
         100,
@@ -300,7 +328,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "火焰飞行为地面持续伤害，实际命中时间由走位决定。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -311,16 +339,16 @@
       "name": "Smoldering Resin",
       "displayName": "闷烧树脂（Smoldering Resin）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "model": "state_scaling",
+      "reason": "先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Smoldering Resin:debuff_reference:tick_attack_damage_pct",
-          "kind": "debuff_reference",
+          "id": "Smoldering Resin:state_scaling:tick_attack_damage_pct",
+          "kind": "state_scaling",
           "growthKind": "non_growth",
           "damageType": "Unknown",
           "label": "tick_attack_damage_pct",
@@ -331,23 +359,26 @@
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "state_scaling"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "attack_damage",
-            "affects": "attack_damage",
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
             "condition": "",
-            "requiredInputs": [],
+            "requiredInputs": [
+              "attack_damage",
+              "tick_count"
+            ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
           },
           "source": "curated",
           "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "model": "state_scaling",
+          "reason": "先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。"
           ]
         }
       ]
@@ -356,10 +387,10 @@
       "name": "Flaming Lasso",
       "displayName": "燃烧枷锁（Flaming Lasso）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。",
       "manaCostByAbilityLevel": [
         125,
         150,
@@ -403,11 +434,406 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。",
+          "caveats": [
+            "本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Batrider",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed sticky napalm, flamebreak, firefly, and lasso fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Sticky Napalm": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "napalm_stack_count",
+            "damage_instance_count"
+          ],
+          "conditionInputs": [
+            "napalm_stack_count",
+            "damage_instance_count"
+          ],
+          "reason": "粘性燃油按层数增强后续伤害，不能作为独立固定爆发直接相加。"
+        },
+        "Flamebreak": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_impact",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "烈焰破击包含命中伤害和后续燃烧伤害，二者拆成两个组件。",
+          "extraComponents": [
+            {
+              "status": "implemented",
+              "model": "sustained_dps",
+              "damagePerSecondKey": "damage_per_second",
+              "durationKey": "damage_duration",
+              "semanticType": "damage.sustained_dps",
+              "defaultActiveDuration": "full",
+              "conditionInputs": [
+                "active_duration"
+              ]
+            }
+          ]
+        },
+        "Firefly": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "conditionInputs": [
+            "active_duration"
+          ],
+          "reason": "火焰飞行为地面持续伤害，实际命中时间由走位决定。"
+        },
+        "Smoldering Resin": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "tick_attack_damage_pct",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "attack_damage",
+            "tick_count"
+          ],
+          "conditionInputs": [
+            "attack_damage",
+            "tick_count"
+          ],
+          "reason": "先天效果按攻击伤害百分比触发，需结合普攻伤害和触发次数。"
+        },
+        "Flaming Lasso": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_rate",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "本地字段 damage 表示燃烧枷锁总伤害，duration/tick_rate 仅作为窗口参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "stacks_per_cast",
+        "label": "STACKS PER CAST:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "movement_speed_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "-.75%/-1.5%/-2.25%/-3%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "turn_rate_pct",
+        "label": "TURN RATE SLOW:",
+        "value": "-10%/-30%/-50%/-70%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "max_stacks",
+        "label": "MAX STACKS:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "unlimited_stacks",
+        "label": "UNLIMITED STACKS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "creep_damage_pct",
+        "label": "CREEP DAMAGE PCT:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "application_damage",
+        "label": "APPLICATION DAMAGE:",
+        "value": "5/10/15/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "building_damage_pct",
+        "label": "BUILDING DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "napalm_stacks_on_attack",
+        "label": "NAPALM STACKS ON ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Sticky Napalm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "damage_per_second",
+        "label": "DAMAGE PER SECOND:",
+        "value": "25/30/35/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "damage_duration",
+        "label": "BURN DURATION:",
+        "value": "2/3/4/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "explosion_radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "collision_radius",
+        "label": "COLLISION RADIUS:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "knockback_height",
+        "label": "KNOCKBACK HEIGHT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "napalm_stacks",
+        "label": "NAPALM STACKS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "6%/12%/18%/24%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flamebreak",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Firefly",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Firefly",
+        "key": "tree_radius",
+        "label": "TREE RADIUS:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Firefly",
+        "key": "movement_speed_pct_total",
+        "label": "MAX MOVEMENT SPEED BONUS:",
+        "value": "12%/18%/24%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Firefly",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Smoldering Resin",
+        "key": "total_ticks",
+        "label": "TOTAL TICKS:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Smoldering Resin",
+        "key": "tick_rate",
+        "label": "TICK RATE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flaming Lasso",
+        "key": "drag_distance",
+        "label": "DRAG DISTANCE:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flaming Lasso",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "425",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flaming Lasso",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Batrider",
+        "ability": "Flaming Lasso",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

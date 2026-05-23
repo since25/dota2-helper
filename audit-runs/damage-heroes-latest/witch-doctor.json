@@ -121,10 +121,10 @@
       "name": "Paralyzing Cask",
       "displayName": "麻痹药剂（Paralyzing Cask）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "repeated_trigger",
+      "reason": "弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。",
       "manaCostByAbilityLevel": [
         80,
         100,
@@ -139,8 +139,8 @@
       ],
       "components": [
         {
-          "id": "Paralyzing Cask:instant_fixed:base_damage",
-          "kind": "instant_fixed",
+          "id": "Paralyzing Cask:repeated_trigger:base_damage",
+          "kind": "repeated_trigger",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "base_damage",
@@ -151,24 +151,28 @@
             100
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "totalFormula": "triggerCount * damage",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "runtime_trigger_count_times_damage"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              0.8,
-              0.8,
-              0.8,
-              0.8
+            "triggerCountInput": "bounce_count",
+            "bonusDamageKey": "bounce_bonus_damage",
+            "bounceBonusDamageByAbilityLevel": [
+              20,
+              20,
+              20,
+              20
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "repeated_trigger",
+          "reason": "弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。",
+          "caveats": [
+            "需要输入实际触发次数，不能默认按满额命中计算。"
+          ]
         }
       ]
     },
@@ -176,10 +180,10 @@
       "name": "Voodoo Restoration",
       "displayName": "巫毒疗法（Voodoo Restoration）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "当前数据 does_damage 为 0，仅作为治疗参考。",
       "manaCostByAbilityLevel": [
         25,
         25,
@@ -214,7 +218,7 @@
           "metadata": {
             "isDamageReference": false,
             "modifierType": "",
-            "affects": "sustain",
+            "affects": "ally_healing",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -223,9 +227,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "当前数据 does_damage 为 0，仅作为治疗参考。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "当前数据 does_damage 为 0，仅作为治疗参考。"
           ]
         }
       ]
@@ -234,10 +238,10 @@
       "name": "Maledict",
       "displayName": "巫蛊咒术（Maledict）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。",
       "manaCostByAbilityLevel": [
         105,
         110,
@@ -252,8 +256,8 @@
       ],
       "components": [
         {
-          "id": "Maledict:instant_fixed:dmg",
-          "kind": "instant_fixed",
+          "id": "Maledict:sustained:dmg",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "dmg",
@@ -263,11 +267,16 @@
             26,
             30
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            216,
+            264,
+            312,
+            360
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -279,9 +288,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -289,10 +300,10 @@
       "name": "Voodoo Switcheroo",
       "displayName": "巫毒变身术（Voodoo Switcheroo）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "临时变为死亡守卫，具体伤害复用 Death Ward。",
       "manaCostByAbilityLevel": [
         200
       ],
@@ -301,13 +312,13 @@
       ],
       "components": [
         {
-          "id": "Voodoo Switcheroo:debuff_reference:attack_speed_reduction",
+          "id": "Voodoo Switcheroo:debuff_reference:duration",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "attack_speed_reduction",
+          "label": "duration",
           "valuesByAbilityLevel": [
-            45
+            2.5
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -317,8 +328,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "attack_speed",
-            "affects": "attack_speed",
+            "modifierType": "disable_window",
+            "affects": "damage_window",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -327,9 +338,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "临时变为死亡守卫，具体伤害复用 Death Ward。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "临时变为死亡守卫，具体伤害复用 Death Ward。"
           ]
         }
       ]
@@ -338,10 +349,10 @@
       "name": "Death Ward",
       "displayName": "死亡守卫（Death Ward）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。",
       "manaCostByAbilityLevel": [
         200,
         200,
@@ -354,8 +365,8 @@
       ],
       "components": [
         {
-          "id": "Death Ward:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Death Ward:sustained:damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Pure",
           "label": "damage",
@@ -364,21 +375,359 @@
             90,
             120
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            480,
+            720,
+            960
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
-          "metadata": {},
+          "metadata": {
+            "durationByAbilityLevel": [
+              8,
+              8,
+              8
+            ]
+          },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Witch Doctor",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed cask/maledict/death ward fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Paralyzing Cask": {
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "damageKey": "base_damage",
+          "triggerCountInput": "bounce_count",
+          "bonusDamageKey": "bounce_bonus_damage",
+          "semanticType": "damage.wave",
+          "reason": "弹跳次数和每跳递增伤害需要运行时输入，不能默认所有弹跳命中同一目标。"
+        },
+        "Voodoo Restoration": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "heal",
+          "semanticType": "defense.heal.flat",
+          "affects": "ally_healing",
+          "reason": "当前数据 does_damage 为 0，仅作为治疗参考。"
+        },
+        "Maledict": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "dmg",
+          "durationKey": "abilityduration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "当前计入每秒固定伤害；失血爆发百分比需要目标失血状态输入。"
+        },
+        "Voodoo Switcheroo": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "window.debuff_duration.seconds",
+          "affects": "damage_window",
+          "reason": "临时变为死亡守卫，具体伤害复用 Death Ward。"
+        },
+        "Gris-Gris": {
+          "status": "ignored",
+          "reason": "经济机制不直接造成伤害。"
+        },
+        "Death Ward": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "abilitychanneltime",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "按每秒一次攻击估算引导总量；攻速/弹射升级后续作为高级模型。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "hero_duration",
+        "label": "STUN DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "creep_duration",
+        "label": "CREEP DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "bounce_range",
+        "label": "BOUNCE RANGE:",
+        "value": "575",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "bounces",
+        "label": "BOUNCES:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "bounce_delay",
+        "label": "BOUNCE DELAY:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "creep_damage_pct",
+        "label": "CREEP DAMAGE PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Paralyzing Cask",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "mana_per_second",
+        "label": "MANA PER SEC:",
+        "value": "9/12/15/18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500/550/600/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "heal_interval",
+        "label": "HEAL INTERVAL:",
+        "value": "0.33",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "does_heal_all_allies",
+        "label": "DOES HEAL ALL ALLIES:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "does_damage",
+        "label": "DOES DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Restoration",
+        "key": "self_only_heal_percentage",
+        "label": "SELF HEAL:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "bonus_damage",
+        "label": "LOST HEALTH BURST DAMAGE:",
+        "value": "16%/24%/32%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "bonus_damage_threshold",
+        "label": "BONUS DAMAGE THRESHOLD:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "ticks",
+        "label": "TICKS:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "spread_speed",
+        "label": "SPREAD SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Maledict",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Switcheroo",
+        "key": "attack_speed_reduction",
+        "label": "ATTACK SPEED REDUCTION:",
+        "value": "45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Voodoo Switcheroo",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Gris-Gris",
+        "key": "death_gold_lost_reduction_pct_tooltip",
+        "label": "DEATH GOLD LOST REDUCTION PCT TOOLTIP:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Gris-Gris",
+        "key": "gold_tick_interval_tooltip",
+        "label": "GOLD TICK INTERVAL TOOLTIP:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "attack_range_tooltip",
+        "label": "ATTACK RANGE:",
+        "value": "600/625/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "bonus_attack_range",
+        "label": "BONUS ATTACK RANGE:",
+        "value": "0/25/50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "bonus_accuracy",
+        "label": "BONUS ACCURACY:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "initial_target_count",
+        "label": "INITIAL TARGET COUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Witch Doctor",
+        "ability": "Death Ward",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

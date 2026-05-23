@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>艾欧（Io）</h1>
-        <div class="muted">Io · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Io · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,395 @@
       </div>
       <a href="./io.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Tether</td>
+      <td><code>radius</code></td>
+      <td>MAX TETHER DISTANCE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>movespeed</code></td>
+      <td>MOVEMENT SPEED BONUS:</td>
+      <td>6%/8%/10%/12%</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>latch_distance</code></td>
+      <td>LATCH DISTANCE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>latch_speed</code></td>
+      <td>LATCH SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>tether_heal_amp</code></td>
+      <td>HP/MANA TRANSFER:</td>
+      <td>60%/80%/100%/120%</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>tether_mana_amp</code></td>
+      <td>TETHER MANA AMP:</td>
+      <td>60/80/100/120</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>self_bonus</code></td>
+      <td>SELF BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>slow</code></td>
+      <td>ENEMY MOVE/ATTACK SLOW:</td>
+      <td>15%/30%/45%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>damage</code></td>
+      <td>DAMAGE PER SECOND:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>damage_to_heal</code></td>
+      <td>DAMAGE TO HEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>tethered_unit_damage</code></td>
+      <td>TETHERED UNIT DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tether</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>hero_damage</code></td>
+      <td>HERO DAMAGE:</td>
+      <td>30/50/70/90</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>revolution_time</code></td>
+      <td>REVOLUTION TIME:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>min_range</code></td>
+      <td>MIN RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>max_range</code></td>
+      <td>OSCILLATION RADIUS:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>hero_hit_radius</code></td>
+      <td>HERO HIT RADIUS:</td>
+      <td>110</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>explode_radius</code></td>
+      <td>EXPLOSION RADIUS:</td>
+      <td>360</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>hit_radius</code></td>
+      <td>HIT RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>spirit_movement_rate</code></td>
+      <td>SPIRIT MOVEMENT RATE:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>spirit_duration</code></td>
+      <td>DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>spirit_amount</code></td>
+      <td>SPIRIT AMOUNT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>scepter_slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>scepter_slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>spirit_spawn_time</code></td>
+      <td>SPIRIT SPAWN TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Spirits</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>BONUS ATTACK SPEED:</td>
+      <td>35/60/85/110</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>bonus_mres</code></td>
+      <td>BONUS MAGIC RESISTANCE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>hp_regen</code></td>
+      <td>MAX HEALTH REGEN:</td>
+      <td>0.5%/0.6%/0.7%/0.8%</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>spell_lifesteal</code></td>
+      <td>SPELL LIFESTEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>unslowable</code></td>
+      <td>UNSLOWABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overcharge</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Relocate</td>
+      <td><code>cast_delay</code></td>
+      <td>CAST TIME:</td>
+      <td>3.5/3.25/3</td>
+    </tr>
+  
+    <tr>
+      <td>Relocate</td>
+      <td><code>return_time</code></td>
+      <td>RETURN TIME:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Relocate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Equilibrium</td>
+      <td><code>heal_amplification</code></td>
+      <td>MAX HEAL AMP:</td>
+      <td>5%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Io&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Tether&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Spirits&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;creep_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;trigger_condition&quot;
+      ],
+      &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+      &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+    },
+    &quot;Overcharge&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;bonus_spell_amp&quot;,
+      &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+      &quot;affects&quot;: &quot;spell_amplification&quot;,
+      &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Spirits In&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Spirits Out&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Relocate&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Break Tether&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Equilibrium&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_amplification&quot;,
+      &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+      &quot;affects&quot;: &quot;all_damage&quot;,
+      &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +517,7 @@
           <div class="muted">Tether · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +556,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +570,7 @@
           <div class="muted">Spirits · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">conditional</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +623,7 @@
           <div class="muted">Overcharge · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +662,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: spell_amplification_pct</div><div><code>affects</code>: spell_amplification</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +676,7 @@
           <div class="muted">Equilibrium · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +715,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: all_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,10 +847,10 @@
       &quot;name&quot;: &quot;Tether&quot;,
       &quot;displayName&quot;: &quot;羁绊（Tether）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         40
       ],
@@ -492,9 +885,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -503,7 +896,7 @@
       &quot;name&quot;: &quot;Spirits&quot;,
       &quot;displayName&quot;: &quot;幽魂（Spirits）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;conditional&quot;,
       &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;,
@@ -561,10 +954,10 @@
       &quot;name&quot;: &quot;Overcharge&quot;,
       &quot;displayName&quot;: &quot;过载（Overcharge）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         40,
         60,
@@ -608,9 +1001,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -619,10 +1012,10 @@
       &quot;name&quot;: &quot;Equilibrium&quot;,
       &quot;displayName&quot;: &quot;衡势（Equilibrium）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -653,15 +1046,420 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Io&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Tether&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Spirits&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;creep_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.death_trigger&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;trigger_condition&quot;
+          ],
+          &quot;condition&quot;: &quot;需要触发条件成立才造成伤害。&quot;,
+          &quot;reason&quot;: &quot;条件伤害首轮模型只作为参考，不默认计入固定爆发。&quot;
+        },
+        &quot;Overcharge&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;bonus_spell_amp&quot;,
+          &quot;semanticType&quot;: &quot;modifier.spell_amplification.percent&quot;,
+          &quot;affects&quot;: &quot;spell_amplification&quot;,
+          &quot;stackGroup&quot;: &quot;spell_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Spirits In&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Spirits Out&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Relocate&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Break Tether&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Equilibrium&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_amplification&quot;,
+          &quot;semanticType&quot;: &quot;modifier.damage_amp.percent&quot;,
+          &quot;affects&quot;: &quot;all_damage&quot;,
+          &quot;stackGroup&quot;: &quot;damage_amplification&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该百分比/修正值不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;MAX TETHER DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;6%/8%/10%/12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;latch_distance&quot;,
+        &quot;label&quot;: &quot;LATCH DISTANCE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;latch_speed&quot;,
+        &quot;label&quot;: &quot;LATCH SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;tether_heal_amp&quot;,
+        &quot;label&quot;: &quot;HP/MANA TRANSFER:&quot;,
+        &quot;value&quot;: &quot;60%/80%/100%/120%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;tether_mana_amp&quot;,
+        &quot;label&quot;: &quot;TETHER MANA AMP:&quot;,
+        &quot;value&quot;: &quot;60/80/100/120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;self_bonus&quot;,
+        &quot;label&quot;: &quot;SELF BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;ENEMY MOVE/ATTACK SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/30%/45%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER SECOND:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;damage_to_heal&quot;,
+        &quot;label&quot;: &quot;DAMAGE TO HEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;tethered_unit_damage&quot;,
+        &quot;label&quot;: &quot;TETHERED UNIT DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Tether&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;hero_damage&quot;,
+        &quot;label&quot;: &quot;HERO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30/50/70/90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;revolution_time&quot;,
+        &quot;label&quot;: &quot;REVOLUTION TIME:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;min_range&quot;,
+        &quot;label&quot;: &quot;MIN RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;max_range&quot;,
+        &quot;label&quot;: &quot;OSCILLATION RADIUS:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;hero_hit_radius&quot;,
+        &quot;label&quot;: &quot;HERO HIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;explode_radius&quot;,
+        &quot;label&quot;: &quot;EXPLOSION RADIUS:&quot;,
+        &quot;value&quot;: &quot;360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;hit_radius&quot;,
+        &quot;label&quot;: &quot;HIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_movement_rate&quot;,
+        &quot;label&quot;: &quot;SPIRIT MOVEMENT RATE:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_amount&quot;,
+        &quot;label&quot;: &quot;SPIRIT AMOUNT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;scepter_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;scepter_slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_spawn_time&quot;,
+        &quot;label&quot;: &quot;SPIRIT SPAWN TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Spirits&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;35/60/85/110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;bonus_mres&quot;,
+        &quot;label&quot;: &quot;BONUS MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;hp_regen&quot;,
+        &quot;label&quot;: &quot;MAX HEALTH REGEN:&quot;,
+        &quot;value&quot;: &quot;0.5%/0.6%/0.7%/0.8%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;spell_lifesteal&quot;,
+        &quot;label&quot;: &quot;SPELL LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;unslowable&quot;,
+        &quot;label&quot;: &quot;UNSLOWABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Overcharge&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Relocate&quot;,
+        &quot;key&quot;: &quot;cast_delay&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;3.5/3.25/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Relocate&quot;,
+        &quot;key&quot;: &quot;return_time&quot;,
+        &quot;label&quot;: &quot;RETURN TIME:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Relocate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Io&quot;,
+        &quot;ability&quot;: &quot;Equilibrium&quot;,
+        &quot;key&quot;: &quot;heal_amplification&quot;,
+        &quot;label&quot;: &quot;MAX HEAL AMP:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

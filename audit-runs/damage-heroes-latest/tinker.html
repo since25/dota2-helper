@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,387 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>修补匠（Tinker）</h1>
-        <div class="muted">Tinker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Tinker · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 4</span>
-          <span>组件 4</span>
+          <span>技能 6</span>
+          <span>组件 6</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./tinker.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Laser</td>
+      <td><code>miss_rate</code></td>
+      <td>BLIND MISS RATE:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Laser</td>
+      <td><code>radius_explosion</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laser</td>
+      <td><code>splash_pct</code></td>
+      <td>SPLASH PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Laser</td>
+      <td><code>scepter_reduction_pierces_debuff_immunity</code></td>
+      <td>SCEPTER REDUCTION PIERCES DEBUFF IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Laser</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Laser</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>dmg</code></td>
+      <td>DAMAGE</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>collision_radius</code></td>
+      <td>COLLISION RADIUS:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>splash_radius</code></td>
+      <td>SPLASH RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>machines_per_sec</code></td>
+      <td>MACHINES PER SEC:</td>
+      <td>24</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>distance</code></td>
+      <td>DISTANCE:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>March of the Machines</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.53</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>warp_distance_factor</code></td>
+      <td>WARP DISTANCE FACTOR:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>warp_distance_pct_tooltip</code></td>
+      <td>WARP DISTANCE PCT TOOLTIP:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>range_reduction</code></td>
+      <td>CAST/ATTACK RANGE REDUCTION:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Warp Flare</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>minimun_distance</code></td>
+      <td>MINIMUN DISTANCE:</td>
+      <td>70</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>maximum_distance</code></td>
+      <td>MAXIMUM DISTANCE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>channel_time_tooltip</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>additional_starting_cooldown</code></td>
+      <td>ADDITIONAL STARTING COOLDOWN:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>creep_teleport_level</code></td>
+      <td>CREEP TELEPORT LEVEL:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>hero_teleport_level</code></td>
+      <td>HERO TELEPORT LEVEL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>outpost_channel_time</code></td>
+      <td>OUTPOST CHANNEL TIME:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>jungle_outpost_channel_time</code></td>
+      <td>JUNGLE OUTPOST CHANNEL TIME:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Conveyance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rearm</td>
+      <td><code>magic_resistance</code></td>
+      <td>BONUS MAGIC RESISTANCE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Rearm</td>
+      <td><code>armor_duration</code></td>
+      <td>ARMOR DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rearm</td>
+      <td><code>affects_items</code></td>
+      <td>AFFECTS ITEMS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rearm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Eureka!</td>
+      <td><code>one_percent_tooltip</code></td>
+      <td>ONE PERCENT TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Eureka!</td>
+      <td><code>max_cdr</code></td>
+      <td>MAX CDR:</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Tinker&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed laser, march, warp flare, conveyance, and rearm fields against Dotabuff snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Laser&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;laser_damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;March of the Machines&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;triggerCountInput&quot;: &quot;machine_hit_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;machine_hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。&quot;
+    },
+    &quot;Warp Flare&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;debuff_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Keen Conveyance&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitychanneltime&quot;,
+      &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;mobility_timing&quot;,
+      &quot;reason&quot;: &quot;基恩载具是传送机动能力，不直接造成伤害。&quot;
+    },
+    &quot;Rearm&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitychanneltime&quot;,
+      &quot;semanticType&quot;: &quot;resource.cooldown&quot;,
+      &quot;affects&quot;: &quot;combo_reset&quot;,
+      &quot;reason&quot;: &quot;再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。&quot;
+    },
+    &quot;Eureka!&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;int_per_one_cdr&quot;,
+      &quot;semanticType&quot;: &quot;resource.cooldown&quot;,
+      &quot;affects&quot;: &quot;cooldown_reduction&quot;,
+      &quot;reason&quot;: &quot;尤里卡提供冷却缩减换算，不直接造成伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +500,7 @@
           <div class="muted">Laser · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,8 +553,8 @@
           <div class="muted">March of the Machines · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">repeated_trigger</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -203,20 +579,20 @@
           <tbody>
       <tr>
         <td>
-          <code>March of the Machines:instant_fixed:damage</code>
+          <code>March of the Machines:repeated_trigger:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">repeated_trigger</span>
+          <span class="pill secondary">repeated_trigger</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>13</td><td>22</td><td>31</td><td>40</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>triggerCountInput</code>: machine_hit_count</div></td>
+        <td>triggerCount * damage</td>
+        <td><ul><li>需要输入实际触发次数，不能默认按满额命中计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +606,7 @@
           <div class="muted">Warp Flare · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +659,7 @@
           <div class="muted">Keen Conveyance · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -309,8 +685,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Keen Conveyance:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Keen Conveyance:debuff_reference:abilitychanneltime</code>
+          <div class="muted">abilitychanneltime</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -318,11 +694,117 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>0</td><td>-</td><td>-</td><td>-</td>
+        <td>3</td><td>-</td><td>-</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: mobility_timing</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>基恩载具是传送机动能力，不直接造成伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>再装填（Rearm）</h2>
+          <div class="muted">Rearm · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：100 / 150 / 200</span>
+        <span>冷却：5.5 / 5 / 4.5</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Rearm:debuff_reference:abilitychanneltime</code>
+          <div class="muted">abilitychanneltime</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>2.75</td><td>2</td><td>1.25</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: combo_reset</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>尤里卡！（Eureka!）</h2>
+          <div class="muted">Eureka! · 终极技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Eureka!:debuff_reference:int_per_one_cdr</code>
+          <div class="muted">int_per_one_cdr</div>
+        </td>
+        <td>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>3</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: cooldown_reduction</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>尤里卡提供冷却缩减换算，不直接造成伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +936,7 @@
       &quot;name&quot;: &quot;Laser&quot;,
       &quot;displayName&quot;: &quot;激光（Laser）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,10 +991,10 @@
       &quot;name&quot;: &quot;March of the Machines&quot;,
       &quot;displayName&quot;: &quot;机械行军（March of the Machines）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;reason&quot;: &quot;机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         120,
@@ -527,8 +1009,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;March of the Machines:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;March of the Machines:repeated_trigger:damage&quot;,
+          &quot;kind&quot;: &quot;repeated_trigger&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -539,24 +1021,21 @@
             40
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;triggerCount * damage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;runtime_trigger_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              6,
-              6,
-              6,
-              6
-            ]
+            &quot;triggerCountInput&quot;: &quot;machine_hit_count&quot;
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;reason&quot;: &quot;机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;需要输入实际触发次数，不能默认按满额命中计算。&quot;
+          ]
         }
       ]
     },
@@ -564,7 +1043,7 @@
       &quot;name&quot;: &quot;Warp Flare&quot;,
       &quot;displayName&quot;: &quot;折跃耀光（Warp Flare）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -607,10 +1086,10 @@
       &quot;name&quot;: &quot;Keen Conveyance&quot;,
       &quot;displayName&quot;: &quot;基恩载具（Keen Conveyance）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;基恩载具是传送机动能力，不直接造成伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75
       ],
@@ -619,13 +1098,13 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Keen Conveyance:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Keen Conveyance:debuff_reference:abilitychanneltime&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;abilitychanneltime&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            0
+            3
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -635,8 +1114,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;mobility_timing&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -645,15 +1124,501 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;基恩载具是传送机动能力，不直接造成伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;基恩载具是传送机动能力，不直接造成伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Rearm&quot;,
+      &quot;displayName&quot;: &quot;再装填（Rearm）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        100,
+        150,
+        200
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        5.5,
+        5,
+        4.5
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Rearm:debuff_reference:abilitychanneltime&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;abilitychanneltime&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            2.75,
+            2,
+            1.25
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;combo_reset&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Eureka!&quot;,
+      &quot;displayName&quot;: &quot;尤里卡！（Eureka!）&quot;,
+      &quot;isUltimate&quot;: true,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;尤里卡提供冷却缩减换算，不直接造成伤害。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Eureka!:debuff_reference:int_per_one_cdr&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;int_per_one_cdr&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            3
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;debuff_reference&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;cooldown_reduction&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;尤里卡提供冷却缩减换算，不直接造成伤害。&quot;,
+          &quot;caveats&quot;: [
+            &quot;尤里卡提供冷却缩减换算，不直接造成伤害。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Tinker&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed laser, march, warp flare, conveyance, and rearm fields against Dotabuff snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Laser&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;laser_damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;March of the Machines&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;triggerCountInput&quot;: &quot;machine_hit_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;machine_hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;机械行军每个机器命中造成 damage，实际总伤害必须输入命中次数。&quot;
+        },
+        &quot;Warp Flare&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Keen Conveyance&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitychanneltime&quot;,
+          &quot;semanticType&quot;: &quot;window.buff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;mobility_timing&quot;,
+          &quot;reason&quot;: &quot;基恩载具是传送机动能力，不直接造成伤害。&quot;
+        },
+        &quot;Rearm&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitychanneltime&quot;,
+          &quot;semanticType&quot;: &quot;resource.cooldown&quot;,
+          &quot;affects&quot;: &quot;combo_reset&quot;,
+          &quot;reason&quot;: &quot;再装填重置技能和物品冷却，影响连招次数但不直接造成伤害。&quot;
+        },
+        &quot;Eureka!&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;int_per_one_cdr&quot;,
+          &quot;semanticType&quot;: &quot;resource.cooldown&quot;,
+          &quot;affects&quot;: &quot;cooldown_reduction&quot;,
+          &quot;reason&quot;: &quot;尤里卡提供冷却缩减换算，不直接造成伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;miss_rate&quot;,
+        &quot;label&quot;: &quot;BLIND MISS RATE:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;radius_explosion&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;splash_pct&quot;,
+        &quot;label&quot;: &quot;SPLASH PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;scepter_reduction_pierces_debuff_immunity&quot;,
+        &quot;label&quot;: &quot;SCEPTER REDUCTION PIERCES DEBUFF IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Laser&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;dmg&quot;,
+        &quot;label&quot;: &quot;DAMAGE&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.dmg&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;collision_radius&quot;,
+        &quot;label&quot;: &quot;COLLISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;splash_radius&quot;,
+        &quot;label&quot;: &quot;SPLASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;machines_per_sec&quot;,
+        &quot;label&quot;: &quot;MACHINES PER SEC:&quot;,
+        &quot;value&quot;: &quot;24&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;March of the Machines&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.53&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;warp_distance_factor&quot;,
+        &quot;label&quot;: &quot;WARP DISTANCE FACTOR:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;warp_distance_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;WARP DISTANCE PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;range_reduction&quot;,
+        &quot;label&quot;: &quot;CAST/ATTACK RANGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Warp Flare&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;minimun_distance&quot;,
+        &quot;label&quot;: &quot;MINIMUN DISTANCE:&quot;,
+        &quot;value&quot;: &quot;70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;maximum_distance&quot;,
+        &quot;label&quot;: &quot;MAXIMUM DISTANCE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;channel_time_tooltip&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;additional_starting_cooldown&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL STARTING COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;creep_teleport_level&quot;,
+        &quot;label&quot;: &quot;CREEP TELEPORT LEVEL:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;hero_teleport_level&quot;,
+        &quot;label&quot;: &quot;HERO TELEPORT LEVEL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;outpost_channel_time&quot;,
+        &quot;label&quot;: &quot;OUTPOST CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;jungle_outpost_channel_time&quot;,
+        &quot;label&quot;: &quot;JUNGLE OUTPOST CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Keen Conveyance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Rearm&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;BONUS MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Rearm&quot;,
+        &quot;key&quot;: &quot;armor_duration&quot;,
+        &quot;label&quot;: &quot;ARMOR DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Rearm&quot;,
+        &quot;key&quot;: &quot;affects_items&quot;,
+        &quot;label&quot;: &quot;AFFECTS ITEMS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Rearm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Eureka!&quot;,
+        &quot;key&quot;: &quot;one_percent_tooltip&quot;,
+        &quot;label&quot;: &quot;ONE PERCENT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Tinker&quot;,
+        &quot;ability&quot;: &quot;Eureka!&quot;,
+        &quot;key&quot;: &quot;max_cdr&quot;,
+        &quot;label&quot;: &quot;MAX CDR:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

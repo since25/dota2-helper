@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>美杜莎（Medusa）</h1>
-        <div class="muted">Medusa · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Medusa · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,444 @@
       </div>
       <a href="./medusa.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Split Shot</td>
+      <td><code>damage_modifier_tooltip</code></td>
+      <td>OUTGOING DAMAGE:</td>
+      <td>50%/60%/70%/80%</td>
+    </tr>
+  
+    <tr>
+      <td>Split Shot</td>
+      <td><code>arrow_count</code></td>
+      <td>EXTRA TARGETS:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Split Shot</td>
+      <td><code>process_procs</code></td>
+      <td>PROCESS PROCS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Split Shot</td>
+      <td><code>split_shot_bonus_range</code></td>
+      <td>SPLIT SHOT BONUS RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Split Shot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>radius</code></td>
+      <td>JUMP RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>snake_jumps</code></td>
+      <td>JUMPS:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>jump_delay</code></td>
+      <td>JUMP DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>snake_damage_pct</code></td>
+      <td>SNAKE DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>snake_mana_steal</code></td>
+      <td>MANA GAIN:</td>
+      <td>15%</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>snake_scale</code></td>
+      <td>DAMAGE/SPEED INCREASE PER JUMP:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>initial_speed</code></td>
+      <td>INITIAL SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>return_speed</code></td>
+      <td>RETURN SPEED:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Mystic Snake</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>radius</code></td>
+      <td>INITIAL RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>radius_grow</code></td>
+      <td>RADIUS GROWTH:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>delay</code></td>
+      <td>DELAY:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>volley_interval</code></td>
+      <td>VOLLEY INTERVAL:</td>
+      <td>.25</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>volley_spread_pct</code></td>
+      <td>VOLLEY SPREAD PCT:</td>
+      <td>170</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>volley_count</code></td>
+      <td>VOLLEY COUNT:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>damage</code></td>
+      <td>DAMAGE:</td>
+      <td>30/70/110/150</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>.2</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>625</td>
+    </tr>
+  
+    <tr>
+      <td>Gorgon&#39;s Grasp</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Blooded</td>
+      <td><code>damage</code></td>
+      <td>DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cold Blooded</td>
+      <td><code>stone_form_scepter_base_tooltip</code></td>
+      <td>STONE FORM SCEPTER BASE TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>illusion_percentage</code></td>
+      <td>ILLUSION PERCENTAGE:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>absorption_pct</code></td>
+      <td>ABSORPTION PCT:</td>
+      <td>98</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_smoothness</code></td>
+      <td>ASPD INCREASE SMOOTHNESS:</td>
+      <td>0.015</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_rate_pct</code></td>
+      <td>ASPD INCREASE RATE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_max_tooltip</code></td>
+      <td>ASPD INCREASE MAX TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_buff_duration</code></td>
+      <td>ASPD INCREASE BUFF DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_mana_cost_pct</code></td>
+      <td>ASPD INCREASE MANA COST PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>aspd_increase_max_aspd_time</code></td>
+      <td>ASPD INCREASE MAX ASPD TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>attack_buff_cooldown</code></td>
+      <td>ATTACK BUFF COOLDOWN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Mana Shield</td>
+      <td><code>min_duration</code></td>
+      <td>MIN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5/5.5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>35%</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>stone_duration</code></td>
+      <td>STONE DURATION:</td>
+      <td>2/2.2/2.4</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>face_duration</code></td>
+      <td>FACE DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>vision_cone</code></td>
+      <td>VISION CONE:</td>
+      <td>0.08715</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>bonus_physical_damage</code></td>
+      <td>BONUS PHYSICAL ATTACK DAMAGE:</td>
+      <td>35%/45%/55%</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>speed_boost</code></td>
+      <td>SPEED BOOST:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Stone Gaze</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Medusa&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Split Shot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_modifier&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Mystic Snake&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;snake_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Gorgon&#39;s Grasp&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_pers&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Cold Blooded&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Mana Shield&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_per_mana&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;target_missing_mana&quot;
+      ],
+      &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Stone Gaze&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +566,7 @@
           <div class="muted">Split Shot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +619,7 @@
           <div class="muted">Mystic Snake · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +672,7 @@
           <div class="muted">Gorgon&#39;s Grasp · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +725,7 @@
           <div class="muted">Mana Shield · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +778,7 @@
           <div class="muted">Stone Gaze · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +817,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +949,7 @@
       &quot;name&quot;: &quot;Split Shot&quot;,
       &quot;displayName&quot;: &quot;分裂箭（Split Shot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -545,7 +987,7 @@
       &quot;name&quot;: &quot;Mystic Snake&quot;,
       &quot;displayName&quot;: &quot;秘术异蛇（Mystic Snake）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
@@ -605,7 +1047,7 @@
       &quot;name&quot;: &quot;Gorgon&#39;s Grasp&quot;,
       &quot;displayName&quot;: &quot;罗网箭阵（Gorgon&#39;s Grasp）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -664,7 +1106,7 @@
       &quot;name&quot;: &quot;Mana Shield&quot;,
       &quot;displayName&quot;: &quot;魔法盾（Mana Shield）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;,
@@ -711,10 +1153,10 @@
       &quot;name&quot;: &quot;Stone Gaze&quot;,
       &quot;displayName&quot;: &quot;石化凝视（Stone Gaze）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         250
       ],
@@ -749,15 +1191,476 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Medusa&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Split Shot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_modifier&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Mystic Snake&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;snake_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Gorgon&#39;s Grasp&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_pers&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Cold Blooded&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Mana Shield&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_per_mana&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_mana&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;target_missing_mana&quot;
+          ],
+          &quot;reason&quot;: &quot;已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Stone Gaze&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Split Shot&quot;,
+        &quot;key&quot;: &quot;damage_modifier_tooltip&quot;,
+        &quot;label&quot;: &quot;OUTGOING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;50%/60%/70%/80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Split Shot&quot;,
+        &quot;key&quot;: &quot;arrow_count&quot;,
+        &quot;label&quot;: &quot;EXTRA TARGETS:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Split Shot&quot;,
+        &quot;key&quot;: &quot;process_procs&quot;,
+        &quot;label&quot;: &quot;PROCESS PROCS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Split Shot&quot;,
+        &quot;key&quot;: &quot;split_shot_bonus_range&quot;,
+        &quot;label&quot;: &quot;SPLIT SHOT BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Split Shot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;JUMP RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;snake_jumps&quot;,
+        &quot;label&quot;: &quot;JUMPS:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;jump_delay&quot;,
+        &quot;label&quot;: &quot;JUMP DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;snake_damage_pct&quot;,
+        &quot;label&quot;: &quot;SNAKE DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;snake_mana_steal&quot;,
+        &quot;label&quot;: &quot;MANA GAIN:&quot;,
+        &quot;value&quot;: &quot;15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;snake_scale&quot;,
+        &quot;label&quot;: &quot;DAMAGE/SPEED INCREASE PER JUMP:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;initial_speed&quot;,
+        &quot;label&quot;: &quot;INITIAL SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;return_speed&quot;,
+        &quot;label&quot;: &quot;RETURN SPEED:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mystic Snake&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;INITIAL RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;radius_grow&quot;,
+        &quot;label&quot;: &quot;RADIUS GROWTH:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;delay&quot;,
+        &quot;label&quot;: &quot;DELAY:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;volley_interval&quot;,
+        &quot;label&quot;: &quot;VOLLEY INTERVAL:&quot;,
+        &quot;value&quot;: &quot;.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;volley_spread_pct&quot;,
+        &quot;label&quot;: &quot;VOLLEY SPREAD PCT:&quot;,
+        &quot;value&quot;: &quot;170&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;volley_count&quot;,
+        &quot;label&quot;: &quot;VOLLEY COUNT:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30/70/110/150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;625&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Gorgon&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Cold Blooded&quot;,
+        &quot;key&quot;: &quot;damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Cold Blooded&quot;,
+        &quot;key&quot;: &quot;stone_form_scepter_base_tooltip&quot;,
+        &quot;label&quot;: &quot;STONE FORM SCEPTER BASE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;illusion_percentage&quot;,
+        &quot;label&quot;: &quot;ILLUSION PERCENTAGE:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;absorption_pct&quot;,
+        &quot;label&quot;: &quot;ABSORPTION PCT:&quot;,
+        &quot;value&quot;: &quot;98&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_smoothness&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE SMOOTHNESS:&quot;,
+        &quot;value&quot;: &quot;0.015&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_rate_pct&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE RATE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_max_tooltip&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE MAX TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_buff_duration&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_mana_cost_pct&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE MANA COST PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;aspd_increase_max_aspd_time&quot;,
+        &quot;label&quot;: &quot;ASPD INCREASE MAX ASPD TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;attack_buff_cooldown&quot;,
+        &quot;label&quot;: &quot;ATTACK BUFF COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Mana Shield&quot;,
+        &quot;key&quot;: &quot;min_duration&quot;,
+        &quot;label&quot;: &quot;MIN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5/5.5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;stone_duration&quot;,
+        &quot;label&quot;: &quot;STONE DURATION:&quot;,
+        &quot;value&quot;: &quot;2/2.2/2.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;face_duration&quot;,
+        &quot;label&quot;: &quot;FACE DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;vision_cone&quot;,
+        &quot;label&quot;: &quot;VISION CONE:&quot;,
+        &quot;value&quot;: &quot;0.08715&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;bonus_physical_damage&quot;,
+        &quot;label&quot;: &quot;BONUS PHYSICAL ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;35%/45%/55%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;speed_boost&quot;,
+        &quot;label&quot;: &quot;SPEED BOOST:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Medusa&quot;,
+        &quot;ability&quot;: &quot;Stone Gaze&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

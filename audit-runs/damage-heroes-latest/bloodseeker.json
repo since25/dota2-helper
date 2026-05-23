@@ -121,10 +121,10 @@
       "name": "Bloodrage",
       "displayName": "血怒（Bloodrage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -164,9 +164,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
           "caveats": [
-            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+            "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
           ]
         }
       ]
@@ -175,7 +175,7 @@
       "name": "Blood Rite",
       "displayName": "血祭（Blood Rite）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -230,10 +230,10 @@
       "name": "Sanguivore",
       "displayName": "食血动物（Sanguivore）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -264,9 +264,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -275,7 +275,7 @@
       "name": "Rupture",
       "displayName": "割裂（Rupture）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -327,5 +327,387 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Bloodseeker",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Bloodrage": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_pct",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+        },
+        "Blood Rite": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "silence_duration"
+        },
+        "Thirst": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Sanguivore": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "base_heal",
+          "semanticType": "defense.heal.flat",
+          "affects": "sustain",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Rupture": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_cap_amount",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "60/90/120/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "spell_amp",
+        "label": "SPELL AMPLIFICATION:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "max_health_dmg_pct",
+        "label": "MAX HEALTH DMG PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "thirst_threshold_bonus",
+        "label": "THIRST THRESHOLD BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Bloodrage",
+        "key": "base_damage_amp",
+        "label": "BASE DAMAGE AMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "radius",
+        "label": "RITUAL AREA:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "heal",
+        "label": "HEAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "strong_dispel_count",
+        "label": "STRONG DISPEL COUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "delay",
+        "label": "DELAY:",
+        "value": "2.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "delay_plus_castpoint_tooltip",
+        "label": "DELAY PLUS CASTPOINT TOOLTIP:",
+        "value": "2.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Blood Rite",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "min_bonus_pct",
+        "label": "THIRST HEALTH THRESHOLD:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "bonus_movement_speed",
+        "label": "MAX THIRST MOVE SPEED:",
+        "value": "10%/20%/30%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "active_movement_speed",
+        "label": "ACTIVE BONUS MOVE SPEED:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "active_duration",
+        "label": "ACTIVE DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "inactive_penalty_pct",
+        "label": "INACTIVE PENALTY PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "sanguivore_multiplier",
+        "label": "SANGUIVORE MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "max_bonus_pct",
+        "label": "MAX BONUS PCT:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "visibility_threshold_pct",
+        "label": "VISIBILITY HEALTH THRESHOLD:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "invis_threshold_pct",
+        "label": "INVIS THRESHOLD PCT:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Thirst",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "creep_lifesteal_reduction_pct",
+        "label": "CREEP LIFESTEAL REDUCTION PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "deny_lifesteal_reduction_pct",
+        "label": "DENY LIFESTEAL REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "half_bonus_aoe",
+        "label": "HALF HEAL RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "barrier_decay_pct",
+        "label": "BARRIER DECAY PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "max_shield_pct",
+        "label": "MAX SHIELD PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "pure_damage_lifesteal_pct",
+        "label": "PURE DAMAGE LIFESTEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Sanguivore",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "9/10/11",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "movement_damage_pct",
+        "label": "MOVE DAMAGE:",
+        "value": "35%/45%/55%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "hp_pct",
+        "label": "HEALTH DAMAGE:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "knockback",
+        "label": "PUSH DISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Bloodseeker",
+        "ability": "Rupture",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

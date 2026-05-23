@@ -121,7 +121,7 @@
       "name": "Wild Axes",
       "displayName": "野性之斧（Wild Axes）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Summon Razorback",
       "displayName": "召唤刀背兽（Summon Razorback）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,7 +231,7 @@
       "name": "Summon Raptors",
       "displayName": "召唤猛禽（Summon Raptors）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -286,10 +286,10 @@
       "name": "Inner Beast",
       "displayName": "野性之心（Inner Beast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -320,9 +320,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -331,7 +331,7 @@
       "name": "Drums of Slom",
       "displayName": "斯洛姆战鼓（Drums of Slom）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -366,7 +366,7 @@
       "name": "Primal Roar",
       "displayName": "原始咆哮（Primal Roar）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -414,5 +414,533 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Beastmaster",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Wild Axes": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "axe_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Summon Razorback": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "boar_base_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Summon Raptors": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dive_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Inner Beast": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Drums of Slom": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "base_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Primal Roar": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "spread",
+        "label": "SPREAD:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "range",
+        "label": "CAST RANGE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "damage_amp",
+        "label": "DAMAGE AMP PER STACK:",
+        "value": "5%/6%/7%/8%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "min_throw_duration",
+        "label": "MIN THROW DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "max_throw_duration",
+        "label": "MAX THROW DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Wild Axes",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_base_max_health",
+        "label": "BOAR BASE HEALTH:",
+        "value": "300/450/600/750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_total_damage_tooltip",
+        "label": "BOAR ATTACK DAMAGE:",
+        "value": "30/45/60/75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_bonus_damage",
+        "label": "BOAR BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_base_xp_bounty",
+        "label": "BOAR BASE XP BOUNTY:",
+        "value": "60/70/80/90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_base_movespeed",
+        "label": "BOAR BASE MOVESPEED:",
+        "value": "320/330/340/350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_moveslow_tooltip",
+        "label": "BOAR SLOW:",
+        "value": "10%/18%/26%/34%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "boar_poison_duration_tooltip",
+        "label": "BOAR POISON DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Razorback",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_spawn_interval",
+        "label": "HAWK SPAWN INTERVAL:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_max_health",
+        "label": "HAWK BASE HEALTH:",
+        "value": "200/325/450/625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_gold_bounty",
+        "label": "HAWK BASE GOLD BOUNTY:",
+        "value": "30/40/50/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_vision_range",
+        "label": "HAWK BASE VISION RANGE:",
+        "value": "600/650/700/750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_xp_bounty",
+        "label": "HAWK BASE XP BOUNTY:",
+        "value": "40/50/60/70",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_magic_resist",
+        "label": "HAWK BASE MAGIC RESISTANCE:",
+        "value": "30%/40%/50%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "attack_radius",
+        "label": "ATTACK RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_count",
+        "label": "HAWK COUNT:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "dive_root_duration",
+        "label": "ROOT DURATION:",
+        "value": "0.4/0.6/0.8/1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "roaming_radius",
+        "label": "ROAMING RADIUS:",
+        "value": "280",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "roaming_seconds_per_rotation",
+        "label": "ROAMING SECONDS PER ROTATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "hawk_base_attack_interval",
+        "label": "HAWK BASE ATTACK INTERVAL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "min_move_speed",
+        "label": "MIN MOVE SPEED:",
+        "value": "455",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "max_move_speed",
+        "label": "MAX MOVE SPEED:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Summon Raptors",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Inner Beast",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Inner Beast",
+        "key": "attack_speed_per_unit",
+        "label": "BONUS ATTACK SPEED PER UNIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Inner Beast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "radius",
+        "label": "DAMAGE RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "max_stacks",
+        "label": "ATTACKS FOR SHORTEST INTERVAL:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "stack_decay_time",
+        "label": "STACK DECAY TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "min_drum_hit_interval",
+        "label": "SHORTEST DRUM INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "max_drum_hit_interval",
+        "label": "LONGEST DRUM INTERVAL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "heal_pct",
+        "label": "HEAL FROM HEROES:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "creep_damage_pct",
+        "label": "CREEP DAMAGE PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "creep_heal_pct",
+        "label": "HEAL FROM CREEPS:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "aura_radius",
+        "label": "AURA RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "primal_roar_stacks",
+        "label": "PRIMAL ROAR STACKS:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Drums of Slom",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "side_damage",
+        "label": "SIDE DAMAGE:",
+        "value": "150/225/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "damage_radius",
+        "label": "SHOUT WIDTH:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "slow_movement_speed_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "-60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "slow_attack_speed_pct",
+        "label": "ATTACK SLOW:",
+        "value": "-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "push_distance",
+        "label": "PUSH DISTANCE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "push_duration",
+        "label": "PUSH DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3/3.5/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "movement_speed",
+        "label": "MOVEMENT SPEED:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "movement_speed_duration",
+        "label": "MOVEMENT SPEED DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Beastmaster",
+        "ability": "Primal Roar",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

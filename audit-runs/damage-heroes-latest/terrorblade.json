@@ -121,10 +121,10 @@
       "name": "Reflection",
       "displayName": "倒影（Reflection）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         65,
@@ -165,9 +165,61 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Conjure Image",
+      "displayName": "惑幻（Conjure Image）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "summon_attack",
+      "reason": "幻象输出取决于幻象攻击次数和本体攻击力。",
+      "manaCostByAbilityLevel": [
+        50,
+        60,
+        70,
+        80
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "components": [
+        {
+          "id": "Conjure Image:summon_attack:illusion_outgoing_tooltip",
+          "kind": "summon_attack",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "illusion_outgoing_tooltip",
+          "valuesByAbilityLevel": [
+            25,
+            30,
+            35,
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "attackCount * summonAttackDamage",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "runtime_summon_attack_count_times_damage"
+          },
+          "metadata": {
+            "attackCountInput": "illusion_attack_count"
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "summon_attack",
+          "reason": "幻象输出取决于幻象攻击次数和本体攻击力。",
+          "caveats": [
+            "召唤物、守卫或代理单位伤害需要输入攻击次数。"
           ]
         }
       ]
@@ -176,10 +228,10 @@
       "name": "Demon Zeal",
       "displayName": "狂魔（Demon Zeal）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -214,9 +266,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -225,7 +277,7 @@
       "name": "Terror Wave",
       "displayName": "怵潮（Terror Wave）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -268,10 +320,10 @@
       "name": "Sunder",
       "displayName": "魂断（Sunder）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         75,
@@ -310,13 +362,450 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Terrorblade",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Reflection": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Conjure Image": {
+          "status": "implemented",
+          "model": "summon_attack",
+          "attackDamageKey": "illusion_outgoing_tooltip",
+          "attackCountInput": "illusion_attack_count",
+          "semanticType": "summon.attack_damage",
+          "conditionInputs": [
+            "illusion_attack_count",
+            "hero_attack_damage"
+          ],
+          "reason": "幻象输出取决于幻象攻击次数和本体攻击力。"
+        },
+        "Metamorphosis": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Demon Zeal": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "berserk_bonus_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Terror Wave": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "fear_duration"
+        },
+        "Sunder": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Dark Unity": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "illusion_duration",
+        "label": "REFLECTION DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "illusion_outgoing_damage",
+        "label": "ILLUSION OUTGOING DAMAGE:",
+        "value": "-70/-55/-40/-25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "illusion_outgoing_tooltip",
+        "label": "REFLECTION DAMAGE:",
+        "value": "30%/45%/60%/75%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "move_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "15%/20%/25%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "attack_slow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "15/20/25/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "range",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "is_global",
+        "label": "IS GLOBAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "requires_vision",
+        "label": "REQUIRES VISION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Reflection",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "illusion_duration",
+        "label": "ILLUSION DURATION:",
+        "value": "34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "illusion_outgoing_damage",
+        "label": "ILLUSION OUTGOING DAMAGE:",
+        "value": "-75/-70/-65/-60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "illusion_outgoing_tooltip",
+        "label": "ILLUSION DAMAGE:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "illusion_incoming_damage",
+        "label": "ILLUSION INCOMING DAMAGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "illusion_incoming_damage_total_tooltip",
+        "label": "ILLUSION DAMAGE TAKEN:",
+        "value": "250%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "strong_illusion",
+        "label": "STRONG ILLUSION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "show_particle_effect",
+        "label": "SHOW PARTICLE EFFECT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "appear_as_illusion",
+        "label": "APPEAR AS ILLUSION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Conjure Image",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "35/40/45/50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "transformation_time",
+        "label": "TRANSFORMATION TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "base_attack_time",
+        "label": "BASE ATTACK TIME:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "bonus_range",
+        "label": "BONUS RANGE:",
+        "value": "300/350/400/450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "tooltip_attack_range",
+        "label": "ATTACK RANGE:",
+        "value": "450/500/550/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "speed_loss",
+        "label": "SPEED LOSS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "metamorph_aura_tooltip",
+        "label": "ILLUSION AURA RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Metamorphosis",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "berserk_bonus_movement_speed",
+        "label": "BONUS MOVEMENT SPEED:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "hp_regen",
+        "label": "BONUS HEALTH REGEN:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "health_cost_pct",
+        "label": "CURRENT HEALTH COST:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "reflection_pct",
+        "label": "REFLECTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Demon Zeal",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Terror Wave",
+        "key": "scepter_radius",
+        "label": "RADIUS:",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Terror Wave",
+        "key": "scepter_speed",
+        "label": "SCEPTER SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Terror Wave",
+        "key": "scepter_spawn_delay",
+        "label": "SCEPTER SPAWN DELAY:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Terror Wave",
+        "key": "scepter_meta_duration",
+        "label": "METAMORPHOSIS DURATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Sunder",
+        "key": "hit_point_minimum_pct",
+        "label": "MINIMUM HP SWAP:",
+        "value": "35%/30%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Sunder",
+        "key": "ignore_minimum_pct_for_enemies",
+        "label": "IGNORE MINIMUM PCT FOR ENEMIES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Sunder",
+        "key": "ignore_minimum_pct_for_enemies_tooltip",
+        "label": "IGNORE MINIMUM PCT FOR ENEMIES TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Sunder",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Dark Unity",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Dark Unity",
+        "key": "inside_radius_bonus_damage_pct",
+        "label": "DAMAGE BONUS:",
+        "value": "60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Terrorblade",
+        "ability": "Dark Unity",
+        "key": "outside_radius_bonus_damage_pct",
+        "label": "OUTSIDE RADIUS BONUS DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

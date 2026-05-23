@@ -121,10 +121,10 @@
       "name": "Refraction",
       "displayName": "折光（Refraction）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         95
       ],
@@ -159,9 +159,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -170,10 +170,10 @@
       "name": "Meld",
       "displayName": "隐匿（Meld）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         35,
         40,
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,10 +228,10 @@
       "name": "Psionic Projection",
       "displayName": "灵能投射（Psionic Projection）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -266,9 +266,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
@@ -277,10 +277,10 @@
       "name": "Psionic Trap",
       "displayName": "灵能陷阱（Psionic Trap）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         15
       ],
@@ -317,13 +317,357 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Templar Assassin",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Refraction": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "shield_per_instance",
+          "semanticType": "defense.barrier.flat",
+          "affects": "survivability",
+          "stackGroup": "barrier",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Meld": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_armor",
+          "semanticType": "modifier.armor_reduction.flat",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Psi Blades": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Trap": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Psionic Projection": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "extra_damage",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        },
+        "Psionic Trap": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "extra_damage",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        },
+        "Inner Peace": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Templar Assassin",
+        "ability": "Refraction",
+        "key": "instances",
+        "label": "INSTANCES:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Refraction",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "15/30/45/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Refraction",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "17",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Refraction",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Meld",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "50/100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Meld",
+        "key": "bash_duration",
+        "label": "BASH DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Meld",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Meld",
+        "key": "debuff_duration",
+        "label": "ARMOR REDUCTION DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Meld",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "bonus_attack_range",
+        "label": "BONUS ATTACK RANGE:",
+        "value": "50/100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "attack_spill_range",
+        "label": "PSI BLADE RANGE:",
+        "value": "400/500/600/700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "attack_spill_width",
+        "label": "ATTACK SPILL WIDTH:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "attack_spill_pct",
+        "label": "SPLIT AMOUNT:",
+        "value": "70%/80%/90%/100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "meld_strike_spills",
+        "label": "MELD STRIKE SPILLS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psi Blades",
+        "key": "spill_slow_duration",
+        "label": "SPILL SLOW DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Projection",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Projection",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "trap_radius",
+        "label": "TRAP RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "trap_duration",
+        "label": "TRAP DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "max_traps",
+        "label": "MAX TRAPS:",
+        "value": "5/8/11",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "trap_fade_time",
+        "label": "TRAP FADE TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "movement_speed_min",
+        "label": "MIN MOVEMENT SLOW:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "movement_speed_max",
+        "label": "MAX MOVEMENT SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "trap_bonus_damage",
+        "label": "DAMAGE:",
+        "value": "200/300/400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "instant_trap_damage",
+        "label": "INSTANT TRAP DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "damage_tick_rate",
+        "label": "DAMAGE TICK RATE:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "trap_max_charge_duration",
+        "label": "TRAP MAX CHARGE DURATION:",
+        "value": "3.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Psionic Trap",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Inner Peace",
+        "key": "max_attack_range",
+        "label": "MAX ATTACK RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Inner Peace",
+        "key": "max_hp_regen",
+        "label": "MAX HEALTH REGEN:",
+        "value": "2.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Inner Peace",
+        "key": "max_mana_regen",
+        "label": "MAX MANA REGEN:",
+        "value": "2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Inner Peace",
+        "key": "time_until_meditation",
+        "label": "TIME UNTIL MEDITATION:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Templar Assassin",
+        "ability": "Inner Peace",
+        "key": "time_until_max_bonus",
+        "label": "MEDITATION TIME UNTIL MAX BONUS:",
+        "value": "2.05",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

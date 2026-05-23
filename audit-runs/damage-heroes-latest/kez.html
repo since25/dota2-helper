@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>凯（Kez）</h1>
-        <div class="muted">Kez · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Kez · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 8</span>
           <span>组件 8</span>
@@ -53,6 +57,718 @@
       </div>
       <a href="./kez.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>katana_echo_damage</code></td>
+      <td>ATTACK DAMAGE:</td>
+      <td>70%/80%/90%/100%</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>katana_strikes</code></td>
+      <td>ATTACKS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>strike_interval</code></td>
+      <td>ECHO DELAY:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>katana_radius</code></td>
+      <td>SLASH RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>katana_distance</code></td>
+      <td>KATANA DISTANCE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>travel_distance</code></td>
+      <td>TRAVEL DISTANCE:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>tag_slow</code></td>
+      <td>TAG SLOW:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>tag_slow_duration</code></td>
+      <td>TAG SLOW DURATION:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Echo Slash</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>land_distance</code></td>
+      <td>LAND DISTANCE:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>grapple_speed</code></td>
+      <td>GRAPPLE SPEED:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>max_distance_break</code></td>
+      <td>MAX DISTANCE BREAK:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>debuff_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.7/0.8/0.9/1</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>katana_ms_slow_pct</code></td>
+      <td>MOVE SLOW:</td>
+      <td>70%/80%/90%/100%</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>lifesteal_pct</code></td>
+      <td>LIFESTEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Grappling Claw</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>katana_bleed_duration</code></td>
+      <td>DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>katana_bleed_attack_damage_pct</code></td>
+      <td>DAMAGE PER SECOND:</td>
+      <td>3%/6%/9%/12%</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>impale_duration</code></td>
+      <td>IMPALE DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>bleed_as_rupture_pct</code></td>
+      <td>STACKS AS BURST DAMAGE:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>lifesteal_pct</code></td>
+      <td>LIFESTEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>creep_lifesteal_reduction_pct</code></td>
+      <td>CREEP LIFESTEAL REDUCTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>max_stacks</code></td>
+      <td>MAX BURST STACKS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>backstab_angle</code></td>
+      <td>BACKSTAB ANGLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Kazurai Katana</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>katana_base_ms</code></td>
+      <td>KATANA MOVEMENT SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>katana_attack_range</code></td>
+      <td>KATANA ATTACK RANGE:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>katana_base_attack_time</code></td>
+      <td>KATANA BASE ATTACK TIME:</td>
+      <td>1.9</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>katana_agility_bonus_base_damage</code></td>
+      <td>KATANA BONUS AGILITY BASE DAMAGE:</td>
+      <td>16%</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>katana_swap_bonus_damage</code></td>
+      <td>KATANA SWAP BONUS DAMAGE:</td>
+      <td>12%</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>sai_base_ms</code></td>
+      <td>SAI MOVEMENT SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>sai_attack_range</code></td>
+      <td>SAI ATTACK RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>sai_base_attack_time</code></td>
+      <td>SAI BASE ATTACK TIME:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>sai_swap_bonus_movement_speed</code></td>
+      <td>SAI SWAP MOVEMENT SPEED:</td>
+      <td>12%</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>sai_swap_duration</code></td>
+      <td>SAI SWAP SPEED DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>scepter_cooldown_timer</code></td>
+      <td>SCEPTER COOLDOWN TIMER:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Switch Discipline</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>strike_interval</code></td>
+      <td>STRIKE INTERVAL:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>strikes</code></td>
+      <td>STRIKES:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>max_health_damage_pct</code></td>
+      <td>MAX HEALTH AS DAMAGE:</td>
+      <td>2.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>lifesteal_pct</code></td>
+      <td>LIFESTEAL PCT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>illusion_lifesteal_pct</code></td>
+      <td>ILLUSION LIFESTEAL PCT:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>invuln_period</code></td>
+      <td>INVULN PERIOD:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>magic_resist</code></td>
+      <td>MAGIC RESIST:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>hard_dispel</code></td>
+      <td>HARD DISPEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>basic_dispel</code></td>
+      <td>BASIC DISPEL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raptor Dance</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>rush_range</code></td>
+      <td>RUSH RANGE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>rush_speed</code></td>
+      <td>RUSH SPEED:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>slow_resist</code></td>
+      <td>SLOW RESISTANCE:</td>
+      <td>15%/30%/45%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3.75/4.5/5.25/6</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>break_range</code></td>
+      <td>BREAK RANGE:</td>
+      <td>825</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>echo_proc_chance_reduction</code></td>
+      <td>ECHO PROC CHANCE REDUCTION:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Falcon Rush</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Talon Toss</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Talon Toss</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Talon Toss</td>
+      <td><code>attack_factor</code></td>
+      <td>ATTACK FACTOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Talon Toss</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>650/750/850/950</td>
+    </tr>
+  
+    <tr>
+      <td>Talon Toss</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>sai_proc_vuln_chance</code></td>
+      <td>CRITICAL CHANCE:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>base_crit_pct</code></td>
+      <td>CRITICAL DAMAGE:</td>
+      <td>125%/150%/175%/200%</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>vuln_duration</code></td>
+      <td>MARK DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>forward_angle</code></td>
+      <td>FORWARD ANGLE:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>speed_penalty</code></td>
+      <td>SPEED PENALTY:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>parry_duration</code></td>
+      <td>PARRY DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>parry_bonus_crit</code></td>
+      <td>PARRY BONUS CRITICAL STRIKE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>parry_bonus_stun_duration</code></td>
+      <td>PARRY BONUS MARK STUN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>parry_stun_duration</code></td>
+      <td>PARRY STUN DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Shodo Sai</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>blast_radius</code></td>
+      <td>WAVE RADIUS:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>blast_speed</code></td>
+      <td>WAVE SPEED:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>buff_duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>7/8/9</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>blind_duration</code></td>
+      <td>VISION DEBUFF DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>bonus_ms</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>15%/25%/35%</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>basic_dispel</code></td>
+      <td>BASIC DISPEL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>fade_delay</code></td>
+      <td>FADE DELAY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>apply_parry_bonus</code></td>
+      <td>APPLY PARRY BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Raven&#39;s Veil</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Kez&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Echo Slash&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;echo_hero_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Grappling Claw&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Kazurai Katana&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Switch Discipline&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Raptor Dance&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;enemy_max_health&quot;
+      ],
+      &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Falcon Rush&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_echo_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Talon Toss&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;silence_duration&quot;
+    },
+    &quot;Shodo Sai&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;stun_duration&quot;,
+      &quot;semanticType&quot;: &quot;control.stun.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Raven&#39;s Veil&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Cancel&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +840,7 @@
           <div class="muted">Echo Slash · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +893,7 @@
           <div class="muted">Grappling Claw · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +932,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +946,7 @@
           <div class="muted">Kazurai Katana · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +985,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +999,7 @@
           <div class="muted">Raptor Dance · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +1052,7 @@
           <div class="muted">Falcon Rush · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -389,7 +1105,7 @@
           <div class="muted">Talon Toss · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -442,7 +1158,7 @@
           <div class="muted">Shodo Sai · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -481,7 +1197,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: disable_window</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -495,7 +1211,7 @@
           <div class="muted">Raven&#39;s Veil · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -534,7 +1250,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -666,7 +1382,7 @@
       &quot;name&quot;: &quot;Echo Slash&quot;,
       &quot;displayName&quot;: &quot;回音重斩（Echo Slash）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -726,10 +1442,10 @@
       &quot;name&quot;: &quot;Grappling Claw&quot;,
       &quot;displayName&quot;: &quot;制敌爪钩（Grappling Claw）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         40,
         40,
@@ -773,9 +1489,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -784,10 +1500,10 @@
       &quot;name&quot;: &quot;Kazurai Katana&quot;,
       &quot;displayName&quot;: &quot;影武长刀（Kazurai Katana）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         40
       ],
@@ -825,9 +1541,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -836,7 +1552,7 @@
       &quot;name&quot;: &quot;Raptor Dance&quot;,
       &quot;displayName&quot;: &quot;猛禽之舞（Raptor Dance）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;,
@@ -893,7 +1609,7 @@
       &quot;name&quot;: &quot;Falcon Rush&quot;,
       &quot;displayName&quot;: &quot;天隼冲击（Falcon Rush）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
@@ -954,7 +1670,7 @@
       &quot;name&quot;: &quot;Talon Toss&quot;,
       &quot;displayName&quot;: &quot;利爪飞掷（Talon Toss）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -1009,10 +1725,10 @@
       &quot;name&quot;: &quot;Shodo Sai&quot;,
       &quot;displayName&quot;: &quot;翔影之钗（Shodo Sai）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         30,
         20,
@@ -1056,9 +1772,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -1067,10 +1783,10 @@
       &quot;name&quot;: &quot;Raven&#39;s Veil&quot;,
       &quot;displayName&quot;: &quot;渡鸦之纱（Raven&#39;s Veil）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         125,
@@ -1109,15 +1825,784 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Kez&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Echo Slash&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;echo_hero_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Grappling Claw&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Kazurai Katana&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Switch Discipline&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Raptor Dance&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;enemy_max_health&quot;
+          ],
+          &quot;reason&quot;: &quot;最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Falcon Rush&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_echo_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Talon Toss&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;silence_duration&quot;
+        },
+        &quot;Shodo Sai&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;stun_duration&quot;,
+          &quot;semanticType&quot;: &quot;control.stun.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Raven&#39;s Veil&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Cancel&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;katana_echo_damage&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;70%/80%/90%/100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;katana_strikes&quot;,
+        &quot;label&quot;: &quot;ATTACKS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;strike_interval&quot;,
+        &quot;label&quot;: &quot;ECHO DELAY:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;katana_radius&quot;,
+        &quot;label&quot;: &quot;SLASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;katana_distance&quot;,
+        &quot;label&quot;: &quot;KATANA DISTANCE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;travel_distance&quot;,
+        &quot;label&quot;: &quot;TRAVEL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;tag_slow&quot;,
+        &quot;label&quot;: &quot;TAG SLOW:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;tag_slow_duration&quot;,
+        &quot;label&quot;: &quot;TAG SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Echo Slash&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;land_distance&quot;,
+        &quot;label&quot;: &quot;LAND DISTANCE:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;grapple_speed&quot;,
+        &quot;label&quot;: &quot;GRAPPLE SPEED:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;max_distance_break&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE BREAK:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;debuff_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.7/0.8/0.9/1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;katana_ms_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;70%/80%/90%/100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;lifesteal_pct&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Grappling Claw&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;katana_bleed_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;katana_bleed_attack_damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER SECOND:&quot;,
+        &quot;value&quot;: &quot;3%/6%/9%/12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;impale_duration&quot;,
+        &quot;label&quot;: &quot;IMPALE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;bleed_as_rupture_pct&quot;,
+        &quot;label&quot;: &quot;STACKS AS BURST DAMAGE:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;lifesteal_pct&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;creep_lifesteal_reduction_pct&quot;,
+        &quot;label&quot;: &quot;CREEP LIFESTEAL REDUCTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;max_stacks&quot;,
+        &quot;label&quot;: &quot;MAX BURST STACKS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;backstab_angle&quot;,
+        &quot;label&quot;: &quot;BACKSTAB ANGLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Kazurai Katana&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;katana_base_ms&quot;,
+        &quot;label&quot;: &quot;KATANA MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;katana_attack_range&quot;,
+        &quot;label&quot;: &quot;KATANA ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;katana_base_attack_time&quot;,
+        &quot;label&quot;: &quot;KATANA BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;katana_agility_bonus_base_damage&quot;,
+        &quot;label&quot;: &quot;KATANA BONUS AGILITY BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;16%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;katana_swap_bonus_damage&quot;,
+        &quot;label&quot;: &quot;KATANA SWAP BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;sai_base_ms&quot;,
+        &quot;label&quot;: &quot;SAI MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;sai_attack_range&quot;,
+        &quot;label&quot;: &quot;SAI ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;sai_base_attack_time&quot;,
+        &quot;label&quot;: &quot;SAI BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;sai_swap_bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;SAI SWAP MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;sai_swap_duration&quot;,
+        &quot;label&quot;: &quot;SAI SWAP SPEED DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;scepter_cooldown_timer&quot;,
+        &quot;label&quot;: &quot;SCEPTER COOLDOWN TIMER:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Switch Discipline&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;strike_interval&quot;,
+        &quot;label&quot;: &quot;STRIKE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;strikes&quot;,
+        &quot;label&quot;: &quot;STRIKES:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;max_health_damage_pct&quot;,
+        &quot;label&quot;: &quot;MAX HEALTH AS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;2.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;lifesteal_pct&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL PCT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;illusion_lifesteal_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION LIFESTEAL PCT:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;invuln_period&quot;,
+        &quot;label&quot;: &quot;INVULN PERIOD:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;magic_resist&quot;,
+        &quot;label&quot;: &quot;MAGIC RESIST:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;hard_dispel&quot;,
+        &quot;label&quot;: &quot;HARD DISPEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;basic_dispel&quot;,
+        &quot;label&quot;: &quot;BASIC DISPEL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raptor Dance&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;rush_range&quot;,
+        &quot;label&quot;: &quot;RUSH RANGE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;rush_speed&quot;,
+        &quot;label&quot;: &quot;RUSH SPEED:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;slow_resist&quot;,
+        &quot;label&quot;: &quot;SLOW RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;15%/30%/45%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3.75/4.5/5.25/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;break_range&quot;,
+        &quot;label&quot;: &quot;BREAK RANGE:&quot;,
+        &quot;value&quot;: &quot;825&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;echo_proc_chance_reduction&quot;,
+        &quot;label&quot;: &quot;ECHO PROC CHANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Falcon Rush&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Talon Toss&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Talon Toss&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Talon Toss&quot;,
+        &quot;key&quot;: &quot;attack_factor&quot;,
+        &quot;label&quot;: &quot;ATTACK FACTOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Talon Toss&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;650/750/850/950&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Talon Toss&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;sai_proc_vuln_chance&quot;,
+        &quot;label&quot;: &quot;CRITICAL CHANCE:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;base_crit_pct&quot;,
+        &quot;label&quot;: &quot;CRITICAL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;125%/150%/175%/200%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;vuln_duration&quot;,
+        &quot;label&quot;: &quot;MARK DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;forward_angle&quot;,
+        &quot;label&quot;: &quot;FORWARD ANGLE:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;speed_penalty&quot;,
+        &quot;label&quot;: &quot;SPEED PENALTY:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;parry_duration&quot;,
+        &quot;label&quot;: &quot;PARRY DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;parry_bonus_crit&quot;,
+        &quot;label&quot;: &quot;PARRY BONUS CRITICAL STRIKE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;parry_bonus_stun_duration&quot;,
+        &quot;label&quot;: &quot;PARRY BONUS MARK STUN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;parry_stun_duration&quot;,
+        &quot;label&quot;: &quot;PARRY STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Shodo Sai&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;blast_radius&quot;,
+        &quot;label&quot;: &quot;WAVE RADIUS:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;blast_speed&quot;,
+        &quot;label&quot;: &quot;WAVE SPEED:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;7/8/9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;blind_duration&quot;,
+        &quot;label&quot;: &quot;VISION DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;bonus_ms&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;15%/25%/35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;basic_dispel&quot;,
+        &quot;label&quot;: &quot;BASIC DISPEL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;fade_delay&quot;,
+        &quot;label&quot;: &quot;FADE DELAY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;apply_parry_bonus&quot;,
+        &quot;label&quot;: &quot;APPLY PARRY BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Kez&quot;,
+        &quot;ability&quot;: &quot;Raven&#39;s Veil&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

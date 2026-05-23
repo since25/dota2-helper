@@ -121,7 +121,7 @@
       "name": "Decay",
       "displayName": "腐朽（Decay）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
@@ -181,7 +181,7 @@
       "name": "Soul Rip",
       "displayName": "噬魂（Soul Rip）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -236,7 +236,7 @@
       "name": "Tombstone",
       "displayName": "墓碑（Tombstone）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "conditional",
       "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
@@ -288,10 +288,10 @@
       "name": "Flesh Golem",
       "displayName": "血肉傀儡（Flesh Golem）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         125,
@@ -332,13 +332,390 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Undying",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Decay": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "decay_damage",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "hero_attribute"
+          ],
+          "conditionInputs": [
+            "hero_attribute"
+          ],
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+        },
+        "Soul Rip": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_per_unit",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "strength_share_duration"
+        },
+        "Tombstone": {
+          "status": "reference_only",
+          "model": "conditional",
+          "valueKey": "zombie_damage_tooltip",
+          "semanticType": "damage.death_trigger",
+          "conditionInputs": [
+            "trigger_condition"
+          ],
+          "condition": "需要触发条件成立才造成伤害。",
+          "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。"
+        },
+        "Flesh Golem": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_amp",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "str_steal",
+        "label": "STRENGTH STEAL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "decay_duration",
+        "label": "STEAL DURATION:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "str_scale_up",
+        "label": "STR SCALE UP:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "creep_damage_multiplier",
+        "label": "CREEP DAMAGE MULTIPLIER:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "shard_buff_duration",
+        "label": "SHARD BUFF DURATION:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "21/24/27/30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Decay",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "max_units",
+        "label": "MAX UNITS:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "radius",
+        "label": "RIP RADIUS:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "tombstone_heal",
+        "label": "TOMBSTONE HEAL:",
+        "value": "4/8/12/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "strength_share_percent",
+        "label": "STRENGTH GAIN:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "strength_share_model_scale",
+        "label": "STRENGTH SHARE MODEL SCALE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Soul Rip",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "tombstone_health",
+        "label": "TOMBSTONE HEALTH:",
+        "value": "20/24/28/32",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "hits_to_destroy_tooltip",
+        "label": "ATTACKS TO DESTROY:",
+        "value": "5/6/7/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "duration",
+        "label": "TOMBSTONE DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "radius",
+        "label": "ZOMBIE SPAWN RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "health_threshold_pct_tooltip",
+        "label": "HEALTH THRESHOLD PCT TOOLTIP:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "zombie_interval",
+        "label": "ZOMBIE SPAWN INTERVAL:",
+        "value": "4/3.6/3.2/2.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "zombie_health",
+        "label": "ZOMBIE HEALTH:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "bunker_units",
+        "label": "BUNKER UNITS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "bunker_heal_pct",
+        "label": "BUNKER HEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "tombstone_grab_radius",
+        "label": "TOMBSTONE GRAB RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "tombstone_bunker_cd",
+        "label": "TOMBSTONE BUNKER CD:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "tombstone_stun_penalty",
+        "label": "TOMBSTONE STUN PENALTY:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "zombie_damage_interval",
+        "label": "ZOMBIE DAMAGE INTERVAL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Tombstone",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "slow",
+        "label": "SLOW ON ATTACK:",
+        "value": "30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "slow_duration",
+        "label": "DAMAGE AMP DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "str_percentage",
+        "label": "STRENGTH MULTIPLIER:",
+        "value": "40%/50%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "movement_bonus",
+        "label": "BONUS MOVESPEED:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "spawn_zombie_on_attack",
+        "label": "SPAWN ZOMBIE ON ATTACK:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "zombie_duration",
+        "label": "ZOMBIE DURATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Undying",
+        "ability": "Flesh Golem",
+        "key": "zombie_spawn_padding",
+        "label": "ZOMBIE SPAWN PADDING:",
+        "value": "36",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

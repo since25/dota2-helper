@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>力丸（Riki）</h1>
-        <div class="muted">Riki · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Riki · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 3</span>
           <span>组件 3</span>
@@ -53,6 +57,306 @@
       </div>
       <a href="./riki.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>miss_rate</code></td>
+      <td>MISS RATE:</td>
+      <td>40%/50%/60%/70%</td>
+    </tr>
+  
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>block_targeting</code></td>
+      <td>BLOCK TARGETING:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>armor_reduction</code></td>
+      <td>ARMOR REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Smoke Screen</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Blink Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600/700/800/900</td>
+    </tr>
+  
+    <tr>
+      <td>Blink Strike</td>
+      <td><code>slow</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Blink Strike</td>
+      <td><code>slow_pct_tooltip</code></td>
+      <td>SLOW PCT TOOLTIP:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Blink Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>425</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>attack_count</code></td>
+      <td>ATTACK INTERVALS:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>speed_per_attack</code></td>
+      <td>SPEED PER ATTACK:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>interval_targets</code></td>
+      <td>INTERVAL TARGETS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>agility_pct</code></td>
+      <td>AGILITY BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>dispel</code></td>
+      <td>DISPEL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>cd_per_kill</code></td>
+      <td>CD PER KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>creep_agility_multiplier</code></td>
+      <td>CREEP AGILITY MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Tricks of the Trade</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>damage_multiplier</code></td>
+      <td>AGILITY MULTIPLIER:</td>
+      <td>0.55</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>ally_multiplier</code></td>
+      <td>ALLY MULTIPLIER:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>backstab_angle</code></td>
+      <td>BACKSTAB ANGLE:</td>
+      <td>105</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>bonus_xp_kill</code></td>
+      <td>BONUS XP HERO KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>bonus_xp_assist</code></td>
+      <td>BONUS XP ASSIST:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Backstab</td>
+      <td><code>bonus_xp_assist_other</code></td>
+      <td>BONUS XP WARD/COURIER KILL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Cloak and Dagger</td>
+      <td><code>fade_delay</code></td>
+      <td>FADE DELAY:</td>
+      <td>4/3/2</td>
+    </tr>
+  
+    <tr>
+      <td>Cloak and Dagger</td>
+      <td><code>bonus_xp_kill</code></td>
+      <td>BONUS XP HERO KILL:</td>
+      <td>130/260/390</td>
+    </tr>
+  
+    <tr>
+      <td>Cloak and Dagger</td>
+      <td><code>bonus_xp_assist</code></td>
+      <td>BONUS XP ASSIST:</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Riki&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Smoke Screen&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Blink Strike&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;bonus_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false,
+      &quot;reason&quot;: &quot;闪烁突袭附加一次攻击伤害，需结合英雄攻击力。&quot;
+    },
+    &quot;Tricks of the Trade&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attack_damage&quot;,
+        &quot;attack_count&quot;
+      ],
+      &quot;defaultAttackCount&quot;: 1,
+      &quot;defaultIncluded&quot;: false
+    },
+    &quot;Backstab&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Cloak and Dagger&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +428,7 @@
           <div class="muted">Smoke Screen · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +467,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,9 +481,9 @@
           <div class="muted">Blink Strike · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">attack_modifier</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -203,20 +507,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Blink Strike:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Blink Strike:attack_modifier:bonus_damage</code>
+          <div class="muted">bonus_damage</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">attack_modifier</span>
+          <span class="pill secondary">attack_modifier</span>
+          <div class="muted">implemented</div>
         </td>
-        <td>Unknown</td>
-        <td>600</td><td>700</td><td>800</td><td>900</td>
+        <td>Physical</td>
+        <td>15</td><td>30</td><td>45</td><td>60</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><div><code>defaultAttackCount</code>: 1</div><div><code>attackFactorPctByAbilityLevel</code>: </div><div><code>procChancePctByAbilityLevel</code>: </div></td>
+        <td>attack_modifier</td>
+        <td><ul><li>闪烁突袭附加一次攻击伤害，需结合英雄攻击力。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +534,7 @@
           <div class="muted">Tricks of the Trade · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">attack_modifier</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -401,10 +705,10 @@
       &quot;name&quot;: &quot;Smoke Screen&quot;,
       &quot;displayName&quot;: &quot;烟幕（Smoke Screen）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75
       ],
@@ -442,9 +746,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -453,10 +757,10 @@
       &quot;name&quot;: &quot;Blink Strike&quot;,
       &quot;displayName&quot;: &quot;闪烁突袭（Blink Strike）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;reason&quot;: &quot;闪烁突袭附加一次攻击伤害，需结合英雄攻击力。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         55,
@@ -471,38 +775,34 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Blink Strike:debuff_reference:abilitycastrange&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Blink Strike:attack_modifier:bonus_damage&quot;,
+          &quot;kind&quot;: &quot;attack_modifier&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
+          &quot;label&quot;: &quot;bonus_damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            600,
-            700,
-            800,
-            900
+            15,
+            30,
+            45,
+            60
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;attack_modifier&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;defaultAttackCount&quot;: 1,
+            &quot;attackFactorPctByAbilityLevel&quot;: [],
+            &quot;procChancePctByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;reason&quot;: &quot;闪烁突袭附加一次攻击伤害，需结合英雄攻击力。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;闪烁突袭附加一次攻击伤害，需结合英雄攻击力。&quot;
           ]
         }
       ]
@@ -511,7 +811,7 @@
       &quot;name&quot;: &quot;Tricks of the Trade&quot;,
       &quot;displayName&quot;: &quot;绝杀秘技（Tricks of the Trade）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;attack_modifier&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +862,312 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Riki&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Smoke Screen&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Blink Strike&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;bonus_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false,
+          &quot;reason&quot;: &quot;闪烁突袭附加一次攻击伤害，需结合英雄攻击力。&quot;
+        },
+        &quot;Tricks of the Trade&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attack_damage&quot;,
+            &quot;attack_count&quot;
+          ],
+          &quot;defaultAttackCount&quot;: 1,
+          &quot;defaultIncluded&quot;: false
+        },
+        &quot;Backstab&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Cloak and Dagger&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;miss_rate&quot;,
+        &quot;label&quot;: &quot;MISS RATE:&quot;,
+        &quot;value&quot;: &quot;40%/50%/60%/70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;block_targeting&quot;,
+        &quot;label&quot;: &quot;BLOCK TARGETING:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;armor_reduction&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Smoke Screen&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Blink Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600/700/800/900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Blink Strike&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Blink Strike&quot;,
+        &quot;key&quot;: &quot;slow_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;SLOW PCT TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Blink Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;attack_count&quot;,
+        &quot;label&quot;: &quot;ATTACK INTERVALS:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;speed_per_attack&quot;,
+        &quot;label&quot;: &quot;SPEED PER ATTACK:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;interval_targets&quot;,
+        &quot;label&quot;: &quot;INTERVAL TARGETS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;agility_pct&quot;,
+        &quot;label&quot;: &quot;AGILITY BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;dispel&quot;,
+        &quot;label&quot;: &quot;DISPEL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;cd_per_kill&quot;,
+        &quot;label&quot;: &quot;CD PER KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;creep_agility_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP AGILITY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Tricks of the Trade&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;damage_multiplier&quot;,
+        &quot;label&quot;: &quot;AGILITY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0.55&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;ally_multiplier&quot;,
+        &quot;label&quot;: &quot;ALLY MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;backstab_angle&quot;,
+        &quot;label&quot;: &quot;BACKSTAB ANGLE:&quot;,
+        &quot;value&quot;: &quot;105&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;bonus_xp_kill&quot;,
+        &quot;label&quot;: &quot;BONUS XP HERO KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;bonus_xp_assist&quot;,
+        &quot;label&quot;: &quot;BONUS XP ASSIST:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Backstab&quot;,
+        &quot;key&quot;: &quot;bonus_xp_assist_other&quot;,
+        &quot;label&quot;: &quot;BONUS XP WARD/COURIER KILL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Cloak and Dagger&quot;,
+        &quot;key&quot;: &quot;fade_delay&quot;,
+        &quot;label&quot;: &quot;FADE DELAY:&quot;,
+        &quot;value&quot;: &quot;4/3/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Cloak and Dagger&quot;,
+        &quot;key&quot;: &quot;bonus_xp_kill&quot;,
+        &quot;label&quot;: &quot;BONUS XP HERO KILL:&quot;,
+        &quot;value&quot;: &quot;130/260/390&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Riki&quot;,
+        &quot;ability&quot;: &quot;Cloak and Dagger&quot;,
+        &quot;key&quot;: &quot;bonus_xp_assist&quot;,
+        &quot;label&quot;: &quot;BONUS XP ASSIST:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

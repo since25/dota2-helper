@@ -121,7 +121,7 @@
       "name": "Arc Lightning",
       "displayName": "弧形闪电（Arc Lightning）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -169,7 +169,7 @@
       "name": "Lightning Bolt",
       "displayName": "雷击（Lightning Bolt）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -224,7 +224,7 @@
       "name": "Heavenly Jump",
       "displayName": "神圣一跳（Heavenly Jump）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -261,10 +261,10 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              0.5,
-              0.5,
-              0.5,
-              0.5
+              1.4,
+              1.4,
+              1.4,
+              1.4
             ]
           },
           "source": "curated",
@@ -279,10 +279,10 @@
       "name": "Nimbus",
       "displayName": "雷云（Nimbus）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "model": "state_scaling",
+      "reason": "雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。",
       "manaCostByAbilityLevel": [
         275
       ],
@@ -291,35 +291,37 @@
       ],
       "components": [
         {
-          "id": "Nimbus:debuff_reference:abilitycastrange",
-          "kind": "debuff_reference",
+          "id": "Nimbus:state_scaling:cloud_bolt_interval",
+          "kind": "state_scaling",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "damageType": "Magical",
+          "label": "cloud_bolt_interval",
           "valuesByAbilityLevel": [
-            0
+            2.5
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "state_scaling"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
             "condition": "",
-            "requiredInputs": [],
+            "requiredInputs": [
+              "nimbus_bolt_count"
+            ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
           },
           "source": "curated",
           "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "model": "state_scaling",
+          "reason": "雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。"
           ]
         }
       ]
@@ -328,10 +330,10 @@
       "name": "Lightning Hands",
       "displayName": "霹雳之手（Lightning Hands）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "model": "state_scaling",
+      "reason": "霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -340,35 +342,38 @@
       ],
       "components": [
         {
-          "id": "Lightning Hands:debuff_reference:attack_speed_bonus",
-          "kind": "debuff_reference",
+          "id": "Lightning Hands:state_scaling:arc_lightning_damage_pct",
+          "kind": "state_scaling",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
-          "label": "attack_speed_bonus",
+          "damageType": "Magical",
+          "label": "arc_lightning_damage_pct",
           "valuesByAbilityLevel": [
-            30
+            50
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "state_scaling"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "attack_speed",
-            "affects": "attack_speed",
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
             "condition": "",
-            "requiredInputs": [],
+            "requiredInputs": [
+              "attack_count",
+              "arc_lightning_damage"
+            ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
           },
           "source": "curated",
           "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "model": "state_scaling",
+          "reason": "霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。"
           ]
         }
       ]
@@ -377,7 +382,7 @@
       "name": "Thundergod's Wrath",
       "displayName": "雷神之怒（Thundergod's Wrath）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -423,7 +428,456 @@
           "caveats": []
         }
       ]
+    },
+    {
+      "name": "Static Field",
+      "displayName": "静电场（Static Field）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Static Field:state_scaling:damage_health_pct",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_health_pct",
+          "valuesByAbilityLevel": [
+            3.45
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "enemy_current_health",
+              "spell_hit_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。",
+          "caveats": [
+            "静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。"
+          ]
+        }
+      ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Zeus",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed static field, arc lightning, lightning bolt, jump, hands, and ultimate fields against Dotabuff snapshot."
+        ]
+      },
+      "abilities": {
+        "Arc Lightning": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "arc_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Lightning Bolt": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "sight_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Heavenly Jump": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Nimbus": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "cloud_bolt_interval",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "nimbus_bolt_count"
+          ],
+          "conditionInputs": [
+            "nimbus_bolt_count"
+          ],
+          "reason": "雷云通过周期性雷击造成伤害，单次雷击复用雷击模型，需输入触发次数。"
+        },
+        "Lightning Hands": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "arc_lightning_damage_pct",
+          "semanticType": "damage.source_damage_percent",
+          "requiredInputs": [
+            "attack_count",
+            "arc_lightning_damage"
+          ],
+          "conditionInputs": [
+            "attack_count",
+            "arc_lightning_damage"
+          ],
+          "reason": "霹雳之手按弧形闪电伤害百分比随普攻触发，需要输入攻击次数。"
+        },
+        "Thundergod's Wrath": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "durationKey": "sight_duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Static Field": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_health_pct",
+          "semanticType": "damage.percent_current_health",
+          "requiredInputs": [
+            "enemy_current_health",
+            "spell_hit_count"
+          ],
+          "conditionInputs": [
+            "enemy_current_health",
+            "spell_hit_count"
+          ],
+          "reason": "静电场按敌方当前生命百分比结算，需要结合目标当前血量和触发次数。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "radius",
+        "label": "JUMP RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "jump_count",
+        "label": "JUMPS:",
+        "value": "5/7/9/11",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "has_unlimited_jumps",
+        "label": "HAS UNLIMITED JUMPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "jump_delay",
+        "label": "JUMP DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Arc Lightning",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "true_sight_radius",
+        "label": "TRUE SIGHT RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "sight_radius_day",
+        "label": "SIGHT RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "sight_radius_night",
+        "label": "SIGHT RADIUS NIGHT:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "spread_aoe",
+        "label": "SPREAD AOE:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "ministun_duration",
+        "label": "MINISTUN DURATION:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "creep_damage_bonus_pct",
+        "label": "CREEP DAMAGE BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700/750/800/850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Bolt",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "hop_distance",
+        "label": "LEAP DISTANCE:",
+        "value": "375/450/525/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "hop_duration",
+        "label": "HOP DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "hop_height",
+        "label": "HOP HEIGHT:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "range",
+        "label": "SHOCK RANGE:",
+        "value": "700/800/900/1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "move_slow",
+        "label": "MOVE SPEED SLOW:",
+        "value": "80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "aspd_slow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "targets",
+        "label": "TARGETS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Heavenly Jump",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "26/22/18/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "cloud_duration",
+        "label": "DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "cloud_radius",
+        "label": "RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "hits_to_kill_tooltip",
+        "label": "HITS TO DESTROY:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "creep_hits_to_kill_tooltip",
+        "label": "CREEP HITS TO DESTROY:",
+        "value": "16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "cloud_bounty_tooltip",
+        "label": "CLOUD BOUNTY TOOLTIP:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Nimbus",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Hands",
+        "key": "attack_speed_bonus",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Hands",
+        "key": "arc_lightning_damage_illusion_pct",
+        "label": "ARC LIGHTNING DAMAGE ILLUSION PCT:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Lightning Hands",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Thundergod's Wrath",
+        "key": "sight_radius_day",
+        "label": "TRUE SIGHT RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Thundergod's Wrath",
+        "key": "sight_radius_night",
+        "label": "SIGHT RADIUS NIGHT:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Zeus",
+        "ability": "Thundergod's Wrath",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

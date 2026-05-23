@@ -121,7 +121,7 @@
       "name": "Boulder Smash",
       "displayName": "巨石冲击（Boulder Smash）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Rolling Boulder",
       "displayName": "巨石翻滚（Rolling Boulder）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,7 +231,7 @@
       "name": "Geomagnetic Grip",
       "displayName": "地磁之握（Geomagnetic Grip）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -286,7 +286,7 @@
       "name": "Stone Remnant",
       "displayName": "残岩（Stone Remnant）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -337,7 +337,7 @@
       "name": "Enchant Remnant",
       "displayName": "残岩魔咒（Enchant Remnant）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -380,7 +380,7 @@
       "name": "Magnetize",
       "displayName": "磁化（Magnetize）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -434,5 +434,546 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Earth Spirit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Boulder Smash": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "rock_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Rolling Boulder": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Geomagnetic Grip": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "rock_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Stone Remnant": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "attack_damage_per_stone",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Enchant Remnant": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Magnetize": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "damage_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "rock_search_aoe",
+        "label": "REMNANT SMASH RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "move_slow",
+        "label": "SLOW AMOUNT:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "speed",
+        "label": "TRAVEL SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "unit_distance",
+        "label": "DISTANCE:",
+        "value": "500/600/700/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "rock_distance",
+        "label": "DISTANCE (REMNANT):",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "remnant_smash_radius_tooltip",
+        "label": "REMNANT SMASH RADIUS TOOLTIP:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "creep_multiplier",
+        "label": "CREEP MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Boulder Smash",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "160",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "rock_speed",
+        "label": "SPEED (REMNANT):",
+        "value": "1600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "distance",
+        "label": "DISTANCE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "rock_distance_multiplier",
+        "label": "DISTANCE MULTIPLIER (REMNANT):",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "delay",
+        "label": "DELAY:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "rock_bonus_duration",
+        "label": "ROCK BONUS STUN DURATION:",
+        "value": "0.3/0.5/0.7/0.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "damage_str",
+        "label": "DAMAGE STR:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "destroy_stone",
+        "label": "DESTROY STONE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "can_roll_over_allied_heroes",
+        "label": "CAN ROLL OVER ALLIED HEROES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Rolling Boulder",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "pull_units_per_second",
+        "label": "REMNANT PULL SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "pull_units_per_second_heroes",
+        "label": "ALLIED UNIT PULL SPEED:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "cast_range_heroes",
+        "label": "ALLIED UNIT CAST RANGE:",
+        "value": "550/600/650/700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "total_pull_distance",
+        "label": "TOTAL PULL DISTANCE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000/1100/1200/1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Geomagnetic Grip",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "polarization_distance",
+        "label": "POLARIZATION DISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "rolling_offset_distance",
+        "label": "ROLLING OFFSET DISTANCE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "attack_damage_per_stone_used",
+        "label": "ATTACK DAMAGE PER STONE USED:",
+        "value": "7.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "buff_duration",
+        "label": "BUFF DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Stone Remnant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Enchant Remnant",
+        "key": "aoe",
+        "label": "SHATTER RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Enchant Remnant",
+        "key": "ally_cast_range",
+        "label": "CAST RANGE ON ALLIES:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Enchant Remnant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Enchant Remnant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "cast_radius",
+        "label": "RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "rock_search_radius",
+        "label": "REMNANT REFRESH/EXPLOSION RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "rock_explosion_radius",
+        "label": "ROCK EXPLOSION RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "rock_explosion_delay",
+        "label": "ROCK EXPLOSION DELAY:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "silence_duration",
+        "label": "SILENCE DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "magnetized_rocks_buff_self",
+        "label": "MAGNETIZED ROCKS BUFF SELF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "magnetized_rocks_buff_self_duration",
+        "label": "MAGNETIZED ROCKS BUFF SELF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "magnetized_rocks_bonus_self_damage",
+        "label": "MAGNETIZED ROCKS BONUS SELF DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "magnetize_self",
+        "label": "MAGNETIZE SELF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Earth Spirit",
+        "ability": "Magnetize",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

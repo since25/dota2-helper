@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>森海飞霞（Hoodwink）</h1>
-        <div class="muted">Hoodwink · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Hoodwink · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,553 @@
       </div>
       <a href="./hoodwink.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>bonus_range</code></td>
+      <td>BONUS RANGE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>base_damage_pct</code></td>
+      <td>BASE DAMAGE:</td>
+      <td>80%</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>bounce_count</code></td>
+      <td>BOUNCE COUNT:</td>
+      <td>2/3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>bounce_range</code></td>
+      <td>BOUNCE RANGE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>bounce_delay</code></td>
+      <td>BOUNCE DELAY:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>2200</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>can_bounce_off_of_trees</code></td>
+      <td>CAN BOUNCE OFF OF TREES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>bounces_after_tree_bounce</code></td>
+      <td>BOUNCES AFTER TREE BOUNCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>675/700/725/750</td>
+    </tr>
+  
+    <tr>
+      <td>Acorn Shot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>trap_radius</code></td>
+      <td>RADIUS:</td>
+      <td>265</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>visual_height</code></td>
+      <td>VISUAL HEIGHT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Bushwhack</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>redirect_chance</code></td>
+      <td>REDIRECT CHANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>movement_speed_pct</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>20%/25%/30%/35%</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>duration</code></td>
+      <td>BUFF DURATION:</td>
+      <td>3.5/4/4.5/5</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>evasion_multiplier</code></td>
+      <td>EVASION MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>charge_restore_time</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>30/24/18/12</td>
+    </tr>
+  
+    <tr>
+      <td>Scurry</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>duration</code></td>
+      <td>ILLUSION DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>decoy_detonate_radius</code></td>
+      <td>BUSHWHACK RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>decoy_stun_duration</code></td>
+      <td>BUSHWHACK DURATION:</td>
+      <td>1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>images_do_damage_percent</code></td>
+      <td>IMAGES DO DAMAGE PERCENT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>images_take_damage_percent</code></td>
+      <td>IMAGES TAKE DAMAGE PERCENT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>15%</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>sharpshooter_damage_pct</code></td>
+      <td>SHARPSHOOTER DAMAGE:</td>
+      <td>60%</td>
+    </tr>
+  
+    <tr>
+      <td>Decoy</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>slow_pct</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>25%</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>spell_amp</code></td>
+      <td>INCOMING SPELL DAMAGE AMP:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>status_resistance</code></td>
+      <td>STATUS RESISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>spread</code></td>
+      <td>SPREAD:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>min_throw_duration</code></td>
+      <td>MIN THROW DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>max_throw_duration</code></td>
+      <td>MAX THROW DURATION:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Hunter&#39;s Boomerang</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>arrow_speed</code></td>
+      <td>ARROW SPEED:</td>
+      <td>2200</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>arrow_width</code></td>
+      <td>ARROW WIDTH:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>arrow_range</code></td>
+      <td>ARROW RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>arrow_vision</code></td>
+      <td>ARROW VISION:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>max_charge_time</code></td>
+      <td>MAX WIND-UP TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>recoil_distance</code></td>
+      <td>RECOIL DISTANCE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>recoil_height</code></td>
+      <td>RECOIL HEIGHT:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>recoil_duration</code></td>
+      <td>RECOIL DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>max_slow_debuff_duration</code></td>
+      <td>MAX DEBUFF DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>misfire_time</code></td>
+      <td>MISFIRE TIME:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>slow_move_pct</code></td>
+      <td>MOVE SLOW:</td>
+      <td>30%/40%/50%</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>vision_along_indicator</code></td>
+      <td>VISION ALONG INDICATOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>vision_radius_buffer</code></td>
+      <td>VISION RADIUS BUFFER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>base_power</code></td>
+      <td>BASE POWER:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>quick_draw_tooltip_pct_cooldown_reduction</code></td>
+      <td>QUICK DRAW TOOLTIP PCT COOLDOWN REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>quick_draw_tooltip_efficacy_pct</code></td>
+      <td>QUICK DRAW TOOLTIP EFFICACY PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Sharpshooter</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Hoodwink&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Acorn Shot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;acorn_shot_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;debuff_duration&quot;
+    },
+    &quot;Bushwhack&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;total_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;debuff_duration&quot;
+    },
+    &quot;Scurry&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Decoy&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Hunter&#39;s Boomerang&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;mark_duration&quot;
+    },
+    &quot;Sharpshooter&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;max_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;End Sharpshooter&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +675,7 @@
           <div class="muted">Acorn Shot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +728,7 @@
           <div class="muted">Bushwhack · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +781,7 @@
           <div class="muted">Scurry · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +820,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +834,7 @@
           <div class="muted">Decoy · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +873,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +887,7 @@
           <div class="muted">Hunter&#39;s Boomerang · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +940,7 @@
           <div class="muted">Sharpshooter · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -560,7 +1111,7 @@
       &quot;name&quot;: &quot;Acorn Shot&quot;,
       &quot;displayName&quot;: &quot;爆栗出击（Acorn Shot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -615,7 +1166,7 @@
       &quot;name&quot;: &quot;Bushwhack&quot;,
       &quot;displayName&quot;: &quot;野地奇袭（Bushwhack）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -670,10 +1221,10 @@
       &quot;name&quot;: &quot;Scurry&quot;,
       &quot;displayName&quot;: &quot;密林奔走（Scurry）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         35
       ],
@@ -708,9 +1259,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -719,10 +1270,10 @@
       &quot;name&quot;: &quot;Decoy&quot;,
       &quot;displayName&quot;: &quot;诱敌奇术（Decoy）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60
       ],
@@ -757,9 +1308,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -768,7 +1319,7 @@
       &quot;name&quot;: &quot;Hunter&#39;s Boomerang&quot;,
       &quot;displayName&quot;: &quot;猎手旋镖（Hunter&#39;s Boomerang）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -811,7 +1362,7 @@
       &quot;name&quot;: &quot;Sharpshooter&quot;,
       &quot;displayName&quot;: &quot;一箭穿心（Sharpshooter）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -865,7 +1416,592 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Hoodwink&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Acorn Shot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;acorn_shot_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;
+        },
+        &quot;Bushwhack&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;total_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;
+        },
+        &quot;Scurry&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Decoy&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Hunter&#39;s Boomerang&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;mark_duration&quot;
+        },
+        &quot;Sharpshooter&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;max_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;End Sharpshooter&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;bonus_range&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;base_damage_pct&quot;,
+        &quot;label&quot;: &quot;BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;80%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;bounce_count&quot;,
+        &quot;label&quot;: &quot;BOUNCE COUNT:&quot;,
+        &quot;value&quot;: &quot;2/3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;bounce_range&quot;,
+        &quot;label&quot;: &quot;BOUNCE RANGE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;bounce_delay&quot;,
+        &quot;label&quot;: &quot;BOUNCE DELAY:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;2200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;can_bounce_off_of_trees&quot;,
+        &quot;label&quot;: &quot;CAN BOUNCE OFF OF TREES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;bounces_after_tree_bounce&quot;,
+        &quot;label&quot;: &quot;BOUNCES AFTER TREE BOUNCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;675/700/725/750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Acorn Shot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;trap_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;265&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;visual_height&quot;,
+        &quot;label&quot;: &quot;VISUAL HEIGHT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Bushwhack&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;redirect_chance&quot;,
+        &quot;label&quot;: &quot;REDIRECT CHANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;20%/25%/30%/35%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;BUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5/4/4.5/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;evasion_multiplier&quot;,
+        &quot;label&quot;: &quot;EVASION MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;charge_restore_time&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;30/24/18/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Scurry&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;decoy_detonate_radius&quot;,
+        &quot;label&quot;: &quot;BUSHWHACK RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;decoy_stun_duration&quot;,
+        &quot;label&quot;: &quot;BUSHWHACK DURATION:&quot;,
+        &quot;value&quot;: &quot;1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;images_do_damage_percent&quot;,
+        &quot;label&quot;: &quot;IMAGES DO DAMAGE PERCENT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;images_take_damage_percent&quot;,
+        &quot;label&quot;: &quot;IMAGES TAKE DAMAGE PERCENT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;sharpshooter_damage_pct&quot;,
+        &quot;label&quot;: &quot;SHARPSHOOTER DAMAGE:&quot;,
+        &quot;value&quot;: &quot;60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Decoy&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;spell_amp&quot;,
+        &quot;label&quot;: &quot;INCOMING SPELL DAMAGE AMP:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;status_resistance&quot;,
+        &quot;label&quot;: &quot;STATUS RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;spread&quot;,
+        &quot;label&quot;: &quot;SPREAD:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;min_throw_duration&quot;,
+        &quot;label&quot;: &quot;MIN THROW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;max_throw_duration&quot;,
+        &quot;label&quot;: &quot;MAX THROW DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Hunter&#39;s Boomerang&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;arrow_speed&quot;,
+        &quot;label&quot;: &quot;ARROW SPEED:&quot;,
+        &quot;value&quot;: &quot;2200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;arrow_width&quot;,
+        &quot;label&quot;: &quot;ARROW WIDTH:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;arrow_range&quot;,
+        &quot;label&quot;: &quot;ARROW RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;arrow_vision&quot;,
+        &quot;label&quot;: &quot;ARROW VISION:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;max_charge_time&quot;,
+        &quot;label&quot;: &quot;MAX WIND-UP TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;recoil_distance&quot;,
+        &quot;label&quot;: &quot;RECOIL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;recoil_height&quot;,
+        &quot;label&quot;: &quot;RECOIL HEIGHT:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;recoil_duration&quot;,
+        &quot;label&quot;: &quot;RECOIL DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;max_slow_debuff_duration&quot;,
+        &quot;label&quot;: &quot;MAX DEBUFF DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;misfire_time&quot;,
+        &quot;label&quot;: &quot;MISFIRE TIME:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;slow_move_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;vision_along_indicator&quot;,
+        &quot;label&quot;: &quot;VISION ALONG INDICATOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;vision_radius_buffer&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS BUFFER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;base_power&quot;,
+        &quot;label&quot;: &quot;BASE POWER:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;quick_draw_tooltip_pct_cooldown_reduction&quot;,
+        &quot;label&quot;: &quot;QUICK DRAW TOOLTIP PCT COOLDOWN REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;quick_draw_tooltip_efficacy_pct&quot;,
+        &quot;label&quot;: &quot;QUICK DRAW TOOLTIP EFFICACY PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Hoodwink&quot;,
+        &quot;ability&quot;: &quot;Sharpshooter&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

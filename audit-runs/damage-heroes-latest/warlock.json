@@ -121,10 +121,10 @@
       "name": "Fatal Bonds",
       "displayName": "致命连接（Fatal Bonds）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         120,
         130,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,10 +176,10 @@
       "name": "Shadow Word",
       "displayName": "暗言术（Shadow Word）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "model": "sustained_dps",
+      "reason": "对敌施放时为持续伤害；治疗场景不计入敌方伤害。",
       "manaCostByAbilityLevel": [
         110,
         120,
@@ -194,8 +194,8 @@
       ],
       "components": [
         {
-          "id": "Shadow Word:instant_fixed:damage",
-          "kind": "instant_fixed",
+          "id": "Shadow Word:sustained:damage",
+          "kind": "sustained",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "damage",
@@ -205,11 +205,16 @@
             35,
             45
           ],
-          "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "theoreticalTotalByAbilityLevel": [
+            150,
+            250,
+            350,
+            450
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "duration_times_dps"
           },
           "metadata": {
             "durationByAbilityLevel": [
@@ -227,9 +232,11 @@
           },
           "source": "curated",
           "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "model": "sustained_dps",
+          "reason": "对敌施放时为持续伤害；治疗场景不计入敌方伤害。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
         }
       ]
     },
@@ -237,7 +244,7 @@
       "name": "Upheaval",
       "displayName": "剧变（Upheaval）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -290,53 +297,437 @@
       "name": "Chaotic Offering",
       "displayName": "混乱之祭（Chaotic Offering）",
       "isUltimate": true,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "summon_attack",
+      "reason": "地狱火伤害取决于召唤物实际攻击次数。",
       "manaCostByAbilityLevel": [
         200,
         400,
         600
       ],
       "cooldownByAbilityLevel": [
+        165,
+        165,
         165
       ],
       "components": [
         {
-          "id": "Chaotic Offering:debuff_reference:abilitycastrange",
-          "kind": "debuff_reference",
+          "id": "Chaotic Offering:summon_attack:golem_dmg",
+          "kind": "summon_attack",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "abilitycastrange",
+          "label": "golem_dmg",
           "valuesByAbilityLevel": [
-            900
+            100,
+            150,
+            200
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "totalFormula": "attackCount * summonAttackDamage",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "debuff_reference"
+            "type": "runtime_summon_attack_count_times_damage"
           },
           "metadata": {
-            "isDamageReference": false,
-            "modifierType": "positioning_range",
-            "affects": "positioning",
-            "condition": "",
-            "requiredInputs": [],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "attackCountInput": "summon_attack_count"
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "status": "implemented",
+          "model": "summon_attack",
+          "reason": "地狱火伤害取决于召唤物实际攻击次数。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "召唤物、守卫或代理单位伤害需要输入攻击次数。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Warlock",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Fatal Bonds": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Shadow Word": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "对敌施放时为持续伤害；治疗场景不计入敌方伤害。"
+        },
+        "Upheaval": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "damage_tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Eldritch Summoning": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Chaotic Offering": {
+          "status": "implemented",
+          "model": "summon_attack",
+          "attackDamageKey": "golem_dmg",
+          "attackCountInput": "summon_attack_count",
+          "semanticType": "summon.attack_damage",
+          "conditionInputs": [
+            "summon_attack_count"
+          ],
+          "reason": "地狱火伤害取决于召唤物实际攻击次数。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "count",
+        "label": "ENEMIES BOUND:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "damage_share_percentage",
+        "label": "SHARED DAMAGE:",
+        "value": "15%/18%/21%/24%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "search_aoe",
+        "label": "BIND RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Fatal Bonds",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Shadow Word",
+        "key": "spell_aoe",
+        "label": "EFFECT RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Shadow Word",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650/700/750/800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Shadow Word",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "aoe",
+        "label": "RADIUS:",
+        "value": "575/600/625/650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "slow_per_second",
+        "label": "SLOW PER SECOND:",
+        "value": "11%/14%/17%/20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "max_slow",
+        "label": "MAX SLOW:",
+        "value": "55%/70%/85%/100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "max_damage",
+        "label": "MAX DAMAGE:",
+        "value": "35/60/85/110",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "imps_interval",
+        "label": "IMPS INTERVAL:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "minor_imp_duration",
+        "label": "MINOR IMP DURATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "abilitychanneltime",
+        "label": "MAX CHANNEL DURATION:",
+        "value": "10/12/14/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Upheaval",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "minor_imp_duration",
+        "label": "MINOR IMP DURATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "imp_health",
+        "label": "IMP HEALTH:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "imp_explode",
+        "label": "EXPLOSION DAMAGE:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "imp_speed",
+        "label": "IMP SPEED:",
+        "value": "297",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "golem_can_summon",
+        "label": "GOLEM CAN SUMMON:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Eldritch Summoning",
+        "key": "tooltip_imp_explode_radius",
+        "label": "TOOLTIP IMP EXPLODE RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_duration",
+        "label": "GOLEM DURATION:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "aoe",
+        "label": "SUMMON BLAST RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_hp",
+        "label": "GOLEM HEALTH:",
+        "value": "1500/2250/3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_dmg",
+        "label": "GOLEM DAMAGE:",
+        "value": "100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_armor",
+        "label": "GOLEM ARMOR:",
+        "value": "8/12/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_movement_speed",
+        "label": "GOLEM MOVEMENT SPEED:",
+        "value": "320/340/360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_health_regen",
+        "label": "GOLEM HEALTH REGEN:",
+        "value": "25/50/75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "golem_gold_bounty",
+        "label": "GOLEM GOLD BOUNTY:",
+        "value": "100/150/200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "stun_delay",
+        "label": "STUN DELAY:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "tooltip_golem_armor",
+        "label": "GOLEM ARMOR:",
+        "value": "8/12/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "bonus_slow_resistance",
+        "label": "GOLEM SLOW RESISTANCE:",
+        "value": "60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "tooltip_manahealthboost",
+        "label": "HP/MANA REGEN TO BURN DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Warlock",
+        "ability": "Chaotic Offering",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

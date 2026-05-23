@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,439 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>凤凰（Phoenix）</h1>
-        <div class="muted">Phoenix · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Phoenix · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 5</span>
-          <span>组件 5</span>
+          <span>技能 6</span>
+          <span>组件 7</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./phoenix.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>hp_cost_perc</code></td>
+      <td>HP COST:</td>
+      <td>15%</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>dash_length</code></td>
+      <td>DIVE LENGTH:</td>
+      <td>1100/1200/1300/1400</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>dash_width</code></td>
+      <td>DASH WIDTH:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>hit_radius</code></td>
+      <td>HIT RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>slow_movement_speed_pct</code></td>
+      <td>MOVE SLOW:</td>
+      <td>10%/15%/20%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>dive_duration</code></td>
+      <td>DIVE DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Icarus Dive</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>hp_cost_perc</code></td>
+      <td>HP COST:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>spirit_duration</code></td>
+      <td>SPIRIT DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>spirit_speed</code></td>
+      <td>SPIRIT SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>attackspeed_slow</code></td>
+      <td>ATTACK SPEED SLOW:</td>
+      <td>-50/-80/-110/-140</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>spirit_count</code></td>
+      <td>SPIRIT COUNT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Spirits</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>hp_cost_perc_per_second</code></td>
+      <td>HEALTH COST PER SECOND:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>hp_perc_damage</code></td>
+      <td>MAX DAMAGE:</td>
+      <td>1.5%/3%/4.5%/6%</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>base_heal</code></td>
+      <td>BASE HEAL PER SECOND:</td>
+      <td>7/10/13/16</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>hp_perc_heal</code></td>
+      <td>MAX HEAL:</td>
+      <td>0.5%/1%/1.5%/2%</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>130</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>forward_move_speed</code></td>
+      <td>FORWARD MOVE SPEED:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>turn_rate_initial</code></td>
+      <td>TURN RATE INITIAL:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>focal_point_max_multiplier</code></td>
+      <td>MAX FOCAL POINT MULTIPLIER:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>focal_point_start_length_pct</code></td>
+      <td>FOCAL POINT START LENGTH PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>focal_point_full_length_tooltip_only</code></td>
+      <td>FOCAL POINT FULL LENGTH TOOLTIP ONLY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Sun Ray</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Dying Light</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Dying Light</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Supernova</td>
+      <td><code>aura_radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Supernova</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.6/2/2.4</td>
+    </tr>
+  
+    <tr>
+      <td>Supernova</td>
+      <td><code>max_hero_attacks</code></td>
+      <td>ATTACKS TO DESTROY:</td>
+      <td>6/8/10</td>
+    </tr>
+  
+    <tr>
+      <td>Supernova</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Supernova</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>hp_cost_perc</code></td>
+      <td>HP COST:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>spirit_duration</code></td>
+      <td>SPIRIT DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>spirit_speed</code></td>
+      <td>SPIRIT SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>attackspeed_slow</code></td>
+      <td>ATTACK SPEED SLOW:</td>
+      <td>-50/-80/-110/-140</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>spirit_count</code></td>
+      <td>SPIRIT COUNT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Launch Fire Spirit</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1400</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Phoenix&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed burn/channel/supernova tick fields for first maintenance batch.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Icarus Dive&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;burn_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;burn_tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Fire Spirits&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。&quot;
+    },
+    &quot;Sun Ray&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;base_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
+          &quot;percentDamageKey&quot;: &quot;hp_perc_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;healthInput&quot;: &quot;target_max_health&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;target_max_health&quot;,
+            &quot;active_duration&quot;
+          ]
+        }
+      ]
+    },
+    &quot;Toggle Movement&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;该技能仅切换烈日炙烤移动模式，不直接产生伤害。&quot;
+    },
+    &quot;Dying Light&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;damage.percent_missing_health&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;hero_missing_health&quot;,
+        &quot;active_duration&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;hero_missing_health&quot;,
+        &quot;active_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;伤害按凤凰已损生命百分比变化，需要战斗状态输入。&quot;
+    },
+    &quot;Supernova&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_sec&quot;,
+      &quot;durationKey&quot;: &quot;abilityduration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Launch Fire Spirit&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。&quot;
+    },
+    &quot;Stop Icarus Dive&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;该技能仅停止位移，不直接产生伤害。&quot;
+    },
+    &quot;Stop Sun Ray&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;该技能仅停止烈日炙烤，不直接产生伤害。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +552,7 @@
           <div class="muted">Icarus Dive · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +605,7 @@
           <div class="muted">Fire Spirits · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -213,8 +641,8 @@
         </td>
         <td>Magical</td>
         <td>20</td><td>40</td><td>60</td><td>80</td>
-        <td>400 / 800 / 1200 / 1600</td>
-        <td><div><code>durationByAbilityLevel</code>: 20 / 20 / 20 / 20</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>80 / 160 / 240 / 320</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
@@ -230,7 +658,7 @@
           <div class="muted">Sun Ray · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -271,6 +699,77 @@
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
+    
+      <tr>
+        <td>
+          <code>Sun Ray:percent_health_dot:hp_perc_damage</code>
+          <div class="muted">hp_perc_damage</div>
+        </td>
+        <td>
+          <span class="pill">percent_health_dot</span>
+          <span class="pill secondary">percent_health_dot</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>1.5</td><td>3</td><td>4.5</td><td>6</td>
+        <td></td>
+        <td><div><code>healthInput</code>: target_max_health</div><div><code>durationByAbilityLevel</code>: 6 / 6 / 6 / 6</div></td>
+        <td>healthInput * percentDamage * duration</td>
+        <td><ul><li>百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>消逝之光（Dying Light）</h2>
+          <div class="muted">Dying Light · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">state_scaling</span>
+          <span class="pill secondary">reference_only</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：</span>
+        <span>冷却：</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Dying Light:state_scaling:damage_pct</code>
+          <div class="muted">damage_pct</div>
+        </td>
+        <td>
+          <span class="pill">state_scaling</span>
+          <span class="pill secondary">state_scaling</span>
+          <div class="muted">reference_only</div>
+        </td>
+        <td>Unknown</td>
+        <td>4</td><td>-</td><td>-</td><td>-</td>
+        <td></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: hero_missing_health / active_duration</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>state_scaling</td>
+        <td><ul><li>伤害按凤凰已损生命百分比变化，需要战斗状态输入。</li></ul></td>
+      </tr>
     </tbody>
         </table>
       </div>
@@ -283,7 +782,7 @@
           <div class="muted">Supernova · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -319,8 +818,8 @@
         </td>
         <td>Magical</td>
         <td>60</td><td>90</td><td>120</td><td>-</td>
-        <td>96 / 180 / 288</td>
-        <td><div><code>durationByAbilityLevel</code>: 1.6 / 2 / 2.4</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2</div></td>
+        <td>360 / 540 / 720</td>
+        <td><div><code>durationByAbilityLevel</code>: 6 / 6 / 6</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
@@ -336,7 +835,7 @@
           <div class="muted">Launch Fire Spirit · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -372,8 +871,8 @@
         </td>
         <td>Magical</td>
         <td>20</td><td>40</td><td>60</td><td>80</td>
-        <td>400 / 800 / 1200 / 1600</td>
-        <td><div><code>durationByAbilityLevel</code>: 20 / 20 / 20 / 20</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>80 / 160 / 240 / 320</td>
+        <td><div><code>durationByAbilityLevel</code>: 4 / 4 / 4 / 4</div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
@@ -507,7 +1006,7 @@
       &quot;name&quot;: &quot;Icarus Dive&quot;,
       &quot;displayName&quot;: &quot;凤凰冲击（Icarus Dive）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -575,10 +1074,10 @@
       &quot;name&quot;: &quot;Fire Spirits&quot;,
       &quot;displayName&quot;: &quot;烈火精灵（Fire Spirits）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         100,
@@ -605,10 +1104,10 @@
             80
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            400,
-            800,
-            1200,
-            1600
+            80,
+            160,
+            240,
+            320
           ],
           &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
@@ -617,10 +1116,10 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              20,
-              20,
-              20,
-              20
+              4,
+              4,
+              4,
+              4
             ],
             &quot;tickIntervalByAbilityLevel&quot;: [
               0.2,
@@ -632,7 +1131,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -643,10 +1142,10 @@
       &quot;name&quot;: &quot;Sun Ray&quot;,
       &quot;displayName&quot;: &quot;烈日炙烤（Sun Ray）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         110,
@@ -700,9 +1199,92 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
+        },
+        {
+          &quot;id&quot;: &quot;Sun Ray:percent_health_dot:hp_perc_damage&quot;,
+          &quot;kind&quot;: &quot;percent_health_dot&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;hp_perc_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            1.5,
+            3,
+            4.5,
+            6
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;healthInput * percentDamage * duration&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;runtime_health_percent_times_duration&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;healthInput&quot;: &quot;target_max_health&quot;,
+            &quot;durationByAbilityLevel&quot;: [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;percent_health_dot&quot;,
+          &quot;reason&quot;: &quot;计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。&quot;,
+          &quot;caveats&quot;: [
+            &quot;百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Dying Light&quot;,
+      &quot;displayName&quot;: &quot;消逝之光（Dying Light）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;reason&quot;: &quot;伤害按凤凰已损生命百分比变化，需要战斗状态输入。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [],
+      &quot;cooldownByAbilityLevel&quot;: [],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Dying Light:state_scaling:damage_pct&quot;,
+          &quot;kind&quot;: &quot;state_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;damage_pct&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            4
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;state_scaling&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;isDamageReference&quot;: true,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [
+              &quot;hero_missing_health&quot;,
+              &quot;active_duration&quot;
+            ],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;reason&quot;: &quot;伤害按凤凰已损生命百分比变化，需要战斗状态输入。&quot;,
+          &quot;caveats&quot;: [
+            &quot;伤害按凤凰已损生命百分比变化，需要战斗状态输入。&quot;
           ]
         }
       ]
@@ -711,7 +1293,7 @@
       &quot;name&quot;: &quot;Supernova&quot;,
       &quot;displayName&quot;: &quot;超新星（Supernova）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -738,9 +1320,9 @@
             120
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            96,
-            180,
-            288
+            360,
+            540,
+            720
           ],
           &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
@@ -749,9 +1331,9 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              1.6,
-              2,
-              2.4
+              6,
+              6,
+              6
             ],
             &quot;tickIntervalByAbilityLevel&quot;: [
               0.2,
@@ -773,10 +1355,10 @@
       &quot;name&quot;: &quot;Launch Fire Spirit&quot;,
       &quot;displayName&quot;: &quot;发动烈火精灵（Launch Fire Spirit）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0,
         0,
@@ -803,10 +1385,10 @@
             80
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [
-            400,
-            800,
-            1200,
-            1600
+            80,
+            160,
+            240,
+            320
           ],
           &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
@@ -815,10 +1397,10 @@
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
-              20,
-              20,
-              20,
-              20
+              4,
+              4,
+              4,
+              4
             ],
             &quot;tickIntervalByAbilityLevel&quot;: [
               0.2,
@@ -830,7 +1412,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -838,7 +1420,447 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Phoenix&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed burn/channel/supernova tick fields for first maintenance batch.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Icarus Dive&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;burn_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;burn_tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Fire Spirits&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。&quot;
+        },
+        &quot;Sun Ray&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;base_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;implemented&quot;,
+              &quot;model&quot;: &quot;percent_health_dot&quot;,
+              &quot;percentDamageKey&quot;: &quot;hp_perc_damage&quot;,
+              &quot;durationKey&quot;: &quot;abilityduration&quot;,
+              &quot;healthInput&quot;: &quot;target_max_health&quot;,
+              &quot;semanticType&quot;: &quot;damage.percent_max_health&quot;,
+              &quot;conditionInputs&quot;: [
+                &quot;target_max_health&quot;,
+                &quot;active_duration&quot;
+              ]
+            }
+          ]
+        },
+        &quot;Toggle Movement&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;该技能仅切换烈日炙烤移动模式，不直接产生伤害。&quot;
+        },
+        &quot;Dying Light&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;damage.percent_missing_health&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;hero_missing_health&quot;,
+            &quot;active_duration&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;hero_missing_health&quot;,
+            &quot;active_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;伤害按凤凰已损生命百分比变化，需要战斗状态输入。&quot;
+        },
+        &quot;Supernova&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_sec&quot;,
+          &quot;durationKey&quot;: &quot;abilityduration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Launch Fire Spirit&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。&quot;
+        },
+        &quot;Stop Icarus Dive&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;该技能仅停止位移，不直接产生伤害。&quot;
+        },
+        &quot;Stop Sun Ray&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;该技能仅停止烈日炙烤，不直接产生伤害。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;hp_cost_perc&quot;,
+        &quot;label&quot;: &quot;HP COST:&quot;,
+        &quot;value&quot;: &quot;15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;dash_length&quot;,
+        &quot;label&quot;: &quot;DIVE LENGTH:&quot;,
+        &quot;value&quot;: &quot;1100/1200/1300/1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;dash_width&quot;,
+        &quot;label&quot;: &quot;DASH WIDTH:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;hit_radius&quot;,
+        &quot;label&quot;: &quot;HIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;10%/15%/20%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;dive_duration&quot;,
+        &quot;label&quot;: &quot;DIVE DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Icarus Dive&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;hp_cost_perc&quot;,
+        &quot;label&quot;: &quot;HP COST:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_duration&quot;,
+        &quot;label&quot;: &quot;SPIRIT DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_speed&quot;,
+        &quot;label&quot;: &quot;SPIRIT SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;attackspeed_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;-50/-80/-110/-140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;spirit_count&quot;,
+        &quot;label&quot;: &quot;SPIRIT COUNT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Fire Spirits&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;hp_cost_perc_per_second&quot;,
+        &quot;label&quot;: &quot;HEALTH COST PER SECOND:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;hp_perc_damage&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE:&quot;,
+        &quot;value&quot;: &quot;1.5%/3%/4.5%/6%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;base_heal&quot;,
+        &quot;label&quot;: &quot;BASE HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;7/10/13/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;hp_perc_heal&quot;,
+        &quot;label&quot;: &quot;MAX HEAL:&quot;,
+        &quot;value&quot;: &quot;0.5%/1%/1.5%/2%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;130&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;forward_move_speed&quot;,
+        &quot;label&quot;: &quot;FORWARD MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;turn_rate_initial&quot;,
+        &quot;label&quot;: &quot;TURN RATE INITIAL:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;focal_point_max_multiplier&quot;,
+        &quot;label&quot;: &quot;MAX FOCAL POINT MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;focal_point_start_length_pct&quot;,
+        &quot;label&quot;: &quot;FOCAL POINT START LENGTH PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;focal_point_full_length_tooltip_only&quot;,
+        &quot;label&quot;: &quot;FOCAL POINT FULL LENGTH TOOLTIP ONLY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Sun Ray&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Dying Light&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Dying Light&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Supernova&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Supernova&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.6/2/2.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Supernova&quot;,
+        &quot;key&quot;: &quot;max_hero_attacks&quot;,
+        &quot;label&quot;: &quot;ATTACKS TO DESTROY:&quot;,
+        &quot;value&quot;: &quot;6/8/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Supernova&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Supernova&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;hp_cost_perc&quot;,
+        &quot;label&quot;: &quot;HP COST:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_duration&quot;,
+        &quot;label&quot;: &quot;SPIRIT DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_speed&quot;,
+        &quot;label&quot;: &quot;SPIRIT SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;attackspeed_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;-50/-80/-110/-140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;spirit_count&quot;,
+        &quot;label&quot;: &quot;SPIRIT COUNT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Phoenix&quot;,
+        &quot;ability&quot;: &quot;Launch Fire Spirit&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

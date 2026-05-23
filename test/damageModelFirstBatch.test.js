@@ -88,7 +88,7 @@ const EXPECTED_SEMANTICS = {
   },
   Venomancer: {
     'Venomous Gale': 'damage.tick',
-    Snakebite: 'damage.sustained_dps',
+    Snakebite: 'damage.tick',
     'Plague Ward': 'summon.attack_damage',
     'Poison Sting': 'damage.sustained_dps',
     'Noxious Plague': 'damage.instant'
@@ -116,7 +116,7 @@ const CONDITION_INPUTS_BY_ABILITY = {
   'Shadow Fiend.Necromastery': ['current_soul_count'],
   'Phantom Assassin.Stifling Dagger': ['hero_attack_damage'],
   'Phantom Assassin.Fan of Knives': ['enemy_max_health'],
-  'Phantom Assassin.Coup de Grace': ['attack_count', 'crit_chance'],
+  'Phantom Assassin.Coup de Grace': ['attack_count', 'crit_mode', 'hero_attack_damage'],
   'Faceless Void.Time Dilation': ['cooling_ability_count', 'active_duration'],
   'Faceless Void.Time Lock': ['attack_count', 'proc_chance'],
   'Venomancer.Plague Ward': ['ward_attack_count', 'ward_active_duration']

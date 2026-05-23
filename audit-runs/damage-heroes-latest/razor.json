@@ -121,7 +121,7 @@
       "name": "Plasma Field",
       "displayName": "等离子场（Plasma Field）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -181,10 +181,10 @@
       "name": "Static Link",
       "displayName": "静电连接（Static Link）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         65
       ],
@@ -222,9 +222,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -233,7 +233,7 @@
       "name": "Storm Surge",
       "displayName": "风暴涌动（Storm Surge）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -278,7 +278,7 @@
       "name": "Eye of the Storm",
       "displayName": "风暴之眼（Eye of the Storm）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -326,5 +326,338 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Razor",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Plasma Field": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_min",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        },
+        "Static Link": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Storm Surge": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "strike_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "strike_slow_duration"
+        },
+        "Eye of the Storm": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "damage_max",
+        "label": "DAMAGE MAX:",
+        "value": "80/115/150/185",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "total_ability_time",
+        "label": "TOTAL ABILITY TIME:",
+        "value": "2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "slow_min",
+        "label": "SLOW MIN:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "slow_max",
+        "label": "SLOW MAX:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "second_ring_delay",
+        "label": "SECOND RING DELAY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "second_ring_reduction",
+        "label": "SECOND RING REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Plasma Field",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "drain_length",
+        "label": "LINK DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "drain_duration",
+        "label": "BUFF DURATION:",
+        "value": "12/14/16/18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "drain_rate",
+        "label": "DAMAGE DRAIN RATE:",
+        "value": "6/12/18/24",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "drain_range_buffer",
+        "label": "DRAIN RANGE BUFFER:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "attack_speed_factor",
+        "label": "ATTACK SPEED FACTOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "move_speed_factor",
+        "label": "MOVE SPEED FACTOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "pull_speed",
+        "label": "PULL SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "min_pull_range",
+        "label": "MIN PULL RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Static Link",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_pct_chance",
+        "label": "CHANCE TO STRIKE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_target_count",
+        "label": "TARGETS HIT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_move_slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_search_radius",
+        "label": "STRIKE SEARCH AREA:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_internal_cd",
+        "label": "STRIKE COOLDOWN:",
+        "value": "2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "strike_cd_reduction_during_storm",
+        "label": "STRIKE CD REDUCTION DURING STORM:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "hit_targets_inside_eye_of_the_storm",
+        "label": "HIT TARGETS INSIDE EYE OF THE STORM:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Storm Surge",
+        "key": "eye_of_the_storm_chance_multiplier",
+        "label": "EYE OF THE STORM CHANCE MULTIPLIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Eye of the Storm",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Eye of the Storm",
+        "key": "strike_interval",
+        "label": "STRIKE INTERVAL:",
+        "value": "0.7/0.6/0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Eye of the Storm",
+        "key": "armor_reduction",
+        "label": "ARMOR REDUCTION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Razor",
+        "ability": "Eye of the Storm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

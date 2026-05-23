@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,432 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>恐怖利刃（Terrorblade）</h1>
-        <div class="muted">Terrorblade · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Terrorblade · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
-          <span>技能 4</span>
-          <span>组件 4</span>
+          <span>技能 5</span>
+          <span>组件 5</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./terrorblade.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Reflection</td>
+      <td><code>illusion_duration</code></td>
+      <td>REFLECTION DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>illusion_outgoing_damage</code></td>
+      <td>ILLUSION OUTGOING DAMAGE:</td>
+      <td>-70/-55/-40/-25</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>illusion_outgoing_tooltip</code></td>
+      <td>REFLECTION DAMAGE:</td>
+      <td>30%/45%/60%/75%</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>move_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>15%/20%/25%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>attack_slow</code></td>
+      <td>ATTACK SPEED SLOW:</td>
+      <td>15/20/25/30</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>range</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>is_global</code></td>
+      <td>IS GLOBAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>requires_vision</code></td>
+      <td>REQUIRES VISION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reflection</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>illusion_duration</code></td>
+      <td>ILLUSION DURATION:</td>
+      <td>34</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>illusion_outgoing_damage</code></td>
+      <td>ILLUSION OUTGOING DAMAGE:</td>
+      <td>-75/-70/-65/-60</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>illusion_outgoing_tooltip</code></td>
+      <td>ILLUSION DAMAGE:</td>
+      <td>25%/30%/35%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>illusion_incoming_damage</code></td>
+      <td>ILLUSION INCOMING DAMAGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>illusion_incoming_damage_total_tooltip</code></td>
+      <td>ILLUSION DAMAGE TAKEN:</td>
+      <td>250%</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>strong_illusion</code></td>
+      <td>STRONG ILLUSION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>show_particle_effect</code></td>
+      <td>SHOW PARTICLE EFFECT:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>appear_as_illusion</code></td>
+      <td>APPEAR AS ILLUSION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Conjure Image</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>35/40/45/50</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>transformation_time</code></td>
+      <td>TRANSFORMATION TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>base_attack_time</code></td>
+      <td>BASE ATTACK TIME:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>bonus_range</code></td>
+      <td>BONUS RANGE:</td>
+      <td>300/350/400/450</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>tooltip_attack_range</code></td>
+      <td>ATTACK RANGE:</td>
+      <td>450/500/550/600</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>speed_loss</code></td>
+      <td>SPEED LOSS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>metamorph_aura_tooltip</code></td>
+      <td>ILLUSION AURA RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Metamorphosis</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>berserk_bonus_movement_speed</code></td>
+      <td>BONUS MOVEMENT SPEED:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>hp_regen</code></td>
+      <td>BONUS HEALTH REGEN:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>health_cost_pct</code></td>
+      <td>CURRENT HEALTH COST:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>reflection_pct</code></td>
+      <td>REFLECTION PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Demon Zeal</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Terror Wave</td>
+      <td><code>scepter_radius</code></td>
+      <td>RADIUS:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Terror Wave</td>
+      <td><code>scepter_speed</code></td>
+      <td>SCEPTER SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Terror Wave</td>
+      <td><code>scepter_spawn_delay</code></td>
+      <td>SCEPTER SPAWN DELAY:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Terror Wave</td>
+      <td><code>scepter_meta_duration</code></td>
+      <td>METAMORPHOSIS DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Sunder</td>
+      <td><code>hit_point_minimum_pct</code></td>
+      <td>MINIMUM HP SWAP:</td>
+      <td>35%/30%/25%</td>
+    </tr>
+  
+    <tr>
+      <td>Sunder</td>
+      <td><code>ignore_minimum_pct_for_enemies</code></td>
+      <td>IGNORE MINIMUM PCT FOR ENEMIES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sunder</td>
+      <td><code>ignore_minimum_pct_for_enemies_tooltip</code></td>
+      <td>IGNORE MINIMUM PCT FOR ENEMIES TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Sunder</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Dark Unity</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Dark Unity</td>
+      <td><code>inside_radius_bonus_damage_pct</code></td>
+      <td>DAMAGE BONUS:</td>
+      <td>60%</td>
+    </tr>
+  
+    <tr>
+      <td>Dark Unity</td>
+      <td><code>outside_radius_bonus_damage_pct</code></td>
+      <td>OUTSIDE RADIUS BONUS DAMAGE PCT:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Terrorblade&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Reflection&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Conjure Image&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;attackDamageKey&quot;: &quot;illusion_outgoing_tooltip&quot;,
+      &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;,
+      &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;illusion_attack_count&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;reason&quot;: &quot;幻象输出取决于幻象攻击次数和本体攻击力。&quot;
+    },
+    &quot;Metamorphosis&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Demon Zeal&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;berserk_bonus_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Terror Wave&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;fear_duration&quot;
+    },
+    &quot;Sunder&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Dark Unity&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +545,7 @@
           <div class="muted">Reflection · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +584,60 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+      </tr>
+    </tbody>
+        </table>
+      </div>
+    </section>
+  
+    <section class="panel ability">
+      <header class="ability-header">
+        <div>
+          <h2>惑幻（Conjure Image）</h2>
+          <div class="muted">Conjure Image · 普通技能</div>
+        </div>
+        <div class="tags">
+          <span class="pill">curated</span>
+          <span class="pill secondary">summon_attack</span>
+          <span class="pill secondary">implemented</span>
+        </div>
+      </header>
+      <div class="resource-line">
+        <span>蓝耗：50 / 60 / 70 / 80</span>
+        <span>冷却：16 / 16 / 16 / 16</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>组件</th>
+              <th>模型</th>
+              <th>伤害类型</th>
+              <th>等级 1</th><th>等级 2</th><th>等级 3</th><th>等级 4</th>
+              <th>理论总量</th>
+              <th>元数据</th>
+              <th>公式</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+      <tr>
+        <td>
+          <code>Conjure Image:summon_attack:illusion_outgoing_tooltip</code>
+          <div class="muted">illusion_outgoing_tooltip</div>
+        </td>
+        <td>
+          <span class="pill">summon_attack</span>
+          <span class="pill secondary">summon_attack</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Unknown</td>
+        <td>25</td><td>30</td><td>35</td><td>40</td>
+        <td></td>
+        <td><div><code>attackCountInput</code>: illusion_attack_count</div></td>
+        <td>attackCount * summonAttackDamage</td>
+        <td><ul><li>召唤物、守卫或代理单位伤害需要输入攻击次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +651,7 @@
           <div class="muted">Demon Zeal · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +690,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +704,7 @@
           <div class="muted">Terror Wave · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +757,7 @@
           <div class="muted">Sunder · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +796,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,10 +928,10 @@
       &quot;name&quot;: &quot;Reflection&quot;,
       &quot;displayName&quot;: &quot;倒影（Reflection）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         60,
         65,
@@ -498,9 +972,61 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+          ]
+        }
+      ]
+    },
+    {
+      &quot;name&quot;: &quot;Conjure Image&quot;,
+      &quot;displayName&quot;: &quot;惑幻（Conjure Image）&quot;,
+      &quot;isUltimate&quot;: false,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;summon_attack&quot;,
+      &quot;reason&quot;: &quot;幻象输出取决于幻象攻击次数和本体攻击力。&quot;,
+      &quot;manaCostByAbilityLevel&quot;: [
+        50,
+        60,
+        70,
+        80
+      ],
+      &quot;cooldownByAbilityLevel&quot;: [
+        16,
+        16,
+        16,
+        16
+      ],
+      &quot;components&quot;: [
+        {
+          &quot;id&quot;: &quot;Conjure Image:summon_attack:illusion_outgoing_tooltip&quot;,
+          &quot;kind&quot;: &quot;summon_attack&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;label&quot;: &quot;illusion_outgoing_tooltip&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            25,
+            30,
+            35,
+            40
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;attackCount * summonAttackDamage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;runtime_summon_attack_count_times_damage&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;reason&quot;: &quot;幻象输出取决于幻象攻击次数和本体攻击力。&quot;,
+          &quot;caveats&quot;: [
+            &quot;召唤物、守卫或代理单位伤害需要输入攻击次数。&quot;
           ]
         }
       ]
@@ -509,10 +1035,10 @@
       &quot;name&quot;: &quot;Demon Zeal&quot;,
       &quot;displayName&quot;: &quot;狂魔（Demon Zeal）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0
       ],
@@ -547,9 +1073,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -558,7 +1084,7 @@
       &quot;name&quot;: &quot;Terror Wave&quot;,
       &quot;displayName&quot;: &quot;怵潮（Terror Wave）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -601,10 +1127,10 @@
       &quot;name&quot;: &quot;Sunder&quot;,
       &quot;displayName&quot;: &quot;魂断（Sunder）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         75,
@@ -643,15 +1169,452 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Terrorblade&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Reflection&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Conjure Image&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;summon_attack&quot;,
+          &quot;attackDamageKey&quot;: &quot;illusion_outgoing_tooltip&quot;,
+          &quot;attackCountInput&quot;: &quot;illusion_attack_count&quot;,
+          &quot;semanticType&quot;: &quot;summon.attack_damage&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;illusion_attack_count&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;reason&quot;: &quot;幻象输出取决于幻象攻击次数和本体攻击力。&quot;
+        },
+        &quot;Metamorphosis&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Demon Zeal&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;berserk_bonus_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Terror Wave&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;fear_duration&quot;
+        },
+        &quot;Sunder&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Dark Unity&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;REFLECTION DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;illusion_outgoing_damage&quot;,
+        &quot;label&quot;: &quot;ILLUSION OUTGOING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-70/-55/-40/-25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;illusion_outgoing_tooltip&quot;,
+        &quot;label&quot;: &quot;REFLECTION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;30%/45%/60%/75%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;move_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;15%/20%/25%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;attack_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED SLOW:&quot;,
+        &quot;value&quot;: &quot;15/20/25/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;is_global&quot;,
+        &quot;label&quot;: &quot;IS GLOBAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;requires_vision&quot;,
+        &quot;label&quot;: &quot;REQUIRES VISION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Reflection&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;34&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;illusion_outgoing_damage&quot;,
+        &quot;label&quot;: &quot;ILLUSION OUTGOING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;-75/-70/-65/-60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;illusion_outgoing_tooltip&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE:&quot;,
+        &quot;value&quot;: &quot;25%/30%/35%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;illusion_incoming_damage&quot;,
+        &quot;label&quot;: &quot;ILLUSION INCOMING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;illusion_incoming_damage_total_tooltip&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE TAKEN:&quot;,
+        &quot;value&quot;: &quot;250%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;strong_illusion&quot;,
+        &quot;label&quot;: &quot;STRONG ILLUSION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;show_particle_effect&quot;,
+        &quot;label&quot;: &quot;SHOW PARTICLE EFFECT:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;appear_as_illusion&quot;,
+        &quot;label&quot;: &quot;APPEAR AS ILLUSION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Conjure Image&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;35/40/45/50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;transformation_time&quot;,
+        &quot;label&quot;: &quot;TRANSFORMATION TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;base_attack_time&quot;,
+        &quot;label&quot;: &quot;BASE ATTACK TIME:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;bonus_range&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;300/350/400/450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;tooltip_attack_range&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;450/500/550/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;speed_loss&quot;,
+        &quot;label&quot;: &quot;SPEED LOSS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;metamorph_aura_tooltip&quot;,
+        &quot;label&quot;: &quot;ILLUSION AURA RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Metamorphosis&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;berserk_bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;hp_regen&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH REGEN:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;health_cost_pct&quot;,
+        &quot;label&quot;: &quot;CURRENT HEALTH COST:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;reflection_pct&quot;,
+        &quot;label&quot;: &quot;REFLECTION PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Demon Zeal&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Terror Wave&quot;,
+        &quot;key&quot;: &quot;scepter_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Terror Wave&quot;,
+        &quot;key&quot;: &quot;scepter_speed&quot;,
+        &quot;label&quot;: &quot;SCEPTER SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Terror Wave&quot;,
+        &quot;key&quot;: &quot;scepter_spawn_delay&quot;,
+        &quot;label&quot;: &quot;SCEPTER SPAWN DELAY:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Terror Wave&quot;,
+        &quot;key&quot;: &quot;scepter_meta_duration&quot;,
+        &quot;label&quot;: &quot;METAMORPHOSIS DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Sunder&quot;,
+        &quot;key&quot;: &quot;hit_point_minimum_pct&quot;,
+        &quot;label&quot;: &quot;MINIMUM HP SWAP:&quot;,
+        &quot;value&quot;: &quot;35%/30%/25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Sunder&quot;,
+        &quot;key&quot;: &quot;ignore_minimum_pct_for_enemies&quot;,
+        &quot;label&quot;: &quot;IGNORE MINIMUM PCT FOR ENEMIES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Sunder&quot;,
+        &quot;key&quot;: &quot;ignore_minimum_pct_for_enemies_tooltip&quot;,
+        &quot;label&quot;: &quot;IGNORE MINIMUM PCT FOR ENEMIES TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Sunder&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Dark Unity&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Dark Unity&quot;,
+        &quot;key&quot;: &quot;inside_radius_bonus_damage_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE BONUS:&quot;,
+        &quot;value&quot;: &quot;60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Terrorblade&quot;,
+        &quot;ability&quot;: &quot;Dark Unity&quot;,
+        &quot;key&quot;: &quot;outside_radius_bonus_damage_pct&quot;,
+        &quot;label&quot;: &quot;OUTSIDE RADIUS BONUS DAMAGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>混沌骑士（Chaos Knight）</h1>
-        <div class="muted">Chaos Knight · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Chaos Knight · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 2</span>
           <span>组件 2</span>
@@ -53,6 +57,310 @@
       </div>
       <a href="./chaos-knight.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>chaos_bolt_speed</code></td>
+      <td>CHAOS BOLT SPEED:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>stun_min</code></td>
+      <td>MINIMUM STUN:</td>
+      <td>1.25/1.5/1.75/2</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>stun_max</code></td>
+      <td>MAXIMUM STUN:</td>
+      <td>1.75/2.25/2.75/3.25</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>damage_max</code></td>
+      <td>MAXIMUM DAMAGE:</td>
+      <td>155/240/325/410</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>fake_bolt_distance</code></td>
+      <td>FAKE BOLT DISTANCE:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>illusion_damage_reduction_pct</code></td>
+      <td>ILLUSION DAMAGE REDUCTION:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>bounce_range_pct</code></td>
+      <td>BOUNCE RANGE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Bolt</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>pull_distance</code></td>
+      <td>PULL DISTANCE:</td>
+      <td>300/350/400/450</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>armor_reduction</code></td>
+      <td>ARMOR REDUCTION:</td>
+      <td>4/5/6/7</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>pierces_immunity</code></td>
+      <td>PIERCES IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>additional_debuff_duration_percent</code></td>
+      <td>ADDITIONAL DEBUFF DURATION PERCENT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>additional_debuff_duration_tooltip</code></td>
+      <td>ADDITIONAL DEBUFF DURATION TOOLTIP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Reality Rift</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Strike</td>
+      <td><code>chance</code></td>
+      <td>CHANCE:</td>
+      <td>33.33%</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Strike</td>
+      <td><code>crit_min</code></td>
+      <td>CRITICAL MIN:</td>
+      <td>120%</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Strike</td>
+      <td><code>crit_max</code></td>
+      <td>CRITICAL MAX:</td>
+      <td>140%/180%/220%/260%</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Strike</td>
+      <td><code>lifesteal</code></td>
+      <td>CRITICAL LIFESTEAL:</td>
+      <td>30%/40%/50%/60%</td>
+    </tr>
+  
+    <tr>
+      <td>Chaos Strike</td>
+      <td><code>creep_multiplier</code></td>
+      <td>CREEP MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>images_count</code></td>
+      <td>NUMBER OF PHANTASMS:</td>
+      <td>1/2/3</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>illusion_duration</code></td>
+      <td>PHANTASM DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>outgoing_damage</code></td>
+      <td>OUTGOING DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>outgoing_damage_tooltip</code></td>
+      <td>PHANTASM DAMAGE:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>incoming_damage</code></td>
+      <td>INCOMING DAMAGE:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>incoming_damage_tooltip</code></td>
+      <td>PHANTASM DAMAGE TAKEN:</td>
+      <td>350%</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>invuln_duration</code></td>
+      <td>INVULN DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>bonus_illusion_chance</code></td>
+      <td>BONUS ILLUSION CHANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>bonus_illusion_count</code></td>
+      <td>BONUS ILLUSION COUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Phantasm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Chaos Knight&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Chaos Bolt&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_min&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;illusion_duration&quot;
+    },
+    &quot;Reality Rift&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Chaos Strike&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Phantasm&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +432,7 @@
           <div class="muted">Chaos Bolt · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +485,7 @@
           <div class="muted">Reality Rift · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +524,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -348,7 +656,7 @@
       &quot;name&quot;: &quot;Chaos Bolt&quot;,
       &quot;displayName&quot;: &quot;混乱之箭（Chaos Bolt）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -403,10 +711,10 @@
       &quot;name&quot;: &quot;Reality Rift&quot;,
       &quot;displayName&quot;: &quot;实相裂隙（Reality Rift）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         50,
@@ -450,15 +758,327 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Chaos Knight&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Chaos Bolt&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_min&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;illusion_duration&quot;
+        },
+        &quot;Reality Rift&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Chaos Strike&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Phantasm&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;chaos_bolt_speed&quot;,
+        &quot;label&quot;: &quot;CHAOS BOLT SPEED:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;stun_min&quot;,
+        &quot;label&quot;: &quot;MINIMUM STUN:&quot;,
+        &quot;value&quot;: &quot;1.25/1.5/1.75/2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;stun_max&quot;,
+        &quot;label&quot;: &quot;MAXIMUM STUN:&quot;,
+        &quot;value&quot;: &quot;1.75/2.25/2.75/3.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;damage_max&quot;,
+        &quot;label&quot;: &quot;MAXIMUM DAMAGE:&quot;,
+        &quot;value&quot;: &quot;155/240/325/410&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;fake_bolt_distance&quot;,
+        &quot;label&quot;: &quot;FAKE BOLT DISTANCE:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;illusion_damage_reduction_pct&quot;,
+        &quot;label&quot;: &quot;ILLUSION DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;bounce_range_pct&quot;,
+        &quot;label&quot;: &quot;BOUNCE RANGE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Bolt&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;pull_distance&quot;,
+        &quot;label&quot;: &quot;PULL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;300/350/400/450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;armor_reduction&quot;,
+        &quot;label&quot;: &quot;ARMOR REDUCTION:&quot;,
+        &quot;value&quot;: &quot;4/5/6/7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;pierces_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCES IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;additional_debuff_duration_percent&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL DEBUFF DURATION PERCENT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;additional_debuff_duration_tooltip&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL DEBUFF DURATION TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Reality Rift&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Strike&quot;,
+        &quot;key&quot;: &quot;chance&quot;,
+        &quot;label&quot;: &quot;CHANCE:&quot;,
+        &quot;value&quot;: &quot;33.33%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Strike&quot;,
+        &quot;key&quot;: &quot;crit_min&quot;,
+        &quot;label&quot;: &quot;CRITICAL MIN:&quot;,
+        &quot;value&quot;: &quot;120%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Strike&quot;,
+        &quot;key&quot;: &quot;crit_max&quot;,
+        &quot;label&quot;: &quot;CRITICAL MAX:&quot;,
+        &quot;value&quot;: &quot;140%/180%/220%/260%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Strike&quot;,
+        &quot;key&quot;: &quot;lifesteal&quot;,
+        &quot;label&quot;: &quot;CRITICAL LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;30%/40%/50%/60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Chaos Strike&quot;,
+        &quot;key&quot;: &quot;creep_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;images_count&quot;,
+        &quot;label&quot;: &quot;NUMBER OF PHANTASMS:&quot;,
+        &quot;value&quot;: &quot;1/2/3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;PHANTASM DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;outgoing_damage&quot;,
+        &quot;label&quot;: &quot;OUTGOING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;outgoing_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;PHANTASM DAMAGE:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;incoming_damage&quot;,
+        &quot;label&quot;: &quot;INCOMING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;incoming_damage_tooltip&quot;,
+        &quot;label&quot;: &quot;PHANTASM DAMAGE TAKEN:&quot;,
+        &quot;value&quot;: &quot;350%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;invuln_duration&quot;,
+        &quot;label&quot;: &quot;INVULN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;bonus_illusion_chance&quot;,
+        &quot;label&quot;: &quot;BONUS ILLUSION CHANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;bonus_illusion_count&quot;,
+        &quot;label&quot;: &quot;BONUS ILLUSION COUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Chaos Knight&quot;,
+        &quot;ability&quot;: &quot;Phantasm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

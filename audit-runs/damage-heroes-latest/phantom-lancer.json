@@ -121,7 +121,7 @@
       "name": "Spirit Lance",
       "displayName": "灵魂之矛（Spirit Lance）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Doppelganger",
       "displayName": "神行百变（Doppelganger）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         70
       ],
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,10 +228,10 @@
       "name": "Phantom Rush",
       "displayName": "幻影冲锋（Phantom Rush）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         15,
@@ -270,9 +270,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -281,16 +281,16 @@
       "name": "Juxtapose",
       "displayName": "并列（Juxtapose）",
       "isUltimate": true,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "state_scaling",
-      "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "summon_attack",
+      "reason": "幻象输出取决于幻象数量、攻击次数和本体攻击力。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Juxtapose:state_scaling:tooltip_illusion_damage",
-          "kind": "state_scaling",
+          "id": "Juxtapose:summon_attack:tooltip_illusion_damage",
+          "kind": "summon_attack",
           "growthKind": "non_growth",
           "damageType": "Unknown",
           "label": "tooltip_illusion_damage",
@@ -298,33 +298,393 @@
             15
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "totalFormula": "attackCount * summonAttackDamage",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "state_scaling"
+            "type": "runtime_summon_attack_count_times_damage"
           },
           "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "",
-            "requiredInputs": [
-              "source_damage",
-              "hit_count"
-            ],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "attackCountInput": "illusion_attack_count"
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "state_scaling",
-          "reason": "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。",
+          "status": "implemented",
+          "model": "summon_attack",
+          "reason": "幻象输出取决于幻象数量、攻击次数和本体攻击力。",
           "caveats": [
-            "来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。"
+            "召唤物、守卫或代理单位伤害需要输入攻击次数。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Phantom Lancer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Spirit Lance": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "lance_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Doppelganger": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Phantom Rush": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "evasion",
+          "semanticType": "defense.evasion.percent",
+          "affects": "survivability",
+          "stackGroup": "evasion",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Illusory Armaments": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Juxtapose": {
+          "status": "implemented",
+          "model": "summon_attack",
+          "attackDamageKey": "tooltip_illusion_damage",
+          "attackCountInput": "illusion_attack_count",
+          "semanticType": "summon.attack_damage",
+          "conditionInputs": [
+            "illusion_attack_count",
+            "hero_attack_damage"
+          ],
+          "reason": "幻象输出取决于幻象数量、攻击次数和本体攻击力。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "lance_speed",
+        "label": "LANCE SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "movement_speed_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "-14%/-21%/-28%/-35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "illusion_duration",
+        "label": "ILLUSION DURATION:",
+        "value": "3.5/5/6.5/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "illusion_damage_out_pct",
+        "label": "ILLUSION DAMAGE OUT PCT:",
+        "value": "-85",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "tooltip_illusion_damage",
+        "label": "ILLUSION DAMAGE:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "illusion_damage_in_pct",
+        "label": "ILLUSION DAMAGE IN PCT:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "tooltip_illusion_total_damage_in_pct",
+        "label": "ILLUSION DAMAGE TAKEN:",
+        "value": "400%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "fake_lance_distance",
+        "label": "FAKE LANCE DISTANCE:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600/650/700/750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Spirit Lance",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_1_damage_out_pct",
+        "label": "ILLUSION 1 DAMAGE OUT PCT:",
+        "value": "-100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_1_damage_in_pct",
+        "label": "ILLUSION 1 DAMAGE IN PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_2_damage_out_pct",
+        "label": "ILLUSION 2 DAMAGE OUT PCT:",
+        "value": "-80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_2_damage_in_pct",
+        "label": "ILLUSION 2 DAMAGE IN PCT:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "target_aoe",
+        "label": "TARGET AREA SIZE:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "search_radius",
+        "label": "ILLUSION GATHER RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "delay",
+        "label": "REAPPEAR DELAY:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_duration",
+        "label": "DOPPELGANGER DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_extended_duration",
+        "label": "ILLUSION DURATION EXTENSION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "illusion_2_amount",
+        "label": "ILLUSION 2 AMOUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "hp_missing_per_extra_illusion_pct",
+        "label": "HP MISSING PER EXTRA ILLUSION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Doppelganger",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Phantom Rush",
+        "key": "min_distance",
+        "label": "MIN RUSH DISTANCE:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Phantom Rush",
+        "key": "max_distance",
+        "label": "MAX RUSH DISTANCE:",
+        "value": "600/675/750/825",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Phantom Rush",
+        "key": "bonus_speed",
+        "label": "BONUS SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Phantom Rush",
+        "key": "bonus_agility",
+        "label": "BONUS AGILITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Phantom Rush",
+        "key": "agility_duration",
+        "label": "BONUS AGILITY DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Illusory Armaments",
+        "key": "outgoing_floor",
+        "label": "MIN DAMAGE:",
+        "value": "17%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Illusory Armaments",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "max_illusions",
+        "label": "MAX ILLUSIONS:",
+        "value": "6/8/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "proc_chance_pct",
+        "label": "HERO TRIGGER CHANCE:",
+        "value": "40%/45%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "illusion_proc_chance_pct",
+        "label": "ILLUSION TRIGGER CHANCE:",
+        "value": "9%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "illusion_duration",
+        "label": "ILLUSION DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "illusion_from_illusion_duration",
+        "label": "ILLUSION FROM ILLUSION DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "illusion_damage_out_pct",
+        "label": "ILLUSION DAMAGE OUT PCT:",
+        "value": "-85",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "tooltip_illusion_damage",
+        "label": "ILLUSION DAMAGE:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "illusion_damage_in_pct",
+        "label": "ILLUSION DAMAGE IN PCT:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phantom Lancer",
+        "ability": "Juxtapose",
+        "key": "tooltip_total_illusion_damage_in_pct",
+        "label": "ILLUSION DAMAGE TAKEN:",
+        "value": "600%",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

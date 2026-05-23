@@ -121,7 +121,7 @@
       "name": "Battery Assault",
       "displayName": "弹幕冲击（Battery Assault）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -181,7 +181,7 @@
       "name": "Power Cogs",
       "displayName": "能量齿轮（Power Cogs）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。",
@@ -242,7 +242,7 @@
       "name": "Rocket Flare",
       "displayName": "照明火箭（Rocket Flare）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -303,10 +303,10 @@
       "name": "Overclocking",
       "displayName": "超速运转（Overclocking）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         90
       ],
@@ -341,9 +341,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -352,7 +352,7 @@
       "name": "Hookshot",
       "displayName": "发射钩爪（Hookshot）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -403,7 +403,7 @@
       "name": "Armor Power",
       "displayName": "装甲力量（Armor Power）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -447,5 +447,640 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Clockwerk",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Battery Assault": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Power Cogs": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.mana_burn",
+          "requiredInputs": [
+            "target_current_mana",
+            "attack_count"
+          ],
+          "conditionInputs": [
+            "target_current_mana",
+            "attack_count"
+          ],
+          "reason": "法力燃烧伤害需要目标当前魔法和攻击次数输入，首轮模型只作为条件伤害参考。"
+        },
+        "Rocket Flare": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration",
+          "tickIntervalKey": "projectile_vision_tick_rate"
+        },
+        "Overclocking": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Jetpack": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Hookshot": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "ally_shield_duration"
+        },
+        "Armor Power": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_per_armor",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Jetpack Toggle": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Clockwerk",
+        "ability": "Battery Assault",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Battery Assault",
+        "key": "overclocking_radius",
+        "label": "OVERCLOCKING RADIUS:",
+        "value": "330",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Battery Assault",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "10.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Battery Assault",
+        "key": "interval",
+        "label": "INTERVAL:",
+        "value": "0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Battery Assault",
+        "key": "creep_damage_multiplier",
+        "label": "CREEP DAMAGE MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5/6/7/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "mana_burn",
+        "label": "MANA BURN:",
+        "value": "35/75/115/155",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "mana_burn_as_damage_pct",
+        "label": "MANA BURN AS DAMAGE PCT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "magic_barrier",
+        "label": "MAGIC BARRIER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "attacks_to_destroy",
+        "label": "ATTACKS REQUIRED:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "push_length",
+        "label": "PUSH LENGTH:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "push_duration",
+        "label": "PUSH DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "cogs_radius",
+        "label": "FORMATION RADIUS:",
+        "value": "215",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "trigger_distance",
+        "label": "TRIGGER DISTANCE:",
+        "value": "185",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "inside_cogs_distance_reduction",
+        "label": "INSIDE COGS DISTANCE REDUCTION:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "extra_pull_buffer",
+        "label": "EXTRA PULL BUFFER:",
+        "value": "-10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "projectile_distance",
+        "label": "PROJECTILE DISTANCE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "push_duration_overclock",
+        "label": "PUSH DURATION OVERCLOCK:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "cogs_radius_overclock",
+        "label": "COGS RADIUS OVERCLOCK:",
+        "value": "330",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "trigger_distance_overclock",
+        "label": "TRIGGER DISTANCE OVERCLOCK:",
+        "value": "115",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Power Cogs",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "2250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "projectile_vision_radius",
+        "label": "PROJECTILE VISION RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "projectile_vision_duration",
+        "label": "PROJECTILE VISION DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "20/18/16/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Rocket Flare",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "buff_duration",
+        "label": "DURATION:",
+        "value": "18",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "bonus_movement_speed",
+        "label": "BONUS MOVEMENT SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "debuff_duration",
+        "label": "SELF SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "bonus_armor_pct",
+        "label": "BONUS ARMOR NEAR COGS:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "battery_assault_radius",
+        "label": "BATTERY ASSAULT RADIUS:",
+        "value": "330",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "cogs_radius",
+        "label": "COGS RADIUS:",
+        "value": "330",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "hookshot_damage_bonus_pct",
+        "label": "HOOKSHOT DAMAGE BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "hookshot_radius_bonus_pct",
+        "label": "HOOKSHOT RADIUS BONUS:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "hookshot_duration_bonus_pct",
+        "label": "HOOKSHOT DURATION BONUS:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "rocket_flare_interval",
+        "label": "ROCKET FLARE INTERVAL:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "rocket_flare_offset_pct",
+        "label": "ROCKET FLARE OFFSET PCT:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "rocket_flare_rockets",
+        "label": "BONUS ROCKET FLARES:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "rocket_flare_duration_pct",
+        "label": "ROCKET FLARE DURATION BONUS:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "rocket_flare_damage_pct",
+        "label": "ROCKET FLARE DAMAGE BONUS:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "jetpack_bonus_speed",
+        "label": "JETPACK SPEED:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Overclocking",
+        "key": "jetpack_turn_rate",
+        "label": "JETPACK TURN RATE:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Jetpack",
+        "key": "bonus_speed",
+        "label": "BONUS SPEED:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Jetpack",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Jetpack",
+        "key": "height",
+        "label": "HEIGHT:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Jetpack",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "latch_radius",
+        "label": "LATCH RADIUS:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "stun_radius",
+        "label": "STUN RADIUS:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "radius_ally",
+        "label": "RADIUS ALLY:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "cooldown_refund_ally",
+        "label": "COOLDOWN/MANACOST REFUND:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "allied_armor_bonus",
+        "label": "ALLY ARMOR BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "duration",
+        "label": "STUN DURATION:",
+        "value": "1.2/1.4/1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "4000/5000/6000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "2000/2500/3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Hookshot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Armor Power",
+        "key": "can_consume_chainmail",
+        "label": "CAN CONSUME CHAINMAIL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Armor Power",
+        "key": "armor_per_chainmail",
+        "label": "ARMOR PER CHAINMAIL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Armor Power",
+        "key": "model_scale_per_chainmail",
+        "label": "MODEL SCALE PER CHAINMAIL:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Armor Power",
+        "key": "model_scale_maximum",
+        "label": "MODEL SCALE MAXIMUM:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Clockwerk",
+        "ability": "Armor Power",
+        "key": "health_bar_offset_per_stack",
+        "label": "HEALTH BAR OFFSET PER STACK:",
+        "value": "6",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

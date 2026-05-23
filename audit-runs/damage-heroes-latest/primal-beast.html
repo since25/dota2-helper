@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>獸（Primal Beast）</h1>
-        <div class="muted">Primal Beast · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Primal Beast · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,481 @@
       </div>
       <a href="./primal-beast.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Onslaught</td>
+      <td><code>charge_speed</code></td>
+      <td>RUN SPEED:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>chargeup_time</code></td>
+      <td>CHARGEUP TIME:</td>
+      <td>2.2</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>knockback_radius</code></td>
+      <td>KNOCKBACK RADIUS:</td>
+      <td>190</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>max_charge_time</code></td>
+      <td>TIME TO MAX CHARGE:</td>
+      <td>1.7</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>70</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>base_power</code></td>
+      <td>BASE POWER:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>movement_turn_rate</code></td>
+      <td>MOVEMENT TURN RATE:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.7/1/1.3/1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Onslaught</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>effect_radius</code></td>
+      <td>DAMAGE AOE:</td>
+      <td>230</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>step_distance</code></td>
+      <td>STEP DISTANCE:</td>
+      <td>140</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>base_damage</code></td>
+      <td>BASE DAMAGE:</td>
+      <td>15/30/45/60</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5.5</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>bonus_magic_resistance</code></td>
+      <td>BONUS MAGIC RESISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>unslowable</code></td>
+      <td>UNSLOWABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Trample</td>
+      <td><code>proc_attack_modifiers</code></td>
+      <td>PROC ATTACK MODIFIERS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>bonus_damage_per_stack</code></td>
+      <td>BONUS DAMAGE PER STACK:</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>stack_limit</code></td>
+      <td>MAX STACKS:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>stack_count_increase_on_disable</code></td>
+      <td>STACK COUNT INCREASE ON DISABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>stack_duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>move_slow_per_stack</code></td>
+      <td>SLOW PER STACK:</td>
+      <td>4%/6%/8%/10%</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>damage_min</code></td>
+      <td>DAMAGE MIN:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>damage_max</code></td>
+      <td>DAMAGE MAX:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>radius</code></td>
+      <td>ROAR RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>roared_bonus_attack_speed</code></td>
+      <td>ROARED BONUS ATTACK SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>roared_bonus_armor</code></td>
+      <td>ROAR ARMOR BONUS PER STACK:</td>
+      <td>2/3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Uproar</td>
+      <td><code>roar_duration</code></td>
+      <td>ROAR DURATION:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>impact_radius</code></td>
+      <td>IMPACT RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>min_range</code></td>
+      <td>MIN RANGE:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>min_travel_time</code></td>
+      <td>MIN TRAVEL TIME:</td>
+      <td>0.65</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>max_travel_time</code></td>
+      <td>MAX TRAVEL TIME:</td>
+      <td>1.75</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>bounce_travel_time</code></td>
+      <td>BOUNCE TRAVEL TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.4</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>fragment_impact_distance</code></td>
+      <td>FRAGMENT FLIGHT DISTANCE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>fragment_impact_radius</code></td>
+      <td>FRAGMENT IMPACT RADIUS:</td>
+      <td>185</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Rock Throw</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>splash_radius</code></td>
+      <td>AOE RADIUS:</td>
+      <td>575</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>interval</code></td>
+      <td>HIT INTERVAL:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>ministun</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>cast_range</code></td>
+      <td>CAST RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>channel_time</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>2.3</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>pierce_immunity</code></td>
+      <td>PIERCE IMMUNITY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>bonus_damage_per_hit</code></td>
+      <td>BONUS DAMAGE PER HIT:</td>
+      <td>20/40/60</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Pulverize</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.25</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Primal Beast&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Onslaught&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;knockback_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Trample&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;attack_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Uproar&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage_limit&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Rock Throw&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Begin Onslaught&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Pulverize&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;triggerCountInput&quot;: &quot;pulse_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;pulse_count&quot;
+      ],
+      &quot;reason&quot;: &quot;按实际砸地脉冲次数计算，不能默认打满。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +603,7 @@
           <div class="muted">Onslaught · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +656,7 @@
           <div class="muted">Trample · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +709,7 @@
           <div class="muted">Uproar · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -283,7 +762,7 @@
           <div class="muted">Rock Throw · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,8 +815,8 @@
           <div class="muted">Pulverize · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">repeated_trigger</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -362,20 +841,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Pulverize:instant_fixed:damage</code>
+          <code>Pulverize:repeated_trigger:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">repeated_trigger</span>
+          <span class="pill secondary">repeated_trigger</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>100</td><td>175</td><td>250</td><td>-</td>
         <td></td>
-        <td><span class="muted">-</span></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>triggerCountInput</code>: pulse_count</div></td>
+        <td>triggerCount * damage</td>
+        <td><ul><li>需要输入实际触发次数，不能默认按满额命中计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +986,7 @@
       &quot;name&quot;: &quot;Onslaught&quot;,
       &quot;displayName&quot;: &quot;突（Onslaught）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -567,7 +1046,7 @@
       &quot;name&quot;: &quot;Trample&quot;,
       &quot;displayName&quot;: &quot;踏（Trample）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
@@ -622,7 +1101,7 @@
       &quot;name&quot;: &quot;Uproar&quot;,
       &quot;displayName&quot;: &quot;咤（Uproar）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -671,7 +1150,7 @@
       &quot;name&quot;: &quot;Rock Throw&quot;,
       &quot;displayName&quot;: &quot;砸（Rock Throw）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -722,10 +1201,10 @@
       &quot;name&quot;: &quot;Pulverize&quot;,
       &quot;displayName&quot;: &quot;捶（Pulverize）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;reason&quot;: &quot;按实际砸地脉冲次数计算，不能默认打满。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         100,
@@ -738,8 +1217,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Pulverize:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Pulverize:repeated_trigger:damage&quot;,
+          &quot;kind&quot;: &quot;repeated_trigger&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -749,22 +1228,527 @@
             250
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;triggerCount * damage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;runtime_trigger_count_times_damage&quot;
           },
-          &quot;metadata&quot;: {},
+          &quot;metadata&quot;: {
+            &quot;triggerCountInput&quot;: &quot;pulse_count&quot;
+          },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;reason&quot;: &quot;按实际砸地脉冲次数计算，不能默认打满。&quot;,
+          &quot;caveats&quot;: [
+            &quot;需要输入实际触发次数，不能默认按满额命中计算。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Primal Beast&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Onslaught&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;knockback_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Trample&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;attack_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Uproar&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage_limit&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Rock Throw&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Begin Onslaught&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Pulverize&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;triggerCountInput&quot;: &quot;pulse_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;pulse_count&quot;
+          ],
+          &quot;reason&quot;: &quot;按实际砸地脉冲次数计算，不能默认打满。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;charge_speed&quot;,
+        &quot;label&quot;: &quot;RUN SPEED:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;chargeup_time&quot;,
+        &quot;label&quot;: &quot;CHARGEUP TIME:&quot;,
+        &quot;value&quot;: &quot;2.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;knockback_radius&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK RADIUS:&quot;,
+        &quot;value&quot;: &quot;190&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;max_charge_time&quot;,
+        &quot;label&quot;: &quot;TIME TO MAX CHARGE:&quot;,
+        &quot;value&quot;: &quot;1.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;base_power&quot;,
+        &quot;label&quot;: &quot;BASE POWER:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;movement_turn_rate&quot;,
+        &quot;label&quot;: &quot;MOVEMENT TURN RATE:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.7/1/1.3/1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Onslaught&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;effect_radius&quot;,
+        &quot;label&quot;: &quot;DAMAGE AOE:&quot;,
+        &quot;value&quot;: &quot;230&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;step_distance&quot;,
+        &quot;label&quot;: &quot;STEP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;base_damage&quot;,
+        &quot;label&quot;: &quot;BASE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;15/30/45/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;bonus_magic_resistance&quot;,
+        &quot;label&quot;: &quot;BONUS MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;unslowable&quot;,
+        &quot;label&quot;: &quot;UNSLOWABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Trample&quot;,
+        &quot;key&quot;: &quot;proc_attack_modifiers&quot;,
+        &quot;label&quot;: &quot;PROC ATTACK MODIFIERS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;bonus_damage_per_stack&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE PER STACK:&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;stack_limit&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;stack_count_increase_on_disable&quot;,
+        &quot;label&quot;: &quot;STACK COUNT INCREASE ON DISABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;stack_duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;move_slow_per_stack&quot;,
+        &quot;label&quot;: &quot;SLOW PER STACK:&quot;,
+        &quot;value&quot;: &quot;4%/6%/8%/10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;damage_min&quot;,
+        &quot;label&quot;: &quot;DAMAGE MIN:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;damage_max&quot;,
+        &quot;label&quot;: &quot;DAMAGE MAX:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;ROAR RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;roared_bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;ROARED BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;roared_bonus_armor&quot;,
+        &quot;label&quot;: &quot;ROAR ARMOR BONUS PER STACK:&quot;,
+        &quot;value&quot;: &quot;2/3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Uproar&quot;,
+        &quot;key&quot;: &quot;roar_duration&quot;,
+        &quot;label&quot;: &quot;ROAR DURATION:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;impact_radius&quot;,
+        &quot;label&quot;: &quot;IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;min_range&quot;,
+        &quot;label&quot;: &quot;MIN RANGE:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;min_travel_time&quot;,
+        &quot;label&quot;: &quot;MIN TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;0.65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;max_travel_time&quot;,
+        &quot;label&quot;: &quot;MAX TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;1.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;bounce_travel_time&quot;,
+        &quot;label&quot;: &quot;BOUNCE TRAVEL TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;fragment_impact_distance&quot;,
+        &quot;label&quot;: &quot;FRAGMENT FLIGHT DISTANCE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;fragment_impact_radius&quot;,
+        &quot;label&quot;: &quot;FRAGMENT IMPACT RADIUS:&quot;,
+        &quot;value&quot;: &quot;185&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Rock Throw&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;splash_radius&quot;,
+        &quot;label&quot;: &quot;AOE RADIUS:&quot;,
+        &quot;value&quot;: &quot;575&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;interval&quot;,
+        &quot;label&quot;: &quot;HIT INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;ministun&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;cast_range&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;channel_time&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;2.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;pierce_immunity&quot;,
+        &quot;label&quot;: &quot;PIERCE IMMUNITY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;bonus_damage_per_hit&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE PER HIT:&quot;,
+        &quot;value&quot;: &quot;20/40/60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Primal Beast&quot;,
+        &quot;ability&quot;: &quot;Pulverize&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -121,7 +121,7 @@
       "name": "Split Shot",
       "displayName": "分裂箭（Split Shot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -159,7 +159,7 @@
       "name": "Mystic Snake",
       "displayName": "秘术异蛇（Mystic Snake）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
@@ -219,7 +219,7 @@
       "name": "Gorgon's Grasp",
       "displayName": "罗网箭阵（Gorgon's Grasp）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -278,7 +278,7 @@
       "name": "Mana Shield",
       "displayName": "魔法盾（Mana Shield）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
@@ -325,10 +325,10 @@
       "name": "Stone Gaze",
       "displayName": "石化凝视（Stone Gaze）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         250
       ],
@@ -363,13 +363,474 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Medusa",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Split Shot": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_modifier",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true
+        },
+        "Mystic Snake": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "snake_damage",
+          "semanticType": "damage.percent_missing_mana",
+          "requiredInputs": [
+            "target_missing_mana"
+          ],
+          "conditionInputs": [
+            "target_missing_mana"
+          ],
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+        },
+        "Gorgon's Grasp": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_pers",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Cold Blooded": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Mana Shield": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_per_mana",
+          "semanticType": "damage.percent_missing_mana",
+          "requiredInputs": [
+            "target_missing_mana"
+          ],
+          "conditionInputs": [
+            "target_missing_mana"
+          ],
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+        },
+        "Stone Gaze": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Medusa",
+        "ability": "Split Shot",
+        "key": "damage_modifier_tooltip",
+        "label": "OUTGOING DAMAGE:",
+        "value": "50%/60%/70%/80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Split Shot",
+        "key": "arrow_count",
+        "label": "EXTRA TARGETS:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Split Shot",
+        "key": "process_procs",
+        "label": "PROCESS PROCS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Split Shot",
+        "key": "split_shot_bonus_range",
+        "label": "SPLIT SHOT BONUS RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Split Shot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "radius",
+        "label": "JUMP RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "snake_jumps",
+        "label": "JUMPS:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "jump_delay",
+        "label": "JUMP DELAY:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "snake_damage_pct",
+        "label": "SNAKE DAMAGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "snake_mana_steal",
+        "label": "MANA GAIN:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "snake_scale",
+        "label": "DAMAGE/SPEED INCREASE PER JUMP:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "initial_speed",
+        "label": "INITIAL SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "return_speed",
+        "label": "RETURN SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mystic Snake",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "radius",
+        "label": "INITIAL RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "radius_grow",
+        "label": "RADIUS GROWTH:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "delay",
+        "label": "DELAY:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "volley_interval",
+        "label": "VOLLEY INTERVAL:",
+        "value": ".25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "volley_spread_pct",
+        "label": "VOLLEY SPREAD PCT:",
+        "value": "170",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "volley_count",
+        "label": "VOLLEY COUNT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "damage",
+        "label": "DAMAGE:",
+        "value": "30/70/110/150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": ".2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Gorgon's Grasp",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Cold Blooded",
+        "key": "damage",
+        "label": "DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Cold Blooded",
+        "key": "stone_form_scepter_base_tooltip",
+        "label": "STONE FORM SCEPTER BASE TOOLTIP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "illusion_percentage",
+        "label": "ILLUSION PERCENTAGE:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "absorption_pct",
+        "label": "ABSORPTION PCT:",
+        "value": "98",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_smoothness",
+        "label": "ASPD INCREASE SMOOTHNESS:",
+        "value": "0.015",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_rate_pct",
+        "label": "ASPD INCREASE RATE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_max_tooltip",
+        "label": "ASPD INCREASE MAX TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_buff_duration",
+        "label": "ASPD INCREASE BUFF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_mana_cost_pct",
+        "label": "ASPD INCREASE MANA COST PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "aspd_increase_max_aspd_time",
+        "label": "ASPD INCREASE MAX ASPD TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "attack_buff_cooldown",
+        "label": "ATTACK BUFF COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Mana Shield",
+        "key": "min_duration",
+        "label": "MIN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5/5.5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "stone_duration",
+        "label": "STONE DURATION:",
+        "value": "2/2.2/2.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "face_duration",
+        "label": "FACE DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "vision_cone",
+        "label": "VISION CONE:",
+        "value": "0.08715",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "bonus_physical_damage",
+        "label": "BONUS PHYSICAL ATTACK DAMAGE:",
+        "value": "35%/45%/55%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "speed_boost",
+        "label": "SPEED BOOST:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Medusa",
+        "ability": "Stone Gaze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

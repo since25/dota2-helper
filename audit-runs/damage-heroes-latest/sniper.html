@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>狙击手（Sniper）</h1>
-        <div class="muted">Sniper · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Sniper · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,389 @@
       </div>
       <a href="./sniper.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>slow_movement_speed</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-12%/-18%/-24%/-30%</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400/425/450/475</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>damage_delay</code></td>
+      <td>DAMAGE DELAY:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Shrapnel</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Headshot</td>
+      <td><code>knockback_distance</code></td>
+      <td>MAX KNOCKBACK DISTANCE:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Headshot</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>-100</td>
+    </tr>
+  
+    <tr>
+      <td>Headshot</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.2/0.3/0.4/0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>65</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>headshot_chance</code></td>
+      <td>HEADSHOT CHANCE:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>active_attack_range_bonus</code></td>
+      <td>ACTIVE BONUS ATTACK RANGE:</td>
+      <td>75/150/225/300</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>passive_attack_range_bonus</code></td>
+      <td>PASSIVE ATTACK RANGE BONUS:</td>
+      <td>160/240/320/400</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>bonus_vision</code></td>
+      <td>BONUS VISION:</td>
+      <td>500/750/1000/1250</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>view_restrict</code></td>
+      <td>VIEW RESTRICT:</td>
+      <td>140</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>does_root</code></td>
+      <td>DOES ROOT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>require_target</code></td>
+      <td>REQUIRE TARGET:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>no_reveal</code></td>
+      <td>NO REVEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>attack_speed</code></td>
+      <td>ATTACK SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Take Aim</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>375</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>slow</code></td>
+      <td>MOVE SLOW:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>knockback_height</code></td>
+      <td>KNOCKBACK HEIGHT:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>475</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>self_push</code></td>
+      <td>SELF PUSH:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Concussive Grenade</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Scope</td>
+      <td><code>bonus_damage_for_range</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>1.50%</td>
+    </tr>
+  
+    <tr>
+      <td>Keen Scope</td>
+      <td><code>bonus_damage_distance</code></td>
+      <td>BONUS DAMAGE DISTANCE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>2500</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>cooldown_reduction_on_kill</code></td>
+      <td>COOLDOWN REDUCTION ON KILL:</td>
+      <td>0/5/10</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>attack_factor</code></td>
+      <td>ATTACK FACTOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>attack_factor_tooltip</code></td>
+      <td>ATTACK FACTOR TOOLTIP:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Assassinate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>AIM DURATION:</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Sniper&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Shrapnel&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;shrapnel_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;stack_count&quot;
+      ],
+      &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Headshot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+      &quot;procChanceKey&quot;: &quot;proc_chance&quot;,
+      &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;attack_count&quot;,
+        &quot;proc_mode&quot;,
+        &quot;hero_attack_damage&quot;
+      ],
+      &quot;defaultIncluded&quot;: false,
+      &quot;reason&quot;: &quot;爆头是概率攻击附加伤害，需输入攻击次数和触发模式。&quot;
+    },
+    &quot;Take Aim&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Concussive Grenade&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;debuff_duration&quot;
+    },
+    &quot;Keen Scope&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Assassinate&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +511,7 @@
           <div class="muted">Shrapnel · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,9 +564,9 @@
           <div class="muted">Headshot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">debuff_reference</span>
-          <span class="pill secondary">reference_only</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">attack_modifier</span>
+          <span class="pill secondary">implemented</span>
         </div>
       </header>
       <div class="resource-line">
@@ -203,20 +590,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Headshot:debuff_reference:damage</code>
+          <code>Headshot:attack_modifier:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">debuff_reference</span>
-          <span class="pill secondary">debuff_reference</span>
-          <div class="muted">reference_only</div>
+          <span class="pill">attack_modifier</span>
+          <span class="pill secondary">attack_modifier</span>
+          <div class="muted">implemented</div>
         </td>
-        <td>Unknown</td>
+        <td>Physical</td>
         <td>20</td><td>50</td><td>80</td><td>110</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: all_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
-        <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该百分比/修正值不直接计入固定爆发。</li></ul></td>
+        <td><div><code>defaultAttackCount</code>: 1</div><div><code>attackFactorPctByAbilityLevel</code>: </div><div><code>procChancePctByAbilityLevel</code>: 40 / 40 / 40 / 40</div></td>
+        <td>attack_modifier</td>
+        <td><ul><li>爆头是概率攻击附加伤害，需输入攻击次数和触发模式。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +617,7 @@
           <div class="muted">Take Aim · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +656,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +670,7 @@
           <div class="muted">Concussive Grenade · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +723,7 @@
           <div class="muted">Assassinate · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +894,7 @@
       &quot;name&quot;: &quot;Shrapnel&quot;,
       &quot;displayName&quot;: &quot;榴霰弹（Shrapnel）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;,
@@ -567,18 +954,18 @@
       &quot;name&quot;: &quot;Headshot&quot;,
       &quot;displayName&quot;: &quot;爆头（Headshot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;reference_only&quot;,
-      &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;attack_modifier&quot;,
+      &quot;reason&quot;: &quot;爆头是概率攻击附加伤害，需输入攻击次数和触发模式。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Headshot:debuff_reference:damage&quot;,
-          &quot;kind&quot;: &quot;debuff_reference&quot;,
+          &quot;id&quot;: &quot;Headshot:attack_modifier:damage&quot;,
+          &quot;kind&quot;: &quot;attack_modifier&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
-          &quot;damageType&quot;: &quot;Unknown&quot;,
+          &quot;damageType&quot;: &quot;Physical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
           &quot;valuesByAbilityLevel&quot;: [
             20,
@@ -590,23 +977,24 @@
           &quot;totalFormula&quot;: &quot;&quot;,
           &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;debuff_reference&quot;
+            &quot;type&quot;: &quot;attack_modifier&quot;
           },
           &quot;metadata&quot;: {
-            &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;&quot;,
-            &quot;affects&quot;: &quot;all_damage&quot;,
-            &quot;condition&quot;: &quot;&quot;,
-            &quot;requiredInputs&quot;: [],
-            &quot;chanceByAbilityLevel&quot;: [],
-            &quot;multiplierByAbilityLevel&quot;: []
+            &quot;defaultAttackCount&quot;: 1,
+            &quot;attackFactorPctByAbilityLevel&quot;: [],
+            &quot;procChancePctByAbilityLevel&quot;: [
+              40,
+              40,
+              40,
+              40
+            ]
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;reference_only&quot;,
-          &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;reason&quot;: &quot;爆头是概率攻击附加伤害，需输入攻击次数和触发模式。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该百分比/修正值不直接计入固定爆发。&quot;
+            &quot;爆头是概率攻击附加伤害，需输入攻击次数和触发模式。&quot;
           ]
         }
       ]
@@ -615,10 +1003,10 @@
       &quot;name&quot;: &quot;Take Aim&quot;,
       &quot;displayName&quot;: &quot;瞄准（Take Aim）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50
       ],
@@ -656,9 +1044,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -667,7 +1055,7 @@
       &quot;name&quot;: &quot;Concussive Grenade&quot;,
       &quot;displayName&quot;: &quot;震荡手雷（Concussive Grenade）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -710,7 +1098,7 @@
       &quot;name&quot;: &quot;Assassinate&quot;,
       &quot;displayName&quot;: &quot;暗杀（Assassinate）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -752,7 +1140,405 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Sniper&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Shrapnel&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;shrapnel_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.stack_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;stack_count&quot;
+          ],
+          &quot;reason&quot;: &quot;叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Headshot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attack_modifier&quot;,
+          &quot;bonusDamageKey&quot;: &quot;damage&quot;,
+          &quot;procChanceKey&quot;: &quot;proc_chance&quot;,
+          &quot;semanticType&quot;: &quot;damage.attack_bonus&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;attack_count&quot;,
+            &quot;proc_mode&quot;,
+            &quot;hero_attack_damage&quot;
+          ],
+          &quot;defaultIncluded&quot;: false,
+          &quot;reason&quot;: &quot;爆头是概率攻击附加伤害，需输入攻击次数和触发模式。&quot;
+        },
+        &quot;Take Aim&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Concussive Grenade&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;debuff_duration&quot;
+        },
+        &quot;Keen Scope&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Assassinate&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-12%/-18%/-24%/-30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400/425/450/475&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;damage_delay&quot;,
+        &quot;label&quot;: &quot;DAMAGE DELAY:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Shrapnel&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Headshot&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;MAX KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Headshot&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;-100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Headshot&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.2/0.3/0.4/0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;headshot_chance&quot;,
+        &quot;label&quot;: &quot;HEADSHOT CHANCE:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;active_attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ACTIVE BONUS ATTACK RANGE:&quot;,
+        &quot;value&quot;: &quot;75/150/225/300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;passive_attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;PASSIVE ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;160/240/320/400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;bonus_vision&quot;,
+        &quot;label&quot;: &quot;BONUS VISION:&quot;,
+        &quot;value&quot;: &quot;500/750/1000/1250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;view_restrict&quot;,
+        &quot;label&quot;: &quot;VIEW RESTRICT:&quot;,
+        &quot;value&quot;: &quot;140&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;does_root&quot;,
+        &quot;label&quot;: &quot;DOES ROOT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;require_target&quot;,
+        &quot;label&quot;: &quot;REQUIRE TARGET:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;no_reveal&quot;,
+        &quot;label&quot;: &quot;NO REVEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Take Aim&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;knockback_height&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK HEIGHT:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;475&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;self_push&quot;,
+        &quot;label&quot;: &quot;SELF PUSH:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Concussive Grenade&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Keen Scope&quot;,
+        &quot;key&quot;: &quot;bonus_damage_for_range&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;1.50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Keen Scope&quot;,
+        &quot;key&quot;: &quot;bonus_damage_distance&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE DISTANCE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;2500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction_on_kill&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION ON KILL:&quot;,
+        &quot;value&quot;: &quot;0/5/10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;attack_factor&quot;,
+        &quot;label&quot;: &quot;ATTACK FACTOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;attack_factor_tooltip&quot;,
+        &quot;label&quot;: &quot;ATTACK FACTOR TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Sniper&quot;,
+        &quot;ability&quot;: &quot;Assassinate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;AIM DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

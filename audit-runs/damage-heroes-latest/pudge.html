@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,15 +48,282 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>帕吉（Pudge）</h1>
-        <div class="muted">Pudge · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Pudge · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
-          <span>组件 4</span>
+          <span>组件 5</span>
           <span>源 http://localhost:3002</span>
         </div>
       </div>
       <a href="./pudge.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>hook_speed</code></td>
+      <td>HOOK SPEED:</td>
+      <td>1600</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>hook_width</code></td>
+      <td>HOOK WIDTH:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>reveal_duration</code></td>
+      <td>REVEAL DURATION:</td>
+      <td>00</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>vector_target_distance</code></td>
+      <td>VECTOR TARGET DISTANCE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>self_stun_duration_percent</code></td>
+      <td>SELF STUN DURATION PERCENT:</td>
+      <td>65</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Hook</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Rot</td>
+      <td><code>rot_radius</code></td>
+      <td>RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Rot</td>
+      <td><code>rot_slow</code></td>
+      <td>MOVE SLOW:</td>
+      <td>-14%/-20%/-26%/-32%</td>
+    </tr>
+  
+    <tr>
+      <td>Rot</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Meat Shield</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>4/5/6/7</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Heap</td>
+      <td><code>flesh_heap_strength_buff_amount</code></td>
+      <td>FLESH HEAP STRENGTH BUFF AMOUNT:</td>
+      <td>1.6</td>
+    </tr>
+  
+    <tr>
+      <td>Flesh Heap</td>
+      <td><code>flesh_heap_range</code></td>
+      <td>FLESH HEAP RANGE:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>strength_damage</code></td>
+      <td>STRENGTH MULTIPLIER:</td>
+      <td>0.3/0.6/0.9</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>ticks</code></td>
+      <td>TICKS:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>pull_units_per_second</code></td>
+      <td>PULL UNITS PER SECOND:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>pull_distance_limit</code></td>
+      <td>PULL DISTANCE LIMIT:</td>
+      <td>125</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>gluttony_strength_bonus</code></td>
+      <td>STRENGTH INCREASE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>glutton_strength_stack_duration</code></td>
+      <td>STRENGTH DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Dismember</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Pudge&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Meat Hook&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;vision_duration&quot;
+    },
+    &quot;Rot&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;rot_damage&quot;,
+      &quot;durationKey&quot;: &quot;active_duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;rot_tick&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;active_duration&quot;
+      ],
+      &quot;defaultActiveDuration&quot;: &quot;manual&quot;
+    },
+    &quot;Meat Shield&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_block&quot;,
+      &quot;semanticType&quot;: &quot;defense.damage_block.flat&quot;,
+      &quot;affects&quot;: &quot;incoming_damage&quot;,
+      &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+    },
+    &quot;Flesh Heap&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Dismember&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;dismember_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;caster_strength&quot;,
+        &quot;active_duration&quot;
+      ],
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;extraComponents&quot;: [
+        {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attribute_scaling&quot;,
+          &quot;baseDamageKey&quot;: &quot;dismember_damage&quot;,
+          &quot;attributeMultiplierKey&quot;: &quot;strength_damage&quot;,
+          &quot;attributeInput&quot;: &quot;caster_strength&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;caster_strength&quot;
+          ]
+        }
+      ]
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +395,7 @@
           <div class="muted">Meat Hook · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,8 +448,8 @@
           <div class="muted">Rot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -203,20 +474,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Rot:instant_fixed:rot_damage</code>
+          <code>Rot:sustained:rot_damage</code>
           <div class="muted">rot_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>30</td><td>60</td><td>90</td><td>120</td>
         <td></td>
-        <td><span class="muted">-</span></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>durationByAbilityLevel</code>: </div><div><code>tickIntervalByAbilityLevel</code>: 0.2 / 0.2 / 0.2 / 0.2</div></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,9 +501,9 @@
           <div class="muted">Meat Shield · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
-          <span class="pill secondary">implemented</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
@@ -256,20 +527,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Meat Shield:instant_fixed:damage_block</code>
+          <code>Meat Shield:debuff_reference:damage_block</code>
           <div class="muted">damage_block</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
-          <div class="muted">implemented</div>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
         <td>8</td><td>14</td><td>20</td><td>26</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 4 / 5 / 6 / 7</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: incoming_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>伤害格挡不是对敌伤害，作为防御修正参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +554,7 @@
           <div class="muted">Dismember · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -323,6 +594,24 @@
         <td><div><code>durationByAbilityLevel</code>: 2.75 / 2.75 / 2.75</div></td>
         <td>duration * damagePerSecond</td>
         <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
+      </tr>
+    
+      <tr>
+        <td>
+          <code>Dismember:attribute_scaling:dismember_damage</code>
+          <div class="muted">dismember_damage</div>
+        </td>
+        <td>
+          <span class="pill">attribute_scaling</span>
+          <span class="pill secondary">attribute_scaling</span>
+          <div class="muted">implemented</div>
+        </td>
+        <td>Magical</td>
+        <td>80</td><td>100</td><td>120</td><td>-</td>
+        <td></td>
+        <td><div><code>attributeInput</code>: caster_strength</div><div><code>attributeMultiplierKey</code>: strength_damage</div><div><code>attributeMultiplierByAbilityLevel</code>: 0.3 / 0.6 / 0.9</div></td>
+        <td>baseDamage + attributeInput * attributeMultiplier</td>
+        <td><ul><li>属性缩放伤害需要施法者属性输入，不能生成固定理论总量。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +743,7 @@
       &quot;name&quot;: &quot;Meat Hook&quot;,
       &quot;displayName&quot;: &quot;肉钩（Meat Hook）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -509,16 +798,16 @@
       &quot;name&quot;: &quot;Rot&quot;,
       &quot;displayName&quot;: &quot;腐烂（Rot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Rot:instant_fixed:rot_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Rot:sustained:rot_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;rot_damage&quot;,
@@ -529,17 +818,27 @@
             120
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
-          &quot;metadata&quot;: {},
+          &quot;metadata&quot;: {
+            &quot;durationByAbilityLevel&quot;: [],
+            &quot;tickIntervalByAbilityLevel&quot;: [
+              0.2,
+              0.2,
+              0.2,
+              0.2
+            ]
+          },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
           &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -547,10 +846,10 @@
       &quot;name&quot;: &quot;Meat Shield&quot;,
       &quot;displayName&quot;: &quot;肉盾（Meat Shield）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         65,
         70,
@@ -565,8 +864,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Meat Shield:instant_fixed:damage_block&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Meat Shield:debuff_reference:damage_block&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
           &quot;label&quot;: &quot;damage_block&quot;,
@@ -578,23 +877,26 @@
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;debuff_reference&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              4,
-              5,
-              6,
-              7
-            ]
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;incoming_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+          ]
         }
       ]
     },
@@ -602,7 +904,7 @@
       &quot;name&quot;: &quot;Dismember&quot;,
       &quot;displayName&quot;: &quot;肢解（Dismember）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -652,11 +954,310 @@
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
+        },
+        {
+          &quot;id&quot;: &quot;Dismember:attribute_scaling:dismember_damage&quot;,
+          &quot;kind&quot;: &quot;attribute_scaling&quot;,
+          &quot;growthKind&quot;: &quot;non_growth&quot;,
+          &quot;damageType&quot;: &quot;Magical&quot;,
+          &quot;label&quot;: &quot;dismember_damage&quot;,
+          &quot;valuesByAbilityLevel&quot;: [
+            80,
+            100,
+            120
+          ],
+          &quot;theoreticalTotalByAbilityLevel&quot;: [],
+          &quot;totalFormula&quot;: &quot;baseDamage + attributeInput * attributeMultiplier&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
+          &quot;formula&quot;: {
+            &quot;type&quot;: &quot;base_plus_attribute_times_multiplier&quot;
+          },
+          &quot;metadata&quot;: {
+            &quot;attributeInput&quot;: &quot;caster_strength&quot;,
+            &quot;attributeMultiplierKey&quot;: &quot;strength_damage&quot;,
+            &quot;attributeMultiplierByAbilityLevel&quot;: [
+              0.3,
+              0.6,
+              0.9
+            ]
+          },
+          &quot;source&quot;: &quot;curated&quot;,
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;attribute_scaling&quot;,
+          &quot;reason&quot;: &quot;&quot;,
+          &quot;caveats&quot;: [
+            &quot;属性缩放伤害需要施法者属性输入，不能生成固定理论总量。&quot;
+          ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Pudge&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Meat Hook&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;vision_duration&quot;
+        },
+        &quot;Rot&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;rot_damage&quot;,
+          &quot;durationKey&quot;: &quot;active_duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;rot_tick&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;active_duration&quot;
+          ],
+          &quot;defaultActiveDuration&quot;: &quot;manual&quot;
+        },
+        &quot;Meat Shield&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_block&quot;,
+          &quot;semanticType&quot;: &quot;defense.damage_block.flat&quot;,
+          &quot;affects&quot;: &quot;incoming_damage&quot;,
+          &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+        },
+        &quot;Flesh Heap&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Dismember&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;dismember_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;caster_strength&quot;,
+            &quot;active_duration&quot;
+          ],
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;extraComponents&quot;: [
+            {
+              &quot;status&quot;: &quot;implemented&quot;,
+              &quot;model&quot;: &quot;attribute_scaling&quot;,
+              &quot;baseDamageKey&quot;: &quot;dismember_damage&quot;,
+              &quot;attributeMultiplierKey&quot;: &quot;strength_damage&quot;,
+              &quot;attributeInput&quot;: &quot;caster_strength&quot;,
+              &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+              &quot;conditionInputs&quot;: [
+                &quot;caster_strength&quot;
+              ]
+            }
+          ]
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;hook_speed&quot;,
+        &quot;label&quot;: &quot;HOOK SPEED:&quot;,
+        &quot;value&quot;: &quot;1600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;hook_width&quot;,
+        &quot;label&quot;: &quot;HOOK WIDTH:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;reveal_duration&quot;,
+        &quot;label&quot;: &quot;REVEAL DURATION:&quot;,
+        &quot;value&quot;: &quot;00&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;vector_target_distance&quot;,
+        &quot;label&quot;: &quot;VECTOR TARGET DISTANCE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;self_stun_duration_percent&quot;,
+        &quot;label&quot;: &quot;SELF STUN DURATION PERCENT:&quot;,
+        &quot;value&quot;: &quot;65&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Hook&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Rot&quot;,
+        &quot;key&quot;: &quot;rot_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Rot&quot;,
+        &quot;key&quot;: &quot;rot_slow&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-14%/-20%/-26%/-32%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Rot&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Meat Shield&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4/5/6/7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Flesh Heap&quot;,
+        &quot;key&quot;: &quot;flesh_heap_strength_buff_amount&quot;,
+        &quot;label&quot;: &quot;FLESH HEAP STRENGTH BUFF AMOUNT:&quot;,
+        &quot;value&quot;: &quot;1.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Flesh Heap&quot;,
+        &quot;key&quot;: &quot;flesh_heap_range&quot;,
+        &quot;label&quot;: &quot;FLESH HEAP RANGE:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;strength_damage&quot;,
+        &quot;label&quot;: &quot;STRENGTH MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0.3/0.6/0.9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;ticks&quot;,
+        &quot;label&quot;: &quot;TICKS:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;pull_units_per_second&quot;,
+        &quot;label&quot;: &quot;PULL UNITS PER SECOND:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;pull_distance_limit&quot;,
+        &quot;label&quot;: &quot;PULL DISTANCE LIMIT:&quot;,
+        &quot;value&quot;: &quot;125&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;gluttony_strength_bonus&quot;,
+        &quot;label&quot;: &quot;STRENGTH INCREASE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;glutton_strength_stack_duration&quot;,
+        &quot;label&quot;: &quot;STRENGTH DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pudge&quot;,
+        &quot;ability&quot;: &quot;Dismember&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

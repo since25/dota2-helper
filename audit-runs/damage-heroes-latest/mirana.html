@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>米拉娜（Mirana）</h1>
-        <div class="muted">Mirana · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Mirana · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,346 @@
       </div>
       <a href="./mirana.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Starstorm</td>
+      <td><code>secondary_starfall_damage_percent</code></td>
+      <td>SECOND METEOR DAMAGE:</td>
+      <td>70%</td>
+    </tr>
+  
+    <tr>
+      <td>Starstorm</td>
+      <td><code>starfall_radius</code></td>
+      <td>RADIUS:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Starstorm</td>
+      <td><code>starfall_secondary_radius</code></td>
+      <td>STARFALL SECONDARY RADIUS:</td>
+      <td>675</td>
+    </tr>
+  
+    <tr>
+      <td>Starstorm</td>
+      <td><code>starstruck_blind_pct</code></td>
+      <td>BLIND MISS RATE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Starstorm</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>10</td>
+    </tr>
+  
+    <tr>
+      <td>Starstorm</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_speed</code></td>
+      <td>ARROW SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_width</code></td>
+      <td>ARROW WIDTH:</td>
+      <td>115</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_range</code></td>
+      <td>RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_max_stunrange</code></td>
+      <td>ARROW MAX STUNRANGE:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_min_stun</code></td>
+      <td>MINIMUM STUN:</td>
+      <td>0.01</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_max_stun</code></td>
+      <td>MAXIMUM STUN:</td>
+      <td>2.6/3.4/4.2/5</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_bonus_damage</code></td>
+      <td>MAXIMUM BONUS DAMAGE:</td>
+      <td>180</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>arrow_vision</code></td>
+      <td>ARROW VISION:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>3000</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>3.11</td>
+    </tr>
+  
+    <tr>
+      <td>Sacred Arrow</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>leap_distance</code></td>
+      <td>DISTANCE:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>leap_speed</code></td>
+      <td>LEAP SPEED:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>leap_acceleration</code></td>
+      <td>LEAP ACCELERATION:</td>
+      <td>6000</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>leap_speedbonus</code></td>
+      <td>MOVEMENT BONUS:</td>
+      <td>6%/12%/18%/24%</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>leap_bonus_duration</code></td>
+      <td>LEAP BONUS DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>additional_charges</code></td>
+      <td>ADDITIONAL CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>charge_restore_time</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>45/35/25/15</td>
+    </tr>
+  
+    <tr>
+      <td>Leap</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Quiver</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Quiver</td>
+      <td><code>levels_per_quiver_tooltip</code></td>
+      <td>LEVELS PER QUIVER TOOLTIP:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Quiver</td>
+      <td><code>quiver_restore</code></td>
+      <td>QUIVER RESTORE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Celestial Quiver</td>
+      <td><code>charge_restore_time</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>fade_delay</code></td>
+      <td>FADE DELAY:</td>
+      <td>2.5/2/1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>9%/12%/15%</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>evasion</code></td>
+      <td>EVASION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>bonus_outgoing_damage_pct</code></td>
+      <td>SELF OUTGOING DAMAGE BONUS:</td>
+      <td>9%/12%/15%</td>
+    </tr>
+  
+    <tr>
+      <td>Moonlight Shadow</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Mirana&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Starstorm&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;starstruck_duration&quot;
+    },
+    &quot;Sacred Arrow&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Leap&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;leap_speedbonus_as&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Celestial Quiver&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Moonlight Shadow&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +468,7 @@
           <div class="muted">Starstorm · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +521,7 @@
           <div class="muted">Sacred Arrow · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +574,7 @@
           <div class="muted">Leap · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +613,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +627,7 @@
           <div class="muted">Celestial Quiver · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +666,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +680,7 @@
           <div class="muted">Moonlight Shadow · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +719,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,7 +851,7 @@
       &quot;name&quot;: &quot;Starstorm&quot;,
       &quot;displayName&quot;: &quot;群星风暴（Starstorm）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +906,7 @@
       &quot;name&quot;: &quot;Sacred Arrow&quot;,
       &quot;displayName&quot;: &quot;月神之箭（Sacred Arrow）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -622,10 +966,10 @@
       &quot;name&quot;: &quot;Leap&quot;,
       &quot;displayName&quot;: &quot;跳跃（Leap）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         50,
@@ -669,9 +1013,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -680,10 +1024,10 @@
       &quot;name&quot;: &quot;Celestial Quiver&quot;,
       &quot;displayName&quot;: &quot;天界箭袋（Celestial Quiver）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -714,9 +1058,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -725,10 +1069,10 @@
       &quot;name&quot;: &quot;Moonlight Shadow&quot;,
       &quot;displayName&quot;: &quot;月之暗面（Moonlight Shadow）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         125
       ],
@@ -765,15 +1109,365 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Mirana&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Starstorm&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;starstruck_duration&quot;
+        },
+        &quot;Sacred Arrow&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Leap&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;leap_speedbonus_as&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Celestial Quiver&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Moonlight Shadow&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;secondary_starfall_damage_percent&quot;,
+        &quot;label&quot;: &quot;SECOND METEOR DAMAGE:&quot;,
+        &quot;value&quot;: &quot;70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;starfall_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;starfall_secondary_radius&quot;,
+        &quot;label&quot;: &quot;STARFALL SECONDARY RADIUS:&quot;,
+        &quot;value&quot;: &quot;675&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;starstruck_blind_pct&quot;,
+        &quot;label&quot;: &quot;BLIND MISS RATE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Starstorm&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_speed&quot;,
+        &quot;label&quot;: &quot;ARROW SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_width&quot;,
+        &quot;label&quot;: &quot;ARROW WIDTH:&quot;,
+        &quot;value&quot;: &quot;115&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_max_stunrange&quot;,
+        &quot;label&quot;: &quot;ARROW MAX STUNRANGE:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_min_stun&quot;,
+        &quot;label&quot;: &quot;MINIMUM STUN:&quot;,
+        &quot;value&quot;: &quot;0.01&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_max_stun&quot;,
+        &quot;label&quot;: &quot;MAXIMUM STUN:&quot;,
+        &quot;value&quot;: &quot;2.6/3.4/4.2/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_bonus_damage&quot;,
+        &quot;label&quot;: &quot;MAXIMUM BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;180&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;arrow_vision&quot;,
+        &quot;label&quot;: &quot;ARROW VISION:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;3000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3.11&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Sacred Arrow&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;leap_distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;leap_speed&quot;,
+        &quot;label&quot;: &quot;LEAP SPEED:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;leap_acceleration&quot;,
+        &quot;label&quot;: &quot;LEAP ACCELERATION:&quot;,
+        &quot;value&quot;: &quot;6000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;leap_speedbonus&quot;,
+        &quot;label&quot;: &quot;MOVEMENT BONUS:&quot;,
+        &quot;value&quot;: &quot;6%/12%/18%/24%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;leap_bonus_duration&quot;,
+        &quot;label&quot;: &quot;LEAP BONUS DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;additional_charges&quot;,
+        &quot;label&quot;: &quot;ADDITIONAL CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;charge_restore_time&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;45/35/25/15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Leap&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Celestial Quiver&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Celestial Quiver&quot;,
+        &quot;key&quot;: &quot;levels_per_quiver_tooltip&quot;,
+        &quot;label&quot;: &quot;LEVELS PER QUIVER TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Celestial Quiver&quot;,
+        &quot;key&quot;: &quot;quiver_restore&quot;,
+        &quot;label&quot;: &quot;QUIVER RESTORE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Celestial Quiver&quot;,
+        &quot;key&quot;: &quot;charge_restore_time&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;fade_delay&quot;,
+        &quot;label&quot;: &quot;FADE DELAY:&quot;,
+        &quot;value&quot;: &quot;2.5/2/1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;9%/12%/15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;evasion&quot;,
+        &quot;label&quot;: &quot;EVASION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;bonus_outgoing_damage_pct&quot;,
+        &quot;label&quot;: &quot;SELF OUTGOING DAMAGE BONUS:&quot;,
+        &quot;value&quot;: &quot;9%/12%/15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Mirana&quot;,
+        &quot;ability&quot;: &quot;Moonlight Shadow&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -1,0 +1,413 @@
+{
+  "hero": "Ringmaster",
+  "displayName": "傀儡师（Ringmaster）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 575,
+    "attackRate": 1.7,
+    "attackPoint": 0.5,
+    "projectileSpeed": 1200,
+    "moveSpeed": 310,
+    "turnRate": 0.6,
+    "baseHealth": 120,
+    "baseHealthRegen": 0.25,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 1,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 23,
+    "baseAttackMax": 33,
+    "baseStrength": 21,
+    "baseAgility": 11,
+    "baseIntelligence": 25,
+    "strengthGain": 2.1,
+    "agilityGain": 1.6,
+    "intelligenceGain": 3,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 11,
+        "intelligence": 25,
+        "maxHealth": 582,
+        "maxMana": 375,
+        "armor": 2.83,
+        "attackMin": 48,
+        "attackMax": 58
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 25.2,
+          "agility": 14.2,
+          "intelligence": 31,
+          "maxHealth": 674,
+          "maxMana": 447,
+          "armor": 3.37,
+          "attackMin": 54,
+          "attackMax": 64
+        },
+        "level5": {
+          "level": 5,
+          "strength": 29.4,
+          "agility": 17.4,
+          "intelligence": 37,
+          "maxHealth": 767,
+          "maxMana": 519,
+          "armor": 3.9,
+          "attackMin": 60,
+          "attackMax": 70
+        },
+        "level6": {
+          "level": 6,
+          "strength": 31.5,
+          "agility": 19,
+          "intelligence": 40,
+          "maxHealth": 813,
+          "maxMana": 555,
+          "armor": 4.17,
+          "attackMin": 63,
+          "attackMax": 73
+        },
+        "level7": {
+          "level": 7,
+          "strength": 33.6,
+          "agility": 20.6,
+          "intelligence": 43,
+          "maxHealth": 859,
+          "maxMana": 591,
+          "armor": 4.43,
+          "attackMin": 66,
+          "attackMax": 76
+        },
+        "level12": {
+          "level": 12,
+          "strength": 44.1,
+          "agility": 28.6,
+          "intelligence": 58,
+          "maxHealth": 1090,
+          "maxMana": 771,
+          "armor": 5.77,
+          "attackMin": 81,
+          "attackMax": 91
+        },
+        "level18": {
+          "level": 18,
+          "strength": 56.7,
+          "agility": 38.2,
+          "intelligence": 76,
+          "maxHealth": 1367,
+          "maxMana": 987,
+          "armor": 7.37,
+          "attackMin": 99,
+          "attackMax": 109
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Tame the Beasts",
+      "displayName": "驯兽术（Tame the Beasts）",
+      "isUltimate": false,
+      "modelSource": "inferred",
+      "status": "inferred",
+      "model": "inferred",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        90,
+        105,
+        120,
+        135
+      ],
+      "cooldownByAbilityLevel": [
+        16,
+        14,
+        12,
+        10
+      ],
+      "components": [
+        {
+          "id": "Tame the Beasts:instant_fixed:damage_min",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "MIN DAMAGE",
+          "valuesByAbilityLevel": [
+            50,
+            75,
+            100,
+            125
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.2
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        },
+        {
+          "id": "Tame the Beasts:instant_fixed:damage_max",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "MAX DAMAGE",
+          "valuesByAbilityLevel": [
+            180,
+            280,
+            380,
+            480
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              0.2
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Impalement Arts",
+      "displayName": "尖刀戏（Impalement Arts）",
+      "isUltimate": false,
+      "modelSource": "inferred",
+      "status": "inferred",
+      "model": "inferred",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "cooldownByAbilityLevel": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "components": [
+        {
+          "id": "Impalement Arts:instant_fixed:damage_impact",
+          "kind": "instant_fixed",
+          "growthKind": "state_growth",
+          "damageType": "Magical",
+          "label": "IMPACT DAMAGE",
+          "valuesByAbilityLevel": [
+            20,
+            35,
+            50,
+            65
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              1
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": [
+            "包含叠层或击杀成长，当前不估算额外成长伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wheel of Wonder",
+      "displayName": "奇观轮（Wheel of Wonder）",
+      "isUltimate": true,
+      "modelSource": "inferred",
+      "status": "inferred",
+      "model": "inferred",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        225,
+        300
+      ],
+      "cooldownByAbilityLevel": [
+        90,
+        80,
+        70
+      ],
+      "components": [
+        {
+          "id": "Wheel of Wonder:sustained:damage_per_second",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "DAMAGE PER SECOND",
+          "valuesByAbilityLevel": [
+            0
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            0
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "sustained",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，当前按每跳/每秒数值记录，不默认计算全额命中。",
+            "包含条件触发伤害，当前不计入固定瞬时爆发。"
+          ]
+        },
+        {
+          "id": "Wheel of Wonder:sustained:aura_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "AURA DAMAGE PER SECOND",
+          "valuesByAbilityLevel": [
+            50,
+            75,
+            100
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            200,
+            300,
+            400
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "sustained",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，当前按每跳/每秒数值记录，不默认计算全额命中。",
+            "包含条件触发伤害，当前不计入固定瞬时爆发。"
+          ]
+        },
+        {
+          "id": "Wheel of Wonder:sustained:explosion_damage",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "EXPLOSION DAMAGE",
+          "valuesByAbilityLevel": [
+            300,
+            450,
+            600
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            1200,
+            1800,
+            2400
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              4
+            ],
+            "tickIntervalByAbilityLevel": [
+              0.5
+            ]
+          },
+          "source": "inferred",
+          "status": "inferred",
+          "model": "sustained",
+          "reason": "",
+          "caveats": [
+            "包含持续伤害，当前按每跳/每秒数值记录，不默认计算全额命中。",
+            "包含条件触发伤害，当前不计入固定瞬时爆发。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Ringmaster",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {},
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
+}

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>石鳞剑士（Pangolier）</h1>
-        <div class="muted">Pangolier · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Pangolier · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,578 @@
       </div>
       <a href="./pangolier.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>dash_range</code></td>
+      <td>DASH RANGE:</td>
+      <td>575/650/725/800</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>range</code></td>
+      <td>SLASH RANGE:</td>
+      <td>850</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>attack_damage</code></td>
+      <td>ATTACK DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>dash_speed</code></td>
+      <td>DASH SPEED:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>attack_interval</code></td>
+      <td>ATTACK INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>start_radius</code></td>
+      <td>SLASH WIDTH:</td>
+      <td>155</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>end_radius</code></td>
+      <td>END RADIUS:</td>
+      <td>155</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>strikes</code></td>
+      <td>STRIKES:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>procs_onhit_effects</code></td>
+      <td>PROCS ONHIT EFFECTS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>slow_percent</code></td>
+      <td>SLOW:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>damage_penalty</code></td>
+      <td>DAMAGE PENALTY:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>575/650/725/800</td>
+    </tr>
+  
+    <tr>
+      <td>Swashbuckle</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>base_shield</code></td>
+      <td>BASE SHIELD:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>hero_shield</code></td>
+      <td>BARRIER:</td>
+      <td>60/120/180/240</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>can_double_jump</code></td>
+      <td>CAN DOUBLE JUMP:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>min_damage_increase_pct</code></td>
+      <td>MIN DAMAGE INCREASE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>max_damage_increase_pct</code></td>
+      <td>MAX DAMAGE INCREASE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>max_barrier_increase_pct_tooltip</code></td>
+      <td>MAX BARRIER INCREASE:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>jump_duration</code></td>
+      <td>JUMP DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>jump_duration_gyroshell</code></td>
+      <td>JUMP DURATION GYROSHELL:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>jump_height</code></td>
+      <td>JUMP HEIGHT:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>jump_height_gyroshell</code></td>
+      <td>JUMP HEIGHT GYROSHELL:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>jump_horizontal_distance</code></td>
+      <td>JUMP HORIZONTAL DISTANCE:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>scepter_damage_outgoing_tooltip</code></td>
+      <td>SCEPTER DAMAGE OUTGOING TOOLTIP:</td>
+      <td>75</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shield Crash</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Lucky Shot</td>
+      <td><code>chance_pct</code></td>
+      <td>CHANCE:</td>
+      <td>17%</td>
+    </tr>
+  
+    <tr>
+      <td>Lucky Shot</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3.5/4/4.5/5</td>
+    </tr>
+  
+    <tr>
+      <td>Lucky Shot</td>
+      <td><code>attack_slow</code></td>
+      <td>ATTACK SPEED REDUCTION:</td>
+      <td>40/80/120/160</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>cast_time_tooltip</code></td>
+      <td>CAST TIME TOOLTIP:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>forward_move_speed</code></td>
+      <td>FORWARD MOVE SPEED:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>turn_rate_boosted</code></td>
+      <td>TURN RATE BOOSTED:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>hit_radius</code></td>
+      <td>HIT RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>bounce_duration</code></td>
+      <td>BOUNCE DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1/1.25/1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>knockback_radius</code></td>
+      <td>KNOCKBACK RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>2.25</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>jump_recover_time</code></td>
+      <td>JUMP RECOVER TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>rollup_bounce_duration</code></td>
+      <td>ROLL AWAY DURATION:</td>
+      <td>0.75</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>80</td>
+    </tr>
+  
+    <tr>
+      <td>Roll Up</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>damage_pct</code></td>
+      <td>TOTAL ATTACK DAMAGE AS DAMAGE:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>cast_time_tooltip</code></td>
+      <td>TRANSFORM TIME:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>tick_interval</code></td>
+      <td>TICK INTERVAL:</td>
+      <td>0.05</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>forward_move_speed</code></td>
+      <td>ROLL SPEED:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>move_speed_ramp_up_time</code></td>
+      <td>MOVE SPEED RAMP UP TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>turn_rate_boosted</code></td>
+      <td>TURN RATE BOOSTED:</td>
+      <td>165</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>hit_radius</code></td>
+      <td>RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>bounce_duration</code></td>
+      <td>BOUNCE DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>knockback_radius</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>10/11/12</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>jump_recover_time</code></td>
+      <td>JUMP RECOVER TIME:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE:</td>
+      <td>80</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Rolling Thunder</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Fortune Favors the Bold</td>
+      <td><code>aura_radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Fortune Favors the Bold</td>
+      <td><code>chance_reduce</code></td>
+      <td>CHANCE REDUCTION:</td>
+      <td>-50%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Pangolier&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Swashbuckle&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;triggerCountInput&quot;: &quot;strike_count&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;strike_count&quot;
+      ],
+      &quot;reason&quot;: &quot;每次刺击独立造成伤害，实际总量取决于命中刺击次数。&quot;
+    },
+    &quot;Shield Crash&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Lucky Shot&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;armor&quot;,
+      &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+      &quot;affects&quot;: &quot;physical_damage&quot;,
+      &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Roll Up&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Rolling Thunder&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;dmg&quot;,
+      &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;collision_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;collision_count&quot;
+      ],
+      &quot;reason&quot;: &quot;滚动碰撞可多次命中，实际总量取决于碰撞次数。&quot;
+    },
+    &quot;Stop Rolling&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;End Roll Up&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Fortune Favors the Bold&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +700,8 @@
           <div class="muted">Swashbuckle · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">repeated_trigger</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +726,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Swashbuckle:instant_fixed:damage</code>
+          <code>Swashbuckle:repeated_trigger:damage</code>
           <div class="muted">damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">repeated_trigger</span>
+          <span class="pill secondary">repeated_trigger</span>
           <div class="muted">implemented</div>
         </td>
         <td>Physical</td>
         <td>35</td><td>65</td><td>95</td><td>125</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 0.6 / 0.6 / 0.6 / 0.6</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>triggerCountInput</code>: strike_count</div></td>
+        <td>triggerCount * damage</td>
+        <td><ul><li>需要输入实际触发次数，不能默认按满额命中计算。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +753,7 @@
           <div class="muted">Shield Crash · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +806,7 @@
           <div class="muted">Lucky Shot · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +845,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: physical_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +859,7 @@
           <div class="muted">Roll Up · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +898,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +912,7 @@
           <div class="muted">Rolling Thunder · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -373,9 +949,9 @@
         <td>Physical</td>
         <td>100</td><td>200</td><td>300</td><td>-</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: move_speed</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: collision_count</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
-        <td><ul><li>移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。</li></ul></td>
+        <td><ul><li>滚动碰撞可多次命中，实际总量取决于碰撞次数。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -507,10 +1083,10 @@
       &quot;name&quot;: &quot;Swashbuckle&quot;,
       &quot;displayName&quot;: &quot;虚张声势（Swashbuckle）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;repeated_trigger&quot;,
+      &quot;reason&quot;: &quot;每次刺击独立造成伤害，实际总量取决于命中刺击次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75,
         80,
@@ -525,8 +1101,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Swashbuckle:instant_fixed:damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Swashbuckle:repeated_trigger:damage&quot;,
+          &quot;kind&quot;: &quot;repeated_trigger&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Physical&quot;,
           &quot;label&quot;: &quot;damage&quot;,
@@ -537,24 +1113,21 @@
             125
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;totalFormula&quot;: &quot;triggerCount * damage&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;runtime_trigger_count_times_damage&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              0.6,
-              0.6,
-              0.6,
-              0.6
-            ]
+            &quot;triggerCountInput&quot;: &quot;strike_count&quot;
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;reason&quot;: &quot;每次刺击独立造成伤害，实际总量取决于命中刺击次数。&quot;,
+          &quot;caveats&quot;: [
+            &quot;需要输入实际触发次数，不能默认按满额命中计算。&quot;
+          ]
         }
       ]
     },
@@ -562,7 +1135,7 @@
       &quot;name&quot;: &quot;Shield Crash&quot;,
       &quot;displayName&quot;: &quot;甲盾冲击（Shield Crash）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -617,10 +1190,10 @@
       &quot;name&quot;: &quot;Lucky Shot&quot;,
       &quot;displayName&quot;: &quot;幸运一击（Lucky Shot）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -654,9 +1227,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -665,10 +1238,10 @@
       &quot;name&quot;: &quot;Roll Up&quot;,
       &quot;displayName&quot;: &quot;卷土重来（Roll Up）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50
       ],
@@ -703,9 +1276,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -714,10 +1287,10 @@
       &quot;name&quot;: &quot;Rolling Thunder&quot;,
       &quot;displayName&quot;: &quot;地雷滚滚（Rolling Thunder）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
-      &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
+      &quot;reason&quot;: &quot;滚动碰撞可多次命中，实际总量取决于碰撞次数。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         125,
@@ -752,7 +1325,7 @@
             &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [
-              &quot;move_speed&quot;
+              &quot;collision_count&quot;
             ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
@@ -760,15 +1333,628 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;state_scaling&quot;,
-          &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
+          &quot;reason&quot;: &quot;滚动碰撞可多次命中，实际总量取决于碰撞次数。&quot;,
           &quot;caveats&quot;: [
-            &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+            &quot;滚动碰撞可多次命中，实际总量取决于碰撞次数。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Pangolier&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Swashbuckle&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;repeated_trigger&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;triggerCountInput&quot;: &quot;strike_count&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;strike_count&quot;
+          ],
+          &quot;reason&quot;: &quot;每次刺击独立造成伤害，实际总量取决于命中刺击次数。&quot;
+        },
+        &quot;Shield Crash&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Lucky Shot&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;armor&quot;,
+          &quot;semanticType&quot;: &quot;modifier.armor_reduction.flat&quot;,
+          &quot;affects&quot;: &quot;physical_damage&quot;,
+          &quot;stackGroup&quot;: &quot;armor_reduction&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Roll Up&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Rolling Thunder&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;dmg&quot;,
+          &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;collision_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;collision_count&quot;
+          ],
+          &quot;reason&quot;: &quot;滚动碰撞可多次命中，实际总量取决于碰撞次数。&quot;
+        },
+        &quot;Stop Rolling&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;End Roll Up&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Fortune Favors the Bold&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;dash_range&quot;,
+        &quot;label&quot;: &quot;DASH RANGE:&quot;,
+        &quot;value&quot;: &quot;575/650/725/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;SLASH RANGE:&quot;,
+        &quot;value&quot;: &quot;850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;attack_damage&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;dash_speed&quot;,
+        &quot;label&quot;: &quot;DASH SPEED:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;attack_interval&quot;,
+        &quot;label&quot;: &quot;ATTACK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;start_radius&quot;,
+        &quot;label&quot;: &quot;SLASH WIDTH:&quot;,
+        &quot;value&quot;: &quot;155&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;end_radius&quot;,
+        &quot;label&quot;: &quot;END RADIUS:&quot;,
+        &quot;value&quot;: &quot;155&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;strikes&quot;,
+        &quot;label&quot;: &quot;STRIKES:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;procs_onhit_effects&quot;,
+        &quot;label&quot;: &quot;PROCS ONHIT EFFECTS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;slow_percent&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;damage_penalty&quot;,
+        &quot;label&quot;: &quot;DAMAGE PENALTY:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;575/650/725/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Swashbuckle&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;base_shield&quot;,
+        &quot;label&quot;: &quot;BASE SHIELD:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;hero_shield&quot;,
+        &quot;label&quot;: &quot;BARRIER:&quot;,
+        &quot;value&quot;: &quot;60/120/180/240&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;can_double_jump&quot;,
+        &quot;label&quot;: &quot;CAN DOUBLE JUMP:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;min_damage_increase_pct&quot;,
+        &quot;label&quot;: &quot;MIN DAMAGE INCREASE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;max_damage_increase_pct&quot;,
+        &quot;label&quot;: &quot;MAX DAMAGE INCREASE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;max_barrier_increase_pct_tooltip&quot;,
+        &quot;label&quot;: &quot;MAX BARRIER INCREASE:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;jump_duration&quot;,
+        &quot;label&quot;: &quot;JUMP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;jump_duration_gyroshell&quot;,
+        &quot;label&quot;: &quot;JUMP DURATION GYROSHELL:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;jump_height&quot;,
+        &quot;label&quot;: &quot;JUMP HEIGHT:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;jump_height_gyroshell&quot;,
+        &quot;label&quot;: &quot;JUMP HEIGHT GYROSHELL:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;jump_horizontal_distance&quot;,
+        &quot;label&quot;: &quot;JUMP HORIZONTAL DISTANCE:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;scepter_damage_outgoing_tooltip&quot;,
+        &quot;label&quot;: &quot;SCEPTER DAMAGE OUTGOING TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Shield Crash&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Lucky Shot&quot;,
+        &quot;key&quot;: &quot;chance_pct&quot;,
+        &quot;label&quot;: &quot;CHANCE:&quot;,
+        &quot;value&quot;: &quot;17%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Lucky Shot&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3.5/4/4.5/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Lucky Shot&quot;,
+        &quot;key&quot;: &quot;attack_slow&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED REDUCTION:&quot;,
+        &quot;value&quot;: &quot;40/80/120/160&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;cast_time_tooltip&quot;,
+        &quot;label&quot;: &quot;CAST TIME TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;forward_move_speed&quot;,
+        &quot;label&quot;: &quot;FORWARD MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;turn_rate_boosted&quot;,
+        &quot;label&quot;: &quot;TURN RATE BOOSTED:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;hit_radius&quot;,
+        &quot;label&quot;: &quot;HIT RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;bounce_duration&quot;,
+        &quot;label&quot;: &quot;BOUNCE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1/1.25/1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;knockback_radius&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;2.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;jump_recover_time&quot;,
+        &quot;label&quot;: &quot;JUMP RECOVER TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;rollup_bounce_duration&quot;,
+        &quot;label&quot;: &quot;ROLL AWAY DURATION:&quot;,
+        &quot;value&quot;: &quot;0.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Roll Up&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;damage_pct&quot;,
+        &quot;label&quot;: &quot;TOTAL ATTACK DAMAGE AS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;cast_time_tooltip&quot;,
+        &quot;label&quot;: &quot;TRANSFORM TIME:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;tick_interval&quot;,
+        &quot;label&quot;: &quot;TICK INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.05&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;forward_move_speed&quot;,
+        &quot;label&quot;: &quot;ROLL SPEED:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;move_speed_ramp_up_time&quot;,
+        &quot;label&quot;: &quot;MOVE SPEED RAMP UP TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;turn_rate_boosted&quot;,
+        &quot;label&quot;: &quot;TURN RATE BOOSTED:&quot;,
+        &quot;value&quot;: &quot;165&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;hit_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;bounce_duration&quot;,
+        &quot;label&quot;: &quot;BOUNCE DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;knockback_radius&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;10/11/12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;jump_recover_time&quot;,
+        &quot;label&quot;: &quot;JUMP RECOVER TIME:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Rolling Thunder&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Fortune Favors the Bold&quot;,
+        &quot;key&quot;: &quot;aura_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Pangolier&quot;,
+        &quot;ability&quot;: &quot;Fortune Favors the Bold&quot;,
+        &quot;key&quot;: &quot;chance_reduce&quot;,
+        &quot;label&quot;: &quot;CHANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;-50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

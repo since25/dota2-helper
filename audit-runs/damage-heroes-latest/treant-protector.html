@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>树精卫士（Treant Protector）</h1>
-        <div class="muted">Treant Protector · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Treant Protector · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,391 @@
       </div>
       <a href="./treant-protector.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>creep_penalty</code></td>
+      <td>CREEP PENALTY:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>25%/30%/35%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>creation_interval</code></td>
+      <td>CREATION INTERVAL:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>initial_latch_delay</code></td>
+      <td>INITIAL LATCH DELAY:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>vine_spawn_interval</code></td>
+      <td>VINE SPAWN INTERVAL:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>latch_range</code></td>
+      <td>LATCH RANGE:</td>
+      <td>135</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>latch_vision</code></td>
+      <td>LATCH VISION:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1500</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Grasp</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>0%</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>flat_heal</code></td>
+      <td>FLAT HEAL:</td>
+      <td>15/25/35/45</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>leech_heal</code></td>
+      <td>DAMAGE TO HEALING:</td>
+      <td>20%</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>max_heal_units</code></td>
+      <td>MAX HEAL UNITS:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>radius</code></td>
+      <td>HEAL RADIUS:</td>
+      <td>650</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>healing_pulse_count</code></td>
+      <td>HEALING PULSE COUNT:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Leech Seed</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Living Armor</td>
+      <td><code>heal_per_second</code></td>
+      <td>HEAL PER SECOND:</td>
+      <td>4/7/10/13</td>
+    </tr>
+  
+    <tr>
+      <td>Living Armor</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>12</td>
+    </tr>
+  
+    <tr>
+      <td>Living Armor</td>
+      <td><code>damage_block_loss</code></td>
+      <td>DAMAGE BLOCK DECREASE:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Living Armor</td>
+      <td><code>damage_block_threshold</code></td>
+      <td>DAMAGE BLOCK THRESHOLD:</td>
+      <td>20</td>
+    </tr>
+  
+    <tr>
+      <td>Living Armor</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>vision_aoe</code></td>
+      <td>VISION AOE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>hits_to_kill</code></td>
+      <td>HITS TO KILL:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>360</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>max_eyes</code></td>
+      <td>MAX EYES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>charge_restore_time</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>135</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Eyes In The Forest</td>
+      <td><code>max_charges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>grace_time</code></td>
+      <td>GRACE TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>cooldown_time</code></td>
+      <td>COOLDOWN TIME:</td>
+      <td>2.75</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>movement_bonus</code></td>
+      <td>MOVEMENT SPEED BONUS:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>shard_root_time</code></td>
+      <td>ROOT TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>shard_by_tree_root_time</code></td>
+      <td>ROOT TIME BY TREE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>shard_damage</code></td>
+      <td>SHARD DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Guise</td>
+      <td><code>shard_cooldown</code></td>
+      <td>ROOT COOLDOWN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overgrowth</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Overgrowth</td>
+      <td><code>undispellable</code></td>
+      <td>UNDISPELLABLE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Overgrowth</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Treant Protector&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Nature&#39;s Grasp&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;vines_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Leech Seed&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;leech_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Living Armor&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_block_base&quot;,
+      &quot;semanticType&quot;: &quot;defense.damage_block.flat&quot;,
+      &quot;affects&quot;: &quot;incoming_damage&quot;,
+      &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+    },
+    &quot;Eyes In The Forest&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Nature&#39;s Guise&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;attack_damage_pct&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+      &quot;affects&quot;: &quot;attack_damage&quot;,
+      &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Overgrowth&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +513,7 @@
           <div class="muted">Nature&#39;s Grasp · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +566,7 @@
           <div class="muted">Leech Seed · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,9 +619,9 @@
           <div class="muted">Living Armor · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
-          <span class="pill secondary">implemented</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">debuff_reference</span>
+          <span class="pill secondary">reference_only</span>
         </div>
       </header>
       <div class="resource-line">
@@ -256,20 +645,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Living Armor:instant_fixed:damage_block_base</code>
+          <code>Living Armor:debuff_reference:damage_block_base</code>
           <div class="muted">damage_block_base</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
-          <div class="muted">implemented</div>
+          <span class="pill">debuff_reference</span>
+          <span class="pill secondary">debuff_reference</span>
+          <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
         <td>60</td><td>80</td><td>100</td><td>120</td>
         <td></td>
-        <td><div><code>durationByAbilityLevel</code>: 12 / 12 / 12 / 12</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: -</div><div><code>affects</code>: incoming_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td>debuff_reference</td>
+        <td><ul><li>伤害格挡不是对敌伤害，作为防御修正参考。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +672,7 @@
           <div class="muted">Eyes In The Forest · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +711,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +725,7 @@
           <div class="muted">Nature&#39;s Guise · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -375,7 +764,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_damage</div><div><code>affects</code>: attack_damage</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -389,7 +778,7 @@
           <div class="muted">Overgrowth · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -560,7 +949,7 @@
       &quot;name&quot;: &quot;Nature&#39;s Grasp&quot;,
       &quot;displayName&quot;: &quot;自然卷握（Nature&#39;s Grasp）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -622,7 +1011,7 @@
       &quot;name&quot;: &quot;Leech Seed&quot;,
       &quot;displayName&quot;: &quot;寄生种子（Leech Seed）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -672,10 +1061,10 @@
       &quot;name&quot;: &quot;Living Armor&quot;,
       &quot;displayName&quot;: &quot;活体护甲（Living Armor）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
-      &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         65,
         70,
@@ -690,8 +1079,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Living Armor:instant_fixed:damage_block_base&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Living Armor:debuff_reference:damage_block_base&quot;,
+          &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
           &quot;label&quot;: &quot;damage_block_base&quot;,
@@ -703,23 +1092,26 @@
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;debuff_reference&quot;
           },
           &quot;metadata&quot;: {
-            &quot;durationByAbilityLevel&quot;: [
-              12,
-              12,
-              12,
-              12
-            ]
+            &quot;isDamageReference&quot;: false,
+            &quot;modifierType&quot;: &quot;&quot;,
+            &quot;affects&quot;: &quot;incoming_damage&quot;,
+            &quot;condition&quot;: &quot;&quot;,
+            &quot;requiredInputs&quot;: [],
+            &quot;chanceByAbilityLevel&quot;: [],
+            &quot;multiplierByAbilityLevel&quot;: []
           },
           &quot;source&quot;: &quot;curated&quot;,
-          &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;,
+          &quot;caveats&quot;: [
+            &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+          ]
         }
       ]
     },
@@ -727,10 +1119,10 @@
       &quot;name&quot;: &quot;Eyes In The Forest&quot;,
       &quot;displayName&quot;: &quot;丛林之眼（Eyes In The Forest）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         30
       ],
@@ -763,9 +1155,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -774,10 +1166,10 @@
       &quot;name&quot;: &quot;Nature&#39;s Guise&quot;,
       &quot;displayName&quot;: &quot;自然蔽护（Nature&#39;s Guise）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [
         36
@@ -810,9 +1202,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -821,7 +1213,7 @@
       &quot;name&quot;: &quot;Overgrowth&quot;,
       &quot;displayName&quot;: &quot;疯狂生长（Overgrowth）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -873,7 +1265,408 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Treant Protector&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Nature&#39;s Grasp&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;vines_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Leech Seed&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;leech_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Living Armor&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_block_base&quot;,
+          &quot;semanticType&quot;: &quot;defense.damage_block.flat&quot;,
+          &quot;affects&quot;: &quot;incoming_damage&quot;,
+          &quot;reason&quot;: &quot;伤害格挡不是对敌伤害，作为防御修正参考。&quot;
+        },
+        &quot;Eyes In The Forest&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Nature&#39;s Guise&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;attack_damage_pct&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_damage.flat&quot;,
+          &quot;affects&quot;: &quot;attack_damage&quot;,
+          &quot;stackGroup&quot;: &quot;attack_damage&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Overgrowth&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;creep_penalty&quot;,
+        &quot;label&quot;: &quot;CREEP PENALTY:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;25%/30%/35%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;creation_interval&quot;,
+        &quot;label&quot;: &quot;CREATION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;initial_latch_delay&quot;,
+        &quot;label&quot;: &quot;INITIAL LATCH DELAY:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;vine_spawn_interval&quot;,
+        &quot;label&quot;: &quot;VINE SPAWN INTERVAL:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;latch_range&quot;,
+        &quot;label&quot;: &quot;LATCH RANGE:&quot;,
+        &quot;value&quot;: &quot;135&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;latch_vision&quot;,
+        &quot;label&quot;: &quot;LATCH VISION:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Grasp&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;0%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;flat_heal&quot;,
+        &quot;label&quot;: &quot;FLAT HEAL:&quot;,
+        &quot;value&quot;: &quot;15/25/35/45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;leech_heal&quot;,
+        &quot;label&quot;: &quot;DAMAGE TO HEALING:&quot;,
+        &quot;value&quot;: &quot;20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;max_heal_units&quot;,
+        &quot;label&quot;: &quot;MAX HEAL UNITS:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;HEAL RADIUS:&quot;,
+        &quot;value&quot;: &quot;650&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;healing_pulse_count&quot;,
+        &quot;label&quot;: &quot;HEALING PULSE COUNT:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Leech Seed&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Living Armor&quot;,
+        &quot;key&quot;: &quot;heal_per_second&quot;,
+        &quot;label&quot;: &quot;HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;4/7/10/13&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Living Armor&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;12&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Living Armor&quot;,
+        &quot;key&quot;: &quot;damage_block_loss&quot;,
+        &quot;label&quot;: &quot;DAMAGE BLOCK DECREASE:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Living Armor&quot;,
+        &quot;key&quot;: &quot;damage_block_threshold&quot;,
+        &quot;label&quot;: &quot;DAMAGE BLOCK THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;20&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Living Armor&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;vision_aoe&quot;,
+        &quot;label&quot;: &quot;VISION AOE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;hits_to_kill&quot;,
+        &quot;label&quot;: &quot;HITS TO KILL:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;360&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;max_eyes&quot;,
+        &quot;label&quot;: &quot;MAX EYES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;charge_restore_time&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;135&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Eyes In The Forest&quot;,
+        &quot;key&quot;: &quot;max_charges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;grace_time&quot;,
+        &quot;label&quot;: &quot;GRACE TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;cooldown_time&quot;,
+        &quot;label&quot;: &quot;COOLDOWN TIME:&quot;,
+        &quot;value&quot;: &quot;2.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;movement_bonus&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;shard_root_time&quot;,
+        &quot;label&quot;: &quot;ROOT TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;shard_by_tree_root_time&quot;,
+        &quot;label&quot;: &quot;ROOT TIME BY TREE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;shard_damage&quot;,
+        &quot;label&quot;: &quot;SHARD DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Guise&quot;,
+        &quot;key&quot;: &quot;shard_cooldown&quot;,
+        &quot;label&quot;: &quot;ROOT COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Overgrowth&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Overgrowth&quot;,
+        &quot;key&quot;: &quot;undispellable&quot;,
+        &quot;label&quot;: &quot;UNDISPELLABLE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Treant Protector&quot;,
+        &quot;ability&quot;: &quot;Overgrowth&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

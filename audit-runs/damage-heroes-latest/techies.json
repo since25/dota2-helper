@@ -121,7 +121,7 @@
       "name": "Sticky Bomb",
       "displayName": "粘性炸弹（Sticky Bomb）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
@@ -181,7 +181,7 @@
       "name": "Reactive Tazer",
       "displayName": "活性电击（Reactive Tazer）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
@@ -241,7 +241,7 @@
       "name": "Blast Off!",
       "displayName": "爆破起飞！（Blast Off!）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
@@ -301,10 +301,10 @@
       "name": "M.A.D.",
       "displayName": "同归于尽（M.A.D.）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+      "reason": "M.A.D. 包含基础伤害和目标最大魔法百分比伤害，需要目标最大魔法输入。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         0
@@ -331,7 +331,7 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "target_missing_mana"
+              "target_max_mana"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -339,9 +339,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
+          "reason": "M.A.D. 包含基础伤害和目标最大魔法百分比伤害，需要目标最大魔法输入。",
           "caveats": [
-            "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+            "M.A.D. 包含基础伤害和目标最大魔法百分比伤害，需要目标最大魔法输入。"
           ]
         }
       ]
@@ -350,7 +350,7 @@
       "name": "Minefield Sign",
       "displayName": "雷区标识（Minefield Sign）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -393,7 +393,7 @@
       "name": "Proximity Mines",
       "displayName": "感应地雷（Proximity Mines）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -444,10 +444,10 @@
       "name": "Detonate M.A.D.",
       "displayName": "引爆同归于尽（Detonate M.A.D.）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         1
@@ -480,13 +480,533 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Techies",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Sticky Bomb": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "move_speed"
+          ],
+          "conditionInputs": [
+            "move_speed"
+          ],
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+        },
+        "Reactive Tazer": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "move_speed"
+          ],
+          "conditionInputs": [
+            "move_speed"
+          ],
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+        },
+        "Blast Off!": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+        },
+        "M.A.D.": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "base_damage",
+          "semanticType": "damage.percent_max_mana",
+          "requiredInputs": [
+            "target_max_mana"
+          ],
+          "conditionInputs": [
+            "target_max_mana"
+          ],
+          "reason": "M.A.D. 包含基础伤害和目标最大魔法百分比伤害，需要目标最大魔法输入。"
+        },
+        "Minefield Sign": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "scepter_move_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "minefield_duration"
+        },
+        "Proximity Mines": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "burn_duration"
+        },
+        "Detonate Tazer": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Detonate M.A.D.": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "countdown",
+        "label": "EXPLOSION DELAY:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "radius",
+        "label": "STICK RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "25%/35%/45%/55%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "secondary_slow",
+        "label": "SECONDARY MOVEMENT SLOW:",
+        "value": "15%/25%/35%/45%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "secondary_slow_duration",
+        "label": "SECONDARY SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "explosion_radius",
+        "label": "EXPLOSION RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "acceleration",
+        "label": "ACCELERATION:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "pre_chase_time",
+        "label": "PRE CHASE TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "max_chase_time",
+        "label": "MAX CHASE TIME:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Sticky Bomb",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "duration",
+        "label": "BUFF DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "disarm_duration",
+        "label": "DISARM DURATION:",
+        "value": "2.4/2.7/3/3.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "bonus_ms",
+        "label": "MOVEMENT BONUS:",
+        "value": "18%/22%/26%/30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "explosion_radius",
+        "label": "EXPLOSION RADIUS:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Reactive Tazer",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "radius",
+        "label": "EXPLOSION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.8/1/1.2/1.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "hp_cost",
+        "label": "CURRENT HP SELF DAMAGE:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "hp_dmg",
+        "label": "MAX HP AS BONUS DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Blast Off!",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "bonus_mana_as_mana_regen",
+        "label": "MANA POOL AS REGEN:",
+        "value": "0.08%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "max_mana_pct_as_damage",
+        "label": "MAX MANA AS DAMAGE:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "explosion_delay",
+        "label": "EXPLOSION DELAY:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "M.A.D.",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "aura_radius",
+        "label": "EFFECT RADIUS:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "lifetime",
+        "label": "SIGN DURATION:",
+        "value": "240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "trigger_radius",
+        "label": "TRIGGER RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "scepter_move_amt",
+        "label": "MOVEMENT TRIGGER AMOUNT:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "bonus_mine_damage_pct",
+        "label": "BONUS MINE DAMAGE PCT:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Minefield Sign",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "radius",
+        "label": "EXPLOSION RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "proximity_threshold",
+        "label": "PROXIMITY THRESHOLD:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "building_damage_pct",
+        "label": "BUILDING DAMAGE:",
+        "value": "30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "activation_delay",
+        "label": "ACTIVATION DELAY:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "outer_damage",
+        "label": "OUTER DAMAGE:",
+        "value": "60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "min_distance",
+        "label": "MIN DISTANCE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "placement_radius",
+        "label": "PLACEMENT RADIUS:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "mres_reduction",
+        "label": "MAGIC RESISTANCE REDUCTION:",
+        "value": "15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Proximity Mines",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Techies",
+        "ability": "Detonate M.A.D.",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

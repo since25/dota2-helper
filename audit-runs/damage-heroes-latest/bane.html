@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>祸乱之源（Bane）</h1>
-        <div class="muted">Bane · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Bane · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,261 @@
       </div>
       <a href="./bane.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>damage_reduction</code></td>
+      <td>ATTACK DAMAGE REDUCTION:</td>
+      <td>55%/60%/65%/70%</td>
+    </tr>
+  
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>heal_reduction</code></td>
+      <td>HEAL REDUCTION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>cast_reduction</code></td>
+      <td>CAST RANGE REDUCTION:</td>
+      <td>30%</td>
+    </tr>
+  
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>enfeeble_heal_pct</code></td>
+      <td>ENFEEBLE HEAL PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/800/900/1000</td>
+    </tr>
+  
+    <tr>
+      <td>Enfeeble</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Brain Sap</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>625</td>
+    </tr>
+  
+    <tr>
+      <td>Brain Sap</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>nightmare_invuln_time</code></td>
+      <td>NIGHTMARE INVULN TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>animation_rate</code></td>
+      <td>ANIMATION RATE:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>ATTACK SPEED BONUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>vector_render_radius</code></td>
+      <td>VECTOR RENDER RADIUS:</td>
+      <td>120</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>walk_speed</code></td>
+      <td>WALK SPEED:</td>
+      <td>110</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>turn_rate</code></td>
+      <td>TURN RATE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>550/600/650/700</td>
+    </tr>
+  
+    <tr>
+      <td>Nightmare</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Grip</td>
+      <td><code>fiend_grip_mana_drain</code></td>
+      <td>MANA DRAIN PER SECOND:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Grip</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>625</td>
+    </tr>
+  
+    <tr>
+      <td>Fiend&#39;s Grip</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Ichor of Nyctasha</td>
+      <td><code>damage_tick_rate</code></td>
+      <td>DAMAGE TICK RATE:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Ichor of Nyctasha</td>
+      <td><code>damage_per_terror</code></td>
+      <td>DAMAGE PER TERROR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ichor of Nyctasha</td>
+      <td><code>max_terrors</code></td>
+      <td>MAX TERRORS PER HERO:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Ichor of Nyctasha</td>
+      <td><code>status_resistance</code></td>
+      <td>STATUS RESISTANCE PER TERROR:</td>
+      <td>5%</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Bane&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Reviewed against local Dotabuff Chinese semantic snapshot.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Enfeeble&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;enfeeble_tick_damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;damage_tick_rate&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;reason&quot;: &quot;虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。&quot;
+    },
+    &quot;Brain Sap&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;brain_sap_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Nightmare&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilityduration&quot;,
+      &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+      &quot;affects&quot;: &quot;disable_window&quot;,
+      &quot;reason&quot;: &quot;噩梦本身是控制窗口，不直接造成对敌爆发伤害。&quot;
+    },
+    &quot;Fiend&#39;s Grip&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;fiend_grip_damage&quot;,
+      &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+      &quot;tickIntervalKey&quot;: &quot;fiend_grip_tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+      &quot;conditionInputs&quot;: [
+        &quot;channel_duration&quot;
+      ],
+      &quot;reason&quot;: &quot;魔爪为持续施法伤害，实际总量取决于持续施法时间。&quot;
+    },
+    &quot;Nightmare End&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;结束噩梦的控制子技能，不产生额外伤害。&quot;
+    },
+    &quot;Ichor of Nyctasha&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;当前本地字段没有可用伤害数值，先不参与伤害计算。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,8 +383,8 @@
           <div class="muted">Enfeeble · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -150,20 +409,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Enfeeble:instant_fixed:enfeeble_tick_damage</code>
+          <code>Enfeeble:sustained:enfeeble_tick_damage</code>
           <div class="muted">enfeeble_tick_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Pure</td>
         <td>12</td><td>18</td><td>24</td><td>30</td>
-        <td></td>
+        <td>108 / 162 / 216 / 270</td>
         <td><div><code>durationByAbilityLevel</code>: 9 / 9 / 9 / 9</div><div><code>tickIntervalByAbilityLevel</code>: 1 / 1 / 1 / 1</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +436,7 @@
           <div class="muted">Brain Sap · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +489,7 @@
           <div class="muted">Nightmare · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -256,8 +515,8 @@
           <tbody>
       <tr>
         <td>
-          <code>Nightmare:debuff_reference:abilitycastrange</code>
-          <div class="muted">abilitycastrange</div>
+          <code>Nightmare:debuff_reference:abilityduration</code>
+          <div class="muted">abilityduration</div>
         </td>
         <td>
           <span class="pill">debuff_reference</span>
@@ -265,11 +524,11 @@
           <div class="muted">reference_only</div>
         </td>
         <td>Unknown</td>
-        <td>550</td><td>600</td><td>650</td><td>700</td>
+        <td>3.5</td><td>4.5</td><td>5.5</td><td>6.5</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: disable_window</div><div><code>affects</code>: disable_window</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>噩梦本身是控制窗口，不直接造成对敌爆发伤害。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +542,7 @@
           <div class="muted">Fiend&#39;s Grip · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -454,10 +713,10 @@
       &quot;name&quot;: &quot;Enfeeble&quot;,
       &quot;displayName&quot;: &quot;虚弱（Enfeeble）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;reason&quot;: &quot;虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100,
         110,
@@ -472,8 +731,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Enfeeble:instant_fixed:enfeeble_tick_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Enfeeble:sustained:enfeeble_tick_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Pure&quot;,
           &quot;label&quot;: &quot;enfeeble_tick_damage&quot;,
@@ -483,11 +742,16 @@
             24,
             30
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            108,
+            162,
+            216,
+            270
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
@@ -505,9 +769,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
-          &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;reason&quot;: &quot;虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。&quot;,
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -515,7 +781,7 @@
       &quot;name&quot;: &quot;Brain Sap&quot;,
       &quot;displayName&quot;: &quot;蚀脑（Brain Sap）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -563,10 +829,10 @@
       &quot;name&quot;: &quot;Nightmare&quot;,
       &quot;displayName&quot;: &quot;噩梦（Nightmare）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;噩梦本身是控制窗口，不直接造成对敌爆发伤害。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         120,
         130,
@@ -581,16 +847,16 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Nightmare:debuff_reference:abilitycastrange&quot;,
+          &quot;id&quot;: &quot;Nightmare:debuff_reference:abilityduration&quot;,
           &quot;kind&quot;: &quot;debuff_reference&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Unknown&quot;,
-          &quot;label&quot;: &quot;abilitycastrange&quot;,
+          &quot;label&quot;: &quot;abilityduration&quot;,
           &quot;valuesByAbilityLevel&quot;: [
-            550,
-            600,
-            650,
-            700
+            3.5,
+            4.5,
+            5.5,
+            6.5
           ],
           &quot;theoreticalTotalByAbilityLevel&quot;: [],
           &quot;totalFormula&quot;: &quot;&quot;,
@@ -600,8 +866,8 @@
           },
           &quot;metadata&quot;: {
             &quot;isDamageReference&quot;: false,
-            &quot;modifierType&quot;: &quot;positioning_range&quot;,
-            &quot;affects&quot;: &quot;positioning&quot;,
+            &quot;modifierType&quot;: &quot;disable_window&quot;,
+            &quot;affects&quot;: &quot;disable_window&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [],
             &quot;chanceByAbilityLevel&quot;: [],
@@ -610,9 +876,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;噩梦本身是控制窗口，不直接造成对敌爆发伤害。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;噩梦本身是控制窗口，不直接造成对敌爆发伤害。&quot;
           ]
         }
       ]
@@ -621,10 +887,10 @@
       &quot;name&quot;: &quot;Fiend&#39;s Grip&quot;,
       &quot;displayName&quot;: &quot;魔爪（Fiend&#39;s Grip）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
-      &quot;reason&quot;: &quot;&quot;,
+      &quot;reason&quot;: &quot;魔爪为持续施法伤害，实际总量取决于持续施法时间。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         200,
         300,
@@ -672,7 +938,7 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
           &quot;model&quot;: &quot;sustained_dps&quot;,
-          &quot;reason&quot;: &quot;&quot;,
+          &quot;reason&quot;: &quot;魔爪为持续施法伤害，实际总量取决于持续施法时间。&quot;,
           &quot;caveats&quot;: [
             &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
           ]
@@ -680,7 +946,260 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Bane&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Reviewed against local Dotabuff Chinese semantic snapshot.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Enfeeble&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;enfeeble_tick_damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;damage_tick_rate&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;reason&quot;: &quot;虚弱每秒造成纯粹伤害；减伤、治疗降低和施法距离降低不计入固定爆发。&quot;
+        },
+        &quot;Brain Sap&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;brain_sap_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Nightmare&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilityduration&quot;,
+          &quot;semanticType&quot;: &quot;window.debuff_duration.seconds&quot;,
+          &quot;affects&quot;: &quot;disable_window&quot;,
+          &quot;reason&quot;: &quot;噩梦本身是控制窗口，不直接造成对敌爆发伤害。&quot;
+        },
+        &quot;Fiend&#39;s Grip&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;fiend_grip_damage&quot;,
+          &quot;durationKey&quot;: &quot;abilitychanneltime&quot;,
+          &quot;tickIntervalKey&quot;: &quot;fiend_grip_tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;,
+          &quot;conditionInputs&quot;: [
+            &quot;channel_duration&quot;
+          ],
+          &quot;reason&quot;: &quot;魔爪为持续施法伤害，实际总量取决于持续施法时间。&quot;
+        },
+        &quot;Nightmare End&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;结束噩梦的控制子技能，不产生额外伤害。&quot;
+        },
+        &quot;Ichor of Nyctasha&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;当前本地字段没有可用伤害数值，先不参与伤害计算。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;damage_reduction&quot;,
+        &quot;label&quot;: &quot;ATTACK DAMAGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;55%/60%/65%/70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;heal_reduction&quot;,
+        &quot;label&quot;: &quot;HEAL REDUCTION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;cast_reduction&quot;,
+        &quot;label&quot;: &quot;CAST RANGE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;enfeeble_heal_pct&quot;,
+        &quot;label&quot;: &quot;ENFEEBLE HEAL PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/800/900/1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Enfeeble&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Brain Sap&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;625&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Brain Sap&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;nightmare_invuln_time&quot;,
+        &quot;label&quot;: &quot;NIGHTMARE INVULN TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;animation_rate&quot;,
+        &quot;label&quot;: &quot;ANIMATION RATE:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;ATTACK SPEED BONUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;vector_render_radius&quot;,
+        &quot;label&quot;: &quot;VECTOR RENDER RADIUS:&quot;,
+        &quot;value&quot;: &quot;120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;walk_speed&quot;,
+        &quot;label&quot;: &quot;WALK SPEED:&quot;,
+        &quot;value&quot;: &quot;110&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;turn_rate&quot;,
+        &quot;label&quot;: &quot;TURN RATE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;550/600/650/700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Nightmare&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Grip&quot;,
+        &quot;key&quot;: &quot;fiend_grip_mana_drain&quot;,
+        &quot;label&quot;: &quot;MANA DRAIN PER SECOND:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Grip&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;625&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Fiend&#39;s Grip&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Ichor of Nyctasha&quot;,
+        &quot;key&quot;: &quot;damage_tick_rate&quot;,
+        &quot;label&quot;: &quot;DAMAGE TICK RATE:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Ichor of Nyctasha&quot;,
+        &quot;key&quot;: &quot;damage_per_terror&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER TERROR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Ichor of Nyctasha&quot;,
+        &quot;key&quot;: &quot;max_terrors&quot;,
+        &quot;label&quot;: &quot;MAX TERRORS PER HERO:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Bane&quot;,
+        &quot;ability&quot;: &quot;Ichor of Nyctasha&quot;,
+        &quot;key&quot;: &quot;status_resistance&quot;,
+        &quot;label&quot;: &quot;STATUS RESISTANCE PER TERROR:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

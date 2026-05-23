@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>食人魔魔法师（Ogre Magi）</h1>
-        <div class="muted">Ogre Magi · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Ogre Magi · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,342 @@
       </div>
       <a href="./ogre-magi.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Fireblast</td>
+      <td><code>multicast_delay</code></td>
+      <td>MULTICAST DELAY:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Fireblast</td>
+      <td><code>bonus_cast_speed</code></td>
+      <td>BONUS CAST SPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Fireblast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Fireblast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.45</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>slow_movement_speed_pct</code></td>
+      <td>SLOW:</td>
+      <td>-25%</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>multicast_delay</code></td>
+      <td>MULTICAST DELAY:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>ignite_multicast_aoe</code></td>
+      <td>IGNITE MULTICAST AOE:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700/800/900/1000</td>
+    </tr>
+  
+    <tr>
+      <td>Ignite</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>modelscale</code></td>
+      <td>MODELSCALE:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>bonus_movement_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>6%/8%/10%/12%</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>BONUS ATTACK SPEED:</td>
+      <td>35/50/65/80</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>self_bonus</code></td>
+      <td>SELF BONUS ATTACK SPEED:</td>
+      <td>40/60/80/100</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>multicast_bloodlust_aoe</code></td>
+      <td>MULTICAST BLOODLUST AOE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Bloodlust</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.45</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.2</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>multicast_delay</code></td>
+      <td>MULTICAST DELAY:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>scepter_mana</code></td>
+      <td>SCEPTER MANA:</td>
+      <td>35</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>str_multiplier</code></td>
+      <td>STR MULTIPLIER:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>525</td>
+    </tr>
+  
+    <tr>
+      <td>Unrefined Fireblast</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.45</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>attacks</code></td>
+      <td>ATTACKS:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>multicast_fireshield_aoe</code></td>
+      <td>MULTICAST FIRESHIELD AOE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>1400</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>damage_absorb_pct</code></td>
+      <td>DAMAGE ABSORBED:</td>
+      <td>85%</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Fire Shield</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Multicast</td>
+      <td><code>multicast_2_times</code></td>
+      <td>2X CAST CHANCE:</td>
+      <td>75%</td>
+    </tr>
+  
+    <tr>
+      <td>Multicast</td>
+      <td><code>multicast_3_times</code></td>
+      <td>3X CAST CHANCE:</td>
+      <td>0%/30%/30%</td>
+    </tr>
+  
+    <tr>
+      <td>Multicast</td>
+      <td><code>multicast_4_times</code></td>
+      <td>4X CAST CHANCE:</td>
+      <td>0%/0%/15%</td>
+    </tr>
+  
+    <tr>
+      <td>Multicast</td>
+      <td><code>strength_for_one_pct</code></td>
+      <td>STRENGTH FOR ONE PCT:</td>
+      <td>16</td>
+    </tr>
+  
+    <tr>
+      <td>Multicast</td>
+      <td><code>one_tooltip</code></td>
+      <td>ONE TOOLTIP:</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Ogre Magi&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Fireblast&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;fireblast_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;stun_duration&quot;
+    },
+    &quot;Ignite&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Bloodlust&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Unrefined Fireblast&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;base_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Fire Shield&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Multicast&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +464,7 @@
           <div class="muted">Fireblast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,8 +517,8 @@
           <div class="muted">Ignite · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">curated</span>
+          <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
       </header>
@@ -203,20 +543,20 @@
           <tbody>
       <tr>
         <td>
-          <code>Ignite:instant_fixed:burn_damage</code>
+          <code>Ignite:sustained:burn_damage</code>
           <div class="muted">burn_damage</div>
         </td>
         <td>
-          <span class="pill">instant_fixed</span>
-          <span class="pill secondary">instant_fixed</span>
+          <span class="pill">sustained</span>
+          <span class="pill secondary">sustained_dps</span>
           <div class="muted">implemented</div>
         </td>
         <td>Magical</td>
         <td>20</td><td>30</td><td>40</td><td>50</td>
-        <td></td>
+        <td>100 / 180 / 280 / 400</td>
         <td><div><code>durationByAbilityLevel</code>: 5 / 6 / 7 / 8</div></td>
-        <td>single_value</td>
-        <td><span class="muted">-</span></td>
+        <td>duration * damagePerSecond</td>
+        <td><ul><li>包含持续伤害，理论总量依赖目标站位和完整命中。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +570,7 @@
           <div class="muted">Bloodlust · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +609,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +623,7 @@
           <div class="muted">Unrefined Fireblast · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +676,7 @@
           <div class="muted">Fire Shield · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +847,7 @@
       &quot;name&quot;: &quot;Fireblast&quot;,
       &quot;displayName&quot;: &quot;火焰爆轰（Fireblast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,9 +902,9 @@
       &quot;name&quot;: &quot;Ignite&quot;,
       &quot;displayName&quot;: &quot;引燃（Ignite）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
-      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         80,
@@ -580,8 +920,8 @@
       ],
       &quot;components&quot;: [
         {
-          &quot;id&quot;: &quot;Ignite:instant_fixed:burn_damage&quot;,
-          &quot;kind&quot;: &quot;instant_fixed&quot;,
+          &quot;id&quot;: &quot;Ignite:sustained:burn_damage&quot;,
+          &quot;kind&quot;: &quot;sustained&quot;,
           &quot;growthKind&quot;: &quot;non_growth&quot;,
           &quot;damageType&quot;: &quot;Magical&quot;,
           &quot;label&quot;: &quot;burn_damage&quot;,
@@ -591,11 +931,16 @@
             40,
             50
           ],
-          &quot;theoreticalTotalByAbilityLevel&quot;: [],
-          &quot;totalFormula&quot;: &quot;&quot;,
-          &quot;countInFixedInstantTotal&quot;: true,
+          &quot;theoreticalTotalByAbilityLevel&quot;: [
+            100,
+            180,
+            280,
+            400
+          ],
+          &quot;totalFormula&quot;: &quot;duration * damagePerSecond&quot;,
+          &quot;countInFixedInstantTotal&quot;: false,
           &quot;formula&quot;: {
-            &quot;type&quot;: &quot;single_value&quot;
+            &quot;type&quot;: &quot;duration_times_dps&quot;
           },
           &quot;metadata&quot;: {
             &quot;durationByAbilityLevel&quot;: [
@@ -607,9 +952,11 @@
           },
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;implemented&quot;,
-          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
           &quot;reason&quot;: &quot;&quot;,
-          &quot;caveats&quot;: []
+          &quot;caveats&quot;: [
+            &quot;包含持续伤害，理论总量依赖目标站位和完整命中。&quot;
+          ]
         }
       ]
     },
@@ -617,10 +964,10 @@
       &quot;name&quot;: &quot;Bloodlust&quot;,
       &quot;displayName&quot;: &quot;嗜血术（Bloodlust）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         40,
         50,
@@ -661,9 +1008,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -672,7 +1019,7 @@
       &quot;name&quot;: &quot;Unrefined Fireblast&quot;,
       &quot;displayName&quot;: &quot;未精通的火焰爆轰（Unrefined Fireblast）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
@@ -723,7 +1070,7 @@
       &quot;name&quot;: &quot;Fire Shield&quot;,
       &quot;displayName&quot;: &quot;烈火护盾（Fire Shield）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -763,7 +1110,352 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Ogre Magi&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Fireblast&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;fireblast_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;stun_duration&quot;
+        },
+        &quot;Ignite&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;burn_damage&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Bloodlust&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Unrefined Fireblast&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;base_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Fire Shield&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Multicast&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fireblast&quot;,
+        &quot;key&quot;: &quot;multicast_delay&quot;,
+        &quot;label&quot;: &quot;MULTICAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fireblast&quot;,
+        &quot;key&quot;: &quot;bonus_cast_speed&quot;,
+        &quot;label&quot;: &quot;BONUS CAST SPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fireblast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fireblast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed_pct&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;-25%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;multicast_delay&quot;,
+        &quot;label&quot;: &quot;MULTICAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;ignite_multicast_aoe&quot;,
+        &quot;label&quot;: &quot;IGNITE MULTICAST AOE:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700/800/900/1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Ignite&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;modelscale&quot;,
+        &quot;label&quot;: &quot;MODELSCALE:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;bonus_movement_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;6%/8%/10%/12%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;35/50/65/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;self_bonus&quot;,
+        &quot;label&quot;: &quot;SELF BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;40/60/80/100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;multicast_bloodlust_aoe&quot;,
+        &quot;label&quot;: &quot;MULTICAST BLOODLUST AOE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Bloodlust&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;multicast_delay&quot;,
+        &quot;label&quot;: &quot;MULTICAST DELAY:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;scepter_mana&quot;,
+        &quot;label&quot;: &quot;SCEPTER MANA:&quot;,
+        &quot;value&quot;: &quot;35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;str_multiplier&quot;,
+        &quot;label&quot;: &quot;STR MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;525&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Unrefined Fireblast&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.45&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;attacks&quot;,
+        &quot;label&quot;: &quot;ATTACKS:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;multicast_fireshield_aoe&quot;,
+        &quot;label&quot;: &quot;MULTICAST FIRESHIELD AOE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;1400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;damage_absorb_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE ABSORBED:&quot;,
+        &quot;value&quot;: &quot;85%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Fire Shield&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Multicast&quot;,
+        &quot;key&quot;: &quot;multicast_2_times&quot;,
+        &quot;label&quot;: &quot;2X CAST CHANCE:&quot;,
+        &quot;value&quot;: &quot;75%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Multicast&quot;,
+        &quot;key&quot;: &quot;multicast_3_times&quot;,
+        &quot;label&quot;: &quot;3X CAST CHANCE:&quot;,
+        &quot;value&quot;: &quot;0%/30%/30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Multicast&quot;,
+        &quot;key&quot;: &quot;multicast_4_times&quot;,
+        &quot;label&quot;: &quot;4X CAST CHANCE:&quot;,
+        &quot;value&quot;: &quot;0%/0%/15%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Multicast&quot;,
+        &quot;key&quot;: &quot;strength_for_one_pct&quot;,
+        &quot;label&quot;: &quot;STRENGTH FOR ONE PCT:&quot;,
+        &quot;value&quot;: &quot;16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Ogre Magi&quot;,
+        &quot;ability&quot;: &quot;Multicast&quot;,
+        &quot;key&quot;: &quot;one_tooltip&quot;,
+        &quot;label&quot;: &quot;ONE TOOLTIP:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -121,10 +121,10 @@
       "name": "Shackleshot",
       "displayName": "束缚击（Shackleshot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         70,
         80,
@@ -165,9 +165,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -176,7 +176,7 @@
       "name": "Powershot",
       "displayName": "强力击（Powershot）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。",
@@ -236,10 +236,10 @@
       "name": "Windrun",
       "displayName": "风行（Windrun）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -277,9 +277,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -288,10 +288,10 @@
       "name": "Gale Force",
       "displayName": "狂风之力（Gale Force）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         125
       ],
@@ -326,9 +326,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -337,10 +337,10 @@
       "name": "Focus Fire",
       "displayName": "集中火力（Focus Fire）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75,
         100,
@@ -379,13 +379,451 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Windranger",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Shackleshot": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Powershot": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "powershot_damage",
+          "semanticType": "damage.move_speed_scaling",
+          "requiredInputs": [
+            "move_speed"
+          ],
+          "conditionInputs": [
+            "move_speed"
+          ],
+          "reason": "移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。"
+        },
+        "Windrun": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "evasion_pct_tooltip",
+          "semanticType": "defense.evasion.percent",
+          "affects": "survivability",
+          "stackGroup": "evasion",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Gale Force": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Focus Fire Cancel": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Focus Fire": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Tailwind": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "fail_stun_duration",
+        "label": "FAIL STUN DURATION:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "stun_duration",
+        "label": "SHACKLE DURATION:",
+        "value": "1.75/2.25/2.75/3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "shackle_distance",
+        "label": "SHACKLE DISTANCE:",
+        "value": "575",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "arrow_speed",
+        "label": "ARROW SPEED:",
+        "value": "1650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "shackle_count",
+        "label": "SHACKLE COUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "shackle_angle",
+        "label": "SHACKLE ANGLE:",
+        "value": "23",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Shackleshot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "slow",
+        "label": "SLOW:",
+        "value": "20%/25%/30%/35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "damage_reduction",
+        "label": "REDUCTION PER UNIT:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "arrow_width",
+        "label": "ARROW WIDTH:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "arrow_range",
+        "label": "RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "arrow_speed",
+        "label": "ARROW SPEED:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "tree_width",
+        "label": "TREE WIDTH:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "vision_duration",
+        "label": "VISION DURATION:",
+        "value": "3.34",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "min_execute_threshold",
+        "label": "MIN EXECUTE THRESHOLD:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "max_execute_threshold",
+        "label": "MAX EXECUTE THRESHOLD:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Powershot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Windrun",
+        "key": "movespeed_bonus_pct",
+        "label": "MOVE SPEED BONUS:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Windrun",
+        "key": "cannot_be_dispelled",
+        "label": "CANNOT BE DISPELLED:",
+        "value": "+0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Windrun",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Windrun",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Windrun",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Gale Force",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Gale Force",
+        "key": "wind_strength",
+        "label": "WIND SPEED:",
+        "value": "240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Gale Force",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Gale Force",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "bonus_attack_speed",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "350/425/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "focusfire_damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "-25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "focusfire_fire_on_the_move",
+        "label": "FOCUSFIRE FIRE ON THE MOVE:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "process_procs",
+        "label": "PROCESS PROCS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "is_unfocused",
+        "label": "IS UNFOCUSED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "bonus_range",
+        "label": "BONUS ATTACK RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "unfocused_cancel_initial_cooldown",
+        "label": "UNFOCUSED CANCEL INITIAL COOLDOWN:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Focus Fire",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Tailwind",
+        "key": "movespeed_bonus",
+        "label": "MOVE SPEED BONUS PER STACK:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Tailwind",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Tailwind",
+        "key": "max_movespeed",
+        "label": "MAX MOVESPEED:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Tailwind",
+        "key": "applies_on_attack",
+        "label": "APPLIES ON ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Windranger",
+        "ability": "Tailwind",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>光之守卫（Keeper of the Light）</h1>
-        <div class="muted">Keeper of the Light · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Keeper of the Light · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 6</span>
           <span>组件 6</span>
@@ -53,6 +57,452 @@
       </div>
       <a href="./keeper-of-the-light.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Illuminate</td>
+      <td><code>max_channel_time</code></td>
+      <td>MAX CHANNEL TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>radius</code></td>
+      <td>WIDTH:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>1550</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>channel_vision_radius</code></td>
+      <td>CHANNEL VISION RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>channel_vision_interval</code></td>
+      <td>CHANNEL VISION INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>channel_vision_duration</code></td>
+      <td>CHANNEL VISION DURATION:</td>
+      <td>10.34</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>channel_vision_step</code></td>
+      <td>CHANNEL VISION STEP:</td>
+      <td>150/180/210/240</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1800</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>abilitychanneltime</code></td>
+      <td>CHANNEL TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Illuminate</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>miss_rate</code></td>
+      <td>MISS CHANCE:</td>
+      <td>45%</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>425/450/475/500</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>0.6</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500/575/650/725</td>
+    </tr>
+  
+    <tr>
+      <td>Blinding Light</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>mana_restore</code></td>
+      <td>MANA RESTORE:</td>
+      <td>105/170/235/300</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>cooldown_reduction</code></td>
+      <td>COOLDOWN REDUCTION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>mana_leak_pct</code></td>
+      <td>MANA LEAK PCT:</td>
+      <td>4.5/5/5.5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>self_bonus</code></td>
+      <td>SELF BONUS:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Chakra Magic</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>slow</code></td>
+      <td>SLOW PER 100 UNITS:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>magic_resistance</code></td>
+      <td>MAGIC RESISTANCE REDUCTION:</td>
+      <td>20%/30%/40%</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>abilitychargerestoretime</code></td>
+      <td>CHARGE RESTORE TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Solar Bind</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>on_count</code></td>
+      <td>ON COUNT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>725</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>hit_count</code></td>
+      <td>HIT COUNT:</td>
+      <td>7</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>on_duration</code></td>
+      <td>ON DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>off_duration_initial</code></td>
+      <td>OFF DURATION INITIAL:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>fixed_movement_speed</code></td>
+      <td>FIXED MOVEMENT SPEED:</td>
+      <td>60</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>bounty</code></td>
+      <td>BOUNTY:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Will-O-Wisp</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Form</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>40/45/50</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Form</td>
+      <td><code>movement_speed</code></td>
+      <td>BRIGHT SPEED BONUS MOVEMENT:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit Form</td>
+      <td><code>illuminate_heal</code></td>
+      <td>ILLUMINATE HEAL:</td>
+      <td>70%</td>
+    </tr>
+  
+    <tr>
+      <td>Bright Speed</td>
+      <td><code>intelligence_per_speed</code></td>
+      <td>INTELLIGENCE PER SPEED:</td>
+      <td>2.5</td>
+    </tr>
+  
+    <tr>
+      <td>Bright Speed</td>
+      <td><code>movement_per_vision</code></td>
+      <td>MOVEMENT PER VISION:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Bright Speed</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Bright Speed</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Illuminate&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;total_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;vision_duration&quot;
+    },
+    &quot;Blinding Light&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Chakra Magic&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Solar Bind&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Will-O-Wisp&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;wisp_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;off_duration&quot;
+    },
+    &quot;Spirit Form&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;cast_range&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Release Illuminate&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Bright Speed&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +574,7 @@
           <div class="muted">Illuminate · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +627,7 @@
           <div class="muted">Blinding Light · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -230,7 +680,7 @@
           <div class="muted">Chakra Magic · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +719,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +733,7 @@
           <div class="muted">Solar Bind · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +772,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +786,7 @@
           <div class="muted">Will-O-Wisp · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -389,7 +839,7 @@
           <div class="muted">Spirit Form · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -428,7 +878,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -560,7 +1010,7 @@
       &quot;name&quot;: &quot;Illuminate&quot;,
       &quot;displayName&quot;: &quot;冲击波（Illuminate）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -615,7 +1065,7 @@
       &quot;name&quot;: &quot;Blinding Light&quot;,
       &quot;displayName&quot;: &quot;致盲之光（Blinding Light）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -675,10 +1125,10 @@
       &quot;name&quot;: &quot;Chakra Magic&quot;,
       &quot;displayName&quot;: &quot;查克拉魔法（Chakra Magic）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         0
       ],
@@ -716,9 +1166,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -727,10 +1177,10 @@
       &quot;name&quot;: &quot;Solar Bind&quot;,
       &quot;displayName&quot;: &quot;炎阳之缚（Solar Bind）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         120
       ],
@@ -765,9 +1215,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -776,7 +1226,7 @@
       &quot;name&quot;: &quot;Will-O-Wisp&quot;,
       &quot;displayName&quot;: &quot;灵光（Will-O-Wisp）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -819,10 +1269,10 @@
       &quot;name&quot;: &quot;Spirit Form&quot;,
       &quot;displayName&quot;: &quot;灵魂形态（Spirit Form）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75,
         125,
@@ -863,15 +1313,484 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Illuminate&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;total_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;vision_duration&quot;
+        },
+        &quot;Blinding Light&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Chakra Magic&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Solar Bind&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Will-O-Wisp&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;wisp_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;off_duration&quot;
+        },
+        &quot;Spirit Form&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;cast_range&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Release Illuminate&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Bright Speed&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;max_channel_time&quot;,
+        &quot;label&quot;: &quot;MAX CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;WIDTH:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;1550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;channel_vision_radius&quot;,
+        &quot;label&quot;: &quot;CHANNEL VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;channel_vision_interval&quot;,
+        &quot;label&quot;: &quot;CHANNEL VISION INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;channel_vision_duration&quot;,
+        &quot;label&quot;: &quot;CHANNEL VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;10.34&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;channel_vision_step&quot;,
+        &quot;label&quot;: &quot;CHANNEL VISION STEP:&quot;,
+        &quot;value&quot;: &quot;150/180/210/240&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;abilitychanneltime&quot;,
+        &quot;label&quot;: &quot;CHANNEL TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Illuminate&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;miss_rate&quot;,
+        &quot;label&quot;: &quot;MISS CHANCE:&quot;,
+        &quot;value&quot;: &quot;45%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;425/450/475/500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;0.6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500/575/650/725&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Blinding Light&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;mana_restore&quot;,
+        &quot;label&quot;: &quot;MANA RESTORE:&quot;,
+        &quot;value&quot;: &quot;105/170/235/300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;cooldown_reduction&quot;,
+        &quot;label&quot;: &quot;COOLDOWN REDUCTION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;mana_leak_pct&quot;,
+        &quot;label&quot;: &quot;MANA LEAK PCT:&quot;,
+        &quot;value&quot;: &quot;4.5/5/5.5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;self_bonus&quot;,
+        &quot;label&quot;: &quot;SELF BONUS:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Chakra Magic&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW PER 100 UNITS:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;MAGIC RESISTANCE REDUCTION:&quot;,
+        &quot;value&quot;: &quot;20%/30%/40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;abilitychargerestoretime&quot;,
+        &quot;label&quot;: &quot;CHARGE RESTORE TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Solar Bind&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;on_count&quot;,
+        &quot;label&quot;: &quot;ON COUNT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;725&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;hit_count&quot;,
+        &quot;label&quot;: &quot;HIT COUNT:&quot;,
+        &quot;value&quot;: &quot;7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;on_duration&quot;,
+        &quot;label&quot;: &quot;ON DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;off_duration_initial&quot;,
+        &quot;label&quot;: &quot;OFF DURATION INITIAL:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;fixed_movement_speed&quot;,
+        &quot;label&quot;: &quot;FIXED MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;60&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;bounty&quot;,
+        &quot;label&quot;: &quot;BOUNTY:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Will-O-Wisp&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Spirit Form&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;40/45/50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Spirit Form&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;BRIGHT SPEED BONUS MOVEMENT:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Spirit Form&quot;,
+        &quot;key&quot;: &quot;illuminate_heal&quot;,
+        &quot;label&quot;: &quot;ILLUMINATE HEAL:&quot;,
+        &quot;value&quot;: &quot;70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Bright Speed&quot;,
+        &quot;key&quot;: &quot;intelligence_per_speed&quot;,
+        &quot;label&quot;: &quot;INTELLIGENCE PER SPEED:&quot;,
+        &quot;value&quot;: &quot;2.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Bright Speed&quot;,
+        &quot;key&quot;: &quot;movement_per_vision&quot;,
+        &quot;label&quot;: &quot;MOVEMENT PER VISION:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Bright Speed&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Keeper of the Light&quot;,
+        &quot;ability&quot;: &quot;Bright Speed&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

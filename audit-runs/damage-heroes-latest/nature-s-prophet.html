@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>自然先知（Nature&#39;s Prophet）</h1>
-        <div class="muted">Nature&#39;s Prophet · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Nature&#39;s Prophet · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,337 @@
       </div>
       <a href="./nature-s-prophet.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Sprout</td>
+      <td><code>vision_range</code></td>
+      <td>VISION RANGE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Sprout</td>
+      <td><code>sprout_damage_radius</code></td>
+      <td>SPROUT DAMAGE RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Sprout</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>625/700/775/850</td>
+    </tr>
+  
+    <tr>
+      <td>Sprout</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.35</td>
+    </tr>
+  
+    <tr>
+      <td>Teleportation</td>
+      <td><code>barrier</code></td>
+      <td>BARRIER:</td>
+      <td>70/130/190/250</td>
+    </tr>
+  
+    <tr>
+      <td>Teleportation</td>
+      <td><code>buff_duration</code></td>
+      <td>DURATION:</td>
+      <td>15</td>
+    </tr>
+  
+    <tr>
+      <td>Teleportation</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>area_of_effect</code></td>
+      <td>AREA OF EFFECT:</td>
+      <td>150/225/300/375</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>max_treants</code></td>
+      <td>TREANTS SUMMONED:</td>
+      <td>2/3/4/5</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_health</code></td>
+      <td>TREANT HEALTH:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_bonus_hero_damage</code></td>
+      <td>TREANT BONUS HERO DAMAGE:</td>
+      <td>4/8/12/16</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_movespeed</code></td>
+      <td>TREANT MOVESPEED:</td>
+      <td>300/315/330/345</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_vision_day</code></td>
+      <td>TREANT VISION (DAY):</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_vision_night</code></td>
+      <td>TREANT VISION (NIGHT):</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_gold_bounty_min</code></td>
+      <td>TREANT GOLD BOUNTY MIN:</td>
+      <td>18</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_gold_bounty_max</code></td>
+      <td>TREANT GOLD BOUNTY MAX:</td>
+      <td>24</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treant_xp_bounty</code></td>
+      <td>TREANT XP BOUNTY:</td>
+      <td>30</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>treewalking</code></td>
+      <td>TREEWALKING:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Call</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of the Oldgrowth</td>
+      <td><code>slow_per_tree</code></td>
+      <td>SLOW PER TREE:</td>
+      <td>7%</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of the Oldgrowth</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>250</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of the Oldgrowth</td>
+      <td><code>range</code></td>
+      <td>RANGE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Curse of the Oldgrowth</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit of the Forest</td>
+      <td><code>damage_per_tree_pct</code></td>
+      <td>DAMAGE PER TREE PCT:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit of the Forest</td>
+      <td><code>radius_base</code></td>
+      <td>TREE RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit of the Forest</td>
+      <td><code>multiplier</code></td>
+      <td>TREANT MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Spirit of the Forest</td>
+      <td><code>radius_treant</code></td>
+      <td>TREANT RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>max_targets</code></td>
+      <td>MAX TARGETS:</td>
+      <td>16</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>damage_percent_add</code></td>
+      <td>ADDED DAMAGE PER BOUNCE:</td>
+      <td>10%</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>jump_delay</code></td>
+      <td>JUMP DELAY:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>kill_damage</code></td>
+      <td>KILL DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wrath of Nature</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Sprout&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;sprout_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Teleportation&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Nature&#39;s Call&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;treant_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;treant_duration&quot;
+    },
+    &quot;Curse of the Oldgrowth&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage_per_tree&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Spirit of the Forest&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Wrath of Nature&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;kill_damage_duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +459,7 @@
           <div class="muted">Sprout · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +512,7 @@
           <div class="muted">Teleportation · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +551,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +565,7 @@
           <div class="muted">Nature&#39;s Call · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +618,7 @@
           <div class="muted">Curse of the Oldgrowth · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -336,7 +671,7 @@
           <div class="muted">Wrath of Nature · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +842,7 @@
       &quot;name&quot;: &quot;Sprout&quot;,
       &quot;displayName&quot;: &quot;发芽（Sprout）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,10 +897,10 @@
       &quot;name&quot;: &quot;Teleportation&quot;,
       &quot;displayName&quot;: &quot;传送（Teleportation）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50,
         60,
@@ -606,9 +941,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -617,7 +952,7 @@
       &quot;name&quot;: &quot;Nature&#39;s Call&quot;,
       &quot;displayName&quot;: &quot;自然的呼唤（Nature&#39;s Call）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -672,7 +1007,7 @@
       &quot;name&quot;: &quot;Curse of the Oldgrowth&quot;,
       &quot;displayName&quot;: &quot;青森诅咒（Curse of the Oldgrowth）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -715,7 +1050,7 @@
       &quot;name&quot;: &quot;Wrath of Nature&quot;,
       &quot;displayName&quot;: &quot;自然之怒（Wrath of Nature）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -763,7 +1098,347 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Sprout&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;sprout_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Teleportation&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Nature&#39;s Call&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;treant_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;treant_duration&quot;
+        },
+        &quot;Curse of the Oldgrowth&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage_per_tree&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Spirit of the Forest&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Wrath of Nature&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;kill_damage_duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Sprout&quot;,
+        &quot;key&quot;: &quot;vision_range&quot;,
+        &quot;label&quot;: &quot;VISION RANGE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Sprout&quot;,
+        &quot;key&quot;: &quot;sprout_damage_radius&quot;,
+        &quot;label&quot;: &quot;SPROUT DAMAGE RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Sprout&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;625/700/775/850&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Sprout&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.35&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Teleportation&quot;,
+        &quot;key&quot;: &quot;barrier&quot;,
+        &quot;label&quot;: &quot;BARRIER:&quot;,
+        &quot;value&quot;: &quot;70/130/190/250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Teleportation&quot;,
+        &quot;key&quot;: &quot;buff_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Teleportation&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;AREA OF EFFECT:&quot;,
+        &quot;value&quot;: &quot;150/225/300/375&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;max_treants&quot;,
+        &quot;label&quot;: &quot;TREANTS SUMMONED:&quot;,
+        &quot;value&quot;: &quot;2/3/4/5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_health&quot;,
+        &quot;label&quot;: &quot;TREANT HEALTH:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_bonus_hero_damage&quot;,
+        &quot;label&quot;: &quot;TREANT BONUS HERO DAMAGE:&quot;,
+        &quot;value&quot;: &quot;4/8/12/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_movespeed&quot;,
+        &quot;label&quot;: &quot;TREANT MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;300/315/330/345&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_vision_day&quot;,
+        &quot;label&quot;: &quot;TREANT VISION (DAY):&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_vision_night&quot;,
+        &quot;label&quot;: &quot;TREANT VISION (NIGHT):&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_gold_bounty_min&quot;,
+        &quot;label&quot;: &quot;TREANT GOLD BOUNTY MIN:&quot;,
+        &quot;value&quot;: &quot;18&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_gold_bounty_max&quot;,
+        &quot;label&quot;: &quot;TREANT GOLD BOUNTY MAX:&quot;,
+        &quot;value&quot;: &quot;24&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treant_xp_bounty&quot;,
+        &quot;label&quot;: &quot;TREANT XP BOUNTY:&quot;,
+        &quot;value&quot;: &quot;30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;treewalking&quot;,
+        &quot;label&quot;: &quot;TREEWALKING:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Call&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Curse of the Oldgrowth&quot;,
+        &quot;key&quot;: &quot;slow_per_tree&quot;,
+        &quot;label&quot;: &quot;SLOW PER TREE:&quot;,
+        &quot;value&quot;: &quot;7%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Curse of the Oldgrowth&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;250&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Curse of the Oldgrowth&quot;,
+        &quot;key&quot;: &quot;range&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Curse of the Oldgrowth&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit of the Forest&quot;,
+        &quot;key&quot;: &quot;damage_per_tree_pct&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER TREE PCT:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit of the Forest&quot;,
+        &quot;key&quot;: &quot;radius_base&quot;,
+        &quot;label&quot;: &quot;TREE RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit of the Forest&quot;,
+        &quot;key&quot;: &quot;multiplier&quot;,
+        &quot;label&quot;: &quot;TREANT MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Spirit of the Forest&quot;,
+        &quot;key&quot;: &quot;radius_treant&quot;,
+        &quot;label&quot;: &quot;TREANT RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;max_targets&quot;,
+        &quot;label&quot;: &quot;MAX TARGETS:&quot;,
+        &quot;value&quot;: &quot;16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;damage_percent_add&quot;,
+        &quot;label&quot;: &quot;ADDED DAMAGE PER BOUNCE:&quot;,
+        &quot;value&quot;: &quot;10%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;jump_delay&quot;,
+        &quot;label&quot;: &quot;JUMP DELAY:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;kill_damage&quot;,
+        &quot;label&quot;: &quot;KILL DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Nature&#39;s Prophet&quot;,
+        &quot;ability&quot;: &quot;Wrath of Nature&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

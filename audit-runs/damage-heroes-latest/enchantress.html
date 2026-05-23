@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>魅惑魔女（Enchantress）</h1>
-        <div class="muted">Enchantress · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Enchantress · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,408 @@
       </div>
       <a href="./enchantress.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Impetus</td>
+      <td><code>distance_damage_pct</code></td>
+      <td>DISTANCE DAMAGE:</td>
+      <td>5%/10%/15%/20%</td>
+    </tr>
+  
+    <tr>
+      <td>Impetus</td>
+      <td><code>distance_cap</code></td>
+      <td>DISTANCE CAP:</td>
+      <td>1750</td>
+    </tr>
+  
+    <tr>
+      <td>Impetus</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>575</td>
+    </tr>
+  
+    <tr>
+      <td>Impetus</td>
+      <td><code>abilityduration</code></td>
+      <td>DURATION:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Impetus</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>slow_movement_speed</code></td>
+      <td>HERO MOVE SLOW:</td>
+      <td>-30%/-40%/-50%/-60%</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>attack_range_bonus</code></td>
+      <td>ATTACK RANGE BONUS:</td>
+      <td>50/100/150/200</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>dominate_duration</code></td>
+      <td>DOMINATE DURATION:</td>
+      <td>30/60/90/120</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>enchant_health</code></td>
+      <td>CREEP MAX HEALTH BONUS:</td>
+      <td>150/250/350/450</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>xp_gain_pct</code></td>
+      <td>XP GAIN PCT:</td>
+      <td>40</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>level_req</code></td>
+      <td>CREEP MAX LEVEL:</td>
+      <td>4/5/6/6</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>max_creeps</code></td>
+      <td>MAX ENCHANTED CREEPS:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>bonus_health</code></td>
+      <td>BONUS HEALTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>bonus_damage</code></td>
+      <td>BONUS DAMAGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>bonus_attackspeed</code></td>
+      <td>BONUS ATTACKSPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>500/600/700/800</td>
+    </tr>
+  
+    <tr>
+      <td>Enchant</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>heal_duration</code></td>
+      <td>DURATION:</td>
+      <td>7/9/11/13</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>heal_interval</code></td>
+      <td>HEAL INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>heal</code></td>
+      <td>HEAL PER SECOND:</td>
+      <td>4/8/12/16</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>wisp_count</code></td>
+      <td>WISPS:</td>
+      <td>9</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>movespeed</code></td>
+      <td>MOVESPEED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>overprotective_damage_threshold</code></td>
+      <td>OVERPROTECTIVE DAMAGE THRESHOLD:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>overprotective_damage_reset_interval</code></td>
+      <td>OVERPROTECTIVE DAMAGE RESET INTERVAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>overprotective_wisp_duration</code></td>
+      <td>OVERPROTECTIVE WISP DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>overprotective_wisp_count</code></td>
+      <td>OVERPROTECTIVE WISP COUNT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>overprotective_max_wisps</code></td>
+      <td>OVERPROTECTIVE MAX WISPS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Nature&#39;s Attendants</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Sproink</td>
+      <td><code>hop_distance</code></td>
+      <td>LEAP DISTANCE:</td>
+      <td>500</td>
+    </tr>
+  
+    <tr>
+      <td>Sproink</td>
+      <td><code>hop_duration</code></td>
+      <td>HOP DURATION:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Sproink</td>
+      <td><code>hop_height</code></td>
+      <td>HOP HEIGHT:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Sproink</td>
+      <td><code>attack_targets</code></td>
+      <td>TARGETS:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Sproink</td>
+      <td><code>bonus_attack_range</code></td>
+      <td>BONUS RANGE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>bonus_attack_speed</code></td>
+      <td>BONUS ATTACK SPEED:</td>
+      <td>70</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>bonus_move_speed</code></td>
+      <td>BONUS MOVE SPEED:</td>
+      <td>100%</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>root_base_duration</code></td>
+      <td>MINIMUM ROOT DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>root_per_target</code></td>
+      <td>ROOT DURATION PER UNIT:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Little Friends</td>
+      <td><code>max_root</code></td>
+      <td>MAX ROOT:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Untouchable</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Enchantress&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Impetus&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;illusion_damage_multiplier&quot;,
+      &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;source_damage&quot;,
+        &quot;hit_count&quot;
+      ],
+      &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Enchant&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;enchant_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;slow_duration&quot;
+    },
+    &quot;Nature&#39;s Attendants&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Sproink&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Little Friends&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Untouchable&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;slow_attack_speed&quot;,
+      &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+      &quot;affects&quot;: &quot;attack_speed&quot;,
+      &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Rabble-Rouser&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +530,7 @@
           <div class="muted">Impetus · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +583,7 @@
           <div class="muted">Enchant · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +636,7 @@
           <div class="muted">Little Friends · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +675,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +689,7 @@
           <div class="muted">Untouchable · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +728,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: attack_speed</div><div><code>affects</code>: attack_speed</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -454,7 +860,7 @@
       &quot;name&quot;: &quot;Impetus&quot;,
       &quot;displayName&quot;: &quot;推进（Impetus）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;,
@@ -512,7 +918,7 @@
       &quot;name&quot;: &quot;Enchant&quot;,
       &quot;displayName&quot;: &quot;魅惑（Enchant）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -567,10 +973,10 @@
       &quot;name&quot;: &quot;Little Friends&quot;,
       &quot;displayName&quot;: &quot;密友（Little Friends）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         75
       ],
@@ -605,9 +1011,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -616,10 +1022,10 @@
       &quot;name&quot;: &quot;Untouchable&quot;,
       &quot;displayName&quot;: &quot;不可侵犯（Untouchable）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [],
       &quot;cooldownByAbilityLevel&quot;: [],
       &quot;components&quot;: [
@@ -652,15 +1058,435 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Enchantress&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Impetus&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;illusion_damage_multiplier&quot;,
+          &quot;semanticType&quot;: &quot;damage.source_damage_percent&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;source_damage&quot;,
+            &quot;hit_count&quot;
+          ],
+          &quot;reason&quot;: &quot;来源伤害百分比需要来源伤害输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Enchant&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;enchant_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;slow_duration&quot;
+        },
+        &quot;Nature&#39;s Attendants&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Sproink&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Little Friends&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Untouchable&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;slow_attack_speed&quot;,
+          &quot;semanticType&quot;: &quot;modifier.attack_speed.flat&quot;,
+          &quot;affects&quot;: &quot;attack_speed&quot;,
+          &quot;stackGroup&quot;: &quot;attack_speed&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Rabble-Rouser&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Impetus&quot;,
+        &quot;key&quot;: &quot;distance_damage_pct&quot;,
+        &quot;label&quot;: &quot;DISTANCE DAMAGE:&quot;,
+        &quot;value&quot;: &quot;5%/10%/15%/20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Impetus&quot;,
+        &quot;key&quot;: &quot;distance_cap&quot;,
+        &quot;label&quot;: &quot;DISTANCE CAP:&quot;,
+        &quot;value&quot;: &quot;1750&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Impetus&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;575&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Impetus&quot;,
+        &quot;key&quot;: &quot;abilityduration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Impetus&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;slow_movement_speed&quot;,
+        &quot;label&quot;: &quot;HERO MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;-30%/-40%/-50%/-60%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;attack_range_bonus&quot;,
+        &quot;label&quot;: &quot;ATTACK RANGE BONUS:&quot;,
+        &quot;value&quot;: &quot;50/100/150/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;dominate_duration&quot;,
+        &quot;label&quot;: &quot;DOMINATE DURATION:&quot;,
+        &quot;value&quot;: &quot;30/60/90/120&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;enchant_health&quot;,
+        &quot;label&quot;: &quot;CREEP MAX HEALTH BONUS:&quot;,
+        &quot;value&quot;: &quot;150/250/350/450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;xp_gain_pct&quot;,
+        &quot;label&quot;: &quot;XP GAIN PCT:&quot;,
+        &quot;value&quot;: &quot;40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;level_req&quot;,
+        &quot;label&quot;: &quot;CREEP MAX LEVEL:&quot;,
+        &quot;value&quot;: &quot;4/5/6/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;max_creeps&quot;,
+        &quot;label&quot;: &quot;MAX ENCHANTED CREEPS:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;bonus_health&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;bonus_damage&quot;,
+        &quot;label&quot;: &quot;BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;bonus_attackspeed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACKSPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;500/600/700/800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Enchant&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;heal_duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;7/9/11/13&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;heal_interval&quot;,
+        &quot;label&quot;: &quot;HEAL INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;heal&quot;,
+        &quot;label&quot;: &quot;HEAL PER SECOND:&quot;,
+        &quot;value&quot;: &quot;4/8/12/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;wisp_count&quot;,
+        &quot;label&quot;: &quot;WISPS:&quot;,
+        &quot;value&quot;: &quot;9&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;movespeed&quot;,
+        &quot;label&quot;: &quot;MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;overprotective_damage_threshold&quot;,
+        &quot;label&quot;: &quot;OVERPROTECTIVE DAMAGE THRESHOLD:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;overprotective_damage_reset_interval&quot;,
+        &quot;label&quot;: &quot;OVERPROTECTIVE DAMAGE RESET INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;overprotective_wisp_duration&quot;,
+        &quot;label&quot;: &quot;OVERPROTECTIVE WISP DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;overprotective_wisp_count&quot;,
+        &quot;label&quot;: &quot;OVERPROTECTIVE WISP COUNT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;overprotective_max_wisps&quot;,
+        &quot;label&quot;: &quot;OVERPROTECTIVE MAX WISPS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Nature&#39;s Attendants&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Sproink&quot;,
+        &quot;key&quot;: &quot;hop_distance&quot;,
+        &quot;label&quot;: &quot;LEAP DISTANCE:&quot;,
+        &quot;value&quot;: &quot;500&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Sproink&quot;,
+        &quot;key&quot;: &quot;hop_duration&quot;,
+        &quot;label&quot;: &quot;HOP DURATION:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Sproink&quot;,
+        &quot;key&quot;: &quot;hop_height&quot;,
+        &quot;label&quot;: &quot;HOP HEIGHT:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Sproink&quot;,
+        &quot;key&quot;: &quot;attack_targets&quot;,
+        &quot;label&quot;: &quot;TARGETS:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Sproink&quot;,
+        &quot;key&quot;: &quot;bonus_attack_range&quot;,
+        &quot;label&quot;: &quot;BONUS RANGE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;bonus_attack_speed&quot;,
+        &quot;label&quot;: &quot;BONUS ATTACK SPEED:&quot;,
+        &quot;value&quot;: &quot;70&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;bonus_move_speed&quot;,
+        &quot;label&quot;: &quot;BONUS MOVE SPEED:&quot;,
+        &quot;value&quot;: &quot;100%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;root_base_duration&quot;,
+        &quot;label&quot;: &quot;MINIMUM ROOT DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;root_per_target&quot;,
+        &quot;label&quot;: &quot;ROOT DURATION PER UNIT:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Little Friends&quot;,
+        &quot;key&quot;: &quot;max_root&quot;,
+        &quot;label&quot;: &quot;MAX ROOT:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Enchantress&quot;,
+        &quot;ability&quot;: &quot;Untouchable&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

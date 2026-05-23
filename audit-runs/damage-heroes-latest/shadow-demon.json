@@ -121,7 +121,7 @@
       "name": "Disruption",
       "displayName": "崩裂禁锢（Disruption）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Disseminate",
       "displayName": "散播（Disseminate）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100,
         100,
@@ -223,9 +223,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -234,7 +234,7 @@
       "name": "Shadow Poison",
       "displayName": "暗影剧毒（Shadow Poison）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -294,7 +294,7 @@
       "name": "Demonic Cleanse",
       "displayName": "邪恶净愈（Demonic Cleanse）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -337,7 +337,7 @@
       "name": "Demonic Purge",
       "displayName": "邪恶净化（Demonic Purge）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -385,5 +385,354 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Shadow Demon",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Disruption": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "illusion_flat_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "disruption_duration"
+        },
+        "Disseminate": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Shadow Poison": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "stack_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Shadow Poison Release": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Demonic Cleanse": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "purge_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "abilityduration"
+        },
+        "Demonic Purge": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "purge_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "abilityduration"
+        },
+        "Menace": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_duration",
+        "label": "ILLUSION DURATION:",
+        "value": "11/12/13/14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_outgoing_damage",
+        "label": "ILLUSION OUTGOING DAMAGE:",
+        "value": "-80/-70/-60/-50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_outgoing_tooltip",
+        "label": "ILLUSION DAMAGE:",
+        "value": "20%/30%/40%/50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_incoming_damage",
+        "label": "ILLUSION INCOMING DAMAGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "tooltip_total_illusion_incoming_damage",
+        "label": "ILLUSION DAMAGE TAKEN:",
+        "value": "300%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "26/24/22/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_bounty_base",
+        "label": "ILLUSION BOUNTY BASE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "illusion_bounty_growth",
+        "label": "ILLUSION BOUNTY GROWTH:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "2.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disruption",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disseminate",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disseminate",
+        "key": "health_lost",
+        "label": "HEALTH LOST:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disseminate",
+        "key": "damage_reflection_pct",
+        "label": "SHARED DAMAGE:",
+        "value": "16%/24%/32%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disseminate",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Disseminate",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "max_multiply_stacks",
+        "label": "MAX STACKS TO MULTIPLY:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "bonus_stack_damage",
+        "label": "BONUS STACK DAMAGE:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "hit_damage",
+        "label": "HIT DAMAGE:",
+        "value": "24/36/48/60",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "abilityduration",
+        "label": "DEBUFF DURATION:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Shadow Poison",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Cleanse",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Cleanse",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Purge",
+        "key": "max_slow",
+        "label": "MAX SLOW:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Purge",
+        "key": "min_slow",
+        "label": "MIN SLOW:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Purge",
+        "key": "apply_poison_stacks",
+        "label": "APPLY POISON STACKS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Purge",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Demonic Purge",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Menace",
+        "key": "stack",
+        "label": "DAMAGE AMP:",
+        "value": "1.9%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Demon",
+        "ability": "Menace",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

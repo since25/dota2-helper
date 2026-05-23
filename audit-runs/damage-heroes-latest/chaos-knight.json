@@ -121,7 +121,7 @@
       "name": "Chaos Bolt",
       "displayName": "混乱之箭（Chaos Bolt）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Reality Rift",
       "displayName": "实相裂隙（Reality Rift）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50,
         50,
@@ -223,13 +223,325 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Chaos Knight",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Chaos Bolt": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_min",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "illusion_duration"
+        },
+        "Reality Rift": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Chaos Strike": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Phantasm": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "chaos_bolt_speed",
+        "label": "CHAOS BOLT SPEED:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "stun_min",
+        "label": "MINIMUM STUN:",
+        "value": "1.25/1.5/1.75/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "stun_max",
+        "label": "MAXIMUM STUN:",
+        "value": "1.75/2.25/2.75/3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "damage_max",
+        "label": "MAXIMUM DAMAGE:",
+        "value": "155/240/325/410",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "fake_bolt_distance",
+        "label": "FAKE BOLT DISTANCE:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "illusion_damage_reduction_pct",
+        "label": "ILLUSION DAMAGE REDUCTION:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "bounce_range_pct",
+        "label": "BOUNCE RANGE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Bolt",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "pull_distance",
+        "label": "PULL DISTANCE:",
+        "value": "300/350/400/450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "armor_reduction",
+        "label": "ARMOR REDUCTION:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "pierces_immunity",
+        "label": "PIERCES IMMUNITY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "additional_debuff_duration_percent",
+        "label": "ADDITIONAL DEBUFF DURATION PERCENT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "additional_debuff_duration_tooltip",
+        "label": "ADDITIONAL DEBUFF DURATION TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Reality Rift",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Strike",
+        "key": "chance",
+        "label": "CHANCE:",
+        "value": "33.33%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Strike",
+        "key": "crit_min",
+        "label": "CRITICAL MIN:",
+        "value": "120%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Strike",
+        "key": "crit_max",
+        "label": "CRITICAL MAX:",
+        "value": "140%/180%/220%/260%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Strike",
+        "key": "lifesteal",
+        "label": "CRITICAL LIFESTEAL:",
+        "value": "30%/40%/50%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Chaos Strike",
+        "key": "creep_multiplier",
+        "label": "CREEP MULTIPLIER:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "images_count",
+        "label": "NUMBER OF PHANTASMS:",
+        "value": "1/2/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "illusion_duration",
+        "label": "PHANTASM DURATION:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "outgoing_damage",
+        "label": "OUTGOING DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "outgoing_damage_tooltip",
+        "label": "PHANTASM DAMAGE:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "incoming_damage",
+        "label": "INCOMING DAMAGE:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "incoming_damage_tooltip",
+        "label": "PHANTASM DAMAGE TAKEN:",
+        "value": "350%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "invuln_duration",
+        "label": "INVULN DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "bonus_illusion_chance",
+        "label": "BONUS ILLUSION CHANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "bonus_illusion_count",
+        "label": "BONUS ILLUSION COUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Chaos Knight",
+        "ability": "Phantasm",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

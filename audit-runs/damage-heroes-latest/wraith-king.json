@@ -121,10 +121,10 @@
       "name": "Wraithfire Blast",
       "displayName": "冥火爆击（Wraithfire Blast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "sustained_dps",
-      "reason": "",
+      "model": "initial_plus_dot",
+      "reason": "计入初始伤害和持续灼烧伤害。",
       "manaCostByAbilityLevel": [
         95,
         110,
@@ -139,42 +139,49 @@
       ],
       "components": [
         {
-          "id": "Wraithfire Blast:sustained:blast_dot_damage",
-          "kind": "sustained",
+          "id": "Wraithfire Blast:initial_plus_dot:damage",
+          "kind": "initial_plus_dot",
           "growthKind": "non_growth",
           "damageType": "Magical",
-          "label": "blast_dot_damage",
+          "label": "damage",
           "valuesByAbilityLevel": [
-            20,
-            40,
-            60,
-            80
+            80,
+            100,
+            120,
+            140
           ],
           "theoreticalTotalByAbilityLevel": [
-            20,
-            48,
-            84,
-            128
+            120,
+            180,
+            240,
+            300
           ],
-          "totalFormula": "duration * damagePerSecond",
+          "totalFormula": "initialDamage + damagePerSecond * duration",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "duration_times_dps"
+            "type": "initial_plus_duration_times_dps"
           },
           "metadata": {
+            "damagePerSecondKey": "blast_dot_damage",
+            "damagePerSecondByAbilityLevel": [
+              20,
+              40,
+              60,
+              80
+            ],
             "durationByAbilityLevel": [
-              1,
-              1.2,
-              1.4,
-              1.6
+              2,
+              2,
+              2,
+              2
             ]
           },
           "source": "curated",
           "status": "implemented",
-          "model": "sustained_dps",
-          "reason": "",
+          "model": "initial_plus_dot",
+          "reason": "计入初始伤害和持续灼烧伤害。",
           "caveats": [
-            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+            "包含瞬时伤害和持续伤害，理论总量依赖完整作用时间。"
           ]
         }
       ]
@@ -183,10 +190,10 @@
       "name": "Bone Guard",
       "displayName": "白骨护卫（Bone Guard）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "state_scaling",
-      "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "summon_attack",
+      "reason": "骷髅兵输出取决于召唤物实际攻击次数。",
       "manaCostByAbilityLevel": [
         70,
         80,
@@ -201,8 +208,8 @@
       ],
       "components": [
         {
-          "id": "Bone Guard:state_scaling:skeleton_damage_tooltip",
-          "kind": "state_scaling",
+          "id": "Bone Guard:summon_attack:skeleton_damage_tooltip",
+          "kind": "summon_attack",
           "growthKind": "non_growth",
           "damageType": "Physical",
           "label": "skeleton_damage_tooltip",
@@ -213,28 +220,20 @@
             49
           ],
           "theoreticalTotalByAbilityLevel": [],
-          "totalFormula": "",
+          "totalFormula": "attackCount * summonAttackDamage",
           "countInFixedInstantTotal": false,
           "formula": {
-            "type": "state_scaling"
+            "type": "runtime_summon_attack_count_times_damage"
           },
           "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "",
-            "requiredInputs": [
-              "stack_count"
-            ],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
+            "attackCountInput": "summon_attack_count"
           },
           "source": "curated",
-          "status": "reference_only",
-          "model": "state_scaling",
-          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
+          "status": "implemented",
+          "model": "summon_attack",
+          "reason": "骷髅兵输出取决于召唤物实际攻击次数。",
           "caveats": [
-            "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+            "召唤物、守卫或代理单位伤害需要输入攻击次数。"
           ]
         }
       ]
@@ -243,10 +242,10 @@
       "name": "Mortal Strike",
       "displayName": "本命一击（Mortal Strike）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         6,
@@ -285,9 +284,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -296,10 +295,10 @@
       "name": "Vampiric Spirit",
       "displayName": "吸血灵魂（Vampiric Spirit）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -330,9 +329,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -341,10 +340,10 @@
       "name": "Reincarnation",
       "displayName": "绝冥再生（Reincarnation）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         220,
         110,
@@ -383,13 +382,315 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Wraith King",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Wraithfire Blast": {
+          "status": "implemented",
+          "model": "initial_plus_dot",
+          "initialDamageKey": "damage",
+          "damagePerSecondKey": "blast_dot_damage",
+          "durationKey": "blast_dot_duration",
+          "semanticType": "damage.sustained_dps",
+          "reason": "计入初始伤害和持续灼烧伤害。"
+        },
+        "Bone Guard": {
+          "status": "implemented",
+          "model": "summon_attack",
+          "attackDamageKey": "skeleton_damage_tooltip",
+          "attackCountInput": "summon_attack_count",
+          "semanticType": "summon.attack_damage",
+          "conditionInputs": [
+            "summon_attack_count"
+          ],
+          "reason": "骷髅兵输出取决于召唤物实际攻击次数。"
+        },
+        "Mortal Strike": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "crit_mult",
+          "semanticType": "modifier.crit.multiplier",
+          "affects": "physical_damage",
+          "stackGroup": "critical_strike",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Vampiric Spirit": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "scepter_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Reincarnation": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "movespeed",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "blast_speed",
+        "label": "BLAST SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "blast_stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1/1.2/1.4/1.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "blast_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "-20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "damage",
+        "label": "IMPACT DAMAGE:",
+        "value": "80/100/120/140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "525",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Wraithfire Blast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "skeleton_duration",
+        "label": "SKELETON DURATION:",
+        "value": "46",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "max_skeleton_charges",
+        "label": "MAX CHARGES:",
+        "value": "2/4/6/8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "min_skeleton_spawn",
+        "label": "MIN SKELETON SPAWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "spawn_interval",
+        "label": "SPAWN INTERVAL:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "reincarnate_time",
+        "label": "REINCARNATE TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "gold_bounty",
+        "label": "GOLD BOUNTY:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "xp_bounty",
+        "label": "XP BOUNTY:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "skeleton_damage_tooltip",
+        "label": "SKELETON DAMAGE:",
+        "value": "34/39/43/49",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "talent_skeleton_damage",
+        "label": "TALENT SKELETON DAMAGE:",
+        "value": "0/5/10/15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "skeleton_building_damage_reduction",
+        "label": "SKELETON BUILDING DAMAGE REDUCTION:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "skeleton_bonus_hero_damage",
+        "label": "SKELETON HERO BONUS DAMAGE:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "skeleton_charges_per_hero_multiplier",
+        "label": "SKELETON CHARGES PER HERO MULTIPLIER:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Bone Guard",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Mortal Strike",
+        "key": "wraith_cd_mult",
+        "label": "WRAITH CD MULT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Vampiric Spirit",
+        "key": "vampiric_aura",
+        "label": "LIFESTEAL:",
+        "value": "14%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Vampiric Spirit",
+        "key": "duration",
+        "label": "WRAITH DURATION:",
+        "value": "4.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Vampiric Spirit",
+        "key": "scepter_move_speed_pct",
+        "label": "BONUS MOVE SPEED:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "reincarnate_time",
+        "label": "REINCARNATION TIME:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "slow_radius",
+        "label": "SLOW RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "attackslow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "-75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "clear_curse",
+        "label": "CLEAR CURSE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Wraith King",
+        "ability": "Reincarnation",
+        "key": "shard_skeleton_count",
+        "label": "SKELETON COUNT PER HERO:",
+        "value": "2/3/4",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

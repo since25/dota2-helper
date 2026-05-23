@@ -121,7 +121,7 @@
       "name": "Static Remnant",
       "displayName": "残影（Static Remnant）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -175,10 +175,10 @@
       "name": "Electric Vortex",
       "displayName": "电子涡流（Electric Vortex）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         60,
         70,
@@ -219,9 +219,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -230,7 +230,7 @@
       "name": "Overload",
       "displayName": "超负荷（Overload）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -280,7 +280,7 @@
       "name": "Ball Lightning",
       "displayName": "球状闪电（Ball Lightning）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
@@ -330,5 +330,368 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Storm Spirit",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Static Remnant": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "static_remnant_damage_radius",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Electric Vortex": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Overload": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "overload_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Ball Lightning": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "dmg",
+          "semanticType": "damage.percent_missing_mana",
+          "requiredInputs": [
+            "target_missing_mana"
+          ],
+          "conditionInputs": [
+            "target_missing_mana"
+          ],
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+        },
+        "Galvanized": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_radius",
+        "label": "STATIC REMNANT RADIUS:",
+        "value": "235",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_delay",
+        "label": "STATIC REMNANT DELAY:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_damage",
+        "label": "DAMAGE:",
+        "value": "100/160/220/280",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "is_point_targeted",
+        "label": "IS POINT TARGETED:",
+        "value": "+1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_travel_speed",
+        "label": "REMNANT SPEED:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_vision_radius_day",
+        "label": "VISION RADIUS:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "static_remnant_vision_radius_night",
+        "label": "STATIC REMNANT VISION RADIUS NIGHT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Static Remnant",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "electric_vortex_pull_distance",
+        "label": "PULL DISTANCE:",
+        "value": "180/220/260/300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "electric_vortex_pull_tether_range",
+        "label": "ELECTRIC VORTEX PULL TETHER RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "electric_vortex_self_slow",
+        "label": "ELECTRIC VORTEX SELF SLOW:",
+        "value": "-50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "electric_vortex_self_slow_duration",
+        "label": "ELECTRIC VORTEX SELF SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "1.1/1.4/1.7/2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "enemy_overload_duration",
+        "label": "ENEMY OVERLOAD DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Electric Vortex",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Overload",
+        "key": "overload_aoe",
+        "label": "RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Overload",
+        "key": "overload_move_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "-80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Overload",
+        "key": "overload_attack_slow",
+        "label": "ATTACK SLOW:",
+        "value": "-90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Overload",
+        "key": "overload_cast_range",
+        "label": "OVERLOAD CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Overload",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_initial_mana_percentage",
+        "label": "BALL LIGHTNING INITIAL MANA PERCENTAGE:",
+        "value": "7.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_initial_mana_base",
+        "label": "BALL LIGHTNING INITIAL MANA BASE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_move_speed",
+        "label": "SPEED:",
+        "value": "1400/1850/2300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_aoe",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_travel_cost_base",
+        "label": "BALL LIGHTNING TRAVEL COST BASE:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_travel_cost_percent",
+        "label": "MANA DRAIN PER 100 UNITS:",
+        "value": "0.65%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "ball_lightning_vision_radius",
+        "label": "BALL LIGHTNING VISION RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "blocker_duration",
+        "label": "BLOCKER DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "scepter_remnant_interval",
+        "label": "SCEPTER REMNANT INTERVAL:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Ball Lightning",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Galvanized",
+        "key": "perma_mp_per_kill",
+        "label": "PERMA MP PER KILL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Galvanized",
+        "key": "mp_per_kill",
+        "label": "MP PER KILL:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Galvanized",
+        "key": "aoe",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Storm Spirit",
+        "ability": "Galvanized",
+        "key": "charges_per_death",
+        "label": "CHARGES PER DEATH:",
+        "value": "2",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

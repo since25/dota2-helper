@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>黑暗贤者（Dark Seer）</h1>
-        <div class="muted">Dark Seer · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Dark Seer · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,322 @@
       </div>
       <a href="./dark-seer.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Vacuum</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>325/400/475/550</td>
+    </tr>
+  
+    <tr>
+      <td>Vacuum</td>
+      <td><code>radius_tree</code></td>
+      <td>RADIUS TREE:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Vacuum</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>450/500/550/600</td>
+    </tr>
+  
+    <tr>
+      <td>Vacuum</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Ion Shell</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Ion Shell</td>
+      <td><code>abilitycharges</code></td>
+      <td>MAX CHARGES:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ion Shell</td>
+      <td><code>bonus_health</code></td>
+      <td>BONUS HEALTH:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Ion Shell</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Ion Shell</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  
+    <tr>
+      <td>Surge</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>3/4/5/6</td>
+    </tr>
+  
+    <tr>
+      <td>Surge</td>
+      <td><code>speed_boost</code></td>
+      <td>SPEED BOOST:</td>
+      <td>550</td>
+    </tr>
+  
+    <tr>
+      <td>Surge</td>
+      <td><code>trail_radius</code></td>
+      <td>TRAIL RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Surge</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.4</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>max_stun</code></td>
+      <td>MAX STUN DURATION:</td>
+      <td>1.25</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>recent_duration</code></td>
+      <td>RECENT DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>max_distance</code></td>
+      <td>MAX DISTANCE:</td>
+      <td>1100</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>knockback_distance</code></td>
+      <td>MAX KNOCKBACK DISTANCE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>illusion_duration</code></td>
+      <td>ILLUSION DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Normal Punch</td>
+      <td><code>normal_punch_illusion_delay</code></td>
+      <td>NORMAL PUNCH ILLUSION DELAY:</td>
+      <td>0.25</td>
+    </tr>
+  
+    <tr>
+      <td>Quick Wit</td>
+      <td><code>int_to_atkspd</code></td>
+      <td>INT TO ATKSPD:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Quick Wit</td>
+      <td><code>heal_pct</code></td>
+      <td>MAX HP/MANA RESTORE:</td>
+      <td>8.5%</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>replica_damage_outgoing</code></td>
+      <td>REPLICA DAMAGE OUTGOING:</td>
+      <td>-30/-20/-10</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>tooltip_outgoing</code></td>
+      <td>REPLICA DAMAGE:</td>
+      <td>70%/80%/90%</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>replica_damage_incoming</code></td>
+      <td>REPLICA DAMAGE INCOMING:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>tooltip_replica_total_damage_incoming</code></td>
+      <td>REPLICA DAMAGE TAKEN:</td>
+      <td>200%</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>width</code></td>
+      <td>WIDTH:</td>
+      <td>1300</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>replica_scale</code></td>
+      <td>REPLICA SCALE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>slow_duration</code></td>
+      <td>SLOW DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1000</td>
+    </tr>
+  
+    <tr>
+      <td>Wall of Replica</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Dark Seer&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Vacuum&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    },
+    &quot;Ion Shell&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Surge&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Normal Punch&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;max_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Quick Wit&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Wall of Replica&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;wall_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true,
+      &quot;durationKey&quot;: &quot;duration&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +444,7 @@
           <div class="muted">Vacuum · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -177,7 +497,7 @@
           <div class="muted">Ion Shell · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +550,7 @@
           <div class="muted">Surge · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -269,7 +589,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -283,7 +603,7 @@
           <div class="muted">Normal Punch · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -336,7 +656,7 @@
           <div class="muted">Wall of Replica · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -507,7 +827,7 @@
       &quot;name&quot;: &quot;Vacuum&quot;,
       &quot;displayName&quot;: &quot;真空（Vacuum）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +882,7 @@
       &quot;name&quot;: &quot;Ion Shell&quot;,
       &quot;displayName&quot;: &quot;离子外壳（Ion Shell）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -630,10 +950,10 @@
       &quot;name&quot;: &quot;Surge&quot;,
       &quot;displayName&quot;: &quot;奔腾（Surge）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         50
       ],
@@ -671,9 +991,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -682,7 +1002,7 @@
       &quot;name&quot;: &quot;Normal Punch&quot;,
       &quot;displayName&quot;: &quot;普通一拳（Normal Punch）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -731,7 +1051,7 @@
       &quot;name&quot;: &quot;Wall of Replica&quot;,
       &quot;displayName&quot;: &quot;复制之墙（Wall of Replica）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -779,7 +1099,329 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Dark Seer&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Vacuum&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        },
+        &quot;Ion Shell&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;tickIntervalKey&quot;: &quot;tick_interval&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Surge&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Normal Punch&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;max_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Quick Wit&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Wall of Replica&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;wall_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true,
+          &quot;durationKey&quot;: &quot;duration&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Vacuum&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;325/400/475/550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Vacuum&quot;,
+        &quot;key&quot;: &quot;radius_tree&quot;,
+        &quot;label&quot;: &quot;RADIUS TREE:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Vacuum&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;450/500/550/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Vacuum&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Ion Shell&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Ion Shell&quot;,
+        &quot;key&quot;: &quot;abilitycharges&quot;,
+        &quot;label&quot;: &quot;MAX CHARGES:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Ion Shell&quot;,
+        &quot;key&quot;: &quot;bonus_health&quot;,
+        &quot;label&quot;: &quot;BONUS HEALTH:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Ion Shell&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Ion Shell&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Surge&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;3/4/5/6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Surge&quot;,
+        &quot;key&quot;: &quot;speed_boost&quot;,
+        &quot;label&quot;: &quot;SPEED BOOST:&quot;,
+        &quot;value&quot;: &quot;550&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Surge&quot;,
+        &quot;key&quot;: &quot;trail_radius&quot;,
+        &quot;label&quot;: &quot;TRAIL RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Surge&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;max_stun&quot;,
+        &quot;label&quot;: &quot;MAX STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;recent_duration&quot;,
+        &quot;label&quot;: &quot;RECENT DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;max_distance&quot;,
+        &quot;label&quot;: &quot;MAX DISTANCE:&quot;,
+        &quot;value&quot;: &quot;1100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;MAX KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;illusion_duration&quot;,
+        &quot;label&quot;: &quot;ILLUSION DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Normal Punch&quot;,
+        &quot;key&quot;: &quot;normal_punch_illusion_delay&quot;,
+        &quot;label&quot;: &quot;NORMAL PUNCH ILLUSION DELAY:&quot;,
+        &quot;value&quot;: &quot;0.25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Quick Wit&quot;,
+        &quot;key&quot;: &quot;int_to_atkspd&quot;,
+        &quot;label&quot;: &quot;INT TO ATKSPD:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Quick Wit&quot;,
+        &quot;key&quot;: &quot;heal_pct&quot;,
+        &quot;label&quot;: &quot;MAX HP/MANA RESTORE:&quot;,
+        &quot;value&quot;: &quot;8.5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;replica_damage_outgoing&quot;,
+        &quot;label&quot;: &quot;REPLICA DAMAGE OUTGOING:&quot;,
+        &quot;value&quot;: &quot;-30/-20/-10&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;tooltip_outgoing&quot;,
+        &quot;label&quot;: &quot;REPLICA DAMAGE:&quot;,
+        &quot;value&quot;: &quot;70%/80%/90%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;replica_damage_incoming&quot;,
+        &quot;label&quot;: &quot;REPLICA DAMAGE INCOMING:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;tooltip_replica_total_damage_incoming&quot;,
+        &quot;label&quot;: &quot;REPLICA DAMAGE TAKEN:&quot;,
+        &quot;value&quot;: &quot;200%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;width&quot;,
+        &quot;label&quot;: &quot;WIDTH:&quot;,
+        &quot;value&quot;: &quot;1300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;replica_scale&quot;,
+        &quot;label&quot;: &quot;REPLICA SCALE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;slow_duration&quot;,
+        &quot;label&quot;: &quot;SLOW DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Dark Seer&quot;,
+        &quot;ability&quot;: &quot;Wall of Replica&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

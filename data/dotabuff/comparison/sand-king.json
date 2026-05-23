@@ -1,0 +1,183 @@
+{
+  "hero": "Sand King",
+  "source": "dotabuff",
+  "modelSource": "manual",
+  "review": {
+    "status": "reviewed",
+    "reviewer": "local",
+    "updatedAt": "2026-05-23",
+    "notes": [
+      "Initial manually curated model from damage model maintenance work."
+    ]
+  },
+  "abilityCount": 5,
+  "missingModelCount": 0,
+  "abilities": [
+    {
+      "dotabuffName": "腐尸毒",
+      "hotkey": "",
+      "isInnate": true,
+      "modelName": "Caustic Finale",
+      "modelStatus": "reference_only",
+      "modelType": "conditional",
+      "modelKeys": [
+        "valueKey:caustic_finale_damage_flat"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [
+        {
+          "label": "爆炸范围",
+          "value": "400"
+        },
+        {
+          "label": "基础伤害",
+          "value": "17"
+        },
+        {
+          "label": "最大生命值伤害",
+          "value": "2.5%"
+        },
+        {
+          "label": "持续时间",
+          "value": "4.5"
+        }
+      ],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "掘地穿刺",
+      "hotkey": "Q",
+      "isInnate": false,
+      "modelName": "Burrowstrike",
+      "modelStatus": "implemented",
+      "modelType": "instant_fixed",
+      "modelKeys": [
+        "damageKey:dmg"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "眩晕时间",
+          "value": "1.2 / 1.4 / 1.6 / 1.8"
+        }
+      ],
+      "resourceLines": [
+        "14 / 13 / 12 / 11",
+        "100 / 110 / 120 / 130"
+      ]
+    },
+    {
+      "dotabuffName": "沙尘暴",
+      "hotkey": "W",
+      "isInnate": false,
+      "modelName": "Sand Storm",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:sand_storm_damage",
+        "durationKey:abilityduration"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "16 / 20 / 24 / 28"
+        },
+        {
+          "label": "作用范围",
+          "value": "475 / 550 / 625 / 700"
+        },
+        {
+          "label": "每秒伤害",
+          "value": "30 / 50 / 70 / 90"
+        }
+      ],
+      "resourceLines": [
+        "40 / 34 / 28 / 22",
+        "85"
+      ]
+    },
+    {
+      "dotabuffName": "尾刺",
+      "hotkey": "E",
+      "isInnate": false,
+      "modelName": "Stinger",
+      "modelStatus": "implemented",
+      "modelType": "attack_modifier",
+      "modelKeys": [
+        "bonusDamageKey:attack_damage"
+      ],
+      "dotabuffDamageType": "物理",
+      "dotabuffFields": [
+        {
+          "label": "作用范围",
+          "value": "230 / 250 / 270 / 290"
+        },
+        {
+          "label": "额外伤害",
+          "value": "50 / 75 / 100 / 125"
+        },
+        {
+          "label": "减速持续时间",
+          "value": "5"
+        },
+        {
+          "label": "移动速度减缓",
+          "value": "10% / 12% / 14% / 16%"
+        }
+      ],
+      "resourceLines": [
+        "15 / 12 / 9 / 6",
+        "35 / 40 / 45 / 50",
+        "200"
+      ]
+    },
+    {
+      "dotabuffName": "地震",
+      "hotkey": "R",
+      "isInnate": false,
+      "modelName": "Epicenter",
+      "modelStatus": "implemented",
+      "modelType": "multi_wave",
+      "modelKeys": [
+        "damagePerWaveKey:epicenter_damage",
+        "waveCountKey:epicenter_pulses"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "震击次数",
+          "value": "12 / 16 / 20"
+        },
+        {
+          "label": "每波伤害",
+          "value": "60 / 70 / 80"
+        },
+        {
+          "label": "基础作用范围",
+          "value": "450"
+        },
+        {
+          "label": "作用范围递增",
+          "value": "13"
+        },
+        {
+          "label": "移动速度减缓",
+          "value": "30% / 40% / 50%"
+        },
+        {
+          "label": "攻击速度降低",
+          "value": "30 / 40 / 50"
+        },
+        {
+          "label": "负面状态持续时间",
+          "value": "3"
+        }
+      ],
+      "resourceLines": [
+        "120 / 110 / 100",
+        "150 / 225 / 300"
+      ]
+    }
+  ]
+}

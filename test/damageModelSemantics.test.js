@@ -67,6 +67,29 @@ test('semantic catalog routes modifiers and non-damage references away from dama
   assert.equal(routeSemanticToContext('resource.cooldown'), 'resource_reference');
 });
 
+test('semantic catalog supports percent, attribute, and modifier repair types', () => {
+  const damageTypes = [
+    'damage.percent_current_health',
+    'damage.percent_max_health',
+    'damage.percent_max_mana',
+    'damage.attribute_scaling'
+  ];
+  for (const type of damageTypes) {
+    assert.equal(getSemanticDefinition(type).category, 'direct_damage');
+    assert.equal(routeSemanticToContext(type), 'situational_damage');
+  }
+
+  const modifierTypes = [
+    'modifier.armor_reduction.flat',
+    'modifier.magic_resistance_reduction.percent',
+    'modifier.damage_amplification.percent',
+    'modifier.attack_damage.percent'
+  ];
+  for (const type of modifierTypes) {
+    assert.equal(routeSemanticToContext(type), 'modifier_reference');
+  }
+});
+
 test('semantic catalog rejects unknown semantic types', () => {
   assert.throws(
     () => getSemanticDefinition('damage.not_real'),

@@ -9,25 +9,32 @@
   <link rel="icon" type="image/png" href="images/dota2_favicon.png">
 </head>
 <body>
-  <main class="damage-shell">
-    <header class="damage-header">
+  <main class="damage-shell workbench-shell">
+    <header class="damage-header workbench-header">
       <div>
-        <h1>伤害组合计算器</h1>
-        <p>本地数据计算，不调用 AI。</p>
+        <h1>英雄伤害实验室</h1>
+        <p>参考 Hero Calculator 的工作台结构，使用本项目本地语义模型计算。</p>
       </div>
-      <a href="/" class="damage-link">返回对局助手</a>
+      <nav class="damage-actions" aria-label="页面导航">
+        <a href="/" class="damage-link">返回对局助手</a>
+        <a href="/items.html" class="damage-link">物品模型</a>
+      </nav>
     </header>
 
-    <section class="damage-layout">
-      <aside class="damage-controls">
+    <section class="workbench-layout">
+      <aside class="workbench-panel control-panel">
+        <h2>英雄</h2>
         <label>
           英雄
           <select id="heroSelect"></select>
         </label>
         <label>
           英雄等级
-          <input id="heroLevelInput" type="number" min="1" max="30" value="5">
+          <input id="heroLevelInput" type="number" min="1" max="30" value="6">
         </label>
+        <div id="heroPanel" class="hero-panel-grid"></div>
+
+        <h2>目标</h2>
         <label>
           敌方护甲
           <input id="enemyArmorInput" type="number" step="0.1" value="0">
@@ -40,37 +47,34 @@
         <p id="statusText" class="damage-status"></p>
       </aside>
 
-      <section class="damage-main">
-        <div class="damage-section">
-          <h2>技能组件</h2>
-          <div class="damage-table-wrap">
-            <table class="damage-table">
-              <thead>
-                <tr>
-                  <th>计入</th>
-                  <th>技能</th>
-                  <th>等级</th>
-                  <th>分类</th>
-                  <th>类型</th>
-                  <th>基础值</th>
-                  <th>理论总量</th>
-                  <th>作用时间</th>
-                  <th>普攻伤害</th>
-                  <th>模式</th>
-                </tr>
-              </thead>
-              <tbody id="abilityRows"></tbody>
-            </table>
+      <section class="workbench-center">
+        <section class="workbench-panel inventory-panel">
+          <div class="section-heading">
+            <h2>已选物品</h2>
+            <button id="clearItemsButton" type="button" class="secondary-action">清空物品</button>
           </div>
-        </div>
+          <div id="selectedItems" class="selected-items"></div>
+        </section>
 
-        <div class="damage-section">
-          <h2>物品组件</h2>
-          <div id="itemRows" class="empty-items">本地数据暂未识别可计算伤害物品。</div>
-        </div>
+        <section class="workbench-panel">
+          <div class="section-heading">
+            <h2>技能组件</h2>
+            <span id="abilityCount" class="muted-count"></span>
+          </div>
+          <div id="abilityRows" class="ability-workbench-grid"></div>
+        </section>
+
+        <section class="workbench-panel">
+          <div class="section-heading">
+            <h2>商店</h2>
+            <input id="shopSearchInput" class="shop-search" type="search" placeholder="搜索物品或语义">
+          </div>
+          <div id="shopTabs" class="shop-tabs"></div>
+          <div id="itemRows" class="shop-grid"></div>
+        </section>
       </section>
 
-      <aside class="damage-summary">
+      <aside class="damage-summary workbench-summary">
         <h2>计算结果</h2>
         <div class="summary-number">
           <span>原始总伤害</span>
@@ -80,6 +84,8 @@
           <span>抗性后总伤害</span>
           <strong id="adjustedTotal">0</strong>
         </div>
+        <h3>目标有效抗性</h3>
+        <div id="effectiveTarget" class="type-breakdown"></div>
         <h3>按类型</h3>
         <div id="typeBreakdown" class="type-breakdown"></div>
         <h3>明细</h3>

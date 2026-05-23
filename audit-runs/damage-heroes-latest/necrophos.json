@@ -121,7 +121,7 @@
       "name": "Death Pulse",
       "displayName": "死亡脉冲（Death Pulse）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "conditional",
       "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。",
@@ -179,10 +179,10 @@
       "name": "Ghost Shroud",
       "displayName": "幽魂护罩（Ghost Shroud）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75,
         75,
@@ -226,9 +226,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -237,7 +237,7 @@
       "name": "Heartstopper Aura",
       "displayName": "竭心光环（Heartstopper Aura）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。",
@@ -287,10 +287,10 @@
       "name": "Death Seeker",
       "displayName": "死亡搜寻（Death Seeker）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         125
       ],
@@ -325,9 +325,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -336,10 +336,10 @@
       "name": "Sadist",
       "displayName": "施虐之心（Sadist）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -370,9 +370,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -381,7 +381,7 @@
       "name": "Reaper's Scythe",
       "displayName": "死神镰刀（Reaper's Scythe）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
@@ -435,5 +435,315 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Necrophos",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Death Pulse": {
+          "status": "reference_only",
+          "model": "conditional",
+          "valueKey": "dmg",
+          "semanticType": "damage.death_trigger",
+          "conditionInputs": [
+            "trigger_condition"
+          ],
+          "condition": "需要触发条件成立才造成伤害。",
+          "reason": "条件伤害首轮模型只作为参考，不默认计入固定爆发。"
+        },
+        "Ghost Shroud": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "movement_speed",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Heartstopper Aura": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "aura_damage",
+          "semanticType": "damage.percent_max_health",
+          "requiredInputs": [
+            "enemy_max_health"
+          ],
+          "conditionInputs": [
+            "enemy_max_health"
+          ],
+          "reason": "最大生命百分比伤害需要目标最大生命输入，首轮模型只作为条件伤害参考。"
+        },
+        "Death Seeker": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Sadist": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_spell_amp",
+          "semanticType": "modifier.spell_amplification.percent",
+          "affects": "spell_amplification",
+          "stackGroup": "spell_amplification",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Reaper's Scythe": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_per_health",
+          "semanticType": "damage.percent_missing_mana",
+          "requiredInputs": [
+            "target_missing_mana"
+          ],
+          "conditionInputs": [
+            "target_missing_mana"
+          ],
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Necrophos",
+        "ability": "Death Pulse",
+        "key": "area_of_effect",
+        "label": "RADIUS:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Pulse",
+        "key": "heal",
+        "label": "HEAL:",
+        "value": "70/90/110/130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Pulse",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Pulse",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Pulse",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "3/3.5/4/4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "heal_bonus",
+        "label": "RESTORATION AMPLIFICATION:",
+        "value": "55%/65%/75%/85%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "enemies_negative_heal_bonus_as_pct_of_self",
+        "label": "ENEMIES NEGATIVE HEAL BONUS AS PCT OF SELF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "movement_transfer",
+        "label": "MOVEMENT TRANSFER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "slow_aoe",
+        "label": "SLOW RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "bonus_damage",
+        "label": "INCREASED MAGIC DAMAGE:",
+        "value": "-20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Ghost Shroud",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Heartstopper Aura",
+        "key": "aura_radius",
+        "label": "RADIUS:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Heartstopper Aura",
+        "key": "heal_reduction_pct",
+        "label": "HEAL REDUCTION PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Heartstopper Aura",
+        "key": "heal_regen_to_damage",
+        "label": "HEAL REGEN TO DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Seeker",
+        "key": "projectile_multiplier",
+        "label": "PROJECTILE MULTIPLIER:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Seeker",
+        "key": "ethereal_duration",
+        "label": "ETHEREAL DURATION:",
+        "value": "2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Seeker",
+        "key": "magic_resistance_reduction",
+        "label": "MAGIC RESISTANCE REDUCTION:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Death Seeker",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Sadist",
+        "key": "regen",
+        "label": "HP/MANA REGEN:",
+        "value": "3.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Sadist",
+        "key": "bonus_aoe",
+        "label": "AOE BONUS PER KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Sadist",
+        "key": "hero_multiplier",
+        "label": "HERO KILL MULTIPLIER:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Sadist",
+        "key": "regen_duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Reaper's Scythe",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Reaper's Scythe",
+        "key": "hp_per_kill",
+        "label": "HP REGEN:",
+        "value": "1/2/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Reaper's Scythe",
+        "key": "mana_per_kill",
+        "label": "MANA REGEN:",
+        "value": "1/2/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Reaper's Scythe",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Necrophos",
+        "ability": "Reaper's Scythe",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.45",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

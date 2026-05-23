@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>伐木机（Timbersaw）</h1>
-        <div class="muted">Timbersaw · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Timbersaw · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 4</span>
           <span>组件 4</span>
@@ -53,6 +57,355 @@
       </div>
       <a href="./timbersaw.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>whirling_radius</code></td>
+      <td>RADIUS:</td>
+      <td>325</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>tree_damage_scale</code></td>
+      <td>TREE BONUS DAMAGE:</td>
+      <td>9/16/23/30</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>whirling_tick</code></td>
+      <td>WHIRLING TICK:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>stat_loss_pct</code></td>
+      <td>STAT LOSS:</td>
+      <td>13%</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>stat_loss_univ</code></td>
+      <td>STAT LOSS (UNIVERSAL):</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>duration</code></td>
+      <td>STAT LOSS DURATION:</td>
+      <td>11/12/13/14</td>
+    </tr>
+  
+    <tr>
+      <td>Whirling Death</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Timber Chain</td>
+      <td><code>chain_radius</code></td>
+      <td>CHAIN RADIUS:</td>
+      <td>90</td>
+    </tr>
+  
+    <tr>
+      <td>Timber Chain</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>750/900/1050/1200</td>
+    </tr>
+  
+    <tr>
+      <td>Timber Chain</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>225</td>
+    </tr>
+  
+    <tr>
+      <td>Timber Chain</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>2200/2400/2600/2800</td>
+    </tr>
+  
+    <tr>
+      <td>Timber Chain</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Reactive Armor</td>
+      <td><code>bonus_armor</code></td>
+      <td>BONUS ARMOR:</td>
+      <td>0.4/0.5/0.6/0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Reactive Armor</td>
+      <td><code>bonus_hp_regen</code></td>
+      <td>BONUS HP REGEN:</td>
+      <td>0.4/0.5/0.6/0.7</td>
+    </tr>
+  
+    <tr>
+      <td>Reactive Armor</td>
+      <td><code>stack_limit</code></td>
+      <td>MAX STACKS:</td>
+      <td>10/20/30/40</td>
+    </tr>
+  
+    <tr>
+      <td>Reactive Armor</td>
+      <td><code>stack_duration</code></td>
+      <td>STACK DURATION:</td>
+      <td>10/12/14/16</td>
+    </tr>
+  
+    <tr>
+      <td>Reactive Armor</td>
+      <td><code>stacks_per_hero_attack</code></td>
+      <td>STACKS PER HERO ATTACK:</td>
+      <td>4</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>width</code></td>
+      <td>WIDTH:</td>
+      <td>275</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>length</code></td>
+      <td>RANGE:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>move_slow_pct</code></td>
+      <td>MOVE SLOW:</td>
+      <td>30%</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>building_dmg_pct</code></td>
+      <td>BUILDING DAMAGE:</td>
+      <td>50%</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>debuff_linger_duration</code></td>
+      <td>DEBUFF LINGER TIME:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Flamethrower</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>pass_damage</code></td>
+      <td>PASS DAMAGE:</td>
+      <td>100/150/200</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>slow</code></td>
+      <td>SLOW:</td>
+      <td>5%</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>break_distance</code></td>
+      <td>BREAK DISTANCE:</td>
+      <td>2000</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>mana_per_second</code></td>
+      <td>MANA COST PER SECOND:</td>
+      <td>14/22/30</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>slow_health_percentage</code></td>
+      <td>SLOW HEALTH PERCENTAGE:</td>
+      <td>5</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>second_chakram</code></td>
+      <td>SECOND CHAKRAM:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>1200</td>
+    </tr>
+  
+    <tr>
+      <td>Chakram</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.15</td>
+    </tr>
+  
+    <tr>
+      <td>Exposure Therapy</td>
+      <td><code>mana_restore</code></td>
+      <td>MANA RESTORE:</td>
+      <td>3.75</td>
+    </tr>
+  
+    <tr>
+      <td>Exposure Therapy</td>
+      <td><code>health_restore</code></td>
+      <td>HEALTH RESTORE:</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Timbersaw&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Whirling Death&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;whirling_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;hero_attribute&quot;
+      ],
+      &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Timber Chain&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Reactive Armor&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Flamethrower&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Chakram&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;sustained_dps&quot;,
+      &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+      &quot;durationKey&quot;: &quot;pass_slow_duration&quot;,
+      &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+      &quot;defaultActiveDuration&quot;: &quot;full&quot;
+    },
+    &quot;Return Chakram&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Exposure Therapy&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +477,7 @@
           <div class="muted">Whirling Death · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -177,7 +530,7 @@
           <div class="muted">Timber Chain · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">instant_fixed</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -230,7 +583,7 @@
           <div class="muted">Flamethrower · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -283,7 +636,7 @@
           <div class="muted">Chakram · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">sustained_dps</span>
           <span class="pill secondary">implemented</span>
         </div>
@@ -454,7 +807,7 @@
       &quot;name&quot;: &quot;Whirling Death&quot;,
       &quot;displayName&quot;: &quot;死亡旋风（Whirling Death）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;,
@@ -514,7 +867,7 @@
       &quot;name&quot;: &quot;Timber Chain&quot;,
       &quot;displayName&quot;: &quot;伐木锯链（Timber Chain）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;instant_fixed&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -562,7 +915,7 @@
       &quot;name&quot;: &quot;Flamethrower&quot;,
       &quot;displayName&quot;: &quot;喷火装置（Flamethrower）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -609,7 +962,7 @@
       &quot;name&quot;: &quot;Chakram&quot;,
       &quot;displayName&quot;: &quot;锯齿飞轮（Chakram）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;implemented&quot;,
       &quot;model&quot;: &quot;sustained_dps&quot;,
       &quot;reason&quot;: &quot;&quot;,
@@ -663,7 +1016,367 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Timbersaw&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Whirling Death&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;whirling_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.attribute_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;hero_attribute&quot;
+          ],
+          &quot;reason&quot;: &quot;属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Timber Chain&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Reactive Armor&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Flamethrower&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Chakram&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;sustained_dps&quot;,
+          &quot;damagePerSecondKey&quot;: &quot;damage_per_second&quot;,
+          &quot;durationKey&quot;: &quot;pass_slow_duration&quot;,
+          &quot;semanticType&quot;: &quot;damage.sustained_dps&quot;,
+          &quot;defaultActiveDuration&quot;: &quot;full&quot;
+        },
+        &quot;Return Chakram&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Exposure Therapy&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;whirling_radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;325&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;tree_damage_scale&quot;,
+        &quot;label&quot;: &quot;TREE BONUS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;9/16/23/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;whirling_tick&quot;,
+        &quot;label&quot;: &quot;WHIRLING TICK:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;stat_loss_pct&quot;,
+        &quot;label&quot;: &quot;STAT LOSS:&quot;,
+        &quot;value&quot;: &quot;13%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;stat_loss_univ&quot;,
+        &quot;label&quot;: &quot;STAT LOSS (UNIVERSAL):&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STAT LOSS DURATION:&quot;,
+        &quot;value&quot;: &quot;11/12/13/14&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Whirling Death&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Timber Chain&quot;,
+        &quot;key&quot;: &quot;chain_radius&quot;,
+        &quot;label&quot;: &quot;CHAIN RADIUS:&quot;,
+        &quot;value&quot;: &quot;90&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Timber Chain&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;750/900/1050/1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Timber Chain&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;225&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Timber Chain&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;2200/2400/2600/2800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Timber Chain&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Reactive Armor&quot;,
+        &quot;key&quot;: &quot;bonus_armor&quot;,
+        &quot;label&quot;: &quot;BONUS ARMOR:&quot;,
+        &quot;value&quot;: &quot;0.4/0.5/0.6/0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Reactive Armor&quot;,
+        &quot;key&quot;: &quot;bonus_hp_regen&quot;,
+        &quot;label&quot;: &quot;BONUS HP REGEN:&quot;,
+        &quot;value&quot;: &quot;0.4/0.5/0.6/0.7&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Reactive Armor&quot;,
+        &quot;key&quot;: &quot;stack_limit&quot;,
+        &quot;label&quot;: &quot;MAX STACKS:&quot;,
+        &quot;value&quot;: &quot;10/20/30/40&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Reactive Armor&quot;,
+        &quot;key&quot;: &quot;stack_duration&quot;,
+        &quot;label&quot;: &quot;STACK DURATION:&quot;,
+        &quot;value&quot;: &quot;10/12/14/16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Reactive Armor&quot;,
+        &quot;key&quot;: &quot;stacks_per_hero_attack&quot;,
+        &quot;label&quot;: &quot;STACKS PER HERO ATTACK:&quot;,
+        &quot;value&quot;: &quot;4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;width&quot;,
+        &quot;label&quot;: &quot;WIDTH:&quot;,
+        &quot;value&quot;: &quot;275&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;length&quot;,
+        &quot;label&quot;: &quot;RANGE:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;move_slow_pct&quot;,
+        &quot;label&quot;: &quot;MOVE SLOW:&quot;,
+        &quot;value&quot;: &quot;30%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;building_dmg_pct&quot;,
+        &quot;label&quot;: &quot;BUILDING DAMAGE:&quot;,
+        &quot;value&quot;: &quot;50%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;debuff_linger_duration&quot;,
+        &quot;label&quot;: &quot;DEBUFF LINGER TIME:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Flamethrower&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;pass_damage&quot;,
+        &quot;label&quot;: &quot;PASS DAMAGE:&quot;,
+        &quot;value&quot;: &quot;100/150/200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;slow&quot;,
+        &quot;label&quot;: &quot;SLOW:&quot;,
+        &quot;value&quot;: &quot;5%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;break_distance&quot;,
+        &quot;label&quot;: &quot;BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;2000&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;mana_per_second&quot;,
+        &quot;label&quot;: &quot;MANA COST PER SECOND:&quot;,
+        &quot;value&quot;: &quot;14/22/30&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;slow_health_percentage&quot;,
+        &quot;label&quot;: &quot;SLOW HEALTH PERCENTAGE:&quot;,
+        &quot;value&quot;: &quot;5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;second_chakram&quot;,
+        &quot;label&quot;: &quot;SECOND CHAKRAM:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;1200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Chakram&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.15&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Exposure Therapy&quot;,
+        &quot;key&quot;: &quot;mana_restore&quot;,
+        &quot;label&quot;: &quot;MANA RESTORE:&quot;,
+        &quot;value&quot;: &quot;3.75&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Timbersaw&quot;,
+        &quot;ability&quot;: &quot;Exposure Therapy&quot;,
+        &quot;key&quot;: &quot;health_restore&quot;,
+        &quot;label&quot;: &quot;HEALTH RESTORE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -121,7 +121,7 @@
       "name": "Nature's Grasp",
       "displayName": "自然卷握（Nature's Grasp）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -183,7 +183,7 @@
       "name": "Leech Seed",
       "displayName": "寄生种子（Leech Seed）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -233,10 +233,10 @@
       "name": "Living Armor",
       "displayName": "活体护甲（Living Armor）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "implemented",
-      "model": "instant_fixed",
-      "reason": "",
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "伤害格挡不是对敌伤害，作为防御修正参考。",
       "manaCostByAbilityLevel": [
         65,
         70,
@@ -251,8 +251,8 @@
       ],
       "components": [
         {
-          "id": "Living Armor:instant_fixed:damage_block_base",
-          "kind": "instant_fixed",
+          "id": "Living Armor:debuff_reference:damage_block_base",
+          "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
           "label": "damage_block_base",
@@ -264,23 +264,26 @@
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
-          "countInFixedInstantTotal": true,
+          "countInFixedInstantTotal": false,
           "formula": {
-            "type": "single_value"
+            "type": "debuff_reference"
           },
           "metadata": {
-            "durationByAbilityLevel": [
-              12,
-              12,
-              12,
-              12
-            ]
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "incoming_damage",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
           },
           "source": "curated",
-          "status": "implemented",
-          "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "伤害格挡不是对敌伤害，作为防御修正参考。",
+          "caveats": [
+            "伤害格挡不是对敌伤害，作为防御修正参考。"
+          ]
         }
       ]
     },
@@ -288,10 +291,10 @@
       "name": "Eyes In The Forest",
       "displayName": "丛林之眼（Eyes In The Forest）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         30
       ],
@@ -324,9 +327,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -335,10 +338,10 @@
       "name": "Nature's Guise",
       "displayName": "自然蔽护（Nature's Guise）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [
         36
@@ -371,9 +374,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -382,7 +385,7 @@
       "name": "Overgrowth",
       "displayName": "疯狂生长（Overgrowth）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -434,5 +437,406 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Treant Protector",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Nature's Grasp": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "vines_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Leech Seed": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "leech_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "duration"
+        },
+        "Living Armor": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_block_base",
+          "semanticType": "defense.damage_block.flat",
+          "affects": "incoming_damage",
+          "reason": "伤害格挡不是对敌伤害，作为防御修正参考。"
+        },
+        "Eyes In The Forest": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Nature's Guise": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "attack_damage_pct",
+          "semanticType": "modifier.attack_damage.flat",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Overgrowth": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "creep_penalty",
+        "label": "CREEP PENALTY:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "25%/30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "creation_interval",
+        "label": "CREATION INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "initial_latch_delay",
+        "label": "INITIAL LATCH DELAY:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "vine_spawn_interval",
+        "label": "VINE SPAWN INTERVAL:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "latch_range",
+        "label": "LATCH RANGE:",
+        "value": "135",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "latch_vision",
+        "label": "LATCH VISION:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Grasp",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "flat_heal",
+        "label": "FLAT HEAL:",
+        "value": "15/25/35/45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "leech_heal",
+        "label": "DAMAGE TO HEALING:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "max_heal_units",
+        "label": "MAX HEAL UNITS:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "radius",
+        "label": "HEAL RADIUS:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "healing_pulse_count",
+        "label": "HEALING PULSE COUNT:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Leech Seed",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Living Armor",
+        "key": "heal_per_second",
+        "label": "HEAL PER SECOND:",
+        "value": "4/7/10/13",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Living Armor",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Living Armor",
+        "key": "damage_block_loss",
+        "label": "DAMAGE BLOCK DECREASE:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Living Armor",
+        "key": "damage_block_threshold",
+        "label": "DAMAGE BLOCK THRESHOLD:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Living Armor",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "vision_aoe",
+        "label": "VISION AOE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "hits_to_kill",
+        "label": "HITS TO KILL:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "360",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "max_eyes",
+        "label": "MAX EYES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "charge_restore_time",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "135",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Eyes In The Forest",
+        "key": "max_charges",
+        "label": "MAX CHARGES:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "grace_time",
+        "label": "GRACE TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "cooldown_time",
+        "label": "COOLDOWN TIME:",
+        "value": "2.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "movement_bonus",
+        "label": "MOVEMENT SPEED BONUS:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "shard_root_time",
+        "label": "ROOT TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "shard_by_tree_root_time",
+        "label": "ROOT TIME BY TREE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "shard_damage",
+        "label": "SHARD DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Nature's Guise",
+        "key": "shard_cooldown",
+        "label": "ROOT COOLDOWN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Overgrowth",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Overgrowth",
+        "key": "undispellable",
+        "label": "UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Treant Protector",
+        "ability": "Overgrowth",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

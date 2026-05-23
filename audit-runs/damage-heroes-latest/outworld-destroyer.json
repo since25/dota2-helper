@@ -1,0 +1,474 @@
+{
+  "hero": "Outworld Destroyer",
+  "displayName": "殁境神蚀者（Outworld Destroyer）",
+  "levels": {
+    "selectedDefault": 1,
+    "max": 30
+  },
+  "stats": {
+    "attackRange": 450,
+    "attackRate": 1.9,
+    "attackPoint": 0.46,
+    "projectileSpeed": 900,
+    "moveSpeed": 315,
+    "turnRate": null,
+    "baseHealth": 120,
+    "baseHealthRegen": 1,
+    "baseMana": 75,
+    "baseManaRegen": 0,
+    "baseArmor": 0,
+    "baseMagicResistance": 25,
+    "baseAttackMin": 19,
+    "baseAttackMax": 31,
+    "baseStrength": 21,
+    "baseAgility": 17,
+    "baseIntelligence": 30,
+    "strengthGain": 2.9,
+    "agilityGain": 1.6,
+    "intelligenceGain": 4.2,
+    "primaryAttribute": "int",
+    "attackType": "Ranged",
+    "derived": {
+      "rules": {
+        "healthPerStrength": 22,
+        "manaPerIntelligence": 12,
+        "armorPerAgility": 0.16666666666666666,
+        "damagePerUniversalAttribute": 0.7
+      },
+      "level1": {
+        "level": 1,
+        "strength": 21,
+        "agility": 17,
+        "intelligence": 30,
+        "maxHealth": 582,
+        "maxMana": 435,
+        "armor": 2.83,
+        "attackMin": 49,
+        "attackMax": 61
+      },
+      "keyLevels": {
+        "level3": {
+          "level": 3,
+          "strength": 26.8,
+          "agility": 20.2,
+          "intelligence": 38.4,
+          "maxHealth": 710,
+          "maxMana": 536,
+          "armor": 3.37,
+          "attackMin": 57,
+          "attackMax": 69
+        },
+        "level5": {
+          "level": 5,
+          "strength": 32.6,
+          "agility": 23.4,
+          "intelligence": 46.8,
+          "maxHealth": 837,
+          "maxMana": 637,
+          "armor": 3.9,
+          "attackMin": 66,
+          "attackMax": 78
+        },
+        "level6": {
+          "level": 6,
+          "strength": 35.5,
+          "agility": 25,
+          "intelligence": 51,
+          "maxHealth": 901,
+          "maxMana": 687,
+          "armor": 4.17,
+          "attackMin": 70,
+          "attackMax": 82
+        },
+        "level7": {
+          "level": 7,
+          "strength": 38.4,
+          "agility": 26.6,
+          "intelligence": 55.2,
+          "maxHealth": 965,
+          "maxMana": 737,
+          "armor": 4.43,
+          "attackMin": 74,
+          "attackMax": 86
+        },
+        "level12": {
+          "level": 12,
+          "strength": 52.9,
+          "agility": 34.6,
+          "intelligence": 76.2,
+          "maxHealth": 1284,
+          "maxMana": 989,
+          "armor": 5.77,
+          "attackMin": 95,
+          "attackMax": 107
+        },
+        "level18": {
+          "level": 18,
+          "strength": 70.3,
+          "agility": 44.2,
+          "intelligence": 101.4,
+          "maxHealth": 1667,
+          "maxMana": 1292,
+          "armor": 7.37,
+          "attackMin": 120,
+          "attackMax": 132
+        }
+      }
+    }
+  },
+  "abilities": [
+    {
+      "name": "Arcane Orb",
+      "displayName": "奥术天球（Arcane Orb）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        4.5,
+        3,
+        1.5,
+        0
+      ],
+      "components": [
+        {
+          "id": "Arcane Orb:state_scaling:mana_pool_damage_pct",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Pure",
+          "label": "mana_pool_damage_pct",
+          "valuesByAbilityLevel": [
+            10,
+            11,
+            12,
+            13
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "caster_current_mana",
+              "attack_count"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。",
+          "caveats": [
+            "奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Astral Imprisonment",
+      "displayName": "星体禁锢（Astral Imprisonment）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "",
+      "manaCostByAbilityLevel": [
+        150,
+        150,
+        150,
+        150
+      ],
+      "cooldownByAbilityLevel": [
+        18,
+        16,
+        14,
+        12
+      ],
+      "components": [
+        {
+          "id": "Astral Imprisonment:instant_fixed:damage",
+          "kind": "instant_fixed",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage",
+          "valuesByAbilityLevel": [
+            90,
+            180,
+            270,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": true,
+          "formula": {
+            "type": "single_value"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              1.75,
+              2.5,
+              3.25,
+              4
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "",
+          "caveats": []
+        }
+      ]
+    },
+    {
+      "name": "Objurgation",
+      "displayName": "责难（Objurgation）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "护盾不直接造成伤害。",
+      "manaCostByAbilityLevel": [
+        250,
+        250,
+        250,
+        250
+      ],
+      "cooldownByAbilityLevel": [
+        36,
+        34,
+        32,
+        30
+      ],
+      "components": [
+        {
+          "id": "Objurgation:debuff_reference:barrier_flat",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "barrier_flat",
+          "valuesByAbilityLevel": [
+            120,
+            180,
+            240,
+            300
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "护盾不直接造成伤害。",
+          "caveats": [
+            "护盾不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Essence Flux",
+      "displayName": "精华变迁（Essence Flux）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "回蓝机制影响续航，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Essence Flux:debuff_reference:mana_restore",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "mana_restore",
+          "valuesByAbilityLevel": [
+            40
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "",
+            "affects": "resource_sustain",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "回蓝机制影响续航，不直接造成伤害。",
+          "caveats": [
+            "回蓝机制影响续航，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sanity's Eclipse",
+      "displayName": "神智之蚀（Sanity's Eclipse）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。",
+      "manaCostByAbilityLevel": [
+        200,
+        300,
+        400
+      ],
+      "cooldownByAbilityLevel": [
+        140,
+        130,
+        120
+      ],
+      "components": [
+        {
+          "id": "Sanity's Eclipse:state_scaling:damage_multiplier",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_multiplier",
+          "valuesByAbilityLevel": [
+            0.4
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "caster_current_mana",
+              "target_current_mana"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。",
+          "caveats": [
+            "神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Outworld Destroyer",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Arcane Orb": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "mana_pool_damage_pct",
+          "semanticType": "damage.percent_max_mana",
+          "requiredInputs": [
+            "caster_current_mana",
+            "attack_count"
+          ],
+          "conditionInputs": [
+            "caster_current_mana",
+            "attack_count"
+          ],
+          "reason": "奥术天球按施法者当前/最大魔法池百分比随攻击结算，需要魔法值和攻击次数输入。"
+        },
+        "Astral Imprisonment": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "prison_duration"
+        },
+        "Objurgation": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "barrier_flat",
+          "semanticType": "defense.barrier.flat",
+          "affects": "survivability",
+          "reason": "护盾不直接造成伤害。"
+        },
+        "Essence Flux": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "mana_restore",
+          "semanticType": "resource.mana_cost",
+          "affects": "resource_sustain",
+          "reason": "回蓝机制影响续航，不直接造成伤害。"
+        },
+        "Sanity's Eclipse": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_multiplier",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "caster_current_mana",
+            "target_current_mana"
+          ],
+          "conditionInputs": [
+            "caster_current_mana",
+            "target_current_mana"
+          ],
+          "reason": "神智之蚀伤害取决于双方魔法差，需要运行时魔法值输入。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
+}

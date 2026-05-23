@@ -121,7 +121,7 @@
       "name": "Hoof Stomp",
       "displayName": "马蹄践踏（Hoof Stomp）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Double Edge",
       "displayName": "双刃剑（Double Edge）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0,
         0,
@@ -223,9 +223,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
@@ -234,7 +234,7 @@
       "name": "Retaliate",
       "displayName": "反伤（Retaliate）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。",
@@ -284,10 +284,10 @@
       "name": "Hitch A Ride",
       "displayName": "便车（Hitch A Ride）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         75
       ],
@@ -322,9 +322,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -333,10 +333,10 @@
       "name": "Stampede",
       "displayName": "奔袭冲撞（Stampede）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         150,
         200,
@@ -375,13 +375,315 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Centaur Warrunner",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Hoof Stomp": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "stomp_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Double Edge": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "edge_damage",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        },
+        "Retaliate": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "return_damage",
+          "semanticType": "damage.attribute_scaling",
+          "requiredInputs": [
+            "hero_attribute"
+          ],
+          "conditionInputs": [
+            "hero_attribute"
+          ],
+          "reason": "属性系数伤害需要英雄属性输入，首轮模型只作为条件伤害参考。"
+        },
+        "Work Horse": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Hitch A Ride": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Stampede": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "slow_movement_speed",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Horsepower": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hoof Stomp",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "325",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hoof Stomp",
+        "key": "windup_time",
+        "label": "WINDUP TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hoof Stomp",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Double Edge",
+        "key": "strength_damage",
+        "label": "STRENGTH DAMAGE:",
+        "value": "60%/90%/120%/150%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Double Edge",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "220",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Double Edge",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "175",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Double Edge",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Retaliate",
+        "key": "return_damage_str",
+        "label": "STR RETURN DAMAGE:",
+        "value": "16%/24%/32%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Retaliate",
+        "key": "aura_radius",
+        "label": "AURA RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Work Horse",
+        "key": "duration",
+        "label": "TOTAL DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Work Horse",
+        "key": "melee_attack_range",
+        "label": "MELEE ATTACK RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Work Horse",
+        "key": "air_duration",
+        "label": "AIR DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Work Horse",
+        "key": "air_height",
+        "label": "AIR HEIGHT:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Work Horse",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hitch A Ride",
+        "key": "duration",
+        "label": "RIDE DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hitch A Ride",
+        "key": "melee_attack_range",
+        "label": "MELEE ATTACK RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hitch A Ride",
+        "key": "air_duration",
+        "label": "AIR DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hitch A Ride",
+        "key": "air_height",
+        "label": "AIR HEIGHT:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Hitch A Ride",
+        "key": "break_distance",
+        "label": "BREAK DISTANCE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "duration",
+        "label": "STAMPEDE DURATION:",
+        "value": "3.5/4/4.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "base_damage",
+        "label": "BASE DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "strength_damage",
+        "label": "STRENGTH MULTIPLIER DAMAGE:",
+        "value": "2/2.5/3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "radius",
+        "label": "TRAMPLE RADIUS:",
+        "value": "105",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Stampede",
+        "key": "has_flying_movement",
+        "label": "HAS FLYING MOVEMENT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Horsepower",
+        "key": "strength_to_movement_pct",
+        "label": "STRENGTH TO MOVEMENT PCT:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Centaur Warrunner",
+        "ability": "Horsepower",
+        "key": "base_move_speed_penalty",
+        "label": "BASE MOVE SPEED PENALTY:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

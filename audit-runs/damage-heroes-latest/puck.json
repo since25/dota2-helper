@@ -121,7 +121,7 @@
       "name": "Illusory Orb",
       "displayName": "幻象法球（Illusory Orb）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Waning Rift",
       "displayName": "新月之痕（Waning Rift）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,7 +231,7 @@
       "name": "Dream Coil",
       "displayName": "梦境缠绕（Dream Coil）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -279,5 +279,361 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Puck",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Illusory Orb": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "vision_duration"
+        },
+        "Waning Rift": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "silence_duration"
+        },
+        "Phase Shift": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Ethereal Jaunt": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Puckish": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Dream Coil": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "coil_initial_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "coil_duration"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "1950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "orb_speed",
+        "label": "SPEED:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "orb_vision",
+        "label": "ORB VISION:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "warning_sound_time",
+        "label": "WARNING SOUND TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "curve_orb",
+        "label": "CURVE ORB:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "curve_orb_duration_multiplier",
+        "label": "CURVE ORB DURATION MULTIPLIER:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "curve_orb_max_acceleration",
+        "label": "CURVE ORB MAX ACCELERATION:",
+        "value": "0.0015",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "curve_orb_pullback_bonus_launch_speed",
+        "label": "CURVE ORB PULLBACK BONUS LAUNCH SPEED:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "curve_strength",
+        "label": "CURVE STRENGTH:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "vector_reticle_distance",
+        "label": "VECTOR RETICLE DISTANCE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "vector_reticle_radius",
+        "label": "VECTOR RETICLE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "increase_per_sec",
+        "label": "INCREASE PER SEC:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "damage_over_time_pct",
+        "label": "DAMAGE OVER TIME PCT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "damage_interval",
+        "label": "DAMAGE INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "max_orb_duration_tooltip",
+        "label": "MAX ORB DURATION:",
+        "value": "5.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1950",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Illusory Orb",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Waning Rift",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Waning Rift",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "350",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Waning Rift",
+        "key": "push_pull_enabled",
+        "label": "PUSH PULL ENABLED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Waning Rift",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Phase Shift",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "1/1.75/2.5/3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Phase Shift",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1/1.75/2.5/3.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Phase Shift",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Puckish",
+        "key": "mana_and_health_restore_pct",
+        "label": "MANA AND HEALTH RESTORE PCT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Puckish",
+        "key": "dodged_spell_multiplier",
+        "label": "DODGED SPELL MULTIPLIER:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_break_radius",
+        "label": "BREAK RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_stun_duration",
+        "label": "BREAK STUN DURATION:",
+        "value": "1.5/2/2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_break_damage",
+        "label": "BREAK DAMAGE:",
+        "value": "200/300/400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_radius",
+        "label": "COIL RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_rapid_fire_rate",
+        "label": "COIL RAPID FIRE RATE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "coil_rapid_fire_z_offset",
+        "label": "COIL RAPID FIRE Z OFFSET:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "attack_rate_pct",
+        "label": "ATTACK RATE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Puck",
+        "ability": "Dream Coil",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

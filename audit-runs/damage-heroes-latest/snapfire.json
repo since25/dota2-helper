@@ -121,7 +121,7 @@
       "name": "Scatterblast",
       "displayName": "电光石火（Scatterblast）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Firesnap Cookie",
       "displayName": "龙炎饼干（Firesnap Cookie）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "state_scaling",
-      "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "曲奇撞击是固定伤害，不按距离缩放。",
       "manaCostByAbilityLevel": [
         105,
         105,
@@ -194,8 +194,8 @@
       ],
       "components": [
         {
-          "id": "Firesnap Cookie:state_scaling:impact_damage",
-          "kind": "state_scaling",
+          "id": "Firesnap Cookie:instant_fixed:impact_damage",
+          "kind": "instant_fixed",
           "growthKind": "non_growth",
           "damageType": "Magical",
           "label": "impact_damage",
@@ -207,27 +207,17 @@
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
-          "countInFixedInstantTotal": false,
+          "countInFixedInstantTotal": true,
           "formula": {
-            "type": "state_scaling"
+            "type": "single_value"
           },
-          "metadata": {
-            "isDamageReference": true,
-            "modifierType": "",
-            "affects": "",
-            "condition": "",
-            "requiredInputs": [
-              "distance"
-            ],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
-          },
+          "metadata": {},
           "source": "curated",
-          "status": "reference_only",
-          "model": "state_scaling",
-          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "曲奇撞击是固定伤害，不按距离缩放。",
           "caveats": [
-            "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+            "曲奇撞击是固定伤害，不按距离缩放。"
           ]
         }
       ]
@@ -236,7 +226,7 @@
       "name": "Lil' Shredder",
       "displayName": "霹雳铁手（Lil' Shredder）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "attack_modifier",
       "reason": "",
@@ -290,10 +280,10 @@
       "name": "Gobble Up",
       "displayName": "血盆大口（Gobble Up）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         120
       ],
@@ -328,9 +318,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -339,7 +329,7 @@
       "name": "Spit Out",
       "displayName": "喷吐（Spit Out）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -387,10 +377,10 @@
       "name": "Mortimer Kisses",
       "displayName": "蜥蜴绝吻（Mortimer Kisses）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
-      "model": "sustained_dps",
-      "reason": "",
+      "model": "repeated_trigger",
+      "reason": "火团直接命中按命中次数计算；地面燃烧作为额外持续组件。",
       "manaCostByAbilityLevel": [
         125,
         150,
@@ -403,6 +393,34 @@
       ],
       "components": [
         {
+          "id": "Mortimer Kisses:repeated_trigger:damage_per_impact",
+          "kind": "repeated_trigger",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "damage_per_impact",
+          "valuesByAbilityLevel": [
+            180,
+            270,
+            360
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "triggerCount * damage",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "runtime_trigger_count_times_damage"
+          },
+          "metadata": {
+            "triggerCountInput": "kiss_impact_count"
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "reason": "火团直接命中按命中次数计算；地面燃烧作为额外持续组件。",
+          "caveats": [
+            "需要输入实际触发次数，不能默认按满额命中计算。"
+          ]
+        },
+        {
           "id": "Mortimer Kisses:sustained:burn_damage",
           "kind": "sustained",
           "growthKind": "non_growth",
@@ -414,9 +432,9 @@
             100
           ],
           "theoreticalTotalByAbilityLevel": [
-            330,
-            440,
-            550
+            210,
+            280,
+            350
           ],
           "totalFormula": "duration * damagePerSecond",
           "countInFixedInstantTotal": false,
@@ -425,9 +443,9 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              5.5,
-              5.5,
-              5.5
+              3.5,
+              3.5,
+              3.5
             ],
             "tickIntervalByAbilityLevel": [
               0.5,
@@ -438,7 +456,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "火团直接命中按命中次数计算；地面燃烧作为额外持续组件。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -449,10 +467,10 @@
       "name": "Boomstick",
       "displayName": "猎枪（Boomstick）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -483,13 +501,732 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "全量结构模型：该百分比/修正值不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Snapfire",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Scatterblast": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "debuff_duration"
+        },
+        "Firesnap Cookie": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "impact_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "conditionInputs": [
+            "impact_hit"
+          ],
+          "reason": "曲奇撞击是固定伤害，不按距离缩放。"
+        },
+        "Lil' Shredder": {
+          "status": "implemented",
+          "model": "attack_modifier",
+          "bonusDamageKey": "damage",
+          "semanticType": "damage.attack_bonus",
+          "conditionInputs": [
+            "hero_attack_damage",
+            "attack_count"
+          ],
+          "defaultAttackCount": 1,
+          "defaultIncluded": false
+        },
+        "Gobble Up": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Spit Out": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "burn_damage",
+          "durationKey": "burn_ground_duration",
+          "tickIntervalKey": "burn_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Mortimer Kisses": {
+          "status": "implemented",
+          "model": "repeated_trigger",
+          "damageKey": "damage_per_impact",
+          "triggerCountInput": "kiss_impact_count",
+          "semanticType": "damage.instant",
+          "conditionInputs": [
+            "kiss_impact_count"
+          ],
+          "reason": "火团直接命中按命中次数计算；地面燃烧作为额外持续组件。",
+          "extraComponents": [
+            {
+              "status": "implemented",
+              "model": "sustained_dps",
+              "damagePerSecondKey": "burn_damage",
+              "durationKey": "burn_ground_duration",
+              "tickIntervalKey": "burn_interval",
+              "semanticType": "damage.sustained_dps",
+              "defaultActiveDuration": "full"
+            }
+          ]
+        },
+        "Boomstick": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "damage_amp_max",
+          "semanticType": "modifier.damage_amp.percent",
+          "affects": "all_damage",
+          "stackGroup": "damage_amplification",
+          "reason": "全量结构模型：该百分比/修正值不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "blast_speed",
+        "label": "BLAST SPEED:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "blast_width_initial",
+        "label": "BLAST WIDTH INITIAL:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "blast_width_end",
+        "label": "BLAST WIDTH END:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "movement_slow_pct",
+        "label": "MOVEMENT SLOW:",
+        "value": "100%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "attack_slow_pct",
+        "label": "ATTACK SLOW:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "point_blank_range",
+        "label": "POINT-BLANK RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "point_blank_dmg_bonus_pct",
+        "label": "POINT BLANK DMG BONUS PCT:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "point_blank_debuff_duration_pct",
+        "label": "POINT BLANK DEBUFF DURATION PCT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "bonus_applies_at_long_range",
+        "label": "BONUS APPLIES AT LONG RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Scatterblast",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "21/19/17/15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "pre_hop_duration",
+        "label": "PRE HOP DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "jump_duration",
+        "label": "JUMP DURATION:",
+        "value": "0.484",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "jump_height",
+        "label": "JUMP HEIGHT:",
+        "value": "257",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "jump_horizontal_distance",
+        "label": "HOP DISTANCE:",
+        "value": "425",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "pre_land_anim_time",
+        "label": "PRE LAND ANIM TIME:",
+        "value": "0.14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "landing_gesture_duration",
+        "label": "LANDING GESTURE DURATION:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "impact_stun_duration",
+        "label": "IMPACT STUN DURATION:",
+        "value": "1/1.4/1.8/2.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "self_cast_delay",
+        "label": "SELF CAST DELAY:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "target_heal",
+        "label": "HEAL AMOUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "shard_damage_multiplier_tooltip",
+        "label": "SHARD DAMAGE MULTIPLIER TOOLTIP:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "650",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Firesnap Cookie",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "buffed_attacks",
+        "label": "BUFFED ATTACKS:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "damage_pct",
+        "label": "ATTACK DAMAGE:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "attack_speed_bonus",
+        "label": "ATTACK SPEED BONUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "attack_range_bonus",
+        "label": "BONUS RANGE:",
+        "value": "160/240/320/400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "buff_duration_tooltip",
+        "label": "BUFF DURATION TOOLTIP:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "base_attack_time",
+        "label": "BASE ATTACK TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "armor_reduction_per_attack",
+        "label": "ARMOR LOSS PER STACK:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "armor_duration",
+        "label": "ARMOR LOSS DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Lil' Shredder",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Gobble Up",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "projectile_width",
+        "label": "PROJECTILE WIDTH:",
+        "value": "130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "projectile_vision",
+        "label": "PROJECTILE VISION:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "move_slow_pct",
+        "label": "MOVE SLOW PCT:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "min_lob_travel_time",
+        "label": "MIN LOB TRAVEL TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "max_lob_travel_time",
+        "label": "MAX LOB TRAVEL TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "burn_linger_duration",
+        "label": "BURN LINGER DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "min_height_above_lowest",
+        "label": "MIN HEIGHT ABOVE LOWEST:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "min_height_above_highest",
+        "label": "MIN HEIGHT ABOVE HIGHEST:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "min_acceleration",
+        "label": "MIN ACCELERATION:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "max_acceleration",
+        "label": "MAX ACCELERATION:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Spit Out",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "projectile_count",
+        "label": "GLOB COUNT:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "projectile_width",
+        "label": "PROJECTILE WIDTH:",
+        "value": "130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "duration_tooltip",
+        "label": "DURATION TOOLTIP:",
+        "value": "5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "projectile_vision",
+        "label": "PROJECTILE VISION:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "burn_interval",
+        "label": "BURN INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "burn_damage",
+        "label": "BURN DPS:",
+        "value": "60/80/100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "move_slow_pct",
+        "label": "ENEMY MOVEMENT SLOW:",
+        "value": "15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "burn_ground_duration",
+        "label": "FIRESPIT POOL DURATION:",
+        "value": "3.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "dist_change_speed",
+        "label": "DIST CHANGE SPEED:",
+        "value": "75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "min_range",
+        "label": "MIN RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "min_lob_travel_time",
+        "label": "MIN LOB TRAVEL TIME:",
+        "value": "0.8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "max_lob_travel_time",
+        "label": "MAX LOB TRAVEL TIME:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "delay_after_last_projectile",
+        "label": "DELAY AFTER LAST PROJECTILE:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "burn_linger_duration",
+        "label": "BURN LINGER DURATION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "3000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "5.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Mortimer Kisses",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Boomstick",
+        "key": "damage_amp_min",
+        "label": "MIN DAMAGE AMP:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Boomstick",
+        "key": "distance_threshold_max",
+        "label": "MIN DAMAGE RANGE:",
+        "value": "495",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Snapfire",
+        "ability": "Boomstick",
+        "key": "distance_threshold_min",
+        "label": "MAX DAMAGE RANGE:",
+        "value": "50",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

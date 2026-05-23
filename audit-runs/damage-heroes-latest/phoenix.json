@@ -121,7 +121,7 @@
       "name": "Icarus Dive",
       "displayName": "凤凰冲击（Icarus Dive）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -189,10 +189,10 @@
       "name": "Fire Spirits",
       "displayName": "烈火精灵（Fire Spirits）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。",
       "manaCostByAbilityLevel": [
         100,
         100,
@@ -219,10 +219,10 @@
             80
           ],
           "theoreticalTotalByAbilityLevel": [
-            400,
-            800,
-            1200,
-            1600
+            80,
+            160,
+            240,
+            320
           ],
           "totalFormula": "duration * damagePerSecond",
           "countInFixedInstantTotal": false,
@@ -231,10 +231,10 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              20,
-              20,
-              20,
-              20
+              4,
+              4,
+              4,
+              4
             ],
             "tickIntervalByAbilityLevel": [
               0.2,
@@ -246,7 +246,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -257,10 +257,10 @@
       "name": "Sun Ray",
       "displayName": "烈日炙烤（Sun Ray）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。",
       "manaCostByAbilityLevel": [
         100,
         110,
@@ -314,9 +314,92 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        },
+        {
+          "id": "Sun Ray:percent_health_dot:hp_perc_damage",
+          "kind": "percent_health_dot",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "hp_perc_damage",
+          "valuesByAbilityLevel": [
+            1.5,
+            3,
+            4.5,
+            6
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "healthInput * percentDamage * duration",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "runtime_health_percent_times_duration"
+          },
+          "metadata": {
+            "healthInput": "target_max_health",
+            "durationByAbilityLevel": [
+              6,
+              6,
+              6,
+              6
+            ]
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "percent_health_dot",
+          "reason": "计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。",
+          "caveats": [
+            "百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dying Light",
+      "displayName": "消逝之光（Dying Light）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "state_scaling",
+      "reason": "伤害按凤凰已损生命百分比变化，需要战斗状态输入。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Dying Light:state_scaling:damage_pct",
+          "kind": "state_scaling",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "damage_pct",
+          "valuesByAbilityLevel": [
+            4
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "state_scaling"
+          },
+          "metadata": {
+            "isDamageReference": true,
+            "modifierType": "",
+            "affects": "",
+            "condition": "",
+            "requiredInputs": [
+              "hero_missing_health",
+              "active_duration"
+            ],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "state_scaling",
+          "reason": "伤害按凤凰已损生命百分比变化，需要战斗状态输入。",
+          "caveats": [
+            "伤害按凤凰已损生命百分比变化，需要战斗状态输入。"
           ]
         }
       ]
@@ -325,7 +408,7 @@
       "name": "Supernova",
       "displayName": "超新星（Supernova）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -352,9 +435,9 @@
             120
           ],
           "theoreticalTotalByAbilityLevel": [
-            96,
-            180,
-            288
+            360,
+            540,
+            720
           ],
           "totalFormula": "duration * damagePerSecond",
           "countInFixedInstantTotal": false,
@@ -363,9 +446,9 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              1.6,
-              2,
-              2.4
+              6,
+              6,
+              6
             ],
             "tickIntervalByAbilityLevel": [
               0.2,
@@ -387,10 +470,10 @@
       "name": "Launch Fire Spirit",
       "displayName": "发动烈火精灵（Launch Fire Spirit）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
-      "reason": "",
+      "reason": "火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。",
       "manaCostByAbilityLevel": [
         0,
         0,
@@ -417,10 +500,10 @@
             80
           ],
           "theoreticalTotalByAbilityLevel": [
-            400,
-            800,
-            1200,
-            1600
+            80,
+            160,
+            240,
+            320
           ],
           "totalFormula": "duration * damagePerSecond",
           "countInFixedInstantTotal": false,
@@ -429,10 +512,10 @@
           },
           "metadata": {
             "durationByAbilityLevel": [
-              20,
-              20,
-              20,
-              20
+              4,
+              4,
+              4,
+              4
             ],
             "tickIntervalByAbilityLevel": [
               0.2,
@@ -444,7 +527,7 @@
           "source": "curated",
           "status": "implemented",
           "model": "sustained_dps",
-          "reason": "",
+          "reason": "火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。",
           "caveats": [
             "包含持续伤害，理论总量依赖目标站位和完整命中。"
           ]
@@ -452,5 +535,445 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Phoenix",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed burn/channel/supernova tick fields for first maintenance batch."
+        ]
+      },
+      "abilities": {
+        "Icarus Dive": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "burn_duration",
+          "tickIntervalKey": "burn_tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Fire Spirits": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "按单个火精灵命中计算；多个火精灵叠加后续由命中次数输入处理。"
+        },
+        "Sun Ray": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "base_damage",
+          "durationKey": "abilityduration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "计入基础每秒伤害；最大生命百分比伤害作为额外运行时组件。",
+          "extraComponents": [
+            {
+              "status": "implemented",
+              "model": "percent_health_dot",
+              "percentDamageKey": "hp_perc_damage",
+              "durationKey": "abilityduration",
+              "healthInput": "target_max_health",
+              "semanticType": "damage.percent_max_health",
+              "conditionInputs": [
+                "target_max_health",
+                "active_duration"
+              ]
+            }
+          ]
+        },
+        "Toggle Movement": {
+          "status": "ignored",
+          "reason": "该技能仅切换烈日炙烤移动模式，不直接产生伤害。"
+        },
+        "Dying Light": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_pct",
+          "semanticType": "damage.percent_missing_health",
+          "requiredInputs": [
+            "hero_missing_health",
+            "active_duration"
+          ],
+          "conditionInputs": [
+            "hero_missing_health",
+            "active_duration"
+          ],
+          "reason": "伤害按凤凰已损生命百分比变化，需要战斗状态输入。"
+        },
+        "Supernova": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_sec",
+          "durationKey": "abilityduration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        },
+        "Launch Fire Spirit": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage_per_second",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_interval",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "reason": "火精灵发射子技能与 Fire Spirits 使用同一组伤害字段。"
+        },
+        "Stop Icarus Dive": {
+          "status": "ignored",
+          "reason": "该技能仅停止位移，不直接产生伤害。"
+        },
+        "Stop Sun Ray": {
+          "status": "ignored",
+          "reason": "该技能仅停止烈日炙烤，不直接产生伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "hp_cost_perc",
+        "label": "HP COST:",
+        "value": "15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "dash_length",
+        "label": "DIVE LENGTH:",
+        "value": "1100/1200/1300/1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "dash_width",
+        "label": "DASH WIDTH:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "hit_radius",
+        "label": "HIT RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "slow_movement_speed_pct",
+        "label": "MOVE SLOW:",
+        "value": "10%/15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "dive_duration",
+        "label": "DIVE DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Icarus Dive",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "hp_cost_perc",
+        "label": "HP COST:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "spirit_duration",
+        "label": "SPIRIT DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "spirit_speed",
+        "label": "SPIRIT SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "attackspeed_slow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "-50/-80/-110/-140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "spirit_count",
+        "label": "SPIRIT COUNT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Fire Spirits",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "hp_cost_perc_per_second",
+        "label": "HEALTH COST PER SECOND:",
+        "value": "5%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "hp_perc_damage",
+        "label": "MAX DAMAGE:",
+        "value": "1.5%/3%/4.5%/6%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "base_heal",
+        "label": "BASE HEAL PER SECOND:",
+        "value": "7/10/13/16",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "hp_perc_heal",
+        "label": "MAX HEAL:",
+        "value": "0.5%/1%/1.5%/2%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "130",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "forward_move_speed",
+        "label": "FORWARD MOVE SPEED:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "turn_rate_initial",
+        "label": "TURN RATE INITIAL:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "turn_rate",
+        "label": "TURN RATE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "focal_point_max_multiplier",
+        "label": "MAX FOCAL POINT MULTIPLIER:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "focal_point_start_length_pct",
+        "label": "FOCAL POINT START LENGTH PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "focal_point_full_length_tooltip_only",
+        "label": "FOCAL POINT FULL LENGTH TOOLTIP ONLY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Sun Ray",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Dying Light",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Dying Light",
+        "key": "tick_interval",
+        "label": "TICK INTERVAL:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Supernova",
+        "key": "aura_radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Supernova",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "1.6/2/2.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Supernova",
+        "key": "max_hero_attacks",
+        "label": "ATTACKS TO DESTROY:",
+        "value": "6/8/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Supernova",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Supernova",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.01",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "hp_cost_perc",
+        "label": "HP COST:",
+        "value": "20%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "spirit_duration",
+        "label": "SPIRIT DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "spirit_speed",
+        "label": "SPIRIT SPEED:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "attackspeed_slow",
+        "label": "ATTACK SPEED SLOW:",
+        "value": "-50/-80/-110/-140",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "spirit_count",
+        "label": "SPIRIT COUNT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Phoenix",
+        "ability": "Launch Fire Spirit",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1400",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

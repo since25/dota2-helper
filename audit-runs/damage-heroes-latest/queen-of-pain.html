@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>痛苦女王（Queen of Pain）</h1>
-        <div class="muted">Queen of Pain · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Queen of Pain · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,303 @@
       </div>
       <a href="./queen-of-pain.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>duration_damage</code></td>
+      <td>DAMAGE PER TICK:</td>
+      <td>20/40/60/80</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>movement_slow</code></td>
+      <td>MOVEMENT SLOW:</td>
+      <td>-25%/-35%/-45%/-55%</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>damage_interval</code></td>
+      <td>DAMAGE INTERVAL:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>duration_heal</code></td>
+      <td>DURATION HEAL:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>generate_scream</code></td>
+      <td>GENERATE SCREAM:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>aoe_radius</code></td>
+      <td>AOE RADIUS:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>16</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>450/500/550/600</td>
+    </tr>
+  
+    <tr>
+      <td>Shadow Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.3</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>min_blink_range</code></td>
+      <td>MIN BLINK RANGE:</td>
+      <td>200</td>
+    </tr>
+  
+    <tr>
+      <td>Blink</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.33</td>
+    </tr>
+  
+    <tr>
+      <td>Scream Of Pain</td>
+      <td><code>area_of_effect</code></td>
+      <td>RADIUS:</td>
+      <td>600</td>
+    </tr>
+  
+    <tr>
+      <td>Scream Of Pain</td>
+      <td><code>projectile_speed</code></td>
+      <td>PROJECTILE SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Scream Of Pain</td>
+      <td><code>damage_reflected_to_self</code></td>
+      <td>DAMAGE REFLECTED TO SELF:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Scream Of Pain</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Scream Of Pain</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Succubus</td>
+      <td><code>close_radius</code></td>
+      <td>CLOSE RADIUS:</td>
+      <td>150</td>
+    </tr>
+  
+    <tr>
+      <td>Succubus</td>
+      <td><code>max_radius</code></td>
+      <td>MAX RADIUS:</td>
+      <td>800</td>
+    </tr>
+  
+    <tr>
+      <td>Succubus</td>
+      <td><code>spell_lifesteal_close</code></td>
+      <td>MAXIMUM LIFESTEAL:</td>
+      <td>14%</td>
+    </tr>
+  
+    <tr>
+      <td>Succubus</td>
+      <td><code>lifesteal_reflected</code></td>
+      <td>LIFESTEAL REFLECTED:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>starting_aoe</code></td>
+      <td>STARTING AOE:</td>
+      <td>100</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>distance</code></td>
+      <td>DISTANCE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>final_aoe</code></td>
+      <td>WAVE MAX RADIUS:</td>
+      <td>450</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>speed</code></td>
+      <td>SPEED:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>tick_rate</code></td>
+      <td>TICK RATE:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>350</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>1.4</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Sonic Wave</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.452</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Queen of Pain&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Initial manually curated model from damage model maintenance work.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Shadow Strike&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;conditional&quot;,
+      &quot;valueKey&quot;: &quot;strike_damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.tick&quot;,
+      &quot;condition&quot;: &quot;先造成初始伤害，随后按 tick 间隔造成持续伤害。&quot;,
+      &quot;reason&quot;: &quot;该技能包含初始伤害和间隔伤害，组合 tick 模型将在后续批次补齐。&quot;
+    },
+    &quot;Blink&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;位移技能影响进场和逃生，不直接造成伤害。&quot;
+    },
+    &quot;Scream Of Pain&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    },
+    &quot;Succubus&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;spell_lifesteal&quot;,
+      &quot;semanticType&quot;: &quot;defense.lifesteal.percent&quot;,
+      &quot;affects&quot;: &quot;sustain&quot;,
+      &quot;stackGroup&quot;: &quot;lifesteal&quot;,
+      &quot;reason&quot;: &quot;固定命石/被动提供续航，不直接造成伤害。&quot;
+    },
+    &quot;Sonic Wave&quot;: {
+      &quot;status&quot;: &quot;implemented&quot;,
+      &quot;model&quot;: &quot;instant_fixed&quot;,
+      &quot;damageKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.instant&quot;,
+      &quot;defaultIncluded&quot;: true
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -758,7 +1059,309 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Queen of Pain&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Initial manually curated model from damage model maintenance work.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Shadow Strike&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;conditional&quot;,
+          &quot;valueKey&quot;: &quot;strike_damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.tick&quot;,
+          &quot;condition&quot;: &quot;先造成初始伤害，随后按 tick 间隔造成持续伤害。&quot;,
+          &quot;reason&quot;: &quot;该技能包含初始伤害和间隔伤害，组合 tick 模型将在后续批次补齐。&quot;
+        },
+        &quot;Blink&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;位移技能影响进场和逃生，不直接造成伤害。&quot;
+        },
+        &quot;Scream Of Pain&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        },
+        &quot;Succubus&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;spell_lifesteal&quot;,
+          &quot;semanticType&quot;: &quot;defense.lifesteal.percent&quot;,
+          &quot;affects&quot;: &quot;sustain&quot;,
+          &quot;stackGroup&quot;: &quot;lifesteal&quot;,
+          &quot;reason&quot;: &quot;固定命石/被动提供续航，不直接造成伤害。&quot;
+        },
+        &quot;Sonic Wave&quot;: {
+          &quot;status&quot;: &quot;implemented&quot;,
+          &quot;model&quot;: &quot;instant_fixed&quot;,
+          &quot;damageKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.instant&quot;,
+          &quot;defaultIncluded&quot;: true
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;duration_damage&quot;,
+        &quot;label&quot;: &quot;DAMAGE PER TICK:&quot;,
+        &quot;value&quot;: &quot;20/40/60/80&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;movement_slow&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SLOW:&quot;,
+        &quot;value&quot;: &quot;-25%/-35%/-45%/-55%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;damage_interval&quot;,
+        &quot;label&quot;: &quot;DAMAGE INTERVAL:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;duration_heal&quot;,
+        &quot;label&quot;: &quot;DURATION HEAL:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;generate_scream&quot;,
+        &quot;label&quot;: &quot;GENERATE SCREAM:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;aoe_radius&quot;,
+        &quot;label&quot;: &quot;AOE RADIUS:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;16&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;450/500/550/600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Shadow Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;min_blink_range&quot;,
+        &quot;label&quot;: &quot;MIN BLINK RANGE:&quot;,
+        &quot;value&quot;: &quot;200&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Blink&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.33&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Scream Of Pain&quot;,
+        &quot;key&quot;: &quot;area_of_effect&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;600&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Scream Of Pain&quot;,
+        &quot;key&quot;: &quot;projectile_speed&quot;,
+        &quot;label&quot;: &quot;PROJECTILE SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Scream Of Pain&quot;,
+        &quot;key&quot;: &quot;damage_reflected_to_self&quot;,
+        &quot;label&quot;: &quot;DAMAGE REFLECTED TO SELF:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Scream Of Pain&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Scream Of Pain&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Succubus&quot;,
+        &quot;key&quot;: &quot;close_radius&quot;,
+        &quot;label&quot;: &quot;CLOSE RADIUS:&quot;,
+        &quot;value&quot;: &quot;150&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Succubus&quot;,
+        &quot;key&quot;: &quot;max_radius&quot;,
+        &quot;label&quot;: &quot;MAX RADIUS:&quot;,
+        &quot;value&quot;: &quot;800&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Succubus&quot;,
+        &quot;key&quot;: &quot;spell_lifesteal_close&quot;,
+        &quot;label&quot;: &quot;MAXIMUM LIFESTEAL:&quot;,
+        &quot;value&quot;: &quot;14%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Succubus&quot;,
+        &quot;key&quot;: &quot;lifesteal_reflected&quot;,
+        &quot;label&quot;: &quot;LIFESTEAL REFLECTED:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;starting_aoe&quot;,
+        &quot;label&quot;: &quot;STARTING AOE:&quot;,
+        &quot;value&quot;: &quot;100&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;distance&quot;,
+        &quot;label&quot;: &quot;DISTANCE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;final_aoe&quot;,
+        &quot;label&quot;: &quot;WAVE MAX RADIUS:&quot;,
+        &quot;value&quot;: &quot;450&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;speed&quot;,
+        &quot;label&quot;: &quot;SPEED:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;tick_rate&quot;,
+        &quot;label&quot;: &quot;TICK RATE:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;350&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;1.4&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Queen of Pain&quot;,
+        &quot;ability&quot;: &quot;Sonic Wave&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.452&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

@@ -121,7 +121,7 @@
       "name": "Rocket Barrage",
       "displayName": "火箭弹幕（Rocket Barrage）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Homing Missile",
       "displayName": "追踪导弹（Homing Missile）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,7 +231,7 @@
       "name": "Call Down",
       "displayName": "召唤飞弹（Call Down）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。",
@@ -285,5 +285,362 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Gyrocopter",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Rocket Barrage": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "rocket_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "barrage_duration"
+        },
+        "Homing Missile": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "hit_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Flak Cannon": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Afterburner": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Call Down": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage",
+          "semanticType": "damage.distance_scaling",
+          "requiredInputs": [
+            "distance"
+          ],
+          "conditionInputs": [
+            "distance"
+          ],
+          "reason": "距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Gyrocopter",
+        "ability": "Rocket Barrage",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Rocket Barrage",
+        "key": "rockets_per_second",
+        "label": "ROCKETS PER SECOND:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Rocket Barrage",
+        "key": "rocket_interval",
+        "label": "ROCKET INTERVAL:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Rocket Barrage",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Rocket Barrage",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "hits_to_kill_tooltip",
+        "label": "HITS TO DESTROY:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "tower_hits_to_kill_tooltip",
+        "label": "TOWER HITS TO DESTROY:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "attack_speed_bonus_pct",
+        "label": "ATTACK SPEED BONUS PCT:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "max_distance",
+        "label": "MAX DISTANCE:",
+        "value": "1500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "pre_flight_time",
+        "label": "PRE FLIGHT TIME:",
+        "value": "2.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "hero_damage",
+        "label": "HERO DAMAGE:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "speed",
+        "label": "SPEED:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "acceleration",
+        "label": "ACCELERATION:",
+        "value": "15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "enemy_vision_time",
+        "label": "ENEMY VISION TIME:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1050",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Homing Missile",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "max_attacks",
+        "label": "MAX ATTACKS:",
+        "value": "4/5/6/7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "projectile_speed",
+        "label": "PROJECTILE SPEED:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "bonus_night_vision",
+        "label": "BONUS NIGHT VISION:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Flak Cannon",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Afterburner",
+        "key": "bonus_movespeed_duration",
+        "label": "DURATION:",
+        "value": "3.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Afterburner",
+        "key": "bonus_movement_speed_per_hit",
+        "label": "MOVESPEED (HEROES):",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Afterburner",
+        "key": "bonus_movement_speed_per_hit_creep",
+        "label": "MOVESPEED (CREEPS):",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "slow",
+        "label": "MISSILE SLOW:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "tracking_strike_radius",
+        "label": "SECONDARY STRIKE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "missile_delay_tooltip",
+        "label": "MISSILE DELAY TOOLTIP:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "strike_delay",
+        "label": "TIME BETWEEN STRIKES:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "total_strikes",
+        "label": "TOTAL STRIKES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "strike_separation",
+        "label": "STRIKE SEPARATION:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "tracking_strike_delay",
+        "label": "TRACKING STRIKE DELAY:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "tracking_missile_damage",
+        "label": "TRACKING MISSILE DAMAGE:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Gyrocopter",
+        "ability": "Call Down",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

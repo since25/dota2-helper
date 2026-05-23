@@ -1,5 +1,11 @@
 module.exports = {
   hero: 'Phantom Assassin',
+  review: {
+    status: 'reviewed',
+    reviewer: 'local',
+    updatedAt: '2026-05-23',
+    notes: ['Initial manually curated model from damage model maintenance work.']
+  },
   abilities: {
     'Stifling Dagger': {
       status: 'implemented',
@@ -53,7 +59,7 @@ module.exports = {
       damageType: 'Physical',
       affects: 'physical_damage',
       stackGroup: 'critical_strike',
-      conditionInputs: ['attack_count', 'crit_chance'],
+      conditionInputs: ['attack_count', 'crit_mode', 'hero_attack_damage'],
       chanceKey: 'crit_chance',
       multiplierKey: 'crit_bonus',
       reason: '暴击需要普攻次数和是否触发，当前作为概率伤害参考。'

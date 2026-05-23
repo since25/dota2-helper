@@ -11,6 +11,7 @@
     .page { max-width: 1440px; margin: 0 auto; padding: 28px; }
     .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 20px; }
     h1, h2 { margin: 0; line-height: 1.2; }
+    h3 { margin: 12px 0 8px; font-size: 14px; }
     h1 { font-size: 28px; }
     h2 { font-size: 18px; }
     a { color: var(--accent); text-decoration: none; }
@@ -29,12 +30,15 @@
     .resource-line { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; color: var(--muted); }
     .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
     table { width: 100%; min-width: 1180px; border-collapse: collapse; background: #fff; }
+    .mini-table { min-width: 620px; }
+    .audit-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.6fr); gap: 14px; }
     th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
     th { position: sticky; top: 0; background: #eef3f7; font-size: 12px; color: #334155; white-space: nowrap; }
     td code { font-size: 12px; color: #334155; }
     ul { margin: 0; padding-left: 18px; color: var(--warn); }
     details { margin-top: 16px; }
     pre { overflow: auto; padding: 12px; border-radius: 6px; background: #101827; color: #dbeafe; font-size: 12px; }
+    @media (max-width: 900px) { .audit-grid { grid-template-columns: 1fr; } }
     @media (max-width: 720px) { .page { padding: 16px; } .topbar, .ability-header { display: block; } .tags { justify-content: flex-start; margin-top: 10px; } }
   </style>
 </head>
@@ -44,7 +48,7 @@
       <div>
         <a href="./index.html">返回索引</a>
         <h1>裂魂人（Spirit Breaker）</h1>
-        <div class="muted">Spirit Breaker · 生成时间 2026-05-23T04:33:41.087Z</div>
+        <div class="muted">Spirit Breaker · 生成时间 2026-05-23T11:03:06.444Z</div>
         <div class="summary">
           <span>技能 5</span>
           <span>组件 5</span>
@@ -53,6 +57,443 @@
       </div>
       <a href="./spirit-breaker.json">查看原始 JSON</a>
     </div>
+    
+    <section class="panel">
+      <header class="ability-header">
+        <div>
+          <h2>模型审核上下文</h2>
+          <div class="muted">用于人工复核模型字段是否误读、漏读或错误纳入伤害。</div>
+        </div>
+        <div class="tags">
+          <span class="pill">manual</span>
+          <span class="pill secondary">reviewed</span>
+        </div>
+      </header>
+      <div class="audit-grid">
+        <div>
+          <h3>原始未引用数值字段</h3>
+          <div class="table-wrap">
+            <table class="mini-table">
+              <thead>
+                <tr><th>技能</th><th>字段</th><th>标签</th><th>值</th></tr>
+              </thead>
+              <tbody>
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>movement_speed</code></td>
+      <td>CHARGE BONUS SPEED:</td>
+      <td>275/325/375/425</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>stun_duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>1.3/1.6/1.9/2.2</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>bash_radius</code></td>
+      <td>BASH RADIUS:</td>
+      <td>300</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>vision_radius</code></td>
+      <td>VISION RADIUS:</td>
+      <td>400</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>vision_duration</code></td>
+      <td>VISION DURATION:</td>
+      <td>0.94</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>out_of_world_time</code></td>
+      <td>OUT OF WORLD TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>guaranteed_bash_time</code></td>
+      <td>GUARANTEED BASH TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>reveal_charge</code></td>
+      <td>REVEAL CHARGE:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>windup_time</code></td>
+      <td>WINDUP TIME:</td>
+      <td>1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>min_movespeed_bonus_pct</code></td>
+      <td>MIN MOVESPEED BONUS PCT:</td>
+      <td>25</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>linger_time_min</code></td>
+      <td>MIN LINGER TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>linger_time_max</code></td>
+      <td>MAX LINGER TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>charge_for_max_linger</code></td>
+      <td>CHARGE FOR MAX LINGER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Charge of Darkness</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0.1</td>
+    </tr>
+  
+    <tr>
+      <td>Bulldoze</td>
+      <td><code>movement_speed</code></td>
+      <td>MOVEMENT SPEED:</td>
+      <td>8%/12%/16%/20%</td>
+    </tr>
+  
+    <tr>
+      <td>Bulldoze</td>
+      <td><code>status_resistance</code></td>
+      <td>STATUS RESISTANCE:</td>
+      <td>40%/50%/60%/70%</td>
+    </tr>
+  
+    <tr>
+      <td>Bulldoze</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>8</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>chance_pct</code></td>
+      <td>CHANCE TO BASH:</td>
+      <td>17%</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>bonus_chance_pct</code></td>
+      <td>BONUS CHANCE PCT:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>bonus_chance_duration</code></td>
+      <td>BONUS CHANCE DURATION:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>duration</code></td>
+      <td>STUN DURATION:</td>
+      <td>0.9/1.1/1.3/1.5</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>knockback_duration</code></td>
+      <td>KNOCKBACK DURATION:</td>
+      <td>0.5</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bash_cooldown</code></td>
+      <td>CASCADING BASH COOLDOWN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bashes_damage_multiplier</code></td>
+      <td>CASCADING BASHES DAMAGE MULTIPLIER:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bashes_creep_penalty</code></td>
+      <td>CASCADING BASHES CREEP PENALTY:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bashes_nether_strike_additional_cooldown</code></td>
+      <td>CASCADING BASHES NETHER STRIKE ADDITIONAL COOLDOWN:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bashes_hero_hitbox</code></td>
+      <td>CASCADING BASHES HERO HITBOX:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>cascading_bashes_creep_hitbox</code></td>
+      <td>CASCADING BASHES CREEP HITBOX:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>knockback_distance</code></td>
+      <td>KNOCKBACK DISTANCE:</td>
+      <td>143/152/158/162</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>knockback_height</code></td>
+      <td>KNOCKBACK HEIGHT:</td>
+      <td>50</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>projectile_body_vision</code></td>
+      <td>PROJECTILE BODY VISION:</td>
+      <td>175</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>bonus_knockback_multiplier</code></td>
+      <td>BONUS KNOCKBACK MULTIPLIER:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>bonus_movespeed_pct</code></td>
+      <td>BONUS MOVESPEED PCT:</td>
+      <td>17</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>movespeed_duration</code></td>
+      <td>MOVESPEED DURATION:</td>
+      <td>3</td>
+    </tr>
+  
+    <tr>
+      <td>Greater Bash</td>
+      <td><code>creep_multiplier</code></td>
+      <td>CREEP MULTIPLIER:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Planar Pocket</td>
+      <td><code>radius</code></td>
+      <td>RADIUS:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Planar Pocket</td>
+      <td><code>duration</code></td>
+      <td>DURATION:</td>
+      <td>6</td>
+    </tr>
+  
+    <tr>
+      <td>Planar Pocket</td>
+      <td><code>magic_resistance</code></td>
+      <td>SELF MAGIC RESISTANCE:</td>
+      <td>40%</td>
+    </tr>
+  
+    <tr>
+      <td>Planar Pocket</td>
+      <td><code>break_distance</code></td>
+      <td>BREAK DISTANCE:</td>
+      <td>900</td>
+    </tr>
+  
+    <tr>
+      <td>Planar Pocket</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>0</td>
+    </tr>
+  
+    <tr>
+      <td>Empowering Haste</td>
+      <td><code>hero_duration</code></td>
+      <td>HERO DURATION:</td>
+      <td>2</td>
+    </tr>
+  
+    <tr>
+      <td>Empowering Haste</td>
+      <td><code>creep_duration</code></td>
+      <td>CREEP DURATION:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Empowering Haste</td>
+      <td><code>hero_movespeed_percent</code></td>
+      <td>HERO MOVESPEED:</td>
+      <td>8%</td>
+    </tr>
+  
+    <tr>
+      <td>Empowering Haste</td>
+      <td><code>creep_movespeed_percent</code></td>
+      <td>CREEP MOVESPEED:</td>
+      <td>2%</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Strike</td>
+      <td><code>fade_time</code></td>
+      <td>FADE TIME:</td>
+      <td>1</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Strike</td>
+      <td><code>abilitycastrange</code></td>
+      <td>CAST RANGE:</td>
+      <td>700</td>
+    </tr>
+  
+    <tr>
+      <td>Nether Strike</td>
+      <td><code>abilitycastpoint</code></td>
+      <td>CAST TIME:</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>可疑映射</h3>
+          <pre>[]</pre>
+        </div>
+      </div>
+      <details>
+        <summary>当前模型定义 JSON</summary>
+        <pre>{
+  &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+  &quot;review&quot;: {
+    &quot;status&quot;: &quot;reviewed&quot;,
+    &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+    &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+    &quot;notes&quot;: [
+      &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+      &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+    ]
+  },
+  &quot;abilities&quot;: {
+    &quot;Charge of Darkness&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Bulldoze&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;damage_barrier&quot;,
+      &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+      &quot;affects&quot;: &quot;survivability&quot;,
+      &quot;stackGroup&quot;: &quot;barrier&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Greater Bash&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;move_speed&quot;,
+        &quot;attack_count&quot;,
+        &quot;proc_mode&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;move_speed&quot;,
+        &quot;attack_count&quot;,
+        &quot;proc_mode&quot;
+      ],
+      &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+    },
+    &quot;Planar Pocket&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;debuff_reference&quot;,
+      &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+      &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+      &quot;affects&quot;: &quot;positioning&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+    },
+    &quot;Empowering Haste&quot;: {
+      &quot;status&quot;: &quot;ignored&quot;,
+      &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+    },
+    &quot;Nether Strike&quot;: {
+      &quot;status&quot;: &quot;reference_only&quot;,
+      &quot;model&quot;: &quot;state_scaling&quot;,
+      &quot;valueKey&quot;: &quot;damage&quot;,
+      &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+      &quot;requiredInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;conditionInputs&quot;: [
+        &quot;distance&quot;
+      ],
+      &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+    }
+  },
+  &quot;source&quot;: &quot;manual&quot;
+}</pre>
+      </details>
+    </section>
+  
     
     <section class="panel">
       <h2>英雄属性</h2>
@@ -124,7 +565,7 @@
           <div class="muted">Charge of Darkness · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -163,7 +604,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -177,7 +618,7 @@
           <div class="muted">Bulldoze · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -216,7 +657,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: survivability</div><div><code>affects</code>: survivability</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -230,7 +671,7 @@
           <div class="muted">Greater Bash · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -267,7 +708,7 @@
         <td>Magical</td>
         <td>25</td><td>30</td><td>35</td><td>40</td>
         <td></td>
-        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: move_speed</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
+        <td><div><code>isDamageReference</code>: true</div><div><code>modifierType</code>: -</div><div><code>affects</code>: -</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: move_speed / attack_count / proc_mode</div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>state_scaling</td>
         <td><ul><li>移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。</li></ul></td>
       </tr>
@@ -283,7 +724,7 @@
           <div class="muted">Planar Pocket · 普通技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">debuff_reference</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -322,7 +763,7 @@
         <td></td>
         <td><div><code>isDamageReference</code>: false</div><div><code>modifierType</code>: positioning_range</div><div><code>affects</code>: positioning</div><div><code>condition</code>: -</div><div><code>requiredInputs</code>: </div><div><code>chanceByAbilityLevel</code>: </div><div><code>multiplierByAbilityLevel</code>: </div></td>
         <td>debuff_reference</td>
-        <td><ul><li>首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
+        <td><ul><li>全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。</li></ul></td>
       </tr>
     </tbody>
         </table>
@@ -336,7 +777,7 @@
           <div class="muted">Nether Strike · 终极技能</div>
         </div>
         <div class="tags">
-          <span class="pill">auto</span>
+          <span class="pill">curated</span>
           <span class="pill secondary">state_scaling</span>
           <span class="pill secondary">reference_only</span>
         </div>
@@ -507,10 +948,10 @@
       &quot;name&quot;: &quot;Charge of Darkness&quot;,
       &quot;displayName&quot;: &quot;暗影冲刺（Charge of Darkness）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         90,
         100,
@@ -551,9 +992,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -562,10 +1003,10 @@
       &quot;name&quot;: &quot;Bulldoze&quot;,
       &quot;displayName&quot;: &quot;威吓（Bulldoze）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         30,
         40,
@@ -606,9 +1047,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -617,7 +1058,7 @@
       &quot;name&quot;: &quot;Greater Bash&quot;,
       &quot;displayName&quot;: &quot;巨力重击（Greater Bash）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;,
@@ -653,7 +1094,9 @@
             &quot;affects&quot;: &quot;&quot;,
             &quot;condition&quot;: &quot;&quot;,
             &quot;requiredInputs&quot;: [
-              &quot;move_speed&quot;
+              &quot;move_speed&quot;,
+              &quot;attack_count&quot;,
+              &quot;proc_mode&quot;
             ],
             &quot;chanceByAbilityLevel&quot;: [],
             &quot;multiplierByAbilityLevel&quot;: []
@@ -672,10 +1115,10 @@
       &quot;name&quot;: &quot;Planar Pocket&quot;,
       &quot;displayName&quot;: &quot;位面空洞（Planar Pocket）&quot;,
       &quot;isUltimate&quot;: false,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;debuff_reference&quot;,
-      &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+      &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
       &quot;manaCostByAbilityLevel&quot;: [
         100
       ],
@@ -710,9 +1153,9 @@
           &quot;source&quot;: &quot;curated&quot;,
           &quot;status&quot;: &quot;reference_only&quot;,
           &quot;model&quot;: &quot;debuff_reference&quot;,
-          &quot;reason&quot;: &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;,
           &quot;caveats&quot;: [
-            &quot;首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+            &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
           ]
         }
       ]
@@ -721,7 +1164,7 @@
       &quot;name&quot;: &quot;Nether Strike&quot;,
       &quot;displayName&quot;: &quot;幽冥一击（Nether Strike）&quot;,
       &quot;isUltimate&quot;: true,
-      &quot;modelSource&quot;: &quot;auto&quot;,
+      &quot;modelSource&quot;: &quot;curated&quot;,
       &quot;status&quot;: &quot;reference_only&quot;,
       &quot;model&quot;: &quot;state_scaling&quot;,
       &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;,
@@ -775,7 +1218,466 @@
       ]
     }
   ],
-  &quot;items&quot;: []
+  &quot;items&quot;: [],
+  &quot;modelAudit&quot;: {
+    &quot;source&quot;: &quot;manual&quot;,
+    &quot;reviewStatus&quot;: &quot;reviewed&quot;,
+    &quot;manualModel&quot;: {
+      &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+      &quot;review&quot;: {
+        &quot;status&quot;: &quot;reviewed&quot;,
+        &quot;reviewer&quot;: &quot;local-bulk-semantic-pass&quot;,
+        &quot;updatedAt&quot;: &quot;2026-05-23&quot;,
+        &quot;notes&quot;: [
+          &quot;Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.&quot;,
+          &quot;High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation.&quot;
+        ]
+      },
+      &quot;abilities&quot;: {
+        &quot;Charge of Darkness&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Bulldoze&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;damage_barrier&quot;,
+          &quot;semanticType&quot;: &quot;defense.barrier.flat&quot;,
+          &quot;affects&quot;: &quot;survivability&quot;,
+          &quot;stackGroup&quot;: &quot;barrier&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Greater Bash&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.move_speed_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;move_speed&quot;,
+            &quot;attack_count&quot;,
+            &quot;proc_mode&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;move_speed&quot;,
+            &quot;attack_count&quot;,
+            &quot;proc_mode&quot;
+          ],
+          &quot;reason&quot;: &quot;移动速度系数伤害需要移动速度输入，首轮模型只作为条件伤害参考。&quot;
+        },
+        &quot;Planar Pocket&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;debuff_reference&quot;,
+          &quot;valueKey&quot;: &quot;abilitycastrange&quot;,
+          &quot;semanticType&quot;: &quot;mobility.cast_range.units&quot;,
+          &quot;affects&quot;: &quot;positioning&quot;,
+          &quot;reason&quot;: &quot;全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。&quot;
+        },
+        &quot;Empowering Haste&quot;: {
+          &quot;status&quot;: &quot;ignored&quot;,
+          &quot;reason&quot;: &quot;首轮自动模型未识别到可用于伤害计算的直接数值。&quot;
+        },
+        &quot;Nether Strike&quot;: {
+          &quot;status&quot;: &quot;reference_only&quot;,
+          &quot;model&quot;: &quot;state_scaling&quot;,
+          &quot;valueKey&quot;: &quot;damage&quot;,
+          &quot;semanticType&quot;: &quot;damage.distance_scaling&quot;,
+          &quot;requiredInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;conditionInputs&quot;: [
+            &quot;distance&quot;
+          ],
+          &quot;reason&quot;: &quot;距离系数伤害需要距离输入，首轮模型只作为条件伤害参考。&quot;
+        }
+      },
+      &quot;source&quot;: &quot;manual&quot;
+    },
+    &quot;rawNumericFieldsNotReferenced&quot;: [
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;CHARGE BONUS SPEED:&quot;,
+        &quot;value&quot;: &quot;275/325/375/425&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;stun_duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;1.3/1.6/1.9/2.2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;bash_radius&quot;,
+        &quot;label&quot;: &quot;BASH RADIUS:&quot;,
+        &quot;value&quot;: &quot;300&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;vision_radius&quot;,
+        &quot;label&quot;: &quot;VISION RADIUS:&quot;,
+        &quot;value&quot;: &quot;400&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;vision_duration&quot;,
+        &quot;label&quot;: &quot;VISION DURATION:&quot;,
+        &quot;value&quot;: &quot;0.94&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;out_of_world_time&quot;,
+        &quot;label&quot;: &quot;OUT OF WORLD TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;guaranteed_bash_time&quot;,
+        &quot;label&quot;: &quot;GUARANTEED BASH TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;reveal_charge&quot;,
+        &quot;label&quot;: &quot;REVEAL CHARGE:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;windup_time&quot;,
+        &quot;label&quot;: &quot;WINDUP TIME:&quot;,
+        &quot;value&quot;: &quot;1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;min_movespeed_bonus_pct&quot;,
+        &quot;label&quot;: &quot;MIN MOVESPEED BONUS PCT:&quot;,
+        &quot;value&quot;: &quot;25&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;linger_time_min&quot;,
+        &quot;label&quot;: &quot;MIN LINGER TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;linger_time_max&quot;,
+        &quot;label&quot;: &quot;MAX LINGER TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;charge_for_max_linger&quot;,
+        &quot;label&quot;: &quot;CHARGE FOR MAX LINGER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Charge of Darkness&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0.1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Bulldoze&quot;,
+        &quot;key&quot;: &quot;movement_speed&quot;,
+        &quot;label&quot;: &quot;MOVEMENT SPEED:&quot;,
+        &quot;value&quot;: &quot;8%/12%/16%/20%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Bulldoze&quot;,
+        &quot;key&quot;: &quot;status_resistance&quot;,
+        &quot;label&quot;: &quot;STATUS RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;40%/50%/60%/70%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Bulldoze&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;8&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;chance_pct&quot;,
+        &quot;label&quot;: &quot;CHANCE TO BASH:&quot;,
+        &quot;value&quot;: &quot;17%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;bonus_chance_pct&quot;,
+        &quot;label&quot;: &quot;BONUS CHANCE PCT:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;bonus_chance_duration&quot;,
+        &quot;label&quot;: &quot;BONUS CHANCE DURATION:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;STUN DURATION:&quot;,
+        &quot;value&quot;: &quot;0.9/1.1/1.3/1.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;knockback_duration&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DURATION:&quot;,
+        &quot;value&quot;: &quot;0.5&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bash_cooldown&quot;,
+        &quot;label&quot;: &quot;CASCADING BASH COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bashes_damage_multiplier&quot;,
+        &quot;label&quot;: &quot;CASCADING BASHES DAMAGE MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bashes_creep_penalty&quot;,
+        &quot;label&quot;: &quot;CASCADING BASHES CREEP PENALTY:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bashes_nether_strike_additional_cooldown&quot;,
+        &quot;label&quot;: &quot;CASCADING BASHES NETHER STRIKE ADDITIONAL COOLDOWN:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bashes_hero_hitbox&quot;,
+        &quot;label&quot;: &quot;CASCADING BASHES HERO HITBOX:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;cascading_bashes_creep_hitbox&quot;,
+        &quot;label&quot;: &quot;CASCADING BASHES CREEP HITBOX:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;knockback_distance&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;143/152/158/162&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;knockback_height&quot;,
+        &quot;label&quot;: &quot;KNOCKBACK HEIGHT:&quot;,
+        &quot;value&quot;: &quot;50&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;projectile_body_vision&quot;,
+        &quot;label&quot;: &quot;PROJECTILE BODY VISION:&quot;,
+        &quot;value&quot;: &quot;175&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;bonus_knockback_multiplier&quot;,
+        &quot;label&quot;: &quot;BONUS KNOCKBACK MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;bonus_movespeed_pct&quot;,
+        &quot;label&quot;: &quot;BONUS MOVESPEED PCT:&quot;,
+        &quot;value&quot;: &quot;17&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;movespeed_duration&quot;,
+        &quot;label&quot;: &quot;MOVESPEED DURATION:&quot;,
+        &quot;value&quot;: &quot;3&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Greater Bash&quot;,
+        &quot;key&quot;: &quot;creep_multiplier&quot;,
+        &quot;label&quot;: &quot;CREEP MULTIPLIER:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Planar Pocket&quot;,
+        &quot;key&quot;: &quot;radius&quot;,
+        &quot;label&quot;: &quot;RADIUS:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Planar Pocket&quot;,
+        &quot;key&quot;: &quot;duration&quot;,
+        &quot;label&quot;: &quot;DURATION:&quot;,
+        &quot;value&quot;: &quot;6&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Planar Pocket&quot;,
+        &quot;key&quot;: &quot;magic_resistance&quot;,
+        &quot;label&quot;: &quot;SELF MAGIC RESISTANCE:&quot;,
+        &quot;value&quot;: &quot;40%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Planar Pocket&quot;,
+        &quot;key&quot;: &quot;break_distance&quot;,
+        &quot;label&quot;: &quot;BREAK DISTANCE:&quot;,
+        &quot;value&quot;: &quot;900&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Planar Pocket&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;0&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Empowering Haste&quot;,
+        &quot;key&quot;: &quot;hero_duration&quot;,
+        &quot;label&quot;: &quot;HERO DURATION:&quot;,
+        &quot;value&quot;: &quot;2&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Empowering Haste&quot;,
+        &quot;key&quot;: &quot;creep_duration&quot;,
+        &quot;label&quot;: &quot;CREEP DURATION:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Empowering Haste&quot;,
+        &quot;key&quot;: &quot;hero_movespeed_percent&quot;,
+        &quot;label&quot;: &quot;HERO MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;8%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Empowering Haste&quot;,
+        &quot;key&quot;: &quot;creep_movespeed_percent&quot;,
+        &quot;label&quot;: &quot;CREEP MOVESPEED:&quot;,
+        &quot;value&quot;: &quot;2%&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Nether Strike&quot;,
+        &quot;key&quot;: &quot;fade_time&quot;,
+        &quot;label&quot;: &quot;FADE TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Nether Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastrange&quot;,
+        &quot;label&quot;: &quot;CAST RANGE:&quot;,
+        &quot;value&quot;: &quot;700&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      },
+      {
+        &quot;hero&quot;: &quot;Spirit Breaker&quot;,
+        &quot;ability&quot;: &quot;Nether Strike&quot;,
+        &quot;key&quot;: &quot;abilitycastpoint&quot;,
+        &quot;label&quot;: &quot;CAST TIME:&quot;,
+        &quot;value&quot;: &quot;1&quot;,
+        &quot;source&quot;: &quot;ability.attrib&quot;
+      }
+    ],
+    &quot;suspiciousMappings&quot;: [],
+    &quot;modelEntriesMissingSemanticType&quot;: [],
+    &quot;unmodeledVisibleAbilities&quot;: []
+  }
 }</pre>
     </details>
   </main>

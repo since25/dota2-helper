@@ -1,0 +1,193 @@
+{
+  "hero": "Venomancer",
+  "source": "dotabuff",
+  "modelSource": "manual",
+  "review": {
+    "status": "reviewed",
+    "reviewer": "local",
+    "updatedAt": "2026-05-23",
+    "notes": [
+      "Reviewed poison sustained fields for first maintenance batch."
+    ]
+  },
+  "abilityCount": 5,
+  "missingModelCount": 0,
+  "abilities": [
+    {
+      "dotabuffName": "毒刺",
+      "hotkey": "",
+      "isInnate": true,
+      "modelName": "Poison Sting",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:damage",
+        "durationKey:duration"
+      ],
+      "dotabuffDamageType": "",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "4.5"
+        },
+        {
+          "label": "每秒伤害",
+          "value": "9"
+        },
+        {
+          "label": "移动速度降低",
+          "value": "8%"
+        }
+      ],
+      "resourceLines": []
+    },
+    {
+      "dotabuffName": "瘴气",
+      "hotkey": "Q",
+      "isInnate": false,
+      "modelName": "Venomous Gale",
+      "modelStatus": "reference_only",
+      "modelType": "conditional",
+      "modelKeys": [
+        "valueKey:strike_damage"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "15"
+        },
+        {
+          "label": "初始伤害",
+          "value": "25 / 50 / 75 / 100"
+        },
+        {
+          "label": "每次伤害",
+          "value": "10 / 40 / 70 / 100"
+        },
+        {
+          "label": "移动速度减缓",
+          "value": "35% / 40% / 45% / 50%"
+        },
+        {
+          "label": "弹道速度",
+          "value": "1200"
+        }
+      ],
+      "resourceLines": [
+        "21 / 20 / 19 / 18",
+        "95 / 105 / 115 / 125"
+      ]
+    },
+    {
+      "dotabuffName": "毒蛇撕咬",
+      "hotkey": "W",
+      "isInnate": false,
+      "modelName": "Snakebite",
+      "modelStatus": "implemented",
+      "modelType": "sustained_dps",
+      "modelKeys": [
+        "damagePerSecondKey:tick_damage",
+        "durationKey:duration",
+        "tickIntervalKey:damage_interval"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "初始伤害",
+          "value": "40 / 60 / 80 / 100"
+        },
+        {
+          "label": "每秒伤害",
+          "value": "10 / 20 / 30 / 40"
+        },
+        {
+          "label": "持续时间",
+          "value": "6"
+        }
+      ],
+      "resourceLines": [
+        "20 / 18 / 16 / 14",
+        "70 / 80 / 90 / 100",
+        "600"
+      ]
+    },
+    {
+      "dotabuffName": "瘟疫守卫",
+      "hotkey": "E",
+      "isInnate": false,
+      "modelName": "Plague Ward",
+      "modelStatus": "reference_only",
+      "modelType": "debuff_reference",
+      "modelKeys": [
+        "valueKey:ward_damage_tooltip"
+      ],
+      "dotabuffDamageType": "物理",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "40"
+        },
+        {
+          "label": "守卫生命值",
+          "value": "150 / 250 / 350 / 450"
+        },
+        {
+          "label": "守卫攻击力",
+          "value": "16 / 24 / 32 / 40"
+        }
+      ],
+      "resourceLines": [
+        "24 / 26 / 28 / 30",
+        "850"
+      ]
+    },
+    {
+      "dotabuffName": "恶性瘟疫",
+      "hotkey": "R",
+      "isInnate": false,
+      "modelName": "Noxious Plague",
+      "modelStatus": "implemented",
+      "modelType": "instant_fixed",
+      "modelKeys": [
+        "damageKey:impact_damage"
+      ],
+      "dotabuffDamageType": "魔法",
+      "dotabuffFields": [
+        {
+          "label": "持续时间",
+          "value": "4"
+        },
+        {
+          "label": "初始伤害",
+          "value": "150 / 200 / 250"
+        },
+        {
+          "label": "最大生命值伤害",
+          "value": "2% / 3% / 4%"
+        },
+        {
+          "label": "减速",
+          "value": "50%"
+        },
+        {
+          "label": "扩散范围",
+          "value": "700"
+        },
+        {
+          "label": "扩散次数",
+          "value": "2"
+        },
+        {
+          "label": "弹道速度",
+          "value": "1200"
+        }
+      ],
+      "resourceLines": [
+        "100 / 90 / 80",
+        "200 / 250 / 300",
+        "900"
+      ]
+    }
+  ]
+}

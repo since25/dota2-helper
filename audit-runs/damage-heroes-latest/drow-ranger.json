@@ -121,7 +121,7 @@
       "name": "Frost Arrows",
       "displayName": "霜冻之箭（Frost Arrows）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Gust",
       "displayName": "狂风（Gust）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         70
       ],
@@ -217,9 +217,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -228,10 +228,10 @@
       "name": "Glacier",
       "displayName": "冰川（Glacier）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -266,13 +266,481 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Drow Ranger",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Frost Arrows": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "abilityduration"
+        },
+        "Gust": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Multishot": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Glacier": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Precision Aura": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Marksmanship": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Drow Ranger",
+        "ability": "Frost Arrows",
+        "key": "dmg",
+        "label": "DAMAGE",
+        "value": "0",
+        "source": "ability.dmg"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Frost Arrows",
+        "key": "frost_arrows_movement_speed",
+        "label": "MOVEMENT SLOW:",
+        "value": "-15%/-25%/-35%/-45%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Frost Arrows",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Frost Arrows",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "wave_speed",
+        "label": "WAVE SPEED:",
+        "value": "2000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "wave_width",
+        "label": "WIDTH:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "silence_duration",
+        "label": "SILENCE DURATION:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "knockback_distance_max",
+        "label": "KNOCKBACK MAX:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.6/0.7/0.8/0.9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "knockback_duration_min",
+        "label": "KNOCKBACK DURATION MIN:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "knockback_height",
+        "label": "KNOCKBACK HEIGHT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "wave_length",
+        "label": "WAVE LENGTH:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "bonus_movespeed",
+        "label": "BONUS MOVESPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "miss_chance",
+        "label": "MISS CHANCE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "gust_reveals_invis",
+        "label": "GUST REVEALS INVIS:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Gust",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "wave_count",
+        "label": "WAVE COUNT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_count_per_wave",
+        "label": "ARROWS PER WAVE:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_damage_pct",
+        "label": "ARROW BASE DAMAGE BONUS:",
+        "value": "100%/120%/140%/160%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_width",
+        "label": "ARROW WIDTH:",
+        "value": "90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_speed",
+        "label": "ARROW SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_range_multiplier",
+        "label": "ARROW RANGE MULTIPLIER:",
+        "value": "1.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "arrow_angle",
+        "label": "ARROW ANGLE:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "bypass_block",
+        "label": "BYPASS BLOCK:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "multishot_movespeed",
+        "label": "MOVEMENT SPEED PENALTY:",
+        "value": "35%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Multishot",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_width",
+        "label": "SHARD WIDTH:",
+        "value": "180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_count",
+        "label": "SHARD COUNT:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_speed",
+        "label": "SHARD SPEED:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_angle_step",
+        "label": "SHARD ANGLE STEP:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "shard_distance",
+        "label": "SHARD DISTANCE:",
+        "value": "155",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "turn_rate_slow",
+        "label": "TURN RATE SLOW:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "end_height",
+        "label": "END HEIGHT:",
+        "value": "128",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "hilltop_offset",
+        "label": "HILLTOP OFFSET:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "ramp_radius",
+        "label": "RAMP RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "multishot_arrow_bonus",
+        "label": "BONUS ARROWS PER WAVE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "knockback_duration",
+        "label": "KNOCKBACK DURATION:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "knockback_distance",
+        "label": "KNOCKBACK DISTANCE:",
+        "value": "225",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "knockback_height",
+        "label": "KNOCKBACK HEIGHT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "z_speed_override",
+        "label": "Z SPEED OVERRIDE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "damage_bonus",
+        "label": "HIGH GROUND DAMAGE BONUS:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Glacier",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Precision Aura",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Precision Aura",
+        "key": "trueshot_agi_bonus",
+        "label": "AGILITY BONUS:",
+        "value": "10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Precision Aura",
+        "key": "trueshot_agi_bonus_allies_pct",
+        "label": "TRUESHOT AGI BONUS ALLIES PCT:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Marksmanship",
+        "key": "chance",
+        "label": "CHANCE:",
+        "value": "30%/35%/40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Marksmanship",
+        "key": "bonus_damage",
+        "label": "BONUS PROC DAMAGE:",
+        "value": "50/70/90",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Drow Ranger",
+        "ability": "Marksmanship",
+        "key": "disable_range",
+        "label": "DISABLE RANGE:",
+        "value": "325",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

@@ -121,10 +121,10 @@
       "name": "Mana Break",
       "displayName": "法力损毁（Mana Break）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
-      "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+      "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -158,9 +158,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "state_scaling",
-          "reason": "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。",
           "caveats": [
-            "首轮自动模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+            "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
           ]
         }
       ]
@@ -169,10 +169,10 @@
       "name": "Blink",
       "displayName": "闪烁（Blink）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         65,
         60,
@@ -216,9 +216,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -227,10 +227,10 @@
       "name": "Counterspell",
       "displayName": "法术反制（Counterspell）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         50
       ],
@@ -268,9 +268,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -279,10 +279,10 @@
       "name": "Persecutor",
       "displayName": "绝人之路（Persecutor）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -313,9 +313,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -324,7 +324,7 @@
       "name": "Mana Void",
       "displayName": "法力虚空（Mana Void）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。",
@@ -376,5 +376,353 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Anti-Mage",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Mana Break": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "percent_damage_per_burn",
+          "semanticType": "damage.mana_burn",
+          "requiredInputs": [
+            "target_current_mana",
+            "attack_count"
+          ],
+          "conditionInputs": [
+            "target_current_mana",
+            "attack_count"
+          ],
+          "reason": "全量结构模型：该伤害需要额外状态输入，暂作为条件伤害参考。"
+        },
+        "Blink": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Counterspell": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Persecutor": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "move_slow_min",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Mana Void": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "mana_void_damage_per_mana",
+          "semanticType": "damage.percent_missing_mana",
+          "requiredInputs": [
+            "target_missing_mana"
+          ],
+          "conditionInputs": [
+            "target_missing_mana"
+          ],
+          "reason": "已损魔法百分比伤害需要目标已损魔法输入，首轮模型只作为条件伤害参考。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Break",
+        "key": "mana_per_hit",
+        "label": "MANA BURNED PER HIT:",
+        "value": "25/30/35/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Break",
+        "key": "mana_per_hit_pct",
+        "label": "MAX MANA BURNED PER HIT:",
+        "value": "1.6/2.4/3.2/4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Break",
+        "key": "illusion_percentage",
+        "label": "ILLUSION PERCENTAGE:",
+        "value": "25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Break",
+        "key": "empowered_max_burn_pct",
+        "label": "EMPOWERED MAX BURN PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Break",
+        "key": "empowered_mana_break_debuff_duration",
+        "label": "EMPOWERED MANA BREAK DEBUFF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Blink",
+        "key": "min_blink_range",
+        "label": "MIN BLINK RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Blink",
+        "key": "empowered_mana_break_duration",
+        "label": "EMPOWERED MANA BREAK DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Blink",
+        "key": "empowered_max_burn_pct_tooltip",
+        "label": "EMPOWERED MAX BURN PCT TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Blink",
+        "key": "empowered_mana_break_debuff_duration_tooltip",
+        "label": "DEBUFF DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Blink",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "magic_resistance",
+        "label": "MAGIC RESISTANCE:",
+        "value": "14/21/28/35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "1.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "duration_illusion",
+        "label": "DURATION ILLUSION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "outgoing_damage",
+        "label": "OUTGOING DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "incoming_damage",
+        "label": "INCOMING DAMAGE:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "does_reflect",
+        "label": "DOES REFLECT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "reflected_spell_amp",
+        "label": "REFLECTED SPELL AMP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "heal_pct",
+        "label": "HEAL PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Counterspell",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Persecutor",
+        "key": "move_slow_max",
+        "label": "MAX MOVEMENT SLOW:",
+        "value": "24%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Persecutor",
+        "key": "mana_threshold",
+        "label": "MANA THRESHOLD:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Persecutor",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "0.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Persecutor",
+        "key": "zero_tooltip",
+        "label": "ZERO TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "mana_void_ministun",
+        "label": "STUN DURATION:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "mana_void_aoe_radius",
+        "label": "RADIUS:",
+        "value": "400/450/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "thirst_enabled",
+        "label": "THIRST ENABLED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "thirst_range",
+        "label": "THIRST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "threshold_pct",
+        "label": "THRESHOLD PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "min_bonus_pct",
+        "label": "MIN BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "max_bonus_pct",
+        "label": "MAX BONUS PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "bonus_attack_damage",
+        "label": "MANA THIRST MAX ATTACK DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Anti-Mage",
+        "ability": "Mana Void",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

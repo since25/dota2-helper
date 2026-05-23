@@ -1,5 +1,11 @@
 module.exports = {
   hero: 'Lina',
+  review: {
+    status: 'reviewed',
+    reviewer: 'local',
+    updatedAt: '2026-05-23',
+    notes: ['Initial manually curated model from damage model maintenance work.']
+  },
   abilities: {
     'Dragon Slave': {
       status: 'implemented',

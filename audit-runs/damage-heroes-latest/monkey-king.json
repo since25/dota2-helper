@@ -121,7 +121,7 @@
       "name": "Boundless Strike",
       "displayName": "棒击大地（Boundless Strike）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,7 +176,7 @@
       "name": "Tree Dance",
       "displayName": "丛林之舞（Tree Dance）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -231,7 +231,7 @@
       "name": "Primal Spring",
       "displayName": "乾坤之跃（Primal Spring）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -286,10 +286,10 @@
       "name": "Wukong's Command",
       "displayName": "猴子猴孙（Wukong's Command）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         100
       ],
@@ -326,13 +326,533 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Monkey King",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Boundless Strike": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "strike_flat_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration"
+        },
+        "Tree Dance": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "impact_damage_tooltip",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "unperched_stunned_duration"
+        },
+        "Primal Spring": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "impact_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "impact_slow_duration"
+        },
+        "Jingu Mastery": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Mischief": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Wukong's Command": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "cast_range",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "strike_crit_mult",
+        "label": "CRITICAL DAMAGE:",
+        "value": "120%/140%/160%/180%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "strike_radius",
+        "label": "STRIKE RADIUS:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "strike_cast_range",
+        "label": "DISTANCE:",
+        "value": "1100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "soldier_spawn_duration",
+        "label": "SOLDIER SPAWN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "acceleration_z",
+        "label": "ACCELERATION Z:",
+        "value": "5000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "min_height_above_lowest",
+        "label": "MIN HEIGHT ABOVE LOWEST:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "min_height_above_highest",
+        "label": "MIN HEIGHT ABOVE HIGHEST:",
+        "value": "150",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "max_horizontal_acceleration",
+        "label": "MAX HORIZONTAL ACCELERATION:",
+        "value": "30000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "spring_channel_pct",
+        "label": "SPRING CHANNEL PCT:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Boundless Strike",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "leap_speed",
+        "label": "LEAP SPEED:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "spring_leap_speed",
+        "label": "SPRING LEAP SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "give_up_distance",
+        "label": "GIVE UP DISTANCE:",
+        "value": "1850",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "ground_jump_distance",
+        "label": "GROUND JUMP DISTANCE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "perched_jump_distance",
+        "label": "DISTANCE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "jump_damage_cooldown",
+        "label": "DAMAGE COOLDOWN:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "perched_day_vision",
+        "label": "PERCHED DAY VISION:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "perched_night_vision",
+        "label": "PERCHED NIGHT VISION:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "perched_spot_height",
+        "label": "PERCHED SPOT HEIGHT:",
+        "value": "192",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "top_level_height",
+        "label": "TOP LEVEL HEIGHT:",
+        "value": "500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "impact_movement_slow_tooltip",
+        "label": "IMPACT MOVEMENT SLOW TOOLTIP:",
+        "value": "20/40/60/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "range",
+        "label": "RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "max_level",
+        "label": "MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "900",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Tree Dance",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Primal Spring",
+        "key": "impact_movement_slow",
+        "label": "MOVEMENT SLOW:",
+        "value": "35%/50%/65%/80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Primal Spring",
+        "key": "impact_radius",
+        "label": "IMPACT RADIUS:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Primal Spring",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Primal Spring",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "1.75",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Primal Spring",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "required_hits",
+        "label": "REQUIRED HITS:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "counter_duration",
+        "label": "COUNTER DURATION:",
+        "value": "5.5/7/8.5/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "charges",
+        "label": "CHARGES:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "bonus_damage",
+        "label": "BONUS DAMAGE:",
+        "value": "30/80/130/180",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "lifesteal",
+        "label": "BONUS LIFESTEAL:",
+        "value": "20%/40%/60%/80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "max_duration",
+        "label": "BUFF DURATION:",
+        "value": "35",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Jingu Mastery",
+        "key": "buff_is_undispellable",
+        "label": "BUFF IS UNDISPELLABLE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Mischief",
+        "key": "movespeed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "8%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Mischief",
+        "key": "reveal_radius",
+        "label": "REVEAL RADIUS:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Mischief",
+        "key": "invul_duration",
+        "label": "INVUL DURATION:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Mischief",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "first_radius",
+        "label": "FIRST RADIUS:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "second_radius",
+        "label": "SECOND RADIUS:",
+        "value": "750",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "num_first_soldiers",
+        "label": "NUM FIRST SOLDIERS:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "num_second_soldiers",
+        "label": "NUM SECOND SOLDIERS:",
+        "value": "9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "move_speed",
+        "label": "MOVE SPEED:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "bonus_armor",
+        "label": "BONUS ARMOR:",
+        "value": "15/20/25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "1.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "attack_speed_pct",
+        "label": "ATTACK SPEED PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "damage_pct",
+        "label": "SOLDIER DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "14",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "leadership_time_buffer",
+        "label": "LEADERSHIP TIME BUFFER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "outer_attack_buffer",
+        "label": "OUTER ATTACK BUFFER:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Monkey King",
+        "ability": "Wukong's Command",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "1",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

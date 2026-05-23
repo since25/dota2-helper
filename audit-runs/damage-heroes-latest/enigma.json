@@ -121,7 +121,7 @@
       "name": "Malefice",
       "displayName": "憎恶（Malefice）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -182,7 +182,7 @@
       "name": "Demonic Summoning",
       "displayName": "恶魔召唤（Demonic Summoning）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -237,7 +237,7 @@
       "name": "Midnight Pulse",
       "displayName": "午夜凋零（Midnight Pulse）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -297,10 +297,10 @@
       "name": "Event Horizon",
       "displayName": "事件视界（Event Horizon）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
@@ -331,9 +331,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -342,7 +342,7 @@
       "name": "Black Hole",
       "displayName": "黑洞（Black Hole）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "sustained_dps",
       "reason": "",
@@ -401,5 +401,436 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Enigma",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Malefice": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "stun_duration",
+          "tickIntervalKey": "tick_rate"
+        },
+        "Demonic Summoning": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "eidelon_base_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "abilityduration"
+        },
+        "Midnight Pulse": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "base_damage",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "stack_count"
+          ],
+          "conditionInputs": [
+            "stack_count"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Event Horizon": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "speed_bonus",
+          "semanticType": "control.slow.move_percent",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Black Hole": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "damage",
+          "durationKey": "duration",
+          "tickIntervalKey": "tick_rate",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Enigma",
+        "ability": "Malefice",
+        "key": "shard_bonus_stun_duration_tooltip",
+        "label": "SHARD BONUS STUN DURATION TOOLTIP:",
+        "value": "0.30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Malefice",
+        "key": "stun_instances",
+        "label": "INSTANCES:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Malefice",
+        "key": "eidolon_spawns_per_tick",
+        "label": "EIDOLON SPAWNS PER TICK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Malefice",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "450/500/550/600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Malefice",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "spawn_count",
+        "label": "SPAWN COUNT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "split_attack_count",
+        "label": "ATTACKS TO MULTIPLY:",
+        "value": "6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidelon_max_health",
+        "label": "EIDOLON HP:",
+        "value": "180/200/220/240",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "life_extension",
+        "label": "LIFE EXTENSION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_damage_spread",
+        "label": "EIDOLON DAMAGE SPREAD:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_bonus_damage",
+        "label": "EIDOLON BONUS DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_bonus_attack_speed",
+        "label": "EIDOLON BONUS ATTACK SPEED:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidelon_base_movespeed",
+        "label": "EIDELON BASE MOVESPEED:",
+        "value": "280/310/340/370",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "creep_max_level",
+        "label": "CREEP MAX LEVEL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_magic_resist",
+        "label": "EIDOLON MAGIC RESISTANCE:",
+        "value": "30%/40%/50%/60%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_attack_range",
+        "label": "EIDOLON ATTACK RANGE:",
+        "value": "425/450/475/500",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "allied_damage_pct",
+        "label": "ALLIED DAMAGE PCT:",
+        "value": "45",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "self_modelscale",
+        "label": "SELF MODELSCALE:",
+        "value": "-40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "spawn_offset",
+        "label": "SPAWN OFFSET:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "current_health_pct",
+        "label": "CURRENT HEALTH PCT:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_xp_bounty",
+        "label": "EIDOLON XP BOUNTY:",
+        "value": "10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_gold_bounty_min",
+        "label": "EIDOLON GOLD BOUNTY MIN:",
+        "value": "17",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_gold_bounty_max",
+        "label": "EIDOLON GOLD BOUNTY MAX:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "non_splitting_bounty_reduction",
+        "label": "NON SPLITTING BOUNTY REDUCTION:",
+        "value": "50",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "damage_threshold",
+        "label": "DAMAGE THRESHOLD:",
+        "value": "375",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "damage_reset_interval",
+        "label": "DAMAGE RESET INTERVAL:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "eidolon_spawns",
+        "label": "EIDOLON SPAWNS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Demonic Summoning",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "damage_percent",
+        "label": "CURRENT HEALTH AS DAMAGE:",
+        "value": "4%/6%/8%/10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "9/10/11/12",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "tick_rate",
+        "label": "TICK RATE:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Midnight Pulse",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Event Horizon",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Event Horizon",
+        "key": "vision_cone",
+        "label": "VISION CONE:",
+        "value": "0.08715",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "radius",
+        "label": "RADIUS:",
+        "value": "420",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "pull_speed",
+        "label": "PULL SPEED:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "vision_radius",
+        "label": "VISION RADIUS:",
+        "value": "800",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "pull_rotate_speed",
+        "label": "PULL ROTATE SPEED:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "animation_rate",
+        "label": "ANIMATION RATE:",
+        "value": "0.2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "275",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "abilitychanneltime",
+        "label": "CHANNEL TIME:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Enigma",
+        "ability": "Black Hole",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

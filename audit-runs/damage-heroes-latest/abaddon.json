@@ -121,10 +121,10 @@
       "name": "Mist Coil",
       "displayName": "迷雾缠绕（Mist Coil）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "instant_fixed",
+      "reason": "对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。",
       "manaCostByAbilityLevel": [
         50,
         55,
@@ -139,35 +139,30 @@
       ],
       "components": [
         {
-          "id": "Mist Coil:debuff_reference:self_damage",
-          "kind": "debuff_reference",
+          "id": "Mist Coil:instant_fixed:damage_heal",
+          "kind": "instant_fixed",
           "growthKind": "non_growth",
-          "damageType": "Unknown",
-          "label": "self_damage",
+          "damageType": "Magical",
+          "label": "damage_heal",
           "valuesByAbilityLevel": [
-            40
+            95,
+            170,
+            245,
+            320
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
-          "countInFixedInstantTotal": false,
+          "countInFixedInstantTotal": true,
           "formula": {
-            "type": "debuff_reference"
+            "type": "single_value"
           },
-          "metadata": {
-            "isDamageReference": false,
-            "modifierType": "",
-            "affects": "self_resource",
-            "condition": "",
-            "requiredInputs": [],
-            "chanceByAbilityLevel": [],
-            "multiplierByAbilityLevel": []
-          },
+          "metadata": {},
           "source": "curated",
-          "status": "reference_only",
-          "model": "debuff_reference",
-          "reason": "首轮自动模型：该百分比/修正值不直接计入固定爆发。",
+          "status": "implemented",
+          "model": "instant_fixed",
+          "reason": "对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。",
           "caveats": [
-            "首轮自动模型：该百分比/修正值不直接计入固定爆发。"
+            "对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。"
           ]
         }
       ]
@@ -176,10 +171,10 @@
       "name": "Aphotic Shield",
       "displayName": "无光之盾（Aphotic Shield）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
-      "reason": "",
+      "reason": "护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。",
       "manaCostByAbilityLevel": [
         110,
         120,
@@ -222,8 +217,10 @@
           "source": "curated",
           "status": "implemented",
           "model": "instant_fixed",
-          "reason": "",
-          "caveats": []
+          "reason": "护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。",
+          "caveats": [
+            "护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。"
+          ]
         }
       ]
     },
@@ -231,24 +228,74 @@
       "name": "Curse of Avernus",
       "displayName": "魔霭诅咒（Curse of Avernus）",
       "isUltimate": false,
-      "modelSource": "auto",
-      "status": "reference_only",
-      "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "modelSource": "curated",
+      "status": "implemented",
+      "model": "sustained_dps",
+      "reason": "被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。",
       "manaCostByAbilityLevel": [],
       "cooldownByAbilityLevel": [],
       "components": [
         {
-          "id": "Curse of Avernus:debuff_reference:curse_attack_speed",
+          "id": "Curse of Avernus:sustained:curse_dps",
+          "kind": "sustained",
+          "growthKind": "non_growth",
+          "damageType": "Magical",
+          "label": "curse_dps",
+          "valuesByAbilityLevel": [
+            15,
+            25,
+            35,
+            45
+          ],
+          "theoreticalTotalByAbilityLevel": [
+            30,
+            50,
+            70,
+            90
+          ],
+          "totalFormula": "duration * damagePerSecond",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "duration_times_dps"
+          },
+          "metadata": {
+            "durationByAbilityLevel": [
+              2,
+              2,
+              2,
+              2
+            ],
+            "condition": "需要普攻命中目标后触发。"
+          },
+          "source": "curated",
+          "status": "implemented",
+          "model": "sustained_dps",
+          "reason": "被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。",
+          "caveats": [
+            "包含持续伤害，理论总量依赖目标站位和完整命中。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Withering Mist",
+      "displayName": "凋零迷雾（Withering Mist）",
+      "isUltimate": false,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。",
+      "manaCostByAbilityLevel": [],
+      "cooldownByAbilityLevel": [],
+      "components": [
+        {
+          "id": "Withering Mist:debuff_reference:heal_reduction_pct",
           "kind": "debuff_reference",
           "growthKind": "non_growth",
           "damageType": "Unknown",
-          "label": "curse_attack_speed",
+          "label": "heal_reduction_pct",
           "valuesByAbilityLevel": [
-            10,
-            20,
-            30,
-            40
+            24.5
           ],
           "theoreticalTotalByAbilityLevel": [],
           "totalFormula": "",
@@ -258,8 +305,8 @@
           },
           "metadata": {
             "isDamageReference": false,
-            "modifierType": "attack_speed",
-            "affects": "attack_speed",
+            "modifierType": "",
+            "affects": "enemy_healing",
             "condition": "",
             "requiredInputs": [],
             "chanceByAbilityLevel": [],
@@ -268,13 +315,345 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Borrowed Time",
+      "displayName": "回光返照（Borrowed Time）",
+      "isUltimate": true,
+      "modelSource": "curated",
+      "status": "reference_only",
+      "model": "debuff_reference",
+      "reason": "回光返照将受到伤害转化为治疗，不直接造成对敌伤害。",
+      "manaCostByAbilityLevel": [
+        0,
+        0,
+        0
+      ],
+      "cooldownByAbilityLevel": [
+        85,
+        75,
+        65
+      ],
+      "components": [
+        {
+          "id": "Borrowed Time:debuff_reference:duration",
+          "kind": "debuff_reference",
+          "growthKind": "non_growth",
+          "damageType": "Unknown",
+          "label": "duration",
+          "valuesByAbilityLevel": [
+            4,
+            5,
+            6
+          ],
+          "theoreticalTotalByAbilityLevel": [],
+          "totalFormula": "",
+          "countInFixedInstantTotal": false,
+          "formula": {
+            "type": "debuff_reference"
+          },
+          "metadata": {
+            "isDamageReference": false,
+            "modifierType": "survivability",
+            "affects": "survivability",
+            "condition": "",
+            "requiredInputs": [],
+            "chanceByAbilityLevel": [],
+            "multiplierByAbilityLevel": []
+          },
+          "source": "curated",
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "reason": "回光返照将受到伤害转化为治疗，不直接造成对敌伤害。",
+          "caveats": [
+            "回光返照将受到伤害转化为治疗，不直接造成对敌伤害。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Abaddon",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Reviewed against local Dotabuff Chinese semantic snapshot."
+        ]
+      },
+      "abilities": {
+        "Withering Mist": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "heal_reduction_pct",
+          "semanticType": "defense.regen.hp_per_second",
+          "affects": "enemy_healing",
+          "reason": "固定先天效果降低低血量敌人的生命恢复，不直接造成伤害。"
+        },
+        "Mist Coil": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_heal",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "对敌释放造成 damage_heal 魔法伤害；self_damage 是自身生命代价，不计入对敌爆发。"
+        },
+        "Aphotic Shield": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "damage_absorb",
+          "durationKey": "duration",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "护盾消失或破裂时对附近敌人造成等于最大吸收量的魔法伤害。"
+        },
+        "Curse of Avernus": {
+          "status": "implemented",
+          "model": "sustained_dps",
+          "damagePerSecondKey": "curse_dps",
+          "durationKey": "curse_duration",
+          "semanticType": "damage.sustained_dps",
+          "defaultActiveDuration": "full",
+          "conditionInputs": [
+            "attack_count"
+          ],
+          "condition": "需要普攻命中目标后触发。",
+          "reason": "被动攻击施加 2 秒持续伤害，是否触发取决于攻击命中窗口。"
+        },
+        "Borrowed Time": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "duration",
+          "semanticType": "window.buff_duration.seconds",
+          "affects": "survivability",
+          "reason": "回光返照将受到伤害转化为治疗，不直接造成对敌伤害。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "self_damage",
+        "label": "SELF DAMAGE:",
+        "value": "40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "self_damage_enemy_target",
+        "label": "SELF DAMAGE ENEMY TARGET:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "missile_speed",
+        "label": "MISSILE SPEED:",
+        "value": "1300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "effect_radius",
+        "label": "EFFECT RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "perform_attack",
+        "label": "PERFORM ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "damage_percentage_on_perform_attack",
+        "label": "DAMAGE PERCENTAGE ON PERFORM ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "625",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Mist Coil",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.25",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "radius",
+        "label": "BURST RADIUS:",
+        "value": "675",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "regen",
+        "label": "REGEN:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "absorb_to_damage",
+        "label": "ABSORB TO DAMAGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "absorb_damage_aoe",
+        "label": "RETURN DAMAGE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "550",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Aphotic Shield",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "slow_duration",
+        "label": "SLOW DURATION:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "hit_count",
+        "label": "HIT COUNT:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "curse_slow",
+        "label": "SLOW:",
+        "value": "10%/15%/20%/25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "curse_attack_speed",
+        "label": "ATTACK SPEED:",
+        "value": "10/20/30/40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "tower_dps_pct",
+        "label": "TOWER DPS PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Curse of Avernus",
+        "key": "curse_interval",
+        "label": "CURSE INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Withering Mist",
+        "key": "hp_threshold_pct",
+        "label": "HP THRESHOLD PCT:",
+        "value": "40",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Withering Mist",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Withering Mist",
+        "key": "cooldown_reduction_creeps",
+        "label": "COOLDOWN REDUCTION CREEPS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Withering Mist",
+        "key": "cooldown_reduction_heroes",
+        "label": "COOLDOWN REDUCTION HEROES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Borrowed Time",
+        "key": "hp_threshold",
+        "label": "HEALTH THRESHOLD:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Abaddon",
+        "ability": "Borrowed Time",
+        "key": "immolate_tick",
+        "label": "IMMOLATE TICK:",
+        "value": ".25",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

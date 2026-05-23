@@ -1,90 +1,123 @@
-# Dota 2 Hero Damage Model Audit Workflow
+# Dota 2 英雄伤害模型审核流程
 
-This document defines the next-stage workflow for auditing all hero damage models after the semantic layer is in place. The goal is to make every curated number explainable before it can be used by the calculator or LLM prompt.
+本文档定义语义层完成后的英雄伤害模型维护流程。目标是：任何进入计算器或 LLM prompt 的数值，都能追溯到 provider 原始字段，并能解释它为什么被计入、只作为参考，或暂不支持。
 
-## Per-Hero Review Checklist
+## 单英雄复核清单
 
-1. Confirm visible abilities from provider data.
-2. Identify direct damage fields.
-3. Identify sustained, wave, tick, attack, chance, and conditional damage.
-4. Identify offensive modifiers such as armor reduction, magic resistance reduction, spell amp, damage amp, attack speed, and crit.
-5. Identify defensive, control, resource, mobility, range, area, summon, and condition fields.
-6. Mark unmodeled mechanics as `unsupported` with a concrete reason.
-7. Add semantic tests for every curated entry.
-8. Run semantic audit for the hero.
-9. Inspect the prompt line for the hero and confirm Chinese labels are clear.
+1. 确认 provider 中的可见技能列表。
+2. 找出直接伤害字段。
+3. 区分持续、跳伤、多波、普攻触发、概率触发和条件伤害。
+4. 区分护甲降低、魔抗降低、法术增强、伤害加深、攻速、暴击等进攻修正。
+5. 区分防御、控制、资源、机动、范围、召唤物和条件输入字段。
+6. 不能准确建模的机制必须写明 `unsupported` 或 `reference_only` 原因。
+7. 每个手工模型必须有 `review.status`。
+8. 每个批次补充对应测试。
+9. 运行 semantic audit，并检查审核 HTML 中的原始字段和模型字段对照。
 
-## Batch Groups
+## 批次分组
 
-Use mechanism clusters instead of alphabetical order. Each batch should be small enough to review with tests, semantic audit, calculator output, and prompt output before moving to the next batch.
+按机制分组，不按字母顺序。每个批次都要小到可以用测试、semantic audit、计算器输出和 prompt 输出完成复核。
 
-### Batch A: Simple Nukes And Direct-Damage Supports
+### Batch A: 简单瞬时伤害
 
-Focus on heroes whose damage model is mostly fixed instant damage. These heroes establish the baseline for direct damage fields, damage type labels, mana and cooldown context, and level spike formatting.
+以固定瞬时伤害为主，建立直接伤害字段、伤害类型、蓝耗冷却和等级强势期格式的基线。
 
-### Batch B: Sustained And Tick Damage
+### Batch B: 持续和跳伤
 
-Focus on damage-over-time, tick, channel, aura, duration, and partial-active-duration mechanics. These heroes should use active duration controls instead of assuming every sustained ability always deals full theoretical damage.
+覆盖持续伤害、跳伤、引导、光环、持续时间和部分作用时间。持续类技能不能默认永远打满，应暴露作用时间控制。
 
-### Batch C: Attack Modifiers And Procs
+### Batch C: 普攻修正和触发
 
-Focus on attack modifiers, bashes, crits, cleave-like attacks, and attack-count procs. These models must expose required inputs such as attack count, hero attack damage, proc chance, and active attack window.
+覆盖攻击特效、重击、暴击、分裂类攻击和攻击次数触发。模型必须暴露攻击次数、英雄攻击力、触发概率和有效攻击窗口。
 
-### Batch D: Resistance And Amplification Modifiers
+### Batch D: 抗性和增伤修正
 
-Focus on armor reduction, magic resistance reduction, damage amplification, spell amplification, and other values that modify later damage. These values must stay out of fixed raw damage and appear as modifier references.
+覆盖护甲降低、魔抗降低、伤害加深、法术增强等后续伤害修正。这类字段不能进入固定伤害总量，应作为 modifier reference。
 
-### Batch E: Summons And Unit Proxies
+### Batch E: 召唤物和代理单位
 
-Focus on summons, wards, illusions, dominated units, and unit proxy damage. These models must expose summon count, summon attack damage, active duration, attack interval, and survival assumptions.
+覆盖召唤物、守卫、幻象、支配单位和代理单位伤害。模型需要暴露召唤数量、攻击力、作用时间、攻击间隔和存活假设。
 
-### Batch F: Percent And Scaling Damage
+### Batch F: 百分比和缩放伤害
 
-Focus on percent-health, missing-health, missing-mana, attribute-scaling, distance-scaling, and stack-scaling damage. These models must declare condition inputs before calculator totals or LLM context can use them.
+覆盖最大生命、当前生命、已损生命、已损魔法、属性、距离和叠层缩放。进入计算前必须声明所需条件输入。
 
-### Batch G: Transform And Copied-Skill Edge Cases
+### Batch G: 变身和复制技能边界
 
-Focus on transformations, copied skills, stolen spells, shapeshifts, and other cross-hero mechanics. These are lower priority for first-pass totals unless the current hero naturally depends on copied ability data.
+覆盖变身、复制技能、偷取技能和跨英雄机制。除非英雄本身依赖这类机制，否则优先级低于基础伤害批次。
 
-### Batch H: Remaining Utility And Low-Damage Heroes
+### Batch H: 剩余功能型英雄
 
-Finish the remaining heroes with low direct damage or mostly utility mechanics. Non-damage fields still need semantics so the prompt can explain why they are not counted as burst damage.
+完成低直接伤害或以功能性为主的英雄。非伤害字段仍需语义化，这样 prompt 可以解释为什么它们不计入爆发。
 
-## Required Commands
+## Maintenance Stage 1
 
-Run semantic audit after each hero:
+Stage 1 已开始把持续、跳伤、引导、多波技能从自动候选模型升级为人工复核模型。
+
+当前已复核 Batch B 首批英雄：
+
+- Jakiro
+- Viper
+- Phoenix
+- Leshrac
+- Death Prophet
+- Witch Doctor
+- Ancient Apparition
+- Venomancer
+
+模型状态含义：
+
+- `reviewed`：已经人工复核并纳入测试。
+- `candidate`：候选模型，通常来自自动抽取或尚未人工确认。
+- `auto-only`：只有自动模型覆盖，不能视为准确完成。
+
+本阶段常用命令：
+
+```bash
+npm run damage:coverage
+npm run semantic:audit
+npm run damage:audit-pages -- --out audit-runs/damage-heroes-latest
+npm test
+```
+
+审核页会展示 API 输出、当前模型 JSON、未引用的原始数值字段和可疑映射，供人工逐英雄校对。
+
+## 必跑命令
+
+复核单个英雄后运行：
 
 ```bash
 node scripts/semantic-audit.js --hero "Hero Name"
 ```
 
-Run coverage before ending a batch:
+结束一个批次前运行：
 
 ```bash
 npm run damage:coverage
 ```
 
-Run the full test suite before moving to the next batch:
+进入下一批次前运行：
 
 ```bash
 npm test
 ```
 
-## Coverage Gates
+## 覆盖率门槛
 
-The coverage report must expose:
+覆盖率报告必须展示：
 
-- total heroes;
-- curated heroes;
-- curated abilities;
-- semantic-complete abilities;
-- unsupported abilities with reason;
-- inferred fallback abilities.
+- 英雄总数；
+- 人工复核英雄数；
+- 人工候选英雄数；
+- 仅自动模型英雄数；
+- 语义完整技能数；
+- `unsupported` 技能及原因；
+- fallback/inferred 技能。
 
-For a reviewed batch, the expected direction is:
+复核批次的质量要求：
 
-- no curated entry missing semantic metadata;
-- no unsupported entry without a reason;
-- no non-damage modifier counted as raw fixed damage;
-- no percent-like field routed as flat damage unless the model explicitly explains why;
-- no prompt line using `Unknown` for a non-damage semantic reference.
+- 不允许模型条目缺失语义信息；
+- 不允许 `unsupported` 没有原因；
+- 不允许非伤害修正被计入固定原始伤害；
+- 不允许百分比字段被误当成固定伤害，除非模型明确解释；
+- 不允许 prompt 对明确的非伤害语义仍显示 `Unknown`。

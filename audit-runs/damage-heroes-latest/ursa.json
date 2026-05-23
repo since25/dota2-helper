@@ -121,7 +121,7 @@
       "name": "Earthshock",
       "displayName": "震撼大地（Earthshock）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "implemented",
       "model": "instant_fixed",
       "reason": "",
@@ -176,10 +176,10 @@
       "name": "Overpower",
       "displayName": "超强力量（Overpower）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         45,
         50,
@@ -220,9 +220,9 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
@@ -231,7 +231,7 @@
       "name": "Fury Swipes",
       "displayName": "怒意狂击（Fury Swipes）",
       "isUltimate": false,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "state_scaling",
       "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。",
@@ -262,7 +262,9 @@
             "affects": "",
             "condition": "",
             "requiredInputs": [
-              "stack_count"
+              "attack_count",
+              "stack_count",
+              "hero_attack_damage"
             ],
             "chanceByAbilityLevel": [],
             "multiplierByAbilityLevel": []
@@ -281,10 +283,10 @@
       "name": "Enrage",
       "displayName": "激怒（Enrage）",
       "isUltimate": true,
-      "modelSource": "auto",
+      "modelSource": "curated",
       "status": "reference_only",
       "model": "debuff_reference",
-      "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+      "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
       "manaCostByAbilityLevel": [
         0
       ],
@@ -321,13 +323,274 @@
           "source": "curated",
           "status": "reference_only",
           "model": "debuff_reference",
-          "reason": "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。",
           "caveats": [
-            "首轮自动模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+            "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
           ]
         }
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Ursa",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local-bulk-semantic-pass",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Promoted from the local semantic model after Dotabuff snapshot presence and semantic audit coverage checks.",
+          "High-variance mechanics remain reference_only or state_scaling and require explicit combat inputs before total damage calculation."
+        ]
+      },
+      "abilities": {
+        "Earthshock": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "durationKey": "hop_duration"
+        },
+        "Overpower": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        },
+        "Fury Swipes": {
+          "status": "reference_only",
+          "model": "state_scaling",
+          "valueKey": "damage_per_stack",
+          "semanticType": "damage.stack_scaling",
+          "requiredInputs": [
+            "attack_count",
+            "stack_count",
+            "hero_attack_damage"
+          ],
+          "conditionInputs": [
+            "attack_count",
+            "stack_count",
+            "hero_attack_damage"
+          ],
+          "reason": "叠层系数伤害需要叠层输入，首轮模型只作为条件伤害参考。"
+        },
+        "Maul": {
+          "status": "ignored",
+          "reason": "首轮自动模型未识别到可用于伤害计算的直接数值。"
+        },
+        "Enrage": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "abilitycastrange",
+          "semanticType": "mobility.cast_range.units",
+          "affects": "positioning",
+          "reason": "全量结构模型：该数值影响伤害窗口或修正，但不直接计入固定爆发。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "shock_radius",
+        "label": "RADIUS:",
+        "value": "385",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "movement_slow",
+        "label": "SLOW:",
+        "value": "-22%/-28%/-34%/-40%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "hop_distance",
+        "label": "HOP DISTANCE:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "hop_height",
+        "label": "HOP HEIGHT:",
+        "value": "83",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "abilitycharges",
+        "label": "MAX CHARGES:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "abilitychargerestoretime",
+        "label": "CHARGE RESTORE TIME:",
+        "value": "15/13/11/9",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Earthshock",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Overpower",
+        "key": "max_attacks",
+        "label": "ATTACKS:",
+        "value": "3/4/5/6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Overpower",
+        "key": "attack_speed_bonus_pct",
+        "label": "BONUS ATTACK SPEED:",
+        "value": "400",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Overpower",
+        "key": "slow_resist",
+        "label": "SLOW RESISTANCE:",
+        "value": "25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Overpower",
+        "key": "abilityduration",
+        "label": "DURATION:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Overpower",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Fury Swipes",
+        "key": "bonus_reset_time",
+        "label": "RESET TIME:",
+        "value": "8/12/16/20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Fury Swipes",
+        "key": "bonus_reset_time_roshan",
+        "label": "RESET TIME (ROSHAN):",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Fury Swipes",
+        "key": "stun_stack_count",
+        "label": "STUN STACK COUNT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Fury Swipes",
+        "key": "stun_duration",
+        "label": "STUN DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Maul",
+        "key": "health_as_damage_pct",
+        "label": "HEALTH AS DAMAGE:",
+        "value": "1.25%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "damage_reduction",
+        "label": "DAMAGE REDUCTION:",
+        "value": "80%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "status_resistance",
+        "label": "STATUS RESISTANCE:",
+        "value": "50%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "4/4.5/5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "aoe_radius",
+        "label": "AOE RADIUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "damage_increase",
+        "label": "DAMAGE ABSORBED TO DAMAGE:",
+        "value": "0%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Ursa",
+        "ability": "Enrage",
+        "key": "damage_increase_duration",
+        "label": "DAMAGE INCREASE LINGER DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }

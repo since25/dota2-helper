@@ -466,5 +466,610 @@
       ]
     }
   ],
-  "items": []
+  "items": [],
+  "modelAudit": {
+    "source": "manual",
+    "reviewStatus": "reviewed",
+    "manualModel": {
+      "hero": "Shadow Fiend",
+      "review": {
+        "status": "reviewed",
+        "reviewer": "local",
+        "updatedAt": "2026-05-23",
+        "notes": [
+          "Initial manually curated model from damage model maintenance work."
+        ]
+      },
+      "abilities": {
+        "Shadowraze": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "shadowraze_damage",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "毁灭阴影的叠加增伤先作为参考，不自动叠入单次基础伤害。"
+        },
+        "Feast of Souls": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "bonus_attack_speed",
+          "semanticType": "modifier.attack_speed.flat",
+          "affects": "attack_speed",
+          "stackGroup": "attack_speed",
+          "reason": "攻速和移速加成影响持续输出，不直接造成技能伤害。"
+        },
+        "Presence of the Dark Lord": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "presence_armor_reduction",
+          "semanticType": "modifier.armor_reduction.flat",
+          "affects": "physical_damage",
+          "stackGroup": "armor_reduction",
+          "reason": "减甲会放大后续物理伤害，当前总量不自动串联减甲。"
+        },
+        "Requiem of Souls": {
+          "status": "implemented",
+          "model": "instant_fixed",
+          "damageKey": "dmg",
+          "semanticType": "damage.instant",
+          "defaultIncluded": true,
+          "reason": "按单条魂线命中计算，多条命中需要后续按命中线数扩展。"
+        },
+        "Necromastery": {
+          "status": "reference_only",
+          "model": "debuff_reference",
+          "valueKey": "necromastery_damage_per_soul",
+          "semanticType": "modifier.attack_damage.flat",
+          "affects": "attack_damage",
+          "stackGroup": "attack_damage",
+          "conditionInputs": [
+            "current_soul_count"
+          ],
+          "reason": "魂数提供攻击力成长，需要当前魂数作为输入。"
+        }
+      },
+      "source": "manual"
+    },
+    "rawNumericFieldsNotReferenced": [
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_radius",
+        "label": "SHADOWRAZE RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_range",
+        "label": "RANGE:",
+        "value": "200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_cooldown",
+        "label": "SHADOWRAZE COOLDOWN:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "stack_bonus_damage",
+        "label": "BONUS PER STACK:",
+        "value": "35/50/65/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "duration",
+        "label": "STACK DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "procs_attack",
+        "label": "PROCS ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "movement_speed_debuff",
+        "label": "MOVEMENT SPEED DEBUFF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "turn_rate_pct",
+        "label": "TURN RATE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "cooldown_reduction_on_hero_hit",
+        "label": "COOLDOWN REDUCTION ON HERO HIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "damage_per_soul",
+        "label": "BONUS DAMAGE PER SOUL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.55",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_radius",
+        "label": "SHADOWRAZE RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_range",
+        "label": "RANGE:",
+        "value": "450",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_cooldown",
+        "label": "SHADOWRAZE COOLDOWN:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "stack_bonus_damage",
+        "label": "BONUS PER STACK:",
+        "value": "35/50/65/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "duration",
+        "label": "STACK DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "procs_attack",
+        "label": "PROCS ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "movement_speed_debuff",
+        "label": "MOVEMENT SPEED DEBUFF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "turn_rate_pct",
+        "label": "TURN RATE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "cooldown_reduction_on_hero_hit",
+        "label": "COOLDOWN REDUCTION ON HERO HIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "damage_per_soul",
+        "label": "BONUS DAMAGE PER SOUL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.55",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_radius",
+        "label": "SHADOWRAZE RADIUS:",
+        "value": "250",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_range",
+        "label": "RANGE:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "shadowraze_cooldown",
+        "label": "SHADOWRAZE COOLDOWN:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "stack_bonus_damage",
+        "label": "BONUS PER STACK:",
+        "value": "35/50/65/80",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "duration",
+        "label": "STACK DURATION:",
+        "value": "7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "procs_attack",
+        "label": "PROCS ATTACK:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "movement_speed_debuff",
+        "label": "MOVEMENT SPEED DEBUFF:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "turn_rate_pct",
+        "label": "TURN RATE PCT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "cooldown_reduction_on_hero_hit",
+        "label": "COOLDOWN REDUCTION ON HERO HIT:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "damage_per_soul",
+        "label": "BONUS DAMAGE PER SOUL:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Shadowraze",
+        "key": "abilitycastpoint",
+        "label": "CAST TIME:",
+        "value": "0.55",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "bonus_move_speed",
+        "label": "BONUS MOVE SPEED:",
+        "value": "4%/6%/8%/10%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "cast_speed_pct",
+        "label": "CAST SPEED PCT:",
+        "value": "100",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "cast_speed_pct_tooltip",
+        "label": "CAST SPEED PCT TOOLTIP:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "duration",
+        "label": "DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "max_collection_count",
+        "label": "MAX COLLECTION TARGETS:",
+        "value": "4/6/8/10",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "soul_collection_per_interval",
+        "label": "SOUL COLLECTION PER INTERVAL:",
+        "value": "2",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "soul_collection_radius",
+        "label": "SOUL COLLECTION RADIUS:",
+        "value": "600",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "soul_collection_interval",
+        "label": "SOUL COLLECTION INTERVAL:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "soul_collection_per_hero",
+        "label": "SOULS PER HERO:",
+        "value": "3",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "soul_collection_per_creep",
+        "label": "SOULS PER CREEP:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Feast of Souls",
+        "key": "linger_duration",
+        "label": "LINGER DURATION:",
+        "value": "8",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Presence of the Dark Lord",
+        "key": "presence_radius",
+        "label": "RADIUS:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Presence of the Dark Lord",
+        "key": "bonus_armor_per_stack",
+        "label": "REDUCTION PER HERO:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Presence of the Dark Lord",
+        "key": "kill_buff_duration",
+        "label": "HERO REDUCTION DURATION:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Presence of the Dark Lord",
+        "key": "abilitycastrange",
+        "label": "CAST RANGE:",
+        "value": "1200",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_radius",
+        "label": "REQUIEM RADIUS:",
+        "value": "1000",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_reduction_ms",
+        "label": "MOVEMENT REDUCTION:",
+        "value": "-20%/-25%/-30%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_reduction_mres",
+        "label": "MAGIC RESIST REDUCTION:",
+        "value": "-5%/-10%/-15%",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_slow_duration",
+        "label": "FEAR DURATION PER SOUL HIT:",
+        "value": "0.6",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_slow_duration_max",
+        "label": "FEAR DURATION MAX:",
+        "value": "2.15",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_soul_conversion",
+        "label": "REQUIEM SOUL CONVERSION:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_line_width_start",
+        "label": "REQUIEM LINE WIDTH START:",
+        "value": "125",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_line_width_end",
+        "label": "REQUIEM LINE WIDTH END:",
+        "value": "300",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "requiem_line_speed",
+        "label": "REQUIEM LINE SPEED:",
+        "value": "700",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "soul_death_release",
+        "label": "SOUL DEATH RELEASE:",
+        "value": "0.5",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "max_soul_release",
+        "label": "MAX SOUL RELEASE:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Requiem of Souls",
+        "key": "abilitycastpoint",
+        "label": "CAST DELAY:",
+        "value": "1.67",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "necromastery_max_souls",
+        "label": "BASE MAX SOULS:",
+        "value": "20",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "souls_per_kill",
+        "label": "SOULS PER KILL:",
+        "value": "1",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "souls_per_hero_kill",
+        "label": "SOULS PER HERO KILL:",
+        "value": "4",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "necromastery_soul_release",
+        "label": "NECROMASTERY SOUL RELEASE:",
+        "value": "0.7",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "attack_range_bonus",
+        "label": "ATTACK RANGE BONUS:",
+        "value": "0",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "soul_release_tooltip",
+        "label": "SOUL RELEASE TOOLTIP:",
+        "value": "30",
+        "source": "ability.attrib"
+      },
+      {
+        "hero": "Shadow Fiend",
+        "ability": "Necromastery",
+        "key": "max_soul_increase_on_hero_kill",
+        "label": "MAX SOUL INCREASE ON HERO KILL:",
+        "value": "0",
+        "source": "ability.attrib"
+      }
+    ],
+    "suspiciousMappings": [],
+    "modelEntriesMissingSemanticType": [],
+    "unmodeledVisibleAbilities": []
+  }
 }
