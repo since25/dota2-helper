@@ -14,6 +14,7 @@ const packageManifests = [
 function assertPinnedDependencyMap(fileName, dependencyType, dependencies) {
   assert.equal(typeof dependencies, 'object', `${fileName} ${dependencyType} must exist`);
   assert.notEqual(dependencies, null, `${fileName} ${dependencyType} must exist`);
+  assert.equal(Array.isArray(dependencies), false, `${fileName} ${dependencyType} must be an object map`);
   assert.notDeepEqual(dependencies, {}, `${fileName} ${dependencyType} must not be empty`);
 
   for (const [name, version] of Object.entries(dependencies)) {
@@ -25,6 +26,11 @@ function assertPinnedDependencyMap(fileName, dependencyType, dependencies) {
     );
   }
 }
+
+test('package root metadata matches the lockfile root', () => {
+  assert.equal(lockfile.packages[''].name, pkg.name);
+  assert.equal(lockfile.packages[''].version, pkg.version);
+});
 
 test('package license matches repository LICENSE file', () => {
   const licenseText = fs.readFileSync(path.join(__dirname, '..', 'LICENSE'), 'utf8');
