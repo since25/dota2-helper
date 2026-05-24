@@ -97,6 +97,72 @@ test('debug endpoint fails when the AI reply is empty', async () => {
   });
 });
 
+test('get-tips uses the injected AI client', async () => {
+  const calls = [];
+  const fakeAxios = {
+    async post(url, payload, options) {
+      calls.push({ url, payload, options });
+      return { data: { choices: [{ message: { content: '测试建议' } }] } };
+    }
+  };
+  const fakeConfig = {
+    provider: 'test',
+    model: 'test-model',
+    baseUrl: 'https://ai.example.test/v1',
+    chatCompletionsUrl: 'https://ai.example.test/v1/chat/completions',
+    apiKey: '',
+    includeReasoningEffort: false
+  };
+  const fakeDataProvider = {
+    async buildMatchContext() {
+      return {
+        teams: {
+          myTeam: ['A', 'B', 'C', 'D', 'E'].map((hero) => ({ hero })),
+          opponentTeam: ['F', 'G', 'H', 'I', 'J'].map((hero) => ({ hero }))
+        }
+      };
+    },
+    buildGroundedChinesePrompt() {
+      return '固定提示';
+    }
+  };
+  const app = createApp({
+    redis: null,
+    axiosInstance: fakeAxios,
+    aiConfig: fakeConfig,
+    dataProvider: fakeDataProvider
+  });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/get-tips`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        myTeam: [
+          { role: 'Safe Lane', hero: 'A' },
+          { role: 'Midlane', hero: 'B' },
+          { role: 'Offlane', hero: 'C' },
+          { role: 'Support', hero: 'D' },
+          { role: 'Hard Support', hero: 'E' }
+        ],
+        opponentTeam: [
+          { role: 'Safe Lane', hero: 'F' },
+          { role: 'Midlane', hero: 'G' },
+          { role: 'Offlane', hero: 'H' },
+          { role: 'Support', hero: 'I' },
+          { role: 'Hard Support', hero: 'J' }
+        ]
+      })
+    });
+    const data = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(data.tips, '测试建议');
+    assert.equal(calls.length, 1);
+    assert.equal(calls[0].url, fakeConfig.chatCompletionsUrl);
+  });
+});
+
 function fakeRedis(values = {}) {
   return {
     async get(key) {

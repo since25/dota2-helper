@@ -393,7 +393,7 @@ async function recoverToken() {
       updateProUI(true);
       alert('Pro access restored!');
     } else {
-      alert(data.error || 'No active subscription found for this email.');
+      alert(data.error || data.message || 'No active subscription found for this email.');
     }
   } catch {
     alert('Failed to recover subscription. Please try again.');

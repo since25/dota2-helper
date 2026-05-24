@@ -642,7 +642,7 @@ app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
     try {
         console.log(`Sending structured prompt to AI provider (${activeAiConfig.provider}, ${activeAiConfig.model})...`);
         const aiResponse = await callAiChat(
-            axios,
+            req.app.locals.axiosInstance,
             activeAiConfig,
             buildChineseCoachMessages(prompt),
             { temperature: 1, maxCompletionTokens: 8192, topP: 1, reasoningEffort: 'low' }

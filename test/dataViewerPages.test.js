@@ -80,3 +80,9 @@ test('damage calculator forces runtime-input primitives into theoretical mode', 
   assert.match(js, /<option value="base" \$\{runtimeInputOnly \? 'disabled' : ''\}>/);
   assert.match(js, /\|\| runtimeInputOnly/);
 });
+
+test('token recovery no-token branch can surface backend messages', () => {
+  const js = read('script.js');
+
+  assert.match(js, /data\.error \|\| data\.message \|\| 'No active subscription found for this email\.'/);
+});
