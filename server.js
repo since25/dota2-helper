@@ -342,6 +342,7 @@ app.post('/api/create-checkout-session', async (req, res) => {
 app.post('/api/create-portal-session', async (req, res) => {
   const activeRedis = req.app.locals.redis;
   const activeStripe = req.app.locals.stripe;
+  if (!activeRedis) return res.status(503).json({ error: 'Subscription storage not configured.' });
   if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
 
   const authHeader = req.headers.authorization;
@@ -371,6 +372,7 @@ app.post('/api/create-portal-session', async (req, res) => {
 app.post('/api/webhook', async (req, res) => {
   const activeRedis = req.app.locals.redis;
   const activeStripe = req.app.locals.stripe;
+  if (!activeRedis) return res.status(503).json({ error: 'Subscription storage not configured.' });
   if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
   const sig = req.headers['stripe-signature'];
   let event;
@@ -405,7 +407,7 @@ app.post('/api/webhook', async (req, res) => {
           await activeRedis.set(`email:${email.toLowerCase()}`, customerId);
         }
 
-        console.log(`New subscription: ${customerId}, token: ${token}`);
+        console.log(`New subscription: ${customerId}`);
         break;
       }
 
@@ -446,6 +448,7 @@ app.post('/api/webhook', async (req, res) => {
 app.get('/api/checkout-success', async (req, res) => {
   const activeRedis = req.app.locals.redis;
   const activeStripe = req.app.locals.stripe;
+  if (!activeRedis) return res.status(503).json({ error: 'Subscription storage not configured.' });
   if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
   const { session_id } = req.query;
   if (!session_id) {
@@ -474,6 +477,7 @@ app.get('/api/subscription-status', async (req, res) => {
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.json({ active: false });
   }
+  if (!activeRedis) return res.status(503).json({ error: 'Subscription storage not configured.' });
   const token = authHeader.substring(7);
 
   try {
@@ -490,31 +494,32 @@ app.get('/api/subscription-status', async (req, res) => {
 
 app.post('/api/recover-token', async (req, res) => {
   const activeRedis = req.app.locals.redis;
+  if (!activeRedis) return res.status(503).json({ error: 'Subscription storage not configured.' });
+
   const { email } = req.body;
   if (!email) {
     return res.status(400).json({ error: 'Email is required.' });
   }
 
   try {
-    const customerId = await activeRedis.get(`email:${email.toLowerCase().trim()}`);
-    if (!customerId) {
-      return res.status(404).json({ error: 'No subscription found for this email.' });
+    const normalizedEmail = email.toLowerCase().trim();
+    const customerId = await activeRedis.get(`email:${normalizedEmail}`);
+    if (customerId) {
+      const token = await activeRedis.get(`customer:${customerId}`);
+      const tokenData = token ? await activeRedis.get(`token:${token}`) : null;
+      if (tokenData?.status === 'active') {
+        return res.status(202).json({
+          message: 'If this email has an active subscription, use the checkout success link or contact support to restore access.'
+        });
+      }
     }
 
-    const token = await activeRedis.get(`customer:${customerId}`);
-    if (!token) {
-      return res.status(404).json({ error: 'Subscription token not found.' });
-    }
-
-    const tokenData = await activeRedis.get(`token:${token}`);
-    if (!tokenData || tokenData.status !== 'active') {
-      return res.status(404).json({ error: 'Subscription is no longer active.' });
-    }
-
-    res.json({ token });
+    return res.status(202).json({
+      message: 'If this email has an active subscription, use the checkout success link or contact support to restore access.'
+    });
   } catch (err) {
     console.error('Token recovery error:', err);
-    res.status(500).json({ error: 'Failed to recover token.' });
+    return res.status(500).json({ error: 'Failed to process token recovery.' });
   }
 });
 

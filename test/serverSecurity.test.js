@@ -69,3 +69,60 @@ test('createApp respects explicit null dependency overrides', () => {
   assert.equal(app.locals.aiConfig, null);
   assert.equal(app.locals.dataProvider, null);
 });
+
+function fakeRedis(values = {}) {
+  return {
+    async get(key) {
+      return values[key] ?? null;
+    },
+    async set(key, value) {
+      values[key] = value;
+    },
+    async incr(key) {
+      values[key] = Number(values[key] || 0) + 1;
+      return values[key];
+    },
+    async expire() {}
+  };
+}
+
+test('recover-token never returns a bearer token to an email-only request', async () => {
+  const redis = fakeRedis({
+    'email:paid@example.com': 'cus_123',
+    'customer:cus_123': 'secret-token',
+    'token:secret-token': { status: 'active', email: 'paid@example.com' }
+  });
+  const app = createApp({ redis });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/recover-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'paid@example.com' })
+    });
+    const data = await response.json();
+
+    assert.equal(response.status, 202);
+    assert.equal(Object.hasOwn(data, 'token'), false);
+    assert.match(data.message, /email/i);
+  });
+});
+
+test('subscription endpoints fail closed when Redis is not configured', async () => {
+  const app = createApp({ redis: null });
+
+  await withServer(app, async (baseUrl) => {
+    const portal = await fetch(`${baseUrl}/api/create-portal-session`, {
+      method: 'POST',
+      headers: { Authorization: 'Bearer token' }
+    });
+    assert.equal(portal.status, 503);
+
+    const recovery = await fetch(`${baseUrl}/api/recover-token`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'paid@example.com' })
+    });
+    assert.equal(recovery.status, 503);
+  });
+});
