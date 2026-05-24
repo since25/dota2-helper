@@ -384,6 +384,12 @@ app.post('/api/webhook', async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
+  const subscriptionLifecycleEvents = new Set([
+    'checkout.session.completed',
+    'customer.subscription.updated',
+    'customer.subscription.deleted'
+  ]);
+
   try {
     switch (event.type) {
       case 'checkout.session.completed': {
@@ -440,6 +446,9 @@ app.post('/api/webhook', async (req, res) => {
     }
   } catch (err) {
     console.error('Webhook handler error:', err);
+    if (subscriptionLifecycleEvents.has(event.type)) {
+      return res.status(500).json({ error: 'Failed to persist subscription event.' });
+    }
   }
 
   res.json({ received: true });

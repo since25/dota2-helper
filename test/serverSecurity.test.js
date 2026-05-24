@@ -101,7 +101,7 @@ function throwingRedis() {
   };
 }
 
-function fakeStripe() {
+function fakeStripe(event = { type: 'checkout.session.completed', data: { object: {} } }) {
   return {
     billingPortal: {
       sessions: {
@@ -119,7 +119,7 @@ function fakeStripe() {
     },
     webhooks: {
       constructEvent() {
-        return { type: 'checkout.session.completed', data: { object: {} } };
+        return event;
       }
     }
   };
@@ -225,5 +225,60 @@ test('subscription-status returns inactive when Redis reads fail', async () => {
 
     assert.equal(response.status, 200);
     assert.deepEqual(data, { active: false });
+  });
+});
+
+test('webhook returns a server error when subscription persistence fails', async () => {
+  const stripe = fakeStripe({
+    type: 'checkout.session.completed',
+    data: {
+      object: {
+        customer: 'cus_123',
+        subscription: 'sub_123',
+        customer_details: { email: 'paid@example.com' }
+      }
+    }
+  });
+  const app = createApp({ redis: throwingRedis(), stripe });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/webhook`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'stripe-signature': 'dummy-signature' },
+      body: JSON.stringify({ type: 'checkout.session.completed' })
+    });
+    const data = await response.json();
+
+    assert.equal(response.status >= 500 && response.status < 600, true);
+    assert.equal(Object.hasOwn(data, 'token'), false);
+  });
+});
+
+test('create-portal-session returns a generic error when Redis reads fail', async () => {
+  const app = createApp({ redis: throwingRedis(), stripe: fakeStripe() });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/create-portal-session`, {
+      method: 'POST',
+      headers: { Authorization: 'Bearer secret-token' }
+    });
+    const data = await response.json();
+
+    assert.equal(response.status, 500);
+    assert.deepEqual(data, { error: 'Failed to create portal session.' });
+    assert.equal(Object.hasOwn(data, 'token'), false);
+  });
+});
+
+test('checkout-success returns a generic error when Redis reads fail', async () => {
+  const app = createApp({ redis: throwingRedis(), stripe: fakeStripe() });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/checkout-success?session_id=cs_test`);
+    const data = await response.json();
+
+    assert.equal(response.status, 500);
+    assert.deepEqual(data, { error: 'Failed to retrieve subscription.' });
+    assert.equal(Object.hasOwn(data, 'token'), false);
   });
 });
