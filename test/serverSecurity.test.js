@@ -70,6 +70,33 @@ test('createApp respects explicit null dependency overrides', () => {
   assert.equal(app.locals.dataProvider, null);
 });
 
+test('debug endpoint fails when the AI reply is empty', async () => {
+  const axiosStub = {
+    async post() {
+      return { data: { choices: [{ message: { content: '' } }] } };
+    }
+  };
+  const app = createApp({
+    axiosInstance: axiosStub,
+    aiConfig: {
+      provider: 'test',
+      model: 'test',
+      baseUrl: 'http://ai.test/v1',
+      chatCompletionsUrl: 'http://ai.test/v1/chat/completions',
+      includeReasoningEffort: false
+    }
+  });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/debug`);
+    const data = await response.json();
+
+    assert.equal(response.status, 500);
+    assert.equal(data.step3_ai, 'FAILED');
+    assert.match(data.error, /empty/i);
+  });
+});
+
 function fakeRedis(values = {}) {
   return {
     async get(key) {

@@ -93,11 +93,13 @@ function createApp(options = {}) {
   const activeStripe = Object.hasOwn(options, 'stripe') ? options.stripe : stripe;
   const activeAiConfig = Object.hasOwn(options, 'aiConfig') ? options.aiConfig : aiConfig;
   const activeDataProvider = Object.hasOwn(options, 'dataProvider') ? options.dataProvider : dataProvider;
+  const activeAxiosInstance = Object.hasOwn(options, 'axiosInstance') ? options.axiosInstance : axios;
 
   app.locals.redis = activeRedis;
   app.locals.stripe = activeStripe;
   app.locals.aiConfig = activeAiConfig;
   app.locals.dataProvider = activeDataProvider;
+  app.locals.axiosInstance = activeAxiosInstance;
 
   app.use(cors());
   app.use('/api/webhook', express.raw({ type: 'application/json' }));
@@ -213,7 +215,7 @@ app.get('/api/debug', async (req, res) => {
         // Test 3: Simple AI provider call
         const aiStart = Date.now();
         const aiResponse = await callAiChat(
-            axios,
+            req.app.locals.axiosInstance,
             activeAiConfig,
             [{ role: 'user', content: 'Say "OK" and nothing else.' }],
             { maxCompletionTokens: 10, reasoningEffort: 'low' }
@@ -222,8 +224,14 @@ app.get('/api/debug', async (req, res) => {
         results.ai_provider = activeAiConfig.provider;
         results.ai_model = activeAiConfig.model;
         results.ai_base_url = activeAiConfig.baseUrl;
-        results.step3_ai = aiResponse.data.choices ? 'OK' : 'FAILED';
-        results.ai_response = aiResponse.data.choices[0]?.message?.content;
+        const content = aiResponse.data.choices?.[0]?.message?.content;
+        if (typeof content !== 'string' || content.trim() !== 'OK') {
+            results.step3_ai = 'FAILED';
+            throw new Error('AI health check returned empty or unexpected content.');
+        }
+
+        results.step3_ai = 'OK';
+        results.ai_response = content;
 
         results.timestamps.total = Date.now() - results.timestamps.start;
         res.json(results);
