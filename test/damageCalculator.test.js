@@ -369,3 +369,39 @@ test('calculateDamageCombo supports sustained item damage with duration', async 
   assert.equal(result.components[0].raw, 120);
   assert.equal(result.components[0].adjusted, 90);
 });
+
+test('calculateDamageCombo rejects ability levels above the legal hero-level budget', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 1,
+      enemyArmor: 0,
+      enemyMagicResistancePercent: 0,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Burrowstrike',
+        componentId: 'Burrowstrike:instant_fixed:dmg',
+        abilityLevel: 4,
+        valueMode: 'base'
+      }]
+    }),
+    /Burrowstrike.*level 4.*hero level 1/
+  );
+});
+
+test('calculateDamageCombo rejects reference-only and unsupported ability components', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 6,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Caustic Finale',
+        componentId: 'Caustic Finale:conditional:caustic_finale_damage_flat',
+        abilityLevel: 1,
+        valueMode: 'base'
+      }]
+    }),
+    /Caustic Finale.*reference_only/
+  );
+});

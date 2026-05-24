@@ -48,6 +48,28 @@ function abilityLevelForHeroLevel(heroLevel, isUltimate, maxAbilityLevel) {
   return Math.min(1, maxAbilityLevel);
 }
 
+function isSelectableAbilityComponent(component) {
+  return !['reference_only', 'unsupported'].includes(component.status);
+}
+
+function selectedAbilityLevel(selection, ability, component, heroLevel) {
+  const maxAbilityLevel = component.valuesByAbilityLevel.length;
+  const legalMax = abilityLevelForHeroLevel(heroLevel, ability.isUltimate, maxAbilityLevel);
+  const requested = Number(selection.abilityLevel || legalMax || 1);
+
+  if (!isSelectableAbilityComponent(component)) {
+    throw new Error(`${ability.name} component ${component.id} is ${component.status} and cannot be calculated.`);
+  }
+  if (legalMax <= 0) {
+    throw new Error(`${ability.name} is not legal at hero level ${heroLevel}.`);
+  }
+  if (!Number.isFinite(requested) || requested < 1 || requested > legalMax) {
+    throw new Error(`${ability.name} level ${requested} is not legal at hero level ${heroLevel}; max legal level is ${legalMax}.`);
+  }
+
+  return requested;
+}
+
 function extractFromAbility(ability) {
   return extractAbilityDamage({
     dname: ability.name,
@@ -609,10 +631,9 @@ async function calculateDamageCombo(request) {
     }
 
     const { ability, component } = match;
-    const maxAbilityLevel = component.valuesByAbilityLevel.length;
-    const legalMax = abilityLevelForHeroLevel(Number(request.heroLevel || 1), ability.isUltimate, maxAbilityLevel);
-    const abilityLevel = Math.max(1, Math.min(Number(selection.abilityLevel || legalMax || 1), maxAbilityLevel));
-    const damage = resolveComponentDamage(component, abilityLevel, selection, profile, Number(request.heroLevel || 1));
+    const heroLevel = Number(request.heroLevel || 1);
+    const abilityLevel = selectedAbilityLevel(selection, ability, component, heroLevel);
+    const damage = resolveComponentDamage(component, abilityLevel, selection, profile, heroLevel);
     const raw = roundDamage(damage.raw);
     const adjusted = adjustDamageByType(raw, component.damageType, params);
     addTypeTotal(byType, component.damageType, raw, adjusted);
