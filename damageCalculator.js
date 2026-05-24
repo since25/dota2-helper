@@ -64,6 +64,9 @@ function selectedAbilityLevel(selection, ability, component, heroLevel) {
   if (legalMax <= 0) {
     throw new Error(`${ability.name} is not legal at hero level ${heroLevel}.`);
   }
+  if (Number.isFinite(requested) && !Number.isInteger(requested)) {
+    throw new Error(`${ability.name} level ${selectedLevel} is not a valid integer ability level at hero level ${heroLevel}; max legal level is ${legalMax}.`);
+  }
   if (!Number.isFinite(requested) || requested < 1 || requested > legalMax) {
     throw new Error(`${ability.name} level ${requested} is not legal at hero level ${heroLevel}; max legal level is ${legalMax}.`);
   }

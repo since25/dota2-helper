@@ -427,6 +427,44 @@ test('calculateDamageCombo rejects non-numeric ability levels', async () => {
   );
 });
 
+test('calculateDamageCombo rejects fractional numeric ability levels', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 3,
+      enemyArmor: 0,
+      enemyMagicResistancePercent: 0,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Burrowstrike',
+        componentId: 'Burrowstrike:instant_fixed:dmg',
+        abilityLevel: 1.5,
+        valueMode: 'base'
+      }]
+    }),
+    /Burrowstrike.*level 1\.5.*integer.*hero level 3/
+  );
+});
+
+test('calculateDamageCombo rejects fractional string ability levels', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 3,
+      enemyArmor: 0,
+      enemyMagicResistancePercent: 0,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Burrowstrike',
+        componentId: 'Burrowstrike:instant_fixed:dmg',
+        abilityLevel: '1.5',
+        valueMode: 'base'
+      }]
+    }),
+    /Burrowstrike.*level 1\.5.*integer.*hero level 3/
+  );
+});
+
 test('calculateDamageCombo defaults null ability levels to the legal max', async () => {
   const result = await calculateDamageCombo({
     hero: 'Sand King',
