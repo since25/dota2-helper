@@ -19,6 +19,11 @@ test('home page links to readable data viewer pages instead of raw JSON APIs', (
   assert.doesNotMatch(html, /href="\/api\/damage\/heroes\/Lich"/);
 });
 
+test('home page loads output formatter before main script', () => {
+  const html = read('index.html');
+  assert.match(html, /<script src="outputFormatter\.js"><\/script>\s*<script src="script\.js"><\/script>/);
+});
+
 test('hero list viewer fetches hero JSON and links to damage model viewer', () => {
   const html = read('heroes.html');
   const js = read('heroes.js');
