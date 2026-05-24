@@ -408,7 +408,62 @@ test('calculateDamageCombo rejects explicit zero ability levels', async () => {
   );
 });
 
-test('calculateDamageCombo rejects reference-only and unsupported ability components', async () => {
+test('calculateDamageCombo rejects non-numeric ability levels', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 1,
+      enemyArmor: 0,
+      enemyMagicResistancePercent: 0,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Burrowstrike',
+        componentId: 'Burrowstrike:instant_fixed:dmg',
+        abilityLevel: 'abc',
+        valueMode: 'base'
+      }]
+    }),
+    /Burrowstrike.*level NaN.*hero level 1/
+  );
+});
+
+test('calculateDamageCombo defaults null ability levels to the legal max', async () => {
+  const result = await calculateDamageCombo({
+    hero: 'Sand King',
+    heroLevel: 5,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 0,
+    selectedComponents: [{
+      sourceType: 'ability',
+      abilityName: 'Burrowstrike',
+      componentId: 'Burrowstrike:instant_fixed:dmg',
+      abilityLevel: null,
+      valueMode: 'base'
+    }]
+  });
+
+  assert.equal(result.components[0].abilityLevel, 3);
+  assert.equal(result.components[0].raw, 220);
+});
+
+test('calculateDamageCombo rejects abilities unavailable at the hero level', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Lina',
+      heroLevel: 5,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Laguna Blade',
+        componentId: 'Laguna Blade:instant_fixed:damage',
+        abilityLevel: 1,
+        valueMode: 'base'
+      }]
+    }),
+    /Laguna Blade.*hero level 5/
+  );
+});
+
+test('calculateDamageCombo rejects reference-only ability components', async () => {
   await assert.rejects(
     () => calculateDamageCombo({
       hero: 'Sand King',
@@ -422,5 +477,22 @@ test('calculateDamageCombo rejects reference-only and unsupported ability compon
       }]
     }),
     /Caustic Finale.*reference_only/
+  );
+});
+
+test('calculateDamageCombo rejects unsupported ability components', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Lina',
+      heroLevel: 6,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Slow Burn',
+        componentId: 'Slow Burn:state_scaling:burn_damage_pct',
+        abilityLevel: 1,
+        valueMode: 'base'
+      }]
+    }),
+    /Slow Burn.*unsupported/
   );
 });
