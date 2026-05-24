@@ -38,7 +38,6 @@ module.exports = {
       status: 'implemented',
       model: 'percent_health_instant',
       damageKey: 'pct_health_damage_initial',
-      damageType: 'Magical',
       semanticType: 'damage.percent_max_health',
       conditionInputs: ['enemy_max_health'],
       metadata: {

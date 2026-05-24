@@ -128,10 +128,12 @@ function renderAbilities(profile) {
       const hasAttackControl = attackCount !== null || attackFactor !== null;
       const needsHealthInput = ['percent_health_dot', 'percent_health_instant'].includes(component.kind);
       const needsSourceDamageInput = component.kind === 'source_damage_percent';
+      const runtimeInputOnly = needsHealthInput || needsSourceDamageInput;
       const canUseTheoretical = theoretical !== null
         || hasDurationControl
         || hasAttackControl
-        || ['repeated_trigger', 'summon_attack', 'attribute_scaling', 'percent_health_dot', 'percent_health_instant', 'source_damage_percent'].includes(component.kind);
+        || ['repeated_trigger', 'summon_attack', 'attribute_scaling'].includes(component.kind)
+        || runtimeInputOnly;
       cards.push(`
         <article class="ability-workbench-card" data-ability="${escapeHtml(ability.name)}" data-component="${escapeHtml(component.id)}" data-kind="${escapeHtml(component.kind)}" data-status="${escapeHtml(status)}" data-duration-by-level="${durationByLevel.join(',')}" data-attack-count-by-level="${attackCountByLevel.join(',')}" data-attack-factor-by-level="${attackFactorByLevel.join(',')}">
           <div class="ability-card-top">
@@ -153,8 +155,8 @@ function renderAbilities(profile) {
             </label>
             <label>模式
               <select class="value-mode">
-                <option value="base">基础值 ${fmt(baseValue)}</option>
-                <option value="theoretical" ${canUseTheoretical && isSelectable ? '' : 'disabled'} ${hasDurationControl || hasAttackControl ? 'selected' : ''}>理论/运行时 ${fmt(theoretical)}</option>
+                <option value="base" ${runtimeInputOnly ? 'disabled' : ''}>基础值 ${fmt(baseValue)}</option>
+                <option value="theoretical" ${canUseTheoretical && isSelectable ? '' : 'disabled'} ${hasDurationControl || hasAttackControl || runtimeInputOnly ? 'selected' : ''}>理论/运行时 ${fmt(theoretical)}</option>
               </select>
             </label>
             <label>作用时间

@@ -72,3 +72,11 @@ test('damage calculator renders workbench shop and selected item areas', () => {
   assert.match(js, /function toggleItem/);
   assert.match(js, /toggleItem\(card\.dataset\.itemKey\)/);
 });
+
+test('damage calculator forces runtime-input primitives into theoretical mode', () => {
+  const js = read('damage-calculator.js');
+
+  assert.match(js, /runtimeInputOnly/);
+  assert.match(js, /<option value="base" \$\{runtimeInputOnly \? 'disabled' : ''\}>/);
+  assert.match(js, /\|\| runtimeInputOnly/);
+});

@@ -523,9 +523,12 @@ test('calculateDamageCombo supports instant percent max-health damage', async ()
   const fan = profile.abilities.find((ability) => ability.name === 'Fan of Knives');
   const component = fan.components.find((entry) => entry.kind === 'percent_health_instant');
 
+  assert.equal(component.damageType, 'Physical');
+
   const result = await calculateDamageCombo({
     hero: 'Phantom Assassin',
     heroLevel: 20,
+    enemyArmor: 0,
     enemyMagicResistancePercent: 25,
     selectedComponents: [{
       sourceType: 'ability',
@@ -538,13 +541,18 @@ test('calculateDamageCombo supports instant percent max-health damage', async ()
   });
 
   assert.equal(result.components[0].raw, 600);
-  assert.equal(result.components[0].adjusted, 450);
+  assert.equal(result.components[0].adjusted, 600);
+  assert.equal(result.components[0].damageType, 'Physical');
+  assert.equal(result.components[0].targetMaxHealth, 2000);
 });
 
 test('calculateDamageCombo supports source-damage percent follow-up damage', async () => {
   const profile = await getHeroDamageProfile('Lina');
   const slowBurn = profile.abilities.find((ability) => ability.name === 'Slow Burn');
   const component = slowBurn.components.find((entry) => entry.kind === 'source_damage_percent');
+
+  assert.equal(component.kind, 'source_damage_percent');
+  assert.equal(component.metadata.sourceDamageInput, 'source_damage');
 
   const result = await calculateDamageCombo({
     hero: 'Lina',
@@ -562,4 +570,47 @@ test('calculateDamageCombo supports source-damage percent follow-up damage', asy
 
   assert.equal(result.components[0].raw, 320);
   assert.equal(result.components[0].adjusted, 240);
+  assert.equal(result.components[0].sourceDamage, 500);
+});
+
+test('calculateDamageCombo rejects base mode for instant percent max-health damage', async () => {
+  const profile = await getHeroDamageProfile('Phantom Assassin');
+  const fan = profile.abilities.find((ability) => ability.name === 'Fan of Knives');
+  const component = fan.components.find((entry) => entry.kind === 'percent_health_instant');
+
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Phantom Assassin',
+      heroLevel: 20,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: fan.name,
+        componentId: component.id,
+        abilityLevel: 1,
+        valueMode: 'base'
+      }]
+    }),
+    /percent_health_instant.*theoretical.*runtime.*input/i
+  );
+});
+
+test('calculateDamageCombo rejects base mode for source-damage percent damage', async () => {
+  const profile = await getHeroDamageProfile('Lina');
+  const slowBurn = profile.abilities.find((ability) => ability.name === 'Slow Burn');
+  const component = slowBurn.components.find((entry) => entry.kind === 'source_damage_percent');
+
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Lina',
+      heroLevel: 20,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: slowBurn.name,
+        componentId: component.id,
+        abilityLevel: 1,
+        valueMode: 'base'
+      }]
+    }),
+    /source_damage_percent.*theoretical.*runtime.*input/i
+  );
 });

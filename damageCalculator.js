@@ -319,8 +319,16 @@ function attributeInputValue(selection, inputName, profile, heroLevel) {
   return numericInput(byName[inputName]) ?? numericInput(selection.attributeValue) ?? 0;
 }
 
+function isRuntimeInputOnlyComponent(component) {
+  return ['percent_health_dot', 'percent_health_instant', 'source_damage_percent'].includes(component.kind);
+}
+
 function resolveComponentDamage(component, abilityLevel, selection, profile, heroLevel) {
   const baseValue = valueAtLevel(component.valuesByAbilityLevel || [], abilityLevel) || 0;
+
+  if (isRuntimeInputOnlyComponent(component) && selection.valueMode !== 'theoretical') {
+    throw new Error(`${component.kind} requires theoretical runtime input mode; base mode would ignore required input values.`);
+  }
 
   if (component.kind === 'attack_sequence' && selection.valueMode === 'theoretical') {
     return resolveAttackSequenceDamage(component, abilityLevel, selection, profile, heroLevel);
