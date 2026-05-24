@@ -14,25 +14,42 @@
     return '#';
   }
 
-  function processInline(value) {
-    const escaped = escapeHtml(value);
-    const codeSpans = [];
-    const protectedCode = escaped.replace(/`([^`]+)`/g, (match, code) => {
-      const token = `@@DOTA_CODE_SPAN_${codeSpans.length}@@`;
-      codeSpans.push(`<code>${code}</code>`);
-      return token;
-    });
-
-    let html = protectedCode
+  function processEmphasis(value) {
+    return value
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*([^\*]+?)\*/g, '<em>$1</em>')
-      .replace(/\[([^\]]+)\]\(((?:[^()]|\([^)]*\))+)\)/g, (match, label, href) => (
-        `<a href="${safeHref(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`
-      ));
+      .replace(/\*([^\*]+?)\*/g, '<em>$1</em>');
+  }
 
-    codeSpans.forEach((code, index) => {
-      html = html.replaceAll(`@@DOTA_CODE_SPAN_${index}@@`, code);
+  function processTextSegment(value) {
+    const linkPattern = /\[([^\]]+)\]\(((?:[^()]|\([^)]*\))+)\)/g;
+    let html = '';
+    let lastIndex = 0;
+
+    String(value ?? '').replace(linkPattern, (match, label, href, offset) => {
+      html += processEmphasis(escapeHtml(value.slice(lastIndex, offset)));
+      html += `<a href="${safeHref(href)}" target="_blank" rel="noopener noreferrer">${processEmphasis(escapeHtml(label))}</a>`;
+      lastIndex = offset + match.length;
+      return match;
     });
+
+    html += processEmphasis(escapeHtml(value.slice(lastIndex)));
+    return html;
+  }
+
+  function processInline(value) {
+    const raw = String(value ?? '');
+    const codePattern = /`([^`]+)`/g;
+    let html = '';
+    let lastIndex = 0;
+
+    raw.replace(codePattern, (match, code, offset) => {
+      html += processTextSegment(raw.slice(lastIndex, offset));
+      html += `<code>${escapeHtml(code)}</code>`;
+      lastIndex = offset + match.length;
+      return match;
+    });
+
+    html += processTextSegment(raw.slice(lastIndex));
     return html;
   }
 

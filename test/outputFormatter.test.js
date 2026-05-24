@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const vm = require('node:vm');
 
 const { escapeHtml, formatStructuredOutput, safeHref } = require('../outputFormatter');
 
@@ -29,11 +30,25 @@ test('formatStructuredOutput blocks javascript links', () => {
   assert.equal(safeHref('mailto:test@example.com'), 'mailto:test@example.com');
 });
 
+test('formatStructuredOutput preserves query string href semantics', () => {
+  const html = formatStructuredOutput('[q](https://example.com?a=1&b=2)');
+
+  assert.match(html, /href="https:\/\/example.com\?a=1&amp;b=2"/);
+  assert.doesNotMatch(html, /&amp;amp;/);
+});
+
 test('formatStructuredOutput keeps markdown-looking links literal inside inline code', () => {
   const html = formatStructuredOutput('`[x](javascript:alert(1))`');
 
   assert.match(html, /<code>\[x\]\(javascript:alert\(1\)\)<\/code>/);
   assert.doesNotMatch(html, /<a /);
+});
+
+test('formatStructuredOutput does not replace user text that looks like old code placeholders', () => {
+  const html = formatStructuredOutput('`real code` @@DOTA_CODE_SPAN_0@@');
+
+  assert.match(html, /<code>real code<\/code>/);
+  assert.match(html, /@@DOTA_CODE_SPAN_0@@/);
 });
 
 test('formatStructuredOutput escapes raw HTML in link labels', () => {
@@ -57,4 +72,55 @@ test('main script resolves output formatter defensively with an escaping fallbac
   assert.match(script, /window\.DotaOutputFormatter\?\.formatStructuredOutput/);
   assert.match(script, /fallbackFormatStructuredOutput/);
   assert.match(script, /replaceAll\('<', '&lt;'\)/);
+});
+
+test('main script fallback runs without output formatter and escapes raw HTML', () => {
+  const script = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
+  const elements = new Map();
+
+  function createElement() {
+    return {
+      value: '',
+      textContent: '',
+      innerHTML: '',
+      disabled: false,
+      style: {},
+      classList: { add() {}, remove() {} },
+      appendChild() {},
+      addEventListener() {},
+      querySelector() {
+        return createElement();
+      }
+    };
+  }
+
+  const document = {
+    addEventListener() {},
+    createElement,
+    getElementById(id) {
+      if (!elements.has(id)) elements.set(id, createElement());
+      return elements.get(id);
+    }
+  };
+
+  const context = vm.createContext({
+    window: {
+      location: { search: '' },
+      history: { replaceState() {} }
+    },
+    document,
+    localStorage: {
+      getItem() { return null; },
+      setItem() {},
+      removeItem() {}
+    },
+    fetch: async () => ({ ok: true, json: async () => ({}) }),
+    URLSearchParams,
+    console: { log() {}, error() {} }
+  });
+
+  vm.runInContext(script, context);
+  const html = vm.runInContext('formatStructuredOutput(`<script>alert(1)</script>`)', context);
+
+  assert.equal(html, '&lt;script&gt;alert(1)&lt;/script&gt;');
 });
