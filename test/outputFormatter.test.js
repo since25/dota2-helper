@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const { escapeHtml, formatStructuredOutput, safeHref } = require('../outputFormatter');
 
@@ -25,4 +27,34 @@ test('formatStructuredOutput blocks javascript links', () => {
   assert.match(html, /href="#"/);
   assert.match(html, /href="https:\/\/example.com\/a"/);
   assert.equal(safeHref('mailto:test@example.com'), 'mailto:test@example.com');
+});
+
+test('formatStructuredOutput keeps markdown-looking links literal inside inline code', () => {
+  const html = formatStructuredOutput('`[x](javascript:alert(1))`');
+
+  assert.match(html, /<code>\[x\]\(javascript:alert\(1\)\)<\/code>/);
+  assert.doesNotMatch(html, /<a /);
+});
+
+test('formatStructuredOutput escapes raw HTML in link labels', () => {
+  const html = formatStructuredOutput('[<img src=x onerror=alert(1)>](https://example.com)');
+
+  assert.match(html, /<a href="https:\/\/example.com" target="_blank" rel="noopener noreferrer">&lt;img src=x onerror=alert\(1\)&gt;<\/a>/);
+  assert.doesNotMatch(html, /<img/);
+});
+
+test('formatStructuredOutput blocks javascript links inside table cells', () => {
+  const html = formatStructuredOutput('| Link |\n| --- |\n| [bad](javascript:alert(1)) |');
+
+  assert.match(html, /<td><a href="#" target="_blank" rel="noopener noreferrer">bad<\/a><\/td>/);
+  assert.doesNotMatch(html, /href="javascript:/);
+});
+
+test('main script resolves output formatter defensively with an escaping fallback', () => {
+  const script = fs.readFileSync(path.join(__dirname, '..', 'script.js'), 'utf8');
+
+  assert.doesNotMatch(script, /const\s*\{\s*formatStructuredOutput\s*\}\s*=\s*window\.DotaOutputFormatter/);
+  assert.match(script, /window\.DotaOutputFormatter\?\.formatStructuredOutput/);
+  assert.match(script, /fallbackFormatStructuredOutput/);
+  assert.match(script, /replaceAll\('<', '&lt;'\)/);
 });

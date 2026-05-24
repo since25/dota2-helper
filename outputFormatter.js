@@ -16,13 +16,24 @@
 
   function processInline(value) {
     const escaped = escapeHtml(value);
-    return escaped
+    const codeSpans = [];
+    const protectedCode = escaped.replace(/`([^`]+)`/g, (match, code) => {
+      const token = `@@DOTA_CODE_SPAN_${codeSpans.length}@@`;
+      codeSpans.push(`<code>${code}</code>`);
+      return token;
+    });
+
+    let html = protectedCode
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^\*]+?)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, label, href) => (
+      .replace(/\[([^\]]+)\]\(((?:[^()]|\([^)]*\))+)\)/g, (match, label, href) => (
         `<a href="${safeHref(href)}" target="_blank" rel="noopener noreferrer">${label}</a>`
       ));
+
+    codeSpans.forEach((code, index) => {
+      html = html.replaceAll(`@@DOTA_CODE_SPAN_${index}@@`, code);
+    });
+    return html;
   }
 
   function formatStructuredOutput(text) {

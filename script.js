@@ -1,5 +1,18 @@
 // Frontend logic will go here
-const { formatStructuredOutput } = window.DotaOutputFormatter;
+function fallbackEscapeHtml(value) {
+    return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+}
+
+function fallbackFormatStructuredOutput(text) {
+    return fallbackEscapeHtml(text);
+}
+
+const formatStructuredOutput = window.DotaOutputFormatter?.formatStructuredOutput ?? fallbackFormatStructuredOutput;
 
 // --- Pro Subscription State ---
 const TOKEN_KEY = 'dota2helper_pro_token';
