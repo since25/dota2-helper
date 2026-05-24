@@ -86,30 +86,84 @@ function fakeRedis(values = {}) {
   };
 }
 
-test('recover-token never returns a bearer token to an email-only request', async () => {
+function throwingRedis() {
+  return {
+    async get() {
+      throw new Error('redis unavailable');
+    },
+    async set() {
+      throw new Error('redis unavailable');
+    },
+    async incr() {
+      throw new Error('redis unavailable');
+    },
+    async expire() {}
+  };
+}
+
+function fakeStripe() {
+  return {
+    billingPortal: {
+      sessions: {
+        async create() {
+          return { url: 'https://billing.example.test/session' };
+        }
+      }
+    },
+    checkout: {
+      sessions: {
+        async retrieve() {
+          return { customer: 'cus_123' };
+        }
+      }
+    },
+    webhooks: {
+      constructEvent() {
+        return { type: 'checkout.session.completed', data: { object: {} } };
+      }
+    }
+  };
+}
+
+async function recoverToken(baseUrl, email) {
+  const response = await fetch(`${baseUrl}/api/recover-token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  return { response, data: await response.json() };
+}
+
+test('recover-token returns the same non-secret response for active nonexistent and inactive emails', async () => {
   const redis = fakeRedis({
-    'email:paid@example.com': 'cus_123',
-    'customer:cus_123': 'secret-token',
-    'token:secret-token': { status: 'active', email: 'paid@example.com' }
+    'email:active@example.com': 'cus_active',
+    'customer:cus_active': 'active-token',
+    'token:active-token': { status: 'active', email: 'active@example.com' },
+    'email:inactive@example.com': 'cus_inactive',
+    'customer:cus_inactive': 'inactive-token',
+    'token:inactive-token': { status: 'inactive', email: 'inactive@example.com' }
   });
   const app = createApp({ redis });
 
   await withServer(app, async (baseUrl) => {
-    const response = await fetch(`${baseUrl}/api/recover-token`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: 'paid@example.com' })
-    });
-    const data = await response.json();
+    const active = await recoverToken(baseUrl, 'active@example.com');
+    const nonexistent = await recoverToken(baseUrl, 'none@example.com');
+    const inactive = await recoverToken(baseUrl, 'inactive@example.com');
 
-    assert.equal(response.status, 202);
-    assert.equal(Object.hasOwn(data, 'token'), false);
-    assert.match(data.message, /email/i);
+    assert.equal(active.response.status, 202);
+    assert.equal(nonexistent.response.status, 202);
+    assert.equal(inactive.response.status, 202);
+    assert.deepEqual(nonexistent.data, active.data);
+    assert.deepEqual(inactive.data, active.data);
+    assert.equal(Object.hasOwn(active.data, 'token'), false);
+    assert.equal(Object.hasOwn(nonexistent.data, 'token'), false);
+    assert.equal(Object.hasOwn(inactive.data, 'token'), false);
+    assert.match(active.data.message, /email/i);
   });
 });
 
 test('subscription endpoints fail closed when Redis is not configured', async () => {
-  const app = createApp({ redis: null });
+  const app = createApp({ redis: null, stripe: fakeStripe() });
 
   await withServer(app, async (baseUrl) => {
     const portal = await fetch(`${baseUrl}/api/create-portal-session`, {
@@ -124,5 +178,52 @@ test('subscription endpoints fail closed when Redis is not configured', async ()
       body: JSON.stringify({ email: 'paid@example.com' })
     });
     assert.equal(recovery.status, 503);
+
+    const webhook = await fetch(`${baseUrl}/api/webhook`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'stripe-signature': 'dummy-signature' },
+      body: JSON.stringify({ type: 'checkout.session.completed' })
+    });
+    assert.equal(webhook.status, 503);
+
+    const checkout = await fetch(`${baseUrl}/api/checkout-success?session_id=cs_test`);
+    assert.equal(checkout.status, 503);
+  });
+});
+
+test('subscription-status without authorization returns inactive without Redis', async () => {
+  const app = createApp({ redis: null });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/subscription-status`);
+    const data = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(data, { active: false });
+  });
+});
+
+test('recover-token does not leak a token when Redis reads fail', async () => {
+  const app = createApp({ redis: throwingRedis() });
+
+  await withServer(app, async (baseUrl) => {
+    const { response, data } = await recoverToken(baseUrl, 'paid@example.com');
+
+    assert.equal(response.status, 500);
+    assert.equal(Object.hasOwn(data, 'token'), false);
+  });
+});
+
+test('subscription-status returns inactive when Redis reads fail', async () => {
+  const app = createApp({ redis: throwingRedis() });
+
+  await withServer(app, async (baseUrl) => {
+    const response = await fetch(`${baseUrl}/api/subscription-status`, {
+      headers: { Authorization: 'Bearer secret-token' }
+    });
+    const data = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(data, { active: false });
   });
 });
