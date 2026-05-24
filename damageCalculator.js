@@ -55,7 +55,8 @@ function isSelectableAbilityComponent(component) {
 function selectedAbilityLevel(selection, ability, component, heroLevel) {
   const maxAbilityLevel = component.valuesByAbilityLevel.length;
   const legalMax = abilityLevelForHeroLevel(heroLevel, ability.isUltimate, maxAbilityLevel);
-  const requested = Number(selection.abilityLevel || legalMax || 1);
+  const selectedLevel = selection.abilityLevel ?? (legalMax || 1);
+  const requested = Number(selectedLevel);
 
   if (!isSelectableAbilityComponent(component)) {
     throw new Error(`${ability.name} component ${component.id} is ${component.status} and cannot be calculated.`);

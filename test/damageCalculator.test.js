@@ -389,6 +389,25 @@ test('calculateDamageCombo rejects ability levels above the legal hero-level bud
   );
 });
 
+test('calculateDamageCombo rejects explicit zero ability levels', async () => {
+  await assert.rejects(
+    () => calculateDamageCombo({
+      hero: 'Sand King',
+      heroLevel: 1,
+      enemyArmor: 0,
+      enemyMagicResistancePercent: 0,
+      selectedComponents: [{
+        sourceType: 'ability',
+        abilityName: 'Burrowstrike',
+        componentId: 'Burrowstrike:instant_fixed:dmg',
+        abilityLevel: 0,
+        valueMode: 'base'
+      }]
+    }),
+    /Burrowstrike.*level 0.*hero level 1/
+  );
+});
+
 test('calculateDamageCombo rejects reference-only and unsupported ability components', async () => {
   await assert.rejects(
     () => calculateDamageCombo({
