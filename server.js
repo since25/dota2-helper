@@ -45,19 +45,69 @@ async function getDotaConstants() {
   return dotaconstantsData;
 }
 
-const app = express();
 // Use environment variable for port or default to 3002
 const port = process.env.PORT || 3002; 
 
-// Middleware
-app.use(cors()); // Enable CORS for all routes
-app.use('/api/webhook', express.raw({ type: 'application/json' })); // Raw body for Stripe webhook verification
-app.use(express.json()); // Parse JSON request bodies
-
 // --- Serve Static Files --- 
-// Serve static files (HTML, CSS, JS) from the current directory (__dirname)
-const staticFilesPath = __dirname; 
-app.use(express.static(staticFilesPath)); 
+const staticFilesPath = __dirname;
+const PUBLIC_ROOT_FILES = new Set([
+  'index.html',
+  'style.css',
+  'script.js',
+  'outputFormatter.js',
+  'damage-calculator.html',
+  'damage-calculator.css',
+  'damage-calculator.js',
+  'damage-profile.html',
+  'damage-profile.js',
+  'data-viewer.css',
+  'heroes.html',
+  'heroes.js',
+  'items.html',
+  'items.js'
+]);
+
+function sendPublicRootFile(res, fileName) {
+  if (!PUBLIC_ROOT_FILES.has(fileName)) {
+    return res.status(404).send('Not found');
+  }
+  return res.sendFile(path.join(staticFilesPath, fileName));
+}
+
+function registerPublicAssets(app) {
+  app.use('/images', express.static(path.join(staticFilesPath, 'images'), {
+    dotfiles: 'deny',
+    index: false,
+    fallthrough: true
+  }));
+
+  app.get('/', (req, res) => sendPublicRootFile(res, 'index.html'));
+  for (const fileName of PUBLIC_ROOT_FILES) {
+    app.get(`/${fileName}`, (req, res) => sendPublicRootFile(res, fileName));
+  }
+}
+
+function createApp(options = {}) {
+  const app = express();
+  const activeRedis = Object.hasOwn(options, 'redis') ? options.redis : redis;
+  const activeStripe = Object.hasOwn(options, 'stripe') ? options.stripe : stripe;
+  const activeAiConfig = Object.hasOwn(options, 'aiConfig') ? options.aiConfig : aiConfig;
+  const activeDataProvider = Object.hasOwn(options, 'dataProvider') ? options.dataProvider : dataProvider;
+
+  app.locals.redis = activeRedis;
+  app.locals.stripe = activeStripe;
+  app.locals.aiConfig = activeAiConfig;
+  app.locals.dataProvider = activeDataProvider;
+
+  app.use(cors());
+  app.use('/api/webhook', express.raw({ type: 'application/json' }));
+  app.use(express.json());
+
+  registerPublicAssets(app);
+  registerRoutes(app);
+
+  return app;
+}
 
 const DOTA_HERO_NAMES = getHeroLocalizationList().map((hero) => hero.localized_name);
 
@@ -142,8 +192,10 @@ async function getItemContext(itemNames) {
     .join('\n');
 }
 
+function registerRoutes(app) {
 // Debug endpoint to test components
 app.get('/api/debug', async (req, res) => {
+    const activeAiConfig = req.app.locals.aiConfig;
     const results = { timestamps: {} };
 
     try {
@@ -162,14 +214,14 @@ app.get('/api/debug', async (req, res) => {
         const aiStart = Date.now();
         const aiResponse = await callAiChat(
             axios,
-            aiConfig,
+            activeAiConfig,
             [{ role: 'user', content: 'Say "OK" and nothing else.' }],
             { maxCompletionTokens: 10, reasoningEffort: 'low' }
         );
         results.timestamps.ai = Date.now() - aiStart;
-        results.ai_provider = aiConfig.provider;
-        results.ai_model = aiConfig.model;
-        results.ai_base_url = aiConfig.baseUrl;
+        results.ai_provider = activeAiConfig.provider;
+        results.ai_model = activeAiConfig.model;
+        results.ai_base_url = activeAiConfig.baseUrl;
         results.step3_ai = aiResponse.data.choices ? 'OK' : 'FAILED';
         results.ai_response = aiResponse.data.choices[0]?.message?.content;
 
@@ -218,22 +270,19 @@ const ROLE_ITEMS = {
   'Hard Support': ['tango', 'clarity', 'blood_grenade', 'branches', 'magic_wand', 'arcane_boots', 'force_staff', 'glimmer_cape', 'ghost', 'solar_crest', 'aeon_disk']
 };
 
-// Route to serve the main HTML file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(staticFilesPath, 'index.html')); 
-});
-
 // --- Rate Limiting Middleware ---
 async function rateLimitMiddleware(req, res, next) {
+  const activeRedis = req.app.locals.redis;
+
   // If Redis is not configured, skip rate limiting
-  if (!redis) return next();
+  if (!activeRedis) return next();
 
   // Check for Pro token
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.substring(7);
     try {
-      const tokenData = await redis.get(`token:${token}`);
+      const tokenData = await activeRedis.get(`token:${token}`);
       if (tokenData && tokenData.status === 'active') {
         req.isPro = true;
         return next();
@@ -249,7 +298,7 @@ async function rateLimitMiddleware(req, res, next) {
   const key = `ratelimit:${ip}`;
 
   try {
-    const current = (await redis.get(key)) || 0;
+    const current = (await activeRedis.get(key)) || 0;
 
     if (current >= FREE_TIER_LIMIT) {
       return res.status(429).json({
@@ -273,9 +322,10 @@ async function rateLimitMiddleware(req, res, next) {
 // --- Stripe Endpoints ---
 
 app.post('/api/create-checkout-session', async (req, res) => {
-  if (!stripe) return res.status(503).json({ error: 'Payments not configured.' });
+  const activeStripe = req.app.locals.stripe;
+  if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
   try {
-    const session = await stripe.checkout.sessions.create({
+    const session = await activeStripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ price: STRIPE_PRICE_ID, quantity: 1 }],
@@ -290,7 +340,9 @@ app.post('/api/create-checkout-session', async (req, res) => {
 });
 
 app.post('/api/create-portal-session', async (req, res) => {
-  if (!stripe) return res.status(503).json({ error: 'Payments not configured.' });
+  const activeRedis = req.app.locals.redis;
+  const activeStripe = req.app.locals.stripe;
+  if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
 
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -299,12 +351,12 @@ app.post('/api/create-portal-session', async (req, res) => {
   const token = authHeader.substring(7);
 
   try {
-    const tokenData = await redis.get(`token:${token}`);
+    const tokenData = await activeRedis.get(`token:${token}`);
     if (!tokenData || !tokenData.stripeCustomerId) {
       return res.status(404).json({ error: 'Subscription not found.' });
     }
 
-    const session = await stripe.billingPortal.sessions.create({
+    const session = await activeStripe.billingPortal.sessions.create({
       customer: tokenData.stripeCustomerId,
       return_url: APP_URL,
     });
@@ -317,12 +369,14 @@ app.post('/api/create-portal-session', async (req, res) => {
 });
 
 app.post('/api/webhook', async (req, res) => {
-  if (!stripe) return res.status(503).json({ error: 'Payments not configured.' });
+  const activeRedis = req.app.locals.redis;
+  const activeStripe = req.app.locals.stripe;
+  if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
   const sig = req.headers['stripe-signature'];
   let event;
 
   try {
-    event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
+    event = activeStripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
   } catch (err) {
     console.error('Webhook signature verification failed:', err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -338,7 +392,7 @@ app.post('/api/webhook', async (req, res) => {
 
         const token = crypto.randomUUID();
 
-        await redis.set(`token:${token}`, {
+        await activeRedis.set(`token:${token}`, {
           stripeCustomerId: customerId,
           stripeSubscriptionId: subscriptionId,
           email: email,
@@ -346,9 +400,9 @@ app.post('/api/webhook', async (req, res) => {
           createdAt: new Date().toISOString()
         });
 
-        await redis.set(`customer:${customerId}`, token);
+        await activeRedis.set(`customer:${customerId}`, token);
         if (email) {
-          await redis.set(`email:${email.toLowerCase()}`, customerId);
+          await activeRedis.set(`email:${email.toLowerCase()}`, customerId);
         }
 
         console.log(`New subscription: ${customerId}, token: ${token}`);
@@ -358,12 +412,12 @@ app.post('/api/webhook', async (req, res) => {
       case 'customer.subscription.updated': {
         const subscription = event.data.object;
         const customerId = subscription.customer;
-        const token = await redis.get(`customer:${customerId}`);
+        const token = await activeRedis.get(`customer:${customerId}`);
         if (token) {
-          const tokenData = await redis.get(`token:${token}`);
+          const tokenData = await activeRedis.get(`token:${token}`);
           if (tokenData) {
             const newStatus = subscription.status === 'active' ? 'active' : 'inactive';
-            await redis.set(`token:${token}`, { ...tokenData, status: newStatus });
+            await activeRedis.set(`token:${token}`, { ...tokenData, status: newStatus });
           }
         }
         break;
@@ -372,11 +426,11 @@ app.post('/api/webhook', async (req, res) => {
       case 'customer.subscription.deleted': {
         const subscription = event.data.object;
         const customerId = subscription.customer;
-        const token = await redis.get(`customer:${customerId}`);
+        const token = await activeRedis.get(`customer:${customerId}`);
         if (token) {
-          const tokenData = await redis.get(`token:${token}`);
+          const tokenData = await activeRedis.get(`token:${token}`);
           if (tokenData) {
-            await redis.set(`token:${token}`, { ...tokenData, status: 'inactive' });
+            await activeRedis.set(`token:${token}`, { ...tokenData, status: 'inactive' });
           }
         }
         break;
@@ -390,16 +444,18 @@ app.post('/api/webhook', async (req, res) => {
 });
 
 app.get('/api/checkout-success', async (req, res) => {
-  if (!stripe) return res.status(503).json({ error: 'Payments not configured.' });
+  const activeRedis = req.app.locals.redis;
+  const activeStripe = req.app.locals.stripe;
+  if (!activeStripe) return res.status(503).json({ error: 'Payments not configured.' });
   const { session_id } = req.query;
   if (!session_id) {
     return res.status(400).json({ error: 'Missing session_id' });
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(session_id);
+    const session = await activeStripe.checkout.sessions.retrieve(session_id);
     const customerId = session.customer;
-    const token = await redis.get(`customer:${customerId}`);
+    const token = await activeRedis.get(`customer:${customerId}`);
 
     if (!token) {
       return res.status(202).json({ error: 'Processing payment. Please retry in a moment.' });
@@ -413,6 +469,7 @@ app.get('/api/checkout-success', async (req, res) => {
 });
 
 app.get('/api/subscription-status', async (req, res) => {
+  const activeRedis = req.app.locals.redis;
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.json({ active: false });
@@ -420,7 +477,7 @@ app.get('/api/subscription-status', async (req, res) => {
   const token = authHeader.substring(7);
 
   try {
-    const tokenData = await redis.get(`token:${token}`);
+    const tokenData = await activeRedis.get(`token:${token}`);
     if (tokenData && tokenData.status === 'active') {
       return res.json({ active: true, email: tokenData.email });
     }
@@ -432,23 +489,24 @@ app.get('/api/subscription-status', async (req, res) => {
 });
 
 app.post('/api/recover-token', async (req, res) => {
+  const activeRedis = req.app.locals.redis;
   const { email } = req.body;
   if (!email) {
     return res.status(400).json({ error: 'Email is required.' });
   }
 
   try {
-    const customerId = await redis.get(`email:${email.toLowerCase().trim()}`);
+    const customerId = await activeRedis.get(`email:${email.toLowerCase().trim()}`);
     if (!customerId) {
       return res.status(404).json({ error: 'No subscription found for this email.' });
     }
 
-    const token = await redis.get(`customer:${customerId}`);
+    const token = await activeRedis.get(`customer:${customerId}`);
     if (!token) {
       return res.status(404).json({ error: 'Subscription token not found.' });
     }
 
-    const tokenData = await redis.get(`token:${token}`);
+    const tokenData = await activeRedis.get(`token:${token}`);
     if (!tokenData || tokenData.status !== 'active') {
       return res.status(404).json({ error: 'Subscription is no longer active.' });
     }
@@ -538,6 +596,9 @@ app.post('/api/damage/calculate', async (req, res) => {
 
 // API route to get tips from LLM
 app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
+    const activeRedis = req.app.locals.redis;
+    const activeAiConfig = req.app.locals.aiConfig;
+    const activeDataProvider = req.app.locals.dataProvider;
     const { myTeam, opponentTeam } = req.body; 
 
     let prompt;
@@ -545,8 +606,8 @@ app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
         if (!myTeam || !opponentTeam || myTeam.length !== 5 || opponentTeam.length !== 5) {
              return res.status(400).json({ error: 'Invalid input structure. Requires myTeam and opponentTeam arrays of size 5.' });
         }
-        const matchContext = await dataProvider.buildMatchContext(myTeam, opponentTeam);
-        prompt = dataProvider.buildGroundedChinesePrompt(matchContext);
+        const matchContext = await activeDataProvider.buildMatchContext(myTeam, opponentTeam);
+        prompt = activeDataProvider.buildGroundedChinesePrompt(matchContext);
         console.log('Backend match context built for heroes:', [
           ...matchContext.teams.myTeam,
           ...matchContext.teams.opponentTeam
@@ -557,10 +618,10 @@ app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
     }
 
     try {
-        console.log(`Sending structured prompt to AI provider (${aiConfig.provider}, ${aiConfig.model})...`);
+        console.log(`Sending structured prompt to AI provider (${activeAiConfig.provider}, ${activeAiConfig.model})...`);
         const aiResponse = await callAiChat(
             axios,
-            aiConfig,
+            activeAiConfig,
             buildChineseCoachMessages(prompt),
             { temperature: 1, maxCompletionTokens: 8192, topP: 1, reasoningEffort: 'low' }
         );
@@ -572,9 +633,9 @@ app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
             const tips = choices[0].message.content;
 
             // Increment rate limit only on successful response
-            if (redis && req.rateLimitKey) {
-              const count = await redis.incr(req.rateLimitKey);
-              if (count === 1) await redis.expire(req.rateLimitKey, 86400);
+            if (activeRedis && req.rateLimitKey) {
+              const count = await activeRedis.incr(req.rateLimitKey);
+              if (count === 1) await activeRedis.expire(req.rateLimitKey, 86400);
               req.queriesRemaining = Math.max(0, FREE_TIER_LIMIT - count);
             }
 
@@ -598,7 +659,20 @@ app.post('/api/get-tips', rateLimitMiddleware, async (req, res) => {
     }
 });
 
-// --- Start Server --- 
-app.listen(port, () => {
+}
+
+function startServer() {
+  const app = createApp();
+  return app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
-}); 
+  });
+}
+
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = {
+  createApp,
+  startServer
+};
