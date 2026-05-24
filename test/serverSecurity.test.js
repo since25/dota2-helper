@@ -188,6 +188,13 @@ test('subscription endpoints fail closed when Redis is not configured', async ()
 
     const checkout = await fetch(`${baseUrl}/api/checkout-success?session_id=cs_test`);
     assert.equal(checkout.status, 503);
+
+    const status = await fetch(`${baseUrl}/api/subscription-status`, {
+      headers: { Authorization: 'Bearer token' }
+    });
+    const statusData = await status.json();
+    assert.equal(status.status, 503);
+    assert.equal(Object.hasOwn(statusData, 'token'), false);
   });
 });
 
