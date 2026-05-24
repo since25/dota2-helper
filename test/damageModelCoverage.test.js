@@ -31,15 +31,11 @@ test('buildDamageModelCoverage exposes semantic coverage gates', async () => {
   assert.deepEqual(report.semanticMissingAbilityEntries, []);
   assert.equal(report.inferredAbilities, 0);
   assert.deepEqual(report.inferredFallbackAbilities, []);
+});
 
-  const slowBurn = report.unsupportedAbilityEntries.find((entry) =>
-    entry.hero === 'Lina' && entry.ability === 'Slow Burn'
-  );
-
-  assert.ok(slowBurn);
-  assert.equal(slowBurn.status, 'unsupported');
-  assert.equal(slowBurn.semanticType, 'damage.source_damage_percent');
-  assert.ok(slowBurn.reason.includes('上游伤害事件'));
+test('damage model coverage has no unsupported ability entries after runtime-input repair', async () => {
+  const coverage = await buildDamageModelCoverage();
+  assert.deepEqual(coverage.unsupportedAbilityEntries, []);
 });
 
 test('buildDamageModelCoverage reports the all-reviewed manual model set', async () => {

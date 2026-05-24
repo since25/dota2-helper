@@ -40,12 +40,15 @@ module.exports = {
       reason: '法术增强会放大后续技能，当前总量不自动串联增伤。'
     },
     'Slow Burn': {
-      status: 'unsupported',
-      model: 'state_scaling',
-      valueKey: 'burn_damage_pct',
+      status: 'implemented',
+      model: 'source_damage_percent',
+      damageKey: 'burn_damage_pct',
       semanticType: 'damage.source_damage_percent',
       conditionInputs: ['source_damage', 'burn_duration'],
-      reason: '该技能按目标承受伤害比例追加燃烧，需要上游伤害事件作为输入。'
+      metadata: {
+        sourceDamageInput: 'source_damage'
+      },
+      reason: 'Runtime source damage is required to calculate the follow-up burn.'
     },
     'Laguna Blade': {
       status: 'implemented',

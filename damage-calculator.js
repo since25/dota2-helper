@@ -126,9 +126,14 @@ function renderAbilities(profile) {
       const attackFactor = valueAt(attackFactorByLevel, level);
       const hasDurationControl = component.kind === 'sustained' && defaultDuration !== null;
       const hasAttackControl = attackCount !== null || attackFactor !== null;
-      const canUseTheoretical = theoretical !== null || hasDurationControl || hasAttackControl || ['repeated_trigger', 'summon_attack', 'attribute_scaling', 'percent_health_dot'].includes(component.kind);
+      const needsHealthInput = ['percent_health_dot', 'percent_health_instant'].includes(component.kind);
+      const needsSourceDamageInput = component.kind === 'source_damage_percent';
+      const canUseTheoretical = theoretical !== null
+        || hasDurationControl
+        || hasAttackControl
+        || ['repeated_trigger', 'summon_attack', 'attribute_scaling', 'percent_health_dot', 'percent_health_instant', 'source_damage_percent'].includes(component.kind);
       cards.push(`
-        <article class="ability-workbench-card" data-ability="${escapeHtml(ability.name)}" data-component="${escapeHtml(component.id)}" data-status="${escapeHtml(status)}" data-duration-by-level="${durationByLevel.join(',')}" data-attack-count-by-level="${attackCountByLevel.join(',')}" data-attack-factor-by-level="${attackFactorByLevel.join(',')}">
+        <article class="ability-workbench-card" data-ability="${escapeHtml(ability.name)}" data-component="${escapeHtml(component.id)}" data-kind="${escapeHtml(component.kind)}" data-status="${escapeHtml(status)}" data-duration-by-level="${durationByLevel.join(',')}" data-attack-count-by-level="${attackCountByLevel.join(',')}" data-attack-factor-by-level="${attackFactorByLevel.join(',')}">
           <div class="ability-card-top">
             <label class="toggle-line">
               <input type="checkbox" class="component-check" ${component.countInFixedInstantTotal && isSelectable ? 'checked' : ''} ${isSelectable ? '' : 'disabled'}>
@@ -158,6 +163,12 @@ function renderAbilities(profile) {
             <label>普攻伤害
               <input class="attack-damage" type="number" min="0" step="0.1" value="${hasAttackControl ? fmt(currentWorkbench.heroPanel.averageAttackDamage) : ''}" ${hasAttackControl ? '' : 'disabled'}>
             </label>
+            <label>目标生命
+              <input class="target-max-health" type="number" min="0" step="1" value="${needsHealthInput ? fmt(currentWorkbench.heroPanel.maxHealth) : ''}" ${needsHealthInput ? '' : 'disabled'}>
+            </label>
+            <label>前置伤害
+              <input class="source-damage" type="number" min="0" step="1" value="${needsSourceDamageInput ? '0' : ''}" ${needsSourceDamageInput ? '' : 'disabled'}>
+            </label>
           </div>
         </article>
       `);
@@ -171,6 +182,8 @@ function renderAbilities(profile) {
 function syncAbilityInputs(row, { resetToDefault = false } = {}) {
   const durationInput = row.querySelector('.active-duration');
   const attackDamageInput = row.querySelector('.attack-damage');
+  const targetMaxHealthInput = row.querySelector('.target-max-health');
+  const sourceDamageInput = row.querySelector('.source-damage');
   const abilityLevel = Number(row.querySelector('.ability-level').value || 1);
   const valueMode = row.querySelector('.value-mode').value;
   const defaultDuration = valueAt(parseNumericList(row.dataset.durationByLevel), abilityLevel);
@@ -178,6 +191,8 @@ function syncAbilityInputs(row, { resetToDefault = false } = {}) {
   const attackFactor = valueAt(parseNumericList(row.dataset.attackFactorByLevel), abilityLevel);
   const hasDurationControl = defaultDuration !== null;
   const hasAttackControl = attackCount !== null || attackFactor !== null;
+  const needsHealthInput = ['percent_health_dot', 'percent_health_instant'].includes(row.dataset.kind);
+  const needsSourceDamageInput = row.dataset.kind === 'source_damage_percent';
 
   durationInput.disabled = !(hasDurationControl && valueMode === 'theoretical');
   if (defaultDuration !== null) {
@@ -193,6 +208,20 @@ function syncAbilityInputs(row, { resetToDefault = false } = {}) {
     attackDamageInput.value = '';
   } else if (resetToDefault || attackDamageInput.value === '') {
     attackDamageInput.value = fmt(currentWorkbench.heroPanel.averageAttackDamage);
+  }
+
+  targetMaxHealthInput.disabled = !(needsHealthInput && valueMode === 'theoretical');
+  if (!needsHealthInput) {
+    targetMaxHealthInput.value = '';
+  } else if (resetToDefault || targetMaxHealthInput.value === '') {
+    targetMaxHealthInput.value = fmt(currentWorkbench.heroPanel.maxHealth);
+  }
+
+  sourceDamageInput.disabled = !(needsSourceDamageInput && valueMode === 'theoretical');
+  if (!needsSourceDamageInput) {
+    sourceDamageInput.value = '';
+  } else if (resetToDefault || sourceDamageInput.value === '') {
+    sourceDamageInput.value = '0';
   }
 }
 
@@ -305,6 +334,8 @@ function selectedAbilityComponents() {
       const abilityLevel = Number(row.querySelector('.ability-level').value || 1);
       const activeDuration = row.querySelector('.active-duration');
       const attackDamage = row.querySelector('.attack-damage');
+      const targetMaxHealth = row.querySelector('.target-max-health');
+      const sourceDamage = row.querySelector('.source-damage');
       const attackCount = valueAt(parseNumericList(row.dataset.attackCountByLevel), abilityLevel);
       return {
         sourceType: 'ability',
@@ -314,7 +345,9 @@ function selectedAbilityComponents() {
         valueMode: row.querySelector('.value-mode').value,
         ...(activeDuration && !activeDuration.disabled && activeDuration.value !== '' ? { activeDurationSeconds: Number(activeDuration.value) } : {}),
         ...(attackCount !== null ? { attackCount } : {}),
-        ...(attackDamage && !attackDamage.disabled && attackDamage.value !== '' ? { attackDamage: Number(attackDamage.value) } : {})
+        ...(attackDamage && !attackDamage.disabled && attackDamage.value !== '' ? { attackDamage: Number(attackDamage.value) } : {}),
+        ...(targetMaxHealth && !targetMaxHealth.disabled && targetMaxHealth.value !== '' ? { targetMaxHealth: Number(targetMaxHealth.value) } : {}),
+        ...(sourceDamage && !sourceDamage.disabled && sourceDamage.value !== '' ? { sourceDamage: Number(sourceDamage.value) } : {})
       };
     });
 }

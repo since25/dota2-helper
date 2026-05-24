@@ -518,19 +518,48 @@ test('calculateDamageCombo rejects reference-only ability components', async () 
   );
 });
 
-test('calculateDamageCombo rejects unsupported ability components', async () => {
-  await assert.rejects(
-    () => calculateDamageCombo({
-      hero: 'Lina',
-      heroLevel: 6,
-      selectedComponents: [{
-        sourceType: 'ability',
-        abilityName: 'Slow Burn',
-        componentId: 'Slow Burn:state_scaling:burn_damage_pct',
-        abilityLevel: 1,
-        valueMode: 'base'
-      }]
-    }),
-    /Slow Burn.*unsupported/
-  );
+test('calculateDamageCombo supports instant percent max-health damage', async () => {
+  const profile = await getHeroDamageProfile('Phantom Assassin');
+  const fan = profile.abilities.find((ability) => ability.name === 'Fan of Knives');
+  const component = fan.components.find((entry) => entry.kind === 'percent_health_instant');
+
+  const result = await calculateDamageCombo({
+    hero: 'Phantom Assassin',
+    heroLevel: 20,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [{
+      sourceType: 'ability',
+      abilityName: fan.name,
+      componentId: component.id,
+      abilityLevel: 1,
+      valueMode: 'theoretical',
+      targetMaxHealth: 2000
+    }]
+  });
+
+  assert.equal(result.components[0].raw, 600);
+  assert.equal(result.components[0].adjusted, 450);
+});
+
+test('calculateDamageCombo supports source-damage percent follow-up damage', async () => {
+  const profile = await getHeroDamageProfile('Lina');
+  const slowBurn = profile.abilities.find((ability) => ability.name === 'Slow Burn');
+  const component = slowBurn.components.find((entry) => entry.kind === 'source_damage_percent');
+
+  const result = await calculateDamageCombo({
+    hero: 'Lina',
+    heroLevel: 20,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [{
+      sourceType: 'ability',
+      abilityName: slowBurn.name,
+      componentId: component.id,
+      abilityLevel: 1,
+      valueMode: 'theoretical',
+      sourceDamage: 500
+    }]
+  });
+
+  assert.equal(result.components[0].raw, 320);
+  assert.equal(result.components[0].adjusted, 240);
 });

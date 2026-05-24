@@ -14,10 +14,12 @@ const MODEL_TYPES = [
   'initial_plus_dot',
   'initial_plus_ticks',
   'percent_health_dot',
+  'percent_health_instant',
   'repeated_trigger',
   'state_scaling',
   'summon_attack',
   'attribute_scaling',
+  'source_damage_percent',
   'debuff_reference'
 ];
 
@@ -33,10 +35,12 @@ const REQUIRED_BY_TYPE = {
   initial_plus_dot: ['initialDamageKey', 'damagePerSecondKey', 'durationKey'],
   initial_plus_ticks: ['initialDamageKey', 'tickDamageKey', 'tickIntervalKey', 'durationKey'],
   percent_health_dot: ['percentDamageKey', 'durationKey', 'healthInput'],
+  percent_health_instant: ['damageKey'],
   repeated_trigger: ['damageKey', 'triggerCountInput'],
   state_scaling: ['requiredInputs'],
   summon_attack: ['attackDamageKey', 'attackCountInput'],
   attribute_scaling: ['baseDamageKey', 'attributeMultiplierKey', 'attributeInput'],
+  source_damage_percent: ['damageKey'],
   debuff_reference: ['valueKey', 'affects']
 };
 

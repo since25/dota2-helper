@@ -35,12 +35,16 @@ module.exports = {
       reason: '隐身和移速影响进出场，不直接造成伤害。'
     },
     'Fan of Knives': {
-      status: 'unsupported',
-      model: 'state_scaling',
-      valueKey: 'pct_health_damage_initial',
+      status: 'implemented',
+      model: 'percent_health_instant',
+      damageKey: 'pct_health_damage_initial',
+      damageType: 'Magical',
       semanticType: 'damage.percent_max_health',
       conditionInputs: ['enemy_max_health'],
-      reason: '该技能按目标最大生命百分比造成伤害，需要敌方生命值输入。'
+      metadata: {
+        healthInput: 'target_max_health'
+      },
+      reason: 'Runtime target max health is required to calculate the percent-health damage.'
     },
     Immaterial: {
       status: 'reference_only',

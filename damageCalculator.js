@@ -373,8 +373,31 @@ function resolveComponentDamage(component, abilityLevel, selection, profile, her
       return {
         raw: roundDamage(healthValue * (baseValue / 100) * activeDurationSeconds),
         formula: 'healthInput * percentDamage * duration',
+        targetMaxHealth: healthValue,
         activeDurationSeconds,
         durationLimitSeconds: durationLimit
+      };
+    }
+
+    if (component.kind === 'percent_health_instant') {
+      const healthValue = healthInputValue(selection, component.metadata?.healthInput);
+      return {
+        raw: roundDamage(healthValue * (baseValue / 100)),
+        formula: 'targetMaxHealth * percentDamage',
+        targetMaxHealth: healthValue,
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
+      };
+    }
+
+    if (component.kind === 'source_damage_percent') {
+      const sourceDamage = numericInput(selection.sourceDamage) ?? 0;
+      return {
+        raw: roundDamage(sourceDamage * (baseValue / 100)),
+        formula: 'sourceDamage * percentDamage',
+        sourceDamage,
+        activeDurationSeconds: null,
+        durationLimitSeconds: null
       };
     }
 
@@ -659,6 +682,8 @@ async function calculateDamageCombo(request) {
       procDamage: damage.procDamage,
       attackFactorPct: damage.attackFactorPct,
       triggerCount: damage.triggerCount,
+      targetMaxHealth: damage.targetMaxHealth,
+      sourceDamage: damage.sourceDamage,
       attributeValue: damage.attributeValue,
       attributeMultiplier: damage.attributeMultiplier,
       caveats: component.caveats || []

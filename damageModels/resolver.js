@@ -68,7 +68,9 @@ function semanticTypeForEntry(entry) {
     repeated_trigger: 'damage.instant',
     summon_attack: 'summon.attack_damage',
     percent_health_dot: 'damage.percent_max_health',
+    percent_health_instant: 'damage.percent_max_health',
     attribute_scaling: 'damage.attribute_scaling',
+    source_damage_percent: 'damage.source_damage_percent',
     conditional_instant: 'damage.instant'
   };
   return defaults[entry.model] || '';
@@ -142,7 +144,7 @@ function baseComponent(ability, entry, valuesByAbilityLevel, overrides = {}) {
     status: entry.status,
     source: 'curated',
     growthKind: entry.growthKind || 'non_growth',
-    damageType: overrides.damageType !== undefined ? overrides.damageType : (ability.damageType || 'Unknown'),
+    damageType: overrides.damageType !== undefined ? overrides.damageType : (entry.damageType || ability.damageType || 'Unknown'),
     label: overrides.label || entry.damageKey || entry.procDamageKey || entry.damagePerSecondKey || entry.damagePerWaveKey || entry.bonusDamageKey || entry.valueKey || entry.model,
     sourceKey: overrides.sourceKey || entry.damageKey || entry.procDamageKey || entry.damagePerSecondKey || entry.damagePerWaveKey || entry.bonusDamageKey || entry.valueKey || entry.model,
     valuesByAbilityLevel,
@@ -313,6 +315,38 @@ function buildImplementedComponent(ability, entry) {
         durationByAbilityLevel: duration
       },
       caveats: ['百分比生命持续伤害需要目标生命输入，不能生成固定理论总量。']
+    });
+  }
+
+  if (entry.model === 'percent_health_instant') {
+    const values = valuesForKey(ability, entry.damageKey);
+    return baseComponent(ability, entry, values, {
+      kind: 'percent_health_instant',
+      sourceKey: entry.damageKey,
+      label: entry.damageKey,
+      formula: { type: 'runtime_health_percent' },
+      totalFormula: entry.formula || 'targetMaxHealth * percentDamage',
+      metadata: {
+        ...(entry.metadata || {}),
+        healthInput: entry.metadata?.healthInput || entry.healthInput || 'target_max_health'
+      },
+      caveats: [entry.reason || '百分比生命伤害需要目标生命输入，不能生成固定理论总量。']
+    });
+  }
+
+  if (entry.model === 'source_damage_percent') {
+    const values = valuesForKey(ability, entry.damageKey);
+    return baseComponent(ability, entry, values, {
+      kind: 'source_damage_percent',
+      sourceKey: entry.damageKey,
+      label: entry.damageKey,
+      formula: { type: 'runtime_source_damage_percent' },
+      totalFormula: entry.formula || 'sourceDamage * percentDamage',
+      metadata: {
+        ...(entry.metadata || {}),
+        sourceDamageInput: entry.metadata?.sourceDamageInput || entry.sourceDamageInput || 'source_damage'
+      },
+      caveats: [entry.reason || '来源伤害百分比需要输入前置伤害，不能生成固定理论总量。']
     });
   }
 
