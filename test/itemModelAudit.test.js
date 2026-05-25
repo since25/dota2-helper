@@ -19,5 +19,7 @@ test('item model audit page renders readable semantic rows', () => {
   assert.match(html, /商店物品语义模型审核/);
   assert.match(html, /Dagon/);
   assert.match(html, /damage\.instant/);
+  assert.match(html, /Combat Assertions/);
+  assert.match(html, /stat\.attack_damage\.flat/);
   assert.match(html, /阿哈利姆魔晶/);
 });

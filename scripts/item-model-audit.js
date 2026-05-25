@@ -5,6 +5,7 @@ const {
   listItemModels,
   summarizeItemModelCoverage
 } = require('../itemModels/registry');
+const { adaptItemModelToAssertions } = require('../combat/itemEffectAdapter');
 
 const DEFAULT_OUTPUT_DIR = path.join('audit-runs', 'item-models-latest');
 
@@ -55,6 +56,15 @@ function renderEffects(model) {
   }).join('');
 }
 
+function renderCombatAssertions(model) {
+  const assertions = adaptItemModelToAssertions(model);
+  if (!assertions.length) return '<span class="muted">无</span>';
+  const assertionRows = assertions.map((assertion) => (
+    `<tr><td>${escapeHtml(assertion.sourceKey)}</td><td>${escapeHtml(assertion.semanticType)}</td><td>${escapeHtml(assertion.confidence)}</td></tr>`
+  )).join('');
+  return `<table class="nested-table" aria-label="Combat Assertions"><thead><tr><th>source</th><th>semanticType</th><th>confidence</th></tr></thead><tbody>${assertionRows}</tbody></table>`;
+}
+
 function renderRows(models) {
   return models.map((model) => `
     <tr>
@@ -63,6 +73,7 @@ function renderRows(models) {
       <td>${escapeHtml(model.quality || '-')}</td>
       <td>${model.effects.map((effect) => renderChip(effect.type)).join('')}</td>
       <td><ul>${renderEffects(model)}</ul></td>
+      <td>${renderCombatAssertions(model)}</td>
       <td>${model.rawFields.slice(0, 12).map(renderChip).join('') || '<span class="muted">无</span>'}</td>
     </tr>
   `).join('');
@@ -88,6 +99,8 @@ function renderHtml(models, summary) {
     table { width: 100%; min-width: 1240px; border-collapse: collapse; font-size: 13px; }
     th, td { padding: 9px; border-bottom: 1px solid #e0e8ee; text-align: left; vertical-align: top; }
     th { background: #f7fafc; color: #31566d; position: sticky; top: 0; }
+    .nested-table { min-width: 0; font-size: 12px; }
+    .nested-table th { position: static; }
     ul { margin: 0; padding-left: 18px; }
     li { margin-bottom: 8px; }
     .table-wrap { max-height: 76vh; overflow: auto; border: 1px solid #d9e4ea; border-radius: 8px; }
@@ -125,6 +138,7 @@ function renderHtml(models, summary) {
               <th>quality</th>
               <th>语义类型</th>
               <th>效果明细</th>
+              <th>Combat Assertions</th>
               <th>原始字段</th>
             </tr>
           </thead>
