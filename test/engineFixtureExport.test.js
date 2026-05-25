@@ -6,6 +6,7 @@ const os = require('os');
 const path = require('path');
 
 const {
+  buildEngineFixtureBatch,
   buildEngineFixture,
   buildLuaFixtureSource,
   writeEngineFixtureFiles
@@ -204,6 +205,55 @@ test('buildLuaFixtureSource emits a require-able Lua table for the addon runner'
   assert.match(source, /expectedAdjusted = /);
 });
 
+test('buildEngineFixtureBatch exports a manifest of repeatable engine probes', async () => {
+  const batch = await buildEngineFixtureBatch({
+    id: 'attack_mechanic_matrix',
+    scenarios: [
+      {
+        id: 'pa_broadsword_batch_attack',
+        hero: 'Phantom Assassin',
+        heroLevel: 12,
+        items: ['broadsword'],
+        target: {
+          unitName: 'npc_dota_creep_badguys_melee',
+          health: 10000,
+          armor: 10,
+          magicResistancePercent: 25
+        },
+        scenario: { type: 'attack_window', attackCount: 1 }
+      },
+      {
+        id: 'slardar_bash_batch_attack',
+        hero: 'Slardar',
+        heroLevel: 5,
+        target: {
+          unitName: 'npc_dota_creep_badguys_melee',
+          health: 10000,
+          armor: 0,
+          magicResistancePercent: 25
+        },
+        abilitySelections: [{
+          abilityName: 'Bash of the Deep',
+          componentId: 'Bash of the Deep:attack_sequence:bonus_damage',
+          abilityLevel: 3,
+          valueMode: 'theoretical'
+        }],
+        scenario: { type: 'attack_window', attackCount: 4 }
+      }
+    ]
+  });
+
+  assert.equal(batch.id, 'attack_mechanic_matrix');
+  assert.equal(batch.fixtures.length, 2);
+  assert.equal(batch.fixtures[0].engineSetup.itemAbilityNames[0], 'item_broadsword');
+  assert.deepEqual(batch.fixtures[1].engineSetup.abilityLevels, [{ abilityName: 'slardar_bash', level: 3 }]);
+
+  const source = buildLuaFixtureSource(batch);
+  assert.match(source, /fixtures = \{/);
+  assert.match(source, /id = "pa_broadsword_batch_attack"/);
+  assert.match(source, /id = "slardar_bash_batch_attack"/);
+});
+
 test('writeEngineFixtureFiles writes JSON and addon Lua fixture outputs', async () => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'dota-helper-engine-'));
   const jsonPath = path.join(tmpDir, 'fixture.json');
@@ -229,4 +279,33 @@ test('writeEngineFixtureFiles writes JSON and addon Lua fixture outputs', async 
   assert.equal(json.engineSetup.targetUnitName, 'npc_dota_hero_axe');
   assert.match(lua, /return \{/);
   assert.match(lua, /id = "pa_written_fixture"/);
+});
+
+test('writeEngineFixtureFiles writes batch JSON and Lua outputs from scenario manifests', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'dota-helper-engine-batch-'));
+  const jsonPath = path.join(tmpDir, 'fixture-batch.json');
+  const luaPath = path.join(tmpDir, 'dota_helper_fixture.lua');
+
+  await writeEngineFixtureFiles({
+    input: {
+      id: 'single_batch',
+      scenarios: [{
+        id: 'pa_written_batch_fixture',
+        hero: 'Phantom Assassin',
+        heroLevel: 12,
+        items: ['broadsword'],
+        target: { hero: 'Axe', armor: 10, magicResistancePercent: 25 },
+        scenario: { type: 'attack_window', attackCount: 1 }
+      }]
+    },
+    outputPath: jsonPath,
+    luaOutputPath: luaPath
+  });
+
+  const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  const lua = fs.readFileSync(luaPath, 'utf8');
+
+  assert.equal(json.fixtures.length, 1);
+  assert.equal(json.fixtures[0].id, 'pa_written_batch_fixture');
+  assert.match(lua, /fixtures = \{/);
 });

@@ -126,6 +126,21 @@ async function buildEngineFixture(input) {
   return fixture;
 }
 
+async function buildEngineFixtureBatch(input) {
+  const scenarios = input.scenarios || [];
+  if (!Array.isArray(scenarios) || scenarios.length === 0) {
+    throw new Error('Engine fixture batch requires a non-empty scenarios array.');
+  }
+  return {
+    id: input.id || 'engine_fixture_batch',
+    fixtures: await Promise.all(scenarios.map((scenario) => buildEngineFixture(scenario)))
+  };
+}
+
+async function buildEngineFixtureArtifact(input) {
+  return Array.isArray(input.scenarios) ? buildEngineFixtureBatch(input) : buildEngineFixture(input);
+}
+
 function luaString(value) {
   return `"${String(value)
     .replace(/\\/g, '\\\\')
@@ -153,8 +168,8 @@ function luaValue(value, indent = 0) {
   }).join(',\n')}\n${pad}}`;
 }
 
-function buildLuaFixtureSource(fixture) {
-  const luaFixture = {
+function luaFixtureRecord(fixture) {
+  return {
     id: fixture.id,
     hero: fixture.hero,
     heroLevel: fixture.heroLevel,
@@ -172,11 +187,20 @@ function buildLuaFixtureSource(fixture) {
     scenario: fixture.scenario || {},
     expectedAdjusted: fixture.engineSetup.expectedAdjusted
   };
+}
+
+function buildLuaFixtureSource(fixture) {
+  const luaFixture = fixture.fixtures
+    ? {
+      id: fixture.id,
+      fixtures: fixture.fixtures.map(luaFixtureRecord)
+    }
+    : luaFixtureRecord(fixture);
   return `return ${luaValue(luaFixture)}\n`;
 }
 
 async function writeEngineFixtureFiles({ input, outputPath, luaOutputPath }) {
-  const fixture = await buildEngineFixture(input);
+  const fixture = await buildEngineFixtureArtifact(input);
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(fixture, null, 2));
   fs.mkdirSync(path.dirname(luaOutputPath), { recursive: true });
@@ -205,6 +229,8 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildEngineFixtureArtifact,
+  buildEngineFixtureBatch,
   buildEngineFixture,
   buildLuaFixtureSource,
   writeEngineFixtureFiles,

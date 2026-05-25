@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 
-const { compareEngineResult } = require('../scripts/compare-engine-result');
+const { compareEngineResult, compareEngineResults } = require('../scripts/compare-engine-result');
 
 test('compareEngineResult passes when observed damage is within tolerance', () => {
   const result = compareEngineResult({
@@ -66,4 +66,64 @@ test('compareEngineResult passes attack-sequence samples within attack damage ro
 
   assert.equal(result.pass, true);
   assert.deepEqual(result.expectedRange, { min: 405, max: 437 });
+});
+
+test('compareEngineResult passes basic attack-window samples within attack damage roll range', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'pa_shadow',
+      expectedLocalModel: {
+        totals: { adjusted: 184.38 },
+        combatStats: {
+          attackDamage: { min: 119, max: 121, average: 120 }
+        },
+        components: [{
+          kind: 'basic_attack',
+          damageType: 'Physical',
+          raw: 295,
+          attackCount: 1
+        }]
+      }
+    },
+    engineResult: {
+      id: 'pa_shadow',
+      engine: {
+        observedDamage: 185,
+        targetArmor: 10
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.expectedRange, { min: 183, max: 185 });
+});
+
+test('compareEngineResults summarizes batch fixture comparisons', () => {
+  const report = compareEngineResults({
+    fixture: {
+      id: 'batch1',
+      fixtures: [
+        {
+          id: 'case1',
+          expectedLocalModel: { totals: { adjusted: 100 } }
+        },
+        {
+          id: 'case2',
+          expectedLocalModel: { totals: { adjusted: 50 } }
+        }
+      ]
+    },
+    engineResults: [
+      { id: 'case1', engine: { observedDamage: 100 } },
+      { id: 'case2', engine: { observedDamage: 60 } }
+    ],
+    tolerance: { absolute: 1, percent: 0.01 }
+  });
+
+  assert.equal(report.id, 'batch1');
+  assert.equal(report.total, 2);
+  assert.equal(report.passed, 1);
+  assert.equal(report.failed, 1);
+  assert.deepEqual(report.missingResultIds, []);
+  assert.equal(report.results[1].pass, false);
 });

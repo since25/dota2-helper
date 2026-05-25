@@ -8,7 +8,9 @@ function DotaHelperFixtureRunner:InitGameMode()
   print("[dota-helper] fixture runner initialized")
   if hasGeneratedFixture and GeneratedFixture ~= nil then
     self.fixture = GeneratedFixture
-    GameRules:GetGameModeEntity():SetThink("RunFixture", self, "dota_helper_fixture", 1.0)
+    self.fixtures = GeneratedFixture.fixtures or { GeneratedFixture }
+    self.fixtureIndex = 0
+    GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 1.0)
   else
     GameRules:GetGameModeEntity():SetThink("RunSmokeFixture", self, "dota_helper_fixture_smoke", 1.0)
   end
@@ -21,26 +23,41 @@ function DotaHelperFixtureRunner:RunSmokeFixture()
 end
 
 function DotaHelperFixtureRunner:RunFixture()
-  print("[dota-helper] fixture loaded: " .. tostring(self.fixture.id))
+  self.fixtures = self.fixtures or { self.fixture }
+  self.fixtureIndex = self.fixtureIndex or 0
+  return self:RunNextFixture()
+end
+
+function DotaHelperFixtureRunner:RunNextFixture()
+  self.fixtureIndex = (self.fixtureIndex or 0) + 1
+  local fixture = self.fixtures and self.fixtures[self.fixtureIndex] or nil
+  if fixture == nil then
+    print("[dota-helper] fixture batch complete")
+    return nil
+  end
+  print("[dota-helper] fixture loaded: " .. tostring(fixture.id))
+  self.currentFixtureUnits = {}
   local ok, result = pcall(function()
-    return self:RunConfiguredFixture(self.fixture)
+    return self:RunConfiguredFixture(fixture)
   end)
   if not ok then
     self:PrintResult({
-      id = self.fixture.id,
+      id = fixture.id,
       engine = {
         observedDamage = 0,
         modifiers = {},
         error = tostring(result)
       }
     })
-    return nil
+    self:CleanupFixtureUnits()
+    return 0.2
   end
   if result == nil then
     return nil
   end
   self:PrintResult(result)
-  return nil
+  self:CleanupFixtureUnits()
+  return 0.2
 end
 
 function DotaHelperFixtureRunner:RunConfiguredFixture(fixture)
@@ -165,6 +182,8 @@ function DotaHelperFixtureRunner:FinishActiveItemFixture()
       modifiers = { "active_item" }
     }
   })
+  self:CleanupFixtureUnits()
+  GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
   return nil
 end
 
@@ -173,7 +192,19 @@ function DotaHelperFixtureRunner:CreateFixtureUnit(unitName, team, origin)
   if unit == nil then
     error("CreateUnitByName failed for " .. tostring(unitName))
   end
+  if self.currentFixtureUnits ~= nil then
+    table.insert(self.currentFixtureUnits, unit)
+  end
   return unit
+end
+
+function DotaHelperFixtureRunner:CleanupFixtureUnits()
+  for _, unit in ipairs(self.currentFixtureUnits or {}) do
+    if unit ~= nil and UTIL_Remove ~= nil then
+      pcall(UTIL_Remove, unit)
+    end
+  end
+  self.currentFixtureUnits = {}
 end
 
 function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)

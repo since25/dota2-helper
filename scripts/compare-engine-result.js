@@ -8,21 +8,26 @@ function physicalMultiplier(armor) {
   return 1 - (0.06 * armor) / (1 + 0.06 * Math.abs(armor));
 }
 
-function attackSequenceExpectedRange({ fixture, engineResult }) {
+function attackRollExpectedRange({ fixture, engineResult }) {
   const component = (fixture.expectedLocalModel?.components || [])
-    .find((entry) => entry.kind === 'attack_sequence');
+    .find((entry) => entry.kind === 'attack_sequence' || entry.kind === 'basic_attack');
   const attackDamage = fixture.expectedLocalModel?.combatStats?.attackDamage;
   if (!component || !attackDamage) return null;
   const attackCount = Number(component.attackCount);
   const procDamage = Number(component.procDamage || 0);
   const min = Number(attackDamage.min);
   const max = Number(attackDamage.max);
+  const average = Number(attackDamage.average);
   if (![attackCount, procDamage, min, max].every(Number.isFinite)) return null;
+  if (component.kind === 'basic_attack' && !Number.isFinite(average)) return null;
+  const nonRollDamage = component.kind === 'basic_attack'
+    ? Number(component.raw || 0) - attackCount * average
+    : procDamage;
   const armor = Number(engineResult.engine?.targetArmor || 0);
   const multiplier = component.damageType === 'Physical' ? physicalMultiplier(armor) : 1;
   return {
-    min: round((attackCount * min + procDamage) * multiplier),
-    max: round((attackCount * max + procDamage) * multiplier)
+    min: Math.floor(round((attackCount * min + nonRollDamage) * multiplier)),
+    max: Math.ceil(round((attackCount * max + nonRollDamage) * multiplier))
   };
 }
 
@@ -34,7 +39,7 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
   const observed = Number(engineResult.engine?.observedDamage || 0);
   const delta = round(Math.abs(observed - expected));
   const percentDelta = expected === 0 ? (delta === 0 ? 0 : Infinity) : delta / expected;
-  const expectedRange = attackSequenceExpectedRange({ fixture, engineResult });
+  const expectedRange = attackRollExpectedRange({ fixture, engineResult });
   const rangePass = expectedRange
     ? observed >= expectedRange.min && observed <= expectedRange.max
     : false;
@@ -50,6 +55,40 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
   };
 }
 
+function normalizeEngineResults(engineResults) {
+  if (Array.isArray(engineResults)) return engineResults;
+  if (Array.isArray(engineResults?.results)) return engineResults.results;
+  return [engineResults];
+}
+
+function compareEngineResults({ fixture, engineResults, tolerance = { absolute: 1, percent: 0.01 } }) {
+  const fixtures = Array.isArray(fixture.fixtures) ? fixture.fixtures : [fixture];
+  const results = normalizeEngineResults(engineResults);
+  const byId = new Map(results.map((result) => [result.id, result]));
+  const comparisons = [];
+  const missingResultIds = [];
+  for (const entry of fixtures) {
+    const engineResult = byId.get(entry.id);
+    if (!engineResult) {
+      missingResultIds.push(entry.id);
+      continue;
+    }
+    comparisons.push(compareEngineResult({ fixture: entry, engineResult, tolerance }));
+  }
+  const passed = comparisons.filter((entry) => entry.pass).length;
+  const failed = comparisons.length - passed + missingResultIds.length;
+  return {
+    id: fixture.id,
+    total: fixtures.length,
+    compared: comparisons.length,
+    passed,
+    failed,
+    missingResultIds,
+    results: comparisons,
+    pass: failed === 0
+  };
+}
+
 function main(argv = process.argv.slice(2)) {
   const fixturePath = argv[0];
   const resultPath = argv[1];
@@ -58,7 +97,9 @@ function main(argv = process.argv.slice(2)) {
   }
   const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
   const engineResult = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
-  const report = compareEngineResult({ fixture, engineResult });
+  const report = Array.isArray(fixture.fixtures)
+    ? compareEngineResults({ fixture, engineResults: engineResult })
+    : compareEngineResult({ fixture, engineResult });
   console.log(JSON.stringify(report, null, 2));
   if (!report.pass) process.exit(1);
 }
@@ -73,5 +114,6 @@ if (require.main === module) {
 }
 
 module.exports = {
-  compareEngineResult
+  compareEngineResult,
+  compareEngineResults
 };

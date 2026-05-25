@@ -19,6 +19,8 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
 
   assert.match(source, /pcall\(require,\s*"generated\.dota_helper_fixture"\)/);
   assert.match(source, /RunConfiguredFixture/);
+  assert.match(source, /RunNextFixture/);
+  assert.match(source, /fixtures/);
   assert.match(source, /PerformAttack/);
   assert.match(source, /observedDamage/);
   assert.match(source, /targetArmor/);
@@ -34,6 +36,7 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
   assert.match(source, /SetAbilityLevels/);
+  assert.match(source, /CleanupFixtureUnits/);
   assert.match(source, /activeItemLevel/);
   assert.match(source, /activeItemDamageSpecial/);
   assert.match(source, /SetLevel/);
