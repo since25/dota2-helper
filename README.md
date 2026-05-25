@@ -109,6 +109,8 @@ npm run engine:fixture -- <scenario.json> tools/dota-addon/generated/fixture.jso
 npm run engine:compare -- tools/dota-addon/generated/fixture.json <engine-result.json>
 ```
 
+`engine:fixture` 会同时生成给 Node 对比用的 JSON，以及给 Workshop Tools 加载用的 `tools/dota-addon/scripts/vscripts/generated/dota_helper_fixture.lua`。
+
 ### 调试脚本配置
 
 真实 LLM trial 可选：
