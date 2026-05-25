@@ -64,7 +64,7 @@ function engineSetupFor(input, expectedLocalModel) {
   const targetHero = input.target?.hero || 'Axe';
   return {
     attackerUnitName: resolveHeroUnitName(input.hero),
-    targetUnitName: resolveHeroUnitName(targetHero),
+    targetUnitName: input.target?.unitName || resolveHeroUnitName(targetHero),
     itemAbilityNames: (input.items || []).map(itemAbilityName),
     expectedAdjusted: expectedLocalModel.totals?.adjusted || 0
   };
@@ -139,6 +139,7 @@ function buildLuaFixtureSource(fixture) {
     target: {
       hero: fixture.target?.hero,
       level: fixture.target?.level,
+      health: fixture.target?.health,
       armor: fixture.target?.armor,
       magicResistancePercent: fixture.target?.magicResistancePercent
     },

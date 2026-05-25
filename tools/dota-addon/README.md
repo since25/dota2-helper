@@ -21,10 +21,21 @@ This folder is a local-only Dota 2 Workshop Tools verifier for the damage model.
    npm run engine:compare -- tools/dota-addon/generated/fixture.json test-runs/dota-engine-verification/engine-result.json
    ```
 
+On macOS, this command can launch the probe through the running Steam client:
+
+```bash
+"$HOME/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/MacOS/steam_osx" \
+  -applaunch 570 \
+  -console -condebug +developer 1 \
+  +dota_launch_custom_game dota_helper_probe dota
+```
+
+Console output is written to `~/Library/Application Support/Steam/steamapps/common/dota 2 beta/game/dota/console.log`.
+
 ## Server Policy
 
 The production server never runs Dota 2, Workshop Tools, or these Lua files. The addon is a development calibration tool only.
 
 ## Current Scope
 
-The runner currently supports the first `attack_window` probe: it creates attacker and target hero units, applies hero levels, adds items, performs one controlled attack, and prints observed health loss. More complex cases such as active items, spells, invisibility timing, crit sampling, and delayed damage should be added as separate probes after confirming the exact Workshop Tools API behavior locally.
+The runner currently supports the first `attack_window` probe: it creates attacker and target units, applies hero levels, calibrates target total armor, adds items, performs a controlled number of attacks, and prints observed health loss with diagnostic fields. More complex cases such as active items, spells, invisibility timing, crit sampling, and delayed damage should be added as separate probes after confirming the exact Workshop Tools API behavior locally.

@@ -60,13 +60,33 @@ test('buildEngineFixture resolves Dota engine unit and item names for Lua', asyn
   assert.equal(fixture.engineSetup.expectedAdjusted, fixture.expectedLocalModel.totals.adjusted);
 });
 
+test('buildEngineFixture accepts explicit target unit name for cleaner engine probes', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_level_12_target_dummy_attack',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['broadsword'],
+    target: {
+      unitName: 'npc_dota_hero_target_dummy',
+      armor: 10,
+      magicResistancePercent: 25
+    },
+    scenario: {
+      type: 'attack_window',
+      attackCount: 100
+    }
+  });
+
+  assert.equal(fixture.engineSetup.targetUnitName, 'npc_dota_hero_target_dummy');
+});
+
 test('buildLuaFixtureSource emits a require-able Lua table for the addon runner', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_lua_fixture',
     hero: 'Phantom Assassin',
     heroLevel: 12,
     items: ['broadsword'],
-    target: { hero: 'Axe', armor: 10, magicResistancePercent: 25 },
+    target: { hero: 'Axe', armor: 10, magicResistancePercent: 25, health: 50000 },
     scenario: { type: 'attack_window', attackCount: 1 }
   });
 
@@ -77,6 +97,7 @@ test('buildLuaFixtureSource emits a require-able Lua table for the addon runner'
   assert.match(source, /attackerUnitName = "npc_dota_hero_phantom_assassin"/);
   assert.match(source, /itemAbilityNames = \{/);
   assert.match(source, /"item_broadsword"/);
+  assert.match(source, /health = 50000/);
   assert.match(source, /expectedAdjusted = /);
 });
 

@@ -63,7 +63,14 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   self:AddItems(attacker, fixture.itemAbilityNames or {})
 
   local beforeHealth = target:GetHealth()
-  attacker:PerformAttack(target, true, true, true, false, false, false, true)
+  local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
+  local attackerDamageMin = self:CallNumber(attacker, "GetDamageMin")
+  local attackerDamageMax = self:CallNumber(attacker, "GetDamageMax")
+  local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
+  local attackCount = fixture.scenario and fixture.scenario.attackCount or 1
+  for _ = 1, attackCount do
+    attacker:PerformAttack(target, true, true, true, false, false, false, true)
+  end
   local afterHealth = target:GetHealth()
   local observedDamage = beforeHealth - afterHealth
 
@@ -71,6 +78,14 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
     id = fixture.id,
     engine = {
       observedDamage = observedDamage,
+      targetHealthBefore = beforeHealth,
+      targetHealthAfter = afterHealth,
+      targetArmor = targetArmor,
+      attackerDamageMin = attackerDamageMin,
+      attackerDamageMax = attackerDamageMax,
+      attackerAverageTrueDamage = attackerAverageTrueDamage,
+      attackCount = attackCount,
+      expectedAdjusted = fixture.expectedAdjusted,
       modifiers = { "attack_window" }
     }
   }
@@ -92,15 +107,21 @@ function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)
 end
 
 function DotaHelperFixtureRunner:PrepareTarget(target, targetConfig)
-  if target.SetBaseMaxHealth ~= nil then target:SetBaseMaxHealth(10000) end
-  if target.SetMaxHealth ~= nil then target:SetMaxHealth(10000) end
-  if target.SetHealth ~= nil then target:SetHealth(10000) end
-  if target.SetPhysicalArmorBaseValue ~= nil and targetConfig.armor ~= nil then
-    target:SetPhysicalArmorBaseValue(targetConfig.armor)
-  end
+  local health = targetConfig.health or 10000
+  if target.SetBaseMaxHealth ~= nil then target:SetBaseMaxHealth(health) end
+  if target.SetMaxHealth ~= nil then target:SetMaxHealth(health) end
+  if target.SetHealth ~= nil then target:SetHealth(health) end
+  self:CalibrateTargetArmor(target, targetConfig.armor)
   if target.SetBaseMagicalResistanceValue ~= nil and targetConfig.magicResistancePercent ~= nil then
     target:SetBaseMagicalResistanceValue(targetConfig.magicResistancePercent)
   end
+end
+
+function DotaHelperFixtureRunner:CalibrateTargetArmor(target, desiredArmor)
+  if desiredArmor == nil or target.SetPhysicalArmorBaseValue == nil then return end
+  target:SetPhysicalArmorBaseValue(0)
+  local nonBaseArmor = self:CallNumber(target, "GetPhysicalArmorValue", false) or 0
+  target:SetPhysicalArmorBaseValue(desiredArmor - nonBaseArmor)
 end
 
 function DotaHelperFixtureRunner:AddItems(unit, itemAbilityNames)
@@ -114,6 +135,17 @@ function DotaHelperFixtureRunner:AddItems(unit, itemAbilityNames)
   end
 end
 
+function DotaHelperFixtureRunner:CallNumber(unit, methodName, ...)
+  local method = unit[methodName]
+  if method == nil then return nil end
+  local ok, value = pcall(method, unit, ...)
+  if not ok then
+    ok, value = pcall(method, unit)
+  end
+  if ok and type(value) == "number" then return value end
+  return nil
+end
+
 function DotaHelperFixtureRunner:PrintResult(result)
   print(self:EncodeResult(result))
 end
@@ -121,11 +153,24 @@ end
 function DotaHelperFixtureRunner:EncodeResult(result)
   local engine = result.engine or {}
   local text = '{"id":"' .. self:EscapeJson(result.id) .. '","engine":{"observedDamage":' .. tostring(engine.observedDamage or 0)
+  text = self:AppendNumberField(text, "targetHealthBefore", engine.targetHealthBefore)
+  text = self:AppendNumberField(text, "targetHealthAfter", engine.targetHealthAfter)
+  text = self:AppendNumberField(text, "targetArmor", engine.targetArmor)
+  text = self:AppendNumberField(text, "attackerDamageMin", engine.attackerDamageMin)
+  text = self:AppendNumberField(text, "attackerDamageMax", engine.attackerDamageMax)
+  text = self:AppendNumberField(text, "attackerAverageTrueDamage", engine.attackerAverageTrueDamage)
+  text = self:AppendNumberField(text, "attackCount", engine.attackCount)
+  text = self:AppendNumberField(text, "expectedAdjusted", engine.expectedAdjusted)
   text = text .. ',"modifiers":' .. self:EncodeStringArray(engine.modifiers or {})
   if engine.error ~= nil then
     text = text .. ',"error":"' .. self:EscapeJson(engine.error) .. '"'
   end
   return text .. '}}'
+end
+
+function DotaHelperFixtureRunner:AppendNumberField(text, key, value)
+  if type(value) ~= "number" then return text end
+  return text .. ',"' .. key .. '":' .. tostring(value)
 end
 
 function DotaHelperFixtureRunner:EncodeStringArray(values)
