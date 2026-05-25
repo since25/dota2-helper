@@ -6,6 +6,7 @@ const ITEM_EFFECT_TYPES = [
   'damage.damage_over_time',
   'damage.attack_proc',
   'damage.attribute_scaling',
+  'attack.event.bonus_damage',
   'modifier.armor.flat',
   'modifier.magic_resistance.percent',
   'modifier.damage_amp.percent',

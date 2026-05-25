@@ -22,6 +22,7 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /PerformAttack/);
   assert.match(source, /observedDamage/);
   assert.match(source, /targetArmor/);
+  assert.match(source, /targetMagicResistance/);
   assert.match(source, /attackerDamageMin/);
   assert.match(source, /CalibrateTargetArmor/);
   assert.match(source, /attackCount/);
@@ -30,7 +31,11 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /attackerAverageTrueDamageNoTarget/);
   assert.match(source, /PrepareInvisibilityBreak/);
   assert.match(source, /RunActiveItemFixture/);
+  assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
+  assert.match(source, /activeItemLevel/);
+  assert.match(source, /activeItemDamageSpecial/);
+  assert.match(source, /SetLevel/);
 });
 
 test('Dota addon metadata declares a playable probe addon', () => {

@@ -124,6 +124,34 @@ test('buildEngineFixture can export active item probes without a basic attack wi
   assert.equal(fixture.engineSetup.expectedAdjusted, 300);
 });
 
+test('buildEngineFixture treats Shadow Blade break damage as physical attack-window damage', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_shadow_blade_break_creep_probe',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['invis_sword'],
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 10,
+      magicResistancePercent: 25
+    },
+    scenario: {
+      type: 'attack_window',
+      attackCount: 1,
+      forceInvisibilityBreak: true
+    }
+  });
+
+  assert.equal(
+    fixture.expectedLocalModel.components.some((entry) => (
+      entry.itemKey === 'invis_sword' && entry.semanticType === 'damage.instant'
+    )),
+    false
+  );
+  assert.equal(fixture.engineSetup.expectedAdjusted, 184.38);
+});
+
 test('buildLuaFixtureSource emits a require-able Lua table for the addon runner', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_lua_fixture',

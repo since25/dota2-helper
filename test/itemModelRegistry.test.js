@@ -34,6 +34,14 @@ test('key combat and upgrade items expose explicit semantics', () => {
   assert.ok(getItemModel('aghanims_shard').effects.some((effect) => effect.type === 'upgrade.aghanims_shard'));
 });
 
+test('Shadow Blade break damage is modeled as an attack event, not standalone instant damage', () => {
+  const model = getItemModel('invis_sword');
+  const breakEffects = model.effects.filter((effect) => effect.key === 'windwalk_bonus_damage');
+
+  assert.equal(breakEffects.some((effect) => effect.type === 'damage.instant'), false);
+  assert.equal(breakEffects.some((effect) => effect.type === 'attack.event.bonus_damage'), true);
+});
+
 test('non-damage item fields are kept out of damage semantics', () => {
   const phaseBoots = getItemModel('phase_boots');
   const movementEffects = phaseBoots.effects.filter((effect) => effect.key && /movement|speed|phase/i.test(effect.key));

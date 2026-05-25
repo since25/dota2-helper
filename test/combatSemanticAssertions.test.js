@@ -35,7 +35,7 @@ test('Shadow Blade-like item exposes invisibility break bonus damage assertion',
     key: 'invis_sword',
     name: 'Shadow Blade',
     effects: [{
-      type: 'damage.attack_proc',
+      type: 'attack.event.bonus_damage',
       label: '攻击或概率触发伤害',
       key: 'windwalk_bonus_damage',
       values: [175],

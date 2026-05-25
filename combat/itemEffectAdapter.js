@@ -45,7 +45,7 @@ function adaptItemEffect(model, effect) {
       values
     });
   }
-  if (effect.type === 'damage.attack_proc' && isShadowBreakEffect(model, effect)) {
+  if ((effect.type === 'damage.attack_proc' || effect.type === 'attack.event.bonus_damage') && isShadowBreakEffect(model, effect)) {
     return combatAssertion({
       source: 'item',
       sourceKey: model.key,

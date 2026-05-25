@@ -46,6 +46,12 @@ function classifyAttribute(attr) {
 
   if (!key) return attrEffect('raw.reference', '未命名原始字段', attr);
 
+  if (key === 'windwalk_bonus_damage') {
+    return attrEffect('attack.event.bonus_damage', '破隐一击额外伤害', attr, {
+      description: 'Bonus physical damage when attacking out of invisibility.'
+    });
+  }
+
   if (key === 'damage' || key.endsWith('_damage') || key.includes('impact_damage') || key.includes('blast_damage')) {
     if (key.startsWith('bonus_') || key.includes('creep_bonus_damage')) {
       return attrEffect('modifier.attack_damage.flat', '攻击力加成', attr);

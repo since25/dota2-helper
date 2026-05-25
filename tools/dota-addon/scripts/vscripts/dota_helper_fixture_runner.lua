@@ -36,6 +36,9 @@ function DotaHelperFixtureRunner:RunFixture()
     })
     return nil
   end
+  if result == nil then
+    return nil
+  end
   self:PrintResult(result)
   return nil
 end
@@ -70,6 +73,7 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
 
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
+  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
   local attackerDamageMin = self:CallNumber(attacker, "GetDamageMin")
   local attackerDamageMax = self:CallNumber(attacker, "GetDamageMax")
   local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
@@ -90,6 +94,7 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
       targetHealthBefore = beforeHealth,
       targetHealthAfter = afterHealth,
       targetArmor = targetArmor,
+      targetMagicResistance = targetMagicResistance,
       attackerDamageMin = attackerDamageMin,
       attackerDamageMax = attackerDamageMax,
       attackerBaseDamageMin = attackerBaseDamageMin,
@@ -114,23 +119,51 @@ function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
 
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
+  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
   local activeItemName = self:ItemAbilityName(fixture.scenario and fixture.scenario.activeItemKey)
+  local activeItem = self:FindFirstItem(attacker, { activeItemName })
+  local activeItemLevel = self:CallNumber(activeItem, "GetLevel")
+  local activeItemDamageSpecial = self:SpecialValue(activeItem, "damage")
   local castItem = self:CastActiveItem(attacker, target, activeItemName)
-  local afterHealth = target:GetHealth()
-  local observedDamage = beforeHealth - afterHealth
-
-  return {
+  self.pendingActiveItemFixture = {
     id = fixture.id,
+    target = target,
+    beforeHealth = beforeHealth,
+    targetArmor = targetArmor,
+    targetMagicResistance = targetMagicResistance,
+    activeItemLevel = activeItemLevel,
+    activeItemDamageSpecial = activeItemDamageSpecial,
+    activeItemCast = castItem and 1 or 0,
+    expectedAdjusted = fixture.expectedAdjusted
+  }
+  local delay = fixture.scenario and fixture.scenario.resultDelaySeconds or 1.0
+  GameRules:GetGameModeEntity():SetThink("FinishActiveItemFixture", self, "dota_helper_active_item", delay)
+  return nil
+end
+
+function DotaHelperFixtureRunner:FinishActiveItemFixture()
+  local pending = self.pendingActiveItemFixture
+  if pending == nil then return nil end
+  self.pendingActiveItemFixture = nil
+  local afterHealth = pending.target:GetHealth()
+  local observedDamage = pending.beforeHealth - afterHealth
+
+  self:PrintResult({
+    id = pending.id,
     engine = {
       observedDamage = observedDamage,
-      targetHealthBefore = beforeHealth,
+      targetHealthBefore = pending.beforeHealth,
       targetHealthAfter = afterHealth,
-      targetArmor = targetArmor,
-      activeItemCast = castItem and 1 or 0,
-      expectedAdjusted = fixture.expectedAdjusted,
+      targetArmor = pending.targetArmor,
+      targetMagicResistance = pending.targetMagicResistance,
+      activeItemLevel = pending.activeItemLevel,
+      activeItemDamageSpecial = pending.activeItemDamageSpecial,
+      activeItemCast = pending.activeItemCast,
+      expectedAdjusted = pending.expectedAdjusted,
       modifiers = { "active_item" }
     }
-  }
+  })
+  return nil
 end
 
 function DotaHelperFixtureRunner:CreateFixtureUnit(unitName, team, origin)
@@ -222,8 +255,16 @@ end
 
 function DotaHelperFixtureRunner:ReadyAbility(ability)
   if ability == nil then return end
+  if ability.SetLevel ~= nil and self:CallNumber(ability, "GetLevel") == 0 then ability:SetLevel(1) end
   if ability.EndCooldown ~= nil then ability:EndCooldown() end
   if ability.SetCurrentCharges ~= nil then ability:SetCurrentCharges(1) end
+end
+
+function DotaHelperFixtureRunner:SpecialValue(ability, key)
+  if ability == nil or ability.GetSpecialValueFor == nil then return nil end
+  local ok, value = pcall(ability.GetSpecialValueFor, ability, key)
+  if ok and type(value) == "number" then return value end
+  return nil
 end
 
 function DotaHelperFixtureRunner:ItemAbilityName(itemKey)
@@ -254,6 +295,7 @@ function DotaHelperFixtureRunner:EncodeResult(result)
   text = self:AppendNumberField(text, "targetHealthBefore", engine.targetHealthBefore)
   text = self:AppendNumberField(text, "targetHealthAfter", engine.targetHealthAfter)
   text = self:AppendNumberField(text, "targetArmor", engine.targetArmor)
+  text = self:AppendNumberField(text, "targetMagicResistance", engine.targetMagicResistance)
   text = self:AppendNumberField(text, "attackerDamageMin", engine.attackerDamageMin)
   text = self:AppendNumberField(text, "attackerDamageMax", engine.attackerDamageMax)
   text = self:AppendNumberField(text, "attackerBaseDamageMin", engine.attackerBaseDamageMin)
@@ -261,6 +303,8 @@ function DotaHelperFixtureRunner:EncodeResult(result)
   text = self:AppendNumberField(text, "attackerAverageTrueDamage", engine.attackerAverageTrueDamage)
   text = self:AppendNumberField(text, "attackerAverageTrueDamageNoTarget", engine.attackerAverageTrueDamageNoTarget)
   text = self:AppendNumberField(text, "attackCount", engine.attackCount)
+  text = self:AppendNumberField(text, "activeItemLevel", engine.activeItemLevel)
+  text = self:AppendNumberField(text, "activeItemDamageSpecial", engine.activeItemDamageSpecial)
   text = self:AppendNumberField(text, "activeItemCast", engine.activeItemCast)
   text = self:AppendNumberField(text, "expectedAdjusted", engine.expectedAdjusted)
   text = text .. ',"modifiers":' .. self:EncodeStringArray(engine.modifiers or {})
