@@ -3,6 +3,10 @@ const { extractAbilityDamage, valueAtLevel } = require('./damageExtractor');
 const { resolveHeroDamageModel } = require('./damageModels/resolver');
 const { localizeHeroName, localizeTerm } = require('./dotaLocalization');
 const { listItemModels, getItemModel } = require('./itemModels/registry');
+const { calculateAttackWindow } = require('./combat/attackWindow');
+const { adjustDamageEvent } = require('./combat/damageEvents');
+const { adaptItemModelToAssertions } = require('./combat/itemEffectAdapter');
+const { applyStatAssertions } = require('./combat/stats');
 
 function roundDamage(value) {
   return Math.round(value * 100) / 100;
@@ -535,6 +539,18 @@ function collectItemModifiers(selections) {
   return modifiers;
 }
 
+function selectedItemAssertions(selections) {
+  const seen = new Set();
+  return (selections || [])
+    .filter((selection) => selection.sourceType === 'item')
+    .flatMap((selection) => {
+      if (seen.has(selection.itemKey)) return [];
+      seen.add(selection.itemKey);
+      const model = getItemModel(selection.itemKey);
+      return model ? adaptItemModelToAssertions(model) : [];
+    });
+}
+
 function resolveItemDamage(component, selection, profile, heroLevel, modifiers) {
   const value = numericInput(selection.value) ?? firstNumeric(component.values) ?? 0;
   if (component.kind === 'sustained') {
@@ -579,6 +595,8 @@ function resolveItemDamage(component, selection, profile, heroLevel, modifiers) 
 
 async function calculateDamageCombo(request) {
   const profile = await getHeroDamageProfile(request.hero);
+  const combatAssertions = selectedItemAssertions(request.selectedComponents || []);
+  const combatStats = applyStatAssertions(profile.stats, Number(request.heroLevel || 1), combatAssertions);
   const itemModifiers = collectItemModifiers(request.selectedComponents || []);
   const params = {
     enemyArmor: Number(request.enemyArmor ?? 0) + itemModifiers.enemyArmorDelta,
@@ -592,12 +610,19 @@ async function calculateDamageCombo(request) {
 
   for (const selection of request.selectedComponents || []) {
     if (selection.sourceType === 'basic_attack') {
-      const heroLevel = Number(request.heroLevel || 1);
-      const damage = resolveBasicAttackDamage(selection, profile, heroLevel);
-      damage.attackDamage = roundDamage(damage.attackDamage + itemModifiers.attackDamageBonus);
-      damage.raw = roundDamage(damage.attackCount * damage.attackDamage);
-      const raw = damage.raw;
-      const adjusted = adjustDamageByType(raw, 'Physical', params);
+      const window = calculateAttackWindow({
+        attackDamage: combatStats.attackDamage,
+        attackSpeed: combatStats.attackSpeed,
+        assertions: combatAssertions,
+        mode: selection.attackWindowMode || 'attack_count',
+        attackCount: selection.attackCount,
+        durationSeconds: selection.durationSeconds,
+        forceInvisibilityBreak: selection.forceInvisibilityBreak,
+        forceCritSource: selection.forceCritSource
+      });
+      const raw = window.raw;
+      const adjustedEvent = adjustDamageEvent({ type: 'attack_window', damageType: 'Physical', raw }, params);
+      const adjusted = adjustedEvent.adjusted;
       addTypeTotal(byType, 'Physical', raw, adjusted);
       components.push({
         name: 'Basic Attack',
@@ -611,8 +636,10 @@ async function calculateDamageCombo(request) {
         formula: 'attackCount * attackDamage',
         activeDurationSeconds: null,
         durationLimitSeconds: null,
-        attackCount: damage.attackCount,
-        attackDamage: damage.attackDamage,
+        attackCount: window.attackCount,
+        attackDamage: combatStats.attackDamage.average,
+        attackWindow: window,
+        combatEvent: adjustedEvent,
         procDamage: null,
         attackFactorPct: null,
         caveats: []
@@ -709,6 +736,9 @@ async function calculateDamageCombo(request) {
     effectiveEnemyArmor: params.enemyArmor,
     effectiveEnemyMagicResistancePercent: params.enemyMagicResistancePercent,
     itemModifiers,
+    combatStats,
+    combatEvents: components.filter((component) => component.kind === 'basic_attack'),
+    semanticAssertions: combatAssertions,
     totals: {
       raw,
       adjusted,

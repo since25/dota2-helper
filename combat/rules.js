@@ -51,10 +51,10 @@ function applyDamageAmp(raw, {
 
 function resolveCritMultiplier(crits = [], options = {}) {
   if (options.forceCritSource) {
-    const forced = crits.find((crit) => crit.source === options.forceCritSource);
+    const forced = crits.find((crit) => (crit.source || crit.sourceKey) === options.forceCritSource);
     if (forced) {
       return {
-        source: forced.source,
+        source: forced.source || forced.sourceKey,
         multiplier: Number(forced.multiplierPercent || 100) / 100,
         mode: 'forced'
       };

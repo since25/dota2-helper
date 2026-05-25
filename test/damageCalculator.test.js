@@ -614,3 +614,28 @@ test('calculateDamageCombo rejects base mode for source-damage percent damage', 
     /source_damage_percent.*theoretical.*runtime.*input/i
   );
 });
+
+test('calculateDamageCombo basic attack uses combat stat item assertions', async () => {
+  const result = await calculateDamageCombo({
+    hero: 'Phantom Assassin',
+    heroLevel: 6,
+    enemyArmor: 0,
+    enemyMagicResistancePercent: 25,
+    selectedComponents: [
+      {
+        sourceType: 'item',
+        itemKey: 'broadsword',
+        componentId: 'broadsword:modifier.attack_damage.flat:bonus_damage',
+        valueMode: 'theoretical'
+      },
+      {
+        sourceType: 'basic_attack',
+        attackCount: 1
+      }
+    ]
+  });
+
+  const attack = result.components.find((entry) => entry.kind === 'basic_attack');
+  assert.ok(attack.attackDamage > 0);
+  assert.equal(result.combatStats.attackDamage.flatBonus >= 15, true);
+});

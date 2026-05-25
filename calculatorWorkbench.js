@@ -1,5 +1,7 @@
 const { getHeroDamageProfile } = require('./damageCalculator');
+const { adaptItemModelToAssertions } = require('./combat/itemEffectAdapter');
 const { loadChineseItemMap, localizeItemModelName } = require('./itemLocalization');
+const { getItemModel } = require('./itemModels/registry');
 
 const SHOP_GROUPS = [
   { id: 'damage', label: '伤害物品', match: (component) => component.semanticType?.startsWith('damage.') },
@@ -79,6 +81,7 @@ function itemCards(profile, chineseItemMap = new Map()) {
       if (!components.length) return null;
       const localized = localizeItemModelName(item, chineseItemMap);
       const group = itemGroupFor(components[0]);
+      const assertions = adaptItemModelToAssertions(getItemModel(item.key) || { effects: [] });
       return {
         key: item.key,
         name: localized.name,
@@ -88,6 +91,12 @@ function itemCards(profile, chineseItemMap = new Map()) {
         quality: item.quality,
         group: group.id,
         groupLabel: group.label,
+        combatAssertions: assertions.map((assertion) => ({
+          semanticType: assertion.semanticType,
+          confidence: assertion.confidence,
+          sourceKey: assertion.sourceKey,
+          condition: assertion.condition
+        })),
         components
       };
     })

@@ -56,6 +56,9 @@ test('itemCards groups item components by current semantic middle layer', async 
   assert.equal(cards.find((item) => item.key === 'dagon').group, 'damage');
   assert.equal(cards.find((item) => item.key === 'desolator').group, 'modifier');
   assert.equal(cards.find((item) => item.key === 'aghanims_shard').group, 'upgrade');
+  assert.ok(cards.find((item) => item.key === 'broadsword').combatAssertions.some((assertion) => (
+    assertion.semanticType === 'stat.attack_damage.flat'
+  )));
 });
 
 test('itemCards keeps descriptive zero-value item damage entries out of selectable calculator cards', async () => {
