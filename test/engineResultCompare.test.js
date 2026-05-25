@@ -136,6 +136,28 @@ test('compareEngineResult keeps fixed sequence damage while ranging attack-windo
   assert.deepEqual(result.expectedRange, { min: 168, max: 170 });
 });
 
+test('compareEngineResult reports magic resistance unit drift when engine exposes target resistance', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'magic_resistance_probe',
+      target: { magicResistancePercent: 50 },
+      expectedLocalModel: { totals: { adjusted: 200 } }
+    },
+    engineResult: {
+      id: 'magic_resistance_probe',
+      engine: {
+        observedDamage: 200,
+        targetMagicResistance: 0.5
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+  assert.equal(result.magicResistanceCheck.pass, false);
+  assert.equal(result.magicResistanceCheck.expected, 50);
+  assert.equal(result.magicResistanceCheck.observed, 0.5);
+});
+
 test('compareEngineResults summarizes batch fixture comparisons', () => {
   const report = compareEngineResults({
     fixture: {

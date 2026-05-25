@@ -36,6 +36,19 @@ function attackRollExpectedRange({ fixture, engineResult }) {
   };
 }
 
+function magicResistanceCheck({ fixture, engineResult }) {
+  const expected = Number(fixture.target?.magicResistancePercent);
+  const observed = Number(engineResult.engine?.targetMagicResistance);
+  if (![expected, observed].every(Number.isFinite)) return null;
+  const delta = round(Math.abs(observed - expected));
+  return {
+    expected,
+    observed,
+    delta,
+    pass: delta <= 0.05
+  };
+}
+
 function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1, percent: 0.01 } }) {
   if (fixture.id !== engineResult.id) {
     throw new Error(`Fixture id ${fixture.id} does not match engine result id ${engineResult.id}`);
@@ -49,6 +62,7 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
     ? observed >= expectedRange.min && observed <= expectedRange.max
     : false;
   const pass = rangePass || delta <= tolerance.absolute || percentDelta <= tolerance.percent;
+  const magicResistance = magicResistanceCheck({ fixture, engineResult });
   return {
     id: fixture.id,
     expected,
@@ -56,6 +70,7 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
     delta,
     percentDelta,
     expectedRange,
+    magicResistanceCheck: magicResistance,
     pass
   };
 }

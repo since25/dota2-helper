@@ -101,7 +101,7 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
 
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
-  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
+  local targetMagicResistance = self:MagicalResistancePercent(target)
   local attackerDamageMin = self:CallNumber(attacker, "GetDamageMin")
   local attackerDamageMax = self:CallNumber(attacker, "GetDamageMax")
   local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
@@ -142,7 +142,7 @@ function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
 
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
-  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
+  local targetMagicResistance = self:MagicalResistancePercent(target)
   local activeItemName = self:ItemAbilityName(fixture.scenario and fixture.scenario.activeItemKey)
   local activeItem = self:FindFirstItem(attacker, { activeItemName })
   local activeItemLevel = self:CallNumber(activeItem, "GetLevel")
@@ -168,7 +168,7 @@ function DotaHelperFixtureRunner:RunSequenceFixture(fixture)
   local attacker, target = self:PrepareFixtureActors(fixture)
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
-  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
+  local targetMagicResistance = self:MagicalResistancePercent(target)
   local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
   local attackerBaseDamageMax = self:CallNumber(attacker, "GetBaseDamageMax")
   local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
@@ -412,6 +412,14 @@ function DotaHelperFixtureRunner:CalibrateTargetArmor(target, desiredArmor)
   target:SetPhysicalArmorBaseValue(0)
   local nonBaseArmor = self:CallNumber(target, "GetPhysicalArmorValue", false) or 0
   target:SetPhysicalArmorBaseValue(desiredArmor - nonBaseArmor)
+end
+
+function DotaHelperFixtureRunner:MagicalResistancePercent(target)
+  local baseValue = self:CallNumber(target, "GetBaseMagicalResistanceValue")
+  if baseValue ~= nil then return baseValue end
+  local scriptValue = self:CallNumber(target, "Script_GetMagicalArmorValue", false, nil)
+  if scriptValue ~= nil then return scriptValue end
+  return self:CallNumber(target, "GetMagicalArmorValue")
 end
 
 function DotaHelperFixtureRunner:AddItems(unit, itemAbilityNames)

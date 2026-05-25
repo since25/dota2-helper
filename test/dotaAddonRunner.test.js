@@ -25,6 +25,9 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /observedDamage/);
   assert.match(source, /targetArmor/);
   assert.match(source, /targetMagicResistance/);
+  assert.match(source, /MagicalResistancePercent/);
+  assert.match(source, /Script_GetMagicalArmorValue/);
+  assert.match(source, /GetBaseMagicalResistanceValue/);
   assert.match(source, /attackerDamageMin/);
   assert.match(source, /CalibrateTargetArmor/);
   assert.match(source, /attackCount/);
