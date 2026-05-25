@@ -188,6 +188,44 @@ test('buildEngineFixture sequence only counts active item damage when the item i
   assert.equal(fixture.engineSetup.expectedAdjusted, 72.5);
 });
 
+test('buildLuaFixtureSource preserves per-scenario attack flags for engine probes', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'slardar_bash_proc_flags_probe',
+    hero: 'Slardar',
+    heroLevel: 5,
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 0,
+      magicResistancePercent: 25
+    },
+    abilitySelections: [{
+      abilityName: 'Bash of the Deep',
+      componentId: 'Bash of the Deep:attack_sequence:bonus_damage',
+      abilityLevel: 3,
+      valueMode: 'theoretical'
+    }],
+    scenario: {
+      type: 'attack_window',
+      attackCount: 4,
+      attackFlags: {
+        processProcs: true,
+        useCastAttackOrb: true,
+        skipCooldown: true,
+        neverMiss: true
+      }
+    }
+  });
+
+  const source = buildLuaFixtureSource(fixture);
+
+  assert.match(source, /attackFlags = \{/);
+  assert.match(source, /processProcs = true/);
+  assert.match(source, /useCastAttackOrb = true/);
+  assert.match(source, /skipCooldown = true/);
+  assert.match(source, /neverMiss = true/);
+});
+
 test('buildEngineFixture treats Shadow Blade break damage as physical attack-window damage', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_shadow_blade_break_creep_probe',

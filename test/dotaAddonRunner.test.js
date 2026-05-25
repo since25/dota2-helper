@@ -38,6 +38,11 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /FinishSequenceFixture/);
   assert.match(source, /RunSequenceStep/);
   assert.match(source, /SequenceStepPostDelaySeconds/);
+  assert.match(source, /AttackFlagsFor/);
+  assert.match(source, /processProcs/);
+  assert.match(source, /useCastAttackOrb/);
+  assert.match(source, /skipCooldown/);
+  assert.match(source, /neverMiss/);
   assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
   assert.match(source, /SetAbilityLevels/);
@@ -50,6 +55,7 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /activeItemLevel/);
   assert.match(source, /activeItemDamageSpecial/);
   assert.match(source, /SetLevel/);
+  assert.doesNotMatch(source, /PerformAttack\(target, true, true, true, false, false, false, true\)/);
 });
 
 test('Dota addon metadata declares a playable probe addon', () => {

@@ -109,8 +109,9 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
   local attackerAverageTrueDamageNoTarget = self:CallNumber(attacker, "GetAverageTrueAttackDamage")
   local attackCount = fixture.scenario and fixture.scenario.attackCount or 1
+  local attackFlagsConfig = fixture.scenario and fixture.scenario.attackFlags or nil
   for _ = 1, attackCount do
-    attacker:PerformAttack(target, true, true, true, false, false, false, true)
+    self:PerformConfiguredAttack(attacker, target, attackFlagsConfig)
   end
   local afterHealth = target:GetHealth()
   local observedDamage = beforeHealth - afterHealth
@@ -251,8 +252,9 @@ function DotaHelperFixtureRunner:RunSequenceStep(fixture, step, attacker, target
       self:PrepareInvisibilityBreak(attacker, target)
     end
     local attackCount = step.attackCount or 1
+    local attackFlagsConfig = step.attackFlags or (fixture.scenario and fixture.scenario.attackFlags) or nil
     for _ = 1, attackCount do
-      attacker:PerformAttack(target, true, true, true, false, false, false, true)
+      self:PerformConfiguredAttack(attacker, target, attackFlagsConfig)
     end
     self:DisableAutoAcquire(attacker)
     self:StopUnit(attacker)
@@ -351,6 +353,30 @@ function DotaHelperFixtureRunner:StopUnit(unit)
   if unit.Stop ~= nil then pcall(unit.Stop, unit) end
   if unit.Hold ~= nil then pcall(unit.Hold, unit) end
   if unit.Interrupt ~= nil then pcall(unit.Interrupt, unit) end
+end
+
+function DotaHelperFixtureRunner:AttackFlagsFor(config)
+  local attackFlags = config or {}
+  return {
+    useCastAttackOrb = attackFlags.useCastAttackOrb == true,
+    processProcs = attackFlags.processProcs == true,
+    skipCooldown = attackFlags.skipCooldown ~= false,
+    neverMiss = attackFlags.neverMiss ~= false
+  }
+end
+
+function DotaHelperFixtureRunner:PerformConfiguredAttack(attacker, target, attackFlagsConfig)
+  local attackFlags = self:AttackFlagsFor(attackFlagsConfig)
+  attacker:PerformAttack(
+    target,
+    attackFlags.useCastAttackOrb,
+    attackFlags.processProcs,
+    attackFlags.skipCooldown,
+    false,
+    false,
+    false,
+    attackFlags.neverMiss
+  )
 end
 
 function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)
