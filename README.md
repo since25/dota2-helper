@@ -98,6 +98,17 @@ DOTA_DATA_PROVIDER=datawrapper
 
 部署到服务器后，如果看到 `Cannot find package 'dota2-datawrapper'`，说明运行目录的 `node_modules` 没有按当前依赖安装。进入部署目录执行 `npm ci` 或 `npm install` 后重启服务即可。
 
+### 本机 Dota 2 引擎复核器
+
+`tools/dota-addon/` 包含一个本机 Dota 2 Workshop Tools 复核器，用于把计算器 fixture 放进游戏引擎中测量。它只用于开发校准，不随服务器运行，也不要求远端服务器安装 Dota 2。
+
+常用命令：
+
+```bash
+npm run engine:fixture -- <scenario.json> tools/dota-addon/generated/fixture.json
+npm run engine:compare -- tools/dota-addon/generated/fixture.json <engine-result.json>
+```
+
 ### 调试脚本配置
 
 真实 LLM trial 可选：
