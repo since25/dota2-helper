@@ -2,6 +2,9 @@ const heroSelect = document.getElementById('heroSelect');
 const heroLevelInput = document.getElementById('heroLevelInput');
 const enemyArmorInput = document.getElementById('enemyArmorInput');
 const enemyMagicResistanceInput = document.getElementById('enemyMagicResistanceInput');
+const basicAttackEnabled = document.getElementById('basicAttackEnabled');
+const attackWindowMode = document.getElementById('attackWindowMode');
+const attackWindowValue = document.getElementById('attackWindowValue');
 const calculateButton = document.getElementById('calculateButton');
 const clearItemsButton = document.getElementById('clearItemsButton');
 const statusText = document.getElementById('statusText');
@@ -16,6 +19,9 @@ const rawTotal = document.getElementById('rawTotal');
 const adjustedTotal = document.getElementById('adjustedTotal');
 const effectiveTarget = document.getElementById('effectiveTarget');
 const typeBreakdown = document.getElementById('typeBreakdown');
+const combatStatsBreakdown = document.getElementById('combatStatsBreakdown');
+const combatEventBreakdown = document.getElementById('combatEventBreakdown');
+const semanticAssertionBreakdown = document.getElementById('semanticAssertionBreakdown');
 const componentBreakdown = document.getElementById('componentBreakdown');
 const warningList = document.getElementById('warningList');
 
@@ -354,7 +360,19 @@ function selectedAbilityComponents() {
     });
 }
 
+function selectedBasicAttackComponent() {
+  if (!basicAttackEnabled.checked) return null;
+  return {
+    sourceType: 'basic_attack',
+    attackWindowMode: attackWindowMode.value,
+    ...(attackWindowMode.value === 'duration'
+      ? { durationSeconds: Number(attackWindowValue.value || 0) }
+      : { attackCount: Number(attackWindowValue.value || 1) })
+  };
+}
+
 function selectedComponents() {
+  const basicAttack = selectedBasicAttackComponent();
   return [
     ...selectedAbilityComponents(),
     ...selectedItemComponents.map((entry) => ({
@@ -366,8 +384,37 @@ function selectedComponents() {
       ...(entry.activeDurationSeconds !== null ? { activeDurationSeconds: Number(entry.activeDurationSeconds) } : {}),
       ...(entry.triggerCount !== null ? { triggerCount: Number(entry.triggerCount) } : {}),
       ...(entry.attributeValue !== null ? { attributeValue: Number(entry.attributeValue) } : {})
-    }))
+    })),
+    ...(basicAttack ? [basicAttack] : [])
   ];
+}
+
+function renderCombatStats(stats = {}) {
+  const attributes = stats.attributes || {};
+  const attackDamage = stats.attackDamage || {};
+  const attackSpeed = stats.attackSpeed || {};
+  combatStatsBreakdown.innerHTML = [
+    ['力量', attributes.strength],
+    ['敏捷', attributes.agility],
+    ['智力', attributes.intelligence],
+    ['攻击均值', attackDamage.average],
+    ['攻击力加成', attackDamage.flatBonus],
+    ['攻击速度', attackSpeed.attackSpeed],
+    ['每秒攻击', attackSpeed.attacksPerSecond]
+  ].map(([label, value]) => `<div class="breakdown-row">${escapeHtml(label)}: ${escapeHtml(fmt(value))}</div>`).join('');
+}
+
+function renderCombatEvents(events = []) {
+  combatEventBreakdown.innerHTML = events.map((event) => {
+    const stages = event.combatEvent?.stages || [];
+    return `<div class="breakdown-row"><strong>${escapeHtml(event.displayName || event.type || event.kind)}</strong><br>原始 ${fmt(event.raw)} / 抗性后 ${fmt(event.adjusted)}<br>${escapeHtml(JSON.stringify(stages))}</div>`;
+  }).join('') || '<div class="breakdown-row">无普攻窗口事件</div>';
+}
+
+function renderSemanticAssertions(assertions = []) {
+  semanticAssertionBreakdown.innerHTML = assertions.map((assertion) => (
+    `<div class="breakdown-row">${escapeHtml(assertion.sourceKey)} · ${escapeHtml(assertion.semanticType)} · ${escapeHtml(assertion.confidence || '')}</div>`
+  )).join('') || '<div class="breakdown-row">无已应用断言</div>';
 }
 
 function renderResult(result) {
@@ -381,6 +428,9 @@ function renderResult(result) {
   typeBreakdown.innerHTML = Object.entries(result.totals.byType)
     .map(([type, value]) => `<div class="breakdown-row">${escapeHtml(type)}: 原始 ${fmt(value.raw)} / 抗性后 ${fmt(value.adjusted)}</div>`)
     .join('') || '<div class="breakdown-row">未选择组件</div>';
+  renderCombatStats(result.combatStats);
+  renderCombatEvents(result.combatEvents);
+  renderSemanticAssertions(result.semanticAssertions);
   componentBreakdown.innerHTML = result.components
     .map((component) => {
       const displayName = selectedItemNames.get(component.componentId) || component.displayName;
@@ -450,6 +500,9 @@ async function init() {
 heroSelect.addEventListener('change', () => loadWorkbench().catch((error) => { statusText.textContent = error.message; }));
 heroLevelInput.addEventListener('change', () => loadWorkbench().catch((error) => { statusText.textContent = error.message; }));
 calculateButton.addEventListener('click', () => calculate().catch((error) => { statusText.textContent = error.message; }));
+basicAttackEnabled.addEventListener('change', () => calculate().catch((error) => { statusText.textContent = error.message; }));
+attackWindowMode.addEventListener('change', () => calculate().catch((error) => { statusText.textContent = error.message; }));
+attackWindowValue.addEventListener('change', () => calculate().catch((error) => { statusText.textContent = error.message; }));
 clearItemsButton.addEventListener('click', () => {
   selectedItemComponents = [];
   renderSelectedItems();

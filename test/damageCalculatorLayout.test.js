@@ -12,3 +12,13 @@ test('damage calculator v2 workbench keeps controls readable without table compr
   assert.match(css, /\.shop-grid\s*\{[\s\S]*grid-template-columns:\s*repeat\(auto-fill, minmax\(180px, 1fr\)\)/);
   assert.match(css, /\.selected-item-controls\s*\{[\s\S]*grid-template-columns:\s*repeat\(4, minmax\(0, 1fr\)\)/);
 });
+
+test('damage calculator exposes attack window and combat breakdown containers', () => {
+  const html = fs.readFileSync(path.join(__dirname, '..', 'damage-calculator.html'), 'utf8');
+
+  assert.match(html, /id="attackWindowMode"/);
+  assert.match(html, /id="attackWindowValue"/);
+  assert.match(html, /id="combatStatsBreakdown"/);
+  assert.match(html, /id="combatEventBreakdown"/);
+  assert.match(html, /id="semanticAssertionBreakdown"/);
+});
