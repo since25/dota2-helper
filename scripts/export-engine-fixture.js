@@ -71,21 +71,26 @@ function engineSetupFor(input, expectedLocalModel) {
 }
 
 async function buildEngineFixture(input) {
+  const scenarioType = input.scenario?.type || 'attack_window';
+  const selectedComponents = [
+    ...itemSelections(input.items)
+  ];
+  if (scenarioType === 'attack_window') {
+    selectedComponents.push({
+      sourceType: 'basic_attack',
+      attackWindowMode: 'attack_count',
+      attackCount: input.scenario?.attackCount || 1,
+      forceInvisibilityBreak: input.scenario?.forceInvisibilityBreak,
+      forceCritSource: input.scenario?.forceCritSource
+    });
+  }
+
   const expectedLocalModel = await calculateDamageCombo({
     hero: input.hero,
     heroLevel: input.heroLevel,
     enemyArmor: input.target?.armor ?? 0,
     enemyMagicResistancePercent: input.target?.magicResistancePercent ?? 25,
-    selectedComponents: [
-      ...itemSelections(input.items),
-      {
-        sourceType: 'basic_attack',
-        attackWindowMode: input.scenario?.type === 'attack_window' ? 'attack_count' : 'attack_count',
-        attackCount: input.scenario?.attackCount || 1,
-        forceInvisibilityBreak: input.scenario?.forceInvisibilityBreak,
-        forceCritSource: input.scenario?.forceCritSource
-      }
-    ]
+    selectedComponents
   });
 
   const fixture = {

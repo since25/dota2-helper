@@ -101,6 +101,29 @@ test('buildEngineFixture uses Dota-rounded attack damage for engine baselines', 
   assert.equal(fixture.engineSetup.expectedAdjusted, 1375);
 });
 
+test('buildEngineFixture can export active item probes without a basic attack window', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'dagon_active_probe',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['dagon'],
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 5000,
+      armor: 0,
+      magicResistancePercent: 25
+    },
+    scenario: {
+      type: 'active_item',
+      activeItemKey: 'dagon'
+    }
+  });
+
+  assert.equal(fixture.scenario.activeItemKey, 'dagon');
+  assert.equal(fixture.expectedLocalModel.components.some((entry) => entry.kind === 'basic_attack'), false);
+  assert.equal(fixture.engineSetup.expectedAdjusted, 300);
+});
+
 test('buildLuaFixtureSource emits a require-able Lua table for the addon runner', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_lua_fixture',
