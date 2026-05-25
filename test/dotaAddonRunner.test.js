@@ -33,6 +33,7 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /RunActiveItemFixture/);
   assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
+  assert.match(source, /SetAbilityLevels/);
   assert.match(source, /activeItemLevel/);
   assert.match(source, /activeItemDamageSpecial/);
   assert.match(source, /SetLevel/);

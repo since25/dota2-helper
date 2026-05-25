@@ -4,6 +4,28 @@ function round(value) {
   return Math.round(value * 100) / 100;
 }
 
+function physicalMultiplier(armor) {
+  return 1 - (0.06 * armor) / (1 + 0.06 * Math.abs(armor));
+}
+
+function attackSequenceExpectedRange({ fixture, engineResult }) {
+  const component = (fixture.expectedLocalModel?.components || [])
+    .find((entry) => entry.kind === 'attack_sequence');
+  const attackDamage = fixture.expectedLocalModel?.combatStats?.attackDamage;
+  if (!component || !attackDamage) return null;
+  const attackCount = Number(component.attackCount);
+  const procDamage = Number(component.procDamage || 0);
+  const min = Number(attackDamage.min);
+  const max = Number(attackDamage.max);
+  if (![attackCount, procDamage, min, max].every(Number.isFinite)) return null;
+  const armor = Number(engineResult.engine?.targetArmor || 0);
+  const multiplier = component.damageType === 'Physical' ? physicalMultiplier(armor) : 1;
+  return {
+    min: round((attackCount * min + procDamage) * multiplier),
+    max: round((attackCount * max + procDamage) * multiplier)
+  };
+}
+
 function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1, percent: 0.01 } }) {
   if (fixture.id !== engineResult.id) {
     throw new Error(`Fixture id ${fixture.id} does not match engine result id ${engineResult.id}`);
@@ -12,13 +34,18 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
   const observed = Number(engineResult.engine?.observedDamage || 0);
   const delta = round(Math.abs(observed - expected));
   const percentDelta = expected === 0 ? (delta === 0 ? 0 : Infinity) : delta / expected;
-  const pass = delta <= tolerance.absolute || percentDelta <= tolerance.percent;
+  const expectedRange = attackSequenceExpectedRange({ fixture, engineResult });
+  const rangePass = expectedRange
+    ? observed >= expectedRange.min && observed <= expectedRange.max
+    : false;
+  const pass = rangePass || delta <= tolerance.absolute || percentDelta <= tolerance.percent;
   return {
     id: fixture.id,
     expected,
     observed,
     delta,
     percentDelta,
+    expectedRange,
     pass
   };
 }

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { heroes } = require('dotaconstants');
 const { calculateDamageCombo } = require('../damageCalculator');
+const { getHeroDetails } = require('../dotaDataContext');
 const { getItemModel } = require('../itemModels/registry');
 
 const DEFAULT_JSON_OUTPUT_PATH = path.join('tools', 'dota-addon', 'generated', 'fixture.json');
@@ -60,22 +61,28 @@ function itemAbilityName(itemKey) {
   return String(itemKey || '').startsWith('item_') ? itemKey : `item_${itemKey}`;
 }
 
-function engineSetupFor(input, expectedLocalModel) {
+function engineSetupFor(input, expectedLocalModel, abilityLevels = []) {
   const targetHero = input.target?.hero || 'Axe';
   return {
     attackerUnitName: resolveHeroUnitName(input.hero),
     targetUnitName: input.target?.unitName || resolveHeroUnitName(targetHero),
     itemAbilityNames: (input.items || []).map(itemAbilityName),
+    abilityLevels,
     expectedAdjusted: expectedLocalModel.totals?.adjusted || 0
   };
 }
 
 async function buildEngineFixture(input) {
   const scenarioType = input.scenario?.type || 'attack_window';
+  const abilitySelections = input.abilitySelections || [];
   const selectedComponents = [
-    ...itemSelections(input.items)
+    ...itemSelections(input.items),
+    ...abilitySelections.map((selection) => ({
+      sourceType: 'ability',
+      ...selection
+    }))
   ];
-  if (scenarioType === 'attack_window') {
+  if (scenarioType === 'attack_window' && abilitySelections.length === 0) {
     selectedComponents.push({
       sourceType: 'basic_attack',
       attackWindowMode: 'attack_count',
@@ -84,6 +91,17 @@ async function buildEngineFixture(input) {
       forceCritSource: input.scenario?.forceCritSource
     });
   }
+  const heroDetails = abilitySelections.length ? await getHeroDetails(input.hero) : null;
+  const engineAbilityLevels = abilitySelections.map((selection) => {
+    const ability = heroDetails?.abilities?.find((entry) => entry.name === selection.abilityName);
+    if (!ability?.internalName) {
+      throw new Error(`Cannot resolve Dota ability name for ${input.hero}.${selection.abilityName}`);
+    }
+    return {
+      abilityName: ability.internalName,
+      level: selection.abilityLevel || 1
+    };
+  });
 
   const expectedLocalModel = await calculateDamageCombo({
     hero: input.hero,
@@ -100,9 +118,11 @@ async function buildEngineFixture(input) {
     items: input.items || [],
     target: input.target || {},
     scenario: input.scenario || {},
+    abilitySelections,
     expectedLocalModel
   };
-  fixture.engineSetup = engineSetupFor(input, expectedLocalModel);
+  fixture.engineAbilityLevels = engineAbilityLevels;
+  fixture.engineSetup = engineSetupFor(input, expectedLocalModel, engineAbilityLevels);
   return fixture;
 }
 
@@ -141,6 +161,7 @@ function buildLuaFixtureSource(fixture) {
     attackerUnitName: fixture.engineSetup.attackerUnitName,
     targetUnitName: fixture.engineSetup.targetUnitName,
     itemAbilityNames: fixture.engineSetup.itemAbilityNames,
+    abilityLevels: fixture.engineSetup.abilityLevels,
     target: {
       hero: fixture.target?.hero,
       level: fixture.target?.level,

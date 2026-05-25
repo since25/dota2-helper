@@ -24,6 +24,53 @@ function runtimeInputsFor(entry) {
   ]);
 }
 
+function slugify(value) {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function componentSourceKey(entry) {
+  return entry.procDamageKey ||
+    entry.bonusDamageKey ||
+    entry.valueKey ||
+    entry.damageKey ||
+    entry.damagePerSecondKey ||
+    entry.damagePerWaveKey ||
+    'damage';
+}
+
+function buildAttackWindowProbeScenario(hero, ability, entry, options = {}) {
+  if (entry.model !== 'attack_sequence') return undefined;
+  const setupAttackCount = entry.defaultSetupAttackCount || entry.defaultAttackCount || options.probeSetupAttackCount || 3;
+  const attackCount = options.probeAttackCount || (setupAttackCount + 1);
+  const abilityLevel = entry.defaultProbeAbilityLevel || options.probeAbilityLevel || 3;
+  const heroLevel = entry.defaultProbeHeroLevel || options.probeHeroLevel || 5;
+  return {
+    id: `${slugify(hero)}_${slugify(ability)}_attack_window_probe`,
+    hero,
+    heroLevel,
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 0,
+      magicResistancePercent: 25
+    },
+    abilitySelections: [{
+      abilityName: ability,
+      componentId: `${ability}:${entry.model}:${componentSourceKey(entry)}`,
+      abilityLevel,
+      valueMode: 'theoretical'
+    }],
+    scenario: {
+      type: 'attack_window',
+      attackCount
+    }
+  };
+}
+
 function engineProbeClassification(entry) {
   if (ATTACK_WINDOW_MODELS.has(entry.model)) {
     return {
@@ -41,9 +88,9 @@ function engineProbeClassification(entry) {
   };
 }
 
-function outputReport(hero, ability, entry) {
+function outputReport(hero, ability, entry, options = {}) {
   const probe = engineProbeClassification(entry);
-  return {
+  const report = {
     hero,
     ability,
     status: entry.status,
@@ -54,6 +101,11 @@ function outputReport(hero, ability, entry) {
     requiredRuntimeInputs: runtimeInputsFor(entry),
     ...probe
   };
+  if (options.includeProbeScenarios && probe.engineProbeSupported) {
+    const probeScenario = buildAttackWindowProbeScenario(hero, ability, entry, options);
+    if (probeScenario) report.probeScenario = probeScenario;
+  }
+  return report;
 }
 
 async function buildHeroOutputVerificationReport(options = {}) {
@@ -66,9 +118,9 @@ async function buildHeroOutputVerificationReport(options = {}) {
     const outputs = Object.entries(model.abilities || {})
       .filter(([, entry]) => entry.status !== 'ignored')
       .flatMap(([ability, entry]) => {
-        const entries = [outputReport(model.hero, ability, entry)];
+        const entries = [outputReport(model.hero, ability, entry, options)];
         for (const [index, component] of (entry.extraComponents || []).entries()) {
-          entries.push(outputReport(model.hero, `${ability}#extra${index + 1}`, component));
+          entries.push(outputReport(model.hero, `${ability}#extra${index + 1}`, component, options));
         }
         return entries;
       });
@@ -108,6 +160,8 @@ function parseArgs(argv = process.argv.slice(2)) {
         .map((hero) => hero.trim())
         .filter(Boolean);
       index += 1;
+    } else if (arg === '--include-probe-scenarios') {
+      options.includeProbeScenarios = true;
     }
   }
   return options;
@@ -127,6 +181,7 @@ if (require.main === module) {
 
 module.exports = {
   buildHeroOutputVerificationReport,
+  buildAttackWindowProbeScenario,
   engineProbeClassification,
   parseArgs,
   runtimeInputsFor

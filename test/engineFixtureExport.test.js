@@ -152,6 +152,36 @@ test('buildEngineFixture treats Shadow Blade break damage as physical attack-win
   assert.equal(fixture.engineSetup.expectedAdjusted, 184.38);
 });
 
+test('buildEngineFixture exports hero ability selections and Lua ability levels', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'slardar_bash_probe',
+    hero: 'Slardar',
+    heroLevel: 5,
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 0,
+      magicResistancePercent: 25
+    },
+    abilitySelections: [{
+      abilityName: 'Bash of the Deep',
+      componentId: 'Bash of the Deep:attack_sequence:bonus_damage',
+      abilityLevel: 3,
+      valueMode: 'theoretical'
+    }],
+    scenario: {
+      type: 'attack_window',
+      attackCount: 4
+    }
+  });
+
+  assert.equal(fixture.expectedLocalModel.components.some((entry) => entry.name === 'Bash of the Deep'), true);
+  assert.deepEqual(fixture.engineSetup.abilityLevels, [{
+    abilityName: 'slardar_bash',
+    level: 3
+  }]);
+});
+
 test('buildLuaFixtureSource emits a require-able Lua table for the addon runner', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_lua_fixture',
@@ -169,6 +199,7 @@ test('buildLuaFixtureSource emits a require-able Lua table for the addon runner'
   assert.match(source, /attackerUnitName = "npc_dota_hero_phantom_assassin"/);
   assert.match(source, /itemAbilityNames = \{/);
   assert.match(source, /"item_broadsword"/);
+  assert.match(source, /abilityLevels = /);
   assert.match(source, /health = 50000/);
   assert.match(source, /expectedAdjusted = /);
 });

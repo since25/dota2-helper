@@ -113,7 +113,7 @@ function findHeroRecord(heroes, heroName) {
   return Object.values(heroes).find((hero) => providerNames.includes(hero.localized_name));
 }
 
-async function buildAbilitySummary(ability, slotIndex = 0) {
+async function buildAbilitySummary(ability, slotIndex = 0, internalName = ability.name) {
   const attributes = (ability.attrib || [])
     .filter((attr) => attr.header || attr.key)
     .map((attr) => ({
@@ -126,7 +126,7 @@ async function buildAbilitySummary(ability, slotIndex = 0) {
 
   return {
     name,
-    internalName: ability.name,
+    internalName,
     displayName: await localizeAbilityName(name, true),
     description: ability.desc || '',
     behavior: ability.behavior || '',
@@ -220,9 +220,9 @@ async function getHeroDetails(heroName) {
 
   const heroAbilitiesData = hero_abilities[hero.name] || {};
   const abilitySummaries = (heroAbilitiesData.abilities || [])
-    .map((abilityName, slotIndex) => ({ ability: abilities[abilityName], slotIndex }))
+    .map((abilityName, slotIndex) => ({ ability: abilities[abilityName], slotIndex, abilityName }))
     .filter(({ ability }) => ability && ability.dname && ability.desc)
-    .map(({ ability, slotIndex }) => buildAbilitySummary(ability, slotIndex));
+    .map(({ ability, slotIndex, abilityName }) => buildAbilitySummary(ability, slotIndex, abilityName));
 
   const facets = (heroAbilitiesData.facets || [])
     .filter((facet) => facet.title && facet.description && !facet.deprecated)

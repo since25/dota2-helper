@@ -148,13 +148,14 @@ test('calculateDamageCombo totals Slardar attack-count passive sequence', async 
 
   const bash = result.components.find((entry) => entry.name === 'Bash of the Deep');
 
-  assert.equal(result.totals.raw, 352);
-  assert.equal(result.totals.adjusted, 352);
-  assert.equal(bash.raw, 352);
-  assert.equal(bash.attackCount, 3);
+  assert.equal(result.totals.raw, 421);
+  assert.equal(result.totals.adjusted, 421);
+  assert.equal(bash.raw, 421);
+  assert.equal(bash.attackCount, 4);
+  assert.equal(bash.setupAttackCount, 3);
   assert.equal(bash.attackDamage, 69);
   assert.equal(bash.procDamage, 145);
-  assert.equal(bash.formula, 'attackCount * attackDamage + procDamage');
+  assert.equal(bash.formula, '(setupAttackCount + 1) * attackDamage + procDamage');
 });
 
 test('calculateDamageCombo totals Phantom Assassin dagger with attack scaling', async () => {

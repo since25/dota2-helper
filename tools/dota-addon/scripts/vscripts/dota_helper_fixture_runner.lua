@@ -65,6 +65,7 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
 
   self:SetHeroLevel(attacker, fixture.heroLevel or 1)
   self:SetHeroLevel(target, fixture.target and fixture.target.level or 1)
+  self:SetAbilityLevels(attacker, fixture.abilityLevels or {})
   self:PrepareTarget(target, fixture.target or {})
   self:AddItems(attacker, fixture.itemAbilityNames or {})
   if fixture.scenario ~= nil and fixture.scenario.forceInvisibilityBreak then
@@ -114,6 +115,7 @@ function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
 
   self:SetHeroLevel(attacker, fixture.heroLevel or 1)
   self:SetHeroLevel(target, fixture.target and fixture.target.level or 1)
+  self:SetAbilityLevels(attacker, fixture.abilityLevels or {})
   self:PrepareTarget(target, fixture.target or {})
   self:AddItems(attacker, fixture.itemAbilityNames or {})
 
@@ -178,6 +180,16 @@ function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)
   if unit.HeroLevelUp == nil or unit.GetLevel == nil then return end
   while unit:GetLevel() < targetLevel do
     unit:HeroLevelUp(false)
+  end
+end
+
+function DotaHelperFixtureRunner:SetAbilityLevels(unit, abilityLevels)
+  if unit.FindAbilityByName == nil then return end
+  for _, entry in ipairs(abilityLevels or {}) do
+    local ability = unit:FindAbilityByName(entry.abilityName)
+    if ability ~= nil and ability.SetLevel ~= nil then
+      ability:SetLevel(entry.level or 1)
+    end
   end
 end
 

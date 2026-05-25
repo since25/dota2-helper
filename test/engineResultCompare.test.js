@@ -36,3 +36,34 @@ test('compareEngineResult fails when observed damage exceeds tolerance', () => {
   assert.equal(result.pass, false);
   assert.equal(result.delta, 10);
 });
+
+test('compareEngineResult passes attack-sequence samples within attack damage roll range', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'slardar_bash',
+      expectedLocalModel: {
+        totals: { adjusted: 421 },
+        combatStats: {
+          attackDamage: { min: 65, max: 73 }
+        },
+        components: [{
+          kind: 'attack_sequence',
+          damageType: 'Physical',
+          attackCount: 4,
+          procDamage: 145
+        }]
+      }
+    },
+    engineResult: {
+      id: 'slardar_bash',
+      engine: {
+        observedDamage: 415,
+        targetArmor: 0,
+        attackCount: 4
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.expectedRange, { min: 405, max: 437 });
+});

@@ -35,3 +35,36 @@ test('hero output verification CLI model reports reference-only crits as attack-
   assert.equal(crit.engineProbeType, 'attack_window');
   assert.equal(crit.requiredRuntimeInputs.includes('crit_mode'), true);
 });
+
+test('buildHeroOutputVerificationReport can attach engine probe scenario candidates for attack sequences', async () => {
+  const report = await buildHeroOutputVerificationReport({
+    heroes: ['Slardar'],
+    includeProbeScenarios: true
+  });
+  const slardar = report.heroes[0];
+  const bash = slardar.outputs.find((entry) => entry.ability === 'Bash of the Deep');
+  const crush = slardar.outputs.find((entry) => entry.ability === 'Slithereen Crush');
+
+  assert.deepEqual(bash.probeScenario, {
+    id: 'slardar_bash_of_the_deep_attack_window_probe',
+    hero: 'Slardar',
+    heroLevel: 5,
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 0,
+      magicResistancePercent: 25
+    },
+    abilitySelections: [{
+      abilityName: 'Bash of the Deep',
+      componentId: 'Bash of the Deep:attack_sequence:bonus_damage',
+      abilityLevel: 3,
+      valueMode: 'theoretical'
+    }],
+    scenario: {
+      type: 'attack_window',
+      attackCount: 4
+    }
+  });
+  assert.equal(crush.probeScenario, undefined);
+});

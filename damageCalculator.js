@@ -247,14 +247,16 @@ function attackDamageAtLevel(stats, heroLevel) {
 
 function resolveAttackSequenceDamage(component, abilityLevel, selection, profile, heroLevel) {
   const procDamage = valueAtLevel(component.valuesByAbilityLevel || [], abilityLevel) || 0;
-  const defaultAttackCount = valueAtLevel(component.metadata?.attackCountByAbilityLevel || [], abilityLevel) || 0;
-  const attackCount = numericInput(selection.attackCount) ?? defaultAttackCount;
+  const defaultSetupAttackCount = valueAtLevel(component.metadata?.attackCountByAbilityLevel || [], abilityLevel) || 0;
+  const setupAttackCount = numericInput(selection.setupAttackCount) ?? defaultSetupAttackCount;
+  const attackCount = numericInput(selection.attackCount) ?? (setupAttackCount + 1);
   const attackDamage = numericInput(selection.attackDamage) ?? attackDamageAtLevel(profile.stats, heroLevel);
 
   return {
     raw: roundDamage(attackCount * attackDamage + procDamage),
-    formula: component.totalFormula || 'attackCount * attackDamage + procDamage',
+    formula: component.totalFormula || '(setupAttackCount + 1) * attackDamage + procDamage',
     attackCount,
+    setupAttackCount,
     attackDamage,
     procDamage,
     activeDurationSeconds: null,
@@ -710,6 +712,7 @@ async function calculateDamageCombo(request) {
       activeDurationSeconds: damage.activeDurationSeconds,
       durationLimitSeconds: damage.durationLimitSeconds,
       attackCount: damage.attackCount,
+      setupAttackCount: damage.setupAttackCount,
       attackDamage: damage.attackDamage,
       procDamage: damage.procDamage,
       attackFactorPct: damage.attackFactorPct,

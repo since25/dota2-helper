@@ -402,7 +402,7 @@ function buildImplementedComponent(ability, entry) {
       sourceKey: entry.procDamageKey,
       label: entry.procDamageKey,
       formula: { type: 'attack_count_sequence' },
-      totalFormula: entry.formula || 'attackCount * attackDamage + procDamage',
+      totalFormula: entry.formula || '(setupAttackCount + 1) * attackDamage + procDamage',
       metadata: { attackCountByAbilityLevel: attackCount },
       caveats: ['包含按攻击次数触发的被动伤害，需要结合普攻次数与英雄攻击力计算。']
     });

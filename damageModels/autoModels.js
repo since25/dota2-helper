@@ -262,7 +262,7 @@ function buildEntryFromComponent(ability, component) {
         : { valueKey: sourceKey, requiredInputs: ['attack_count'] }),
       semanticType: 'damage.attack_sequence_proc',
       conditionInputs: ['attack_count', 'hero_attack_damage'],
-      formula: 'attackCount * attackDamage + procDamage',
+      formula: '(setupAttackCount + 1) * attackDamage + procDamage',
       defaultIncluded: false,
       reason: attackCountKey ? undefined : '攻击序列缺少可确认的攻击次数字段，首轮模型只作为条件伤害参考。'
     };
