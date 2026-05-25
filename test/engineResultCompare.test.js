@@ -98,6 +98,44 @@ test('compareEngineResult passes basic attack-window samples within attack damag
   assert.deepEqual(result.expectedRange, { min: 183, max: 185 });
 });
 
+test('compareEngineResult keeps fixed sequence damage while ranging attack-window rolls', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'pa_sequence',
+      expectedLocalModel: {
+        totals: { adjusted: 168.75 },
+        combatStats: {
+          attackDamage: { min: 109, max: 111, average: 110 }
+        },
+        components: [
+          {
+            kind: 'instant_fixed',
+            damageType: 'Magical',
+            adjusted: 100
+          },
+          {
+            kind: 'basic_attack',
+            damageType: 'Physical',
+            raw: 110,
+            adjusted: 68.75,
+            attackCount: 1
+          }
+        ]
+      }
+    },
+    engineResult: {
+      id: 'pa_sequence',
+      engine: {
+        observedDamage: 170,
+        targetArmor: 10
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+  assert.deepEqual(result.expectedRange, { min: 168, max: 170 });
+});
+
 test('compareEngineResults summarizes batch fixture comparisons', () => {
   const report = compareEngineResults({
     fixture: {

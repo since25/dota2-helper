@@ -67,6 +67,9 @@ function DotaHelperFixtureRunner:RunConfiguredFixture(fixture)
   if fixture.scenario ~= nil and fixture.scenario.type == "active_item" then
     return self:RunActiveItemFixture(fixture)
   end
+  if fixture.scenario ~= nil and fixture.scenario.type == "sequence" then
+    return self:RunSequenceFixture(fixture)
+  end
   return {
     id = fixture.id,
     engine = {
@@ -76,7 +79,7 @@ function DotaHelperFixtureRunner:RunConfiguredFixture(fixture)
   }
 end
 
-function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
+function DotaHelperFixtureRunner:PrepareFixtureActors(fixture)
   local attacker = self:CreateFixtureUnit(fixture.attackerUnitName, DOTA_TEAM_GOODGUYS, Vector(0, 0, 256))
   local target = self:CreateFixtureUnit(fixture.targetUnitName, DOTA_TEAM_BADGUYS, Vector(300, 0, 256))
 
@@ -85,6 +88,13 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   self:SetAbilityLevels(attacker, fixture.abilityLevels or {})
   self:PrepareTarget(target, fixture.target or {})
   self:AddItems(attacker, fixture.itemAbilityNames or {})
+  self:DisableAutoAcquire(target)
+
+  return attacker, target
+end
+
+function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
+  local attacker, target = self:PrepareFixtureActors(fixture)
   if fixture.scenario ~= nil and fixture.scenario.forceInvisibilityBreak then
     self:PrepareInvisibilityBreak(attacker, target)
   end
@@ -127,14 +137,7 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
 end
 
 function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
-  local attacker = self:CreateFixtureUnit(fixture.attackerUnitName, DOTA_TEAM_GOODGUYS, Vector(0, 0, 256))
-  local target = self:CreateFixtureUnit(fixture.targetUnitName, DOTA_TEAM_BADGUYS, Vector(300, 0, 256))
-
-  self:SetHeroLevel(attacker, fixture.heroLevel or 1)
-  self:SetHeroLevel(target, fixture.target and fixture.target.level or 1)
-  self:SetAbilityLevels(attacker, fixture.abilityLevels or {})
-  self:PrepareTarget(target, fixture.target or {})
-  self:AddItems(attacker, fixture.itemAbilityNames or {})
+  local attacker, target = self:PrepareFixtureActors(fixture)
 
   local beforeHealth = target:GetHealth()
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
@@ -157,6 +160,136 @@ function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
   }
   local delay = fixture.scenario and fixture.scenario.resultDelaySeconds or 1.0
   GameRules:GetGameModeEntity():SetThink("FinishActiveItemFixture", self, "dota_helper_active_item", delay)
+  return nil
+end
+
+function DotaHelperFixtureRunner:RunSequenceFixture(fixture)
+  local attacker, target = self:PrepareFixtureActors(fixture)
+  local beforeHealth = target:GetHealth()
+  local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
+  local targetMagicResistance = self:CallNumber(target, "GetMagicalArmorValue")
+  local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
+  local attackerBaseDamageMax = self:CallNumber(attacker, "GetBaseDamageMax")
+  local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
+
+  self.pendingSequenceFixture = {
+    id = fixture.id,
+    fixture = fixture,
+    attacker = attacker,
+    target = target,
+    steps = fixture.scenario and fixture.scenario.steps or {},
+    stepIndex = 0,
+    beforeHealth = beforeHealth,
+    targetArmor = targetArmor,
+    targetMagicResistance = targetMagicResistance,
+    attackerBaseDamageMin = attackerBaseDamageMin,
+    attackerBaseDamageMax = attackerBaseDamageMax,
+    attackerAverageTrueDamage = attackerAverageTrueDamage,
+    attackCount = 0,
+    activeItemLevel = nil,
+    activeItemDamageSpecial = nil,
+    activeItemCast = 0,
+    sequenceDurationSeconds = fixture.scenario and fixture.scenario.durationSeconds,
+    expectedAdjusted = fixture.expectedAdjusted
+  }
+  GameRules:GetGameModeEntity():SetThink("RunNextSequenceStep", self, "dota_helper_sequence_step", 0)
+  return nil
+end
+
+function DotaHelperFixtureRunner:RunNextSequenceStep()
+  local pending = self.pendingSequenceFixture
+  if pending == nil then return nil end
+
+  if pending.lastStepType == "active_item" then
+    self:DisableAutoAcquire(pending.attacker)
+  end
+
+  pending.stepIndex = pending.stepIndex + 1
+  local step = pending.steps[pending.stepIndex]
+  if step == nil then
+    local scenario = pending.fixture and pending.fixture.scenario or {}
+    local delay = scenario.resultDelaySeconds or 1.0
+    GameRules:GetGameModeEntity():SetThink("FinishSequenceFixture", self, "dota_helper_sequence", delay)
+    return nil
+  end
+
+  local stepResult = self:RunSequenceStep(pending.fixture, step, pending.attacker, pending.target)
+  pending.attackCount = pending.attackCount + (stepResult.attackCount or 0)
+  if stepResult.activeItemLevel ~= nil then pending.activeItemLevel = stepResult.activeItemLevel end
+  if stepResult.activeItemDamageSpecial ~= nil then pending.activeItemDamageSpecial = stepResult.activeItemDamageSpecial end
+  if stepResult.activeItemCast ~= nil then pending.activeItemCast = stepResult.activeItemCast end
+  pending.lastStepType = step.type
+
+  return self:SequenceStepPostDelaySeconds(step)
+end
+
+function DotaHelperFixtureRunner:SequenceStepPostDelaySeconds(step)
+  if step ~= nil and type(step.postDelaySeconds) == "number" then
+    return step.postDelaySeconds
+  end
+  if step ~= nil and step.type == "active_item" then
+    return 0.5
+  end
+  return 0
+end
+
+function DotaHelperFixtureRunner:RunSequenceStep(fixture, step, attacker, target)
+  if step.type == "active_item" then
+    local activeItemName = self:ItemAbilityName(step.activeItemKey)
+    local activeItem = self:FindFirstItem(attacker, { activeItemName })
+    local activeItemLevel = self:CallNumber(activeItem, "GetLevel")
+    local activeItemDamageSpecial = self:SpecialValue(activeItem, "damage")
+    local castItem = self:CastActiveItem(attacker, target, activeItemName)
+    return {
+      activeItemLevel = activeItemLevel,
+      activeItemDamageSpecial = activeItemDamageSpecial,
+      activeItemCast = castItem and 1 or 0
+    }
+  end
+  if step.type == "attack_window" then
+    if step.forceInvisibilityBreak then
+      self:PrepareInvisibilityBreak(attacker, target)
+    end
+    local attackCount = step.attackCount or 1
+    for _ = 1, attackCount do
+      attacker:PerformAttack(target, true, true, true, false, false, false, true)
+    end
+    self:DisableAutoAcquire(attacker)
+    self:StopUnit(attacker)
+    self:StopUnit(target)
+    return { attackCount = attackCount }
+  end
+  return {}
+end
+
+function DotaHelperFixtureRunner:FinishSequenceFixture()
+  local pending = self.pendingSequenceFixture
+  if pending == nil then return nil end
+  self.pendingSequenceFixture = nil
+  local afterHealth = pending.target:GetHealth()
+  local observedDamage = pending.beforeHealth - afterHealth
+
+  self:PrintResult({
+    id = pending.id,
+    engine = {
+      observedDamage = observedDamage,
+      targetHealthBefore = pending.beforeHealth,
+      targetHealthAfter = afterHealth,
+      targetArmor = pending.targetArmor,
+      targetMagicResistance = pending.targetMagicResistance,
+      attackerBaseDamageMin = pending.attackerBaseDamageMin,
+      attackerBaseDamageMax = pending.attackerBaseDamageMax,
+      attackerAverageTrueDamage = pending.attackerAverageTrueDamage,
+      attackCount = pending.attackCount,
+      activeItemLevel = pending.activeItemLevel,
+      activeItemDamageSpecial = pending.activeItemDamageSpecial,
+      activeItemCast = pending.activeItemCast,
+      expectedAdjusted = pending.expectedAdjusted,
+      modifiers = { "sequence" }
+    }
+  })
+  self:CleanupFixtureUnits()
+  GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
   return nil
 end
 
@@ -205,6 +338,19 @@ function DotaHelperFixtureRunner:CleanupFixtureUnits()
     end
   end
   self.currentFixtureUnits = {}
+end
+
+function DotaHelperFixtureRunner:DisableAutoAcquire(unit)
+  if unit == nil then return end
+  if unit.SetIdleAcquire ~= nil then pcall(unit.SetIdleAcquire, unit, false) end
+  if unit.SetForceAttackTarget ~= nil then pcall(unit.SetForceAttackTarget, unit, nil) end
+end
+
+function DotaHelperFixtureRunner:StopUnit(unit)
+  if unit == nil then return end
+  if unit.Stop ~= nil then pcall(unit.Stop, unit) end
+  if unit.Hold ~= nil then pcall(unit.Hold, unit) end
+  if unit.Interrupt ~= nil then pcall(unit.Interrupt, unit) end
 end
 
 function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)
@@ -273,15 +419,18 @@ function DotaHelperFixtureRunner:CastActiveItem(attacker, target, itemName)
   local item = self:FindFirstItem(attacker, { itemName })
   if item == nil then return false end
   self:ReadyAbility(item)
-  if attacker.CastAbilityOnTarget ~= nil then
-    local ok = pcall(attacker.CastAbilityOnTarget, attacker, target, item, -1)
-    if ok then return true end
-  end
   if item.OnSpellStart ~= nil then
     if attacker.SetCursorCastTarget ~= nil then
       pcall(attacker.SetCursorCastTarget, attacker, target)
     end
     local ok = pcall(item.OnSpellStart, item)
+    if ok then
+      self:DisableAutoAcquire(attacker)
+      return true
+    end
+  end
+  if attacker.CastAbilityOnTarget ~= nil then
+    local ok = pcall(attacker.CastAbilityOnTarget, attacker, target, item, -1)
     if ok then return true end
   end
   return false

@@ -25,9 +25,14 @@ function attackRollExpectedRange({ fixture, engineResult }) {
     : procDamage;
   const armor = Number(engineResult.engine?.targetArmor || 0);
   const multiplier = component.damageType === 'Physical' ? physicalMultiplier(armor) : 1;
+  const totalAdjusted = Number(fixture.expectedLocalModel?.totals?.adjusted || 0);
+  const componentAdjusted = Number.isFinite(Number(component.adjusted))
+    ? Number(component.adjusted)
+    : totalAdjusted;
+  const fixedAdjusted = totalAdjusted - componentAdjusted;
   return {
-    min: Math.floor(round((attackCount * min + nonRollDamage) * multiplier)),
-    max: Math.ceil(round((attackCount * max + nonRollDamage) * multiplier))
+    min: Math.floor(round(fixedAdjusted + (attackCount * min + nonRollDamage) * multiplier)),
+    max: Math.ceil(round(fixedAdjusted + (attackCount * max + nonRollDamage) * multiplier))
   };
 }
 

@@ -125,6 +125,69 @@ test('buildEngineFixture can export active item probes without a basic attack wi
   assert.equal(fixture.engineSetup.expectedAdjusted, 300);
 });
 
+test('buildEngineFixture can export sequence probes with active items and attacks in one output window', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_dagon_broadsword_sequence_probe',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['dagon', 'broadsword'],
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 10,
+      magicResistancePercent: 75
+    },
+    scenario: {
+      type: 'sequence',
+      durationSeconds: 1.5,
+      steps: [
+        { type: 'active_item', activeItemKey: 'dagon' },
+        { type: 'attack_window', attackCount: 1 }
+      ],
+      resultDelaySeconds: 1
+    }
+  });
+
+  assert.equal(fixture.expectedLocalModel.components.some((entry) => entry.itemKey === 'dagon'), true);
+  assert.equal(fixture.expectedLocalModel.components.some((entry) => entry.kind === 'basic_attack'), true);
+  assert.equal(fixture.engineSetup.expectedAdjusted, 172.5);
+
+  const source = buildLuaFixtureSource(fixture);
+  assert.match(source, /type = "sequence"/);
+  assert.match(source, /steps = \{/);
+  assert.match(source, /activeItemKey = "dagon"/);
+});
+
+test('buildEngineFixture sequence only counts active item damage when the item is used', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_dagon_broadsword_attack_only_sequence_probe',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['dagon', 'broadsword'],
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      health: 10000,
+      armor: 10,
+      magicResistancePercent: 75
+    },
+    scenario: {
+      type: 'sequence',
+      durationSeconds: 1,
+      steps: [
+        { type: 'attack_window', attackCount: 1 }
+      ],
+      resultDelaySeconds: 1
+    }
+  });
+
+  assert.equal(
+    fixture.expectedLocalModel.components.some((entry) => entry.itemKey === 'dagon' && entry.raw > 0),
+    false
+  );
+  assert.equal(fixture.expectedLocalModel.components.some((entry) => entry.kind === 'basic_attack'), true);
+  assert.equal(fixture.engineSetup.expectedAdjusted, 72.5);
+});
+
 test('buildEngineFixture treats Shadow Blade break damage as physical attack-window damage', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_shadow_blade_break_creep_probe',

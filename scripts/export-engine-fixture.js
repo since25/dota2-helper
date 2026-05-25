@@ -15,23 +15,32 @@ const DEFAULT_LUA_OUTPUT_PATH = path.join(
   'dota_helper_fixture.lua'
 );
 
-function combatRelevantComponentIds(itemKey) {
+function combatRelevantComponentIds(itemKey, options = {}) {
   const model = getItemModel(itemKey);
+  const activeItemKeys = options.activeItemKeys;
+  const includeAllDamage = !activeItemKeys;
+  const includeActiveDamage = includeAllDamage || activeItemKeys.has(itemKey);
+  const includeAttackProc = includeAllDamage || options.includeAttackProc;
   return (model?.effects || [])
-    .filter((effect) => [
-      'modifier.attack_damage.flat',
-      'modifier.attack_speed.flat',
-      'stat.attribute',
-      'modifier.crit',
-      'damage.attack_proc',
-      'damage.instant'
-    ].includes(effect.type))
+    .filter((effect) => {
+      if ([
+        'modifier.attack_damage.flat',
+        'modifier.attack_speed.flat',
+        'stat.attribute',
+        'modifier.crit'
+      ].includes(effect.type)) {
+        return true;
+      }
+      if (effect.type === 'damage.instant') return includeActiveDamage;
+      if (effect.type === 'damage.attack_proc') return includeAttackProc;
+      return false;
+    })
     .map((effect, index) => `${itemKey}:${effect.type}:${effect.key || effect.abilityName || index}`);
 }
 
-function itemSelections(items) {
+function itemSelections(items, options = {}) {
   return (items || []).flatMap((itemKey) => {
-    const componentIds = combatRelevantComponentIds(itemKey);
+    const componentIds = combatRelevantComponentIds(itemKey, options);
     return componentIds.map((componentId) => ({
       sourceType: 'item',
       itemKey,
@@ -61,6 +70,17 @@ function itemAbilityName(itemKey) {
   return String(itemKey || '').startsWith('item_') ? itemKey : `item_${itemKey}`;
 }
 
+function basicAttackSelectionFromStep(step = {}) {
+  return {
+    sourceType: 'basic_attack',
+    attackWindowMode: 'attack_count',
+    attackCount: step.attackCount || 1,
+    durationSeconds: step.durationSeconds,
+    forceInvisibilityBreak: step.forceInvisibilityBreak,
+    forceCritSource: step.forceCritSource
+  };
+}
+
 function engineSetupFor(input, expectedLocalModel, abilityLevels = []) {
   const targetHero = input.target?.hero || 'Axe';
   return {
@@ -75,21 +95,29 @@ function engineSetupFor(input, expectedLocalModel, abilityLevels = []) {
 async function buildEngineFixture(input) {
   const scenarioType = input.scenario?.type || 'attack_window';
   const abilitySelections = input.abilitySelections || [];
+  const sequenceSteps = input.scenario?.steps || [];
+  const activeItemKeys = scenarioType === 'sequence'
+    ? new Set(sequenceSteps.filter((step) => step.type === 'active_item').map((step) => step.activeItemKey))
+    : null;
+  const includeAttackProc = scenarioType === 'sequence'
+    ? sequenceSteps.some((step) => step.type === 'attack_window')
+    : false;
   const selectedComponents = [
-    ...itemSelections(input.items),
+    ...itemSelections(input.items, { activeItemKeys, includeAttackProc }),
     ...abilitySelections.map((selection) => ({
       sourceType: 'ability',
       ...selection
     }))
   ];
   if (scenarioType === 'attack_window' && abilitySelections.length === 0) {
-    selectedComponents.push({
-      sourceType: 'basic_attack',
-      attackWindowMode: 'attack_count',
-      attackCount: input.scenario?.attackCount || 1,
-      forceInvisibilityBreak: input.scenario?.forceInvisibilityBreak,
-      forceCritSource: input.scenario?.forceCritSource
-    });
+    selectedComponents.push(basicAttackSelectionFromStep(input.scenario));
+  }
+  if (scenarioType === 'sequence') {
+    for (const step of sequenceSteps) {
+      if (step.type === 'attack_window') {
+        selectedComponents.push(basicAttackSelectionFromStep(step));
+      }
+    }
   }
   const heroDetails = abilitySelections.length ? await getHeroDetails(input.hero) : null;
   const engineAbilityLevels = abilitySelections.map((selection) => {
