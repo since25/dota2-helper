@@ -90,24 +90,13 @@ DOTA_DATA_PROVIDER=datawrapper
 
 目前主线仍以 `dotaconstants` 为稳定数据源，`dota2-datawrapper` 已接入为实验 provider，用于后续对比和迁移。
 
-### Stripe 与 Upstash Redis
+### 支付与限流
 
-本地开发可以不配置 Stripe 和 Redis。未配置时，服务会输出警告，但不影响主页面、数据 API、伤害计算器和审核脚本。
+本 fork 已移除上游遗留的 Stripe 会员支付、Upstash Redis 订阅 token 和免费次数限流逻辑。当前服务只需要本地 Dota 数据、AI 端点配置和 Node 运行环境。
 
-支付相关：
+服务器部署不需要 `STRIPE_SECRET_KEY`、`STRIPE_WEBHOOK_SECRET`、`STRIPE_PRICE_ID`、`KV_REST_API_URL`、`KV_REST_API_TOKEN`、`UPSTASH_REDIS_REST_URL` 或 `UPSTASH_REDIS_REST_TOKEN`。
 
-```bash
-STRIPE_SECRET_KEY=...
-STRIPE_WEBHOOK_SECRET=...
-STRIPE_PRICE_ID=...
-```
-
-限流/订阅 token 相关：
-
-```bash
-KV_REST_API_URL=...
-KV_REST_API_TOKEN=...
-```
+部署到服务器后，如果看到 `Cannot find package 'dota2-datawrapper'`，说明运行目录的 `node_modules` 没有按当前依赖安装。进入部署目录执行 `npm ci` 或 `npm install` 后重启服务即可。
 
 ### 调试脚本配置
 

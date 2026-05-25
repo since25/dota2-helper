@@ -14,22 +14,6 @@ function fallbackFormatStructuredOutput(text) {
 
 const formatStructuredOutput = window.DotaOutputFormatter?.formatStructuredOutput ?? fallbackFormatStructuredOutput;
 
-// --- Pro Subscription State ---
-const TOKEN_KEY = 'dota2helper_pro_token';
-let isProUser = false;
-
-function getProToken() {
-  return localStorage.getItem(TOKEN_KEY);
-}
-
-function setProToken(token) {
-  localStorage.setItem(TOKEN_KEY, token);
-}
-
-function clearProToken() {
-  localStorage.removeItem(TOKEN_KEY);
-}
-
 const heroForm = document.getElementById('heroForm');
 const outputDiv = document.getElementById('output');
 const errorMessageP = document.getElementById('error-message');
@@ -264,149 +248,11 @@ function validateHeroInputs(isFinalCheck = false) {
     return isValid;
 }
 
-// --- Pro Subscription Functions ---
-
-async function checkProStatus() {
-  const token = getProToken();
-  if (!token) {
-    updateProUI(false);
-    return;
-  }
-
-  try {
-    const res = await fetch('/api/subscription-status', {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    const data = await res.json();
-    isProUser = data.active;
-    if (!data.active) clearProToken();
-    updateProUI(data.active);
-  } catch {
-    updateProUI(false);
-  }
-}
-
-async function handleCheckoutReturn() {
-  const params = new URLSearchParams(window.location.search);
-  const sessionId = params.get('session_id');
-  if (!sessionId) return;
-
-  // Clean URL
-  window.history.replaceState({}, '', '/');
-
-  try {
-    const res = await fetch(`/api/checkout-success?session_id=${sessionId}`);
-    const data = await res.json();
-    if (data.token) {
-      setProToken(data.token);
-      isProUser = true;
-      updateProUI(true);
-    } else if (res.status === 202) {
-      // Webhook hasn't fired yet, retry after 2 seconds
-      setTimeout(async () => {
-        const retry = await fetch(`/api/checkout-success?session_id=${sessionId}`);
-        const retryData = await retry.json();
-        if (retryData.token) {
-          setProToken(retryData.token);
-          isProUser = true;
-          updateProUI(true);
-        }
-      }, 2000);
-    }
-  } catch (err) {
-    console.error('Checkout return error:', err);
-  }
-}
-
-function updateProUI(isPro) {
-  const badge = document.getElementById('proBadge');
-  const subscriptionBar = document.getElementById('subscriptionBar');
-  const manageLink = document.getElementById('manageSubLink');
-  if (!badge || !subscriptionBar || !manageLink) return;
-
-  if (isPro) {
-    badge.style.display = 'inline-block';
-    manageLink.style.display = 'inline';
-    subscriptionBar.style.display = 'none';
-  } else {
-    badge.style.display = 'none';
-    manageLink.style.display = 'none';
-    counter.style.display = 'block';
-    upgradeBtn.style.display = 'inline-block';
-    recoverLink.style.display = 'inline';
-  }
-}
-
-function updateQueryCounter(remaining) {
-  const counter = document.getElementById('queryCounter');
-  if (!counter) return;
-  counter.textContent = `${remaining} free ${remaining === 1 ? 'query' : 'queries'} remaining today`;
-}
-
-async function startCheckout() {
-  try {
-    const res = await fetch('/api/create-checkout-session', { method: 'POST' });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    }
-  } catch (err) {
-    console.error('Checkout error:', err);
-  }
-}
-
-async function openBillingPortal() {
-  const token = getProToken();
-  if (!token) return;
-
-  try {
-    const res = await fetch('/api/create-portal-session', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert(data.error || 'Failed to open billing portal.');
-    }
-  } catch (err) {
-    console.error('Portal error:', err);
-    alert('Failed to open billing portal.');
-  }
-}
-
-async function recoverToken() {
-  const email = prompt('Enter the email you used for your Pro subscription:');
-  if (!email) return;
-
-  try {
-    const res = await fetch('/api/recover-token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
-    const data = await res.json();
-    if (data.token) {
-      setProToken(data.token);
-      isProUser = true;
-      updateProUI(true);
-      alert('Pro access restored!');
-    } else {
-      alert(data.error || data.message || 'No active subscription found for this email.');
-    }
-  } catch {
-    alert('Failed to recover subscription. Please try again.');
-  }
-}
-
 // Call the function to populate datalist when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     populateHeroData();
     populateRoleDropdown();
     updateAllyRoles(); // Set initial ally roles
-    checkProStatus();
-    handleCheckoutReturn();
 });
 
 // Add event listener for when the user changes their role selection
@@ -483,10 +329,6 @@ heroForm.addEventListener('submit', async (event) => {
     try {
         console.log('Sending API request with heroes and roles:', selectedData);
         const headers = { 'Content-Type': 'application/json' };
-        const token = getProToken();
-        if (token) {
-            headers['Authorization'] = `Bearer ${token}`;
-        }
 
         const response = await fetch('/api/get-tips', {
             method: 'POST',
@@ -511,11 +353,6 @@ heroForm.addEventListener('submit', async (event) => {
 
         if (!response.ok) {
             throw new Error(data.error || `HTTP error ${response.status}`);
-        }
-
-        // Update query counter for free users
-        if (data.remaining !== undefined && !data.isPro) {
-            updateQueryCounter(data.remaining);
         }
 
         // Process and display structured results

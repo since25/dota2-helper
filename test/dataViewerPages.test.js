@@ -81,8 +81,10 @@ test('damage calculator forces runtime-input primitives into theoretical mode', 
   assert.match(js, /\|\| runtimeInputOnly/);
 });
 
-test('token recovery no-token branch can surface backend messages', () => {
+test('main script no longer contains subscription recovery flow', () => {
   const js = read('script.js');
 
-  assert.match(js, /data\.error \|\| data\.message \|\| 'No active subscription found for this email\.'/);
+  assert.equal(js.includes('/api/recover-token'), false);
+  assert.equal(js.includes('/api/create-checkout-session'), false);
+  assert.equal(js.includes('/api/subscription-status'), false);
 });
