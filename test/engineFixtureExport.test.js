@@ -80,6 +80,27 @@ test('buildEngineFixture accepts explicit target unit name for cleaner engine pr
   assert.equal(fixture.engineSetup.targetUnitName, 'npc_dota_hero_target_dummy');
 });
 
+test('buildEngineFixture uses Dota-rounded attack damage for engine baselines', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_level_12_broadsword_creep_attack',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    items: ['broadsword'],
+    target: {
+      unitName: 'npc_dota_creep_badguys_melee',
+      armor: 10,
+      magicResistancePercent: 25
+    },
+    scenario: {
+      type: 'attack_window',
+      attackCount: 20
+    }
+  });
+
+  assert.equal(fixture.expectedLocalModel.combatStats.attackDamage.average, 110);
+  assert.equal(fixture.engineSetup.expectedAdjusted, 1375);
+});
+
 test('buildLuaFixtureSource emits a require-able Lua table for the addon runner', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_lua_fixture',

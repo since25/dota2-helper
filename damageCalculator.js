@@ -6,7 +6,11 @@ const { listItemModels, getItemModel } = require('./itemModels/registry');
 const { calculateAttackWindow } = require('./combat/attackWindow');
 const { adjustDamageEvent } = require('./combat/damageEvents');
 const { adaptItemModelToAssertions } = require('./combat/itemEffectAdapter');
-const { applyStatAssertions } = require('./combat/stats');
+const {
+  applyStatAssertions,
+  attackDamageAtLevel: combatAttackDamageAtLevel,
+  heroAttributesAtLevel: combatHeroAttributesAtLevel
+} = require('./combat/stats');
 
 function roundDamage(value) {
   return Math.round(value * 100) / 100;
@@ -236,16 +240,9 @@ function boundedDuration(value, limit) {
 
 function attackDamageAtLevel(stats, heroLevel) {
   if (!stats) return 0;
-  const levelsGained = Math.max(0, Number(heroLevel || 1) - 1);
-  const strength = Number(stats.baseStrength || 0) + Number(stats.strengthGain || 0) * levelsGained;
-  const agility = Number(stats.baseAgility || 0) + Number(stats.agilityGain || 0) * levelsGained;
-  const intelligence = Number(stats.baseIntelligence || 0) + Number(stats.intelligenceGain || 0) * levelsGained;
-  const primaryDamage = stats.primaryAttribute === 'all'
-    ? (strength + agility + intelligence) * 0.7
-    : { str: strength, agi: agility, int: intelligence }[stats.primaryAttribute] || 0;
-  const attackMin = Math.round(Number(stats.baseAttackMin || 0) + primaryDamage);
-  const attackMax = Math.round(Number(stats.baseAttackMax || 0) + primaryDamage);
-  return roundDamage((attackMin + attackMax) / 2);
+  const attributes = combatHeroAttributesAtLevel(stats, heroLevel);
+  const attack = combatAttackDamageAtLevel(stats, attributes);
+  return roundDamage(attack.average);
 }
 
 function resolveAttackSequenceDamage(component, abilityLevel, selection, profile, heroLevel) {

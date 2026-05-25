@@ -66,7 +66,10 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
   local attackerDamageMin = self:CallNumber(attacker, "GetDamageMin")
   local attackerDamageMax = self:CallNumber(attacker, "GetDamageMax")
+  local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
+  local attackerBaseDamageMax = self:CallNumber(attacker, "GetBaseDamageMax")
   local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
+  local attackerAverageTrueDamageNoTarget = self:CallNumber(attacker, "GetAverageTrueAttackDamage")
   local attackCount = fixture.scenario and fixture.scenario.attackCount or 1
   for _ = 1, attackCount do
     attacker:PerformAttack(target, true, true, true, false, false, false, true)
@@ -83,7 +86,10 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
       targetArmor = targetArmor,
       attackerDamageMin = attackerDamageMin,
       attackerDamageMax = attackerDamageMax,
+      attackerBaseDamageMin = attackerBaseDamageMin,
+      attackerBaseDamageMax = attackerBaseDamageMax,
       attackerAverageTrueDamage = attackerAverageTrueDamage,
+      attackerAverageTrueDamageNoTarget = attackerAverageTrueDamageNoTarget,
       attackCount = attackCount,
       expectedAdjusted = fixture.expectedAdjusted,
       modifiers = { "attack_window" }
@@ -158,7 +164,10 @@ function DotaHelperFixtureRunner:EncodeResult(result)
   text = self:AppendNumberField(text, "targetArmor", engine.targetArmor)
   text = self:AppendNumberField(text, "attackerDamageMin", engine.attackerDamageMin)
   text = self:AppendNumberField(text, "attackerDamageMax", engine.attackerDamageMax)
+  text = self:AppendNumberField(text, "attackerBaseDamageMin", engine.attackerBaseDamageMin)
+  text = self:AppendNumberField(text, "attackerBaseDamageMax", engine.attackerBaseDamageMax)
   text = self:AppendNumberField(text, "attackerAverageTrueDamage", engine.attackerAverageTrueDamage)
+  text = self:AppendNumberField(text, "attackerAverageTrueDamageNoTarget", engine.attackerAverageTrueDamageNoTarget)
   text = self:AppendNumberField(text, "attackCount", engine.attackCount)
   text = self:AppendNumberField(text, "expectedAdjusted", engine.expectedAdjusted)
   text = text .. ',"modifiers":' .. self:EncodeStringArray(engine.modifiers or {})

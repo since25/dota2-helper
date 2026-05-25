@@ -34,8 +34,8 @@ function attackDamageAtLevel(stats, attributes, assertions = []) {
     .filter((assertion) => assertion.semanticType === 'stat.attack_damage.flat')
     .reduce((sum, assertion) => sum + firstNumber(assertion), 0);
   const primaryDamage = primaryAttributeDamage(stats, attributes);
-  const min = round(Number(stats.baseAttackMin || 0) + primaryDamage + flatBonus);
-  const max = round(Number(stats.baseAttackMax || 0) + primaryDamage + flatBonus);
+  const min = round(Math.ceil(Number(stats.baseAttackMin || 0) + primaryDamage) + flatBonus);
+  const max = round(Math.ceil(Number(stats.baseAttackMax || 0) + primaryDamage) + flatBonus);
   return { min, max, average: round((min + max) / 2), flatBonus };
 }
 

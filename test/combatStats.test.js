@@ -43,6 +43,32 @@ test('attackDamageAtLevel uses primary attribute and flat attack items', () => {
   });
 });
 
+test('attackDamageAtLevel matches Dota engine integer attack endpoints before flat bonus', () => {
+  const phantomAssassin = {
+    primaryAttribute: 'agi',
+    baseStrength: 19,
+    strengthGain: 2,
+    baseAgility: 21,
+    agilityGain: 3.4,
+    baseIntelligence: 15,
+    intelligenceGain: 1.7,
+    baseAttackMin: 35,
+    baseAttackMax: 37,
+    attackRate: 1.7
+  };
+  const attrs = heroAttributesAtLevel(phantomAssassin, 12);
+  const attack = attackDamageAtLevel(phantomAssassin, attrs, [
+    { semanticType: 'stat.attack_damage.flat', values: [15], sourceKey: 'broadsword' }
+  ]);
+
+  assert.deepEqual(attack, {
+    min: 109,
+    max: 111,
+    average: 110,
+    flatBonus: 15
+  });
+});
+
 test('applyStatAssertions applies attribute items before attack damage', () => {
   const result = applyStatAssertions(strengthHero, 6, [
     { semanticType: 'stat.attribute.flat', attribute: 'strength', values: [10], sourceKey: 'belt_of_strength' },

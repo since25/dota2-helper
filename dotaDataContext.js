@@ -198,8 +198,8 @@ function statsAtLevel(stats, level) {
     maxHealth: Math.round(stats.baseHealth + strength * ATTRIBUTE_RULES.healthPerStrength),
     maxMana: Math.round(stats.baseMana + intelligence * ATTRIBUTE_RULES.manaPerIntelligence),
     armor: roundStat(stats.baseArmor + agility * ATTRIBUTE_RULES.armorPerAgility),
-    attackMin: Math.round(stats.baseAttackMin + primaryDamage),
-    attackMax: Math.round(stats.baseAttackMax + primaryDamage)
+    attackMin: Math.ceil(stats.baseAttackMin + primaryDamage),
+    attackMax: Math.ceil(stats.baseAttackMax + primaryDamage)
   };
 }
 

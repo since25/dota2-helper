@@ -1,4 +1,5 @@
 const { getHeroDamageProfile } = require('./damageCalculator');
+const { attackDamageAtLevel: combatAttackDamageAtLevel } = require('./combat/stats');
 const { adaptItemModelToAssertions } = require('./combat/itemEffectAdapter');
 const { loadChineseItemMap, localizeItemModelName } = require('./itemLocalization');
 const { getItemModel } = require('./itemModels/registry');
@@ -28,13 +29,8 @@ function heroAttributesAtLevel(stats, heroLevel) {
 
 function attackDamageAtLevel(stats, heroLevel) {
   const attrs = heroAttributesAtLevel(stats, heroLevel);
-  const primaryDamage = stats.primaryAttribute === 'all'
-    ? (attrs.strength + attrs.agility + attrs.intelligence) * 0.7
-    : { str: attrs.strength, agi: attrs.agility, int: attrs.intelligence }[stats.primaryAttribute] || 0;
-  return {
-    min: round(Number(stats.baseAttackMin || 0) + primaryDamage),
-    max: round(Number(stats.baseAttackMax || 0) + primaryDamage)
-  };
+  const attack = combatAttackDamageAtLevel(stats, attrs);
+  return { min: attack.min, max: attack.max };
 }
 
 function heroPanel(profile, heroLevel) {

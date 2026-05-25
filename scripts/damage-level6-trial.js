@@ -46,8 +46,8 @@ function attackDamageAtLevel(stats, heroLevel) {
   const primaryDamage = stats.primaryAttribute === 'all'
     ? (strength + agility + intelligence) * 0.7
     : { str: strength, agi: agility, int: intelligence }[stats.primaryAttribute] || 0;
-  const attackMin = Math.round(Number(stats.baseAttackMin || 0) + primaryDamage);
-  const attackMax = Math.round(Number(stats.baseAttackMax || 0) + primaryDamage);
+  const attackMin = Math.ceil(Number(stats.baseAttackMin || 0) + primaryDamage);
+  const attackMax = Math.ceil(Number(stats.baseAttackMax || 0) + primaryDamage);
   return roundDamage((attackMin + attackMax) / 2);
 }
 
