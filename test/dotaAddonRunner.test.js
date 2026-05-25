@@ -35,6 +35,10 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /attackerBaseDamageMax/);
   assert.match(source, /attackerAverageTrueDamageNoTarget/);
   assert.match(source, /PrepareInvisibilityBreak/);
+  assert.match(source, /RunInvisibilityBreakAttackWindow/);
+  assert.match(source, /FinishInvisibilityBreakAttackWindow/);
+  assert.match(source, /InvisibilityBreakDelaySeconds/);
+  assert.match(source, /windwalk_fade_time/);
   assert.match(source, /RunActiveItemFixture/);
   assert.match(source, /RunSequenceFixture/);
   assert.match(source, /RunNextSequenceStep/);

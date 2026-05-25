@@ -96,7 +96,7 @@ end
 function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   local attacker, target = self:PrepareFixtureActors(fixture)
   if fixture.scenario ~= nil and fixture.scenario.forceInvisibilityBreak then
-    self:PrepareInvisibilityBreak(attacker, target)
+    return self:RunInvisibilityBreakAttackWindow(fixture, attacker, target)
   end
 
   local beforeHealth = target:GetHealth()
@@ -135,6 +135,87 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
       modifiers = { "attack_window" }
     }
   }
+end
+
+function DotaHelperFixtureRunner:RunInvisibilityBreakAttackWindow(fixture, attacker, target)
+  local beforeHealth = target:GetHealth()
+  local targetArmor = self:CallNumber(target, "GetPhysicalArmorValue", false)
+  local targetMagicResistance = self:MagicalResistancePercent(target)
+  local attackerDamageMin = self:CallNumber(attacker, "GetDamageMin")
+  local attackerDamageMax = self:CallNumber(attacker, "GetDamageMax")
+  local attackerBaseDamageMin = self:CallNumber(attacker, "GetBaseDamageMin")
+  local attackerBaseDamageMax = self:CallNumber(attacker, "GetBaseDamageMax")
+  local attackerAverageTrueDamage = self:CallNumber(attacker, "GetAverageTrueAttackDamage", target)
+  local attackerAverageTrueDamageNoTarget = self:CallNumber(attacker, "GetAverageTrueAttackDamage")
+  local attackCount = fixture.scenario and fixture.scenario.attackCount or 1
+  local activeItem = self:FindFirstItem(attacker, { "item_invis_sword", "item_silver_edge" })
+  self:PrepareInvisibilityBreak(attacker, target)
+
+  self.pendingInvisibilityBreakAttackWindow = {
+    id = fixture.id,
+    fixture = fixture,
+    attacker = attacker,
+    target = target,
+    beforeHealth = beforeHealth,
+    targetArmor = targetArmor,
+    targetMagicResistance = targetMagicResistance,
+    attackerDamageMin = attackerDamageMin,
+    attackerDamageMax = attackerDamageMax,
+    attackerBaseDamageMin = attackerBaseDamageMin,
+    attackerBaseDamageMax = attackerBaseDamageMax,
+    attackerAverageTrueDamage = attackerAverageTrueDamage,
+    attackerAverageTrueDamageNoTarget = attackerAverageTrueDamageNoTarget,
+    attackCount = attackCount,
+    expectedAdjusted = fixture.expectedAdjusted
+  }
+  GameRules:GetGameModeEntity():SetThink(
+    "FinishInvisibilityBreakAttackWindow",
+    self,
+    "dota_helper_invisibility_break_attack_window",
+    self:InvisibilityBreakDelaySeconds(activeItem)
+  )
+  return nil
+end
+
+function DotaHelperFixtureRunner:FinishInvisibilityBreakAttackWindow()
+  local pending = self.pendingInvisibilityBreakAttackWindow
+  if pending == nil then return nil end
+  self.pendingInvisibilityBreakAttackWindow = nil
+  local scenario = pending.fixture and pending.fixture.scenario or {}
+  local attackFlagsConfig = scenario.attackFlags or {
+    processProcs = true,
+    useCastAttackOrb = true,
+    skipCooldown = true,
+    neverMiss = true
+  }
+  for _ = 1, pending.attackCount do
+    self:PerformConfiguredAttack(pending.attacker, pending.target, attackFlagsConfig)
+  end
+  local afterHealth = pending.target:GetHealth()
+  local observedDamage = pending.beforeHealth - afterHealth
+
+  self:PrintResult({
+    id = pending.id,
+    engine = {
+      observedDamage = observedDamage,
+      targetHealthBefore = pending.beforeHealth,
+      targetHealthAfter = afterHealth,
+      targetArmor = pending.targetArmor,
+      targetMagicResistance = pending.targetMagicResistance,
+      attackerDamageMin = pending.attackerDamageMin,
+      attackerDamageMax = pending.attackerDamageMax,
+      attackerBaseDamageMin = pending.attackerBaseDamageMin,
+      attackerBaseDamageMax = pending.attackerBaseDamageMax,
+      attackerAverageTrueDamage = pending.attackerAverageTrueDamage,
+      attackerAverageTrueDamageNoTarget = pending.attackerAverageTrueDamageNoTarget,
+      attackCount = pending.attackCount,
+      expectedAdjusted = pending.expectedAdjusted,
+      modifiers = { "attack_window", "invisibility_break" }
+    }
+  })
+  self:CleanupFixtureUnits()
+  GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
+  return nil
 end
 
 function DotaHelperFixtureRunner:RunActiveItemFixture(fixture)
@@ -446,6 +527,12 @@ function DotaHelperFixtureRunner:PrepareInvisibilityBreak(attacker, target)
     return true
   end
   return false
+end
+
+function DotaHelperFixtureRunner:InvisibilityBreakDelaySeconds(item)
+  local fadeTime = self:SpecialValue(item, "windwalk_fade_time")
+  if type(fadeTime) ~= "number" then fadeTime = 0.3 end
+  return fadeTime + 0.1
 end
 
 function DotaHelperFixtureRunner:CastActiveItem(attacker, target, itemName)
