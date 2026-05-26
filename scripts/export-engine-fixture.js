@@ -14,6 +14,12 @@ const DEFAULT_LUA_OUTPUT_PATH = path.join(
   'generated',
   'dota_helper_fixture.lua'
 );
+const PROC_ATTACK_FLAGS = {
+  processProcs: true,
+  useCastAttackOrb: true,
+  skipCooldown: true,
+  neverMiss: true
+};
 
 function combatRelevantComponentIds(itemKey, options = {}) {
   const model = getItemModel(itemKey);
@@ -81,6 +87,23 @@ function basicAttackSelectionFromStep(step = {}) {
   };
 }
 
+function requiresProcAttackFlags(expectedLocalModel) {
+  return (expectedLocalModel.components || []).some((component) => (
+    component.kind === 'attack_sequence' ||
+    component.kind === 'attack_proc'
+  ));
+}
+
+function scenarioWithInferredAttackFlags(scenario = {}, expectedLocalModel) {
+  if (scenario.attackFlags || !requiresProcAttackFlags(expectedLocalModel)) {
+    return scenario;
+  }
+  return {
+    ...scenario,
+    attackFlags: { ...PROC_ATTACK_FLAGS }
+  };
+}
+
 function engineSetupFor(input, expectedLocalModel, abilityLevels = []) {
   const targetHero = input.target?.hero || 'Axe';
   return {
@@ -138,6 +161,7 @@ async function buildEngineFixture(input) {
     enemyMagicResistancePercent: input.target?.magicResistancePercent ?? 25,
     selectedComponents
   });
+  const scenario = scenarioWithInferredAttackFlags(input.scenario || {}, expectedLocalModel);
 
   const fixture = {
     id: input.id,
@@ -145,7 +169,7 @@ async function buildEngineFixture(input) {
     heroLevel: input.heroLevel,
     items: input.items || [],
     target: input.target || {},
-    scenario: input.scenario || {},
+    scenario,
     abilitySelections,
     expectedLocalModel
   };
