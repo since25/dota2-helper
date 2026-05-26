@@ -87,6 +87,12 @@ function basicAttackSelectionFromStep(step = {}) {
   };
 }
 
+function normalizedTrials(input = {}) {
+  const value = Number(input.trials ?? input.scenario?.trials ?? 1);
+  if (!Number.isFinite(value) || value < 1) return 1;
+  return Math.floor(value);
+}
+
 function requiresProcAttackFlags(expectedLocalModel) {
   return (expectedLocalModel.components || []).some((component) => (
     component.kind === 'attack_sequence' ||
@@ -169,6 +175,7 @@ async function buildEngineFixture(input) {
     heroLevel: input.heroLevel,
     items: input.items || [],
     target: input.target || {},
+    trials: normalizedTrials(input),
     scenario,
     abilitySelections,
     expectedLocalModel
@@ -229,6 +236,7 @@ function luaFixtureRecord(fixture) {
     targetUnitName: fixture.engineSetup.targetUnitName,
     itemAbilityNames: fixture.engineSetup.itemAbilityNames,
     abilityLevels: fixture.engineSetup.abilityLevels,
+    trials: fixture.trials || 1,
     target: {
       hero: fixture.target?.hero,
       level: fixture.target?.level,

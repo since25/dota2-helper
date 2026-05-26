@@ -110,11 +110,21 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
   local attackerAverageTrueDamageNoTarget = self:CallNumber(attacker, "GetAverageTrueAttackDamage")
   local attackCount = fixture.scenario and fixture.scenario.attackCount or 1
   local attackFlagsConfig = fixture.scenario and fixture.scenario.attackFlags or nil
-  for _ = 1, attackCount do
-    self:PerformConfiguredAttack(attacker, target, attackFlagsConfig)
+  local trials = self:FixtureTrials(fixture)
+  local observedDamageSamples = {}
+  local afterHealth = beforeHealth
+  for trial = 1, trials do
+    if trial > 1 and target.SetHealth ~= nil then
+      target:SetHealth(beforeHealth)
+    end
+    for _ = 1, attackCount do
+      self:PerformConfiguredAttack(attacker, target, attackFlagsConfig)
+    end
+    afterHealth = target:GetHealth()
+    table.insert(observedDamageSamples, beforeHealth - afterHealth)
   end
-  local afterHealth = target:GetHealth()
-  local observedDamage = beforeHealth - afterHealth
+  local observedDamage = observedDamageSamples[#observedDamageSamples] or 0
+  local sampleStats = self:SampleStats(observedDamageSamples)
 
   return {
     id = fixture.id,
@@ -131,6 +141,11 @@ function DotaHelperFixtureRunner:RunAttackWindowFixture(fixture)
       attackerAverageTrueDamage = attackerAverageTrueDamage,
       attackerAverageTrueDamageNoTarget = attackerAverageTrueDamageNoTarget,
       attackCount = attackCount,
+      observedDamageSamples = sampleStats.samples,
+      observedDamageMean = sampleStats.mean,
+      observedDamageStdev = sampleStats.stdev,
+      observedDamageMin = sampleStats.min,
+      observedDamageMax = sampleStats.max,
       expectedAdjusted = fixture.expectedAdjusted,
       modifiers = { "attack_window" }
     }
@@ -460,6 +475,39 @@ function DotaHelperFixtureRunner:PerformConfiguredAttack(attacker, target, attac
   )
 end
 
+function DotaHelperFixtureRunner:FixtureTrials(fixture)
+  local trials = tonumber(fixture and fixture.trials or 1) or 1
+  if trials < 1 then return 1 end
+  return math.floor(trials)
+end
+
+function DotaHelperFixtureRunner:SampleStats(samples)
+  local count = #samples
+  local sum = 0
+  local minValue = nil
+  local maxValue = nil
+  for _, value in ipairs(samples) do
+    sum = sum + value
+    if minValue == nil or value < minValue then minValue = value end
+    if maxValue == nil or value > maxValue then maxValue = value end
+  end
+  local mean = count > 0 and sum / count or 0
+  local variance = 0
+  if count > 1 then
+    for _, value in ipairs(samples) do
+      variance = variance + ((value - mean) * (value - mean))
+    end
+    variance = variance / (count - 1)
+  end
+  return {
+    samples = samples,
+    mean = mean,
+    stdev = math.sqrt(variance),
+    min = minValue,
+    max = maxValue
+  }
+end
+
 function DotaHelperFixtureRunner:SetHeroLevel(unit, targetLevel)
   if unit.HeroLevelUp == nil or unit.GetLevel == nil then return end
   while unit:GetLevel() < targetLevel do
@@ -619,6 +667,11 @@ function DotaHelperFixtureRunner:EncodeResult(result)
   text = self:AppendNumberField(text, "activeItemLevel", engine.activeItemLevel)
   text = self:AppendNumberField(text, "activeItemDamageSpecial", engine.activeItemDamageSpecial)
   text = self:AppendNumberField(text, "activeItemCast", engine.activeItemCast)
+  text = self:AppendNumberArrayField(text, "observedDamageSamples", engine.observedDamageSamples)
+  text = self:AppendNumberField(text, "observedDamageMean", engine.observedDamageMean)
+  text = self:AppendNumberField(text, "observedDamageStdev", engine.observedDamageStdev)
+  text = self:AppendNumberField(text, "observedDamageMin", engine.observedDamageMin)
+  text = self:AppendNumberField(text, "observedDamageMax", engine.observedDamageMax)
   text = self:AppendNumberField(text, "expectedAdjusted", engine.expectedAdjusted)
   text = text .. ',"modifiers":' .. self:EncodeStringArray(engine.modifiers or {})
   if engine.error ~= nil then
@@ -630,6 +683,17 @@ end
 function DotaHelperFixtureRunner:AppendNumberField(text, key, value)
   if type(value) ~= "number" then return text end
   return text .. ',"' .. key .. '":' .. tostring(value)
+end
+
+function DotaHelperFixtureRunner:AppendNumberArrayField(text, key, values)
+  if type(values) ~= "table" then return text end
+  local parts = {}
+  for _, value in ipairs(values) do
+    if type(value) == "number" then
+      table.insert(parts, tostring(value))
+    end
+  end
+  return text .. ',"' .. key .. '":[' .. table.concat(parts, ',') .. ']'
 end
 
 function DotaHelperFixtureRunner:EncodeStringArray(values)

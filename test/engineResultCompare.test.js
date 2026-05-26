@@ -37,6 +37,47 @@ test('compareEngineResult fails when observed damage exceeds tolerance', () => {
   assert.equal(result.delta, 10);
 });
 
+test('compareEngineResult compares sampled engine damage by mean and confidence tolerance', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'sampled_proc',
+      expectedLocalModel: { totals: { adjusted: 100 } }
+    },
+    engineResult: {
+      id: 'sampled_proc',
+      engine: {
+        observedDamage: 120,
+        observedDamageSamples: [90, 120, 90, 120]
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+  assert.equal(result.observed, 105);
+  assert.equal(result.delta, 5);
+  assert.ok(result.sampleTolerance.absolute > 1);
+});
+
+test('compareEngineResult fails sampled engine damage outside confidence tolerance', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'sampled_proc_fail',
+      expectedLocalModel: { totals: { adjusted: 100 } }
+    },
+    engineResult: {
+      id: 'sampled_proc_fail',
+      engine: {
+        observedDamage: 120,
+        observedDamageSamples: [120, 120, 120, 120]
+      }
+    }
+  });
+
+  assert.equal(result.pass, false);
+  assert.equal(result.observed, 120);
+  assert.equal(result.sampleTolerance.absolute, 1);
+});
+
 test('compareEngineResult passes attack-sequence samples within attack damage roll range', () => {
   const result = compareEngineResult({
     fixture: {

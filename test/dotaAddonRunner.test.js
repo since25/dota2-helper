@@ -50,6 +50,11 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /useCastAttackOrb/);
   assert.match(source, /skipCooldown/);
   assert.match(source, /neverMiss/);
+  assert.match(source, /FixtureTrials/);
+  assert.match(source, /SampleStats/);
+  assert.match(source, /observedDamageSamples/);
+  assert.match(source, /observedDamageMean/);
+  assert.match(source, /SetHealth/);
   assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
   assert.match(source, /SetAbilityLevels/);

@@ -49,19 +49,55 @@ function magicResistanceCheck({ fixture, engineResult }) {
   };
 }
 
+function sampleStats(samples) {
+  if (!Array.isArray(samples) || samples.length === 0) return null;
+  const values = samples.map(Number).filter(Number.isFinite);
+  if (values.length === 0) return null;
+  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  const variance = values.length > 1
+    ? values.reduce((sum, value) => sum + (value - mean) ** 2, 0) / (values.length - 1)
+    : 0;
+  return {
+    count: values.length,
+    mean: round(mean),
+    stdev: round(Math.sqrt(variance))
+  };
+}
+
+function observedDamageFor(engineResult) {
+  const stats = sampleStats(engineResult.engine?.observedDamageSamples);
+  if (!stats) {
+    return {
+      observed: Number(engineResult.engine?.observedDamage || 0),
+      sampleTolerance: null
+    };
+  }
+  return {
+    observed: stats.mean,
+    sampleTolerance: {
+      count: stats.count,
+      stdev: stats.stdev,
+      absolute: round(Math.max(1, 1.96 * stats.stdev / Math.sqrt(stats.count)))
+    }
+  };
+}
+
 function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1, percent: 0.01 } }) {
   if (fixture.id !== engineResult.id) {
     throw new Error(`Fixture id ${fixture.id} does not match engine result id ${engineResult.id}`);
   }
   const expected = Number(fixture.expectedLocalModel?.totals?.adjusted || 0);
-  const observed = Number(engineResult.engine?.observedDamage || 0);
+  const { observed, sampleTolerance } = observedDamageFor(engineResult);
   const delta = round(Math.abs(observed - expected));
   const percentDelta = expected === 0 ? (delta === 0 ? 0 : Infinity) : delta / expected;
   const expectedRange = attackRollExpectedRange({ fixture, engineResult });
+  const absoluteTolerance = sampleTolerance
+    ? Math.max(tolerance.absolute, sampleTolerance.absolute)
+    : tolerance.absolute;
   const rangePass = expectedRange
     ? observed >= expectedRange.min && observed <= expectedRange.max
     : false;
-  const pass = rangePass || delta <= tolerance.absolute || percentDelta <= tolerance.percent;
+  const pass = rangePass || delta <= absoluteTolerance || percentDelta <= tolerance.percent;
   const magicResistance = magicResistanceCheck({ fixture, engineResult });
   return {
     id: fixture.id,
@@ -70,6 +106,7 @@ function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1,
     delta,
     percentDelta,
     expectedRange,
+    sampleTolerance,
     magicResistanceCheck: magicResistance,
     pass
   };
@@ -135,5 +172,6 @@ if (require.main === module) {
 
 module.exports = {
   compareEngineResult,
-  compareEngineResults
+  compareEngineResults,
+  sampleStats
 };

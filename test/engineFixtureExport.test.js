@@ -81,6 +81,30 @@ test('buildEngineFixture accepts explicit target unit name for cleaner engine pr
   assert.equal(fixture.engineSetup.targetUnitName, 'npc_dota_hero_target_dummy');
 });
 
+test('buildEngineFixture defaults and exports trial counts for sampled probes', async () => {
+  const defaultFixture = await buildEngineFixture({
+    id: 'pa_default_trials_attack',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    target: { unitName: 'npc_dota_creep_badguys_melee', armor: 10, magicResistancePercent: 25 },
+    scenario: { type: 'attack_window', attackCount: 1 }
+  });
+  const sampledFixture = await buildEngineFixture({
+    id: 'pa_sampled_trials_attack',
+    hero: 'Phantom Assassin',
+    heroLevel: 18,
+    target: { unitName: 'npc_dota_creep_badguys_melee', armor: 10, magicResistancePercent: 25 },
+    scenario: { type: 'attack_window', attackCount: 1 },
+    trials: 400
+  });
+
+  assert.equal(defaultFixture.trials, 1);
+  assert.equal(sampledFixture.trials, 400);
+
+  const source = buildLuaFixtureSource(sampledFixture);
+  assert.match(source, /trials = 400/);
+});
+
 test('buildEngineFixture uses Dota-rounded attack damage for engine baselines', async () => {
   const fixture = await buildEngineFixture({
     id: 'pa_level_12_broadsword_creep_attack',
