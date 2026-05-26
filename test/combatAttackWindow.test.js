@@ -51,3 +51,19 @@ test('calculateAttackWindow can force a deterministic crit source', () => {
   assert.equal(result.raw, 225);
   assert.equal(result.events[0].crit.source, 'greater_crit');
 });
+
+test('calculateAttackWindow uses expected crit multiplier when crits are not forced', () => {
+  const result = calculateAttackWindow({
+    attackDamage: { average: 100 },
+    attackSpeed: { attacksPerSecond: 1 },
+    assertions: [
+      { semanticType: 'attack.event.crit', sourceKey: 'greater_crit', multiplierPercent: 225, chancePercent: 30 }
+    ],
+    mode: 'attack_count',
+    attackCount: 10
+  });
+
+  assert.equal(result.raw, 1375);
+  assert.equal(result.events[0].crit.source, 'expected_crit');
+  assert.equal(result.events[0].crit.mode, 'expected');
+});

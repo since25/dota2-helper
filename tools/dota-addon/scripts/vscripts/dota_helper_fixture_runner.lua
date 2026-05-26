@@ -10,10 +10,40 @@ function DotaHelperFixtureRunner:InitGameMode()
     self.fixture = GeneratedFixture
     self.fixtures = GeneratedFixture.fixtures or { GeneratedFixture }
     self.fixtureIndex = 0
+    self:RegisterConsoleCommands()
     GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 1.0)
   else
+    self:RegisterConsoleCommands()
     GameRules:GetGameModeEntity():SetThink("RunSmokeFixture", self, "dota_helper_fixture_smoke", 1.0)
   end
+end
+
+function DotaHelperFixtureRunner:RegisterConsoleCommands()
+  if self.consoleCommandsRegistered then return end
+  self.consoleCommandsRegistered = true
+  Convars:RegisterCommand("dota_helper_run_fixture", function()
+    if self:ReloadFixture() then
+      print("[dota-helper] re-running fixture batch")
+      GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
+    end
+  end, "Reload and run dota-helper fixture batch", FCVAR_CHEAT)
+end
+
+function DotaHelperFixtureRunner:ReloadFixture()
+  package.loaded["generated.dota_helper_fixture"] = nil
+  local ok, fixture = pcall(require, "generated.dota_helper_fixture")
+  if not ok or fixture == nil then
+    print("[dota-helper] reload failed: " .. tostring(fixture))
+    return false
+  end
+  self.fixture = fixture
+  self.fixtures = fixture.fixtures or { fixture }
+  self.fixtureIndex = 0
+  self.pendingSequenceFixture = nil
+  self.pendingActiveItemFixture = nil
+  self.pendingInvisibilityBreakAttackWindow = nil
+  self:CleanupFixtureUnits()
+  return true
 end
 
 function DotaHelperFixtureRunner:RunSmokeFixture()
@@ -282,6 +312,9 @@ function DotaHelperFixtureRunner:RunSequenceFixture(fixture)
     attackerBaseDamageMin = attackerBaseDamageMin,
     attackerBaseDamageMax = attackerBaseDamageMax,
     attackerAverageTrueDamage = attackerAverageTrueDamage,
+    trials = self:FixtureTrials(fixture),
+    trialIndex = 0,
+    observedDamageSamples = {},
     attackCount = 0,
     activeItemLevel = nil,
     activeItemDamageSpecial = nil,
@@ -289,6 +322,23 @@ function DotaHelperFixtureRunner:RunSequenceFixture(fixture)
     sequenceDurationSeconds = fixture.scenario and fixture.scenario.durationSeconds,
     expectedAdjusted = fixture.expectedAdjusted
   }
+  GameRules:GetGameModeEntity():SetThink("RunNextSequenceTrial", self, "dota_helper_sequence_trial", 0)
+  return nil
+end
+
+function DotaHelperFixtureRunner:RunNextSequenceTrial()
+  local pending = self.pendingSequenceFixture
+  if pending == nil then return nil end
+  pending.trialIndex = (pending.trialIndex or 0) + 1
+  pending.stepIndex = 0
+  pending.attackCount = 0
+  pending.activeItemLevel = nil
+  pending.activeItemDamageSpecial = nil
+  pending.activeItemCast = 0
+  pending.lastStepType = nil
+  if pending.target.SetHealth ~= nil then
+    pending.target:SetHealth(pending.beforeHealth)
+  end
   GameRules:GetGameModeEntity():SetThink("RunNextSequenceStep", self, "dota_helper_sequence_step", 0)
   return nil
 end
@@ -306,7 +356,7 @@ function DotaHelperFixtureRunner:RunNextSequenceStep()
   if step == nil then
     local scenario = pending.fixture and pending.fixture.scenario or {}
     local delay = scenario.resultDelaySeconds or 1.0
-    GameRules:GetGameModeEntity():SetThink("FinishSequenceFixture", self, "dota_helper_sequence", delay)
+    GameRules:GetGameModeEntity():SetThink("FinishSequenceTrial", self, "dota_helper_sequence_trial", delay)
     return nil
   end
 
@@ -318,6 +368,19 @@ function DotaHelperFixtureRunner:RunNextSequenceStep()
   pending.lastStepType = step.type
 
   return self:SequenceStepPostDelaySeconds(step)
+end
+
+function DotaHelperFixtureRunner:FinishSequenceTrial()
+  local pending = self.pendingSequenceFixture
+  if pending == nil then return nil end
+  local afterHealth = pending.target:GetHealth()
+  table.insert(pending.observedDamageSamples, pending.beforeHealth - afterHealth)
+  pending.lastAfterHealth = afterHealth
+  if pending.trialIndex < pending.trials then
+    GameRules:GetGameModeEntity():SetThink("RunNextSequenceTrial", self, "dota_helper_sequence_trial", 0.05)
+    return nil
+  end
+  return self:FinishSequenceFixture()
 end
 
 function DotaHelperFixtureRunner:SequenceStepPostDelaySeconds(step)
@@ -364,8 +427,9 @@ function DotaHelperFixtureRunner:FinishSequenceFixture()
   local pending = self.pendingSequenceFixture
   if pending == nil then return nil end
   self.pendingSequenceFixture = nil
-  local afterHealth = pending.target:GetHealth()
-  local observedDamage = pending.beforeHealth - afterHealth
+  local afterHealth = pending.lastAfterHealth or pending.target:GetHealth()
+  local observedDamage = pending.observedDamageSamples[#pending.observedDamageSamples] or (pending.beforeHealth - afterHealth)
+  local sampleStats = self:SampleStats(pending.observedDamageSamples)
 
   self:PrintResult({
     id = pending.id,
@@ -382,6 +446,11 @@ function DotaHelperFixtureRunner:FinishSequenceFixture()
       activeItemLevel = pending.activeItemLevel,
       activeItemDamageSpecial = pending.activeItemDamageSpecial,
       activeItemCast = pending.activeItemCast,
+      observedDamageSamples = sampleStats.samples,
+      observedDamageMean = sampleStats.mean,
+      observedDamageStdev = sampleStats.stdev,
+      observedDamageMin = sampleStats.min,
+      observedDamageMax = sampleStats.max,
       expectedAdjusted = pending.expectedAdjusted,
       modifiers = { "sequence" }
     }

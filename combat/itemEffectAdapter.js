@@ -109,8 +109,33 @@ function adaptItemEffect(model, effect) {
   });
 }
 
+function combinedCritEffect(effects) {
+  const critEffects = (effects || []).filter((effect) => effect.type === 'modifier.crit');
+  if (critEffects.length < 2) return null;
+  const chanceEffect = critEffects.find((effect) => String(effect.key || '').includes('chance'));
+  const multiplierEffect = critEffects.find((effect) => String(effect.key || '').includes('multiplier'));
+  const chance = firstNumeric(chanceEffect?.values)[0];
+  const multiplier = firstNumeric(multiplierEffect?.values)[0];
+  if (!Number.isFinite(chance) || !Number.isFinite(multiplier)) return null;
+  return {
+    type: 'modifier.crit',
+    label: multiplierEffect.label || chanceEffect.label || 'crit',
+    key: 'crit',
+    values: [multiplier],
+    chancePercent: chance,
+    source: multiplierEffect.source || chanceEffect.source
+  };
+}
+
 function adaptItemModelToAssertions(model) {
-  return (model.effects || []).map((effect) => adaptItemEffect(model, effect));
+  const crit = combinedCritEffect(model.effects);
+  if (!crit) {
+    return (model.effects || []).map((effect) => adaptItemEffect(model, effect));
+  }
+  return [
+    ...model.effects.filter((effect) => effect.type !== 'modifier.crit').map((effect) => adaptItemEffect(model, effect)),
+    adaptItemEffect(model, crit)
+  ];
 }
 
 module.exports = {

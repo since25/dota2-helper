@@ -82,10 +82,44 @@ function observedDamageFor(engineResult) {
   };
 }
 
+function isForcedInvisibilityBreakProc(fixture, component) {
+  if (fixture.scenario?.forceInvisibilityBreak !== true) return false;
+  return ['invis_sword', 'silver_edge'].includes(component.itemKey);
+}
+
+function fixtureHasStochasticProc(fixture) {
+  const components = fixture.expectedLocalModel?.components || [];
+  return components.some((component) => (
+    component.semanticType === 'modifier.crit' ||
+    (
+      (component.semanticType === 'damage.attack_proc' || component.kind === 'attack_proc') &&
+      !isForcedInvisibilityBreakProc(fixture, component)
+    )
+  ));
+}
+
+function effectiveTrialCount({ fixture, engineResult }) {
+  const declared = Number(fixture.trials ?? fixture.scenario?.trials);
+  if (Number.isFinite(declared) && declared > 0) return Math.floor(declared);
+  const samples = engineResult.engine?.observedDamageSamples;
+  return Array.isArray(samples) ? samples.length : 1;
+}
+
+function validateProcTrialCount({ fixture, engineResult }) {
+  if (fixture.scenario?.attackFlags?.processProcs !== true || !fixtureHasStochasticProc(fixture)) {
+    return;
+  }
+  const trials = effectiveTrialCount({ fixture, engineResult });
+  if (trials < 200) {
+    throw new Error(`Fixture ${fixture.id} requires trials >= 200 for stochastic proc comparison; got ${trials}`);
+  }
+}
+
 function compareEngineResult({ fixture, engineResult, tolerance = { absolute: 1, percent: 0.01 } }) {
   if (fixture.id !== engineResult.id) {
     throw new Error(`Fixture id ${fixture.id} does not match engine result id ${engineResult.id}`);
   }
+  validateProcTrialCount({ fixture, engineResult });
   const expected = Number(fixture.expectedLocalModel?.totals?.adjusted || 0);
   const { observed, sampleTolerance } = observedDamageFor(engineResult);
   const delta = round(Math.abs(observed - expected));

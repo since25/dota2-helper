@@ -78,6 +78,105 @@ test('compareEngineResult fails sampled engine damage outside confidence toleran
   assert.equal(result.sampleTolerance.absolute, 1);
 });
 
+test('compareEngineResult rejects stochastic proc fixtures without enough trials', () => {
+  assert.throws(() => compareEngineResult({
+    fixture: {
+      id: 'daedalus_proc',
+      trials: 1,
+      scenario: {
+        attackFlags: { processProcs: true }
+      },
+      expectedLocalModel: {
+        totals: { adjusted: 100 },
+        components: [{
+          kind: 'modifier',
+          semanticType: 'modifier.crit'
+        }]
+      }
+    },
+    engineResult: {
+      id: 'daedalus_proc',
+      engine: { observedDamage: 100 }
+    }
+  }), /requires trials >= 200/);
+});
+
+test('compareEngineResult allows deterministic attack-sequence proc fixtures with one trial', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'slardar_bash',
+      trials: 1,
+      scenario: {
+        attackFlags: { processProcs: true }
+      },
+      expectedLocalModel: {
+        totals: { adjusted: 421 },
+        combatStats: {
+          attackDamage: { min: 65, max: 73 }
+        },
+        components: [{
+          kind: 'attack_sequence',
+          damageType: 'Physical',
+          attackCount: 4,
+          procDamage: 145
+        }]
+      }
+    },
+    engineResult: {
+      id: 'slardar_bash',
+      engine: {
+        observedDamage: 417,
+        targetArmor: 0,
+        attackCount: 4
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+});
+
+test('compareEngineResult allows forced invisibility-break proc fixtures with one trial', () => {
+  const result = compareEngineResult({
+    fixture: {
+      id: 'shadow_break',
+      trials: 1,
+      scenario: {
+        forceInvisibilityBreak: true,
+        attackFlags: { processProcs: true }
+      },
+      expectedLocalModel: {
+        totals: { adjusted: 184.38 },
+        combatStats: {
+          attackDamage: { min: 119, max: 121, average: 120 }
+        },
+        components: [
+          {
+            kind: 'attack_proc',
+            itemKey: 'invis_sword',
+            semanticType: 'damage.attack_proc'
+          },
+          {
+            kind: 'basic_attack',
+            damageType: 'Physical',
+            raw: 295,
+            attackCount: 1
+          }
+        ]
+      }
+    },
+    engineResult: {
+      id: 'shadow_break',
+      engine: {
+        observedDamage: 185,
+        targetArmor: 10,
+        attackCount: 1
+      }
+    }
+  });
+
+  assert.equal(result.pass, true);
+});
+
 test('compareEngineResult passes attack-sequence samples within attack damage roll range', () => {
   const result = compareEngineResult({
     fixture: {

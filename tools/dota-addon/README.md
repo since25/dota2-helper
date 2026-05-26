@@ -32,6 +32,26 @@ On macOS, this command can launch the probe through the running Steam client:
 
 Console output is written to `~/Library/Application Support/Steam/steamapps/common/dota 2 beta/game/dota/console.log`.
 
+## Iterating without restarting
+
+After the first map load, regenerated fixtures can be re-run from the Dota 2 console without restarting the client:
+
+1. Regenerate the fixture from Node:
+
+   ```bash
+   npm run engine:fixture -- <scenario.json> <fixture.json>
+   ```
+
+2. In the Dota console, run:
+
+   ```text
+   dota_helper_run_fixture
+   ```
+
+3. Read the new JSON result from the console log.
+
+This command requires `sv_cheats 1`; it is registered as `FCVAR_CHEAT`. It reloads only `generated.dota_helper_fixture`, so runner-code changes still require a map/client restart.
+
 ## Server Policy
 
 The production server never runs Dota 2, Workshop Tools, or these Lua files. The addon is a development calibration tool only.

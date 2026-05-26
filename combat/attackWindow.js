@@ -1,4 +1,4 @@
-const { resolveCritMultiplier, round } = require('./rules');
+const { expectedCritMultiplier, resolveCritMultiplier, round } = require('./rules');
 
 function numeric(value, fallback = 0) {
   const number = Number(value);
@@ -20,7 +20,10 @@ function calculateAttackWindow(input) {
   const attackCount = selectedAttackCount(input);
   const baseDamage = numeric(input.attackDamage?.average, 0);
   const crits = (input.assertions || []).filter((assertion) => assertion.semanticType === 'attack.event.crit');
-  const crit = resolveCritMultiplier(crits, { forceCritSource: input.forceCritSource });
+  const forcedCrit = resolveCritMultiplier(crits, { forceCritSource: input.forceCritSource });
+  const crit = forcedCrit.mode === 'none' && crits.length
+    ? { source: 'expected_crit', multiplier: expectedCritMultiplier(crits), mode: 'expected' }
+    : forcedCrit;
   const breakBonuses = (input.assertions || []).filter((assertion) => (
     assertion.semanticType === 'attack.event.bonus_damage'
     && assertion.condition === 'condition.invisibility_break'

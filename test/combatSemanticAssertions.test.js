@@ -69,6 +69,34 @@ test('Daedalus-like item exposes crit assertion', () => {
   assert.equal(assertions[0].chancePercent, 30);
 });
 
+test('split crit chance and multiplier fields combine into one crit assertion', () => {
+  const assertions = adaptItemModelToAssertions({
+    key: 'greater_crit',
+    name: 'Daedalus',
+    effects: [
+      {
+        type: 'modifier.crit',
+        label: '暴击',
+        key: 'crit_chance',
+        values: [30],
+        source: 'attribute'
+      },
+      {
+        type: 'modifier.crit',
+        label: '暴击',
+        key: 'crit_multiplier',
+        values: [225],
+        source: 'attribute'
+      }
+    ]
+  });
+
+  const crits = assertions.filter((assertion) => assertion.semanticType === 'attack.event.crit');
+  assert.equal(crits.length, 1);
+  assert.equal(crits[0].multiplierPercent, 225);
+  assert.equal(crits[0].chancePercent, 30);
+});
+
 test('validateCombatAssertion rejects unknown semantic type', () => {
   assert.throws(
     () => validateCombatAssertion({ semanticType: 'unknown.type', source: 'item', sourceKey: 'x' }),

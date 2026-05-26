@@ -13,6 +13,7 @@ const runnerPath = path.join(
   'dota_helper_fixture_runner.lua'
 );
 const addonInfoPath = path.join(__dirname, '..', 'tools', 'dota-addon', 'addoninfo.txt');
+const addonReadmePath = path.join(__dirname, '..', 'tools', 'dota-addon', 'README.md');
 
 test('Lua fixture runner loads generated fixture and exposes controlled attack measurement', () => {
   const source = fs.readFileSync(runnerPath, 'utf8');
@@ -42,6 +43,8 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /RunActiveItemFixture/);
   assert.match(source, /RunSequenceFixture/);
   assert.match(source, /RunNextSequenceStep/);
+  assert.match(source, /RunNextSequenceTrial/);
+  assert.match(source, /FinishSequenceTrial/);
   assert.match(source, /FinishSequenceFixture/);
   assert.match(source, /RunSequenceStep/);
   assert.match(source, /SequenceStepPostDelaySeconds/);
@@ -55,6 +58,7 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /observedDamageSamples/);
   assert.match(source, /observedDamageMean/);
   assert.match(source, /SetHealth/);
+  assert.match(source, /trialIndex/);
   assert.match(source, /FinishActiveItemFixture/);
   assert.match(source, /CastActiveItem/);
   assert.match(source, /SetAbilityLevels/);
@@ -63,6 +67,13 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /StopUnit/);
   assert.match(source, /SetIdleAcquire/);
   assert.match(source, /SetThink\("RunNextSequenceStep"/);
+  assert.match(source, /ReloadFixture/);
+  assert.match(source, /package\.loaded\["generated\.dota_helper_fixture"\]\s*=\s*nil/);
+  assert.match(source, /pendingSequenceFixture\s*=\s*nil/);
+  assert.match(source, /pendingActiveItemFixture\s*=\s*nil/);
+  assert.match(source, /pendingInvisibilityBreakAttackWindow\s*=\s*nil/);
+  assert.match(source, /Convars:RegisterCommand\("dota_helper_run_fixture"/);
+  assert.match(source, /re-running fixture batch/);
   assert.doesNotMatch(source, /for _, step in ipairs\(fixture\.scenario\.steps or \{\}\) do/);
   assert.match(source, /activeItemLevel/);
   assert.match(source, /activeItemDamageSpecial/);
@@ -76,4 +87,12 @@ test('Dota addon metadata declares a playable probe addon', () => {
   assert.match(source, /"AddonInfo"/);
   assert.match(source, /"maps"\s+"dota"/);
   assert.match(source, /"IsPlayable"\s+"1"/);
+});
+
+test('Dota addon README documents console fixture reload workflow', () => {
+  const source = fs.readFileSync(addonReadmePath, 'utf8');
+
+  assert.match(source, /Iterating without restarting/);
+  assert.match(source, /dota_helper_run_fixture/);
+  assert.match(source, /sv_cheats 1/);
 });
