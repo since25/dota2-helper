@@ -17,7 +17,7 @@
 
 常用入口：
 
-- `server.js`：Express 后端、静态文件服务、AI 请求代理、支付/限流接口、数据 API。
+- `server.js`：Express 后端、静态文件服务、AI 请求代理、数据 API。
 - `index.html` / `script.js` / `style.css`：主阵容分析页面。
 - `damage-calculator.html` / `damage-calculator.js` / `damage-calculator.css`：伤害组合计算器页面。
 - `dotaDataContext.js`：构建给 LLM 的 Dota 数据上下文与中文 prompt。
