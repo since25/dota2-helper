@@ -34,7 +34,7 @@ Console output is written to `~/Library/Application Support/Steam/steamapps/comm
 
 ## Iterating without restarting
 
-After the first map load, regenerated fixtures can be re-run from the Dota 2 console without restarting the client:
+After the first map load, regenerated fixtures are re-run without restarting the client or relying on screen focus:
 
 1. Regenerate the fixture from Node:
 
@@ -42,15 +42,19 @@ After the first map load, regenerated fixtures can be re-run from the Dota 2 con
    npm run engine:fixture -- <scenario.json> <fixture.json>
    ```
 
-2. In the Dota console, run:
+2. Sync `tools/dota-addon/` into the local custom game addon if it is not already synced.
+
+3. The exporter writes `scripts/vscripts/generated/dota_helper_fixture_trigger.lua` next to `dota_helper_fixture.lua`. The runner polls that trigger file and automatically reloads `generated.dota_helper_fixture` when its `runId` changes.
+
+4. Read the new JSON result from the console log.
+
+The console command remains available as a manual fallback:
 
    ```text
    dota_helper_run_fixture
    ```
 
-3. Read the new JSON result from the console log.
-
-This command requires `sv_cheats 1`; it is registered as `FCVAR_CHEAT`. It reloads only `generated.dota_helper_fixture`, so runner-code changes still require a map/client restart.
+The fallback command requires `sv_cheats 1`; it is registered as `FCVAR_CHEAT`. Both paths reload only `generated.dota_helper_fixture`, so runner-code changes still require a map/client restart.
 
 ## Server Policy
 

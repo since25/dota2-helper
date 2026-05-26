@@ -14,6 +14,7 @@ const DEFAULT_LUA_OUTPUT_PATH = path.join(
   'generated',
   'dota_helper_fixture.lua'
 );
+const DEFAULT_TRIGGER_BASENAME = 'dota_helper_fixture_trigger.lua';
 const PROC_ATTACK_FLAGS = {
   processProcs: true,
   useCastAttackOrb: true,
@@ -259,13 +260,22 @@ function buildLuaFixtureSource(fixture) {
   return `return ${luaValue(luaFixture)}\n`;
 }
 
-async function writeEngineFixtureFiles({ input, outputPath, luaOutputPath }) {
+function buildLuaFixtureTriggerSource(fixture, runId = new Date().toISOString()) {
+  return `return ${luaValue({
+    runId,
+    fixtureId: fixture.id || 'engine_fixture'
+  })}\n`;
+}
+
+async function writeEngineFixtureFiles({ input, outputPath, luaOutputPath, triggerOutputPath, triggerRunId }) {
   const fixture = await buildEngineFixtureArtifact(input);
+  const resolvedTriggerOutputPath = triggerOutputPath || path.join(path.dirname(luaOutputPath), DEFAULT_TRIGGER_BASENAME);
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(fixture, null, 2));
   fs.mkdirSync(path.dirname(luaOutputPath), { recursive: true });
   fs.writeFileSync(luaOutputPath, buildLuaFixtureSource(fixture));
-  return { fixture, outputPath, luaOutputPath };
+  fs.writeFileSync(resolvedTriggerOutputPath, buildLuaFixtureTriggerSource(fixture, triggerRunId));
+  return { fixture, outputPath, luaOutputPath, triggerOutputPath: resolvedTriggerOutputPath };
 }
 
 async function main(argv = process.argv.slice(2)) {
@@ -276,9 +286,10 @@ async function main(argv = process.argv.slice(2)) {
     throw new Error('Usage: node scripts/export-engine-fixture.js <scenario.json> [output.json] [output.lua]');
   }
   const input = JSON.parse(fs.readFileSync(inputPath, 'utf8'));
-  await writeEngineFixtureFiles({ input, outputPath, luaOutputPath });
+  const { triggerOutputPath } = await writeEngineFixtureFiles({ input, outputPath, luaOutputPath });
   console.log(outputPath);
   console.log(luaOutputPath);
+  console.log(triggerOutputPath);
 }
 
 if (require.main === module) {
@@ -293,6 +304,7 @@ module.exports = {
   buildEngineFixtureBatch,
   buildEngineFixture,
   buildLuaFixtureSource,
+  buildLuaFixtureTriggerSource,
   writeEngineFixtureFiles,
   combatRelevantComponentIds
 };

@@ -9,6 +9,7 @@ const {
   buildEngineFixtureBatch,
   buildEngineFixture,
   buildLuaFixtureSource,
+  buildLuaFixtureTriggerSource,
   writeEngineFixtureFiles
 } = require('../scripts/export-engine-fixture');
 
@@ -103,6 +104,22 @@ test('buildEngineFixture defaults and exports trial counts for sampled probes', 
 
   const source = buildLuaFixtureSource(sampledFixture);
   assert.match(source, /trials = 400/);
+});
+
+test('buildLuaFixtureTriggerSource emits a lightweight reload trigger module', async () => {
+  const fixture = await buildEngineFixture({
+    id: 'pa_trigger_probe',
+    hero: 'Phantom Assassin',
+    heroLevel: 12,
+    target: { unitName: 'npc_dota_creep_badguys_melee', armor: 10, magicResistancePercent: 25 },
+    scenario: { type: 'attack_window', attackCount: 1 }
+  });
+
+  const source = buildLuaFixtureTriggerSource(fixture, 'manual-run-1');
+
+  assert.match(source, /return \{/);
+  assert.match(source, /runId = "manual-run-1"/);
+  assert.match(source, /fixtureId = "pa_trigger_probe"/);
 });
 
 test('buildEngineFixture uses Dota-rounded attack damage for engine baselines', async () => {
@@ -434,11 +451,14 @@ test('writeEngineFixtureFiles writes JSON and addon Lua fixture outputs', async 
 
   const json = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
   const lua = fs.readFileSync(luaPath, 'utf8');
+  const trigger = fs.readFileSync(path.join(tmpDir, 'dota_helper_fixture_trigger.lua'), 'utf8');
 
   assert.equal(json.id, 'pa_written_fixture');
   assert.equal(json.engineSetup.targetUnitName, 'npc_dota_hero_axe');
   assert.match(lua, /return \{/);
   assert.match(lua, /id = "pa_written_fixture"/);
+  assert.match(trigger, /runId = /);
+  assert.match(trigger, /fixtureId = "pa_written_fixture"/);
 });
 
 test('writeEngineFixtureFiles writes batch JSON and Lua outputs from scenario manifests', async () => {

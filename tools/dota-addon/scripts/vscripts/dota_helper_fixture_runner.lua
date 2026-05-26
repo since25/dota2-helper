@@ -11,9 +11,11 @@ function DotaHelperFixtureRunner:InitGameMode()
     self.fixtures = GeneratedFixture.fixtures or { GeneratedFixture }
     self.fixtureIndex = 0
     self:RegisterConsoleCommands()
+    self:StartFixtureTriggerPolling()
     GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 1.0)
   else
     self:RegisterConsoleCommands()
+    self:StartFixtureTriggerPolling()
     GameRules:GetGameModeEntity():SetThink("RunSmokeFixture", self, "dota_helper_fixture_smoke", 1.0)
   end
 end
@@ -27,6 +29,36 @@ function DotaHelperFixtureRunner:RegisterConsoleCommands()
       GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
     end
   end, "Reload and run dota-helper fixture batch", FCVAR_CHEAT)
+end
+
+function DotaHelperFixtureRunner:StartFixtureTriggerPolling()
+  if self.fixtureTriggerPollingStarted then return end
+  self.fixtureTriggerPollingStarted = true
+  local trigger = self:ReadFixtureTrigger()
+  if trigger ~= nil then
+    self.currentFixtureTriggerRunId = trigger.runId
+  end
+  GameRules:GetGameModeEntity():SetThink("PollFixtureTrigger", self, "dota_helper_fixture_trigger_poll", 0.5)
+end
+
+function DotaHelperFixtureRunner:ReadFixtureTrigger()
+  package.loaded["generated.dota_helper_fixture_trigger"] = nil
+  local ok, trigger = pcall(require, "generated.dota_helper_fixture_trigger")
+  if not ok or trigger == nil then return nil end
+  return trigger
+end
+
+function DotaHelperFixtureRunner:PollFixtureTrigger()
+  local trigger = self:ReadFixtureTrigger()
+  local runId = trigger and trigger.runId or nil
+  if runId ~= nil and runId ~= self.currentFixtureTriggerRunId then
+    if self:ReloadFixture() then
+      self.currentFixtureTriggerRunId = runId
+      print("[dota-helper] fixture trigger changed: " .. tostring(runId))
+      GameRules:GetGameModeEntity():SetThink("RunNextFixture", self, "dota_helper_fixture", 0.2)
+    end
+  end
+  return 0.5
 end
 
 function DotaHelperFixtureRunner:ReloadFixture()

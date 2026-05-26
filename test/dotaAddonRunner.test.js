@@ -74,6 +74,11 @@ test('Lua fixture runner loads generated fixture and exposes controlled attack m
   assert.match(source, /pendingInvisibilityBreakAttackWindow\s*=\s*nil/);
   assert.match(source, /Convars:RegisterCommand\("dota_helper_run_fixture"/);
   assert.match(source, /re-running fixture batch/);
+  assert.match(source, /generated\.dota_helper_fixture_trigger/);
+  assert.match(source, /PollFixtureTrigger/);
+  assert.match(source, /package\.loaded\["generated\.dota_helper_fixture_trigger"\]\s*=\s*nil/);
+  assert.match(source, /currentFixtureTriggerRunId/);
+  assert.match(source, /fixture trigger changed/);
   assert.doesNotMatch(source, /for _, step in ipairs\(fixture\.scenario\.steps or \{\}\) do/);
   assert.match(source, /activeItemLevel/);
   assert.match(source, /activeItemDamageSpecial/);
@@ -93,6 +98,7 @@ test('Dota addon README documents console fixture reload workflow', () => {
   const source = fs.readFileSync(addonReadmePath, 'utf8');
 
   assert.match(source, /Iterating without restarting/);
+  assert.match(source, /dota_helper_fixture_trigger\.lua/);
+  assert.match(source, /screen focus/);
   assert.match(source, /dota_helper_run_fixture/);
-  assert.match(source, /sv_cheats 1/);
 });
